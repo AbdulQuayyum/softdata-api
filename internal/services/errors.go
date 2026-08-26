@@ -5,6 +5,9 @@ import "errors"
 var (
 	ErrInvalidCredentials     = errors.New("services: invalid credentials")
 	ErrInvalidRefreshToken    = errors.New("services: invalid refresh token")
+	ErrDatasetNotFound        = errors.New("services: dataset not found")
+	ErrInvalidDatasetKey      = errors.New("services: invalid dataset key")
+	ErrInvalidPagination      = errors.New("services: invalid pagination")
 	ErrUsernameUnavailable    = errors.New("services: username unavailable")
 	ErrEmailUnavailable       = errors.New("services: email unavailable")
 	ErrAccountNotFound        = errors.New("services: account not found")
