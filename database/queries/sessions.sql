@@ -76,6 +76,19 @@ WHERE refresh_token_hash = $1
   AND revoked_at IS NULL
 RETURNING *;
 
+-- name: RotateSessionTokens :one
+UPDATE sessions
+SET
+    refresh_token_hash = sqlc.arg(new_refresh_token_hash),
+    access_token_jti = sqlc.arg(new_access_token_jti),
+    last_used_at = now(),
+    updated_at = now()
+WHERE id = sqlc.arg(session_id)
+  AND refresh_token_hash = sqlc.arg(current_refresh_token_hash)
+  AND revoked_at IS NULL
+  AND expires_at > now()
+RETURNING *;
+
 -- name: DeleteExpiredSessions :exec
 DELETE FROM sessions
 WHERE expires_at < now()

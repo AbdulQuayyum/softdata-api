@@ -23,8 +23,6 @@ type DatasetSource struct {
 // DatasetSourceResponse is the public source representation.
 type DatasetSourceResponse struct {
 	ID             string     `json:"id"`
-	DatasetID      string     `json:"dataset_id"`
-	SourceKey      string     `json:"source_key"`
 	Name           string     `json:"name"`
 	URL            *string    `json:"url,omitempty"`
 	Description    *string    `json:"description,omitempty"`

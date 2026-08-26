@@ -65,6 +65,8 @@ Authorization: Bearer your_access_token
 
 Bearer tokens are not used for dataset access. Dataset access uses no key or an optional API key.
 
+Access tokens are signed JWTs using HS256 with `AUTH_TOKEN_SECRET`.
+
 ## Refreshing a Session
 
 ```http
@@ -77,6 +79,8 @@ Content-Type: application/json
   "refresh_token": "your_refresh_token"
 }
 ```
+
+Refresh tokens are opaque random values. Only their SHA-256 hashes are stored.
 
 ## Logging Out
 
@@ -91,6 +95,8 @@ Content-Type: application/json
   "refresh_token": "your_refresh_token"
 }
 ```
+
+Anonymous request tracking uses a separate HMAC-based daily identifier derived from `ANONYMOUS_ID_SECRET`.
 
 ## Security
 

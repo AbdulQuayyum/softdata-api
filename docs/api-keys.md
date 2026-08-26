@@ -18,6 +18,8 @@ Content-Type: application/json
 
 The complete API key is returned only once.
 
+SoftData API keys use the documented `sd_live_` prefix and store only a hash plus safe display metadata.
+
 ## Using a Key
 
 ```http

@@ -25,8 +25,11 @@ func TestLoadDefaultDevelopmentConfig(t *testing.T) {
 	if cfg.Database.URL != nil {
 		t.Fatalf("expected nil database url")
 	}
-	if cfg.Security.AuthTokenSecret != nil {
-		t.Fatalf("expected nil auth secret")
+	if cfg.Security.AuthTokenSecret == nil || *cfg.Security.AuthTokenSecret != developmentAuthTokenSecretFallback {
+		t.Fatalf("unexpected auth secret: %+v", cfg.Security.AuthTokenSecret)
+	}
+	if cfg.Security.AnonymousIDSecret == nil || *cfg.Security.AnonymousIDSecret != developmentAnonymousIDSecretFallback {
+		t.Fatalf("unexpected anonymous secret: %+v", cfg.Security.AnonymousIDSecret)
 	}
 	if cfg.RateLimit.AnonymousRequestLimit != 60 || cfg.RateLimit.APIKeyRequestLimit != 300 || cfg.RateLimit.APIKeyMonthlyAllowance != 50000 {
 		t.Fatalf("unexpected rate limits: %+v", cfg.RateLimit)
@@ -122,6 +125,7 @@ func TestLoadMissingDatabaseURLInProduction(t *testing.T) {
 func TestLoadMissingAuthSecretInProduction(t *testing.T) {
 	resetConfigEnv(t)
 	t.Setenv("APP_ENV", string(AppEnvironmentProduction))
+	t.Setenv("ANONYMOUS_ID_SECRET", strings.Repeat("a", 32))
 	t.Setenv("DATABASE_URL", "postgres://example")
 
 	_, err := Load()
@@ -133,11 +137,59 @@ func TestLoadMissingAuthSecretInProduction(t *testing.T) {
 	}
 }
 
+func TestLoadShortAuthSecretInProduction(t *testing.T) {
+	resetConfigEnv(t)
+	t.Setenv("APP_ENV", string(AppEnvironmentProduction))
+	t.Setenv("AUTH_TOKEN_SECRET", "short")
+	t.Setenv("ANONYMOUS_ID_SECRET", strings.Repeat("a", 32))
+	t.Setenv("DATABASE_URL", "postgres://example")
+
+	_, err := Load()
+	if err == nil {
+		t.Fatal("expected error")
+	}
+	if !strings.Contains(err.Error(), "AUTH_TOKEN_SECRET") {
+		t.Fatalf("expected AUTH_TOKEN_SECRET error, got %v", err)
+	}
+}
+
+func TestLoadMissingAnonymousSecretInProduction(t *testing.T) {
+	resetConfigEnv(t)
+	t.Setenv("APP_ENV", string(AppEnvironmentProduction))
+	t.Setenv("AUTH_TOKEN_SECRET", strings.Repeat("a", 32))
+	t.Setenv("DATABASE_URL", "postgres://example")
+
+	_, err := Load()
+	if err == nil {
+		t.Fatal("expected error")
+	}
+	if !strings.Contains(err.Error(), "ANONYMOUS_ID_SECRET") {
+		t.Fatalf("expected ANONYMOUS_ID_SECRET error, got %v", err)
+	}
+}
+
+func TestLoadShortAnonymousSecretInProduction(t *testing.T) {
+	resetConfigEnv(t)
+	t.Setenv("APP_ENV", string(AppEnvironmentProduction))
+	t.Setenv("AUTH_TOKEN_SECRET", strings.Repeat("a", 32))
+	t.Setenv("ANONYMOUS_ID_SECRET", "short")
+	t.Setenv("DATABASE_URL", "postgres://example")
+
+	_, err := Load()
+	if err == nil {
+		t.Fatal("expected error")
+	}
+	if !strings.Contains(err.Error(), "ANONYMOUS_ID_SECRET") {
+		t.Fatalf("expected ANONYMOUS_ID_SECRET error, got %v", err)
+	}
+}
+
 func TestLoadProductionConfig(t *testing.T) {
 	resetConfigEnv(t)
 	t.Setenv("APP_ENV", string(AppEnvironmentProduction))
 	t.Setenv("DATABASE_URL", "postgres://example")
-	t.Setenv("AUTH_TOKEN_SECRET", "dev-secret")
+	t.Setenv("AUTH_TOKEN_SECRET", strings.Repeat("a", 32))
+	t.Setenv("ANONYMOUS_ID_SECRET", strings.Repeat("b", 32))
 	t.Setenv("SERVER_HOST", "0.0.0.0")
 	t.Setenv("SERVER_PORT", "9090")
 	t.Setenv("DATASETS_PATH", "datasets/")
@@ -152,8 +204,11 @@ func TestLoadProductionConfig(t *testing.T) {
 	if cfg.Database.URL == nil || *cfg.Database.URL != "postgres://example" {
 		t.Fatalf("unexpected database url: %+v", cfg.Database.URL)
 	}
-	if cfg.Security.AuthTokenSecret == nil || *cfg.Security.AuthTokenSecret != "dev-secret" {
+	if cfg.Security.AuthTokenSecret == nil || *cfg.Security.AuthTokenSecret != strings.Repeat("a", 32) {
 		t.Fatalf("unexpected auth secret: %+v", cfg.Security.AuthTokenSecret)
+	}
+	if cfg.Security.AnonymousIDSecret == nil || *cfg.Security.AnonymousIDSecret != strings.Repeat("b", 32) {
+		t.Fatalf("unexpected anonymous secret: %+v", cfg.Security.AnonymousIDSecret)
 	}
 	if got := cfg.Server.ListenAddress(); got != "0.0.0.0:9090" {
 		t.Fatalf("unexpected listen address: %s", got)
@@ -168,6 +223,7 @@ func TestLoadDoesNotLeakSecretsInErrors(t *testing.T) {
 	t.Setenv("APP_ENV", string(AppEnvironmentProduction))
 	t.Setenv("DATABASE_URL", "postgres://example")
 	t.Setenv("AUTH_TOKEN_SECRET", "supersecret")
+	t.Setenv("ANONYMOUS_ID_SECRET", strings.Repeat("a", 32))
 	t.Setenv("ACCESS_TOKEN_TTL", "not-a-duration")
 
 	_, err := Load()
@@ -198,6 +254,7 @@ func resetConfigEnv(t *testing.T) {
 		"DATABASE_MAX_CONNECTION_IDLE_TIME",
 		"DATABASE_HEALTH_CHECK_PERIOD",
 		"AUTH_TOKEN_SECRET",
+		"ANONYMOUS_ID_SECRET",
 		"ACCESS_TOKEN_TTL",
 		"REFRESH_TOKEN_TTL",
 		"ANONYMOUS_RATE_LIMIT",
