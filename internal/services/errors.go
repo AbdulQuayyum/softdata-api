@@ -10,4 +10,7 @@ var (
 	ErrAccountNotFound        = errors.New("services: account not found")
 	ErrCurrentPasswordInvalid = errors.New("services: current password invalid")
 	ErrAccountInactive        = errors.New("services: account inactive")
+	ErrAPIKeyNotFound         = errors.New("services: api key not found")
+	ErrAPIKeyNameRequired     = errors.New("services: api key name is required")
+	ErrAPIKeyLimitReached     = errors.New("services: api key limit reached")
 )
