@@ -65,8 +65,25 @@ WHERE lower(slug) = lower($1);
 SELECT *
 FROM datasets
 WHERE is_public = true
-ORDER BY created_at DESC
-LIMIT $1 OFFSET $2;
+  AND (
+    sqlc.arg(search) = ''
+    OR dataset_key ILIKE '%' || sqlc.arg(search) || '%'
+    OR name ILIKE '%' || sqlc.arg(search) || '%'
+    OR description ILIKE '%' || sqlc.arg(search) || '%'
+  )
+ORDER BY created_at DESC, id DESC
+LIMIT sqlc.arg(page_limit) OFFSET sqlc.arg(page_offset);
+
+-- name: CountPublicDatasets :one
+SELECT count(*)
+FROM datasets
+WHERE is_public = true
+  AND (
+    sqlc.arg(search) = ''
+    OR dataset_key ILIKE '%' || sqlc.arg(search) || '%'
+    OR name ILIKE '%' || sqlc.arg(search) || '%'
+    OR description ILIKE '%' || sqlc.arg(search) || '%'
+  );
 
 -- name: ListPublicDatasetsAfter :many
 SELECT *

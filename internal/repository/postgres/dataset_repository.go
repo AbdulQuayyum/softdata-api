@@ -247,11 +247,16 @@ func (r *DatasetRepository) GetByDatasetKey(ctx context.Context, datasetKey stri
 	return datasetFromRow(row), nil
 }
 
-func (r *DatasetRepository) ListPublic(ctx context.Context, limit, offset int32) ([]models.Dataset, error) {
-	rows, err := r.queries.ListPublicDatasets(ctx, sqlc.ListPublicDatasetsParams{
-		Limit:  limit,
-		Offset: offset,
-	})
+func publicDatasetListParams(filter models.DatasetListFilter) sqlc.ListPublicDatasetsParams {
+	return sqlc.ListPublicDatasetsParams{
+		Search:     filter.Search,
+		PageOffset: filter.Offset,
+		PageLimit:  filter.Limit,
+	}
+}
+
+func (r *DatasetRepository) ListPublic(ctx context.Context, filter models.DatasetListFilter) ([]models.Dataset, error) {
+	rows, err := r.queries.ListPublicDatasets(ctx, publicDatasetListParams(filter))
 	if err != nil {
 		return nil, translateError("list public datasets", err)
 	}
@@ -261,6 +266,14 @@ func (r *DatasetRepository) ListPublic(ctx context.Context, limit, offset int32)
 		items = append(items, datasetFromRow(row))
 	}
 	return items, nil
+}
+
+func (r *DatasetRepository) CountPublic(ctx context.Context, filter models.DatasetListFilter) (int64, error) {
+	count, err := r.queries.CountPublicDatasets(ctx, filter.Search)
+	if err != nil {
+		return 0, translateError("count public datasets", err)
+	}
+	return count, nil
 }
 
 func (r *DatasetRepository) ListAll(ctx context.Context, limit, offset int32) ([]models.Dataset, error) {

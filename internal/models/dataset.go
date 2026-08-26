@@ -40,6 +40,13 @@ type Dataset struct {
 	ArchivedAt      *time.Time
 }
 
+// DatasetListFilter captures the neutral public list inputs the repository understands.
+type DatasetListFilter struct {
+	Search string
+	Limit  int32
+	Offset int32
+}
+
 // DatasetResponse is the public dataset payload where id maps to DatasetKey.
 type DatasetResponse struct {
 	ID              string        `json:"id"`
