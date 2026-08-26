@@ -1,0 +1,28 @@
+# Binaries and build output
+bin/
+tmp/
+build/
+dist/
+
+# Coverage and test artifacts
+coverage.out
+*.coverprofile
+
+# Logs
+*.log
+build-errors.log
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Editor and OS files
+.DS_Store
+.idea/
+.vscode/
+
+# Go workspace and module caches
+go.work
+go.work.sum
+
