@@ -12,7 +12,7 @@ import (
 	"github.com/AbdulQuayyum/softdata-api/internal/repository/interfaces"
 )
 
-const maxDatasetListLimit = 20
+const maxDatasetListLimit = 100
 
 // DatasetListResult is the service-level list result for datasets.
 type DatasetListResult struct {
