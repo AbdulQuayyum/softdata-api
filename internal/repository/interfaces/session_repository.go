@@ -13,6 +13,7 @@ type SessionRepository interface {
 	GetByRefreshTokenHash(ctx context.Context, refreshTokenHash string) (models.Session, error)
 	ListByAccountID(ctx context.Context, accountID string, limit, offset int32) ([]models.Session, error)
 	Touch(ctx context.Context, id string) (models.Session, error)
+	RotateSessionTokens(ctx context.Context, sessionID string, currentRefreshTokenHash string, newRefreshTokenHash string, newAccessTokenJTI string) (models.Session, error)
 	RevokeByID(ctx context.Context, id string) (models.Session, error)
 	RevokeByRefreshTokenHash(ctx context.Context, refreshTokenHash string) (models.Session, error)
 	DeleteExpired(ctx context.Context) error

@@ -107,6 +107,29 @@ func (r *SessionRepository) Touch(ctx context.Context, id string) (models.Sessio
 	return sessionFromRow(row), nil
 }
 
+func (r *SessionRepository) RotateSessionTokens(ctx context.Context, sessionID string, currentRefreshTokenHash string, newRefreshTokenHash string, newAccessTokenJTI string) (models.Session, error) {
+	uid, err := uuidFromString(sessionID)
+	if err != nil {
+		return models.Session{}, fmt.Errorf("rotate session tokens: %w", err)
+	}
+
+	jti, err := uuidFromString(newAccessTokenJTI)
+	if err != nil {
+		return models.Session{}, fmt.Errorf("rotate session tokens: %w", err)
+	}
+
+	row, err := r.queries.RotateSessionTokens(ctx, sqlc.RotateSessionTokensParams{
+		SessionID:               uid,
+		CurrentRefreshTokenHash: currentRefreshTokenHash,
+		NewRefreshTokenHash:     newRefreshTokenHash,
+		NewAccessTokenJti:       jti,
+	})
+	if err != nil {
+		return models.Session{}, translateError("rotate session tokens", err)
+	}
+	return sessionFromRow(row), nil
+}
+
 func (r *SessionRepository) RevokeByID(ctx context.Context, id string) (models.Session, error) {
 	uid, err := uuidFromString(id)
 	if err != nil {
