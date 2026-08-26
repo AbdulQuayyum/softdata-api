@@ -26,8 +26,19 @@ CREATE UNIQUE INDEX IF NOT EXISTS api_keys_prefix_unique
 CREATE INDEX IF NOT EXISTS api_keys_account_id_idx
     ON api_keys (account_id);
 
+CREATE INDEX IF NOT EXISTS api_keys_account_id_created_at_idx
+    ON api_keys (account_id, created_at DESC);
+
+CREATE INDEX IF NOT EXISTS api_keys_account_id_created_at_id_idx
+    ON api_keys (account_id, created_at DESC, id DESC);
+
 CREATE INDEX IF NOT EXISTS api_keys_status_idx
     ON api_keys (status);
 
 CREATE INDEX IF NOT EXISTS api_keys_expires_at_idx
     ON api_keys (expires_at);
+
+CREATE INDEX IF NOT EXISTS api_keys_active_account_idx
+    ON api_keys (account_id)
+    WHERE status = 'active'
+      AND revoked_at IS NULL;

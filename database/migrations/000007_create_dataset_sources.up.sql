@@ -25,5 +25,8 @@ CREATE UNIQUE INDEX IF NOT EXISTS dataset_sources_dataset_id_source_key_unique
 CREATE INDEX IF NOT EXISTS dataset_sources_dataset_id_idx
     ON dataset_sources (dataset_id);
 
+CREATE INDEX IF NOT EXISTS dataset_sources_dataset_id_created_at_idx
+    ON dataset_sources (dataset_id, created_at ASC);
+
 CREATE INDEX IF NOT EXISTS dataset_sources_is_official_idx
     ON dataset_sources (is_official);

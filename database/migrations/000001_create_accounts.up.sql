@@ -18,14 +18,22 @@ CREATE TABLE IF NOT EXISTS accounts (
 );
 
 CREATE UNIQUE INDEX IF NOT EXISTS accounts_username_unique
-    ON accounts (lower(username));
+    ON accounts (lower(username))
+    WHERE deleted_at IS NULL;
 
 CREATE UNIQUE INDEX IF NOT EXISTS accounts_email_unique
     ON accounts (lower(email))
-    WHERE email IS NOT NULL;
+    WHERE email IS NOT NULL
+      AND deleted_at IS NULL;
 
 CREATE INDEX IF NOT EXISTS accounts_status_idx
-    ON accounts (status);
+    ON accounts (status)
+    WHERE deleted_at IS NULL;
 
 CREATE INDEX IF NOT EXISTS accounts_created_at_idx
-    ON accounts (created_at DESC);
+    ON accounts (created_at DESC)
+    WHERE deleted_at IS NULL;
+
+CREATE INDEX IF NOT EXISTS accounts_created_at_id_idx
+    ON accounts (created_at DESC, id DESC)
+    WHERE deleted_at IS NULL;

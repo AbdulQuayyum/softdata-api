@@ -32,11 +32,23 @@ CREATE INDEX IF NOT EXISTS api_requests_created_at_idx
 CREATE INDEX IF NOT EXISTS api_requests_account_id_idx
     ON api_requests (account_id);
 
+CREATE INDEX IF NOT EXISTS api_requests_account_id_created_at_idx
+    ON api_requests (account_id, created_at DESC);
+
 CREATE INDEX IF NOT EXISTS api_requests_api_key_id_idx
     ON api_requests (api_key_id);
+
+CREATE INDEX IF NOT EXISTS api_requests_api_key_id_created_at_idx
+    ON api_requests (api_key_id, created_at DESC);
 
 CREATE INDEX IF NOT EXISTS api_requests_anonymous_id_idx
     ON api_requests (anonymous_id);
 
+CREATE INDEX IF NOT EXISTS api_requests_anonymous_id_created_at_idx
+    ON api_requests (anonymous_id, created_at DESC);
+
 CREATE INDEX IF NOT EXISTS api_requests_route_idx
     ON api_requests (route);
+
+CREATE INDEX IF NOT EXISTS api_requests_route_created_at_idx
+    ON api_requests (route, created_at DESC);

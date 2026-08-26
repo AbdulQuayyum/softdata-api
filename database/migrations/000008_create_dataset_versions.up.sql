@@ -26,6 +26,9 @@ CREATE UNIQUE INDEX IF NOT EXISTS dataset_versions_dataset_version_format_unique
 CREATE INDEX IF NOT EXISTS dataset_versions_dataset_id_idx
     ON dataset_versions (dataset_id);
 
+CREATE INDEX IF NOT EXISTS dataset_versions_dataset_id_released_at_idx
+    ON dataset_versions (dataset_id, released_at DESC, created_at DESC);
+
 CREATE INDEX IF NOT EXISTS dataset_versions_status_idx
     ON dataset_versions (status);
 

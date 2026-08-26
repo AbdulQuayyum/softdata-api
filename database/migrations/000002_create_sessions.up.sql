@@ -17,8 +17,17 @@ CREATE TABLE IF NOT EXISTS sessions (
 CREATE INDEX IF NOT EXISTS sessions_account_id_idx
     ON sessions (account_id);
 
+CREATE INDEX IF NOT EXISTS sessions_account_id_created_at_idx
+    ON sessions (account_id, created_at DESC);
+
+CREATE INDEX IF NOT EXISTS sessions_account_id_created_at_id_idx
+    ON sessions (account_id, created_at DESC, id DESC);
+
 CREATE INDEX IF NOT EXISTS sessions_expires_at_idx
     ON sessions (expires_at);
 
 CREATE INDEX IF NOT EXISTS sessions_revoked_at_idx
     ON sessions (revoked_at);
+
+CREATE INDEX IF NOT EXISTS sessions_expires_at_revoked_at_idx
+    ON sessions (expires_at, revoked_at);

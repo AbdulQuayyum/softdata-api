@@ -31,12 +31,24 @@ CREATE UNIQUE INDEX IF NOT EXISTS usage_daily_anonymous_unique_idx
     ON usage_daily (usage_date, anonymous_id)
     WHERE scope_type = 'anonymous';
 
+CREATE INDEX IF NOT EXISTS usage_daily_anonymous_id_usage_date_idx
+    ON usage_daily (anonymous_id, usage_date DESC)
+    WHERE scope_type = 'anonymous';
+
 CREATE UNIQUE INDEX IF NOT EXISTS usage_daily_account_unique_idx
     ON usage_daily (usage_date, account_id)
     WHERE scope_type = 'account';
 
+CREATE INDEX IF NOT EXISTS usage_daily_account_id_usage_date_idx
+    ON usage_daily (account_id, usage_date DESC)
+    WHERE scope_type = 'account';
+
 CREATE UNIQUE INDEX IF NOT EXISTS usage_daily_api_key_unique_idx
     ON usage_daily (usage_date, api_key_id)
+    WHERE scope_type = 'api_key';
+
+CREATE INDEX IF NOT EXISTS usage_daily_api_key_id_usage_date_idx
+    ON usage_daily (api_key_id, usage_date DESC)
     WHERE scope_type = 'api_key';
 
 CREATE INDEX IF NOT EXISTS usage_daily_usage_date_idx

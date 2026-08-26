@@ -48,3 +48,41 @@ CREATE INDEX IF NOT EXISTS datasets_status_idx
 
 CREATE INDEX IF NOT EXISTS datasets_country_code_idx
     ON datasets (country_code);
+
+CREATE INDEX IF NOT EXISTS datasets_public_created_at_idx
+    ON datasets (created_at DESC)
+    WHERE is_public = true;
+
+CREATE INDEX IF NOT EXISTS datasets_public_created_at_id_idx
+    ON datasets (created_at DESC, id DESC)
+    WHERE is_public = true;
+
+CREATE INDEX IF NOT EXISTS datasets_public_group_created_at_idx
+    ON datasets (group_name, created_at DESC)
+    WHERE is_public = true;
+
+CREATE INDEX IF NOT EXISTS datasets_public_group_created_at_id_idx
+    ON datasets (group_name, created_at DESC, id DESC)
+    WHERE is_public = true;
+
+CREATE INDEX IF NOT EXISTS datasets_public_status_created_at_idx
+    ON datasets (status, created_at DESC)
+    WHERE is_public = true;
+
+CREATE INDEX IF NOT EXISTS datasets_public_status_created_at_id_idx
+    ON datasets (status, created_at DESC, id DESC)
+    WHERE is_public = true;
+
+CREATE INDEX IF NOT EXISTS datasets_public_group_status_created_at_id_idx
+    ON datasets (group_name, status, created_at DESC, id DESC)
+    WHERE is_public = true;
+
+CREATE INDEX IF NOT EXISTS datasets_public_country_code_created_at_idx
+    ON datasets (country_code, created_at DESC)
+    WHERE is_public = true
+      AND country_code IS NOT NULL;
+
+CREATE INDEX IF NOT EXISTS datasets_public_country_code_created_at_id_idx
+    ON datasets (country_code, created_at DESC, id DESC)
+    WHERE is_public = true
+      AND country_code IS NOT NULL;
