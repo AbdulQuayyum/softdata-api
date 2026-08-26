@@ -40,8 +40,9 @@ INSERT INTO datasets (
     $15,
     $16,
     $17,
-    COALESCE($18, true),
-    $19
+    COALESCE($18, '{}'::text[]),
+    COALESCE($19, true),
+    $20
 )
 RETURNING *;
 
