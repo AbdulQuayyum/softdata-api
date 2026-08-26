@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"math"
 	"strings"
+	"time"
 
 	"github.com/AbdulQuayyum/softdata-api/internal/models"
 	"github.com/AbdulQuayyum/softdata-api/internal/repository/interfaces"
@@ -31,6 +32,12 @@ func (securityAPIKeyGenerator) Generate() (string, string, string, string, error
 type APIKeyService struct {
 	apiKeys   interfaces.APIKeyRepository
 	generator APIKeyGenerator
+}
+
+// APIKeyIdentity is the safe authentication result for a validated API key.
+type APIKeyIdentity struct {
+	APIKeyID  string
+	AccountID string
 }
 
 func NewAPIKeyService(apiKeys interfaces.APIKeyRepository, generator APIKeyGenerator) (*APIKeyService, error) {
@@ -76,6 +83,46 @@ func (s *APIKeyService) CreateKey(ctx context.Context, accountID string, input m
 	return models.APIKeyCreatedResponse{
 		Key:    plaintext,
 		APIKey: apiKeyMetadataFromModel(created),
+	}, nil
+}
+
+// Authenticate validates a plaintext API key and returns its safe identity.
+func (s *APIKeyService) Authenticate(ctx context.Context, plaintext string) (APIKeyIdentity, error) {
+	if err := ctx.Err(); err != nil {
+		return APIKeyIdentity{}, err
+	}
+	if strings.TrimSpace(plaintext) == "" {
+		return APIKeyIdentity{}, ErrAPIKeyNotFound
+	}
+	if _, err := security.DecodeAPIKeySuffix(plaintext); err != nil {
+		return APIKeyIdentity{}, ErrAPIKeyNotFound
+	}
+
+	keyHash := security.HashAPIKey(plaintext)
+	key, err := s.apiKeys.GetByKeyHash(ctx, keyHash)
+	if err != nil {
+		if errors.Is(err, interfaces.ErrNotFound) {
+			return APIKeyIdentity{}, ErrAPIKeyNotFound
+		}
+		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+			return APIKeyIdentity{}, err
+		}
+		return APIKeyIdentity{}, fmt.Errorf("authenticate api key")
+	}
+
+	if key.ID == "" || key.AccountID == "" {
+		return APIKeyIdentity{}, ErrAPIKeyNotFound
+	}
+	if key.Status != models.APIKeyStatusActive || key.RevokedAt != nil {
+		return APIKeyIdentity{}, ErrAPIKeyNotFound
+	}
+	if key.ExpiresAt != nil && !key.ExpiresAt.After(time.Now().UTC()) {
+		return APIKeyIdentity{}, ErrAPIKeyNotFound
+	}
+
+	return APIKeyIdentity{
+		APIKeyID:  key.ID,
+		AccountID: key.AccountID,
 	}, nil
 }
 

@@ -4,23 +4,27 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"reflect"
 	"strings"
 	"testing"
 	"time"
 
 	"github.com/AbdulQuayyum/softdata-api/internal/models"
 	"github.com/AbdulQuayyum/softdata-api/internal/repository/interfaces"
+	"github.com/AbdulQuayyum/softdata-api/internal/security"
 )
 
 type apiKeyRepoStub struct {
 	createFn            func(context.Context, string, models.APIKeyCreateInput, string, string, string, *time.Time, *time.Time, *time.Time) (models.APIKey, error)
 	getByIDFn           func(context.Context, string) (models.APIKey, error)
+	getByKeyHashFn      func(context.Context, string) (models.APIKey, error)
 	listFn              func(context.Context, string, int32, int32) ([]models.APIKey, error)
 	countFn             func(context.Context, string) (int64, error)
 	revokeFn            func(context.Context, string) (models.APIKey, error)
 	rotateFn            func(context.Context, string) (models.APIKey, error)
 	createCalls         int
 	getByIDCalls        int
+	getByKeyHashCalls   int
 	listCalls           int
 	countCalls          int
 	revokeCalls         int
@@ -31,6 +35,7 @@ type apiKeyRepoStub struct {
 	lastCreateHash      string
 	lastCreateLast4     string
 	lastCreateExpiresAt *time.Time
+	lastGetByKeyHash    string
 	lastListAccountID   string
 	lastListLimit       int32
 	lastListOffset      int32
@@ -83,6 +88,11 @@ func (s *apiKeyRepoStub) GetByID(ctx context.Context, id string) (models.APIKey,
 }
 
 func (s *apiKeyRepoStub) GetByKeyHash(ctx context.Context, keyHash string) (models.APIKey, error) {
+	s.getByKeyHashCalls++
+	s.lastGetByKeyHash = keyHash
+	if s.getByKeyHashFn != nil {
+		return s.getByKeyHashFn(ctx, keyHash)
+	}
 	for _, key := range s.keysByID {
 		if key.KeyHash == keyHash {
 			return key, nil
@@ -449,4 +459,210 @@ func TestAPIKeyServiceRotateKeyCreatesReplacement(t *testing.T) {
 	if repo.revokeCalls != 1 || repo.createCalls != 1 {
 		t.Fatalf("unexpected rotate calls: revoke=%d create=%d", repo.revokeCalls, repo.createCalls)
 	}
+}
+
+func TestAPIKeyServiceAuthenticateValidatesAndReturnsSafeIdentity(t *testing.T) {
+	plaintext := "sd_live_YWJjZA"
+	wantHash := security.HashAPIKey(plaintext)
+	repo := newAPIKeyRepoStub()
+	repo.getByKeyHashFn = func(_ context.Context, keyHash string) (models.APIKey, error) {
+		if keyHash != wantHash {
+			t.Fatalf("unexpected key hash lookup: %q", keyHash)
+		}
+		now := time.Now().UTC()
+		expiresAt := now.Add(24 * time.Hour)
+		return models.APIKey{
+			ID:        "key-1",
+			AccountID: "acct-1",
+			Status:    models.APIKeyStatusActive,
+			ExpiresAt: &expiresAt,
+			CreatedAt: now,
+			UpdatedAt: now,
+		}, nil
+	}
+
+	svc, err := NewAPIKeyService(repo, &apiKeyGeneratorStub{})
+	if err != nil {
+		t.Fatalf("NewAPIKeyService() error = %v", err)
+	}
+
+	identity, err := svc.Authenticate(context.Background(), plaintext)
+	if err != nil {
+		t.Fatalf("Authenticate() error = %v", err)
+	}
+	if identity.APIKeyID != "key-1" || identity.AccountID != "acct-1" {
+		t.Fatalf("unexpected identity: %#v", identity)
+	}
+	if repo.lastGetByKeyHash != wantHash {
+		t.Fatalf("plaintext key was used for lookup: %q", repo.lastGetByKeyHash)
+	}
+	if repo.getByKeyHashCalls != 1 {
+		t.Fatalf("unexpected hash lookup count: %d", repo.getByKeyHashCalls)
+	}
+}
+
+func TestAPIKeyServiceAuthenticateRejectsInvalidKeys(t *testing.T) {
+	repo := newAPIKeyRepoStub()
+	repo.getByKeyHashFn = func(context.Context, string) (models.APIKey, error) {
+		t.Fatal("repository should not be called for invalid input")
+		return models.APIKey{}, nil
+	}
+	svc, err := NewAPIKeyService(repo, &apiKeyGeneratorStub{})
+	if err != nil {
+		t.Fatalf("NewAPIKeyService() error = %v", err)
+	}
+
+	cases := []struct {
+		name string
+		key  string
+	}{
+		{name: "empty", key: ""},
+		{name: "whitespace", key: "   "},
+		{name: "wrong prefix", key: "pk_live_bad"},
+		{name: "malformed", key: "sd_live_ not-valid"},
+	}
+
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			_, err := svc.Authenticate(context.Background(), tc.key)
+			if !errors.Is(err, ErrAPIKeyNotFound) {
+				t.Fatalf("Authenticate() error = %v, want ErrAPIKeyNotFound", err)
+			}
+			if tc.key != "" && strings.Contains(err.Error(), tc.key) {
+				t.Fatalf("error exposed key material: %v", err)
+			}
+		})
+	}
+}
+
+func TestAPIKeyServiceAuthenticateRejectsUnknownRevokedAndExpiredKeys(t *testing.T) {
+	now := time.Now().UTC()
+	cases := []struct {
+		name string
+		key  models.APIKey
+	}{
+		{
+			name: "unknown",
+			key:  models.APIKey{},
+		},
+		{
+			name: "revoked",
+			key: models.APIKey{
+				ID:        "key-1",
+				AccountID: "acct-1",
+				Status:    models.APIKeyStatusRevoked,
+				RevokedAt: ptrTimeAPIKey(now),
+				CreatedAt: now,
+				UpdatedAt: now,
+			},
+		},
+		{
+			name: "expired",
+			key: models.APIKey{
+				ID:        "key-1",
+				AccountID: "acct-1",
+				Status:    models.APIKeyStatusActive,
+				ExpiresAt: ptrTimeAPIKey(now.Add(-time.Hour)),
+				CreatedAt: now,
+				UpdatedAt: now,
+			},
+		},
+	}
+
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			repo := newAPIKeyRepoStub()
+			repo.getByKeyHashFn = func(context.Context, string) (models.APIKey, error) {
+				if tc.name == "unknown" {
+					return models.APIKey{}, interfaces.ErrNotFound
+				}
+				return tc.key, nil
+			}
+			svc, err := NewAPIKeyService(repo, &apiKeyGeneratorStub{})
+			if err != nil {
+				t.Fatalf("NewAPIKeyService() error = %v", err)
+			}
+
+			_, err = svc.Authenticate(context.Background(), "sd_live_YWJjZA")
+			if !errors.Is(err, ErrAPIKeyNotFound) {
+				t.Fatalf("Authenticate() error = %v, want ErrAPIKeyNotFound", err)
+			}
+		})
+	}
+}
+
+func TestAPIKeyServiceAuthenticatePreservesContextCancellation(t *testing.T) {
+	repo := newAPIKeyRepoStub()
+	repo.getByKeyHashFn = func(context.Context, string) (models.APIKey, error) {
+		t.Fatal("repository should not be called after cancellation")
+		return models.APIKey{}, nil
+	}
+	svc, err := NewAPIKeyService(repo, &apiKeyGeneratorStub{})
+	if err != nil {
+		t.Fatalf("NewAPIKeyService() error = %v", err)
+	}
+
+	ctx, cancel := context.WithCancel(context.Background())
+	cancel()
+	_, err = svc.Authenticate(ctx, "sd_live_YWJjZA")
+	if !errors.Is(err, context.Canceled) {
+		t.Fatalf("Authenticate() error = %v, want context.Canceled", err)
+	}
+}
+
+func TestAPIKeyServiceAuthenticatePreservesDeadline(t *testing.T) {
+	repo := newAPIKeyRepoStub()
+	repo.getByKeyHashFn = func(context.Context, string) (models.APIKey, error) {
+		t.Fatal("repository should not be called after deadline")
+		return models.APIKey{}, nil
+	}
+	svc, err := NewAPIKeyService(repo, &apiKeyGeneratorStub{})
+	if err != nil {
+		t.Fatalf("NewAPIKeyService() error = %v", err)
+	}
+
+	ctx, cancel := context.WithDeadline(context.Background(), time.Now().Add(-time.Second))
+	defer cancel()
+	_, err = svc.Authenticate(ctx, "sd_live_YWJjZA")
+	if !errors.Is(err, context.DeadlineExceeded) {
+		t.Fatalf("Authenticate() error = %v, want context.DeadlineExceeded", err)
+	}
+}
+
+func TestAPIKeyServiceAuthenticateSanitizesUnexpectedRepositoryFailures(t *testing.T) {
+	plaintext := "sd_live_test-plaintext"
+	wantHash := security.HashAPIKey(plaintext)
+	repo := newAPIKeyRepoStub()
+	repo.getByKeyHashFn = func(context.Context, string) (models.APIKey, error) {
+		return models.APIKey{}, errors.New("database exploded")
+	}
+	svc, err := NewAPIKeyService(repo, &apiKeyGeneratorStub{})
+	if err != nil {
+		t.Fatalf("NewAPIKeyService() error = %v", err)
+	}
+
+	_, err = svc.Authenticate(context.Background(), plaintext)
+	if err == nil {
+		t.Fatal("Authenticate() error = nil, want error")
+	}
+	if errors.Is(err, ErrAPIKeyNotFound) {
+		t.Fatal("unexpected repo failure was treated as invalid API key")
+	}
+	if strings.Contains(err.Error(), plaintext) || strings.Contains(err.Error(), wantHash) || strings.Contains(err.Error(), "database exploded") {
+		t.Fatalf("error exposed sensitive or repository details: %v", err)
+	}
+}
+
+func TestAPIKeyIdentityShape(t *testing.T) {
+	typ := reflect.TypeOf(APIKeyIdentity{})
+	if typ.NumField() != 2 {
+		t.Fatalf("unexpected identity field count: %d", typ.NumField())
+	}
+	if typ.Field(0).Name != "APIKeyID" || typ.Field(1).Name != "AccountID" {
+		t.Fatalf("unexpected identity fields: %s, %s", typ.Field(0).Name, typ.Field(1).Name)
+	}
+}
+
+func ptrTimeAPIKey(t time.Time) *time.Time {
+	return &t
 }
