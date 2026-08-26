@@ -8,28 +8,27 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
-	"strconv"
 	"syscall"
-	"time"
+
+	"github.com/AbdulQuayyum/softdata-api/internal/config"
 )
 
 func main() {
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080"
+	cfg, err := config.Load()
+	if err != nil {
+		log.Fatalf("load configuration: %v", err)
 	}
-	portNumber := parsePort(port)
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("/health", healthHandler)
 
 	server := &http.Server{
-		Addr:              ":" + strconv.Itoa(portNumber),
+		Addr:              cfg.Server.ListenAddress(),
 		Handler:           mux,
-		ReadHeaderTimeout: 5 * time.Second,
-		ReadTimeout:       10 * time.Second,
-		WriteTimeout:      10 * time.Second,
-		IdleTimeout:       60 * time.Second,
+		ReadHeaderTimeout: cfg.Server.ReadHeaderTimeout,
+		ReadTimeout:       cfg.Server.ReadTimeout,
+		WriteTimeout:      cfg.Server.WriteTimeout,
+		IdleTimeout:       cfg.Server.IdleTimeout,
 	}
 
 	errCh := make(chan error, 1)
@@ -58,7 +57,7 @@ func main() {
 		return
 	}
 
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), cfg.Server.ShutdownTimeout)
 	defer cancel()
 
 	if err := server.Shutdown(ctx); err != nil {
@@ -86,15 +85,4 @@ func healthHandler(w http.ResponseWriter, r *http.Request) {
 
 func init() {
 	log.SetFlags(log.Ldate | log.Ltime | log.LUTC)
-}
-
-func parsePort(port string) int {
-	value, err := strconv.Atoi(port)
-	if err != nil {
-		return 8080
-	}
-	if value <= 0 {
-		return 8080
-	}
-	return value
 }
