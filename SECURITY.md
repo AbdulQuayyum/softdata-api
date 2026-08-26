@@ -90,6 +90,7 @@ SoftData:
 - Never returns existing complete keys.
 - Supports revocation and rotation.
 - Never logs complete API keys.
+- Uses the documented `sd_live_` public prefix.
 
 Users should:
 
@@ -103,10 +104,16 @@ Users should:
 
 Passwords must:
 
-- Be hashed using Argon2id or bcrypt.
+- Be hashed using Argon2id.
 - Never be stored or logged as plain text.
 - Never be returned by an API response.
 - Be checked against reasonable minimum requirements.
+
+## Token And Privacy Handling
+
+- Access tokens are HS256 JWTs signed with `AUTH_TOKEN_SECRET`.
+- Refresh tokens are opaque random values stored only as SHA-256 hashes.
+- Anonymous identifiers use a separate HMAC-SHA256 secret and rotate daily using a UTC date bucket.
 
 ## Privacy
 
