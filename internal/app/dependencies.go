@@ -20,20 +20,12 @@ import (
 	"github.com/AbdulQuayyum/softdata-api/internal/router"
 	"github.com/AbdulQuayyum/softdata-api/internal/security"
 	"github.com/AbdulQuayyum/softdata-api/internal/services"
+	redisv9 "github.com/redis/go-redis/v9"
 )
 
 const (
 	defaultKeyPrefix = "softdata"
 )
-
-type unavailableRateLimitRepository struct{}
-
-func (unavailableRateLimitRepository) Allow(ctx context.Context, request interfaces.RateLimitRequest) (interfaces.RateLimitResult, error) {
-	if err := ctx.Err(); err != nil {
-		return interfaces.RateLimitResult{}, err
-	}
-	return interfaces.RateLimitResult{}, interfaces.ErrRateLimitUnavailable
-}
 
 func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Logger) (deps appDependencies, err error) {
 	if ctx == nil {
@@ -246,11 +238,54 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 }
 
 func buildRateLimitRepository(ctx context.Context, cfg *config.Config, logger *slog.Logger) (interfaces.RateLimitRepository, func() error, error) {
+	return buildRateLimitRepositoryWith(
+		ctx,
+		cfg,
+		logger,
+		func(cfg config.RedisConfig) (redisBootstrapClient, error) {
+			return redisclient.NewClient(cfg)
+		},
+		pingRedis,
+		func(client redisBootstrapClient, prefix string) (interfaces.RateLimitRepository, error) {
+			return redisrepo.NewRateLimitRepository(client, prefix)
+		},
+	)
+}
+
+type redisBootstrapClient interface {
+	Ping(context.Context) *redisv9.StatusCmd
+	Close() error
+	Eval(context.Context, string, []string, ...any) *redisv9.Cmd
+}
+
+type redisClientFactory func(config.RedisConfig) (redisBootstrapClient, error)
+
+type redisPingFunc func(context.Context, redisBootstrapClient) error
+
+type redisRateLimitRepositoryFactory func(redisBootstrapClient, string) (interfaces.RateLimitRepository, error)
+
+func buildRateLimitRepositoryWith(
+	ctx context.Context,
+	cfg *config.Config,
+	logger *slog.Logger,
+	newClient redisClientFactory,
+	ping redisPingFunc,
+	newRepo redisRateLimitRepositoryFactory,
+) (interfaces.RateLimitRepository, func() error, error) {
 	if ctx == nil {
 		ctx = context.Background()
 	}
 	if cfg == nil {
 		return nil, nil, fmt.Errorf("config is required")
+	}
+	if newClient == nil {
+		return nil, nil, fmt.Errorf("redis client factory is required")
+	}
+	if ping == nil {
+		return nil, nil, fmt.Errorf("redis ping function is required")
+	}
+	if newRepo == nil {
+		return nil, nil, fmt.Errorf("rate limit repository factory is required")
 	}
 
 	prefix := strings.TrimSpace(cfg.Redis.KeyPrefix)
@@ -258,21 +293,15 @@ func buildRateLimitRepository(ctx context.Context, cfg *config.Config, logger *s
 		prefix = defaultKeyPrefix
 	}
 
-	client, err := redisclient.NewClient(cfg.Redis)
+	client, err := newClient(cfg.Redis)
 	if err != nil {
-		if cfg.RateLimit.FailOpen {
-			if logger != nil {
-				logger.Warn("redis unavailable at startup; continuing with fail-open rate limiting")
-			}
-			return unavailableRateLimitRepository{}, nil, nil
-		}
 		return nil, nil, fmt.Errorf("open redis client: %w", err)
 	}
 
 	pingCtx, cancel := context.WithTimeout(ctx, redisStartupTimeout(cfg.Redis))
 	defer cancel()
 
-	if err := redisclient.Ping(pingCtx, client); err != nil {
+	if err := ping(pingCtx, client); err != nil {
 		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
 			_ = client.Close()
 			return nil, nil, err
@@ -287,13 +316,33 @@ func buildRateLimitRepository(ctx context.Context, cfg *config.Config, logger *s
 		}
 	}
 
-	repo, err := redisrepo.NewRateLimitRepository(client, prefix)
+	repo, err := newRepo(client, prefix)
 	if err != nil {
 		_ = client.Close()
 		return nil, nil, fmt.Errorf("create rate limit repository: %w", err)
 	}
 
 	return repo, client.Close, nil
+}
+
+func pingRedis(ctx context.Context, client redisBootstrapClient) error {
+	if client == nil {
+		return fmt.Errorf("%w", redisclient.ErrInvalidRedisConfig)
+	}
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+
+	if err := client.Ping(ctx).Err(); err != nil {
+		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+			return err
+		}
+		return fmt.Errorf("%w", redisclient.ErrRedisUnavailable)
+	}
+	return nil
 }
 
 func redisStartupTimeout(cfg config.RedisConfig) time.Duration {
