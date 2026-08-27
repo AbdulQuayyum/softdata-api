@@ -196,12 +196,15 @@ func TestDownloadRateLimitUsesDownloadNamespace(t *testing.T) {
 }
 
 func TestRateLimitRejectsAtLimitAndSets429Body(t *testing.T) {
+	t.Parallel()
+
+	resetAt := time.Now().UTC().Add(30 * time.Second)
 	repo := &rateLimitRepositoryStub{
 		result: interfaces.RateLimitResult{
 			Allowed:   false,
 			Limit:     60,
 			Remaining: 0,
-			ResetAt:   time.Date(2026, 8, 27, 12, 1, 30, 0, time.UTC),
+			ResetAt:   resetAt,
 		},
 	}
 	anon := &anonymousIdentifierStub{value: "anon-opaque"}

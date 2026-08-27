@@ -90,6 +90,22 @@ func TestBuildRedisOptionsUsesStandaloneAddressWhenNoURL(t *testing.T) {
 	}
 }
 
+func TestNewClientConstructsWithoutConnectivityCheck(t *testing.T) {
+	t.Parallel()
+
+	client, err := NewClient(validRedisConfig())
+	if err != nil {
+		t.Fatalf("NewClient() error = %v", err)
+	}
+	if client == nil {
+		t.Fatal("NewClient() client = nil, want redis client")
+	}
+
+	if err := client.Close(); err != nil {
+		t.Fatalf("client.Close() error = %v", err)
+	}
+}
+
 func TestBuildRedisOptionsRejectsInvalidConfig(t *testing.T) {
 	_, err := buildRedisOptions(config.RedisConfig{})
 	if err == nil {
