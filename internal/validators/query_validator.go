@@ -3,8 +3,10 @@ package validators
 import (
 	"fmt"
 	"math"
+	"net/url"
 	"strconv"
 	"strings"
+	"time"
 )
 
 const (
@@ -66,6 +68,13 @@ type Pagination struct {
 	Offset int
 }
 
+// UsageQuery contains validated usage analytics query parameters.
+type UsageQuery struct {
+	Start    time.Time
+	End      time.Time
+	APIKeyID string
+}
+
 // ValidatePagination validates documented page and limit query parameters.
 func ValidatePagination(pageValue, limitValue string) (Pagination, error) {
 	var errs ValidationErrors
@@ -102,6 +111,89 @@ func ValidatePagination(pageValue, limitValue string) (Pagination, error) {
 // ValidateSearch trims surrounding whitespace from documented search inputs.
 func ValidateSearch(value string) string {
 	return strings.TrimSpace(value)
+}
+
+// ValidateUsageQuery validates documented usage analytics query parameters.
+func ValidateUsageQuery(values url.Values, now time.Time) (UsageQuery, error) {
+	var errs ValidationErrors
+
+	startValues := values["start"]
+	endValues := values["end"]
+	apiKeyIDValues := values["api_key_id"]
+
+	if len(startValues) > 1 {
+		errs.Add("start", codeMalformed, "Start may be provided at most once.")
+	}
+	if len(endValues) > 1 {
+		errs.Add("end", codeMalformed, "End may be provided at most once.")
+	}
+	if len(apiKeyIDValues) > 1 {
+		errs.Add("api_key_id", codeMalformed, "API key ID may be provided at most once.")
+	}
+
+	startValue := firstValue(startValues)
+	endValue := firstValue(endValues)
+	apiKeyIDValue := firstValue(apiKeyIDValues)
+
+	var query UsageQuery
+	if apiKeyIDValue != "" {
+		normalized, err := validateUsageAPIKeyID(apiKeyIDValue)
+		if err != nil {
+			if validationErr, ok := err.(ValidationErrors); ok {
+				errs.Fields = append(errs.Fields, validationErr.Fields...)
+			} else {
+				return UsageQuery{}, err
+			}
+		} else {
+			query.APIKeyID = normalized
+		}
+	}
+
+	switch {
+	case startValue == "" && endValue == "":
+		start, end := currentUTCCalendarMonth(now)
+		query.Start = start
+		query.End = end
+	case startValue == "" || endValue == "":
+		if startValue == "" {
+			errs.Add("start", codeRequired, "Start is required when end is provided.")
+		}
+		if endValue == "" {
+			errs.Add("end", codeRequired, "End is required when start is provided.")
+		}
+	default:
+		start, err := parseUsageDateQueryValue(startValue, "start")
+		if err != nil {
+			if validationErr, ok := err.(ValidationErrors); ok {
+				errs.Fields = append(errs.Fields, validationErr.Fields...)
+			} else {
+				return UsageQuery{}, err
+			}
+		} else {
+			query.Start = start
+		}
+
+		end, err := parseUsageDateQueryValue(endValue, "end")
+		if err != nil {
+			if validationErr, ok := err.(ValidationErrors); ok {
+				errs.Fields = append(errs.Fields, validationErr.Fields...)
+			} else {
+				return UsageQuery{}, err
+			}
+		} else {
+			query.End = end
+		}
+
+		if !query.Start.IsZero() && !query.End.IsZero() && !query.End.After(query.Start) {
+			errs.Add("end", codeOutOfRange, "End must be after start.")
+		}
+	}
+
+	if len(errs.Fields) > 0 {
+		return UsageQuery{}, errs
+	}
+
+	return query, nil
 }
 
 func parsePositiveInt(value string, fallback int, field string, errs *ValidationErrors) (int, error) {
@@ -149,4 +241,50 @@ func fieldLabel(field string) string {
 		return field
 	}
 	return strings.ToUpper(field[:1]) + field[1:]
+}
+
+func firstValue(values []string) string {
+	if len(values) == 0 {
+		return ""
+	}
+	return strings.TrimSpace(values[0])
+}
+
+func parseUsageDateQueryValue(value, field string) (time.Time, error) {
+	value = strings.TrimSpace(value)
+	if value == "" {
+		return time.Time{}, ValidationErrors{Fields: []FieldError{{
+			Field:   field,
+			Code:    codeRequired,
+			Message: fieldLabel(field) + " is required.",
+		}}}
+	}
+
+	parsed, err := time.ParseInLocation("2006-01-02", value, time.UTC)
+	if err != nil {
+		return time.Time{}, ValidationErrors{Fields: []FieldError{{
+			Field:   field,
+			Code:    codeMalformed,
+			Message: fieldLabel(field) + " must use YYYY-MM-DD.",
+		}}}
+	}
+	return parsed.UTC(), nil
+}
+
+func currentUTCCalendarMonth(now time.Time) (time.Time, time.Time) {
+	utcNow := now.UTC()
+	start := time.Date(utcNow.Year(), utcNow.Month(), 1, 0, 0, 0, 0, time.UTC)
+	return start, start.AddDate(0, 1, 0)
+}
+
+func validateUsageAPIKeyID(value string) (string, error) {
+	value = strings.TrimSpace(value)
+	if value == "" {
+		return "", ValidationErrors{Fields: []FieldError{{
+			Field:   "api_key_id",
+			Code:    codeRequired,
+			Message: "API key ID is required.",
+		}}}
+	}
+	return value, nil
 }

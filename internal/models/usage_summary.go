@@ -38,6 +38,31 @@ type UsageSummaryResponse struct {
 	ResponseBytes        int64          `json:"response_bytes"`
 }
 
+// UsageSummaryReportResponse is the safe public usage summary view.
+type UsageSummaryReportResponse struct {
+	TotalRequests      int64     `json:"total_requests"`
+	SuccessfulRequests int64     `json:"successful_requests"`
+	ErrorCount         int64     `json:"error_count"`
+	CurrentAllowance   int64     `json:"current_allowance"`
+	RemainingAllowance int64     `json:"remaining_allowance"`
+	PeriodStart        time.Time `json:"period_start"`
+	PeriodEnd          time.Time `json:"period_end"`
+}
+
+// UsageDailyResponse is the safe public aggregated daily usage view.
+type UsageDailyResponse struct {
+	Date               time.Time `json:"date"`
+	TotalRequests      int64     `json:"total_requests"`
+	SuccessfulRequests int64     `json:"successful_requests"`
+	ErrorCount         int64     `json:"error_count"`
+}
+
+// EndpointUsageResponse is the safe public endpoint breakdown view.
+type EndpointUsageResponse struct {
+	Endpoint     string `json:"endpoint"`
+	RequestCount int64  `json:"request_count"`
+}
+
 // DatasetGroupUsageResponse is the safe public dataset-group breakdown view.
 type DatasetGroupUsageResponse struct {
 	DatasetGroup string `json:"dataset_group"`

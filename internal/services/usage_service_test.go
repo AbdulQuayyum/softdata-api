@@ -258,11 +258,42 @@ func TestUsageServiceHistoryAndAllowance(t *testing.T) {
 	if len(history) != 3 {
 		t.Fatalf("expected 3 aggregated days, got %d", len(history))
 	}
-	if history[0].UsageDate != "2026-08-26" || history[0].RequestCount != 5 || history[0].ErrorCount != 2 {
+	if !history[0].Date.Equal(time.Date(2026, 8, 26, 0, 0, 0, 0, time.UTC)) || history[0].TotalRequests != 5 || history[0].ErrorCount != 2 {
 		t.Fatalf("unexpected first history row: %#v", history[0])
 	}
-	if history[1].UsageDate != "2026-08-25" || history[1].DatasetDownloadCount != 1 {
+	if !history[1].Date.Equal(time.Date(2026, 8, 25, 0, 0, 0, 0, time.UTC)) || history[1].TotalRequests != 1 || history[1].SuccessfulRequests != 1 {
 		t.Fatalf("unexpected second history row: %#v", history[1])
+	}
+
+	summary, err := svc.GetUsageSummary(context.Background(), "acct-1", nil, time.Date(2026, 8, 1, 0, 0, 0, 0, time.UTC), time.Date(2026, 9, 1, 0, 0, 0, 0, time.UTC))
+	if err != nil {
+		t.Fatalf("GetUsageSummary() error = %v", err)
+	}
+	if summary.TotalRequests != 10 || summary.SuccessfulRequests != 8 || summary.ErrorCount != 2 {
+		t.Fatalf("unexpected usage summary totals: %#v", summary)
+	}
+	if summary.CurrentAllowance != 50000 || summary.RemainingAllowance != 49990 {
+		t.Fatalf("unexpected usage allowance values: %#v", summary)
+	}
+	if !summary.PeriodStart.Equal(time.Date(2026, 8, 1, 0, 0, 0, 0, time.UTC)) || !summary.PeriodEnd.Equal(time.Date(2026, 9, 1, 0, 0, 0, 0, time.UTC)) {
+		t.Fatalf("unexpected usage period: %#v", summary)
+	}
+
+	keyHistory, err := svc.GetAPIKeyUsageHistory(context.Background(), "acct-1", "key-1", time.Date(2026, 8, 1, 0, 0, 0, 0, time.UTC), time.Date(2026, 9, 1, 0, 0, 0, 0, time.UTC))
+	if err != nil {
+		t.Fatalf("GetAPIKeyUsageHistory() error = %v", err)
+	}
+	if len(keyHistory) != 2 || !keyHistory[0].Date.Equal(time.Date(2026, 8, 26, 0, 0, 0, 0, time.UTC)) || keyHistory[0].TotalRequests != 3 {
+		t.Fatalf("unexpected api key history: %#v", keyHistory)
+	}
+
+	keyID := "key-1"
+	keySummary, err := svc.GetUsageSummary(context.Background(), "acct-1", &keyID, time.Date(2026, 8, 1, 0, 0, 0, 0, time.UTC), time.Date(2026, 9, 1, 0, 0, 0, 0, time.UTC))
+	if err != nil {
+		t.Fatalf("GetUsageSummary() with api key error = %v", err)
+	}
+	if keySummary.TotalRequests != 7 || keySummary.SuccessfulRequests != 6 || keySummary.ErrorCount != 1 {
+		t.Fatalf("unexpected api key usage summary totals: %#v", keySummary)
 	}
 
 	errorsCount, err := svc.GetErrorCounts(context.Background(), "acct-1", time.Date(2026, 8, 1, 0, 0, 0, 0, time.UTC), time.Date(2026, 9, 1, 0, 0, 0, 0, time.UTC))

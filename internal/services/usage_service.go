@@ -131,7 +131,7 @@ func (s *UsageService) RecordRequest(ctx context.Context, input RequestRecordInp
 	return recorded, nil
 }
 
-func (s *UsageService) GetUsageHistory(ctx context.Context, accountID string, start, end time.Time) ([]models.UsageSummaryResponse, error) {
+func (s *UsageService) GetUsageHistory(ctx context.Context, accountID string, start, end time.Time) ([]models.UsageDailyResponse, error) {
 	accountID = strings.TrimSpace(accountID)
 	if accountID == "" {
 		return nil, fmt.Errorf("get usage history: account id is required")
@@ -147,10 +147,10 @@ func (s *UsageService) GetUsageHistory(ctx context.Context, accountID string, st
 		return nil, err
 	}
 
-	return rows, nil
+	return dailyUsageResponsesFromSummaries(rows), nil
 }
 
-func (s *UsageService) GetAPIKeyUsageHistory(ctx context.Context, accountID, apiKeyID string, start, end time.Time) ([]models.UsageSummaryResponse, error) {
+func (s *UsageService) GetAPIKeyUsageHistory(ctx context.Context, accountID, apiKeyID string, start, end time.Time) ([]models.UsageDailyResponse, error) {
 	accountID = strings.TrimSpace(accountID)
 	apiKeyID = strings.TrimSpace(apiKeyID)
 	if accountID == "" || apiKeyID == "" {
@@ -178,7 +178,45 @@ func (s *UsageService) GetAPIKeyUsageHistory(ctx context.Context, accountID, api
 		return nil, fmt.Errorf("get api key usage history: %w", err)
 	}
 
-	return filterUsageSummaries(rows, models.UsageScopeAPIKey, startUTC, endUTC), nil
+	return dailyUsageResponsesFromSummaries(filterUsageSummaries(rows, startUTC, endUTC)), nil
+}
+
+func (s *UsageService) GetUsageSummary(ctx context.Context, accountID string, apiKeyID *string, start, end time.Time) (models.UsageSummaryReportResponse, error) {
+	accountID = strings.TrimSpace(accountID)
+	if accountID == "" {
+		return models.UsageSummaryReportResponse{}, fmt.Errorf("get usage summary: account id is required")
+	}
+
+	startUTC, endUTC, err := normalizeUsageRange(start, end)
+	if err != nil {
+		return models.UsageSummaryReportResponse{}, err
+	}
+
+	var history []models.UsageDailyResponse
+	if apiKeyID == nil || strings.TrimSpace(*apiKeyID) == "" {
+		history, err = s.GetUsageHistory(ctx, accountID, startUTC, endUTC)
+	} else {
+		history, err = s.GetAPIKeyUsageHistory(ctx, accountID, *apiKeyID, startUTC, endUTC)
+	}
+	if err != nil {
+		return models.UsageSummaryReportResponse{}, err
+	}
+
+	remainingAllowance, err := s.GetRemainingAllowance(ctx, accountID, endUTC.Add(-time.Nanosecond))
+	if err != nil {
+		return models.UsageSummaryReportResponse{}, err
+	}
+
+	summary := models.UsageSummaryReportResponse{
+		TotalRequests:      totalUsageRequests(history),
+		SuccessfulRequests: totalUsageSuccessfulRequests(history),
+		ErrorCount:         totalUsageErrors(history),
+		CurrentAllowance:   s.monthlyAllowance,
+		RemainingAllowance: remainingAllowance,
+		PeriodStart:        startUTC,
+		PeriodEnd:          endUTC,
+	}
+	return summary, nil
 }
 
 func (s *UsageService) GetEndpointUsage(ctx context.Context, route string, start, end time.Time) (int64, error) {
@@ -330,7 +368,7 @@ func (s *UsageService) collectAccountUsage(ctx context.Context, accountID string
 		addRows(keyRows)
 	}
 
-	return summariesFromAccumulator(aggregated, models.UsageScopeAccount), nil
+	return summariesFromAccumulator(aggregated), nil
 }
 
 func (s *UsageService) collectAccountDatasetGroupUsage(ctx context.Context, accountID string, start, end time.Time) ([]models.DatasetGroupUsageResponse, error) {
@@ -403,7 +441,7 @@ func parseUsageDate(value string) (time.Time, bool) {
 	return parsed, true
 }
 
-func filterUsageSummaries(rows []models.UsageSummaryResponse, scope models.UsageScopeType, start, end time.Time) []models.UsageSummaryResponse {
+func filterUsageSummaries(rows []models.UsageSummaryResponse, start, end time.Time) []models.UsageSummaryResponse {
 	aggregated := make(map[string]*summaryAccumulator)
 	for _, row := range rows {
 		date, ok := parseUsageDate(row.UsageDate)
@@ -417,15 +455,15 @@ func filterUsageSummaries(rows []models.UsageSummaryResponse, scope models.Usage
 		}
 		acc.add(row)
 	}
-	return summariesFromAccumulator(aggregated, scope)
+	return summariesFromAccumulator(aggregated)
 }
 
-func summariesFromAccumulator(aggregated map[string]*summaryAccumulator, scope models.UsageScopeType) []models.UsageSummaryResponse {
+func summariesFromAccumulator(aggregated map[string]*summaryAccumulator) []models.UsageSummaryResponse {
 	items := make([]models.UsageSummaryResponse, 0, len(aggregated))
 	for date, acc := range aggregated {
 		items = append(items, models.UsageSummaryResponse{
 			UsageDate:            date,
-			ScopeType:            scope,
+			ScopeType:            models.UsageScopeAccount,
 			RequestCount:         acc.requestCount,
 			SuccessfulCount:      acc.successfulCount,
 			ErrorCount:           acc.errorCount,
@@ -438,6 +476,47 @@ func summariesFromAccumulator(aggregated map[string]*summaryAccumulator, scope m
 		return items[i].UsageDate > items[j].UsageDate
 	})
 	return items
+}
+
+func dailyUsageResponsesFromSummaries(rows []models.UsageSummaryResponse) []models.UsageDailyResponse {
+	items := make([]models.UsageDailyResponse, 0, len(rows))
+	for _, row := range rows {
+		date, ok := parseUsageDate(row.UsageDate)
+		if !ok {
+			continue
+		}
+		items = append(items, models.UsageDailyResponse{
+			Date:               date,
+			TotalRequests:      row.RequestCount,
+			SuccessfulRequests: row.SuccessfulCount,
+			ErrorCount:         row.ErrorCount,
+		})
+	}
+	return items
+}
+
+func totalUsageRequests(rows []models.UsageDailyResponse) int64 {
+	var total int64
+	for _, row := range rows {
+		total += row.TotalRequests
+	}
+	return total
+}
+
+func totalUsageSuccessfulRequests(rows []models.UsageDailyResponse) int64 {
+	var total int64
+	for _, row := range rows {
+		total += row.SuccessfulRequests
+	}
+	return total
+}
+
+func totalUsageErrors(rows []models.UsageDailyResponse) int64 {
+	var total int64
+	for _, row := range rows {
+		total += row.ErrorCount
+	}
+	return total
 }
 
 func requestScope(input RequestRecordInput) (string, models.UsageScopeType, error) {
