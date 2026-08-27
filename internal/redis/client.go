@@ -23,23 +23,46 @@ type redisClient interface {
 	Close() error
 }
 
-func OpenRedis(ctx context.Context, cfg config.RedisConfig) (*redisv9.Client, error) {
-	client, err := openRedis(ctx, cfg, func(options *redisv9.Options) redisClient {
-		return redisv9.NewClient(options)
-	})
+// NewClient constructs a Redis client from validated config without verifying connectivity.
+func NewClient(cfg config.RedisConfig) (*redisv9.Client, error) {
+	options, err := buildRedisOptions(cfg)
 	if err != nil {
 		return nil, err
 	}
-
-	redisClient, ok := client.(*redisv9.Client)
-	if !ok {
-		return nil, fmt.Errorf("%w", ErrInvalidRedisConfig)
-	}
-
-	return redisClient, nil
+	return redisv9.NewClient(options), nil
 }
 
-func openRedis(ctx context.Context, cfg config.RedisConfig, newClient func(*redisv9.Options) redisClient) (redisClient, error) {
+// Ping verifies Redis connectivity without closing the client on failure.
+func Ping(ctx context.Context, client redisClient) error {
+	if client == nil {
+		return fmt.Errorf("%w", ErrInvalidRedisConfig)
+	}
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+
+	if err := client.Ping(ctx).Err(); err != nil {
+		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+			return err
+		}
+		return fmt.Errorf("%w", ErrRedisUnavailable)
+	}
+	return nil
+}
+
+func OpenRedis(ctx context.Context, cfg config.RedisConfig) (*redisv9.Client, error) {
+	return openRedis(ctx, cfg, func(options *redisv9.Options) redisClient {
+		return redisv9.NewClient(options)
+	})
+}
+
+func openRedis(ctx context.Context, cfg config.RedisConfig, opener func(*redisv9.Options) redisClient) (*redisv9.Client, error) {
+	if opener == nil {
+		return nil, fmt.Errorf("%w", ErrInvalidRedisConfig)
+	}
 	if ctx == nil {
 		ctx = context.Background()
 	}
@@ -52,19 +75,23 @@ func openRedis(ctx context.Context, cfg config.RedisConfig, newClient func(*redi
 		return nil, err
 	}
 
-	client := newClient(options)
+	client := opener(options)
+	if client == nil {
+		return nil, fmt.Errorf("%w", ErrInvalidRedisConfig)
+	}
+
 	pingCtx, cancel := context.WithTimeout(ctx, startupRedisTimeout(options))
 	defer cancel()
 
-	if err := client.Ping(pingCtx).Err(); err != nil {
+	if err := Ping(pingCtx, client); err != nil {
 		_ = client.Close()
-		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
-			return nil, err
-		}
-		return nil, fmt.Errorf("%w", ErrRedisUnavailable)
+		return nil, err
 	}
 
-	return client, nil
+	if redisClient, ok := client.(*redisv9.Client); ok {
+		return redisClient, nil
+	}
+	return nil, fmt.Errorf("%w", ErrInvalidRedisConfig)
 }
 
 func buildRedisOptions(cfg config.RedisConfig) (*redisv9.Options, error) {
