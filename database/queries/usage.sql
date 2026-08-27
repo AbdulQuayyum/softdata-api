@@ -96,6 +96,7 @@ INSERT INTO api_requests (
     method,
     path,
     route,
+    dataset_group,
     query_params,
     status_code,
     ip_address,
@@ -111,15 +112,40 @@ INSERT INTO api_requests (
     $5,
     $6,
     $7,
-    COALESCE($8, '{}'::jsonb),
-    $9,
+    $8,
+    COALESCE($9, '{}'::jsonb),
     $10,
     $11,
     $12,
     $13,
-    $14
+    $14,
+    $15
 )
 RETURNING *;
+
+-- name: GetDatasetGroupUsageByAccountID :many
+SELECT
+    dataset_group,
+    COUNT(*)::bigint AS request_count
+FROM api_requests
+WHERE account_id = $1
+  AND dataset_group IS NOT NULL
+  AND created_at >= $2
+  AND created_at < $3
+GROUP BY dataset_group
+ORDER BY request_count DESC, dataset_group ASC;
+
+-- name: GetDatasetGroupUsageByAPIKeyID :many
+SELECT
+    dataset_group,
+    COUNT(*)::bigint AS request_count
+FROM api_requests
+WHERE api_key_id = $1
+  AND dataset_group IS NOT NULL
+  AND created_at >= $2
+  AND created_at < $3
+GROUP BY dataset_group
+ORDER BY request_count DESC, dataset_group ASC;
 
 -- name: GetUsageDailyByDate :many
 SELECT *

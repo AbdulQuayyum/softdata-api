@@ -9,6 +9,7 @@ type APIRequest struct {
 	AccountID      *string
 	APIKeyID       *string
 	AnonymousID    *string
+	DatasetGroup   *string
 	Method         string
 	Path           string
 	Route          *string

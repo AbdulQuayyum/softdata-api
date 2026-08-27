@@ -61,7 +61,8 @@ func (r *UsageRepository) RecordRequest(ctx context.Context, request models.APIR
 		Method:         request.Method,
 		Path:           request.Path,
 		Route:          route,
-		Column8:        queryParams,
+		DatasetGroup:   textFromStringPtr(request.DatasetGroup),
+		Column9:        queryParams,
 		StatusCode:     statusCode,
 		IpAddress:      ipAddress,
 		UserAgent:      textFromStringPtr(request.UserAgent),
@@ -273,6 +274,50 @@ func (r *UsageRepository) GetSummaryByAnonymousID(ctx context.Context, anonymous
 			row.DatasetDownloadCount,
 			row.ResponseBytes,
 		))
+	}
+	return items, nil
+}
+
+func (r *UsageRepository) GetDatasetGroupUsageByAccountID(ctx context.Context, accountID string, createdFrom, createdTo time.Time) ([]models.DatasetGroupUsageResponse, error) {
+	accountUUID, err := uuidFromString(accountID)
+	if err != nil {
+		return nil, fmt.Errorf("get dataset group usage by account id: %w", err)
+	}
+
+	rows, err := r.queries.GetDatasetGroupUsageByAccountID(ctx, sqlc.GetDatasetGroupUsageByAccountIDParams{
+		AccountID:   accountUUID,
+		CreatedAt:   timestamptzFromTimePtr(&createdFrom),
+		CreatedAt_2: timestamptzFromTimePtr(&createdTo),
+	})
+	if err != nil {
+		return nil, translateError("get dataset group usage by account id", err)
+	}
+
+	items := make([]models.DatasetGroupUsageResponse, 0, len(rows))
+	for _, row := range rows {
+		items = append(items, datasetGroupUsageResponse(row.DatasetGroup.String, row.RequestCount))
+	}
+	return items, nil
+}
+
+func (r *UsageRepository) GetDatasetGroupUsageByAPIKeyID(ctx context.Context, apiKeyID string, createdFrom, createdTo time.Time) ([]models.DatasetGroupUsageResponse, error) {
+	apiKeyUUID, err := uuidFromString(apiKeyID)
+	if err != nil {
+		return nil, fmt.Errorf("get dataset group usage by api key id: %w", err)
+	}
+
+	rows, err := r.queries.GetDatasetGroupUsageByAPIKeyID(ctx, sqlc.GetDatasetGroupUsageByAPIKeyIDParams{
+		ApiKeyID:    apiKeyUUID,
+		CreatedAt:   timestamptzFromTimePtr(&createdFrom),
+		CreatedAt_2: timestamptzFromTimePtr(&createdTo),
+	})
+	if err != nil {
+		return nil, translateError("get dataset group usage by api key id", err)
+	}
+
+	items := make([]models.DatasetGroupUsageResponse, 0, len(rows))
+	for _, row := range rows {
+		items = append(items, datasetGroupUsageResponse(row.DatasetGroup.String, row.RequestCount))
 	}
 	return items, nil
 }
