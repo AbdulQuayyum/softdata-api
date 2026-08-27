@@ -2,20 +2,21 @@ package config
 
 import (
 	"path/filepath"
-	"strings"
 )
 
-type DatasetsConfig struct {
+type DatasetConfig struct {
 	Path string
 }
 
-func loadDatasetsConfig() (DatasetsConfig, error) {
-	path := strings.TrimSpace(getEnv("DATASETS_PATH"))
+type DatasetsConfig = DatasetConfig
+
+func loadDatasetsConfig(lookup LookupEnv) (DatasetConfig, error) {
+	path := lookupString(lookup, "DATASETS_PATH")
 	if path == "" {
 		path = "datasets"
 	}
 
-	return DatasetsConfig{
+	return DatasetConfig{
 		Path: filepath.Clean(path),
 	}, nil
 }

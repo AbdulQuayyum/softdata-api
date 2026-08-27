@@ -2,6 +2,7 @@ package database
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"time"
 
@@ -15,15 +16,21 @@ func Ready(ctx context.Context, pool *pgxpool.Pool) error {
 		ctx = context.Background()
 	}
 
+	if err := ctx.Err(); err != nil {
+		return err
+	}
 	if pool == nil {
-		return fmt.Errorf("database is unavailable")
+		return fmt.Errorf("%w", ErrDatabaseUnavailable)
 	}
 
 	readyCtx, cancel := context.WithTimeout(ctx, readinessTimeout)
 	defer cancel()
 
 	if err := pool.Ping(readyCtx); err != nil {
-		return fmt.Errorf("database is unavailable")
+		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+			return err
+		}
+		return fmt.Errorf("%w", ErrDatabaseUnavailable)
 	}
 
 	return nil

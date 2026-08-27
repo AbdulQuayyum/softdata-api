@@ -3,8 +3,12 @@ package config
 import (
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
+	"time"
 )
+
+type LookupEnv func(string) (string, bool)
 
 type AppEnvironment string
 
@@ -16,73 +20,178 @@ const (
 )
 
 type Config struct {
-	App       AppConfig
-	Server    ServerConfig
-	Database  DatabaseConfig
-	Security  SecurityConfig
-	RateLimit RateLimitConfig
-	Datasets  DatasetsConfig
+	Environment string
+	Server      ServerConfig
+	Database    DatabaseConfig
+	Redis       RedisConfig
+	Security    SecurityConfig
+	RateLimit   RateLimitConfig
+	Usage       UsageConfig
+	Datasets    DatasetConfig
 }
 
-type AppConfig struct {
-	Environment AppEnvironment
-}
-
+// Load reads configuration from the process environment.
 func Load() (*Config, error) {
-	appConfig, err := loadAppConfig()
+	cfg, err := load(os.LookupEnv)
 	if err != nil {
 		return nil, err
 	}
+	return &cfg, nil
+}
 
-	serverConfig, err := loadServerConfig()
-	if err != nil {
-		return nil, err
+func load(lookup LookupEnv) (Config, error) {
+	if lookup == nil {
+		lookup = os.LookupEnv
 	}
 
-	databaseConfig, err := loadDatabaseConfig(appConfig.Environment)
+	env, err := loadEnvironment(lookup)
 	if err != nil {
-		return nil, err
+		return Config{}, err
 	}
 
-	securityConfig, err := loadSecurityConfig(appConfig.Environment)
+	server, err := loadServerConfig(lookup)
 	if err != nil {
-		return nil, err
+		return Config{}, err
 	}
 
-	rateLimitConfig, err := loadRateLimitConfig()
+	database, err := loadDatabaseConfig(lookup)
 	if err != nil {
-		return nil, err
+		return Config{}, err
 	}
 
-	datasetsConfig, err := loadDatasetsConfig()
+	redisConfig, err := loadRedisConfig(lookup)
 	if err != nil {
-		return nil, err
+		return Config{}, err
 	}
 
-	return &Config{
-		App:       appConfig,
-		Server:    serverConfig,
-		Database:  databaseConfig,
-		Security:  securityConfig,
-		RateLimit: rateLimitConfig,
-		Datasets:  datasetsConfig,
+	security, err := loadSecurityConfig(lookup)
+	if err != nil {
+		return Config{}, err
+	}
+
+	rateLimit, err := loadRateLimitConfig(lookup)
+	if err != nil {
+		return Config{}, err
+	}
+
+	usage, err := loadUsageConfig(lookup)
+	if err != nil {
+		return Config{}, err
+	}
+
+	datasets, err := loadDatasetsConfig(lookup)
+	if err != nil {
+		return Config{}, err
+	}
+
+	return Config{
+		Environment: string(env),
+		Server:      server,
+		Database:    database,
+		Redis:       redisConfig,
+		Security:    security,
+		RateLimit:   rateLimit,
+		Usage:       usage,
+		Datasets:    datasets,
 	}, nil
 }
 
-func loadAppConfig() (AppConfig, error) {
-	env := strings.ToLower(strings.TrimSpace(getEnv("APP_ENV")))
-	if env == "" {
-		env = string(AppEnvironmentDevelopment)
+func loadEnvironment(lookup LookupEnv) (AppEnvironment, error) {
+	value := strings.ToLower(strings.TrimSpace(lookupString(lookup, "APP_ENV")))
+	if value == "" {
+		value = string(AppEnvironmentDevelopment)
 	}
 
-	switch AppEnvironment(env) {
+	switch AppEnvironment(value) {
 	case AppEnvironmentDevelopment, AppEnvironmentTest, AppEnvironmentStaging, AppEnvironmentProduction:
-		return AppConfig{Environment: AppEnvironment(env)}, nil
+		return AppEnvironment(value), nil
 	default:
-		return AppConfig{}, fmt.Errorf("invalid APP_ENV value")
+		return "", fmt.Errorf("invalid APP_ENV value")
 	}
 }
 
-func getEnv(name string) string {
-	return os.Getenv(name)
+func lookupString(lookup LookupEnv, name string) string {
+	if lookup == nil {
+		return ""
+	}
+	value, ok := lookup(name)
+	if !ok {
+		return ""
+	}
+	return strings.TrimSpace(value)
+}
+
+func parsePositiveInt(name, raw string, defaultValue int) (int, error) {
+	if strings.TrimSpace(raw) == "" {
+		return defaultValue, nil
+	}
+
+	value, err := strconv.Atoi(strings.TrimSpace(raw))
+	if err != nil {
+		return 0, fmt.Errorf("invalid %s", name)
+	}
+	if value <= 0 {
+		return 0, fmt.Errorf("invalid %s", name)
+	}
+	return value, nil
+}
+
+func parseNonNegativeInt(name, raw string, defaultValue int) (int, error) {
+	if strings.TrimSpace(raw) == "" {
+		return defaultValue, nil
+	}
+
+	value, err := strconv.Atoi(strings.TrimSpace(raw))
+	if err != nil {
+		return 0, fmt.Errorf("invalid %s", name)
+	}
+	if value < 0 {
+		return 0, fmt.Errorf("invalid %s", name)
+	}
+	return value, nil
+}
+
+func parsePositiveInt64(name, raw string, defaultValue int64) (int64, error) {
+	if strings.TrimSpace(raw) == "" {
+		return defaultValue, nil
+	}
+
+	value, err := strconv.ParseInt(strings.TrimSpace(raw), 10, 64)
+	if err != nil {
+		return 0, fmt.Errorf("invalid %s", name)
+	}
+	if value <= 0 {
+		return 0, fmt.Errorf("invalid %s", name)
+	}
+	return value, nil
+}
+
+func parseNonNegativeInt64(name, raw string, defaultValue int64) (int64, error) {
+	if strings.TrimSpace(raw) == "" {
+		return defaultValue, nil
+	}
+
+	value, err := strconv.ParseInt(strings.TrimSpace(raw), 10, 64)
+	if err != nil {
+		return 0, fmt.Errorf("invalid %s", name)
+	}
+	if value < 0 {
+		return 0, fmt.Errorf("invalid %s", name)
+	}
+	return value, nil
+}
+
+func parsePositiveDuration(name, raw string, defaultValue time.Duration) (time.Duration, error) {
+	if strings.TrimSpace(raw) == "" {
+		return defaultValue, nil
+	}
+
+	value, err := time.ParseDuration(strings.TrimSpace(raw))
+	if err != nil {
+		return 0, fmt.Errorf("invalid %s", name)
+	}
+	if value <= 0 {
+		return 0, fmt.Errorf("invalid %s", name)
+	}
+	return value, nil
 }
