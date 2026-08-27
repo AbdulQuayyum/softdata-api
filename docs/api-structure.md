@@ -8,13 +8,13 @@ SoftData API uses a layered Go layout that keeps entry points, configuration, da
 - `internal/` contains the core application logic, including configuration, database access, repositories, security helpers, request validators, response helpers, and domain/API models.
 - `database/` contains PostgreSQL migrations and handwritten SQL queries.
 - `docs/` holds API and project documentation.
-- `datasets/` stores versioned data, schemas, and metadata.
-- Root tooling files such as `Makefile`, `sqlc.yaml`, and `.env.example` support local development and database generation.
+- Root tooling files such as `Makefile`, `sqlc.yaml`, `.air.toml`, and `.env.example` support local development and database generation.
 
 ## Project Tree
 
 ```text
 softdata-api/
+├── .air.toml
 ├── .env.example
 ├── CHANGELOG.md
 ├── CODE_OF_CONDUCT.md
@@ -24,6 +24,8 @@ softdata-api/
 ├── Makefile
 ├── README.md
 ├── SECURITY.md
+├── api
+├── .gitignore
 ├── cmd/
 │   └── api/
 │       └── main.go
@@ -142,11 +144,21 @@ softdata-api/
 │   │   ├── client.go
 │   │   └── client_test.go
 │   ├── repository/
+│   │   ├── file/
+│   │   │   ├── csv_repository.go
+│   │   │   ├── csv_repository_test.go
+│   │   │   ├── geojson_repository.go
+│   │   │   ├── geojson_repository_test.go
+│   │   │   ├── json_repository.go
+│   │   │   ├── json_repository_test.go
+│   │   │   ├── store.go
+│   │   │   └── store_test.go
 │   │   ├── interfaces/
 │   │   │   ├── account_repository.go
 │   │   │   ├── api_key_repository.go
 │   │   │   ├── dataset_repository.go
 │   │   │   ├── errors.go
+│   │   │   ├── file_repository.go
 │   │   │   ├── rate_limit_repository.go
 │   │   │   ├── session_repository.go
 │   │   │   └── usage_repository.go
@@ -199,7 +211,10 @@ softdata-api/
 │       ├── dataset_validator_test.go
 │       ├── query_validator.go
 │       └── query_validator_test.go
-└── sqlc.yaml
+├── sqlc.yaml
+└── tmp/
+    ├── build-errors.log
+    └── main
 ```
 
 ## What Each Area Does
@@ -226,7 +241,11 @@ Domain and API-facing models that stay separate from sqlc-generated persistence 
 
 ### `internal/repository/`
 
-Repository interfaces and PostgreSQL implementations that bridge services to persistence.
+Repository interfaces plus PostgreSQL, Redis, and file-backed implementations that bridge services to persistence and dataset assets.
+
+### `internal/repository/file/`
+
+Safe file-backed dataset readers for JSON, CSV, and GeoJSON content, plus shared path and size guards.
 
 ### `internal/redis/`
 
@@ -251,10 +270,6 @@ Database schema migrations and handwritten SQL query files.
 ### `docs/`
 
 User-facing and contributor-facing documentation, including the OpenAPI spec.
-
-### `datasets/`
-
-Source-controlled data assets, schemas, and metadata for the public API.
 
 ## Design Notes
 
