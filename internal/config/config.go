@@ -26,6 +26,7 @@ type Config struct {
 	Redis       RedisConfig
 	Security    SecurityConfig
 	RateLimit   RateLimitConfig
+	Usage       UsageConfig
 	Datasets    DatasetConfig
 }
 
@@ -73,6 +74,11 @@ func load(lookup LookupEnv) (Config, error) {
 		return Config{}, err
 	}
 
+	usage, err := loadUsageConfig(lookup)
+	if err != nil {
+		return Config{}, err
+	}
+
 	datasets, err := loadDatasetsConfig(lookup)
 	if err != nil {
 		return Config{}, err
@@ -85,6 +91,7 @@ func load(lookup LookupEnv) (Config, error) {
 		Redis:       redisConfig,
 		Security:    security,
 		RateLimit:   rateLimit,
+		Usage:       usage,
 		Datasets:    datasets,
 	}, nil
 }

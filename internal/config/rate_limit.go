@@ -8,12 +8,11 @@ import (
 )
 
 type RateLimitConfig struct {
-	AnonymousRequestLimit  int
-	APIKeyRequestLimit     int
-	DatasetDownloadLimit   int
-	APIKeyMonthlyAllowance int
-	Window                 time.Duration
-	FailOpen               bool
+	AnonymousRequestLimit int
+	APIKeyRequestLimit    int
+	DatasetDownloadLimit  int
+	Window                time.Duration
+	FailOpen              bool
 }
 
 func loadRateLimitConfig(lookup LookupEnv) (RateLimitConfig, error) {
@@ -28,11 +27,6 @@ func loadRateLimitConfig(lookup LookupEnv) (RateLimitConfig, error) {
 	}
 
 	datasetDownloadLimit, err := parsePositiveInt("DATASET_DOWNLOAD_RATE_LIMIT", lookupString(lookup, "DATASET_DOWNLOAD_RATE_LIMIT"), 10)
-	if err != nil {
-		return RateLimitConfig{}, err
-	}
-
-	apiKeyMonthlyAllowance, err := parsePositiveInt("API_KEY_MONTHLY_LIMIT", lookupString(lookup, "API_KEY_MONTHLY_LIMIT"), 50000)
 	if err != nil {
 		return RateLimitConfig{}, err
 	}
@@ -52,12 +46,11 @@ func loadRateLimitConfig(lookup LookupEnv) (RateLimitConfig, error) {
 	}
 
 	return RateLimitConfig{
-		AnonymousRequestLimit:  anonymousLimit,
-		APIKeyRequestLimit:     apiKeyLimit,
-		DatasetDownloadLimit:   datasetDownloadLimit,
-		APIKeyMonthlyAllowance: apiKeyMonthlyAllowance,
-		Window:                 window,
-		FailOpen:               failOpen,
+		AnonymousRequestLimit: anonymousLimit,
+		APIKeyRequestLimit:    apiKeyLimit,
+		DatasetDownloadLimit:  datasetDownloadLimit,
+		Window:                window,
+		FailOpen:              failOpen,
 	}, nil
 }
 

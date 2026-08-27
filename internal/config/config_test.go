@@ -47,6 +47,9 @@ func TestLoadDevelopmentConfig(t *testing.T) {
 	if !cfg.RateLimit.FailOpen {
 		t.Fatalf("expected fail-open rate limiting by default")
 	}
+	if cfg.Usage.APIKeyMonthlyAllowance != 50000 {
+		t.Fatalf("unexpected usage allowance: %#v", cfg.Usage)
+	}
 	if cfg.Datasets.Path != "datasets" {
 		t.Fatalf("unexpected datasets path: %s", cfg.Datasets.Path)
 	}
@@ -232,6 +235,64 @@ func TestLoadRejectsInvalidRedisValues(t *testing.T) {
 	}
 	if !strings.Contains(err.Error(), "REDIS_POOL_SIZE") {
 		t.Fatalf("expected REDIS_POOL_SIZE error, got %v", err)
+	}
+}
+
+func TestLoadUsesUsageConfigForMonthlyAllowance(t *testing.T) {
+	cfg, err := load(lookupFromMap(map[string]string{
+		"DATABASE_URL":                "postgres://localhost/softdata",
+		"AUTH_TOKEN_SECRET":           strings.Repeat("a", 32),
+		"ANONYMOUS_ID_SECRET":         strings.Repeat("b", 32),
+		"API_KEY_MONTHLY_LIMIT":       "123456",
+		"ANONYMOUS_RATE_LIMIT":        "61",
+		"API_KEY_RATE_LIMIT":          "301",
+		"DATASET_DOWNLOAD_RATE_LIMIT": "11",
+	}))
+	if err != nil {
+		t.Fatalf("load() error = %v", err)
+	}
+
+	if cfg.Usage.APIKeyMonthlyAllowance != 123456 {
+		t.Fatalf("unexpected monthly allowance: %#v", cfg.Usage)
+	}
+	if cfg.RateLimit.AnonymousRequestLimit != 61 || cfg.RateLimit.APIKeyRequestLimit != 301 || cfg.RateLimit.DatasetDownloadLimit != 11 {
+		t.Fatalf("unexpected rate limits: %#v", cfg.RateLimit)
+	}
+}
+
+func TestLoadRejectsInvalidMonthlyAllowance(t *testing.T) {
+	_, err := load(lookupFromMap(map[string]string{
+		"DATABASE_URL":          "postgres://localhost/softdata",
+		"AUTH_TOKEN_SECRET":     strings.Repeat("a", 32),
+		"ANONYMOUS_ID_SECRET":   strings.Repeat("b", 32),
+		"API_KEY_MONTHLY_LIMIT": "0",
+	}))
+	if err == nil {
+		t.Fatal("expected error")
+	}
+	if !strings.Contains(err.Error(), "API_KEY_MONTHLY_LIMIT") {
+		t.Fatalf("expected API_KEY_MONTHLY_LIMIT error, got %v", err)
+	}
+}
+
+func TestLoadDoesNotDeriveMonthlyAllowanceFromRateLimit(t *testing.T) {
+	cfg, err := load(lookupFromMap(map[string]string{
+		"DATABASE_URL":                "postgres://localhost/softdata",
+		"AUTH_TOKEN_SECRET":           strings.Repeat("a", 32),
+		"ANONYMOUS_ID_SECRET":         strings.Repeat("b", 32),
+		"ANONYMOUS_RATE_LIMIT":        "60",
+		"API_KEY_RATE_LIMIT":          "300",
+		"DATASET_DOWNLOAD_RATE_LIMIT": "10",
+	}))
+	if err != nil {
+		t.Fatalf("load() error = %v", err)
+	}
+
+	if cfg.Usage.APIKeyMonthlyAllowance != 50000 {
+		t.Fatalf("expected monthly allowance default to remain independent, got %#v", cfg.Usage)
+	}
+	if cfg.RateLimit.AnonymousRequestLimit != 60 || cfg.RateLimit.APIKeyRequestLimit != 300 || cfg.RateLimit.DatasetDownloadLimit != 10 {
+		t.Fatalf("unexpected rate limits: %#v", cfg.RateLimit)
 	}
 }
 
