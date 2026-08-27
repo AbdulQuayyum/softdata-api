@@ -36,6 +36,8 @@ type UsageService struct {
 	monthlyAllowance int64
 }
 
+const maxUsageRangeDays = 366
+
 func NewUsageService(usages interfaces.UsageRepository, apiKeys interfaces.APIKeyRepository, clock Clock, monthlyAllowance int64) (*UsageService, error) {
 	switch {
 	case usages == nil:
@@ -237,6 +239,54 @@ func (s *UsageService) GetEndpointUsage(ctx context.Context, route string, start
 	return count, nil
 }
 
+func (s *UsageService) ListEndpointUsage(ctx context.Context, accountID string, start, end time.Time) ([]models.EndpointUsageResponse, error) {
+	accountID = strings.TrimSpace(accountID)
+	if accountID == "" {
+		return nil, fmt.Errorf("list endpoint usage: account id is required")
+	}
+
+	startUTC, endUTC, err := normalizeUsageRange(start, end)
+	if err != nil {
+		return nil, err
+	}
+
+	rows, err := s.usages.GetEndpointUsageByAccountID(ctx, accountID, startUTC, endUTC)
+	if err != nil {
+		return nil, fmt.Errorf("list endpoint usage: %w", err)
+	}
+	return ensureEndpointUsageRows(rows), nil
+}
+
+func (s *UsageService) ListAPIKeyEndpointUsage(ctx context.Context, accountID, apiKeyID string, start, end time.Time) ([]models.EndpointUsageResponse, error) {
+	accountID = strings.TrimSpace(accountID)
+	apiKeyID = strings.TrimSpace(apiKeyID)
+	if accountID == "" || apiKeyID == "" {
+		return nil, ErrAPIKeyNotFound
+	}
+
+	key, err := s.apiKeys.GetByID(ctx, apiKeyID)
+	if err != nil {
+		if errors.Is(err, interfaces.ErrNotFound) {
+			return nil, ErrAPIKeyNotFound
+		}
+		return nil, fmt.Errorf("list api key endpoint usage: %w", err)
+	}
+	if strings.TrimSpace(key.AccountID) != accountID {
+		return nil, ErrAPIKeyNotFound
+	}
+
+	startUTC, endUTC, err := normalizeUsageRange(start, end)
+	if err != nil {
+		return nil, err
+	}
+
+	rows, err := s.usages.GetEndpointUsageByAPIKeyID(ctx, accountID, apiKeyID, startUTC, endUTC)
+	if err != nil {
+		return nil, fmt.Errorf("list api key endpoint usage: %w", err)
+	}
+	return ensureEndpointUsageRows(rows), nil
+}
+
 func (s *UsageService) GetDatasetGroupUsage(ctx context.Context, accountID string, start, end time.Time) ([]models.DatasetGroupUsageResponse, error) {
 	accountID = strings.TrimSpace(accountID)
 	if accountID == "" {
@@ -409,6 +459,9 @@ func normalizeUsageRange(start, end time.Time) (time.Time, time.Time, error) {
 	startUTC := start.UTC()
 	endUTC := end.UTC()
 	if startUTC.IsZero() || endUTC.IsZero() || !endUTC.After(startUTC) {
+		return time.Time{}, time.Time{}, ErrInvalidUsagePeriod
+	}
+	if endUTC.Sub(startUTC) > time.Duration(maxUsageRangeDays)*24*time.Hour {
 		return time.Time{}, time.Time{}, ErrInvalidUsagePeriod
 	}
 	return startUTC, endUTC, nil
@@ -658,4 +711,11 @@ func datasetGroupUsageFromCounts(counts map[string]int64) []models.DatasetGroupU
 		return items[i].RequestCount > items[j].RequestCount
 	})
 	return items
+}
+
+func ensureEndpointUsageRows(rows []models.EndpointUsageResponse) []models.EndpointUsageResponse {
+	if rows == nil {
+		return []models.EndpointUsageResponse{}
+	}
+	return rows
 }

@@ -3,11 +3,13 @@ package postgres
 import (
 	"context"
 	"fmt"
+	"strings"
 	"time"
 
 	sqlc "github.com/AbdulQuayyum/softdata-api/internal/database/sqlc"
 	"github.com/AbdulQuayyum/softdata-api/internal/models"
 	"github.com/AbdulQuayyum/softdata-api/internal/repository/interfaces"
+	"github.com/jackc/pgx/v5/pgtype"
 )
 
 var _ interfaces.UsageRepository = (*UsageRepository)(nil)
@@ -322,6 +324,55 @@ func (r *UsageRepository) GetDatasetGroupUsageByAPIKeyID(ctx context.Context, ap
 	return items, nil
 }
 
+func (r *UsageRepository) GetEndpointUsageByAccountID(ctx context.Context, accountID string, createdFrom, createdTo time.Time) ([]models.EndpointUsageResponse, error) {
+	accountUUID, err := uuidFromString(accountID)
+	if err != nil {
+		return nil, fmt.Errorf("get endpoint usage by account id: %w", err)
+	}
+
+	rows, err := r.queries.GetEndpointUsageByAccountID(ctx, sqlc.GetEndpointUsageByAccountIDParams{
+		AccountID:   accountUUID,
+		CreatedAt:   timestamptzFromTimePtr(&createdFrom),
+		CreatedAt_2: timestamptzFromTimePtr(&createdTo),
+	})
+	if err != nil {
+		return nil, translateError("get endpoint usage by account id", err)
+	}
+
+	items := make([]models.EndpointUsageResponse, 0, len(rows))
+	for _, row := range rows {
+		items = append(items, endpointUsageResponse(row.Route, row.RequestCount))
+	}
+	return items, nil
+}
+
+func (r *UsageRepository) GetEndpointUsageByAPIKeyID(ctx context.Context, accountID, apiKeyID string, createdFrom, createdTo time.Time) ([]models.EndpointUsageResponse, error) {
+	accountUUID, err := uuidFromString(accountID)
+	if err != nil {
+		return nil, fmt.Errorf("get endpoint usage by api key id: %w", err)
+	}
+	apiKeyUUID, err := uuidFromString(apiKeyID)
+	if err != nil {
+		return nil, fmt.Errorf("get endpoint usage by api key id: %w", err)
+	}
+
+	rows, err := r.queries.GetEndpointUsageByAPIKeyID(ctx, sqlc.GetEndpointUsageByAPIKeyIDParams{
+		AccountID:   accountUUID,
+		ApiKeyID:    apiKeyUUID,
+		CreatedAt:   timestamptzFromTimePtr(&createdFrom),
+		CreatedAt_2: timestamptzFromTimePtr(&createdTo),
+	})
+	if err != nil {
+		return nil, translateError("get endpoint usage by api key id", err)
+	}
+
+	items := make([]models.EndpointUsageResponse, 0, len(rows))
+	for _, row := range rows {
+		items = append(items, endpointUsageResponse(row.Route, row.RequestCount))
+	}
+	return items, nil
+}
+
 func (r *UsageRepository) CountRequestsByRoute(ctx context.Context, route string, createdFrom, createdTo time.Time) (int64, error) {
 	count, err := r.queries.CountRequestsByRoute(ctx, sqlc.CountRequestsByRouteParams{
 		Route:       textFromString(route),
@@ -336,4 +387,11 @@ func (r *UsageRepository) CountRequestsByRoute(ctx context.Context, route string
 
 func (r *UsageRepository) DeleteExpired(ctx context.Context, usageDate time.Time) error {
 	return translateError("delete expired usage daily", r.queries.DeleteExpiredUsageDaily(ctx, dateFromTime(usageDate)))
+}
+
+func endpointUsageResponse(route pgtype.Text, requestCount int64) models.EndpointUsageResponse {
+	return models.EndpointUsageResponse{
+		Endpoint:     strings.TrimSpace(route.String),
+		RequestCount: requestCount,
+	}
 }

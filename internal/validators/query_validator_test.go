@@ -82,6 +82,27 @@ func TestValidateUsageQueryParsesExplicitRange(t *testing.T) {
 	}
 }
 
+func TestValidateUsageQueryAppliesMaximumRange(t *testing.T) {
+	start := time.Date(2024, 1, 1, 0, 0, 0, 0, time.UTC)
+	end := start.AddDate(0, 0, 366)
+	values := url.Values{
+		"start": []string{start.Format("2006-01-02")},
+		"end":   []string{end.Format("2006-01-02")},
+	}
+	query, err := ValidateUsageQuery(values, time.Date(2026, 8, 27, 16, 30, 0, 0, time.UTC))
+	if err != nil {
+		t.Fatalf("ValidateUsageQuery() error = %v", err)
+	}
+	if !query.Start.Equal(start) || !query.End.Equal(end) {
+		t.Fatalf("unexpected max usage range: %#v", query)
+	}
+
+	values["end"] = []string{end.AddDate(0, 0, 1).Format("2006-01-02")}
+	if _, err := ValidateUsageQuery(values, time.Date(2026, 8, 27, 16, 30, 0, 0, time.UTC)); err == nil {
+		t.Fatal("ValidateUsageQuery() error = nil, want validation error for oversized range")
+	}
+}
+
 func TestValidateUsageQueryRejectsPartialRangeAndDuplicates(t *testing.T) {
 	t.Run("missing end", func(t *testing.T) {
 		_, err := ValidateUsageQuery(url.Values{"start": []string{"2026-08-01"}}, time.Date(2026, 8, 27, 16, 30, 0, 0, time.UTC))

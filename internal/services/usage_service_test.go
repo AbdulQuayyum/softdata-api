@@ -18,6 +18,8 @@ type usageRepoStub struct {
 	getSummaryKeyFn   func(context.Context, string, int32, int32) ([]models.UsageSummaryResponse, error)
 	getGroupAcctFn    func(context.Context, string, time.Time, time.Time) ([]models.DatasetGroupUsageResponse, error)
 	getGroupKeyFn     func(context.Context, string, time.Time, time.Time) ([]models.DatasetGroupUsageResponse, error)
+	getEndpointAcctFn func(context.Context, string, time.Time, time.Time) ([]models.EndpointUsageResponse, error)
+	getEndpointKeyFn  func(context.Context, string, string, time.Time, time.Time) ([]models.EndpointUsageResponse, error)
 	countRouteFn      func(context.Context, string, time.Time, time.Time) (int64, error)
 	lastRecorded      models.APIRequest
 	lastUsageDate     time.Time
@@ -103,6 +105,20 @@ func (s *usageRepoStub) GetDatasetGroupUsageByAccountID(ctx context.Context, acc
 func (s *usageRepoStub) GetDatasetGroupUsageByAPIKeyID(ctx context.Context, apiKeyID string, createdFrom, createdTo time.Time) ([]models.DatasetGroupUsageResponse, error) {
 	if s.getGroupKeyFn != nil {
 		return s.getGroupKeyFn(ctx, apiKeyID, createdFrom, createdTo)
+	}
+	return nil, nil
+}
+
+func (s *usageRepoStub) GetEndpointUsageByAccountID(ctx context.Context, accountID string, createdFrom, createdTo time.Time) ([]models.EndpointUsageResponse, error) {
+	if s.getEndpointAcctFn != nil {
+		return s.getEndpointAcctFn(ctx, accountID, createdFrom, createdTo)
+	}
+	return nil, nil
+}
+
+func (s *usageRepoStub) GetEndpointUsageByAPIKeyID(ctx context.Context, accountID, apiKeyID string, createdFrom, createdTo time.Time) ([]models.EndpointUsageResponse, error) {
+	if s.getEndpointKeyFn != nil {
+		return s.getEndpointKeyFn(ctx, accountID, apiKeyID, createdFrom, createdTo)
 	}
 	return nil, nil
 }
@@ -345,6 +361,73 @@ func TestUsageServiceAPIKeyOwnership(t *testing.T) {
 	}
 }
 
+func TestUsageServiceEndpointUsageListsAccountAndAPIKeyScopes(t *testing.T) {
+	repo := &usageRepoStub{
+		getEndpointAcctFn: func(context.Context, string, time.Time, time.Time) ([]models.EndpointUsageResponse, error) {
+			return []models.EndpointUsageResponse{
+				{Endpoint: "/v1/datasets", RequestCount: 9},
+				{Endpoint: "/v1/datasets/{dataset_id}", RequestCount: 4},
+			}, nil
+		},
+		getEndpointKeyFn: func(context.Context, string, string, time.Time, time.Time) ([]models.EndpointUsageResponse, error) {
+			return []models.EndpointUsageResponse{
+				{Endpoint: "/v1/datasets/{dataset_id}", RequestCount: 3},
+			}, nil
+		},
+	}
+	apiKeyRepo := &apiKeyRepoStub{
+		getByIDFn: func(context.Context, string) (models.APIKey, error) {
+			return models.APIKey{ID: "key-1", AccountID: "acct-1"}, nil
+		},
+	}
+	svc, err := NewUsageService(repo, apiKeyRepo, clockStub{now: time.Now().UTC()}, 50000)
+	if err != nil {
+		t.Fatalf("NewUsageService() error = %v", err)
+	}
+
+	rows, err := svc.ListEndpointUsage(context.Background(), "acct-1", time.Date(2026, 8, 1, 0, 0, 0, 0, time.UTC), time.Date(2026, 9, 1, 0, 0, 0, 0, time.UTC))
+	if err != nil {
+		t.Fatalf("ListEndpointUsage() error = %v", err)
+	}
+	if len(rows) != 2 || rows[0].Endpoint != "/v1/datasets" || rows[0].RequestCount != 9 {
+		t.Fatalf("unexpected account endpoint rows: %#v", rows)
+	}
+
+	keyRows, err := svc.ListAPIKeyEndpointUsage(context.Background(), "acct-1", "key-1", time.Date(2026, 8, 1, 0, 0, 0, 0, time.UTC), time.Date(2026, 9, 1, 0, 0, 0, 0, time.UTC))
+	if err != nil {
+		t.Fatalf("ListAPIKeyEndpointUsage() error = %v", err)
+	}
+	if len(keyRows) != 1 || keyRows[0].Endpoint != "/v1/datasets/{dataset_id}" || keyRows[0].RequestCount != 3 {
+		t.Fatalf("unexpected api key endpoint rows: %#v", keyRows)
+	}
+}
+
+func TestUsageServiceEndpointUsageRejectsOversizedRanges(t *testing.T) {
+	repo := &usageRepoStub{}
+	apiKeyRepo := &apiKeyRepoStub{
+		getByIDFn: func(context.Context, string) (models.APIKey, error) {
+			return models.APIKey{ID: "key-1", AccountID: "acct-1"}, nil
+		},
+	}
+	svc, err := NewUsageService(repo, apiKeyRepo, clockStub{now: time.Now().UTC()}, 50000)
+	if err != nil {
+		t.Fatalf("NewUsageService() error = %v", err)
+	}
+
+	start := time.Date(2024, 1, 1, 0, 0, 0, 0, time.UTC)
+	end := start.AddDate(0, 0, 366)
+	if _, err := svc.ListEndpointUsage(context.Background(), "acct-1", start, end); err != nil {
+		t.Fatalf("ListEndpointUsage() error = %v, want nil", err)
+	}
+	if _, err := svc.ListEndpointUsage(context.Background(), "acct-1", start, end.AddDate(0, 0, 1)); !errors.Is(err, ErrInvalidUsagePeriod) {
+		t.Fatalf("ListEndpointUsage() error = %v, want ErrInvalidUsagePeriod", err)
+	}
+
+	if _, err := svc.ListAPIKeyEndpointUsage(context.Background(), "acct-1", "key-1", start, end.AddDate(0, 0, 1)); !errors.Is(err, ErrInvalidUsagePeriod) {
+		t.Fatalf("ListAPIKeyEndpointUsage() error = %v, want ErrInvalidUsagePeriod", err)
+	}
+}
+
 func TestUsageServiceDatasetGroupUsageAggregatesAccountAndKeys(t *testing.T) {
 	repo := &usageRepoStub{
 		getGroupAcctFn: func(context.Context, string, time.Time, time.Time) ([]models.DatasetGroupUsageResponse, error) {
@@ -423,6 +506,15 @@ func TestUsageServiceBoundaryHelpers(t *testing.T) {
 	monthStart, monthEnd := monthRangeUTC(time.Date(2026, 8, 26, 15, 0, 0, 0, time.FixedZone("WAT", 3600)))
 	if !monthStart.Equal(time.Date(2026, 8, 1, 0, 0, 0, 0, time.UTC)) || !monthEnd.Equal(time.Date(2026, 9, 1, 0, 0, 0, 0, time.UTC)) {
 		t.Fatalf("unexpected month range: %v %v", monthStart, monthEnd)
+	}
+
+	maxStart := time.Date(2024, 1, 1, 0, 0, 0, 0, time.UTC)
+	maxEnd := maxStart.AddDate(0, 0, 366)
+	if _, _, err := normalizeUsageRange(maxStart, maxEnd); err != nil {
+		t.Fatalf("normalizeUsageRange() error = %v, want nil", err)
+	}
+	if _, _, err := normalizeUsageRange(maxStart, maxEnd.AddDate(0, 0, 1)); !errors.Is(err, ErrInvalidUsagePeriod) {
+		t.Fatalf("normalizeUsageRange() error = %v, want ErrInvalidUsagePeriod", err)
 	}
 }
 

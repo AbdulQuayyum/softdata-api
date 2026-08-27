@@ -18,6 +18,7 @@ const (
 	defaultPage  = 1
 	defaultLimit = 20
 	maxLimit     = 100
+	maxUsageDays = 366
 )
 
 // FieldError describes a single field-level validation issue.
@@ -187,6 +188,9 @@ func ValidateUsageQuery(values url.Values, now time.Time) (UsageQuery, error) {
 		if !query.Start.IsZero() && !query.End.IsZero() && !query.End.After(query.Start) {
 			errs.Add("end", codeOutOfRange, "End must be after start.")
 		}
+		if !query.Start.IsZero() && !query.End.IsZero() && usageRangeExceedsMaximum(query.Start, query.End) {
+			errs.Add("end", codeOutOfRange, fmt.Sprintf("Usage range must not exceed %d days.", maxUsageDays))
+		}
 	}
 
 	if len(errs.Fields) > 0 {
@@ -287,4 +291,11 @@ func validateUsageAPIKeyID(value string) (string, error) {
 		}}}
 	}
 	return value, nil
+}
+
+func usageRangeExceedsMaximum(start, end time.Time) bool {
+	if start.IsZero() || end.IsZero() {
+		return false
+	}
+	return end.UTC().Sub(start.UTC()) > time.Duration(maxUsageDays)*24*time.Hour
 }
