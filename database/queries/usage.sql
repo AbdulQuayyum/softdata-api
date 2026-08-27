@@ -147,6 +147,33 @@ WHERE api_key_id = $1
 GROUP BY dataset_group
 ORDER BY request_count DESC, dataset_group ASC;
 
+-- name: GetEndpointUsageByAccountID :many
+SELECT
+    route,
+    COUNT(*)::bigint AS request_count
+FROM api_requests
+WHERE account_id = $1
+  AND route IS NOT NULL
+  AND route <> ''
+  AND created_at >= $2
+  AND created_at < $3
+GROUP BY route
+ORDER BY request_count DESC, route ASC;
+
+-- name: GetEndpointUsageByAPIKeyID :many
+SELECT
+    route,
+    COUNT(*)::bigint AS request_count
+FROM api_requests
+WHERE account_id = $1
+  AND api_key_id = $2
+  AND route IS NOT NULL
+  AND route <> ''
+  AND created_at >= $3
+  AND created_at < $4
+GROUP BY route
+ORDER BY request_count DESC, route ASC;
+
 -- name: GetUsageDailyByDate :many
 SELECT *
 FROM usage_daily

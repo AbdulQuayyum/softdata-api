@@ -18,6 +18,8 @@ type usageRepoStub struct {
 	getSummaryKeyFn   func(context.Context, string, int32, int32) ([]models.UsageSummaryResponse, error)
 	getGroupAcctFn    func(context.Context, string, time.Time, time.Time) ([]models.DatasetGroupUsageResponse, error)
 	getGroupKeyFn     func(context.Context, string, time.Time, time.Time) ([]models.DatasetGroupUsageResponse, error)
+	getEndpointAcctFn func(context.Context, string, time.Time, time.Time) ([]models.EndpointUsageResponse, error)
+	getEndpointKeyFn  func(context.Context, string, string, time.Time, time.Time) ([]models.EndpointUsageResponse, error)
 	countRouteFn      func(context.Context, string, time.Time, time.Time) (int64, error)
 	lastRecorded      models.APIRequest
 	lastUsageDate     time.Time
@@ -103,6 +105,20 @@ func (s *usageRepoStub) GetDatasetGroupUsageByAccountID(ctx context.Context, acc
 func (s *usageRepoStub) GetDatasetGroupUsageByAPIKeyID(ctx context.Context, apiKeyID string, createdFrom, createdTo time.Time) ([]models.DatasetGroupUsageResponse, error) {
 	if s.getGroupKeyFn != nil {
 		return s.getGroupKeyFn(ctx, apiKeyID, createdFrom, createdTo)
+	}
+	return nil, nil
+}
+
+func (s *usageRepoStub) GetEndpointUsageByAccountID(ctx context.Context, accountID string, createdFrom, createdTo time.Time) ([]models.EndpointUsageResponse, error) {
+	if s.getEndpointAcctFn != nil {
+		return s.getEndpointAcctFn(ctx, accountID, createdFrom, createdTo)
+	}
+	return nil, nil
+}
+
+func (s *usageRepoStub) GetEndpointUsageByAPIKeyID(ctx context.Context, accountID, apiKeyID string, createdFrom, createdTo time.Time) ([]models.EndpointUsageResponse, error) {
+	if s.getEndpointKeyFn != nil {
+		return s.getEndpointKeyFn(ctx, accountID, apiKeyID, createdFrom, createdTo)
 	}
 	return nil, nil
 }
@@ -258,11 +274,42 @@ func TestUsageServiceHistoryAndAllowance(t *testing.T) {
 	if len(history) != 3 {
 		t.Fatalf("expected 3 aggregated days, got %d", len(history))
 	}
-	if history[0].UsageDate != "2026-08-26" || history[0].RequestCount != 5 || history[0].ErrorCount != 2 {
+	if !history[0].Date.Equal(time.Date(2026, 8, 26, 0, 0, 0, 0, time.UTC)) || history[0].TotalRequests != 5 || history[0].ErrorCount != 2 {
 		t.Fatalf("unexpected first history row: %#v", history[0])
 	}
-	if history[1].UsageDate != "2026-08-25" || history[1].DatasetDownloadCount != 1 {
+	if !history[1].Date.Equal(time.Date(2026, 8, 25, 0, 0, 0, 0, time.UTC)) || history[1].TotalRequests != 1 || history[1].SuccessfulRequests != 1 {
 		t.Fatalf("unexpected second history row: %#v", history[1])
+	}
+
+	summary, err := svc.GetUsageSummary(context.Background(), "acct-1", nil, time.Date(2026, 8, 1, 0, 0, 0, 0, time.UTC), time.Date(2026, 9, 1, 0, 0, 0, 0, time.UTC))
+	if err != nil {
+		t.Fatalf("GetUsageSummary() error = %v", err)
+	}
+	if summary.TotalRequests != 10 || summary.SuccessfulRequests != 8 || summary.ErrorCount != 2 {
+		t.Fatalf("unexpected usage summary totals: %#v", summary)
+	}
+	if summary.CurrentAllowance != 50000 || summary.RemainingAllowance != 49990 {
+		t.Fatalf("unexpected usage allowance values: %#v", summary)
+	}
+	if !summary.PeriodStart.Equal(time.Date(2026, 8, 1, 0, 0, 0, 0, time.UTC)) || !summary.PeriodEnd.Equal(time.Date(2026, 9, 1, 0, 0, 0, 0, time.UTC)) {
+		t.Fatalf("unexpected usage period: %#v", summary)
+	}
+
+	keyHistory, err := svc.GetAPIKeyUsageHistory(context.Background(), "acct-1", "key-1", time.Date(2026, 8, 1, 0, 0, 0, 0, time.UTC), time.Date(2026, 9, 1, 0, 0, 0, 0, time.UTC))
+	if err != nil {
+		t.Fatalf("GetAPIKeyUsageHistory() error = %v", err)
+	}
+	if len(keyHistory) != 2 || !keyHistory[0].Date.Equal(time.Date(2026, 8, 26, 0, 0, 0, 0, time.UTC)) || keyHistory[0].TotalRequests != 3 {
+		t.Fatalf("unexpected api key history: %#v", keyHistory)
+	}
+
+	keyID := "key-1"
+	keySummary, err := svc.GetUsageSummary(context.Background(), "acct-1", &keyID, time.Date(2026, 8, 1, 0, 0, 0, 0, time.UTC), time.Date(2026, 9, 1, 0, 0, 0, 0, time.UTC))
+	if err != nil {
+		t.Fatalf("GetUsageSummary() with api key error = %v", err)
+	}
+	if keySummary.TotalRequests != 7 || keySummary.SuccessfulRequests != 6 || keySummary.ErrorCount != 1 {
+		t.Fatalf("unexpected api key usage summary totals: %#v", keySummary)
 	}
 
 	errorsCount, err := svc.GetErrorCounts(context.Background(), "acct-1", time.Date(2026, 8, 1, 0, 0, 0, 0, time.UTC), time.Date(2026, 9, 1, 0, 0, 0, 0, time.UTC))
@@ -311,6 +358,73 @@ func TestUsageServiceAPIKeyOwnership(t *testing.T) {
 
 	if _, err := svc.GetAPIKeyUsageHistory(context.Background(), "acct-2", "key-1", time.Date(2026, 8, 1, 0, 0, 0, 0, time.UTC), time.Date(2026, 9, 1, 0, 0, 0, 0, time.UTC)); !errors.Is(err, ErrAPIKeyNotFound) {
 		t.Fatalf("GetAPIKeyUsageHistory() error = %v, want ErrAPIKeyNotFound", err)
+	}
+}
+
+func TestUsageServiceEndpointUsageListsAccountAndAPIKeyScopes(t *testing.T) {
+	repo := &usageRepoStub{
+		getEndpointAcctFn: func(context.Context, string, time.Time, time.Time) ([]models.EndpointUsageResponse, error) {
+			return []models.EndpointUsageResponse{
+				{Endpoint: "/v1/datasets", RequestCount: 9},
+				{Endpoint: "/v1/datasets/{dataset_id}", RequestCount: 4},
+			}, nil
+		},
+		getEndpointKeyFn: func(context.Context, string, string, time.Time, time.Time) ([]models.EndpointUsageResponse, error) {
+			return []models.EndpointUsageResponse{
+				{Endpoint: "/v1/datasets/{dataset_id}", RequestCount: 3},
+			}, nil
+		},
+	}
+	apiKeyRepo := &apiKeyRepoStub{
+		getByIDFn: func(context.Context, string) (models.APIKey, error) {
+			return models.APIKey{ID: "key-1", AccountID: "acct-1"}, nil
+		},
+	}
+	svc, err := NewUsageService(repo, apiKeyRepo, clockStub{now: time.Now().UTC()}, 50000)
+	if err != nil {
+		t.Fatalf("NewUsageService() error = %v", err)
+	}
+
+	rows, err := svc.ListEndpointUsage(context.Background(), "acct-1", time.Date(2026, 8, 1, 0, 0, 0, 0, time.UTC), time.Date(2026, 9, 1, 0, 0, 0, 0, time.UTC))
+	if err != nil {
+		t.Fatalf("ListEndpointUsage() error = %v", err)
+	}
+	if len(rows) != 2 || rows[0].Endpoint != "/v1/datasets" || rows[0].RequestCount != 9 {
+		t.Fatalf("unexpected account endpoint rows: %#v", rows)
+	}
+
+	keyRows, err := svc.ListAPIKeyEndpointUsage(context.Background(), "acct-1", "key-1", time.Date(2026, 8, 1, 0, 0, 0, 0, time.UTC), time.Date(2026, 9, 1, 0, 0, 0, 0, time.UTC))
+	if err != nil {
+		t.Fatalf("ListAPIKeyEndpointUsage() error = %v", err)
+	}
+	if len(keyRows) != 1 || keyRows[0].Endpoint != "/v1/datasets/{dataset_id}" || keyRows[0].RequestCount != 3 {
+		t.Fatalf("unexpected api key endpoint rows: %#v", keyRows)
+	}
+}
+
+func TestUsageServiceEndpointUsageRejectsOversizedRanges(t *testing.T) {
+	repo := &usageRepoStub{}
+	apiKeyRepo := &apiKeyRepoStub{
+		getByIDFn: func(context.Context, string) (models.APIKey, error) {
+			return models.APIKey{ID: "key-1", AccountID: "acct-1"}, nil
+		},
+	}
+	svc, err := NewUsageService(repo, apiKeyRepo, clockStub{now: time.Now().UTC()}, 50000)
+	if err != nil {
+		t.Fatalf("NewUsageService() error = %v", err)
+	}
+
+	start := time.Date(2024, 1, 1, 0, 0, 0, 0, time.UTC)
+	end := start.AddDate(0, 0, 366)
+	if _, err := svc.ListEndpointUsage(context.Background(), "acct-1", start, end); err != nil {
+		t.Fatalf("ListEndpointUsage() error = %v, want nil", err)
+	}
+	if _, err := svc.ListEndpointUsage(context.Background(), "acct-1", start, end.AddDate(0, 0, 1)); !errors.Is(err, ErrInvalidUsagePeriod) {
+		t.Fatalf("ListEndpointUsage() error = %v, want ErrInvalidUsagePeriod", err)
+	}
+
+	if _, err := svc.ListAPIKeyEndpointUsage(context.Background(), "acct-1", "key-1", start, end.AddDate(0, 0, 1)); !errors.Is(err, ErrInvalidUsagePeriod) {
+		t.Fatalf("ListAPIKeyEndpointUsage() error = %v, want ErrInvalidUsagePeriod", err)
 	}
 }
 
@@ -392,6 +506,15 @@ func TestUsageServiceBoundaryHelpers(t *testing.T) {
 	monthStart, monthEnd := monthRangeUTC(time.Date(2026, 8, 26, 15, 0, 0, 0, time.FixedZone("WAT", 3600)))
 	if !monthStart.Equal(time.Date(2026, 8, 1, 0, 0, 0, 0, time.UTC)) || !monthEnd.Equal(time.Date(2026, 9, 1, 0, 0, 0, 0, time.UTC)) {
 		t.Fatalf("unexpected month range: %v %v", monthStart, monthEnd)
+	}
+
+	maxStart := time.Date(2024, 1, 1, 0, 0, 0, 0, time.UTC)
+	maxEnd := maxStart.AddDate(0, 0, 366)
+	if _, _, err := normalizeUsageRange(maxStart, maxEnd); err != nil {
+		t.Fatalf("normalizeUsageRange() error = %v, want nil", err)
+	}
+	if _, _, err := normalizeUsageRange(maxStart, maxEnd.AddDate(0, 0, 1)); !errors.Is(err, ErrInvalidUsagePeriod) {
+		t.Fatalf("normalizeUsageRange() error = %v, want ErrInvalidUsagePeriod", err)
 	}
 }
 

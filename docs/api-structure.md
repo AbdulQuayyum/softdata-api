@@ -29,24 +29,24 @@ softdata-api/
 │       └── main.go
 ├── database/
 │   ├── migrations/
-│   │   ├── 000001_create_accounts.up.sql
 │   │   ├── 000001_create_accounts.down.sql
-│   │   ├── 000002_create_sessions.up.sql
+│   │   ├── 000001_create_accounts.up.sql
 │   │   ├── 000002_create_sessions.down.sql
-│   │   ├── 000003_create_api_keys.up.sql
+│   │   ├── 000002_create_sessions.up.sql
 │   │   ├── 000003_create_api_keys.down.sql
-│   │   ├── 000004_create_api_requests.up.sql
+│   │   ├── 000003_create_api_keys.up.sql
 │   │   ├── 000004_create_api_requests.down.sql
-│   │   ├── 000005_create_usage_daily.up.sql
+│   │   ├── 000004_create_api_requests.up.sql
 │   │   ├── 000005_create_usage_daily.down.sql
-│   │   ├── 000006_create_datasets.up.sql
+│   │   ├── 000005_create_usage_daily.up.sql
 │   │   ├── 000006_create_datasets.down.sql
-│   │   ├── 000007_create_dataset_sources.up.sql
+│   │   ├── 000006_create_datasets.up.sql
 │   │   ├── 000007_create_dataset_sources.down.sql
-│   │   ├── 000008_create_dataset_versions.up.sql
+│   │   ├── 000007_create_dataset_sources.up.sql
 │   │   ├── 000008_create_dataset_versions.down.sql
-│   │   ├── 000009_add_api_request_dataset_group.up.sql
-│   │   └── 000009_add_api_request_dataset_group.down.sql
+│   │   ├── 000008_create_dataset_versions.up.sql
+│   │   ├── 000009_add_api_request_dataset_group.down.sql
+│   │   └── 000009_add_api_request_dataset_group.up.sql
 │   └── queries/
 │       ├── accounts.sql
 │       ├── api_keys.sql
@@ -72,8 +72,10 @@ softdata-api/
 │   │   ├── database.go
 │   │   ├── datasets.go
 │   │   ├── rate_limit.go
+│   │   ├── redis.go
 │   │   ├── security.go
-│   │   └── server.go
+│   │   ├── server.go
+│   │   └── usage.go
 │   ├── database/
 │   │   ├── health.go
 │   │   ├── postgres.go
@@ -88,6 +90,17 @@ softdata-api/
 │   │       ├── sessions.sql.go
 │   │       ├── sessions_rotation_test.go
 │   │       └── usage.sql.go
+│   ├── handlers/
+│   │   ├── account_handler.go
+│   │   ├── account_handler_test.go
+│   │   ├── api_key_handler.go
+│   │   ├── api_key_handler_test.go
+│   │   ├── auth_handler.go
+│   │   ├── auth_handler_test.go
+│   │   ├── discovery_handler.go
+│   │   ├── discovery_handler_test.go
+│   │   ├── health_handler.go
+│   │   └── health_handler_test.go
 │   ├── middlewares/
 │   │   ├── authentication.go
 │   │   ├── authentication_test.go
@@ -119,26 +132,37 @@ softdata-api/
 │   │   ├── api_request.go
 │   │   ├── auth.go
 │   │   ├── dataset.go
+│   │   ├── dataset_public_test.go
 │   │   ├── dataset_source.go
 │   │   ├── dataset_version.go
 │   │   ├── session.go
-│   │   └── usage_summary.go
+│   │   ├── usage_summary.go
+│   │   └── usage_summary_test.go
+│   ├── redis/
+│   │   ├── client.go
+│   │   └── client_test.go
 │   ├── repository/
 │   │   ├── interfaces/
 │   │   │   ├── account_repository.go
 │   │   │   ├── api_key_repository.go
 │   │   │   ├── dataset_repository.go
 │   │   │   ├── errors.go
+│   │   │   ├── rate_limit_repository.go
 │   │   │   ├── session_repository.go
 │   │   │   └── usage_repository.go
-│   │   └── postgres/
-│   │       ├── account_repository.go
-│   │       ├── api_key_repository.go
-│   │       ├── dataset_repository.go
-│   │       ├── mappers.go
-│   │       ├── mappers_test.go
-│   │       ├── session_repository.go
-│   │       └── usage_repository.go
+│   │   ├── postgres/
+│   │   │   ├── account_repository.go
+│   │   │   ├── api_key_repository.go
+│   │   │   ├── dataset_repository.go
+│   │   │   ├── dataset_repository_test.go
+│   │   │   ├── mappers.go
+│   │   │   ├── mappers_test.go
+│   │   │   ├── session_repository.go
+│   │   │   ├── usage_repository.go
+│   │   │   └── usage_repository_test.go
+│   │   └── redis/
+│   │       ├── rate_limit_repository.go
+│   │       └── rate_limit_repository_test.go
 │   ├── response/
 │   │   ├── errors.go
 │   │   ├── errors_test.go
@@ -192,6 +216,10 @@ Environment-driven application configuration, including server, database, securi
 
 PostgreSQL pool creation, readiness checks, and generated sqlc output.
 
+### `internal/handlers/`
+
+HTTP handlers that bridge routes to services and shared response helpers.
+
 ### `internal/models/`
 
 Domain and API-facing models that stay separate from sqlc-generated persistence structs.
@@ -199,6 +227,10 @@ Domain and API-facing models that stay separate from sqlc-generated persistence 
 ### `internal/repository/`
 
 Repository interfaces and PostgreSQL implementations that bridge services to persistence.
+
+### `internal/redis/`
+
+Redis client setup and low-level access helpers used by repository implementations.
 
 ### `internal/security/`
 

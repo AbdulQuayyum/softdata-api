@@ -19,6 +19,8 @@ type UsageRepository interface {
 	GetSummaryByAnonymousID(ctx context.Context, anonymousID string, limit, offset int32) ([]models.UsageSummaryResponse, error)
 	GetDatasetGroupUsageByAccountID(ctx context.Context, accountID string, createdFrom, createdTo time.Time) ([]models.DatasetGroupUsageResponse, error)
 	GetDatasetGroupUsageByAPIKeyID(ctx context.Context, apiKeyID string, createdFrom, createdTo time.Time) ([]models.DatasetGroupUsageResponse, error)
+	GetEndpointUsageByAccountID(ctx context.Context, accountID string, createdFrom, createdTo time.Time) ([]models.EndpointUsageResponse, error)
+	GetEndpointUsageByAPIKeyID(ctx context.Context, accountID, apiKeyID string, createdFrom, createdTo time.Time) ([]models.EndpointUsageResponse, error)
 	CountRequestsByRoute(ctx context.Context, route string, createdFrom, createdTo time.Time) (int64, error)
 	DeleteExpired(ctx context.Context, usageDate time.Time) error
 }
