@@ -249,6 +249,7 @@ func apiRequestFromRow(row sqlc.ApiRequest) (models.APIRequest, error) {
 		AccountID:      uuidToString(row.AccountID),
 		APIKeyID:       uuidToString(row.ApiKeyID),
 		AnonymousID:    uuidToString(row.AnonymousID),
+		DatasetGroup:   stringPtrFromText(row.DatasetGroup),
 		Method:         row.Method,
 		Path:           row.Path,
 		Route:          stringPtrFromText(row.Route),
@@ -376,6 +377,13 @@ func usageSummaryResponse(scope models.UsageScopeType, usageDate pgtype.Date, re
 		ErrorCount:           int64(errorCount),
 		DatasetDownloadCount: int64(datasetDownloadCount),
 		ResponseBytes:        responseBytes,
+	}
+}
+
+func datasetGroupUsageResponse(datasetGroup string, requestCount int64) models.DatasetGroupUsageResponse {
+	return models.DatasetGroupUsageResponse{
+		DatasetGroup: datasetGroup,
+		RequestCount: requestCount,
 	}
 }
 

@@ -16,6 +16,8 @@ type usageRepoStub struct {
 	upsertAPIKeyFn    func(context.Context, time.Time, string, int64, int64, int64, int64, int64) error
 	getSummaryAcctFn  func(context.Context, string, int32, int32) ([]models.UsageSummaryResponse, error)
 	getSummaryKeyFn   func(context.Context, string, int32, int32) ([]models.UsageSummaryResponse, error)
+	getGroupAcctFn    func(context.Context, string, time.Time, time.Time) ([]models.DatasetGroupUsageResponse, error)
+	getGroupKeyFn     func(context.Context, string, time.Time, time.Time) ([]models.DatasetGroupUsageResponse, error)
 	countRouteFn      func(context.Context, string, time.Time, time.Time) (int64, error)
 	lastRecorded      models.APIRequest
 	lastUsageDate     time.Time
@@ -91,6 +93,20 @@ func (s *usageRepoStub) GetSummaryByAnonymousID(context.Context, string, int32, 
 	return nil, nil
 }
 
+func (s *usageRepoStub) GetDatasetGroupUsageByAccountID(ctx context.Context, accountID string, createdFrom, createdTo time.Time) ([]models.DatasetGroupUsageResponse, error) {
+	if s.getGroupAcctFn != nil {
+		return s.getGroupAcctFn(ctx, accountID, createdFrom, createdTo)
+	}
+	return nil, nil
+}
+
+func (s *usageRepoStub) GetDatasetGroupUsageByAPIKeyID(ctx context.Context, apiKeyID string, createdFrom, createdTo time.Time) ([]models.DatasetGroupUsageResponse, error) {
+	if s.getGroupKeyFn != nil {
+		return s.getGroupKeyFn(ctx, apiKeyID, createdFrom, createdTo)
+	}
+	return nil, nil
+}
+
 func (s *usageRepoStub) CountRequestsByRoute(ctx context.Context, route string, createdFrom, createdTo time.Time) (int64, error) {
 	s.lastRoute = route
 	s.lastFrom = createdFrom
@@ -110,6 +126,9 @@ func TestUsageServiceRecordRequest(t *testing.T) {
 		recordFn: func(_ context.Context, request models.APIRequest) (models.APIRequest, error) {
 			if request.IPAddress != nil || request.UserAgent != nil || request.QueryParams != nil {
 				t.Fatalf("unsafe values were propagated into persistence request: %#v", request)
+			}
+			if request.DatasetGroup == nil || *request.DatasetGroup != "geography" {
+				t.Fatalf("dataset group was not normalized or preserved: %#v", request.DatasetGroup)
 			}
 			if request.Path != "/v1/datasets/{dataset_id}/download" || request.Route == nil || *request.Route != "/v1/datasets/{dataset_id}/download" {
 				t.Fatalf("route was not normalized: %#v", request)
@@ -141,6 +160,7 @@ func TestUsageServiceRecordRequest(t *testing.T) {
 	recorded, err := svc.RecordRequest(context.Background(), RequestRecordInput{
 		RequestID:     "req-1",
 		AccountID:     ptrString("acct-1"),
+		DatasetGroup:  ptrString(" Geography "),
 		Method:        "GET",
 		Route:         " /v1/datasets/{dataset_id}/download ",
 		StatusCode:    200,
@@ -174,6 +194,26 @@ func TestUsageServiceRecordRequestRejectsRawRoute(t *testing.T) {
 	})
 	if err == nil {
 		t.Fatal("RecordRequest() error = nil, want error")
+	}
+}
+
+func TestUsageServiceRecordRequestRejectsInvalidDatasetGroup(t *testing.T) {
+	svc, err := NewUsageService(&usageRepoStub{}, &apiKeyRepoStub{}, clockStub{now: time.Now().UTC()}, 50000)
+	if err != nil {
+		t.Fatalf("NewUsageService() error = %v", err)
+	}
+
+	_, err = svc.RecordRequest(context.Background(), RequestRecordInput{
+		RequestID:    "req-1",
+		AccountID:    ptrString("acct-1"),
+		DatasetGroup: ptrString("unknown"),
+		Method:       "GET",
+		Route:        "/v1/datasets/{dataset_id}",
+		StatusCode:   200,
+		RecordedAt:   time.Now().UTC(),
+	})
+	if !errors.Is(err, ErrInvalidDatasetGroup) {
+		t.Fatalf("RecordRequest() error = %v, want ErrInvalidDatasetGroup", err)
 	}
 }
 
@@ -271,6 +311,72 @@ func TestUsageServiceAPIKeyOwnership(t *testing.T) {
 
 	if _, err := svc.GetAPIKeyUsageHistory(context.Background(), "acct-2", "key-1", time.Date(2026, 8, 1, 0, 0, 0, 0, time.UTC), time.Date(2026, 9, 1, 0, 0, 0, 0, time.UTC)); !errors.Is(err, ErrAPIKeyNotFound) {
 		t.Fatalf("GetAPIKeyUsageHistory() error = %v, want ErrAPIKeyNotFound", err)
+	}
+}
+
+func TestUsageServiceDatasetGroupUsageAggregatesAccountAndKeys(t *testing.T) {
+	repo := &usageRepoStub{
+		getGroupAcctFn: func(context.Context, string, time.Time, time.Time) ([]models.DatasetGroupUsageResponse, error) {
+			return []models.DatasetGroupUsageResponse{
+				{DatasetGroup: "geography", RequestCount: 2},
+				{DatasetGroup: "education", RequestCount: 1},
+			}, nil
+		},
+		getGroupKeyFn: func(ctx context.Context, apiKeyID string, start, end time.Time) ([]models.DatasetGroupUsageResponse, error) {
+			if apiKeyID != "key-1" {
+				t.Fatalf("unexpected api key id: %q", apiKeyID)
+			}
+			return []models.DatasetGroupUsageResponse{
+				{DatasetGroup: "geography", RequestCount: 3},
+				{DatasetGroup: "finance", RequestCount: 4},
+			}, nil
+		},
+	}
+	apiKeyRepo := &apiKeyRepoStub{
+		listFn: func(context.Context, string, int32, int32) ([]models.APIKey, error) {
+			return []models.APIKey{{ID: "key-1", AccountID: "acct-1"}}, nil
+		},
+		getByIDFn: func(context.Context, string) (models.APIKey, error) {
+			return models.APIKey{ID: "key-1", AccountID: "acct-1"}, nil
+		},
+	}
+	svc, err := NewUsageService(repo, apiKeyRepo, clockStub{now: time.Now().UTC()}, 50000)
+	if err != nil {
+		t.Fatalf("NewUsageService() error = %v", err)
+	}
+
+	rows, err := svc.GetDatasetGroupUsage(context.Background(), "acct-1", time.Date(2026, 8, 1, 0, 0, 0, 0, time.UTC), time.Date(2026, 9, 1, 0, 0, 0, 0, time.UTC))
+	if err != nil {
+		t.Fatalf("GetDatasetGroupUsage() error = %v", err)
+	}
+	if len(rows) != 3 {
+		t.Fatalf("unexpected dataset group rows: %#v", rows)
+	}
+	if rows[0].DatasetGroup != "geography" || rows[0].RequestCount != 5 {
+		t.Fatalf("unexpected first row: %#v", rows[0])
+	}
+	if rows[1].DatasetGroup != "finance" || rows[1].RequestCount != 4 {
+		t.Fatalf("unexpected second row: %#v", rows[1])
+	}
+	if rows[2].DatasetGroup != "education" || rows[2].RequestCount != 1 {
+		t.Fatalf("unexpected third row: %#v", rows[2])
+	}
+}
+
+func TestUsageServiceAPIKeyDatasetGroupUsageRequiresOwnership(t *testing.T) {
+	repo := &usageRepoStub{}
+	apiKeyRepo := &apiKeyRepoStub{
+		getByIDFn: func(context.Context, string) (models.APIKey, error) {
+			return models.APIKey{ID: "key-1", AccountID: "acct-1"}, nil
+		},
+	}
+	svc, err := NewUsageService(repo, apiKeyRepo, clockStub{now: time.Now().UTC()}, 50000)
+	if err != nil {
+		t.Fatalf("NewUsageService() error = %v", err)
+	}
+
+	if _, err := svc.GetAPIKeyDatasetGroupUsage(context.Background(), "acct-2", "key-1", time.Date(2026, 8, 1, 0, 0, 0, 0, time.UTC), time.Date(2026, 9, 1, 0, 0, 0, 0, time.UTC)); !errors.Is(err, ErrAPIKeyNotFound) {
+		t.Fatalf("GetAPIKeyDatasetGroupUsage() error = %v, want ErrAPIKeyNotFound", err)
 	}
 }
 

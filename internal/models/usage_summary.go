@@ -37,3 +37,9 @@ type UsageSummaryResponse struct {
 	DatasetDownloadCount int64          `json:"dataset_download_count"`
 	ResponseBytes        int64          `json:"response_bytes"`
 }
+
+// DatasetGroupUsageResponse is the safe public dataset-group breakdown view.
+type DatasetGroupUsageResponse struct {
+	DatasetGroup string `json:"dataset_group"`
+	RequestCount int64  `json:"request_count"`
+}

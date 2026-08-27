@@ -82,6 +82,7 @@ func TestAPIRequestFromRowParsesQueryParams(t *testing.T) {
 		AccountID:      accountID,
 		ApiKeyID:       apiKeyID,
 		AnonymousID:    anonymousID,
+		DatasetGroup:   textFromString("geography"),
 		Method:         "GET",
 		Path:           "/v1/datasets/ng-states",
 		Route:          textFromString("/v1/datasets/{dataset_id}"),
@@ -110,6 +111,16 @@ func TestAPIRequestFromRowParsesQueryParams(t *testing.T) {
 	}
 	if model.AccountID == nil || *model.AccountID != accountID.String() {
 		t.Fatalf("unexpected account id: %#v", model.AccountID)
+	}
+	if model.DatasetGroup == nil || *model.DatasetGroup != "geography" {
+		t.Fatalf("unexpected dataset group: %#v", model.DatasetGroup)
+	}
+}
+
+func TestDatasetGroupUsageResponseUsesStructuredFields(t *testing.T) {
+	row := datasetGroupUsageResponse("finance", 12)
+	if row.DatasetGroup != "finance" || row.RequestCount != 12 {
+		t.Fatalf("unexpected dataset group usage response: %#v", row)
 	}
 }
 

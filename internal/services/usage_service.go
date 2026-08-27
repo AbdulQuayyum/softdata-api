@@ -19,6 +19,7 @@ type RequestRecordInput struct {
 	AccountID      *string
 	APIKeyID       *string
 	AnonymousID    *string
+	DatasetGroup   *string
 	Method         string
 	Route          string
 	StatusCode     int
@@ -56,6 +57,10 @@ func NewUsageService(usages interfaces.UsageRepository, apiKeys interfaces.APIKe
 }
 
 func (s *UsageService) RecordRequest(ctx context.Context, input RequestRecordInput) (models.APIRequest, error) {
+	datasetGroup, err := normalizeDatasetGroup(input.DatasetGroup)
+	if err != nil {
+		return models.APIRequest{}, err
+	}
 	if err := s.validateRequestRecordInput(input); err != nil {
 		return models.APIRequest{}, err
 	}
@@ -71,6 +76,7 @@ func (s *UsageService) RecordRequest(ctx context.Context, input RequestRecordInp
 		AccountID:      cloneStringPtr(input.AccountID),
 		APIKeyID:       cloneStringPtr(input.APIKeyID),
 		AnonymousID:    cloneStringPtr(input.AnonymousID),
+		DatasetGroup:   cloneStringPtr(datasetGroup),
 		Method:         strings.TrimSpace(input.Method),
 		Path:           normalizeUsageRoute(input.Route),
 		Route:          cloneStringPtr(stringPtr(normalizeUsageRoute(input.Route))),
@@ -193,6 +199,55 @@ func (s *UsageService) GetEndpointUsage(ctx context.Context, route string, start
 	return count, nil
 }
 
+func (s *UsageService) GetDatasetGroupUsage(ctx context.Context, accountID string, start, end time.Time) ([]models.DatasetGroupUsageResponse, error) {
+	accountID = strings.TrimSpace(accountID)
+	if accountID == "" {
+		return nil, fmt.Errorf("get dataset group usage: account id is required")
+	}
+
+	startUTC, endUTC, err := normalizeUsageRange(start, end)
+	if err != nil {
+		return nil, err
+	}
+
+	rows, err := s.collectAccountDatasetGroupUsage(ctx, accountID, startUTC, endUTC)
+	if err != nil {
+		return nil, err
+	}
+
+	return rows, nil
+}
+
+func (s *UsageService) GetAPIKeyDatasetGroupUsage(ctx context.Context, accountID, apiKeyID string, start, end time.Time) ([]models.DatasetGroupUsageResponse, error) {
+	accountID = strings.TrimSpace(accountID)
+	apiKeyID = strings.TrimSpace(apiKeyID)
+	if accountID == "" || apiKeyID == "" {
+		return nil, ErrAPIKeyNotFound
+	}
+
+	key, err := s.apiKeys.GetByID(ctx, apiKeyID)
+	if err != nil {
+		if errors.Is(err, interfaces.ErrNotFound) {
+			return nil, ErrAPIKeyNotFound
+		}
+		return nil, fmt.Errorf("get api key dataset group usage: %w", err)
+	}
+	if strings.TrimSpace(key.AccountID) != accountID {
+		return nil, ErrAPIKeyNotFound
+	}
+
+	startUTC, endUTC, err := normalizeUsageRange(start, end)
+	if err != nil {
+		return nil, err
+	}
+
+	rows, err := s.usages.GetDatasetGroupUsageByAPIKeyID(ctx, apiKeyID, startUTC, endUTC)
+	if err != nil {
+		return nil, fmt.Errorf("get api key dataset group usage: %w", err)
+	}
+	return rows, nil
+}
+
 func (s *UsageService) GetErrorCounts(ctx context.Context, accountID string, start, end time.Time) (int64, error) {
 	accountID = strings.TrimSpace(accountID)
 	if accountID == "" {
@@ -276,6 +331,40 @@ func (s *UsageService) collectAccountUsage(ctx context.Context, accountID string
 	}
 
 	return summariesFromAccumulator(aggregated, models.UsageScopeAccount), nil
+}
+
+func (s *UsageService) collectAccountDatasetGroupUsage(ctx context.Context, accountID string, start, end time.Time) ([]models.DatasetGroupUsageResponse, error) {
+	accountRows, err := s.usages.GetDatasetGroupUsageByAccountID(ctx, accountID, start, end)
+	if err != nil {
+		return nil, fmt.Errorf("get dataset group usage: %w", err)
+	}
+
+	ownedKeys, err := s.apiKeys.ListByAccountID(ctx, accountID, int32(math.MaxInt32), 0)
+	if err != nil {
+		return nil, fmt.Errorf("list api keys for dataset group usage: %w", err)
+	}
+
+	aggregated := make(map[string]int64)
+	addRows := func(rows []models.DatasetGroupUsageResponse) {
+		for _, row := range rows {
+			group := strings.TrimSpace(row.DatasetGroup)
+			if group == "" {
+				continue
+			}
+			aggregated[group] += row.RequestCount
+		}
+	}
+
+	addRows(accountRows)
+	for _, key := range ownedKeys {
+		keyRows, err := s.usages.GetDatasetGroupUsageByAPIKeyID(ctx, key.ID, start, end)
+		if err != nil {
+			return nil, fmt.Errorf("get api key dataset group usage: %w", err)
+		}
+		addRows(keyRows)
+	}
+
+	return datasetGroupUsageFromCounts(aggregated), nil
 }
 
 func normalizeUsageRange(start, end time.Time) (time.Time, time.Time, error) {
@@ -420,6 +509,21 @@ func normalizeOptionalString(value *string) string {
 	return strings.TrimSpace(*value)
 }
 
+func normalizeDatasetGroup(value *string) (*string, error) {
+	normalized := normalizeOptionalString(value)
+	if normalized == "" {
+		return nil, nil
+	}
+
+	switch strings.ToLower(normalized) {
+	case "geography", "finance", "education", "healthcare", "emergency", "infrastructure", "statistics":
+		v := strings.ToLower(normalized)
+		return &v, nil
+	default:
+		return nil, ErrInvalidDatasetGroup
+	}
+}
+
 func cloneStringPtr(value *string) *string {
 	if value == nil {
 		return nil
@@ -457,4 +561,22 @@ func (a *summaryAccumulator) add(row models.UsageSummaryResponse) {
 	a.errorCount += row.ErrorCount
 	a.datasetDownloadCount += row.DatasetDownloadCount
 	a.responseBytes += row.ResponseBytes
+}
+
+func datasetGroupUsageFromCounts(counts map[string]int64) []models.DatasetGroupUsageResponse {
+	items := make([]models.DatasetGroupUsageResponse, 0, len(counts))
+	for group, count := range counts {
+		items = append(items, models.DatasetGroupUsageResponse{
+			DatasetGroup: group,
+			RequestCount: count,
+		})
+	}
+
+	sort.Slice(items, func(i, j int) bool {
+		if items[i].RequestCount == items[j].RequestCount {
+			return items[i].DatasetGroup < items[j].DatasetGroup
+		}
+		return items[i].RequestCount > items[j].RequestCount
+	})
+	return items
 }
