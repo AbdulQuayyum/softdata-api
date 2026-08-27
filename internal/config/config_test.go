@@ -5,48 +5,60 @@ import (
 	"testing"
 )
 
-func TestLoadDefaultDevelopmentConfig(t *testing.T) {
-	resetConfigEnv(t)
-
-	cfg, err := Load()
+func TestLoadDevelopmentConfig(t *testing.T) {
+	cfg, err := load(lookupFromMap(map[string]string{
+		"APP_ENV":             string(AppEnvironmentDevelopment),
+		"DATABASE_URL":        "postgres://localhost/softdata",
+		"AUTH_TOKEN_SECRET":   strings.Repeat("a", 32),
+		"ANONYMOUS_ID_SECRET": strings.Repeat("b", 32),
+		"DATASETS_PATH":       "datasets/",
+	}))
 	if err != nil {
-		t.Fatalf("Load() error = %v", err)
+		t.Fatalf("load() error = %v", err)
 	}
 
-	if cfg.App.Environment != AppEnvironmentDevelopment {
-		t.Fatalf("unexpected environment: %s", cfg.App.Environment)
-	}
-	if cfg.Server.Port != 8080 {
-		t.Fatalf("unexpected server port: %d", cfg.Server.Port)
+	if cfg.Environment != string(AppEnvironmentDevelopment) {
+		t.Fatalf("unexpected environment: %s", cfg.Environment)
 	}
 	if got := cfg.Server.ListenAddress(); got != "127.0.0.1:8080" {
 		t.Fatalf("unexpected listen address: %s", got)
 	}
-	if cfg.Database.URL != nil {
-		t.Fatalf("expected nil database url")
+	if cfg.Server.MaxBodyBytes != 1<<20 {
+		t.Fatalf("unexpected max body bytes: %d", cfg.Server.MaxBodyBytes)
 	}
-	if cfg.Security.AuthTokenSecret == nil || *cfg.Security.AuthTokenSecret != developmentAuthTokenSecretFallback {
-		t.Fatalf("unexpected auth secret: %+v", cfg.Security.AuthTokenSecret)
+	if cfg.Database.URL == nil || *cfg.Database.URL != "postgres://localhost/softdata" {
+		t.Fatalf("unexpected database url: %#v", cfg.Database.URL)
 	}
-	if cfg.Security.AnonymousIDSecret == nil || *cfg.Security.AnonymousIDSecret != developmentAnonymousIDSecretFallback {
-		t.Fatalf("unexpected anonymous secret: %+v", cfg.Security.AnonymousIDSecret)
+	if cfg.Database.ConnectTimeout.String() != "10s" {
+		t.Fatalf("unexpected database connect timeout: %s", cfg.Database.ConnectTimeout)
 	}
-	if cfg.RateLimit.AnonymousRequestLimit != 60 || cfg.RateLimit.APIKeyRequestLimit != 300 || cfg.RateLimit.APIKeyMonthlyAllowance != 50000 {
-		t.Fatalf("unexpected rate limits: %+v", cfg.RateLimit)
+	if cfg.Redis.URL != nil || cfg.Redis.Address != "" || cfg.Redis.PoolSize != 10 {
+		t.Fatalf("unexpected redis config: %#v", cfg.Redis)
 	}
-	if cfg.RateLimit.Window.String() != "1m0s" {
-		t.Fatalf("unexpected rate limit window: %s", cfg.RateLimit.Window)
+	if cfg.Security.AuthTokenSecret != strings.Repeat("a", 32) {
+		t.Fatalf("unexpected auth token secret: %q", cfg.Security.AuthTokenSecret)
+	}
+	if cfg.Security.JWTIssuer != "softdata-api" || cfg.Security.JWTAudience != "softdata-api" {
+		t.Fatalf("unexpected jwt defaults: %#v", cfg.Security)
+	}
+	if cfg.RateLimit.AnonymousRequestLimit != 60 || cfg.RateLimit.APIKeyRequestLimit != 300 || cfg.RateLimit.DatasetDownloadLimit != 10 {
+		t.Fatalf("unexpected rate limits: %#v", cfg.RateLimit)
+	}
+	if !cfg.RateLimit.FailOpen {
+		t.Fatalf("expected fail-open rate limiting by default")
 	}
 	if cfg.Datasets.Path != "datasets" {
 		t.Fatalf("unexpected datasets path: %s", cfg.Datasets.Path)
 	}
 }
 
-func TestLoadInvalidAppEnv(t *testing.T) {
-	resetConfigEnv(t)
-	t.Setenv("APP_ENV", "bogus")
-
-	_, err := Load()
+func TestLoadRejectsInvalidEnvironment(t *testing.T) {
+	_, err := load(lookupFromMap(map[string]string{
+		"APP_ENV":             "bogus",
+		"DATABASE_URL":        "postgres://localhost/softdata",
+		"AUTH_TOKEN_SECRET":   strings.Repeat("a", 32),
+		"ANONYMOUS_ID_SECRET": strings.Repeat("b", 32),
+	}))
 	if err == nil {
 		t.Fatal("expected error")
 	}
@@ -55,11 +67,13 @@ func TestLoadInvalidAppEnv(t *testing.T) {
 	}
 }
 
-func TestLoadInvalidPort(t *testing.T) {
-	resetConfigEnv(t)
-	t.Setenv("SERVER_PORT", "70000")
-
-	_, err := Load()
+func TestLoadRejectsInvalidPort(t *testing.T) {
+	_, err := load(lookupFromMap(map[string]string{
+		"SERVER_PORT":         "70000",
+		"DATABASE_URL":        "postgres://localhost/softdata",
+		"AUTH_TOKEN_SECRET":   strings.Repeat("a", 32),
+		"ANONYMOUS_ID_SECRET": strings.Repeat("b", 32),
+	}))
 	if err == nil {
 		t.Fatal("expected error")
 	}
@@ -68,11 +82,13 @@ func TestLoadInvalidPort(t *testing.T) {
 	}
 }
 
-func TestLoadInvalidDuration(t *testing.T) {
-	resetConfigEnv(t)
-	t.Setenv("SERVER_READ_TIMEOUT", "0s")
-
-	_, err := Load()
+func TestLoadRejectsInvalidDuration(t *testing.T) {
+	_, err := load(lookupFromMap(map[string]string{
+		"SERVER_READ_TIMEOUT": "0s",
+		"DATABASE_URL":        "postgres://localhost/softdata",
+		"AUTH_TOKEN_SECRET":   strings.Repeat("a", 32),
+		"ANONYMOUS_ID_SECRET": strings.Repeat("b", 32),
+	}))
 	if err == nil {
 		t.Fatal("expected error")
 	}
@@ -81,25 +97,14 @@ func TestLoadInvalidDuration(t *testing.T) {
 	}
 }
 
-func TestLoadInvalidRateLimit(t *testing.T) {
-	resetConfigEnv(t)
-	t.Setenv("ANONYMOUS_RATE_LIMIT", "0")
-
-	_, err := Load()
-	if err == nil {
-		t.Fatal("expected error")
-	}
-	if !strings.Contains(err.Error(), "ANONYMOUS_RATE_LIMIT") {
-		t.Fatalf("expected ANONYMOUS_RATE_LIMIT error, got %v", err)
-	}
-}
-
-func TestLoadInvalidDatabaseConnectionBounds(t *testing.T) {
-	resetConfigEnv(t)
-	t.Setenv("DATABASE_MIN_CONNECTIONS", "5")
-	t.Setenv("DATABASE_MAX_CONNECTIONS", "4")
-
-	_, err := Load()
+func TestLoadRejectsInvalidDatabaseBounds(t *testing.T) {
+	_, err := load(lookupFromMap(map[string]string{
+		"DATABASE_URL":             "postgres://localhost/softdata",
+		"DATABASE_MIN_CONNECTIONS": "5",
+		"DATABASE_MAX_CONNECTIONS": "4",
+		"AUTH_TOKEN_SECRET":        strings.Repeat("a", 32),
+		"ANONYMOUS_ID_SECRET":      strings.Repeat("b", 32),
+	}))
 	if err == nil {
 		t.Fatal("expected error")
 	}
@@ -108,12 +113,11 @@ func TestLoadInvalidDatabaseConnectionBounds(t *testing.T) {
 	}
 }
 
-func TestLoadMissingDatabaseURLInProduction(t *testing.T) {
-	resetConfigEnv(t)
-	t.Setenv("APP_ENV", string(AppEnvironmentProduction))
-	t.Setenv("AUTH_TOKEN_SECRET", "dev-secret")
-
-	_, err := Load()
+func TestLoadRejectsMissingRequiredDatabaseURL(t *testing.T) {
+	_, err := load(lookupFromMap(map[string]string{
+		"AUTH_TOKEN_SECRET":   strings.Repeat("a", 32),
+		"ANONYMOUS_ID_SECRET": strings.Repeat("b", 32),
+	}))
 	if err == nil {
 		t.Fatal("expected error")
 	}
@@ -122,44 +126,22 @@ func TestLoadMissingDatabaseURLInProduction(t *testing.T) {
 	}
 }
 
-func TestLoadMissingAuthSecretInProduction(t *testing.T) {
-	resetConfigEnv(t)
-	t.Setenv("APP_ENV", string(AppEnvironmentProduction))
-	t.Setenv("ANONYMOUS_ID_SECRET", strings.Repeat("a", 32))
-	t.Setenv("DATABASE_URL", "postgres://example")
-
-	_, err := Load()
+func TestLoadRejectsMissingRequiredSecrets(t *testing.T) {
+	_, err := load(lookupFromMap(map[string]string{
+		"DATABASE_URL":        "postgres://localhost/softdata",
+		"ANONYMOUS_ID_SECRET": strings.Repeat("b", 32),
+	}))
 	if err == nil {
 		t.Fatal("expected error")
 	}
 	if !strings.Contains(err.Error(), "AUTH_TOKEN_SECRET") {
 		t.Fatalf("expected AUTH_TOKEN_SECRET error, got %v", err)
 	}
-}
 
-func TestLoadShortAuthSecretInProduction(t *testing.T) {
-	resetConfigEnv(t)
-	t.Setenv("APP_ENV", string(AppEnvironmentProduction))
-	t.Setenv("AUTH_TOKEN_SECRET", "short")
-	t.Setenv("ANONYMOUS_ID_SECRET", strings.Repeat("a", 32))
-	t.Setenv("DATABASE_URL", "postgres://example")
-
-	_, err := Load()
-	if err == nil {
-		t.Fatal("expected error")
-	}
-	if !strings.Contains(err.Error(), "AUTH_TOKEN_SECRET") {
-		t.Fatalf("expected AUTH_TOKEN_SECRET error, got %v", err)
-	}
-}
-
-func TestLoadMissingAnonymousSecretInProduction(t *testing.T) {
-	resetConfigEnv(t)
-	t.Setenv("APP_ENV", string(AppEnvironmentProduction))
-	t.Setenv("AUTH_TOKEN_SECRET", strings.Repeat("a", 32))
-	t.Setenv("DATABASE_URL", "postgres://example")
-
-	_, err := Load()
+	_, err = load(lookupFromMap(map[string]string{
+		"DATABASE_URL":      "postgres://localhost/softdata",
+		"AUTH_TOKEN_SECRET": strings.Repeat("a", 32),
+	}))
 	if err == nil {
 		t.Fatal("expected error")
 	}
@@ -168,65 +150,98 @@ func TestLoadMissingAnonymousSecretInProduction(t *testing.T) {
 	}
 }
 
-func TestLoadShortAnonymousSecretInProduction(t *testing.T) {
-	resetConfigEnv(t)
-	t.Setenv("APP_ENV", string(AppEnvironmentProduction))
-	t.Setenv("AUTH_TOKEN_SECRET", strings.Repeat("a", 32))
-	t.Setenv("ANONYMOUS_ID_SECRET", "short")
-	t.Setenv("DATABASE_URL", "postgres://example")
+func TestLoadRejectsShortSecrets(t *testing.T) {
+	_, err := load(lookupFromMap(map[string]string{
+		"DATABASE_URL":        "postgres://localhost/softdata",
+		"AUTH_TOKEN_SECRET":   "short",
+		"ANONYMOUS_ID_SECRET": strings.Repeat("b", 32),
+	}))
+	if err == nil {
+		t.Fatal("expected error")
+	}
+	if !strings.Contains(err.Error(), "AUTH_TOKEN_SECRET") {
+		t.Fatalf("expected AUTH_TOKEN_SECRET length error, got %v", err)
+	}
 
-	_, err := Load()
+	_, err = load(lookupFromMap(map[string]string{
+		"DATABASE_URL":        "postgres://localhost/softdata",
+		"AUTH_TOKEN_SECRET":   strings.Repeat("a", 32),
+		"ANONYMOUS_ID_SECRET": "short",
+	}))
 	if err == nil {
 		t.Fatal("expected error")
 	}
 	if !strings.Contains(err.Error(), "ANONYMOUS_ID_SECRET") {
-		t.Fatalf("expected ANONYMOUS_ID_SECRET error, got %v", err)
+		t.Fatalf("expected ANONYMOUS_ID_SECRET length error, got %v", err)
 	}
 }
 
-func TestLoadProductionConfig(t *testing.T) {
-	resetConfigEnv(t)
-	t.Setenv("APP_ENV", string(AppEnvironmentProduction))
-	t.Setenv("DATABASE_URL", "postgres://example")
-	t.Setenv("AUTH_TOKEN_SECRET", strings.Repeat("a", 32))
-	t.Setenv("ANONYMOUS_ID_SECRET", strings.Repeat("b", 32))
-	t.Setenv("SERVER_HOST", "0.0.0.0")
-	t.Setenv("SERVER_PORT", "9090")
-	t.Setenv("DATASETS_PATH", "datasets/")
+func TestLoadRejectsInvalidRefreshTTL(t *testing.T) {
+	_, err := load(lookupFromMap(map[string]string{
+		"DATABASE_URL":        "postgres://localhost/softdata",
+		"AUTH_TOKEN_SECRET":   strings.Repeat("a", 32),
+		"ANONYMOUS_ID_SECRET": strings.Repeat("b", 32),
+		"ACCESS_TOKEN_TTL":    "15m",
+		"REFRESH_TOKEN_TTL":   "10m",
+	}))
+	if err == nil {
+		t.Fatal("expected error")
+	}
+	if !strings.Contains(err.Error(), "REFRESH_TOKEN_TTL") {
+		t.Fatalf("expected REFRESH_TOKEN_TTL error, got %v", err)
+	}
+}
 
-	cfg, err := Load()
-	if err != nil {
-		t.Fatalf("Load() error = %v", err)
+func TestLoadRejectsInvalidOrigins(t *testing.T) {
+	_, err := load(lookupFromMap(map[string]string{
+		"DATABASE_URL":           "postgres://localhost/softdata",
+		"AUTH_TOKEN_SECRET":      strings.Repeat("a", 32),
+		"ANONYMOUS_ID_SECRET":    strings.Repeat("b", 32),
+		"SERVER_ALLOWED_ORIGINS": "https://example.com/path",
+	}))
+	if err == nil {
+		t.Fatal("expected error")
 	}
-	if cfg.App.Environment != AppEnvironmentProduction {
-		t.Fatalf("unexpected environment: %s", cfg.App.Environment)
+	if !strings.Contains(err.Error(), "SERVER_ALLOWED_ORIGINS") {
+		t.Fatalf("expected origin error, got %v", err)
 	}
-	if cfg.Database.URL == nil || *cfg.Database.URL != "postgres://example" {
-		t.Fatalf("unexpected database url: %+v", cfg.Database.URL)
+}
+
+func TestLoadRejectsInvalidRedisValues(t *testing.T) {
+	_, err := load(lookupFromMap(map[string]string{
+		"DATABASE_URL":        "postgres://localhost/softdata",
+		"AUTH_TOKEN_SECRET":   strings.Repeat("a", 32),
+		"ANONYMOUS_ID_SECRET": strings.Repeat("b", 32),
+		"REDIS_DB":            "-1",
+	}))
+	if err == nil {
+		t.Fatal("expected error")
 	}
-	if cfg.Security.AuthTokenSecret == nil || *cfg.Security.AuthTokenSecret != strings.Repeat("a", 32) {
-		t.Fatalf("unexpected auth secret: %+v", cfg.Security.AuthTokenSecret)
+	if !strings.Contains(err.Error(), "REDIS_DB") {
+		t.Fatalf("expected REDIS_DB error, got %v", err)
 	}
-	if cfg.Security.AnonymousIDSecret == nil || *cfg.Security.AnonymousIDSecret != strings.Repeat("b", 32) {
-		t.Fatalf("unexpected anonymous secret: %+v", cfg.Security.AnonymousIDSecret)
+
+	_, err = load(lookupFromMap(map[string]string{
+		"DATABASE_URL":        "postgres://localhost/softdata",
+		"AUTH_TOKEN_SECRET":   strings.Repeat("a", 32),
+		"ANONYMOUS_ID_SECRET": strings.Repeat("b", 32),
+		"REDIS_POOL_SIZE":     "0",
+	}))
+	if err == nil {
+		t.Fatal("expected error")
 	}
-	if got := cfg.Server.ListenAddress(); got != "0.0.0.0:9090" {
-		t.Fatalf("unexpected listen address: %s", got)
-	}
-	if cfg.Datasets.Path != "datasets" {
-		t.Fatalf("unexpected datasets path: %s", cfg.Datasets.Path)
+	if !strings.Contains(err.Error(), "REDIS_POOL_SIZE") {
+		t.Fatalf("expected REDIS_POOL_SIZE error, got %v", err)
 	}
 }
 
 func TestLoadDoesNotLeakSecretsInErrors(t *testing.T) {
-	resetConfigEnv(t)
-	t.Setenv("APP_ENV", string(AppEnvironmentProduction))
-	t.Setenv("DATABASE_URL", "postgres://example")
-	t.Setenv("AUTH_TOKEN_SECRET", "supersecret")
-	t.Setenv("ANONYMOUS_ID_SECRET", strings.Repeat("a", 32))
-	t.Setenv("ACCESS_TOKEN_TTL", "not-a-duration")
-
-	_, err := Load()
+	_, err := load(lookupFromMap(map[string]string{
+		"DATABASE_URL":        "postgres://localhost/softdata",
+		"AUTH_TOKEN_SECRET":   "supersecret-supersecret-supersecret",
+		"ANONYMOUS_ID_SECRET": strings.Repeat("b", 32),
+		"ACCESS_TOKEN_TTL":    "not-a-duration",
+	}))
 	if err == nil {
 		t.Fatal("expected error")
 	}
@@ -235,34 +250,9 @@ func TestLoadDoesNotLeakSecretsInErrors(t *testing.T) {
 	}
 }
 
-func resetConfigEnv(t *testing.T) {
-	t.Helper()
-
-	for _, key := range []string{
-		"APP_ENV",
-		"SERVER_HOST",
-		"SERVER_PORT",
-		"SERVER_READ_HEADER_TIMEOUT",
-		"SERVER_READ_TIMEOUT",
-		"SERVER_WRITE_TIMEOUT",
-		"SERVER_IDLE_TIMEOUT",
-		"SERVER_SHUTDOWN_TIMEOUT",
-		"DATABASE_URL",
-		"DATABASE_MAX_CONNECTIONS",
-		"DATABASE_MIN_CONNECTIONS",
-		"DATABASE_MAX_CONNECTION_LIFETIME",
-		"DATABASE_MAX_CONNECTION_IDLE_TIME",
-		"DATABASE_HEALTH_CHECK_PERIOD",
-		"AUTH_TOKEN_SECRET",
-		"ANONYMOUS_ID_SECRET",
-		"ACCESS_TOKEN_TTL",
-		"REFRESH_TOKEN_TTL",
-		"ANONYMOUS_RATE_LIMIT",
-		"API_KEY_RATE_LIMIT",
-		"API_KEY_MONTHLY_LIMIT",
-		"RATE_LIMIT_WINDOW",
-		"DATASETS_PATH",
-	} {
-		t.Setenv(key, "")
+func lookupFromMap(values map[string]string) LookupEnv {
+	return func(name string) (string, bool) {
+		value, ok := values[name]
+		return value, ok
 	}
 }
