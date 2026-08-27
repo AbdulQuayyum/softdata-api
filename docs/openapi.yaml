@@ -203,6 +203,12 @@ paths:
       summary: Update current account
       security:
         - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AccountUpdateRequest"
       responses:
         "200":
           description: Updated account
@@ -210,6 +216,16 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AccountResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
     delete:
       tags: [Account]
       summary: Delete current account
@@ -350,8 +366,32 @@ components:
         type: string
         enum: [json, csv, geojson]
   responses:
+    Unauthorized:
+      description: Invalid authentication
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
     NotFound:
       description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+    Conflict:
+      description: Resource already exists
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+    ValidationFailed:
+      description: Validation failed
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+    InternalError:
+      description: Unexpected server error
       content:
         application/json:
           schema:
@@ -528,6 +568,24 @@ components:
         data:
           type: object
       required: [success, data]
+    AccountUpdateRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        username:
+          oneOf:
+            - type: string
+              minLength: 1
+            - type: "null"
+          description: Optional username. Omit or set to null to leave unchanged.
+        email:
+          oneOf:
+            - type: string
+              format: email
+            - type: string
+              maxLength: 0
+            - type: "null"
+          description: Optional email address. Omit or set to null to leave unchanged. An empty string clears the email.
     CreateApiKeyRequest:
       type: object
       properties:
