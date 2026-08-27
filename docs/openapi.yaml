@@ -297,13 +297,111 @@ paths:
       summary: View usage summary
       security:
         - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/UsageStartDate"
+        - $ref: "#/components/parameters/UsageEndDate"
+        - $ref: "#/components/parameters/UsageAPIKeyID"
       responses:
         "200":
           description: Usage summary
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UsageSummaryResponse"
+                $ref: "#/components/schemas/UsageSummaryReportResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/account/usage/history:
+    get:
+      tags: [Usage]
+      summary: View aggregated daily usage history
+      description: Returns daily aggregate usage for the authenticated account. Raw api_requests rows are never exposed.
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/UsageStartDate"
+        - $ref: "#/components/parameters/UsageEndDate"
+        - $ref: "#/components/parameters/UsageAPIKeyID"
+      responses:
+        "200":
+          description: Aggregated usage history
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UsageHistoryResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/account/usage/endpoints:
+    get:
+      tags: [Usage]
+      summary: View endpoint usage breakdown
+      description: Returns usage grouped by stable endpoint template for the authenticated account. Raw URLs and request parameters are never exposed.
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/UsageStartDate"
+        - $ref: "#/components/parameters/UsageEndDate"
+        - $ref: "#/components/parameters/UsageAPIKeyID"
+      responses:
+        "200":
+          description: Endpoint usage breakdown
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EndpointUsageListResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/account/usage/dataset-groups:
+    get:
+      tags: [Usage]
+      summary: View dataset-group usage breakdown
+      description: Returns usage grouped by documented dataset group for the authenticated account. Null groups and raw request rows are never exposed.
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/UsageStartDate"
+        - $ref: "#/components/parameters/UsageEndDate"
+        - $ref: "#/components/parameters/UsageAPIKeyID"
+      responses:
+        "200":
+          description: Dataset-group usage breakdown
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DatasetGroupUsageListResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
 components:
   securitySchemes:
     bearerAuth:
@@ -365,7 +463,33 @@ components:
       schema:
         type: string
         enum: [json, csv, geojson]
+    UsageStartDate:
+      name: start
+      in: query
+      schema:
+        type: string
+        format: date
+      description: Start of the half-open reporting range in UTC, formatted as YYYY-MM-DD. Omit with end to use the current UTC calendar month. Start is inclusive.
+    UsageEndDate:
+      name: end
+      in: query
+      schema:
+        type: string
+        format: date
+      description: End of the half-open reporting range in UTC, formatted as YYYY-MM-DD. Omit with start to use the current UTC calendar month. End is exclusive. Explicit ranges may not exceed 366 days.
+    UsageAPIKeyID:
+      name: api_key_id
+      in: query
+      schema:
+        type: string
+      description: Optional owned API key ID filter within the authenticated account. Missing or foreign-owned keys return 404.
   responses:
+    BadRequest:
+      description: Malformed request
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
     Unauthorized:
       description: Invalid authentication
       content:
@@ -586,6 +710,112 @@ components:
               maxLength: 0
             - type: "null"
           description: Optional email address. Omit or set to null to leave unchanged. An empty string clears the email.
+    UsageSummaryReport:
+      type: object
+      additionalProperties: false
+      properties:
+        total_requests:
+          type: integer
+          format: int64
+        successful_requests:
+          type: integer
+          format: int64
+        error_count:
+          type: integer
+          format: int64
+        current_allowance:
+          type: integer
+          format: int64
+        remaining_allowance:
+          type: integer
+          format: int64
+        period_start:
+          type: string
+          format: date-time
+        period_end:
+          type: string
+          format: date-time
+      required: [total_requests, successful_requests, error_count, current_allowance, remaining_allowance, period_start, period_end]
+    UsageSummaryReportResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: "#/components/schemas/UsageSummaryReport"
+      required: [success, data]
+    UsageDailyResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        date:
+          type: string
+          format: date-time
+        total_requests:
+          type: integer
+          format: int64
+        successful_requests:
+          type: integer
+          format: int64
+        error_count:
+          type: integer
+          format: int64
+      required: [date, total_requests, successful_requests, error_count]
+    UsageHistoryResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/UsageDailyResponse"
+      required: [success, data]
+    EndpointUsageResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        endpoint:
+          type: string
+        request_count:
+          type: integer
+          format: int64
+      required: [endpoint, request_count]
+    EndpointUsageListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/EndpointUsageResponse"
+      required: [success, data]
+    DatasetGroupUsageResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        dataset_group:
+          type: string
+          enum: [geography, finance, education, healthcare, emergency, infrastructure, statistics]
+        request_count:
+          type: integer
+          format: int64
+      required: [dataset_group, request_count]
+    DatasetGroupUsageListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/DatasetGroupUsageResponse"
+      required: [success, data]
     CreateApiKeyRequest:
       type: object
       properties:

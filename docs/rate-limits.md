@@ -48,3 +48,5 @@ Applications should:
 - Avoid aggressive retry loops.
 
 Rate-limit policies may change as traffic and infrastructure evolve.
+
+The `remaining_allowance` value returned by usage summary endpoints is the monthly account allowance. It is separate from the short-window `RateLimit-*` headers and should not be treated as the same counter.
