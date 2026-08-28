@@ -13,7 +13,9 @@ import (
 	"github.com/AbdulQuayyum/softdata-api/internal/database"
 	"github.com/AbdulQuayyum/softdata-api/internal/handlers"
 	"github.com/AbdulQuayyum/softdata-api/internal/middlewares"
+	"github.com/AbdulQuayyum/softdata-api/internal/models"
 	redisclient "github.com/AbdulQuayyum/softdata-api/internal/redis"
+	fileRepo "github.com/AbdulQuayyum/softdata-api/internal/repository/file"
 	"github.com/AbdulQuayyum/softdata-api/internal/repository/interfaces"
 	postgresrepo "github.com/AbdulQuayyum/softdata-api/internal/repository/postgres"
 	redisrepo "github.com/AbdulQuayyum/softdata-api/internal/repository/redis"
@@ -25,6 +27,7 @@ import (
 
 const (
 	defaultKeyPrefix = "softdata"
+	geographyStatesRelativePath = "geography/states.json"
 )
 
 func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Logger) (deps appDependencies, err error) {
@@ -109,6 +112,23 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	if err != nil {
 		return appDependencies{}, err
 	}
+	geographyHandler, err := buildGeographyHandler(ctx, cfg,
+		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
+			return fileRepo.NewJSONRepository(root, maxBytes)
+		},
+		func(repository interfaces.JSONFileRepository, statesPath string) (interfaces.GeographyRepository, error) {
+			return fileRepo.NewGeographyRepository(repository, statesPath)
+		},
+		func(repository interfaces.GeographyRepository) (geographyService, error) {
+			return services.NewGeographyService(repository)
+		},
+		func(service geographyService) (*handlers.GeographyHandler, error) {
+			return handlers.NewGeographyHandler(service)
+		},
+	)
+	if err != nil {
+		return appDependencies{}, err
+	}
 
 	healthHandler := handlers.NewHealthHandler()
 	discoveryHandler := handlers.NewDiscoveryHandler()
@@ -188,6 +208,7 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	routerHandler, err := router.New(router.Handlers{
 		Health:    healthHandler,
 		Discovery: discoveryHandler,
+		Geography: geographyHandler,
 		Auth:      authHandler,
 		Account:   accountHandler,
 		APIKey:    apiKeyHandler,
@@ -235,6 +256,101 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 		closePostgres: pool.Close,
 	}
 	return deps, nil
+}
+
+type geographyService interface {
+	ListStates(context.Context) ([]models.State, error)
+	GetState(context.Context, string) (models.State, error)
+}
+
+func buildGeographyHandler(
+	ctx context.Context,
+	cfg *config.Config,
+	newJSONRepository func(string, int64) (interfaces.JSONFileRepository, error),
+	newGeographyRepository func(interfaces.JSONFileRepository, string) (interfaces.GeographyRepository, error),
+	newGeographyService func(interfaces.GeographyRepository) (geographyService, error),
+	newGeographyHandler func(geographyService) (*handlers.GeographyHandler, error),
+) (*handlers.GeographyHandler, error) {
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if cfg == nil {
+		return nil, fmt.Errorf("config is required")
+	}
+	if newJSONRepository == nil {
+		return nil, fmt.Errorf("json repository factory is required")
+	}
+	if newGeographyRepository == nil {
+		return nil, fmt.Errorf("geography repository factory is required")
+	}
+	if newGeographyService == nil {
+		return nil, fmt.Errorf("geography service factory is required")
+	}
+	if newGeographyHandler == nil {
+		return nil, fmt.Errorf("geography handler factory is required")
+	}
+
+	jsonRepository, err := newJSONRepository(cfg.Datasets.Path, cfg.Datasets.JSONMaxBytes)
+	if err != nil {
+		return nil, fmt.Errorf("initialize geography json repository: %w", err)
+	}
+	geographyRepository, err := newGeographyRepository(jsonRepository, geographyStatesRelativePath)
+	if err != nil {
+		return nil, fmt.Errorf("initialize geography repository: %w", err)
+	}
+	geographyService, err := newGeographyService(geographyRepository)
+	if err != nil {
+		return nil, fmt.Errorf("initialize geography service: %w", err)
+	}
+	if err := verifyGeographyDataset(ctx, geographyService); err != nil {
+		return nil, err
+	}
+	geographyHandler, err := newGeographyHandler(geographyService)
+	if err != nil {
+		return nil, fmt.Errorf("initialize geography handler: %w", err)
+	}
+	return geographyHandler, nil
+}
+
+func verifyGeographyDataset(ctx context.Context, service geographyService) error {
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if service == nil {
+		return fmt.Errorf("verify geography dataset: geography service is required")
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+
+	states, err := service.ListStates(ctx)
+	if err != nil {
+		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+			return err
+		}
+		return fmt.Errorf("verify geography dataset: %w", err)
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+	if len(states) != 37 {
+		return fmt.Errorf("verify geography dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+
+	stateCount := 0
+	fctCount := 0
+	for _, state := range states {
+		switch state.AdministrativeType {
+		case "federal_capital_territory":
+			fctCount++
+		default:
+			stateCount++
+		}
+	}
+	if stateCount != 36 || fctCount != 1 {
+		return fmt.Errorf("verify geography dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+	return nil
 }
 
 func buildRateLimitRepository(ctx context.Context, cfg *config.Config, logger *slog.Logger) (interfaces.RateLimitRepository, func() error, error) {

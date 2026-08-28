@@ -15,6 +15,7 @@ import (
 	"github.com/AbdulQuayyum/softdata-api/internal/handlers"
 	"github.com/AbdulQuayyum/softdata-api/internal/middlewares"
 	"github.com/AbdulQuayyum/softdata-api/internal/models"
+	"github.com/AbdulQuayyum/softdata-api/internal/repository/interfaces"
 	"github.com/AbdulQuayyum/softdata-api/internal/services"
 )
 
@@ -97,6 +98,7 @@ func testHandlers(t *testing.T, rec *routerRecorder) Handlers {
 	apiKey := &routerAPIKeyStub{rec: rec}
 	usage := &routerUsageStub{rec: rec}
 	dataset := &routerDatasetStub{rec: rec}
+	geography := &routerGeographyStub{rec: rec}
 
 	authHandler, err := handlers.NewAuthHandler(auth, auth)
 	if err != nil {
@@ -118,10 +120,15 @@ func testHandlers(t *testing.T, rec *routerRecorder) Handlers {
 	if err != nil {
 		t.Fatalf("NewDatasetHandler() error = %v", err)
 	}
+	geographyHandler, err := handlers.NewGeographyHandler(geography)
+	if err != nil {
+		t.Fatalf("NewGeographyHandler() error = %v", err)
+	}
 
 	return Handlers{
 		Health:    handlers.NewHealthHandler(),
 		Discovery: handlers.NewDiscoveryHandler(),
+		Geography: geographyHandler,
 		Auth:      authHandler,
 		Account:   accountHandler,
 		APIKey:    apiKeyHandler,
@@ -178,6 +185,16 @@ func TestNewRejectsMissingDependencies(t *testing.T) {
 	}
 }
 
+func TestNewRejectsMissingGeographyHandler(t *testing.T) {
+	rec := &routerRecorder{}
+	handlers := testHandlers(t, rec)
+	handlers.Geography = nil
+
+	if _, err := New(handlers, testMiddleware(rec)); err == nil || !strings.Contains(err.Error(), "geography handler") {
+		t.Fatalf("New() error = %v, want geography handler error", err)
+	}
+}
+
 func TestRouterAppliesGlobalAndDatasetRouteMiddlewareOrder(t *testing.T) {
 	rec := &routerRecorder{}
 	router := newTestRouter(t, rec)
@@ -223,6 +240,86 @@ func TestRouterAppliesGlobalAndDatasetRouteMiddlewareOrder(t *testing.T) {
 	}
 }
 
+func TestRouterRegistersGeographyRoutes(t *testing.T) {
+	rec := &routerRecorder{}
+	router := newTestRouter(t, rec)
+
+	t.Run("list", func(t *testing.T) {
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/states", nil)
+		router.ServeHTTP(rr, req)
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		got := strings.Join(rec.snapshot(), ",")
+		for _, want := range []string{
+			"optional_api_key",
+			"rate_limit",
+			"usage:/v1/geography/states|geography",
+			"geography.list",
+		} {
+			if !strings.Contains(got, want) {
+				t.Fatalf("expected %q in middleware sequence: %v", want, rec.snapshot())
+			}
+		}
+	})
+
+	t.Run("detail", func(t *testing.T) {
+		rec = &routerRecorder{}
+		router := newTestRouter(t, rec)
+
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/states/abia", nil)
+		router.ServeHTTP(rr, req)
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		got := strings.Join(rec.snapshot(), ",")
+		for _, want := range []string{
+			"optional_api_key",
+			"rate_limit",
+			"usage:/v1/geography/states/{state_id}|geography",
+			"geography.get:abia",
+		} {
+			if !strings.Contains(got, want) {
+				t.Fatalf("expected %q in middleware sequence: %v", want, rec.snapshot())
+			}
+		}
+	})
+
+	t.Run("fct", func(t *testing.T) {
+		rec := &routerRecorder{}
+		router := newTestRouter(t, rec)
+
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/states/fct", nil)
+		router.ServeHTTP(rr, req)
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		got := strings.Join(rec.snapshot(), ",")
+		if !strings.Contains(got, "geography.get:fct") {
+			t.Fatalf("expected FCT lookup in middleware sequence: %v", rec.snapshot())
+		}
+	})
+
+	t.Run("allow and path value", func(t *testing.T) {
+		rec := &routerRecorder{}
+		router := newTestRouter(t, rec)
+
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodHead, "/v1/geography/states/abia", nil)
+		req.Header.Set("X-Request-ID", "req_geo_head")
+		router.ServeHTTP(rr, req)
+		if rr.Code != http.StatusMethodNotAllowed {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if got := rr.Header().Get("Allow"); got != http.MethodGet {
+			t.Fatalf("unexpected allow header: %q", got)
+		}
+	})
+}
+
 func TestRouterRejectsUnknownRoutesAndUnsupportedMethods(t *testing.T) {
 	tests := []struct {
 		name        string
@@ -235,10 +332,13 @@ func TestRouterRejectsUnknownRoutesAndUnsupportedMethods(t *testing.T) {
 	}{
 		{name: "unknown route", method: http.MethodGet, target: "/v1/unknown?token=abc", status: http.StatusNotFound, wantCode: "RESOURCE_NOT_FOUND", wantRequest: "req_404"},
 		{name: "unknown nested route", method: http.MethodGet, target: "/v1/datasets/ng-states/unknown", status: http.StatusNotFound, wantCode: "RESOURCE_NOT_FOUND", wantRequest: "req_nested"},
+		{name: "unknown geography nested route", method: http.MethodGet, target: "/v1/geography/states/abia/unknown", status: http.StatusNotFound, wantCode: "RESOURCE_NOT_FOUND", wantRequest: "req_geo_nested"},
 		{name: "health wrong method", method: http.MethodPost, target: "/health", allow: http.MethodGet, status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_405"},
 		{name: "auth wrong method", method: http.MethodGet, target: "/v1/auth/login", allow: http.MethodPost, status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_auth"},
 		{name: "account wrong method", method: http.MethodPost, target: "/v1/account", allow: "GET, PATCH, DELETE", status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_account"},
 		{name: "dataset wrong method", method: http.MethodPost, target: "/v1/datasets/ng-states", allow: http.MethodGet, status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_dataset"},
+		{name: "geography wrong method", method: http.MethodPost, target: "/v1/geography/states", allow: http.MethodGet, status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_geo"},
+		{name: "geography detail wrong method", method: http.MethodDelete, target: "/v1/geography/states/abia", allow: http.MethodGet, status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_geo_detail"},
 		{name: "ready not registered", method: http.MethodGet, target: "/ready", status: http.StatusNotFound, wantCode: "RESOURCE_NOT_FOUND", wantRequest: "req_ready"},
 	}
 
@@ -294,6 +394,7 @@ func TestRouterRejectsHeadRequestsWithJson405(t *testing.T) {
 	}{
 		{name: "health", target: "/health", allow: http.MethodGet},
 		{name: "account", target: "/v1/account", allow: "GET, PATCH, DELETE"},
+		{name: "geography", target: "/v1/geography/states", allow: http.MethodGet},
 	}
 
 	for _, tc := range tests {
@@ -382,6 +483,182 @@ func TestRouterExcludesRateLimitedDatasetRequestsFromUsageTracking(t *testing.T)
 	}
 	if strings.Contains(got, "dataset.list:") {
 		t.Fatalf("dataset handler should not run on rate-limited request: %v", rec.snapshot())
+	}
+}
+
+func TestRouterUsesGeographyMiddlewarePolicy(t *testing.T) {
+	t.Parallel()
+
+	harness := newGeographyPolicyRouter(t)
+
+	t.Run("anonymous", func(t *testing.T) {
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/states", nil)
+		req.RemoteAddr = "203.0.113.10:1234"
+		req.Header.Set("User-Agent", "TestAgent/1.0")
+		harness.router.ServeHTTP(rr, req)
+
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if harness.rateLimit.calls == 0 {
+			t.Fatal("expected rate limit repository to be used")
+		}
+		if harness.rateLimit.request.SubjectKind != interfaces.RateLimitSubjectAnonymous {
+			t.Fatalf("unexpected subject kind: %#v", harness.rateLimit.request.SubjectKind)
+		}
+		if harness.rateLimit.request.Limit != 60 {
+			t.Fatalf("unexpected anonymous limit: %d", harness.rateLimit.request.Limit)
+		}
+		if harness.usage.calls == 0 || harness.usage.input.Route != "/v1/geography/states" || harness.usage.input.DatasetGroup == nil || *harness.usage.input.DatasetGroup != "geography" {
+			t.Fatalf("unexpected usage record: %#v", harness.usage.input)
+		}
+		if harness.geography.listCalls != 1 {
+			t.Fatalf("unexpected geography list calls: %d", harness.geography.listCalls)
+		}
+	})
+
+	t.Run("api key", func(t *testing.T) {
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/states/abia", nil)
+		req.RemoteAddr = "203.0.113.10:1234"
+		req.Header.Set("X-API-Key", "sd_live_example")
+		harness.router.ServeHTTP(rr, req)
+
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if harness.auth.calls == 0 {
+			t.Fatal("expected API key authenticator to be used")
+		}
+		if harness.rateLimit.request.SubjectKind != interfaces.RateLimitSubjectAPIKey {
+			t.Fatalf("unexpected subject kind: %#v", harness.rateLimit.request.SubjectKind)
+		}
+		if harness.rateLimit.request.Limit != 300 {
+			t.Fatalf("unexpected api-key limit: %d", harness.rateLimit.request.Limit)
+		}
+		if harness.rateLimit.request.Subject != "key_123" {
+			t.Fatalf("unexpected subject: %q", harness.rateLimit.request.Subject)
+		}
+		if harness.usage.input.Route != "/v1/geography/states/{state_id}" || harness.usage.input.DatasetGroup == nil || *harness.usage.input.DatasetGroup != "geography" {
+			t.Fatalf("unexpected usage record: %#v", harness.usage.input)
+		}
+		if harness.geography.lastStateID != "abia" {
+			t.Fatalf("unexpected state id seen by handler: %q", harness.geography.lastStateID)
+		}
+		if !harness.geography.lastHadAPIKey || harness.geography.lastAPIKeyIdentity.APIKeyID != "key_123" || harness.geography.lastAPIKeyIdentity.AccountID != "acc_123" {
+			t.Fatalf("unexpected api key identity seen by handler: %#v", harness.geography.lastAPIKeyIdentity)
+		}
+	})
+
+	t.Run("invalid key", func(t *testing.T) {
+		harness.auth.err = services.ErrAPIKeyNotFound
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/states", nil)
+		req.RemoteAddr = "203.0.113.10:1234"
+		req.Header.Set("X-API-Key", "bad-key")
+		harness.router.ServeHTTP(rr, req)
+
+		if rr.Code != http.StatusUnauthorized {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if harness.geography.listCalls != 1 {
+			t.Fatalf("handler should not run on invalid api key, calls: %d", harness.geography.listCalls)
+		}
+	})
+
+	if harness.rateLimit.request.SubjectKind == interfaces.RateLimitSubjectDownload {
+		t.Fatal("geography routes must not use download rate limit policy")
+	}
+}
+
+type geographyPolicyHarness struct {
+	router     http.Handler
+	auth       *routerAPIKeyAuthenticatorStub
+	rateLimit  *routerRateLimitRepoStub
+	usage      *routerUsageRecorderStub
+	geography  *routerGeographyStub
+	anonymous  *routerAnonymousIdentifierStub
+}
+
+func newGeographyPolicyRouter(t *testing.T) geographyPolicyHarness {
+	t.Helper()
+
+	cors, err := middlewares.NewCORS(middlewares.CORSOptions{
+		AllowedOrigins: []string{"https://example.com"},
+	})
+	if err != nil {
+		t.Fatalf("NewCORS() error = %v", err)
+	}
+
+	auth := &routerAPIKeyAuthenticatorStub{identity: services.APIKeyIdentity{APIKeyID: "key_123", AccountID: "acc_123"}}
+	anonymous := &routerAnonymousIdentifierStub{value: "anon-opaque"}
+	rateLimit := &routerRateLimitRepoStub{}
+	usage := &routerUsageRecorderStub{}
+	geography := &routerGeographyStub{}
+	geographyHandler, err := handlers.NewGeographyHandler(geography)
+	if err != nil {
+		t.Fatalf("NewGeographyHandler() error = %v", err)
+	}
+	baseHandlers := testHandlers(t, &routerRecorder{})
+	rateLimitMiddleware, err := middlewares.RateLimit(rateLimit, anonymous, middlewares.RateLimitPolicy{
+		AnonymousLimit: 60,
+		APIKeyLimit:    300,
+		DownloadLimit:  10,
+		Window:         time.Minute,
+	})
+	if err != nil {
+		t.Fatalf("RateLimit() error = %v", err)
+	}
+
+	routerHandler, err := New(Handlers{
+		Health:    handlers.NewHealthHandler(),
+		Discovery: handlers.NewDiscoveryHandler(),
+		Geography: geographyHandler,
+		Auth:      baseHandlers.Auth,
+		Account:   baseHandlers.Account,
+		APIKey:    baseHandlers.APIKey,
+		Usage:     baseHandlers.Usage,
+		Dataset:   baseHandlers.Dataset,
+	}, Middleware{
+		RequestID:       middlewares.RequestID,
+		Recovery:        func(next http.Handler) http.Handler { return next },
+		Logger:          func(next http.Handler) http.Handler { return next },
+		SecurityHeaders: func(next http.Handler) http.Handler { return next },
+		CORS:            cors,
+		BodyLimit:       func(next http.Handler) http.Handler { return next },
+		Timeout:         func(next http.Handler) http.Handler { return next },
+		Authentication:  func(next http.Handler) http.Handler { return next },
+		OptionalAPIKey:  middlewares.OptionalAPIKey(auth),
+		StandardLimit:   rateLimitMiddleware,
+		UsageTracking: func(endpoint, datasetGroup string) (MiddlewareFunc, error) {
+			switch endpoint {
+			case "/v1/geography/states":
+				return middlewares.UsageTracking(usage, endpoint, datasetGroup, middlewares.UsageTrackingOptions{
+					Timeout:             time.Second,
+					AnonymousIdentifier: anonymous,
+				})
+			case "/v1/geography/states/{state_id}":
+				return middlewares.UsageTracking(usage, endpoint, datasetGroup, middlewares.UsageTrackingOptions{
+					Timeout:             time.Second,
+					AnonymousIdentifier: anonymous,
+				})
+			default:
+				return func(next http.Handler) http.Handler { return next }, nil
+			}
+		},
+	})
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	return geographyPolicyHarness{
+		router:    routerHandler,
+		auth:      auth,
+		rateLimit: rateLimit,
+		usage:     usage,
+		geography: geography,
+		anonymous: anonymous,
 	}
 }
 
@@ -546,6 +823,118 @@ func (s *routerDatasetStub) ListDatasetVersions(ctx context.Context, datasetKey 
 	s.rec.add("dataset.versions:" + datasetKey)
 	now := time.Date(2026, time.August, 27, 12, 0, 0, 0, time.UTC)
 	return []models.DatasetVersionResponse{{Version: "1.0.0", Format: "json", Status: models.DatasetVersionStatusPublished, CreatedAt: now, UpdatedAt: now}}, nil
+}
+
+type routerGeographyStub struct {
+	rec                *routerRecorder
+	mu                 sync.Mutex
+	listCalls          int
+	getCalls           int
+	lastStateID        string
+	lastHadAPIKey      bool
+	lastAPIKeyIdentity services.APIKeyIdentity
+}
+
+func (s *routerGeographyStub) ListStates(ctx context.Context) ([]models.State, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.listCalls++
+	if s.rec != nil {
+		s.rec.add("geography.list")
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return []models.State{{ID: "abia", Name: "Abia"}}, nil
+}
+
+func (s *routerGeographyStub) GetState(ctx context.Context, stateID string) (models.State, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.getCalls++
+	s.lastStateID = stateID
+	if s.rec != nil {
+		s.rec.add("geography.get:" + stateID)
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return models.State{ID: stateID, Name: strings.Title(stateID)}, nil
+}
+
+type routerAPIKeyAuthenticatorStub struct {
+	mu       sync.Mutex
+	identity services.APIKeyIdentity
+	err      error
+	calls    int
+	last     string
+}
+
+func (s *routerAPIKeyAuthenticatorStub) Authenticate(ctx context.Context, plaintext string) (services.APIKeyIdentity, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.calls++
+	s.last = plaintext
+	if s.err != nil {
+		return services.APIKeyIdentity{}, s.err
+	}
+	return s.identity, nil
+}
+
+type routerAnonymousIdentifierStub struct {
+	mu    sync.Mutex
+	value string
+	err   error
+	calls int
+}
+
+func (s *routerAnonymousIdentifierStub) Identify(r *http.Request) (string, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.calls++
+	if s.err != nil {
+		return "", s.err
+	}
+	return s.value, nil
+}
+
+type routerRateLimitRepoStub struct {
+	mu      sync.Mutex
+	request interfaces.RateLimitRequest
+	result  interfaces.RateLimitResult
+	calls   int
+}
+
+func (s *routerRateLimitRepoStub) Allow(ctx context.Context, request interfaces.RateLimitRequest) (interfaces.RateLimitResult, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.calls++
+	s.request = request
+	if s.result.Limit != 0 {
+		return s.result, nil
+	}
+	return interfaces.RateLimitResult{
+		Allowed:   true,
+		Limit:     request.Limit,
+		Remaining: request.Limit - 1,
+		ResetAt:   time.Now().UTC().Add(request.Window),
+	}, nil
+}
+
+type routerUsageRecorderStub struct {
+	mu    sync.Mutex
+	input services.RequestRecordInput
+	calls int
+}
+
+func (s *routerUsageRecorderStub) RecordRequest(ctx context.Context, input services.RequestRecordInput) (models.APIRequest, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.calls++
+	s.input = input
+	return models.APIRequest{ID: int64(s.calls)}, nil
 }
 
 func itoa(v int) string {

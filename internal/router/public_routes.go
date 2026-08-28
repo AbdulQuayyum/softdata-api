@@ -28,5 +28,31 @@ func registerPublicRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers,
 		return err
 	}
 
+	geographyList, err := buildRouteMiddlewares(mw, "/v1/geography/states", "geography", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build geography states middleware: %w", err)
+	}
+	mux.Handle("GET /v1/geography/states", compose(http.HandlerFunc(h.Geography.ListStates), geographyList...))
+	if err := catalog.add("GET /v1/geography/states"); err != nil {
+		return err
+	}
+
+	geographyDetail, err := buildRouteMiddlewares(mw, "/v1/geography/states/{state_id}", "geography", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build geography state middleware: %w", err)
+	}
+	mux.Handle("GET /v1/geography/states/{state_id}", compose(http.HandlerFunc(h.Geography.GetState), geographyDetail...))
+	if err := catalog.add("GET /v1/geography/states/{state_id}"); err != nil {
+		return err
+	}
+
 	return nil
 }

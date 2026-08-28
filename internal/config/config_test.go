@@ -1,6 +1,8 @@
 package config
 
 import (
+	"os"
+	"reflect"
 	"strings"
 	"testing"
 )
@@ -52,6 +54,9 @@ func TestLoadDevelopmentConfig(t *testing.T) {
 	}
 	if cfg.Datasets.Path != "datasets" {
 		t.Fatalf("unexpected datasets path: %s", cfg.Datasets.Path)
+	}
+	if cfg.Datasets.JSONMaxBytes != 16777216 {
+		t.Fatalf("unexpected datasets json max bytes: %d", cfg.Datasets.JSONMaxBytes)
 	}
 }
 
@@ -308,6 +313,107 @@ func TestLoadDoesNotLeakSecretsInErrors(t *testing.T) {
 	}
 	if strings.Contains(err.Error(), "supersecret") {
 		t.Fatalf("error leaked secret value: %v", err)
+	}
+}
+
+func TestLoadDatasetsConfigUsesDefaultJsonMaxBytes(t *testing.T) {
+	cfg, err := loadDatasetsConfig(lookupFromMap(map[string]string{}))
+	if err != nil {
+		t.Fatalf("loadDatasetsConfig() error = %v", err)
+	}
+	if cfg.JSONMaxBytes != 16777216 {
+		t.Fatalf("unexpected JSONMaxBytes: %d", cfg.JSONMaxBytes)
+	}
+}
+
+func TestLoadDatasetsConfigParsesExplicitJsonMaxBytes(t *testing.T) {
+	cfg, err := loadDatasetsConfig(lookupFromMap(map[string]string{
+		"DATASETS_JSON_MAX_BYTES": "33554432",
+	}))
+	if err != nil {
+		t.Fatalf("loadDatasetsConfig() error = %v", err)
+	}
+	if cfg.JSONMaxBytes != 33554432 {
+		t.Fatalf("unexpected JSONMaxBytes: %d", cfg.JSONMaxBytes)
+	}
+}
+
+func TestLoadDatasetsConfigAcceptsOneByteLimit(t *testing.T) {
+	cfg, err := loadDatasetsConfig(lookupFromMap(map[string]string{
+		"DATASETS_JSON_MAX_BYTES": "1",
+	}))
+	if err != nil {
+		t.Fatalf("loadDatasetsConfig() error = %v", err)
+	}
+	if cfg.JSONMaxBytes != 1 {
+		t.Fatalf("unexpected JSONMaxBytes: %d", cfg.JSONMaxBytes)
+	}
+}
+
+func TestLoadDatasetsConfigRejectsInvalidJsonMaxBytes(t *testing.T) {
+	tests := []struct {
+		name string
+		val  string
+	}{
+		{name: "zero", val: "0"},
+		{name: "negative", val: "-1"},
+		{name: "malformed", val: "16MB"},
+		{name: "overflow", val: "9223372036854775808"},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			_, err := loadDatasetsConfig(lookupFromMap(map[string]string{
+				"DATASETS_JSON_MAX_BYTES": tc.val,
+			}))
+			if err == nil {
+				t.Fatal("expected error")
+			}
+			if !strings.Contains(err.Error(), "DATASETS_JSON_MAX_BYTES") {
+				t.Fatalf("expected DATASETS_JSON_MAX_BYTES error, got %v", err)
+			}
+		})
+	}
+}
+
+func TestLoadDatasetsConfigDoesNotReadServerBodyLimit(t *testing.T) {
+	lookup := func(name string) (string, bool) {
+		switch name {
+		case "DATASETS_JSON_MAX_BYTES":
+			return "1234", true
+		case "SERVER_BODY_LIMIT":
+			t.Fatal("loadDatasetsConfig() should not read SERVER_BODY_LIMIT")
+		}
+		return "", false
+	}
+
+	cfg, err := loadDatasetsConfig(lookup)
+	if err != nil {
+		t.Fatalf("loadDatasetsConfig() error = %v", err)
+	}
+	if cfg.JSONMaxBytes != 1234 {
+		t.Fatalf("unexpected JSONMaxBytes: %d", cfg.JSONMaxBytes)
+	}
+}
+
+func TestLoadDoesNotMutateProcessEnvironment(t *testing.T) {
+	before := append([]string(nil), os.Environ()...)
+	_, err := load(lookupFromMap(map[string]string{
+		"DATABASE_URL":                "postgres://localhost/softdata",
+		"AUTH_TOKEN_SECRET":           strings.Repeat("a", 32),
+		"ANONYMOUS_ID_SECRET":         strings.Repeat("b", 32),
+		"DATASETS_JSON_MAX_BYTES":     "16777217",
+		"DATASETS_PATH":               "datasets/",
+		"ANONYMOUS_RATE_LIMIT":        "60",
+		"API_KEY_RATE_LIMIT":          "300",
+		"DATASET_DOWNLOAD_RATE_LIMIT": "10",
+	}))
+	if err != nil {
+		t.Fatalf("load() error = %v", err)
+	}
+	after := os.Environ()
+	if !reflect.DeepEqual(before, after) {
+		t.Fatal("process environment changed during config loading")
 	}
 }
 
