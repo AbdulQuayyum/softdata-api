@@ -115,6 +115,16 @@ Nigeria's six geopolitical zones.
 - `datasets/schemas/geography/geopolitical_zones.schema.json`
 - `datasets/metadata/geography/geopolitical_zones.json`
 
+### `ng-lgas`
+
+Nigeria's 768 Local Government Areas and the Federal Capital Territory's six Area Councils.
+
+- `datasets/geography/lgas.json`
+- `datasets/schemas/geography/lgas.schema.json`
+- `datasets/metadata/geography/lgas.json`
+
+Each unit record links back to `state_id`, and geopolitical zone membership is derived through the state dataset.
+
 ## Directory Structure
 
 ```text

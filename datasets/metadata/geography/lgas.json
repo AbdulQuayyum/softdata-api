@@ -1,0 +1,46 @@
+{
+  "dataset_key": "ng-lgas",
+  "title": "Nigeria Local Government Areas and FCT Area Councils",
+  "description": "Independently compiled factual administrative reference data for Nigeria's 768 Local Government Areas and the Federal Capital Territory's six Area Councils.",
+  "country_code": "NG",
+  "dataset_group": "geography",
+  "format": "json",
+  "relative_path": "geography/lgas.json",
+  "schema_path": "schemas/geography/lgas.schema.json",
+  "record_count": 774,
+  "version": "1.0.0",
+  "license_id": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "methodology": "Independently compiled and cross-verified factual administrative reference data. SoftData normalised the seed material to title case, resolved obvious punctuation artifacts, and used the approved Nigeria constitutional/FCTA/INEC/NBS source hierarchy. The Federal Capital Territory is represented as six Area Councils, and geopolitical-zone membership is derived via the state dataset. Normalization notes: parenthetical or punctuation artifacts in the working seed were collapsed to stable public names where needed, and Abuja Municipal is used for the FCT area council.",
+  "sources": [
+    {
+      "organization": "Senate Committee on Constitution Review",
+      "title": "Chapter 1, Part 1",
+      "url": "https://sccr.gov.ng/?p=121",
+      "purpose": "Verify the canonical national administrative structure used for the 36-state plus FCT compilation.",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "organization": "Federal Capital Territory Administration",
+      "title": "Department of Outdoor Advertisement & Signage",
+      "url": "https://www.fcta.gov.ng/ova_dep/outdoor-advertisement-signage/",
+      "purpose": "Verify the six FCT Area Council names and terminology.",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "organization": "Independent National Electoral Commission",
+      "title": "Electoral Constituencies of the Federation",
+      "url": "https://www.inecnigeria.org/electoral-constituencies-of-the-federation/",
+      "purpose": "Cross-verify state and FCT administrative naming and coverage.",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "organization": "National Bureau of Statistics",
+      "title": "Nigeria - National Longitudinal Phone Survey 2021-2022",
+      "url": "https://microdata.nigerianstat.gov.ng/index.php/catalog/70/variable/F23/V987?name=lga",
+      "purpose": "Cross-verify local-government-area naming and national coverage.",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "verified_at": "2026-08-28"
+}

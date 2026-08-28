@@ -8,14 +8,17 @@ This directory contains independently compiled dataset packages, JSON Schemas an
 datasets/
 ├── geography/
 │   ├── geopolitical_zones.json
+│   ├── lgas.json
 │   └── states.json
 ├── metadata/
 │   └── geography/
 │       ├── geopolitical_zones.json
+│       ├── lgas.json
 │       └── states.json
 ├── schemas/
 │   └── geography/
 │       ├── geopolitical_zones.schema.json
+│       ├── lgas.schema.json
 │       └── states.schema.json
 └── LICENSE.md
 ```
@@ -23,10 +26,13 @@ datasets/
 ## What Each File Is For
 
 - `geography/geopolitical_zones.json` is the six-zone catalogue.
+- `geography/lgas.json` is the compiled catalogue of Local Government Areas and FCT Area Councils.
 - `geography/states.json` is the data file.
 - `schemas/geography/geopolitical_zones.schema.json` describes the zone record contract.
+- `schemas/geography/lgas.schema.json` describes the LGA and Area Council record contract.
 - `schemas/geography/states.schema.json` describes the record contract.
 - `metadata/geography/geopolitical_zones.json` records provenance, versioning and licensing details for the zone catalogue.
+- `metadata/geography/lgas.json` records provenance, versioning and licensing details for the LGA catalogue.
 - `metadata/geography/states.json` records provenance, versioning and licensing details.
 - `LICENSE.md` explains the dataset-content licence.
 
