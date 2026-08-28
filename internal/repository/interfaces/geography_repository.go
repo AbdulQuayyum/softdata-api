@@ -10,4 +10,6 @@ import (
 type GeographyRepository interface {
 	ListStates(ctx context.Context) ([]models.State, error)
 	GetStateByID(ctx context.Context, stateID string) (models.State, error)
+	ListGeopoliticalZones(ctx context.Context) ([]models.GeopoliticalZone, error)
+	GetGeopoliticalZone(ctx context.Context, zoneID string) (models.GeopoliticalZone, error)
 }

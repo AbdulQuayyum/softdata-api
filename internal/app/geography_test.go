@@ -53,6 +53,14 @@ func (s *geographyRepoStub) GetStateByID(context.Context, string) (models.State,
 	return models.State{}, nil
 }
 
+func (s *geographyRepoStub) ListGeopoliticalZones(context.Context) ([]models.GeopoliticalZone, error) {
+	return nil, nil
+}
+
+func (s *geographyRepoStub) GetGeopoliticalZone(context.Context, string) (models.GeopoliticalZone, error) {
+	return models.GeopoliticalZone{}, nil
+}
+
 func validGeographyStatesFixture() []models.State {
 	states := make([]models.State, 0, 37)
 	for i := 1; i <= 36; i++ {
@@ -138,6 +146,13 @@ func TestBuildGeographyHandlerValidFixturePassesStartupVerification(t *testing.T
 		t.Fatalf("ReadFile() error = %v", err)
 	}
 	if err := os.WriteFile(filepath.Join(root, "geography", "states.json"), data, 0o600); err != nil {
+		t.Fatalf("WriteFile() error = %v", err)
+	}
+	zones, err := os.ReadFile(filepath.Clean("../../datasets/geography/geopolitical_zones.json"))
+	if err != nil {
+		t.Fatalf("ReadFile() error = %v", err)
+	}
+	if err := os.WriteFile(filepath.Join(root, "geography", "geopolitical_zones.json"), zones, 0o600); err != nil {
 		t.Fatalf("WriteFile() error = %v", err)
 	}
 
@@ -262,12 +277,19 @@ func TestBuildGeographyHandlerRejectsWrongRecordCount(t *testing.T) {
 	if err != nil {
 		t.Fatalf("ReadFile() error = %v", err)
 	}
+	zones, err := os.ReadFile(filepath.Clean("../../datasets/geography/geopolitical_zones.json"))
+	if err != nil {
+		t.Fatalf("ReadFile() error = %v", err)
+	}
 	var states []map[string]any
 	if err := json.Unmarshal(data, &states); err != nil {
 		t.Fatalf("json.Unmarshal() error = %v", err)
 	}
 	if err := writeStatesFixture(filepath.Join(root, "geography", "states.json"), states[:36]); err != nil {
 		t.Fatalf("writeStatesFixture() error = %v", err)
+	}
+	if err := os.WriteFile(filepath.Join(root, "geography", "geopolitical_zones.json"), zones, 0o600); err != nil {
+		t.Fatalf("WriteFile() error = %v", err)
 	}
 
 	cfg := &config.Config{Datasets: config.DatasetConfig{Path: root, JSONMaxBytes: int64(len(data)) + 1024}}
@@ -301,6 +323,10 @@ func TestBuildGeographyHandlerRejectsWrongFCTComposition(t *testing.T) {
 	if err != nil {
 		t.Fatalf("ReadFile() error = %v", err)
 	}
+	zones, err := os.ReadFile(filepath.Clean("../../datasets/geography/geopolitical_zones.json"))
+	if err != nil {
+		t.Fatalf("ReadFile() error = %v", err)
+	}
 	var states []map[string]any
 	if err := json.Unmarshal(data, &states); err != nil {
 		t.Fatalf("json.Unmarshal() error = %v", err)
@@ -313,6 +339,9 @@ func TestBuildGeographyHandlerRejectsWrongFCTComposition(t *testing.T) {
 	}
 	if err := writeStatesFixture(filepath.Join(root, "geography", "states.json"), states); err != nil {
 		t.Fatalf("writeStatesFixture() error = %v", err)
+	}
+	if err := os.WriteFile(filepath.Join(root, "geography", "geopolitical_zones.json"), zones, 0o600); err != nil {
+		t.Fatalf("WriteFile() error = %v", err)
 	}
 
 	cfg := &config.Config{Datasets: config.DatasetConfig{Path: root, JSONMaxBytes: int64(len(data)) + 1024}}

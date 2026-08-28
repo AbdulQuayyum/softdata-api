@@ -19,6 +19,7 @@ import (
 
 type geographyJSONRepoStub struct {
 	states   []models.State
+	zones    []models.GeopoliticalZone
 	decodeFn func(context.Context, string, any) error
 
 	calls    int
@@ -33,10 +34,15 @@ func (s *geographyJSONRepoStub) Decode(ctx context.Context, relativePath string,
 	}
 
 	dest, ok := destination.(*[]models.State)
+	if ok {
+		*dest = cloneTestStates(s.states)
+		return nil
+	}
+	zoneDest, ok := destination.(*[]models.GeopoliticalZone)
 	if !ok {
 		return fmt.Errorf("unexpected destination %T", destination)
 	}
-	*dest = cloneTestStates(s.states)
+	*zoneDest = cloneTestZones(s.zones)
 	return nil
 }
 
@@ -66,7 +72,8 @@ func TestGeographyRepositoryListStatesAndGetStateByID(t *testing.T) {
 	t.Parallel()
 
 	fixture := loadApprovedStateFixture(t)
-	jsonRepo := &geographyJSONRepoStub{states: fixture}
+	zones := loadApprovedZoneFixture(t)
+	jsonRepo := &geographyJSONRepoStub{states: fixture, zones: zones}
 	repo, err := NewGeographyRepository(jsonRepo, "geography/states.json")
 	if err != nil {
 		t.Fatalf("NewGeographyRepository() error = %v", err)
@@ -76,7 +83,7 @@ func TestGeographyRepositoryListStatesAndGetStateByID(t *testing.T) {
 	if err != nil {
 		t.Fatalf("ListStates() error = %v", err)
 	}
-	if jsonRepo.calls != 1 {
+	if jsonRepo.calls != 2 {
 		t.Fatalf("unexpected decode call count: %d", jsonRepo.calls)
 	}
 	if states == nil {
@@ -136,6 +143,56 @@ func TestGeographyRepositoryListStatesAndGetStateByID(t *testing.T) {
 	}
 }
 
+func TestGeographyRepositoryListGeopoliticalZonesAndGetGeopoliticalZone(t *testing.T) {
+	t.Parallel()
+
+	states := loadApprovedStateFixture(t)
+	zones := loadApprovedZoneFixture(t)
+	jsonRepo := &geographyJSONRepoStub{states: states, zones: zones}
+	repo, err := NewGeographyRepository(jsonRepo, "geography/states.json")
+	if err != nil {
+		t.Fatalf("NewGeographyRepository() error = %v", err)
+	}
+
+	loaded, err := repo.ListGeopoliticalZones(context.Background())
+	if err != nil {
+		t.Fatalf("ListGeopoliticalZones() error = %v", err)
+	}
+	if len(loaded) != 6 {
+		t.Fatalf("unexpected zone count: %d", len(loaded))
+	}
+	if !reflect.DeepEqual(loaded, zones) {
+		t.Fatalf("unexpected zone list: %#v", loaded)
+	}
+	if jsonRepo.calls != 2 {
+		t.Fatalf("unexpected decode call count: %d", jsonRepo.calls)
+	}
+
+	loaded[0].Name = "Changed"
+	again, err := repo.ListGeopoliticalZones(context.Background())
+	if err != nil {
+		t.Fatalf("ListGeopoliticalZones() second call error = %v", err)
+	}
+	if again[0].Name != zones[0].Name {
+		t.Fatal("ListGeopoliticalZones() shared mutable slice state")
+	}
+
+	northCentral, err := repo.GetGeopoliticalZone(context.Background(), "north-central")
+	if err != nil {
+		t.Fatalf("GetGeopoliticalZone(north-central) error = %v", err)
+	}
+	if northCentral.ID != "north-central" || northCentral.Name != "North Central" {
+		t.Fatalf("unexpected North Central record: %#v", northCentral)
+	}
+
+	if _, err := repo.GetGeopoliticalZone(context.Background(), "North Central"); !errors.Is(err, interfaces.ErrGeopoliticalZoneNotFound) {
+		t.Fatalf("uppercase zone identifier error = %v, want ErrGeopoliticalZoneNotFound", err)
+	}
+	if _, err := repo.GetGeopoliticalZone(context.Background(), "missing"); !errors.Is(err, interfaces.ErrGeopoliticalZoneNotFound) {
+		t.Fatalf("missing zone identifier error = %v, want ErrGeopoliticalZoneNotFound", err)
+	}
+}
+
 func TestGeographyRepositoryRejectsNilAndEmptyDecodedSlices(t *testing.T) {
 	t.Parallel()
 
@@ -146,16 +203,28 @@ func TestGeographyRepositoryRejectsNilAndEmptyDecodedSlices(t *testing.T) {
 		{
 			name: "nil decoded slice",
 			repo: newGeographyRepoWithDecodeFn(t, func(_ context.Context, _ string, destination any) error {
-				dest := destination.(*[]models.State)
-				*dest = nil
+				switch dest := destination.(type) {
+				case *[]models.State:
+					*dest = nil
+				case *[]models.GeopoliticalZone:
+					*dest = nil
+				default:
+					return fmt.Errorf("unexpected destination %T", destination)
+				}
 				return nil
 			}),
 		},
 		{
 			name: "empty decoded slice",
 			repo: newGeographyRepoWithDecodeFn(t, func(_ context.Context, _ string, destination any) error {
-				dest := destination.(*[]models.State)
-				*dest = make([]models.State, 0)
+				switch dest := destination.(type) {
+				case *[]models.State:
+					*dest = make([]models.State, 0)
+				case *[]models.GeopoliticalZone:
+					*dest = make([]models.GeopoliticalZone, 0)
+				default:
+					return fmt.Errorf("unexpected destination %T", destination)
+				}
 				return nil
 			}),
 		},
@@ -178,12 +247,14 @@ func TestGeographyRepositoryContextAndDecodeErrors(t *testing.T) {
 	t.Parallel()
 
 	fixture := loadApprovedStateFixture(t)
+	zones := loadApprovedZoneFixture(t)
 
 	t.Run("canceled", func(t *testing.T) {
 		ctx, cancel := context.WithCancel(context.Background())
 		cancel()
 		stub := &geographyJSONRepoStub{
 			states: fixture,
+			zones:  zones,
 			decodeFn: func(context.Context, string, any) error {
 				t.Fatal("decode should not be called for canceled context")
 				return nil
@@ -203,6 +274,7 @@ func TestGeographyRepositoryContextAndDecodeErrors(t *testing.T) {
 		defer cancel()
 		stub := &geographyJSONRepoStub{
 			states: fixture,
+			zones:  zones,
 			decodeFn: func(context.Context, string, any) error {
 				t.Fatal("decode should not be called for expired deadline")
 				return nil
@@ -478,7 +550,7 @@ func newGeographyRepoForError(t *testing.T, decodeErr error) *GeographyFileRepos
 func newGeographyRepoWithStates(t *testing.T, states []models.State) *GeographyFileRepository {
 	t.Helper()
 
-	repo, err := NewGeographyRepository(&geographyJSONRepoStub{states: states}, "geography/states.json")
+	repo, err := NewGeographyRepository(&geographyJSONRepoStub{states: states, zones: loadApprovedZoneFixture(t)}, "geography/states.json")
 	if err != nil {
 		t.Fatalf("NewGeographyRepository() error = %v", err)
 	}
@@ -517,11 +589,42 @@ func loadApprovedStateFixture(t *testing.T) []models.State {
 	return states
 }
 
+func loadApprovedZoneFixture(t *testing.T) []models.GeopoliticalZone {
+	t.Helper()
+
+	path := filepath.Clean("../../../datasets/geography/geopolitical_zones.json")
+	data, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatalf("read geopolitical zones fixture: %v", err)
+	}
+
+	dec := json.NewDecoder(bytes.NewReader(data))
+	dec.DisallowUnknownFields()
+
+	var zones []models.GeopoliticalZone
+	if err := dec.Decode(&zones); err != nil {
+		t.Fatalf("decode geopolitical zones fixture: %v", err)
+	}
+	if err := dec.Decode(new(any)); err == nil {
+		t.Fatal("zone fixture contains trailing json")
+	}
+	return zones
+}
+
 func cloneTestStates(states []models.State) []models.State {
 	if len(states) == 0 {
 		return make([]models.State, 0)
 	}
 	cloned := make([]models.State, len(states))
 	copy(cloned, states)
+	return cloned
+}
+
+func cloneTestZones(zones []models.GeopoliticalZone) []models.GeopoliticalZone {
+	if len(zones) == 0 {
+		return make([]models.GeopoliticalZone, 0)
+	}
+	cloned := make([]models.GeopoliticalZone, len(zones))
+	copy(cloned, zones)
 	return cloned
 }

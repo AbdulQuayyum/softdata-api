@@ -37,6 +37,18 @@ func (s *GeographyService) ListStates(ctx context.Context) ([]models.State, erro
 	return cloneStateList(states), nil
 }
 
+func (s *GeographyService) ListGeopoliticalZones(ctx context.Context) ([]models.GeopoliticalZone, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+
+	zones, err := s.repository.ListGeopoliticalZones(ctx)
+	if err != nil {
+		return nil, translateGeographyServiceError("list geopolitical zones", err)
+	}
+	return cloneGeopoliticalZoneList(zones), nil
+}
+
 func (s *GeographyService) GetState(ctx context.Context, stateID string) (models.State, error) {
 	if err := ctx.Err(); err != nil {
 		return models.State{}, err
@@ -54,12 +66,38 @@ func (s *GeographyService) GetState(ctx context.Context, stateID string) (models
 	return state, nil
 }
 
+func (s *GeographyService) GetGeopoliticalZone(ctx context.Context, zoneID string) (models.GeopoliticalZone, error) {
+	if err := ctx.Err(); err != nil {
+		return models.GeopoliticalZone{}, err
+	}
+
+	zoneID = strings.TrimSpace(zoneID)
+	if zoneID == "" || !geographyStateIDPattern.MatchString(zoneID) {
+		return models.GeopoliticalZone{}, ErrInvalidGeopoliticalZoneID
+	}
+
+	zone, err := s.repository.GetGeopoliticalZone(ctx, zoneID)
+	if err != nil {
+		return models.GeopoliticalZone{}, translateGeographyZoneLookupError(err)
+	}
+	return zone, nil
+}
+
 func cloneStateList(states []models.State) []models.State {
 	if len(states) == 0 {
 		return make([]models.State, 0)
 	}
 	cloned := make([]models.State, len(states))
 	copy(cloned, states)
+	return cloned
+}
+
+func cloneGeopoliticalZoneList(zones []models.GeopoliticalZone) []models.GeopoliticalZone {
+	if len(zones) == 0 {
+		return make([]models.GeopoliticalZone, 0)
+	}
+	cloned := make([]models.GeopoliticalZone, len(zones))
+	copy(cloned, zones)
 	return cloned
 }
 
@@ -75,6 +113,21 @@ func translateGeographyServiceLookupError(err error) error {
 		return fmt.Errorf("get state: repository unavailable")
 	default:
 		return fmt.Errorf("get state: repository unavailable")
+	}
+}
+
+func translateGeographyZoneLookupError(err error) error {
+	switch {
+	case err == nil:
+		return nil
+	case errors.Is(err, context.Canceled), errors.Is(err, context.DeadlineExceeded):
+		return err
+	case errors.Is(err, interfaces.ErrGeopoliticalZoneNotFound):
+		return ErrGeopoliticalZoneNotFound
+	case errors.Is(err, interfaces.ErrInvalidDatasetFile):
+		return fmt.Errorf("get geopolitical zone: repository unavailable")
+	default:
+		return fmt.Errorf("get geopolitical zone: repository unavailable")
 	}
 }
 

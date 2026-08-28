@@ -14,12 +14,18 @@ import (
 )
 
 type geographyRepoStub struct {
-	states    []models.State
-	listErr   error
-	getErr    error
-	listCalls int
-	getCalls  int
-	lastID    string
+	states        []models.State
+	zones         []models.GeopoliticalZone
+	listErr       error
+	getErr        error
+	zoneListErr   error
+	zoneGetErr    error
+	listCalls     int
+	getCalls      int
+	zoneListCalls int
+	zoneGetCalls  int
+	lastID        string
+	lastZoneID    string
 }
 
 func (s *geographyRepoStub) ListStates(context.Context) ([]models.State, error) {
@@ -42,6 +48,28 @@ func (s *geographyRepoStub) GetStateByID(_ context.Context, stateID string) (mod
 		}
 	}
 	return models.State{}, interfaces.ErrStateNotFound
+}
+
+func (s *geographyRepoStub) ListGeopoliticalZones(context.Context) ([]models.GeopoliticalZone, error) {
+	s.zoneListCalls++
+	if s.zoneListErr != nil {
+		return nil, s.zoneListErr
+	}
+	return cloneServiceZones(s.zones), nil
+}
+
+func (s *geographyRepoStub) GetGeopoliticalZone(_ context.Context, zoneID string) (models.GeopoliticalZone, error) {
+	s.zoneGetCalls++
+	s.lastZoneID = zoneID
+	if s.zoneGetErr != nil {
+		return models.GeopoliticalZone{}, s.zoneGetErr
+	}
+	for _, zone := range s.zones {
+		if zone.ID == zoneID {
+			return zone, nil
+		}
+	}
+	return models.GeopoliticalZone{}, interfaces.ErrGeopoliticalZoneNotFound
 }
 
 func TestNewGeographyServiceRejectsNilRepository(t *testing.T) {
@@ -158,6 +186,114 @@ func TestGeographyServiceGetState(t *testing.T) {
 	}
 }
 
+func TestGeographyServiceListGeopoliticalZones(t *testing.T) {
+	t.Parallel()
+
+	stub := &geographyRepoStub{zones: loadServiceGeopoliticalZoneFixture(t)}
+	svc, err := NewGeographyService(stub)
+	if err != nil {
+		t.Fatalf("NewGeographyService() error = %v", err)
+	}
+
+	zones, err := svc.ListGeopoliticalZones(context.Background())
+	if err != nil {
+		t.Fatalf("ListGeopoliticalZones() error = %v", err)
+	}
+	if stub.zoneListCalls != 1 {
+		t.Fatalf("unexpected zone list call count: %d", stub.zoneListCalls)
+	}
+	if len(zones) != 6 {
+		t.Fatalf("unexpected zone count: %d", len(zones))
+	}
+	zones[0].Name = "Changed"
+	again, err := svc.ListGeopoliticalZones(context.Background())
+	if err != nil {
+		t.Fatalf("ListGeopoliticalZones() second call error = %v", err)
+	}
+	if again[0].Name != "North Central" {
+		t.Fatal("ListGeopoliticalZones() exposed shared mutable slice state")
+	}
+}
+
+func TestGeographyServiceGetGeopoliticalZone(t *testing.T) {
+	t.Parallel()
+
+	stub := &geographyRepoStub{zones: loadServiceGeopoliticalZoneFixture(t)}
+	svc, err := NewGeographyService(stub)
+	if err != nil {
+		t.Fatalf("NewGeographyService() error = %v", err)
+	}
+
+	zone, err := svc.GetGeopoliticalZone(context.Background(), "  north-central  ")
+	if err != nil {
+		t.Fatalf("GetGeopoliticalZone() error = %v", err)
+	}
+	if stub.zoneGetCalls != 1 {
+		t.Fatalf("unexpected zone get call count: %d", stub.zoneGetCalls)
+	}
+	if stub.lastZoneID != "north-central" {
+		t.Fatalf("unexpected zone lookup id: %q", stub.lastZoneID)
+	}
+	if zone.ID != "north-central" || zone.Name != "North Central" {
+		t.Fatalf("unexpected zone response: %#v", zone)
+	}
+}
+
+func TestGeographyServiceRejectsInvalidGeopoliticalZoneIdentifiers(t *testing.T) {
+	t.Parallel()
+
+	stub := &geographyRepoStub{zones: loadServiceGeopoliticalZoneFixture(t)}
+	svc, err := NewGeographyService(stub)
+	if err != nil {
+		t.Fatalf("NewGeographyService() error = %v", err)
+	}
+
+	for _, tc := range []struct {
+		name  string
+		value string
+	}{
+		{name: "empty", value: ""},
+		{name: "uppercase", value: "North Central"},
+		{name: "malformed", value: "../north-central"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			stub.zoneGetCalls = 0
+			_, err := svc.GetGeopoliticalZone(context.Background(), tc.value)
+			if !errors.Is(err, ErrInvalidGeopoliticalZoneID) {
+				t.Fatalf("GetGeopoliticalZone() error = %v, want ErrInvalidGeopoliticalZoneID", err)
+			}
+			if stub.zoneGetCalls != 0 {
+				t.Fatalf("repository should not have been called, got %d", stub.zoneGetCalls)
+			}
+		})
+	}
+}
+
+func TestGeographyServiceMissingGeopoliticalZoneAndUnexpectedErrors(t *testing.T) {
+	t.Parallel()
+
+	stub := &geographyRepoStub{zones: loadServiceGeopoliticalZoneFixture(t)}
+	svc, err := NewGeographyService(stub)
+	if err != nil {
+		t.Fatalf("NewGeographyService() error = %v", err)
+	}
+
+	stub.zoneGetErr = interfaces.ErrGeopoliticalZoneNotFound
+	if _, err := svc.GetGeopoliticalZone(context.Background(), "missing"); !errors.Is(err, ErrGeopoliticalZoneNotFound) {
+		t.Fatalf("missing zone error = %v, want ErrGeopoliticalZoneNotFound", err)
+	}
+
+	stub.zoneGetErr = errors.New("boom")
+	if _, err := svc.GetGeopoliticalZone(context.Background(), "north-central"); err == nil || strings.Contains(err.Error(), "boom") {
+		t.Fatalf("unexpected repository error was not sanitized: %v", err)
+	}
+
+	stub.zoneListErr = errors.New("explode")
+	if _, err := svc.ListGeopoliticalZones(context.Background()); err == nil || strings.Contains(err.Error(), "explode") {
+		t.Fatalf("unexpected zone list error was not sanitized: %v", err)
+	}
+}
+
 func TestGeographyServiceRejectsInvalidIdentifiers(t *testing.T) {
 	t.Parallel()
 
@@ -250,6 +386,15 @@ func cloneServiceStates(states []models.State) []models.State {
 	return cloned
 }
 
+func cloneServiceZones(zones []models.GeopoliticalZone) []models.GeopoliticalZone {
+	if len(zones) == 0 {
+		return make([]models.GeopoliticalZone, 0)
+	}
+	cloned := make([]models.GeopoliticalZone, len(zones))
+	copy(cloned, zones)
+	return cloned
+}
+
 func loadServiceStateFixture(t *testing.T) []models.State {
 	t.Helper()
 
@@ -263,4 +408,25 @@ func loadServiceStateFixture(t *testing.T) []models.State {
 		t.Fatalf("decode states fixture: %v", err)
 	}
 	return states
+}
+
+func loadServiceGeopoliticalZoneFixture(t *testing.T) []models.GeopoliticalZone {
+	t.Helper()
+
+	data, err := os.ReadFile("../../datasets/geography/geopolitical_zones.json")
+	if err != nil {
+		t.Fatalf("read geopolitical zones fixture: %v", err)
+	}
+
+	dec := json.NewDecoder(strings.NewReader(string(data)))
+	dec.DisallowUnknownFields()
+
+	var zones []models.GeopoliticalZone
+	if err := dec.Decode(&zones); err != nil {
+		t.Fatalf("decode geopolitical zones fixture: %v", err)
+	}
+	if err := dec.Decode(new(any)); err == nil {
+		t.Fatal("zone fixture contains trailing json")
+	}
+	return zones
 }
