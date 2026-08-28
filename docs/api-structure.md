@@ -16,6 +16,8 @@ SoftData API uses a layered Go layout that keeps entry points, configuration, da
 softdata-api/
 ├── .air.toml
 ├── .env.example
+├── .gitignore
+├── api
 ├── CHANGELOG.md
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
@@ -24,13 +26,11 @@ softdata-api/
 ├── Makefile
 ├── README.md
 ├── SECURITY.md
-├── api
-├── .gitignore
-├── cmd/
-│   └── api/
+├── cmd
+│   └── api
 │       └── main.go
-├── database/
-│   ├── migrations/
+├── database
+│   ├── migrations
 │   │   ├── 000001_create_accounts.down.sql
 │   │   ├── 000001_create_accounts.up.sql
 │   │   ├── 000002_create_sessions.down.sql
@@ -49,13 +49,24 @@ softdata-api/
 │   │   ├── 000008_create_dataset_versions.up.sql
 │   │   ├── 000009_add_api_request_dataset_group.down.sql
 │   │   └── 000009_add_api_request_dataset_group.up.sql
-│   └── queries/
+│   └── queries
 │       ├── accounts.sql
 │       ├── api_keys.sql
 │       ├── datasets.sql
 │       ├── sessions.sql
 │       └── usage.sql
-├── docs/
+├── datasets
+│   ├── geography
+│   │   └── states.json
+│   ├── LICENSE.md
+│   ├── metadata
+│   │   └── geography
+│   │       └── states.json
+│   ├── README.md
+│   └── schemas
+│       └── geography
+│           └── states.schema.json
+├── docs
 │   ├── api-keys.md
 │   ├── api-structure.md
 │   ├── authentication.md
@@ -67,8 +78,14 @@ softdata-api/
 │   └── versioning.md
 ├── go.mod
 ├── go.sum
-├── internal/
-│   ├── config/
+├── internal
+│   ├── app
+│   │   ├── app.go
+│   │   ├── app_test.go
+│   │   ├── dependencies.go
+│   │   ├── geography_test.go
+│   │   └── shutdown.go
+│   ├── config
 │   │   ├── config.go
 │   │   ├── config_test.go
 │   │   ├── database.go
@@ -78,11 +95,11 @@ softdata-api/
 │   │   ├── security.go
 │   │   ├── server.go
 │   │   └── usage.go
-│   ├── database/
+│   ├── database
 │   │   ├── health.go
 │   │   ├── postgres.go
 │   │   ├── postgres_test.go
-│   │   └── sqlc/
+│   │   └── sqlc
 │   │       ├── accounts.sql.go
 │   │       ├── api_keys.sql.go
 │   │       ├── datasets.sql.go
@@ -92,18 +109,24 @@ softdata-api/
 │   │       ├── sessions.sql.go
 │   │       ├── sessions_rotation_test.go
 │   │       └── usage.sql.go
-│   ├── handlers/
+│   ├── handlers
 │   │   ├── account_handler.go
 │   │   ├── account_handler_test.go
 │   │   ├── api_key_handler.go
 │   │   ├── api_key_handler_test.go
 │   │   ├── auth_handler.go
 │   │   ├── auth_handler_test.go
+│   │   ├── dataset_handler.go
+│   │   ├── dataset_handler_test.go
 │   │   ├── discovery_handler.go
 │   │   ├── discovery_handler_test.go
+│   │   ├── geography_handler.go
+│   │   ├── geography_handler_test.go
 │   │   ├── health_handler.go
-│   │   └── health_handler_test.go
-│   ├── middlewares/
+│   │   ├── health_handler_test.go
+│   │   ├── usage_handler.go
+│   │   └── usage_handler_test.go
+│   ├── middlewares
 │   │   ├── authentication.go
 │   │   ├── authentication_test.go
 │   │   ├── body_limit.go
@@ -128,7 +151,7 @@ softdata-api/
 │   │   ├── timeout_test.go
 │   │   ├── usage_tracking.go
 │   │   └── usage_tracking_test.go
-│   ├── models/
+│   ├── models
 │   │   ├── account.go
 │   │   ├── api_key.go
 │   │   ├── api_request.go
@@ -137,32 +160,37 @@ softdata-api/
 │   │   ├── dataset_public_test.go
 │   │   ├── dataset_source.go
 │   │   ├── dataset_version.go
+│   │   ├── geography.go
+│   │   ├── geography_test.go
 │   │   ├── session.go
 │   │   ├── usage_summary.go
 │   │   └── usage_summary_test.go
-│   ├── redis/
+│   ├── redis
 │   │   ├── client.go
 │   │   └── client_test.go
-│   ├── repository/
-│   │   ├── file/
+│   ├── repository
+│   │   ├── file
 │   │   │   ├── csv_repository.go
 │   │   │   ├── csv_repository_test.go
+│   │   │   ├── geography_repository.go
+│   │   │   ├── geography_repository_test.go
 │   │   │   ├── geojson_repository.go
 │   │   │   ├── geojson_repository_test.go
 │   │   │   ├── json_repository.go
 │   │   │   ├── json_repository_test.go
 │   │   │   ├── store.go
 │   │   │   └── store_test.go
-│   │   ├── interfaces/
+│   │   ├── interfaces
 │   │   │   ├── account_repository.go
 │   │   │   ├── api_key_repository.go
 │   │   │   ├── dataset_repository.go
 │   │   │   ├── errors.go
 │   │   │   ├── file_repository.go
+│   │   │   ├── geography_repository.go
 │   │   │   ├── rate_limit_repository.go
 │   │   │   ├── session_repository.go
 │   │   │   └── usage_repository.go
-│   │   ├── postgres/
+│   │   ├── postgres
 │   │   │   ├── account_repository.go
 │   │   │   ├── api_key_repository.go
 │   │   │   ├── dataset_repository.go
@@ -172,23 +200,37 @@ softdata-api/
 │   │   │   ├── session_repository.go
 │   │   │   ├── usage_repository.go
 │   │   │   └── usage_repository_test.go
-│   │   └── redis/
+│   │   └── redis
 │   │       ├── rate_limit_repository.go
 │   │       └── rate_limit_repository_test.go
-│   ├── response/
+│   ├── response
 │   │   ├── errors.go
 │   │   ├── errors_test.go
 │   │   ├── pagination.go
 │   │   ├── response.go
 │   │   └── response_test.go
-│   ├── security/
+│   ├── router
+│   │   ├── account_routes.go
+│   │   ├── account_routes_test.go
+│   │   ├── auth_routes.go
+│   │   ├── auth_routes_test.go
+│   │   ├── dataset_routes.go
+│   │   ├── dataset_routes_test.go
+│   │   ├── http_router.go
+│   │   ├── http_router_test.go
+│   │   ├── public_routes.go
+│   │   ├── public_routes_test.go
+│   │   ├── route_catalog.go
+│   │   ├── router.go
+│   │   └── router_test.go
+│   ├── security
 │   │   ├── anonymous_id.go
 │   │   ├── api_key.go
 │   │   ├── password.go
 │   │   ├── random.go
 │   │   ├── security_test.go
 │   │   └── token.go
-│   ├── services/
+│   ├── services
 │   │   ├── account_service.go
 │   │   ├── account_service_test.go
 │   │   ├── api_key_service.go
@@ -198,9 +240,11 @@ softdata-api/
 │   │   ├── dataset_service.go
 │   │   ├── dataset_service_test.go
 │   │   ├── errors.go
+│   │   ├── geography_service.go
+│   │   ├── geography_service_test.go
 │   │   ├── usage_service.go
 │   │   └── usage_service_test.go
-│   └── validators/
+│   └── validators
 │       ├── account_validator.go
 │       ├── account_validator_test.go
 │       ├── api_key_validator.go
@@ -209,10 +253,12 @@ softdata-api/
 │       ├── auth_validator_test.go
 │       ├── dataset_validator.go
 │       ├── dataset_validator_test.go
+│       ├── geography_validator.go
+│       ├── geography_validator_test.go
 │       ├── query_validator.go
 │       └── query_validator_test.go
 ├── sqlc.yaml
-└── tmp/
+└── tmp
     ├── build-errors.log
     └── main
 ```
