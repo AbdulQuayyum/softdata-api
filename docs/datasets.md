@@ -12,6 +12,14 @@ SoftData organizes public data into a small set of dataset groups with consisten
 - Infrastructure
 - Statistics
 
+## Published Datasets
+
+The first published geography package is `ng-states`, covering Nigeria's 36 states and the Federal Capital Territory.
+
+- Data: `datasets/geography/states.json`
+- Schema: `datasets/schemas/geography/states.schema.json`
+- Metadata: `datasets/metadata/geography/states.json`
+
 ## Dataset Principles
 
 - Every dataset should have a stable identifier.

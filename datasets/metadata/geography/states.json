@@ -1,0 +1,53 @@
+{
+  "dataset_key": "ng-states",
+  "title": "Nigeria States and Federal Capital Territory",
+  "description": "Independently compiled factual administrative reference data for Nigeria's 36 states and the Federal Capital Territory.",
+  "country_code": "NG",
+  "dataset_group": "geography",
+  "format": "json",
+  "relative_path": "geography/states.json",
+  "schema_path": "schemas/geography/states.schema.json",
+  "record_count": 37,
+  "version": "1.0.0",
+  "license_id": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "methodology": "independently compiled and cross-verified factual administrative reference data",
+  "sources": [
+    {
+      "organization": "Independent National Electoral Commission",
+      "title": "Electoral Constituencies of the Federation",
+      "url": "https://www.inecnigeria.org/electoral-constituencies-of-the-federation/",
+      "purpose": "Verify administrative names and national coverage.",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "organization": "Independent National Electoral Commission",
+      "title": "The Commission",
+      "url": "https://inecnigeria.org/the-commission/",
+      "purpose": "Verify the 36 states, the Federal Capital Territory, and national administrative coverage.",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "organization": "National Bureau of Statistics",
+      "title": "Catalog 55",
+      "url": "https://microdata.nigerianstat.gov.ng/index.php/catalog/55",
+      "purpose": "Cross-check geopolitical-zone membership, especially North East, North Central, and South South.",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "organization": "National Youth Service Corps",
+      "title": "Secretariat",
+      "url": "https://www.nysc.gov.ng/secretariat.html",
+      "purpose": "Cross-check state and FCT capital locations using a federal directory.",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "organization": "National Population Commission",
+      "title": "Our Offices",
+      "url": "https://nationalpopulation.gov.ng/our-offices",
+      "purpose": "Cross-check state and FCT capital locations using a second federal directory.",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "verified_at": "2026-08-28"
+}
