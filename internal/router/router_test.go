@@ -551,6 +551,31 @@ func TestRouterUsesGeographyMiddlewarePolicy(t *testing.T) {
 		}
 	})
 
+	t.Run("rate limited", func(t *testing.T) {
+		harness := newGeographyPolicyRouter(t)
+		harness.rateLimit.result = interfaces.RateLimitResult{
+			Allowed:   false,
+			Limit:     60,
+			Remaining: 0,
+			ResetAt:   time.Now().UTC().Add(time.Minute),
+		}
+
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/states", nil)
+		req.RemoteAddr = "203.0.113.10:1234"
+		harness.router.ServeHTTP(rr, req)
+
+		if rr.Code != http.StatusTooManyRequests {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if harness.geography.listCalls != 0 {
+			t.Fatalf("handler should not run on rate-limited request: %d", harness.geography.listCalls)
+		}
+		if harness.usage.calls != 0 {
+			t.Fatalf("usage should not run on rate-limited request: %d", harness.usage.calls)
+		}
+	})
+
 	t.Run("invalid key", func(t *testing.T) {
 		harness.auth.err = services.ErrAPIKeyNotFound
 		rr := httptest.NewRecorder()
@@ -573,12 +598,12 @@ func TestRouterUsesGeographyMiddlewarePolicy(t *testing.T) {
 }
 
 type geographyPolicyHarness struct {
-	router     http.Handler
-	auth       *routerAPIKeyAuthenticatorStub
-	rateLimit  *routerRateLimitRepoStub
-	usage      *routerUsageRecorderStub
-	geography  *routerGeographyStub
-	anonymous  *routerAnonymousIdentifierStub
+	router    http.Handler
+	auth      *routerAPIKeyAuthenticatorStub
+	rateLimit *routerRateLimitRepoStub
+	usage     *routerUsageRecorderStub
+	geography *routerGeographyStub
+	anonymous *routerAnonymousIdentifierStub
 }
 
 func newGeographyPolicyRouter(t *testing.T) geographyPolicyHarness {

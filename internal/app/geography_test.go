@@ -2,10 +2,12 @@ package app
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
 	"os"
 	"path/filepath"
 	"strings"
+	"sync/atomic"
 	"testing"
 
 	"github.com/AbdulQuayyum/softdata-api/internal/config"
@@ -172,7 +174,7 @@ func TestBuildGeographyHandlerFailsSafelyForInvalidDatasets(t *testing.T) {
 	t.Parallel()
 
 	tests := []struct {
-		name string
+		name  string
 		setup func(string) (config.DatasetConfig, error)
 	}{
 		{
@@ -249,6 +251,108 @@ func TestBuildGeographyHandlerFailsSafelyForInvalidDatasets(t *testing.T) {
 	}
 }
 
+func TestBuildGeographyHandlerRejectsWrongRecordCount(t *testing.T) {
+	t.Parallel()
+
+	root := t.TempDir()
+	if err := os.MkdirAll(filepath.Join(root, "geography"), 0o755); err != nil {
+		t.Fatalf("MkdirAll() error = %v", err)
+	}
+	data, err := os.ReadFile(filepath.Clean("../../datasets/geography/states.json"))
+	if err != nil {
+		t.Fatalf("ReadFile() error = %v", err)
+	}
+	var states []map[string]any
+	if err := json.Unmarshal(data, &states); err != nil {
+		t.Fatalf("json.Unmarshal() error = %v", err)
+	}
+	if err := writeStatesFixture(filepath.Join(root, "geography", "states.json"), states[:36]); err != nil {
+		t.Fatalf("writeStatesFixture() error = %v", err)
+	}
+
+	cfg := &config.Config{Datasets: config.DatasetConfig{Path: root, JSONMaxBytes: int64(len(data)) + 1024}}
+	_, err = buildGeographyHandler(context.Background(), cfg,
+		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
+			return fileRepo.NewJSONRepository(root, maxBytes)
+		},
+		func(repository interfaces.JSONFileRepository, statesPath string) (interfaces.GeographyRepository, error) {
+			return fileRepo.NewGeographyRepository(repository, statesPath)
+		},
+		func(repository interfaces.GeographyRepository) (geographyService, error) {
+			return services.NewGeographyService(repository)
+		},
+		func(service geographyService) (*handlers.GeographyHandler, error) {
+			return handlers.NewGeographyHandler(service)
+		},
+	)
+	if err == nil {
+		t.Fatal("buildGeographyHandler() error = nil, want record-count failure")
+	}
+}
+
+func TestBuildGeographyHandlerRejectsWrongFCTComposition(t *testing.T) {
+	t.Parallel()
+
+	root := t.TempDir()
+	if err := os.MkdirAll(filepath.Join(root, "geography"), 0o755); err != nil {
+		t.Fatalf("MkdirAll() error = %v", err)
+	}
+	data, err := os.ReadFile(filepath.Clean("../../datasets/geography/states.json"))
+	if err != nil {
+		t.Fatalf("ReadFile() error = %v", err)
+	}
+	var states []map[string]any
+	if err := json.Unmarshal(data, &states); err != nil {
+		t.Fatalf("json.Unmarshal() error = %v", err)
+	}
+	for i := range states {
+		if states[i]["id"] == "fct" {
+			states[i]["id"] = "federal-capital-territory"
+			break
+		}
+	}
+	if err := writeStatesFixture(filepath.Join(root, "geography", "states.json"), states); err != nil {
+		t.Fatalf("writeStatesFixture() error = %v", err)
+	}
+
+	cfg := &config.Config{Datasets: config.DatasetConfig{Path: root, JSONMaxBytes: int64(len(data)) + 1024}}
+	_, err = buildGeographyHandler(context.Background(), cfg,
+		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
+			return fileRepo.NewJSONRepository(root, maxBytes)
+		},
+		func(repository interfaces.JSONFileRepository, statesPath string) (interfaces.GeographyRepository, error) {
+			return fileRepo.NewGeographyRepository(repository, statesPath)
+		},
+		func(repository interfaces.GeographyRepository) (geographyService, error) {
+			return services.NewGeographyService(repository)
+		},
+		func(service geographyService) (*handlers.GeographyHandler, error) {
+			return handlers.NewGeographyHandler(service)
+		},
+	)
+	if err == nil {
+		t.Fatal("buildGeographyHandler() error = nil, want composition failure")
+	}
+}
+
+func TestRunStartupCleanupClosesEachResourceOnce(t *testing.T) {
+	t.Parallel()
+
+	var postgresCalls atomic.Int32
+	var redisCalls atomic.Int32
+	err := errors.New("startup failure")
+	cleanup := []func(){
+		func() { postgresCalls.Add(1) },
+		func() { redisCalls.Add(1) },
+	}
+
+	runStartupCleanup(&err, cleanup)
+
+	if postgresCalls.Load() != 1 || redisCalls.Load() != 1 {
+		t.Fatalf("unexpected cleanup calls: postgres=%d redis=%d", postgresCalls.Load(), redisCalls.Load())
+	}
+}
+
 func TestBuildGeographyHandlerPropagatesContextCancellation(t *testing.T) {
 	t.Parallel()
 
@@ -278,4 +382,12 @@ func TestBuildGeographyHandlerPropagatesContextCancellation(t *testing.T) {
 	if !errors.Is(err, context.Canceled) {
 		t.Fatalf("buildGeographyHandler() error = %v, want context.Canceled", err)
 	}
+}
+
+func writeStatesFixture(path string, states []map[string]any) error {
+	data, err := json.Marshal(states)
+	if err != nil {
+		return err
+	}
+	return os.WriteFile(path, data, 0o600)
 }

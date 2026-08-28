@@ -26,7 +26,7 @@ import (
 )
 
 const (
-	defaultKeyPrefix = "softdata"
+	defaultKeyPrefix            = "softdata"
 	geographyStatesRelativePath = "geography/states.json"
 )
 
@@ -43,14 +43,7 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 
 	cleanup := make([]func(), 0, 2)
 	defer func() {
-		if err == nil {
-			return
-		}
-		for i := len(cleanup) - 1; i >= 0; i-- {
-			if cleanup[i] != nil {
-				cleanup[i]()
-			}
-		}
+		runStartupCleanup(&err, cleanup)
 	}()
 
 	pool, err := database.NewPostgres(ctx, cfg.Database)
@@ -256,6 +249,17 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 		closePostgres: pool.Close,
 	}
 	return deps, nil
+}
+
+func runStartupCleanup(err *error, cleanup []func()) {
+	if err == nil || *err == nil {
+		return
+	}
+	for i := len(cleanup) - 1; i >= 0; i-- {
+		if cleanup[i] != nil {
+			cleanup[i]()
+		}
+	}
 }
 
 type geographyService interface {
