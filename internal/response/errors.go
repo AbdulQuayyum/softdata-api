@@ -111,6 +111,8 @@ func mapError(err error) mappedError {
 		return mappedError{status: http.StatusUnauthorized, code: codeInvalidCredentials, message: messageInvalidCredentials}
 	case errors.Is(err, services.ErrInvalidDatasetKey), errors.Is(err, services.ErrInvalidPagination), errors.Is(err, services.ErrAPIKeyNameRequired), errors.Is(err, services.ErrInvalidUsagePeriod):
 		return mappedError{status: http.StatusBadRequest, code: codeInvalidRequest, message: messageInvalidRequest}
+	case errors.Is(err, services.ErrInvalidStateID):
+		return mappedError{status: http.StatusBadRequest, code: codeInvalidRequest, message: messageInvalidRequest}
 	case errors.Is(err, services.ErrDatasetNotFound), errors.Is(err, services.ErrAccountNotFound):
 		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}
 	case errors.Is(err, services.ErrAPIKeyNotFound):
@@ -119,6 +121,8 @@ func mapError(err error) mappedError {
 		return mappedError{status: http.StatusConflict, code: codeResourceConflict, message: messageResourceConflict}
 	case errors.Is(err, services.ErrAccountInactive):
 		return mappedError{status: http.StatusForbidden, code: codeInvalidRequest, message: messageOperationNotAllowed}
+	case errors.Is(err, services.ErrStateNotFound):
+		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}
 	case errors.Is(err, interfaces.ErrNotFound):
 		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}
 	case errors.Is(err, interfaces.ErrConflict):
