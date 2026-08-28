@@ -855,7 +855,10 @@ type routerGeographyStub struct {
 	mu                 sync.Mutex
 	listCalls          int
 	getCalls           int
+	zoneListCalls      int
+	zoneGetCalls       int
 	lastStateID        string
+	lastZoneID         string
 	lastHadAPIKey      bool
 	lastAPIKeyIdentity services.APIKeyIdentity
 }
@@ -887,6 +890,35 @@ func (s *routerGeographyStub) GetState(ctx context.Context, stateID string) (mod
 		s.lastAPIKeyIdentity = identity
 	}
 	return models.State{ID: stateID, Name: strings.Title(stateID)}, nil
+}
+
+func (s *routerGeographyStub) ListGeopoliticalZones(ctx context.Context) ([]models.GeopoliticalZone, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.zoneListCalls++
+	if s.rec != nil {
+		s.rec.add("geography.zone.list")
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return []models.GeopoliticalZone{{ID: "north-central", Name: "North Central"}}, nil
+}
+
+func (s *routerGeographyStub) GetGeopoliticalZone(ctx context.Context, zoneID string) (models.GeopoliticalZone, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.zoneGetCalls++
+	s.lastZoneID = zoneID
+	if s.rec != nil {
+		s.rec.add("geography.zone.get:" + zoneID)
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return models.GeopoliticalZone{ID: zoneID, Name: strings.Title(strings.ReplaceAll(zoneID, "-", " "))}, nil
 }
 
 type routerAPIKeyAuthenticatorStub struct {

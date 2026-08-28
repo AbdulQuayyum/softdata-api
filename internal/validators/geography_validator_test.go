@@ -62,3 +62,55 @@ func TestValidateStateIDRejectsInvalidValues(t *testing.T) {
 		})
 	}
 }
+
+func TestValidateGeopoliticalZoneID(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		value string
+		want  string
+	}{
+		{name: "north-central", value: "north-central", want: "north-central"},
+		{name: "north east trimmed", value: " north-east ", want: "north-east"},
+		{name: "south-west", value: "south-west", want: "south-west"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			got, err := ValidateGeopoliticalZoneID(tc.value)
+			if err != nil {
+				t.Fatalf("ValidateGeopoliticalZoneID() error = %v", err)
+			}
+			if got != tc.want {
+				t.Fatalf("unexpected value: %q", got)
+			}
+		})
+	}
+}
+
+func TestValidateGeopoliticalZoneIDRejectsInvalidValues(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		value string
+	}{
+		{name: "empty", value: ""},
+		{name: "whitespace", value: "   "},
+		{name: "uppercase", value: "North Central"},
+		{name: "mixedcase", value: "North-central"},
+		{name: "underscore", value: "north_central"},
+		{name: "slash", value: "north/central"},
+		{name: "space", value: "north central"},
+		{name: "unsupported", value: "central"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			got, err := ValidateGeopoliticalZoneID(tc.value)
+			if err == nil {
+				t.Fatalf("ValidateGeopoliticalZoneID() got %q, want error", got)
+			}
+			var validationErr ValidationErrors
+			if !errors.As(err, &validationErr) {
+				t.Fatalf("ValidateGeopoliticalZoneID() error = %v, want ValidationErrors", err)
+			}
+			if len(validationErr.Fields) != 1 || validationErr.Fields[0].Field != "zone_id" {
+				t.Fatalf("unexpected validation errors: %#v", validationErr.Fields)
+			}
+		})
+	}
+}

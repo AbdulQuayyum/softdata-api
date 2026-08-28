@@ -16,12 +16,17 @@ import (
 )
 
 type geographyHandlerStub struct {
-	listFn func(context.Context) ([]models.State, error)
-	getFn  func(context.Context, string) (models.State, error)
+	listFn     func(context.Context) ([]models.State, error)
+	getFn      func(context.Context, string) (models.State, error)
+	zoneListFn func(context.Context) ([]models.GeopoliticalZone, error)
+	zoneGetFn  func(context.Context, string) (models.GeopoliticalZone, error)
 
-	listCalls int
-	getCalls  int
-	lastID    string
+	listCalls     int
+	getCalls      int
+	zoneListCalls int
+	zoneGetCalls  int
+	lastID        string
+	lastZoneID    string
 }
 
 func (s *geographyHandlerStub) ListStates(ctx context.Context) ([]models.State, error) {
@@ -39,6 +44,23 @@ func (s *geographyHandlerStub) GetState(ctx context.Context, stateID string) (mo
 		return s.getFn(ctx, stateID)
 	}
 	return models.State{}, nil
+}
+
+func (s *geographyHandlerStub) ListGeopoliticalZones(ctx context.Context) ([]models.GeopoliticalZone, error) {
+	s.zoneListCalls++
+	if s.zoneListFn != nil {
+		return s.zoneListFn(ctx)
+	}
+	return nil, nil
+}
+
+func (s *geographyHandlerStub) GetGeopoliticalZone(ctx context.Context, zoneID string) (models.GeopoliticalZone, error) {
+	s.zoneGetCalls++
+	s.lastZoneID = zoneID
+	if s.zoneGetFn != nil {
+		return s.zoneGetFn(ctx, zoneID)
+	}
+	return models.GeopoliticalZone{}, nil
 }
 
 func TestNewGeographyHandlerRejectsNilService(t *testing.T) {
@@ -269,6 +291,209 @@ func TestGeographyHandlerErrorsAndMethodGuard(t *testing.T) {
 		}
 		if got := rr.Header().Get("Allow"); got != http.MethodGet {
 			t.Fatalf("unexpected allow header: %q", got)
+		}
+	})
+}
+
+func TestGeographyHandlerListGeopoliticalZones(t *testing.T) {
+	stub := &geographyHandlerStub{
+		zoneListFn: func(ctx context.Context) ([]models.GeopoliticalZone, error) {
+			if _, ok := middlewares.RequestIDFromContext(ctx); !ok {
+				t.Fatal("request context was not preserved")
+			}
+			return []models.GeopoliticalZone{{ID: "north-central", Name: "North Central", CountryCode: "NG"}}, nil
+		},
+	}
+	h, err := NewGeographyHandler(stub)
+	if err != nil {
+		t.Fatalf("NewGeographyHandler() error = %v", err)
+	}
+
+	rr := httptest.NewRecorder()
+	req := httptest.NewRequest(http.MethodGet, "/v1/geography/geopolitical-zones", nil)
+	invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+		h.ListGeopoliticalZones(w, r)
+	}, rr)
+
+	if rr.Code != http.StatusOK {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if stub.zoneListCalls != 1 {
+		t.Fatalf("unexpected zone list call count: %d", stub.zoneListCalls)
+	}
+
+	var body map[string]any
+	if err := json.Unmarshal(rr.Body.Bytes(), &body); err != nil {
+		t.Fatalf("json.Unmarshal: %v", err)
+	}
+	if body["success"] != true {
+		t.Fatalf("unexpected success flag: %#v", body["success"])
+	}
+	data := body["data"].([]any)
+	if len(data) != 1 {
+		t.Fatalf("unexpected zone payload: %#v", data)
+	}
+	item := data[0].(map[string]any)
+	if len(item) != 3 {
+		t.Fatalf("unexpected zone field count: %#v", item)
+	}
+	if item["id"] != "north-central" || item["name"] != "North Central" {
+		t.Fatalf("unexpected zone payload: %#v", item)
+	}
+}
+
+func TestGeographyHandlerGetGeopoliticalZone(t *testing.T) {
+	stub := &geographyHandlerStub{
+		zoneGetFn: func(ctx context.Context, zoneID string) (models.GeopoliticalZone, error) {
+			if _, ok := middlewares.RequestIDFromContext(ctx); !ok {
+				t.Fatal("request context was not preserved")
+			}
+			if zoneID != "north-central" {
+				t.Fatalf("unexpected zone id: %q", zoneID)
+			}
+			return models.GeopoliticalZone{ID: "north-central", Name: "North Central", CountryCode: "NG"}, nil
+		},
+	}
+	h, err := NewGeographyHandler(stub)
+	if err != nil {
+		t.Fatalf("NewGeographyHandler() error = %v", err)
+	}
+
+	rr := httptest.NewRecorder()
+	req := httptest.NewRequest(http.MethodGet, "/v1/geography/geopolitical-zones/north-central", nil)
+	req.SetPathValue("zone_id", " north-central ")
+	invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+		h.GetGeopoliticalZone(w, r)
+	}, rr)
+
+	if rr.Code != http.StatusOK {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if stub.zoneGetCalls != 1 {
+		t.Fatalf("unexpected zone get call count: %d", stub.zoneGetCalls)
+	}
+
+	var body map[string]any
+	if err := json.Unmarshal(rr.Body.Bytes(), &body); err != nil {
+		t.Fatalf("json.Unmarshal: %v", err)
+	}
+	data := body["data"].(map[string]any)
+	if data["id"] != "north-central" || data["country_code"] != "NG" {
+		t.Fatalf("unexpected zone response: %#v", data)
+	}
+}
+
+func TestGeographyHandlerRejectsInvalidGeopoliticalZoneIDs(t *testing.T) {
+	stub := &geographyHandlerStub{}
+	h, err := NewGeographyHandler(stub)
+	if err != nil {
+		t.Fatalf("NewGeographyHandler() error = %v", err)
+	}
+
+	for _, value := range []string{"North Central", "north_central", "../north-central", "", "central"} {
+		t.Run(value, func(t *testing.T) {
+			rr := httptest.NewRecorder()
+			req := httptest.NewRequest(http.MethodGet, "/v1/geography/geopolitical-zones/invalid", nil)
+			req.SetPathValue("zone_id", value)
+			invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+				h.GetGeopoliticalZone(w, r)
+			}, rr)
+
+			if rr.Code != http.StatusUnprocessableEntity {
+				t.Fatalf("unexpected status: %d", rr.Code)
+			}
+			if stub.zoneGetCalls != 0 {
+				t.Fatalf("service should not be called for invalid ids")
+			}
+		})
+	}
+}
+
+func TestGeographyHandlerGeopoliticalZoneErrors(t *testing.T) {
+	t.Run("missing zone", func(t *testing.T) {
+		stub := &geographyHandlerStub{
+			zoneGetFn: func(context.Context, string) (models.GeopoliticalZone, error) {
+				return models.GeopoliticalZone{}, services.ErrGeopoliticalZoneNotFound
+			},
+		}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/geopolitical-zones/north-central", nil)
+		req.SetPathValue("zone_id", "north-central")
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.GetGeopoliticalZone(w, r)
+		}, rr)
+		if rr.Code != http.StatusNotFound {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+	})
+
+	t.Run("wrapped missing zone", func(t *testing.T) {
+		stub := &geographyHandlerStub{
+			zoneGetFn: func(context.Context, string) (models.GeopoliticalZone, error) {
+				return models.GeopoliticalZone{}, fmtWrappedErr(services.ErrGeopoliticalZoneNotFound)
+			},
+		}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/geopolitical-zones/north-central", nil)
+		req.SetPathValue("zone_id", "north-central")
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.GetGeopoliticalZone(w, r)
+		}, rr)
+		if rr.Code != http.StatusNotFound {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+	})
+
+	t.Run("invalid service id", func(t *testing.T) {
+		stub := &geographyHandlerStub{
+			zoneGetFn: func(context.Context, string) (models.GeopoliticalZone, error) {
+				return models.GeopoliticalZone{}, services.ErrInvalidGeopoliticalZoneID
+			},
+		}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/geopolitical-zones/north-central", nil)
+		req.SetPathValue("zone_id", "north-central")
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.GetGeopoliticalZone(w, r)
+		}, rr)
+		if rr.Code != http.StatusBadRequest {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+	})
+
+	t.Run("unexpected service error", func(t *testing.T) {
+		stub := &geographyHandlerStub{
+			zoneGetFn: func(context.Context, string) (models.GeopoliticalZone, error) {
+				return models.GeopoliticalZone{}, errors.New("database down")
+			},
+		}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/geopolitical-zones/north-central", nil)
+		req.SetPathValue("zone_id", "north-central")
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.GetGeopoliticalZone(w, r)
+		}, rr)
+		if rr.Code != http.StatusInternalServerError {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if strings.Contains(rr.Body.String(), "database down") {
+			t.Fatalf("internal error details leaked: %s", rr.Body.String())
 		}
 	})
 }

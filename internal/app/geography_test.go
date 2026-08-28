@@ -34,6 +34,14 @@ func (s *geographyServiceStub) GetState(context.Context, string) (models.State, 
 	return models.State{}, nil
 }
 
+func (s *geographyServiceStub) ListGeopoliticalZones(context.Context) ([]models.GeopoliticalZone, error) {
+	return []models.GeopoliticalZone{}, nil
+}
+
+func (s *geographyServiceStub) GetGeopoliticalZone(context.Context, string) (models.GeopoliticalZone, error) {
+	return models.GeopoliticalZone{}, nil
+}
+
 type geographyJSONRepoStub struct {
 	root     string
 	maxBytes int64

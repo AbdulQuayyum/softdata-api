@@ -265,6 +265,8 @@ func runStartupCleanup(err *error, cleanup []func()) {
 type geographyService interface {
 	ListStates(context.Context) ([]models.State, error)
 	GetState(context.Context, string) (models.State, error)
+	ListGeopoliticalZones(context.Context) ([]models.GeopoliticalZone, error)
+	GetGeopoliticalZone(context.Context, string) (models.GeopoliticalZone, error)
 }
 
 func buildGeographyHandler(
