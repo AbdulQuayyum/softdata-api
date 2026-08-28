@@ -219,6 +219,166 @@ func TestNigeriaStatesMetadataSchemaAndNotices(t *testing.T) {
 	}
 }
 
+func TestNigeriaGeopoliticalZonesDatasetAndCrossReferences(t *testing.T) {
+	zones := loadGeopoliticalZoneDataset(t)
+	metadata := loadGeopoliticalZoneMetadata(t)
+	schema := loadGeopoliticalZoneSchema(t)
+	states := loadStateDataset(t)
+
+	if got := len(zones); got != 6 {
+		t.Fatalf("unexpected zone record count: got %d want 6", got)
+	}
+
+	if !reflect.DeepEqual(zones, approvedGeopoliticalZones()) {
+		t.Fatalf("dataset records do not match approved manifest:\n got: %#v\nwant: %#v", zones, approvedGeopoliticalZones())
+	}
+
+	if metadata.DatasetKey != "ng-geopolitical-zones" {
+		t.Fatalf("unexpected dataset key: %q", metadata.DatasetKey)
+	}
+	if metadata.Title != "Nigeria Geopolitical Zones" {
+		t.Fatalf("unexpected title: %q", metadata.Title)
+	}
+	if metadata.RecordCount != 6 {
+		t.Fatalf("unexpected record count: %d", metadata.RecordCount)
+	}
+	if metadata.Version != "1.0.0" {
+		t.Fatalf("unexpected version: %q", metadata.Version)
+	}
+	if metadata.RelativePath != "geography/geopolitical_zones.json" {
+		t.Fatalf("unexpected relative path: %q", metadata.RelativePath)
+	}
+	if metadata.SchemaPath != "schemas/geography/geopolitical_zones.schema.json" {
+		t.Fatalf("unexpected schema path: %q", metadata.SchemaPath)
+	}
+	if metadata.VerifiedAt != "2026-08-28" {
+		t.Fatalf("unexpected verified_at: %q", metadata.VerifiedAt)
+	}
+	if len(metadata.Sources) != 4 {
+		t.Fatalf("unexpected source count: %d", len(metadata.Sources))
+	}
+	if !strings.Contains(metadata.Methodology, "National Bureau of Statistics") || !strings.Contains(metadata.Methodology, "UBEC") || !strings.Contains(metadata.Methodology, "Niger State Government") || !strings.Contains(metadata.Methodology, "RMAFC") {
+		t.Fatalf("methodology does not document the conflict sources: %q", metadata.Methodology)
+	}
+	for _, want := range []string{
+		"https://microdata.nigerianstat.gov.ng/index.php/catalog/55/study-description",
+		"https://ubec.gov.ng/zonal-and-state-offices/",
+		"https://nigerstate.gov.ng/about/",
+		"https://rmafc.gov.ng/structure/",
+	} {
+		if !strings.Contains(metadata.Methodology, want) {
+			t.Fatalf("methodology missing url %q: %q", want, metadata.Methodology)
+		}
+	}
+	for _, source := range metadata.Sources {
+		if source.Organization == "" || source.Title == "" || source.URL == "" || source.Purpose == "" || source.AccessedAt == "" {
+			t.Fatalf("incomplete provenance source: %#v", source)
+		}
+		if !strings.HasPrefix(source.URL, "https://") {
+			t.Fatalf("non-https provenance url: %q", source.URL)
+		}
+	}
+	if schema.Type != "array" || schema.MinItems != 6 || schema.MaxItems != 6 || !schema.UniqueItems {
+		t.Fatalf("unexpected schema constraints: %#v", schema)
+	}
+	if !strings.Contains(schema.Description, "ng-geopolitical-zones") {
+		t.Fatalf("unexpected schema description: %q", schema.Description)
+	}
+
+	seenIDs := make(map[string]struct{}, len(zones))
+	seenNames := make(map[string]struct{}, len(zones))
+	for i, zone := range zones {
+		if zone.ID == "" || zone.Name == "" || zone.CountryCode == "" {
+			t.Fatalf("zone record %d has empty required field: %#v", i, zone)
+		}
+		if !regexp.MustCompile(`^[a-z]+(?:-[a-z]+)*$`).MatchString(zone.ID) {
+			t.Fatalf("zone record %d has invalid id %q", i, zone.ID)
+		}
+		if zone.CountryCode != "NG" {
+			t.Fatalf("zone record %d has unexpected country code %q", i, zone.CountryCode)
+		}
+		if _, ok := seenIDs[zone.ID]; ok {
+			t.Fatalf("duplicate zone id found: %q", zone.ID)
+		}
+		seenIDs[zone.ID] = struct{}{}
+		if _, ok := seenNames[zone.Name]; ok {
+			t.Fatalf("duplicate zone name found: %q", zone.Name)
+		}
+		seenNames[zone.Name] = struct{}{}
+		if i > 0 && strings.Compare(zones[i-1].Name, zone.Name) > 0 {
+			t.Fatalf("zone records are not sorted by name: %q before %q", zones[i-1].Name, zone.Name)
+		}
+	}
+
+	if len(states) != 37 {
+		t.Fatalf("unexpected state record count: got %d want 37", len(states))
+	}
+
+	zonesByID := make(map[string]GeopoliticalZone, len(zones))
+	for _, zone := range zones {
+		zonesByID[zone.ID] = zone
+	}
+
+	zoneCounts := make(map[string]int, len(zones))
+	for _, zone := range zones {
+		zoneCounts[zone.ID] = 0
+	}
+
+	stateCount := 0
+	fctCount := 0
+	fctSeen := false
+	for i, state := range states {
+		if state.CountryCode != "NG" {
+			t.Fatalf("state record %d has unexpected country code %q", i, state.CountryCode)
+		}
+		if _, ok := zonesByID[state.GeopoliticalZoneID]; !ok {
+			t.Fatalf("state record %d references unknown zone %q", i, state.GeopoliticalZoneID)
+		}
+		zoneCounts[state.GeopoliticalZoneID]++
+		switch state.AdministrativeType {
+		case "state":
+			stateCount++
+		case "federal_capital_territory":
+			fctCount++
+			if state.ID == "fct" {
+				fctSeen = true
+			}
+		default:
+			t.Fatalf("state record %d has invalid administrative type %q", i, state.AdministrativeType)
+		}
+	}
+
+	if stateCount != 36 {
+		t.Fatalf("unexpected state count: got %d want 36", stateCount)
+	}
+	if fctCount != 1 {
+		t.Fatalf("unexpected FCT count: got %d want 1", fctCount)
+	}
+	if !fctSeen {
+		t.Fatal("fct record not found in states dataset")
+	}
+
+	wantCounts := map[string]int{
+		"north-central": 7,
+		"north-east":    6,
+		"north-west":    7,
+		"south-east":    5,
+		"south-south":   6,
+		"south-west":    6,
+	}
+	if !reflect.DeepEqual(zoneCounts, wantCounts) {
+		t.Fatalf("unexpected zone counts: got %#v want %#v", zoneCounts, wantCounts)
+	}
+
+	if metadata.LicenseID != "CC-BY-4.0" || metadata.LicenseURL != "https://creativecommons.org/licenses/by/4.0/" {
+		t.Fatalf("unexpected license metadata: %#v", metadata)
+	}
+
+	if state := findStateByID(states, "fct"); state == nil || state.GeopoliticalZoneID != "north-central" {
+		t.Fatalf("unexpected FCT zone assignment: %#v", state)
+	}
+}
+
 func loadStateDataset(t *testing.T) []State {
 	t.Helper()
 
@@ -254,6 +414,45 @@ func loadDatasetSchema(t *testing.T) stateSchema {
 	dec.DisallowUnknownFields()
 	if err := dec.Decode(&schema); err != nil {
 		t.Fatalf("decode schema: %v", err)
+	}
+	return schema
+}
+
+func loadGeopoliticalZoneDataset(t *testing.T) []GeopoliticalZone {
+	t.Helper()
+
+	var zones []GeopoliticalZone
+	dec := json.NewDecoder(bytes.NewReader(readTextBytes(t, datasetPath("geography/geopolitical_zones.json"))))
+	dec.DisallowUnknownFields()
+	if err := dec.Decode(&zones); err != nil {
+		t.Fatalf("decode geopolitical zones dataset: %v", err)
+	}
+	if err := dec.Decode(new(any)); err == nil {
+		t.Fatal("geopolitical zones dataset contains trailing JSON")
+	}
+	return zones
+}
+
+func loadGeopoliticalZoneMetadata(t *testing.T) datasetMetadata {
+	t.Helper()
+
+	var metadata datasetMetadata
+	dec := json.NewDecoder(bytes.NewReader(readTextBytes(t, datasetPath("metadata/geography/geopolitical_zones.json"))))
+	dec.DisallowUnknownFields()
+	if err := dec.Decode(&metadata); err != nil {
+		t.Fatalf("decode geopolitical zones metadata: %v", err)
+	}
+	return metadata
+}
+
+func loadGeopoliticalZoneSchema(t *testing.T) stateSchema {
+	t.Helper()
+
+	var schema stateSchema
+	dec := json.NewDecoder(bytes.NewReader(readTextBytes(t, datasetPath("schemas/geography/geopolitical_zones.schema.json"))))
+	dec.DisallowUnknownFields()
+	if err := dec.Decode(&schema); err != nil {
+		t.Fatalf("decode geopolitical zones schema: %v", err)
 	}
 	return schema
 }
@@ -319,4 +518,24 @@ func approvedStates() []State {
 		{ID: "yobe", Name: "Yobe", OfficialName: "Yobe State", AdministrativeType: "state", Capital: "Damaturu", GeopoliticalZoneID: "north-east", CountryCode: "NG"},
 		{ID: "zamfara", Name: "Zamfara", OfficialName: "Zamfara State", AdministrativeType: "state", Capital: "Gusau", GeopoliticalZoneID: "north-west", CountryCode: "NG"},
 	}
+}
+
+func approvedGeopoliticalZones() []GeopoliticalZone {
+	return []GeopoliticalZone{
+		{ID: "north-central", Name: "North Central", CountryCode: "NG"},
+		{ID: "north-east", Name: "North East", CountryCode: "NG"},
+		{ID: "north-west", Name: "North West", CountryCode: "NG"},
+		{ID: "south-east", Name: "South East", CountryCode: "NG"},
+		{ID: "south-south", Name: "South South", CountryCode: "NG"},
+		{ID: "south-west", Name: "South West", CountryCode: "NG"},
+	}
+}
+
+func findStateByID(states []State, id string) *State {
+	for i := range states {
+		if states[i].ID == id {
+			return &states[i]
+		}
+	}
+	return nil
 }

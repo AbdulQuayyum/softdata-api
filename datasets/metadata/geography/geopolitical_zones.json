@@ -1,0 +1,46 @@
+{
+  "dataset_key": "ng-geopolitical-zones",
+  "title": "Nigeria Geopolitical Zones",
+  "description": "Independently compiled factual reference data for Nigeria's six geopolitical zones.",
+  "country_code": "NG",
+  "dataset_group": "geography",
+  "format": "json",
+  "relative_path": "geography/geopolitical_zones.json",
+  "schema_path": "schemas/geography/geopolitical_zones.schema.json",
+  "record_count": 6,
+  "version": "1.0.0",
+  "license_id": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "methodology": "Independently compiled and cross-verified factual reference data. SoftData follows the geopolitical-zone classification used by the National Bureau of Statistics (https://microdata.nigerianstat.gov.ng/index.php/catalog/55/study-description), UBEC (https://ubec.gov.ng/zonal-and-state-offices/) and the Niger State Government (https://nigerstate.gov.ng/about/), under which Niger State belongs to North Central. An RMAFC organizational-structure page (https://rmafc.gov.ng/structure/) groups Niger with a North-West operational office; this was treated as an agency-specific operational arrangement rather than a general geopolitical reclassification.",
+  "sources": [
+    {
+      "organization": "National Bureau of Statistics",
+      "title": "Catalog 55 Study Description",
+      "url": "https://microdata.nigerianstat.gov.ng/index.php/catalog/55/study-description",
+      "purpose": "Resolve Niger State's geopolitical-zone classification and verify North Central membership.",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "organization": "Universal Basic Education Commission",
+      "title": "Zonal and State Offices",
+      "url": "https://ubec.gov.ng/zonal-and-state-offices/",
+      "purpose": "Verify the six geopolitical-zone names and North Central membership coverage.",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "organization": "Niger State Government",
+      "title": "About Us",
+      "url": "https://nigerstate.gov.ng/about/",
+      "purpose": "Confirm that Niger State identifies itself as part of the North-Central geopolitical zone.",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "organization": "Revenue Mobilization Allocation and Fiscal Commission",
+      "title": "Organisational Structure",
+      "url": "https://rmafc.gov.ng/structure/",
+      "purpose": "Document the agency-specific operational grouping that associates Niger with a North-West office.",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "verified_at": "2026-08-28"
+}

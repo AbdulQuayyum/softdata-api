@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://softdata-api.local/schemas/geography/geopolitical_zones.schema.json",
+  "title": "Nigeria Geopolitical Zones",
+  "description": "Schema for the ng-geopolitical-zones dataset compiled by SoftData.",
+  "type": "array",
+  "minItems": 6,
+  "maxItems": 6,
+  "uniqueItems": true,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "name",
+      "country_code"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z]+(?:-[a-z]+)*$"
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1
+      },
+      "country_code": {
+        "type": "string",
+        "const": "NG"
+      }
+    }
+  }
+}

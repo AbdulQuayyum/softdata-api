@@ -23,4 +23,6 @@ var (
 	ErrDatasetFileUnavailable = errors.New("repository: dataset file unavailable")
 	// ErrStateNotFound reports that a requested state is not present in the dataset.
 	ErrStateNotFound = errors.New("repository: state not found")
+	// ErrGeopoliticalZoneNotFound reports that a requested geopolitical zone is not present in the dataset.
+	ErrGeopoliticalZoneNotFound = errors.New("repository: geopolitical zone not found")
 )

@@ -140,6 +140,38 @@ paths:
           $ref: "#/components/responses/ValidationFailed"
         "500":
           $ref: "#/components/responses/InternalError"
+  /v1/geography/geopolitical-zones:
+    get:
+      tags: [Geography]
+      summary: List geopolitical zones
+      responses:
+        "200":
+          description: Geopolitical zone records
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GeopoliticalZoneListResponse"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/geography/geopolitical-zones/{zone_id}:
+    get:
+      tags: [Geography]
+      summary: Get a geopolitical zone
+      parameters:
+        - $ref: "#/components/parameters/ZoneID"
+      responses:
+        "200":
+          description: Geopolitical zone record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GeopoliticalZoneResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
   /v1/auth/register:
     post:
       tags: [Authentication]
@@ -449,6 +481,15 @@ components:
         type: string
         pattern: '^[a-z]+(?:-[a-z]+)*$'
       example: akwa-ibom
+    ZoneID:
+      name: zone_id
+      in: path
+      required: true
+      description: Public lowercase slug for a Nigerian geopolitical zone.
+      schema:
+        type: string
+        pattern: '^[a-z]+(?:-[a-z]+)*$'
+      example: north-central
     Page:
       name: page
       in: query
@@ -632,6 +673,38 @@ components:
           type: boolean
         data:
           $ref: "#/components/schemas/State"
+      required: [success, data]
+    GeopoliticalZone:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        country_code:
+          type: string
+          enum: [NG]
+      required: [id, name, country_code]
+    GeopoliticalZoneListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/GeopoliticalZone"
+      required: [success, data]
+    GeopoliticalZoneResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: "#/components/schemas/GeopoliticalZone"
       required: [success, data]
     GeographyListResponse:
       type: object

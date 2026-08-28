@@ -54,5 +54,31 @@ func registerPublicRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers,
 		return err
 	}
 
+	geographyZonesList, err := buildRouteMiddlewares(mw, "/v1/geography/geopolitical-zones", "geography", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build geography geopolitical zones middleware: %w", err)
+	}
+	mux.Handle("GET /v1/geography/geopolitical-zones", compose(http.HandlerFunc(h.Geography.ListGeopoliticalZones), geographyZonesList...))
+	if err := catalog.add("GET /v1/geography/geopolitical-zones"); err != nil {
+		return err
+	}
+
+	geographyZoneDetail, err := buildRouteMiddlewares(mw, "/v1/geography/geopolitical-zones/{zone_id}", "geography", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build geography geopolitical zone middleware: %w", err)
+	}
+	mux.Handle("GET /v1/geography/geopolitical-zones/{zone_id}", compose(http.HandlerFunc(h.Geography.GetGeopoliticalZone), geographyZoneDetail...))
+	if err := catalog.add("GET /v1/geography/geopolitical-zones/{zone_id}"); err != nil {
+		return err
+	}
+
 	return nil
 }
