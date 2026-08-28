@@ -15,6 +15,7 @@ SoftData API uses a layered Go layout that keeps entry points, configuration, da
 ```text
 softdata-api/
 ├── .air.toml
+├── .env
 ├── .env.example
 ├── .gitignore
 ├── api
@@ -57,14 +58,17 @@ softdata-api/
 │       └── usage.sql
 ├── datasets
 │   ├── geography
+│   │   ├── geopolitical_zones.json
 │   │   └── states.json
 │   ├── LICENSE.md
 │   ├── metadata
 │   │   └── geography
+│   │       ├── geopolitical_zones.json
 │   │       └── states.json
 │   ├── README.md
 │   └── schemas
 │       └── geography
+│           ├── geopolitical_zones.schema.json
 │           └── states.schema.json
 ├── docs
 │   ├── api-keys.md
