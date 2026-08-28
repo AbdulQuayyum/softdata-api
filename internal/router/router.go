@@ -18,6 +18,7 @@ type UsageMiddlewareFactory func(endpoint, datasetGroup string) (MiddlewareFunc,
 type Handlers struct {
 	Health    *handlers.HealthHandler
 	Discovery *handlers.DiscoveryHandler
+	Geography *handlers.GeographyHandler
 	Auth      *handlers.AuthHandler
 	Account   *handlers.AccountHandler
 	APIKey    *handlers.APIKeyHandler
@@ -80,6 +81,8 @@ func validateDependencies(h Handlers, mw Middleware) error {
 		return fmt.Errorf("health handler is required")
 	case h.Discovery == nil:
 		return fmt.Errorf("discovery handler is required")
+	case h.Geography == nil:
+		return fmt.Errorf("geography handler is required")
 	case h.Auth == nil:
 		return fmt.Errorf("auth handler is required")
 	case h.Account == nil:

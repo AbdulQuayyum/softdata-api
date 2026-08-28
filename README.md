@@ -220,6 +220,8 @@ cp .env.example .env
 
 Update the environment variables before running the application.
 
+Dataset JSON files are loaded through the JSON file repository and capped by `DATASETS_JSON_MAX_BYTES`, which defaults to `16777216` bytes (16 MiB). This limit is separate from `SERVER_BODY_LIMIT`, which applies only to incoming HTTP request bodies.
+
 ### Start directly
 
 ```bash

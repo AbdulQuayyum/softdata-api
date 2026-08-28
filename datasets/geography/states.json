@@ -1,0 +1,335 @@
+[
+  {
+    "id": "abia",
+    "name": "Abia",
+    "official_name": "Abia State",
+    "administrative_type": "state",
+    "capital": "Umuahia",
+    "geopolitical_zone_id": "south-east",
+    "country_code": "NG"
+  },
+  {
+    "id": "adamawa",
+    "name": "Adamawa",
+    "official_name": "Adamawa State",
+    "administrative_type": "state",
+    "capital": "Yola",
+    "geopolitical_zone_id": "north-east",
+    "country_code": "NG"
+  },
+  {
+    "id": "akwa-ibom",
+    "name": "Akwa Ibom",
+    "official_name": "Akwa Ibom State",
+    "administrative_type": "state",
+    "capital": "Uyo",
+    "geopolitical_zone_id": "south-south",
+    "country_code": "NG"
+  },
+  {
+    "id": "anambra",
+    "name": "Anambra",
+    "official_name": "Anambra State",
+    "administrative_type": "state",
+    "capital": "Awka",
+    "geopolitical_zone_id": "south-east",
+    "country_code": "NG"
+  },
+  {
+    "id": "bauchi",
+    "name": "Bauchi",
+    "official_name": "Bauchi State",
+    "administrative_type": "state",
+    "capital": "Bauchi",
+    "geopolitical_zone_id": "north-east",
+    "country_code": "NG"
+  },
+  {
+    "id": "bayelsa",
+    "name": "Bayelsa",
+    "official_name": "Bayelsa State",
+    "administrative_type": "state",
+    "capital": "Yenagoa",
+    "geopolitical_zone_id": "south-south",
+    "country_code": "NG"
+  },
+  {
+    "id": "benue",
+    "name": "Benue",
+    "official_name": "Benue State",
+    "administrative_type": "state",
+    "capital": "Makurdi",
+    "geopolitical_zone_id": "north-central",
+    "country_code": "NG"
+  },
+  {
+    "id": "borno",
+    "name": "Borno",
+    "official_name": "Borno State",
+    "administrative_type": "state",
+    "capital": "Maiduguri",
+    "geopolitical_zone_id": "north-east",
+    "country_code": "NG"
+  },
+  {
+    "id": "cross-river",
+    "name": "Cross River",
+    "official_name": "Cross River State",
+    "administrative_type": "state",
+    "capital": "Calabar",
+    "geopolitical_zone_id": "south-south",
+    "country_code": "NG"
+  },
+  {
+    "id": "delta",
+    "name": "Delta",
+    "official_name": "Delta State",
+    "administrative_type": "state",
+    "capital": "Asaba",
+    "geopolitical_zone_id": "south-south",
+    "country_code": "NG"
+  },
+  {
+    "id": "ebonyi",
+    "name": "Ebonyi",
+    "official_name": "Ebonyi State",
+    "administrative_type": "state",
+    "capital": "Abakaliki",
+    "geopolitical_zone_id": "south-east",
+    "country_code": "NG"
+  },
+  {
+    "id": "edo",
+    "name": "Edo",
+    "official_name": "Edo State",
+    "administrative_type": "state",
+    "capital": "Benin City",
+    "geopolitical_zone_id": "south-south",
+    "country_code": "NG"
+  },
+  {
+    "id": "ekiti",
+    "name": "Ekiti",
+    "official_name": "Ekiti State",
+    "administrative_type": "state",
+    "capital": "Ado-Ekiti",
+    "geopolitical_zone_id": "south-west",
+    "country_code": "NG"
+  },
+  {
+    "id": "enugu",
+    "name": "Enugu",
+    "official_name": "Enugu State",
+    "administrative_type": "state",
+    "capital": "Enugu",
+    "geopolitical_zone_id": "south-east",
+    "country_code": "NG"
+  },
+  {
+    "id": "fct",
+    "name": "Federal Capital Territory",
+    "official_name": "Federal Capital Territory",
+    "administrative_type": "federal_capital_territory",
+    "capital": "Abuja",
+    "geopolitical_zone_id": "north-central",
+    "country_code": "NG"
+  },
+  {
+    "id": "gombe",
+    "name": "Gombe",
+    "official_name": "Gombe State",
+    "administrative_type": "state",
+    "capital": "Gombe",
+    "geopolitical_zone_id": "north-east",
+    "country_code": "NG"
+  },
+  {
+    "id": "imo",
+    "name": "Imo",
+    "official_name": "Imo State",
+    "administrative_type": "state",
+    "capital": "Owerri",
+    "geopolitical_zone_id": "south-east",
+    "country_code": "NG"
+  },
+  {
+    "id": "jigawa",
+    "name": "Jigawa",
+    "official_name": "Jigawa State",
+    "administrative_type": "state",
+    "capital": "Dutse",
+    "geopolitical_zone_id": "north-west",
+    "country_code": "NG"
+  },
+  {
+    "id": "kaduna",
+    "name": "Kaduna",
+    "official_name": "Kaduna State",
+    "administrative_type": "state",
+    "capital": "Kaduna",
+    "geopolitical_zone_id": "north-west",
+    "country_code": "NG"
+  },
+  {
+    "id": "kano",
+    "name": "Kano",
+    "official_name": "Kano State",
+    "administrative_type": "state",
+    "capital": "Kano",
+    "geopolitical_zone_id": "north-west",
+    "country_code": "NG"
+  },
+  {
+    "id": "katsina",
+    "name": "Katsina",
+    "official_name": "Katsina State",
+    "administrative_type": "state",
+    "capital": "Katsina",
+    "geopolitical_zone_id": "north-west",
+    "country_code": "NG"
+  },
+  {
+    "id": "kebbi",
+    "name": "Kebbi",
+    "official_name": "Kebbi State",
+    "administrative_type": "state",
+    "capital": "Birnin Kebbi",
+    "geopolitical_zone_id": "north-west",
+    "country_code": "NG"
+  },
+  {
+    "id": "kogi",
+    "name": "Kogi",
+    "official_name": "Kogi State",
+    "administrative_type": "state",
+    "capital": "Lokoja",
+    "geopolitical_zone_id": "north-central",
+    "country_code": "NG"
+  },
+  {
+    "id": "kwara",
+    "name": "Kwara",
+    "official_name": "Kwara State",
+    "administrative_type": "state",
+    "capital": "Ilorin",
+    "geopolitical_zone_id": "north-central",
+    "country_code": "NG"
+  },
+  {
+    "id": "lagos",
+    "name": "Lagos",
+    "official_name": "Lagos State",
+    "administrative_type": "state",
+    "capital": "Ikeja",
+    "geopolitical_zone_id": "south-west",
+    "country_code": "NG"
+  },
+  {
+    "id": "nasarawa",
+    "name": "Nasarawa",
+    "official_name": "Nasarawa State",
+    "administrative_type": "state",
+    "capital": "Lafia",
+    "geopolitical_zone_id": "north-central",
+    "country_code": "NG"
+  },
+  {
+    "id": "niger",
+    "name": "Niger",
+    "official_name": "Niger State",
+    "administrative_type": "state",
+    "capital": "Minna",
+    "geopolitical_zone_id": "north-central",
+    "country_code": "NG"
+  },
+  {
+    "id": "ogun",
+    "name": "Ogun",
+    "official_name": "Ogun State",
+    "administrative_type": "state",
+    "capital": "Abeokuta",
+    "geopolitical_zone_id": "south-west",
+    "country_code": "NG"
+  },
+  {
+    "id": "ondo",
+    "name": "Ondo",
+    "official_name": "Ondo State",
+    "administrative_type": "state",
+    "capital": "Akure",
+    "geopolitical_zone_id": "south-west",
+    "country_code": "NG"
+  },
+  {
+    "id": "osun",
+    "name": "Osun",
+    "official_name": "Osun State",
+    "administrative_type": "state",
+    "capital": "Osogbo",
+    "geopolitical_zone_id": "south-west",
+    "country_code": "NG"
+  },
+  {
+    "id": "oyo",
+    "name": "Oyo",
+    "official_name": "Oyo State",
+    "administrative_type": "state",
+    "capital": "Ibadan",
+    "geopolitical_zone_id": "south-west",
+    "country_code": "NG"
+  },
+  {
+    "id": "plateau",
+    "name": "Plateau",
+    "official_name": "Plateau State",
+    "administrative_type": "state",
+    "capital": "Jos",
+    "geopolitical_zone_id": "north-central",
+    "country_code": "NG"
+  },
+  {
+    "id": "rivers",
+    "name": "Rivers",
+    "official_name": "Rivers State",
+    "administrative_type": "state",
+    "capital": "Port Harcourt",
+    "geopolitical_zone_id": "south-south",
+    "country_code": "NG"
+  },
+  {
+    "id": "sokoto",
+    "name": "Sokoto",
+    "official_name": "Sokoto State",
+    "administrative_type": "state",
+    "capital": "Sokoto",
+    "geopolitical_zone_id": "north-west",
+    "country_code": "NG"
+  },
+  {
+    "id": "taraba",
+    "name": "Taraba",
+    "official_name": "Taraba State",
+    "administrative_type": "state",
+    "capital": "Jalingo",
+    "geopolitical_zone_id": "north-east",
+    "country_code": "NG"
+  },
+  {
+    "id": "yobe",
+    "name": "Yobe",
+    "official_name": "Yobe State",
+    "administrative_type": "state",
+    "capital": "Damaturu",
+    "geopolitical_zone_id": "north-east",
+    "country_code": "NG"
+  },
+  {
+    "id": "zamfara",
+    "name": "Zamfara",
+    "official_name": "Zamfara State",
+    "administrative_type": "state",
+    "capital": "Gusau",
+    "geopolitical_zone_id": "north-west",
+    "country_code": "NG"
+  }
+]

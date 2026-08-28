@@ -21,4 +21,6 @@ var (
 	ErrInvalidDatasetFile = errors.New("repository: invalid dataset file")
 	// ErrDatasetFileUnavailable reports that the dataset file cannot be accessed right now.
 	ErrDatasetFileUnavailable = errors.New("repository: dataset file unavailable")
+	// ErrStateNotFound reports that a requested state is not present in the dataset.
+	ErrStateNotFound = errors.New("repository: state not found")
 )

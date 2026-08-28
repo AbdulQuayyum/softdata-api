@@ -93,6 +93,16 @@ Examples:
 - Fuel prices
 - Economic indicators
 
+## Published Datasets
+
+The first published dataset package is `ng-states`, which contains Nigeria's 36 states and the Federal Capital Territory.
+
+Files:
+
+- `datasets/geography/states.json`
+- `datasets/schemas/geography/states.schema.json`
+- `datasets/metadata/geography/states.json`
+
 ## Directory Structure
 
 ```text

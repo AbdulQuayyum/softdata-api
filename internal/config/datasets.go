@@ -5,7 +5,8 @@ import (
 )
 
 type DatasetConfig struct {
-	Path string
+	Path         string
+	JSONMaxBytes int64
 }
 
 type DatasetsConfig = DatasetConfig
@@ -15,8 +16,13 @@ func loadDatasetsConfig(lookup LookupEnv) (DatasetConfig, error) {
 	if path == "" {
 		path = "datasets"
 	}
+	jsonMaxBytes, err := parsePositiveInt64("DATASETS_JSON_MAX_BYTES", lookupString(lookup, "DATASETS_JSON_MAX_BYTES"), 16777216)
+	if err != nil {
+		return DatasetConfig{}, err
+	}
 
 	return DatasetConfig{
-		Path: filepath.Clean(path),
+		Path:         filepath.Clean(path),
+		JSONMaxBytes: jsonMaxBytes,
 	}, nil
 }

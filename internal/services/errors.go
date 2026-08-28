@@ -18,4 +18,6 @@ var (
 	ErrAPIKeyNameRequired     = errors.New("services: api key name is required")
 	ErrAPIKeyLimitReached     = errors.New("services: api key limit reached")
 	ErrInvalidUsagePeriod     = errors.New("services: invalid usage period")
+	ErrStateNotFound          = errors.New("services: state not found")
+	ErrInvalidStateID         = errors.New("services: invalid state id")
 )

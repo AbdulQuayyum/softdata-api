@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://softdata-api.local/schemas/geography/states.schema.json",
+  "title": "Nigeria States and Federal Capital Territory",
+  "description": "Schema for the ng-states dataset compiled by SoftData.",
+  "type": "array",
+  "minItems": 37,
+  "maxItems": 37,
+  "uniqueItems": true,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "name",
+      "official_name",
+      "administrative_type",
+      "capital",
+      "geopolitical_zone_id",
+      "country_code"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z]+(?:-[a-z]+)*$"
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1
+      },
+      "official_name": {
+        "type": "string",
+        "minLength": 1
+      },
+      "administrative_type": {
+        "type": "string",
+        "enum": [
+          "state",
+          "federal_capital_territory"
+        ]
+      },
+      "capital": {
+        "type": "string",
+        "minLength": 1
+      },
+      "geopolitical_zone_id": {
+        "type": "string",
+        "enum": [
+          "north-central",
+          "north-east",
+          "north-west",
+          "south-east",
+          "south-south",
+          "south-west"
+        ]
+      },
+      "country_code": {
+        "type": "string",
+        "const": "NG"
+      }
+    }
+  }
+}

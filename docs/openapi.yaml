@@ -112,19 +112,34 @@ paths:
     get:
       tags: [Geography]
       summary: List states
-      parameters:
-        - $ref: "#/components/parameters/Page"
-        - $ref: "#/components/parameters/Limit"
-        - $ref: "#/components/parameters/Search"
-        - $ref: "#/components/parameters/Sort"
-        - $ref: "#/components/parameters/Order"
       responses:
         "200":
-          description: Geographic records
+          description: State records
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GeographyListResponse"
+                $ref: "#/components/schemas/StateListResponse"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/geography/states/{state_id}:
+    get:
+      tags: [Geography]
+      summary: Get a state
+      parameters:
+        - $ref: "#/components/parameters/StateID"
+      responses:
+        "200":
+          description: State record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StateResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
   /v1/auth/register:
     post:
       tags: [Authentication]
@@ -425,6 +440,15 @@ components:
       required: true
       schema:
         type: string
+    StateID:
+      name: state_id
+      in: path
+      required: true
+      description: Public lowercase slug for a Nigerian state or the Federal Capital Territory.
+      schema:
+        type: string
+        pattern: '^[a-z]+(?:-[a-z]+)*$'
+      example: akwa-ibom
     Page:
       name: page
       in: query
@@ -569,20 +593,49 @@ components:
       required: [success, error]
     State:
       type: object
+      additionalProperties: false
       properties:
-        code:
+        id:
           type: string
         name:
           type: string
+        official_name:
+          type: string
+        administrative_type:
+          type: string
+          enum: [state, federal_capital_territory]
         capital:
           type: string
+        geopolitical_zone_id:
+          type: string
+          enum: [north-central, north-east, north-west, south-east, south-south, south-west]
         country_code:
           type: string
-        geopolitical_zone:
-          type: string
-      required: [code, name]
+          enum: [NG]
+      required: [id, name, official_name, administrative_type, capital, geopolitical_zone_id, country_code]
+    StateListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/State"
+      required: [success, data]
+    StateResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: "#/components/schemas/State"
+      required: [success, data]
     GeographyListResponse:
       type: object
+      additionalProperties: false
       properties:
         success:
           type: boolean
