@@ -1,0 +1,32 @@
+[
+  {
+    "id": "north-central",
+    "name": "North Central",
+    "country_code": "NG"
+  },
+  {
+    "id": "north-east",
+    "name": "North East",
+    "country_code": "NG"
+  },
+  {
+    "id": "north-west",
+    "name": "North West",
+    "country_code": "NG"
+  },
+  {
+    "id": "south-east",
+    "name": "South East",
+    "country_code": "NG"
+  },
+  {
+    "id": "south-south",
+    "name": "South South",
+    "country_code": "NG"
+  },
+  {
+    "id": "south-west",
+    "name": "South West",
+    "country_code": "NG"
+  }
+]

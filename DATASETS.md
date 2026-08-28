@@ -95,13 +95,25 @@ Examples:
 
 ## Published Datasets
 
-The first published dataset package is `ng-states`, which contains Nigeria's 36 states and the Federal Capital Territory.
+The published geography dataset packages currently include:
 
-Files:
+### `ng-states`
+
+Nigeria's 36 states and the Federal Capital Territory.
 
 - `datasets/geography/states.json`
 - `datasets/schemas/geography/states.schema.json`
 - `datasets/metadata/geography/states.json`
+
+Each state record includes a `geopolitical_zone_id` that links back to the zone catalogue below.
+
+### `ng-geopolitical-zones`
+
+Nigeria's six geopolitical zones.
+
+- `datasets/geography/geopolitical_zones.json`
+- `datasets/schemas/geography/geopolitical_zones.schema.json`
+- `datasets/metadata/geography/geopolitical_zones.json`
 
 ## Directory Structure
 

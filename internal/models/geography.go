@@ -10,3 +10,10 @@ type State struct {
 	GeopoliticalZoneID string `json:"geopolitical_zone_id"`
 	CountryCode        string `json:"country_code"`
 }
+
+// GeopoliticalZone is the public record model for a Nigerian geopolitical zone.
+type GeopoliticalZone struct {
+	ID          string `json:"id"`
+	Name        string `json:"name"`
+	CountryCode string `json:"country_code"`
+}
