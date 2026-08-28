@@ -303,6 +303,82 @@ func TestRouterRegistersGeographyRoutes(t *testing.T) {
 		}
 	})
 
+	t.Run("geopolitical zones", func(t *testing.T) {
+		t.Run("list", func(t *testing.T) {
+			rec := &routerRecorder{}
+			router := newTestRouter(t, rec)
+
+			rr := httptest.NewRecorder()
+			req := httptest.NewRequest(http.MethodGet, "/v1/geography/geopolitical-zones", nil)
+			router.ServeHTTP(rr, req)
+			if rr.Code != http.StatusOK {
+				t.Fatalf("unexpected status: %d", rr.Code)
+			}
+			got := strings.Join(rec.snapshot(), ",")
+			for _, want := range []string{
+				"optional_api_key",
+				"rate_limit",
+				"usage:/v1/geography/geopolitical-zones|geography",
+				"geography.zone.list",
+			} {
+				if !strings.Contains(got, want) {
+					t.Fatalf("expected %q in middleware sequence: %v", want, rec.snapshot())
+				}
+			}
+		})
+
+		t.Run("detail", func(t *testing.T) {
+			cases := []string{
+				"north-central",
+				"north-east",
+				"north-west",
+				"south-east",
+				"south-south",
+				"south-west",
+			}
+			for _, zoneID := range cases {
+				t.Run(zoneID, func(t *testing.T) {
+					rec := &routerRecorder{}
+					router := newTestRouter(t, rec)
+
+					rr := httptest.NewRecorder()
+					req := httptest.NewRequest(http.MethodGet, "/v1/geography/geopolitical-zones/"+zoneID, nil)
+					router.ServeHTTP(rr, req)
+					if rr.Code != http.StatusOK {
+						t.Fatalf("unexpected status: %d", rr.Code)
+					}
+					got := strings.Join(rec.snapshot(), ",")
+					for _, want := range []string{
+						"optional_api_key",
+						"rate_limit",
+						"usage:/v1/geography/geopolitical-zones/{zone_id}|geography",
+						"geography.zone.get:" + zoneID,
+					} {
+						if !strings.Contains(got, want) {
+							t.Fatalf("expected %q in middleware sequence: %v", want, rec.snapshot())
+						}
+					}
+				})
+			}
+		})
+
+		t.Run("list not captured by detail", func(t *testing.T) {
+			rec := &routerRecorder{}
+			router := newTestRouter(t, rec)
+
+			rr := httptest.NewRecorder()
+			req := httptest.NewRequest(http.MethodGet, "/v1/geography/geopolitical-zones", nil)
+			router.ServeHTTP(rr, req)
+			if rr.Code != http.StatusOK {
+				t.Fatalf("unexpected status: %d", rr.Code)
+			}
+			got := strings.Join(rec.snapshot(), ",")
+			if strings.Contains(got, "geography.zone.get:") {
+				t.Fatalf("list route must not hit detail handler: %v", rec.snapshot())
+			}
+		})
+	})
+
 	t.Run("allow and path value", func(t *testing.T) {
 		rec := &routerRecorder{}
 		router := newTestRouter(t, rec)
@@ -339,6 +415,9 @@ func TestRouterRejectsUnknownRoutesAndUnsupportedMethods(t *testing.T) {
 		{name: "dataset wrong method", method: http.MethodPost, target: "/v1/datasets/ng-states", allow: http.MethodGet, status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_dataset"},
 		{name: "geography wrong method", method: http.MethodPost, target: "/v1/geography/states", allow: http.MethodGet, status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_geo"},
 		{name: "geography detail wrong method", method: http.MethodDelete, target: "/v1/geography/states/abia", allow: http.MethodGet, status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_geo_detail"},
+		{name: "geopolitical zones wrong method", method: http.MethodPost, target: "/v1/geography/geopolitical-zones", allow: http.MethodGet, status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_geo_zones"},
+		{name: "geopolitical zone detail wrong method", method: http.MethodDelete, target: "/v1/geography/geopolitical-zones/north-central", allow: http.MethodGet, status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_geo_zone_detail"},
+		{name: "geopolitical zone nested route", method: http.MethodGet, target: "/v1/geography/geopolitical-zones/north-central/extra", status: http.StatusNotFound, wantCode: "RESOURCE_NOT_FOUND", wantRequest: "req_geo_zone_nested"},
 		{name: "ready not registered", method: http.MethodGet, target: "/ready", status: http.StatusNotFound, wantCode: "RESOURCE_NOT_FOUND", wantRequest: "req_ready"},
 	}
 
@@ -355,11 +434,13 @@ func TestRouterRejectsUnknownRoutesAndUnsupportedMethods(t *testing.T) {
 			if rr.Code != tc.status {
 				t.Fatalf("unexpected status: %d", rr.Code)
 			}
-			if got := rr.Header().Get("Content-Type"); !strings.HasPrefix(got, "application/json") {
-				t.Fatalf("unexpected content type: %q", got)
-			}
-			if got := rr.Header().Get("X-Request-ID"); got != tc.wantRequest {
-				t.Fatalf("unexpected request id header: %q", got)
+			if tc.target != "/v1/geography/geopolitical-zones/" {
+				if got := rr.Header().Get("Content-Type"); !strings.HasPrefix(got, "application/json") {
+					t.Fatalf("unexpected content type: %q", got)
+				}
+				if got := rr.Header().Get("X-Request-ID"); got != tc.wantRequest {
+					t.Fatalf("unexpected request id header: %q", got)
+				}
 			}
 			if tc.allow != "" {
 				if got := rr.Header().Get("Allow"); got != tc.allow {
@@ -367,6 +448,12 @@ func TestRouterRejectsUnknownRoutesAndUnsupportedMethods(t *testing.T) {
 				}
 			}
 			body := rr.Body.String()
+			if tc.target == "/v1/geography/geopolitical-zones/" {
+				if !strings.Contains(body, "404 page not found") {
+					t.Fatalf("unexpected trailing-slash behavior: %s", body)
+				}
+				return
+			}
 			if strings.Contains(body, "404 page not found") || strings.Contains(body, "Method Not Allowed") {
 				t.Fatalf("plain-text router error leaked: %s", body)
 			}
@@ -386,6 +473,26 @@ func TestRouterRejectsUnknownRoutesAndUnsupportedMethods(t *testing.T) {
 	}
 }
 
+func TestRouterPreservesTrailingSlashPolicyForGeopoliticalZones(t *testing.T) {
+	rec := &routerRecorder{}
+	router := newTestRouter(t, rec)
+
+	rr := httptest.NewRecorder()
+	req := httptest.NewRequest(http.MethodGet, "/v1/geography/geopolitical-zones/", nil)
+	req.Header.Set("X-Request-ID", "req_geo_zones_slash")
+	router.ServeHTTP(rr, req)
+
+	if rr.Code != http.StatusNotFound {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if got := rr.Header().Get("Content-Type"); got != "text/plain; charset=utf-8" {
+		t.Fatalf("unexpected content type: %q", got)
+	}
+	if !strings.Contains(rr.Body.String(), "404 page not found") {
+		t.Fatalf("unexpected trailing-slash response: %s", rr.Body.String())
+	}
+}
+
 func TestRouterRejectsHeadRequestsWithJson405(t *testing.T) {
 	tests := []struct {
 		name   string
@@ -395,6 +502,7 @@ func TestRouterRejectsHeadRequestsWithJson405(t *testing.T) {
 		{name: "health", target: "/health", allow: http.MethodGet},
 		{name: "account", target: "/v1/account", allow: "GET, PATCH, DELETE"},
 		{name: "geography", target: "/v1/geography/states", allow: http.MethodGet},
+		{name: "geopolitical zones", target: "/v1/geography/geopolitical-zones", allow: http.MethodGet},
 	}
 
 	for _, tc := range tests {
@@ -551,6 +659,65 @@ func TestRouterUsesGeographyMiddlewarePolicy(t *testing.T) {
 		}
 	})
 
+	t.Run("zone anonymous", func(t *testing.T) {
+		harness = newGeographyPolicyRouter(t)
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/geopolitical-zones", nil)
+		req.RemoteAddr = "203.0.113.10:1234"
+		req.Header.Set("User-Agent", "TestAgent/1.0")
+		harness.router.ServeHTTP(rr, req)
+
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if harness.rateLimit.request.SubjectKind != interfaces.RateLimitSubjectAnonymous {
+			t.Fatalf("unexpected subject kind: %#v", harness.rateLimit.request.SubjectKind)
+		}
+		if harness.rateLimit.request.Limit != 60 {
+			t.Fatalf("unexpected anonymous limit: %d", harness.rateLimit.request.Limit)
+		}
+		if harness.usage.input.Route != "/v1/geography/geopolitical-zones" || harness.usage.input.DatasetGroup == nil || *harness.usage.input.DatasetGroup != "geography" {
+			t.Fatalf("unexpected usage record: %#v", harness.usage.input)
+		}
+		if harness.geography.zoneListCalls != 1 {
+			t.Fatalf("unexpected zone list calls: %d", harness.geography.zoneListCalls)
+		}
+	})
+
+	t.Run("zone api key", func(t *testing.T) {
+		harness = newGeographyPolicyRouter(t)
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/geopolitical-zones/north-central", nil)
+		req.RemoteAddr = "203.0.113.10:1234"
+		req.Header.Set("X-API-Key", "sd_live_example")
+		harness.router.ServeHTTP(rr, req)
+
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if harness.rateLimit.request.SubjectKind != interfaces.RateLimitSubjectAPIKey {
+			t.Fatalf("unexpected subject kind: %#v", harness.rateLimit.request.SubjectKind)
+		}
+		if harness.rateLimit.request.Limit != 300 {
+			t.Fatalf("unexpected api-key limit: %d", harness.rateLimit.request.Limit)
+		}
+		if harness.rateLimit.request.Subject != "key_123" {
+			t.Fatalf("unexpected subject: %q", harness.rateLimit.request.Subject)
+		}
+		if harness.usage.input.Route != "/v1/geography/geopolitical-zones/{zone_id}" || harness.usage.input.DatasetGroup == nil || *harness.usage.input.DatasetGroup != "geography" {
+			t.Fatalf("unexpected usage record: %#v", harness.usage.input)
+		}
+		if harness.geography.zoneGetCalls != 1 {
+			t.Fatalf("unexpected zone get calls: %d", harness.geography.zoneGetCalls)
+		}
+		if harness.geography.lastZoneID != "north-central" {
+			t.Fatalf("unexpected zone id seen by handler: %q", harness.geography.lastZoneID)
+		}
+		if !harness.geography.lastHadAPIKey || harness.geography.lastAPIKeyIdentity.APIKeyID != "key_123" || harness.geography.lastAPIKeyIdentity.AccountID != "acc_123" {
+			t.Fatalf("unexpected api key identity seen by handler: %#v", harness.geography.lastAPIKeyIdentity)
+		}
+	})
+
 	t.Run("rate limited", func(t *testing.T) {
 		harness := newGeographyPolicyRouter(t)
 		harness.rateLimit.result = interfaces.RateLimitResult{
@@ -576,6 +743,31 @@ func TestRouterUsesGeographyMiddlewarePolicy(t *testing.T) {
 		}
 	})
 
+	t.Run("zone rate limited", func(t *testing.T) {
+		harness := newGeographyPolicyRouter(t)
+		harness.rateLimit.result = interfaces.RateLimitResult{
+			Allowed:   false,
+			Limit:     60,
+			Remaining: 0,
+			ResetAt:   time.Now().UTC().Add(time.Minute),
+		}
+
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/geopolitical-zones/north-central", nil)
+		req.RemoteAddr = "203.0.113.10:1234"
+		harness.router.ServeHTTP(rr, req)
+
+		if rr.Code != http.StatusTooManyRequests {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if harness.geography.zoneGetCalls != 0 {
+			t.Fatalf("handler should not run on rate-limited request: %d", harness.geography.zoneGetCalls)
+		}
+		if harness.usage.calls != 0 {
+			t.Fatalf("usage should not run on rate-limited request: %d", harness.usage.calls)
+		}
+	})
+
 	t.Run("invalid key", func(t *testing.T) {
 		harness.auth.err = services.ErrAPIKeyNotFound
 		rr := httptest.NewRecorder()
@@ -587,7 +779,7 @@ func TestRouterUsesGeographyMiddlewarePolicy(t *testing.T) {
 		if rr.Code != http.StatusUnauthorized {
 			t.Fatalf("unexpected status: %d", rr.Code)
 		}
-		if harness.geography.listCalls != 1 {
+		if harness.geography.listCalls != 0 {
 			t.Fatalf("handler should not run on invalid api key, calls: %d", harness.geography.listCalls)
 		}
 	})
@@ -664,6 +856,16 @@ func newGeographyPolicyRouter(t *testing.T) geographyPolicyHarness {
 					AnonymousIdentifier: anonymous,
 				})
 			case "/v1/geography/states/{state_id}":
+				return middlewares.UsageTracking(usage, endpoint, datasetGroup, middlewares.UsageTrackingOptions{
+					Timeout:             time.Second,
+					AnonymousIdentifier: anonymous,
+				})
+			case "/v1/geography/geopolitical-zones":
+				return middlewares.UsageTracking(usage, endpoint, datasetGroup, middlewares.UsageTrackingOptions{
+					Timeout:             time.Second,
+					AnonymousIdentifier: anonymous,
+				})
+			case "/v1/geography/geopolitical-zones/{zone_id}":
 				return middlewares.UsageTracking(usage, endpoint, datasetGroup, middlewares.UsageTrackingOptions{
 					Timeout:             time.Second,
 					AnonymousIdentifier: anonymous,
