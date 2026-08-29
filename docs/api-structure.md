@@ -6,6 +6,7 @@ SoftData API uses a layered Go layout that keeps entry points, configuration, da
 
 - `cmd/` holds executable entry points.
 - `internal/` contains the core application logic, including configuration, database access, repositories, security helpers, request validators, response helpers, and domain/API models.
+- `datasets/` contains versioned geography datasets, schemas, metadata, and licensing notes.
 - `database/` contains PostgreSQL migrations and handwritten SQL queries.
 - `docs/` holds API and project documentation.
 - Root tooling files such as `Makefile`, `sqlc.yaml`, `.air.toml`, and `.env.example` support local development and database generation.
@@ -59,16 +60,19 @@ softdata-api/
 ├── datasets
 │   ├── geography
 │   │   ├── geopolitical_zones.json
+│   │   ├── lgas.json
 │   │   └── states.json
 │   ├── LICENSE.md
 │   ├── metadata
 │   │   └── geography
 │   │       ├── geopolitical_zones.json
+│   │       ├── lgas.json
 │   │       └── states.json
 │   ├── README.md
 │   └── schemas
 │       └── geography
 │           ├── geopolitical_zones.schema.json
+│           ├── lgas.schema.json
 │           └── states.schema.json
 ├── docs
 │   ├── api-keys.md
@@ -128,6 +132,7 @@ softdata-api/
 │   │   ├── geography_handler_test.go
 │   │   ├── health_handler.go
 │   │   ├── health_handler_test.go
+│   │   ├── openapi_test.go
 │   │   ├── usage_handler.go
 │   │   └── usage_handler_test.go
 │   ├── middlewares
@@ -166,6 +171,7 @@ softdata-api/
 │   │   ├── dataset_version.go
 │   │   ├── geography.go
 │   │   ├── geography_test.go
+│   │   ├── lgas_test.go
 │   │   ├── session.go
 │   │   ├── usage_summary.go
 │   │   └── usage_summary_test.go
@@ -276,6 +282,10 @@ Executable entry points for the API server and future tooling.
 ### `internal/config/`
 
 Environment-driven application configuration, including server, database, security, rate-limit, and dataset path settings.
+
+### `datasets/`
+
+Versioned geography dataset files, schemas, provenance metadata, and licensing notes for the compiled data.
 
 ### `internal/database/`
 
