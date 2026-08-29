@@ -63,6 +63,47 @@ func TestPublicRoutesServeGeographyZones(t *testing.T) {
 	}
 }
 
+func TestPublicRoutesServeGeographyLGAs(t *testing.T) {
+	rec := &routerRecorder{}
+	router := newTestRouter(t, rec)
+
+	rr := httptest.NewRecorder()
+	req := httptest.NewRequest(http.MethodGet, "/v1/geography/lgas", nil)
+	router.ServeHTTP(rr, req)
+	if rr.Code != http.StatusOK {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if !strings.Contains(strings.Join(rec.snapshot(), ","), "geography.lga.list") {
+		t.Fatalf("expected lga list handler to run: %v", rec.snapshot())
+	}
+
+	rec = &routerRecorder{}
+	router = newTestRouter(t, rec)
+
+	rr = httptest.NewRecorder()
+	req = httptest.NewRequest(http.MethodGet, "/v1/geography/lgas/lagos-ikeja", nil)
+	router.ServeHTTP(rr, req)
+	if rr.Code != http.StatusOK {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if !strings.Contains(strings.Join(rec.snapshot(), ","), "geography.lga.get:lagos-ikeja") {
+		t.Fatalf("expected lga detail handler to run: %v", rec.snapshot())
+	}
+
+	rec = &routerRecorder{}
+	router = newTestRouter(t, rec)
+
+	rr = httptest.NewRecorder()
+	req = httptest.NewRequest(http.MethodGet, "/v1/geography/lgas?state_id=fct", nil)
+	router.ServeHTTP(rr, req)
+	if rr.Code != http.StatusOK {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if !strings.Contains(strings.Join(rec.snapshot(), ","), "geography.lga.list-by:fct") {
+		t.Fatalf("expected lga list-by-state handler to run: %v", rec.snapshot())
+	}
+}
+
 func TestPublicRoutesRejectUnsupportedMethods(t *testing.T) {
 	rec := &routerRecorder{}
 	router := newTestRouter(t, rec)
