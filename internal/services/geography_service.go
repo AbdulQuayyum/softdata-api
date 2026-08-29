@@ -12,6 +12,7 @@ import (
 )
 
 var geographyStateIDPattern = regexp.MustCompile(`^[a-z]+(?:-[a-z]+)*$`)
+var geographyLocalGovernmentUnitIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)+$`)
 
 // GeographyService provides state lookup operations over the geography repository.
 type GeographyService struct {
@@ -83,6 +84,61 @@ func (s *GeographyService) GetGeopoliticalZone(ctx context.Context, zoneID strin
 	return zone, nil
 }
 
+func (s *GeographyService) ListLocalGovernmentUnits(ctx context.Context) ([]models.LocalGovernmentUnit, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+
+	units, err := s.repository.ListLocalGovernmentUnits(ctx)
+	if err != nil {
+		return nil, translateGeographyServiceError("list local government units", err)
+	}
+	return cloneLocalGovernmentUnitList(units), nil
+}
+
+func (s *GeographyService) ListLocalGovernmentUnitsByState(ctx context.Context, stateID string) ([]models.LocalGovernmentUnit, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+
+	stateID = strings.TrimSpace(stateID)
+	if stateID == "" || !geographyStateIDPattern.MatchString(stateID) {
+		return nil, ErrInvalidStateID
+	}
+
+	units, err := s.repository.ListLocalGovernmentUnitsByStateID(ctx, stateID)
+	if err != nil {
+		switch {
+		case errors.Is(err, context.Canceled), errors.Is(err, context.DeadlineExceeded):
+			return nil, err
+		case errors.Is(err, interfaces.ErrStateNotFound):
+			return nil, ErrStateNotFound
+		case errors.Is(err, interfaces.ErrInvalidDatasetFile):
+			return nil, fmt.Errorf("list local government units by state: repository unavailable")
+		default:
+			return nil, fmt.Errorf("list local government units by state: repository unavailable")
+		}
+	}
+	return cloneLocalGovernmentUnitList(units), nil
+}
+
+func (s *GeographyService) GetLocalGovernmentUnit(ctx context.Context, unitID string) (models.LocalGovernmentUnit, error) {
+	if err := ctx.Err(); err != nil {
+		return models.LocalGovernmentUnit{}, err
+	}
+
+	unitID = strings.TrimSpace(unitID)
+	if unitID == "" || !geographyLocalGovernmentUnitIDPattern.MatchString(unitID) {
+		return models.LocalGovernmentUnit{}, ErrInvalidLocalGovernmentUnitID
+	}
+
+	unit, err := s.repository.GetLocalGovernmentUnit(ctx, unitID)
+	if err != nil {
+		return models.LocalGovernmentUnit{}, translateGeographyLocalGovernmentUnitLookupError(err)
+	}
+	return unit, nil
+}
+
 func cloneStateList(states []models.State) []models.State {
 	if len(states) == 0 {
 		return make([]models.State, 0)
@@ -98,6 +154,15 @@ func cloneGeopoliticalZoneList(zones []models.GeopoliticalZone) []models.Geopoli
 	}
 	cloned := make([]models.GeopoliticalZone, len(zones))
 	copy(cloned, zones)
+	return cloned
+}
+
+func cloneLocalGovernmentUnitList(units []models.LocalGovernmentUnit) []models.LocalGovernmentUnit {
+	if len(units) == 0 {
+		return make([]models.LocalGovernmentUnit, 0)
+	}
+	cloned := make([]models.LocalGovernmentUnit, len(units))
+	copy(cloned, units)
 	return cloned
 }
 
@@ -128,6 +193,21 @@ func translateGeographyZoneLookupError(err error) error {
 		return fmt.Errorf("get geopolitical zone: repository unavailable")
 	default:
 		return fmt.Errorf("get geopolitical zone: repository unavailable")
+	}
+}
+
+func translateGeographyLocalGovernmentUnitLookupError(err error) error {
+	switch {
+	case err == nil:
+		return nil
+	case errors.Is(err, context.Canceled), errors.Is(err, context.DeadlineExceeded):
+		return err
+	case errors.Is(err, interfaces.ErrLocalGovernmentUnitNotFound):
+		return ErrLocalGovernmentUnitNotFound
+	case errors.Is(err, interfaces.ErrInvalidDatasetFile):
+		return fmt.Errorf("get local government unit: repository unavailable")
+	default:
+		return fmt.Errorf("get local government unit: repository unavailable")
 	}
 }
 

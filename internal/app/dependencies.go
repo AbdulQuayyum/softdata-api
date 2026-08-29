@@ -26,8 +26,10 @@ import (
 )
 
 const (
-	defaultKeyPrefix            = "softdata"
-	geographyStatesRelativePath = "geography/states.json"
+	defaultKeyPrefix                          = "softdata"
+	geographyStatesRelativePath               = "geography/states.json"
+	geographyGeopoliticalZonesRelativePath    = "geography/geopolitical_zones.json"
+	geographyLocalGovernmentUnitsRelativePath = "geography/lgas.json"
 )
 
 func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Logger) (deps appDependencies, err error) {
@@ -109,8 +111,8 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
 			return fileRepo.NewJSONRepository(root, maxBytes)
 		},
-		func(repository interfaces.JSONFileRepository, statesPath string) (interfaces.GeographyRepository, error) {
-			return fileRepo.NewGeographyRepository(repository, statesPath)
+		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath string) (interfaces.GeographyRepository, error) {
+			return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath)
 		},
 		func(repository interfaces.GeographyRepository) (geographyService, error) {
 			return services.NewGeographyService(repository)
@@ -273,7 +275,7 @@ func buildGeographyHandler(
 	ctx context.Context,
 	cfg *config.Config,
 	newJSONRepository func(string, int64) (interfaces.JSONFileRepository, error),
-	newGeographyRepository func(interfaces.JSONFileRepository, string) (interfaces.GeographyRepository, error),
+	newGeographyRepository func(interfaces.JSONFileRepository, string, string, string) (interfaces.GeographyRepository, error),
 	newGeographyService func(interfaces.GeographyRepository) (geographyService, error),
 	newGeographyHandler func(geographyService) (*handlers.GeographyHandler, error),
 ) (*handlers.GeographyHandler, error) {
@@ -300,7 +302,7 @@ func buildGeographyHandler(
 	if err != nil {
 		return nil, fmt.Errorf("initialize geography json repository: %w", err)
 	}
-	geographyRepository, err := newGeographyRepository(jsonRepository, geographyStatesRelativePath)
+	geographyRepository, err := newGeographyRepository(jsonRepository, geographyStatesRelativePath, geographyGeopoliticalZonesRelativePath, geographyLocalGovernmentUnitsRelativePath)
 	if err != nil {
 		return nil, fmt.Errorf("initialize geography repository: %w", err)
 	}

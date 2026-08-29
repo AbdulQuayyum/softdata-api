@@ -25,4 +25,6 @@ var (
 	ErrStateNotFound = errors.New("repository: state not found")
 	// ErrGeopoliticalZoneNotFound reports that a requested geopolitical zone is not present in the dataset.
 	ErrGeopoliticalZoneNotFound = errors.New("repository: geopolitical zone not found")
+	// ErrLocalGovernmentUnitNotFound reports that a requested local-government unit is not present in the dataset.
+	ErrLocalGovernmentUnitNotFound = errors.New("repository: local government unit not found")
 )

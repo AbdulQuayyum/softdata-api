@@ -20,15 +20,20 @@ import (
 type geographyJSONRepoStub struct {
 	states   []models.State
 	zones    []models.GeopoliticalZone
+	units    []models.LocalGovernmentUnit
 	decodeFn func(context.Context, string, any) error
 
-	calls    int
-	lastPath string
+	calls     int
+	pathCalls map[string]int
+	lastPath  string
 }
 
 func (s *geographyJSONRepoStub) Decode(ctx context.Context, relativePath string, destination any) error {
 	s.calls++
 	s.lastPath = relativePath
+	if s.pathCalls != nil {
+		s.pathCalls[relativePath]++
+	}
 	if s.decodeFn != nil {
 		return s.decodeFn(ctx, relativePath, destination)
 	}
@@ -36,6 +41,11 @@ func (s *geographyJSONRepoStub) Decode(ctx context.Context, relativePath string,
 	dest, ok := destination.(*[]models.State)
 	if ok {
 		*dest = cloneTestStates(s.states)
+		return nil
+	}
+	unitDest, ok := destination.(*[]models.LocalGovernmentUnit)
+	if ok {
+		*unitDest = cloneTestUnits(s.units)
 		return nil
 	}
 	zoneDest, ok := destination.(*[]models.GeopoliticalZone)
@@ -49,22 +59,31 @@ func (s *geographyJSONRepoStub) Decode(ctx context.Context, relativePath string,
 func TestNewGeographyRepositoryRejectsInvalidInputs(t *testing.T) {
 	t.Parallel()
 
-	if _, err := NewGeographyRepository(nil, "geography/states.json"); err == nil {
+	if _, err := NewGeographyRepository(nil, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json"); err == nil {
 		t.Fatal("expected nil json repository to be rejected")
 	}
-	if _, err := NewGeographyRepository(&geographyJSONRepoStub{}, ""); err == nil {
-		t.Fatal("expected empty path to be rejected")
+	if _, err := NewGeographyRepository(&geographyJSONRepoStub{}, "", "geography/geopolitical_zones.json", "geography/lgas.json"); err == nil {
+		t.Fatal("expected empty states path to be rejected")
 	}
-	if _, err := NewGeographyRepository(&geographyJSONRepoStub{}, "   "); err == nil {
-		t.Fatal("expected whitespace path to be rejected")
+	if _, err := NewGeographyRepository(&geographyJSONRepoStub{}, "geography/states.json", "   ", "geography/lgas.json"); err == nil {
+		t.Fatal("expected whitespace zones path to be rejected")
+	}
+	if _, err := NewGeographyRepository(&geographyJSONRepoStub{}, "geography/states.json", "geography/geopolitical_zones.json", "   "); err == nil {
+		t.Fatal("expected whitespace lga path to be rejected")
 	}
 
-	repo, err := NewGeographyRepository(&geographyJSONRepoStub{}, "  geography/states.json  ")
+	repo, err := NewGeographyRepository(&geographyJSONRepoStub{}, "  geography/states.json  ", " geography/geopolitical_zones.json ", " geography/lgas.json ")
 	if err != nil {
 		t.Fatalf("NewGeographyRepository() error = %v", err)
 	}
 	if repo.statesPath != "geography/states.json" {
 		t.Fatalf("unexpected stored path: %q", repo.statesPath)
+	}
+	if repo.zonesPath != "geography/geopolitical_zones.json" {
+		t.Fatalf("unexpected stored zones path: %q", repo.zonesPath)
+	}
+	if repo.localGovernmentUnitsPath != "geography/lgas.json" {
+		t.Fatalf("unexpected stored lga path: %q", repo.localGovernmentUnitsPath)
 	}
 }
 
@@ -73,8 +92,8 @@ func TestGeographyRepositoryListStatesAndGetStateByID(t *testing.T) {
 
 	fixture := loadApprovedStateFixture(t)
 	zones := loadApprovedZoneFixture(t)
-	jsonRepo := &geographyJSONRepoStub{states: fixture, zones: zones}
-	repo, err := NewGeographyRepository(jsonRepo, "geography/states.json")
+	jsonRepo := &geographyJSONRepoStub{states: fixture, zones: zones, pathCalls: map[string]int{}}
+	repo, err := NewGeographyRepository(jsonRepo, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json")
 	if err != nil {
 		t.Fatalf("NewGeographyRepository() error = %v", err)
 	}
@@ -85,6 +104,9 @@ func TestGeographyRepositoryListStatesAndGetStateByID(t *testing.T) {
 	}
 	if jsonRepo.calls != 2 {
 		t.Fatalf("unexpected decode call count: %d", jsonRepo.calls)
+	}
+	if jsonRepo.pathCalls["geography/lgas.json"] != 0 {
+		t.Fatalf("unexpected lga decode count for state lookup path: %#v", jsonRepo.pathCalls)
 	}
 	if states == nil {
 		t.Fatal("ListStates() returned nil slice")
@@ -148,8 +170,8 @@ func TestGeographyRepositoryListGeopoliticalZonesAndGetGeopoliticalZone(t *testi
 
 	states := loadApprovedStateFixture(t)
 	zones := loadApprovedZoneFixture(t)
-	jsonRepo := &geographyJSONRepoStub{states: states, zones: zones}
-	repo, err := NewGeographyRepository(jsonRepo, "geography/states.json")
+	jsonRepo := &geographyJSONRepoStub{states: states, zones: zones, pathCalls: map[string]int{}}
+	repo, err := NewGeographyRepository(jsonRepo, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json")
 	if err != nil {
 		t.Fatalf("NewGeographyRepository() error = %v", err)
 	}
@@ -166,6 +188,9 @@ func TestGeographyRepositoryListGeopoliticalZonesAndGetGeopoliticalZone(t *testi
 	}
 	if jsonRepo.calls != 2 {
 		t.Fatalf("unexpected decode call count: %d", jsonRepo.calls)
+	}
+	if jsonRepo.pathCalls["geography/lgas.json"] != 0 {
+		t.Fatalf("unexpected lga decode count for zone lookup path: %#v", jsonRepo.pathCalls)
 	}
 
 	loaded[0].Name = "Changed"
@@ -190,6 +215,385 @@ func TestGeographyRepositoryListGeopoliticalZonesAndGetGeopoliticalZone(t *testi
 	}
 	if _, err := repo.GetGeopoliticalZone(context.Background(), "missing"); !errors.Is(err, interfaces.ErrGeopoliticalZoneNotFound) {
 		t.Fatalf("missing zone identifier error = %v, want ErrGeopoliticalZoneNotFound", err)
+	}
+}
+
+func TestGeographyRepositoryListLocalGovernmentUnitsAndLookups(t *testing.T) {
+	t.Parallel()
+
+	states := loadApprovedStateFixture(t)
+	zones := loadApprovedZoneFixture(t)
+	units := loadApprovedLocalGovernmentUnitFixture(t)
+	jsonRepo := &geographyJSONRepoStub{states: states, zones: zones, units: units, pathCalls: map[string]int{}}
+	repo, err := NewGeographyRepository(jsonRepo, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json")
+	if err != nil {
+		t.Fatalf("NewGeographyRepository() error = %v", err)
+	}
+
+	loaded, err := repo.ListLocalGovernmentUnits(context.Background())
+	if err != nil {
+		t.Fatalf("ListLocalGovernmentUnits() error = %v", err)
+	}
+	if loaded == nil {
+		t.Fatal("ListLocalGovernmentUnits() returned nil slice")
+	}
+	if len(loaded) != 774 {
+		t.Fatalf("unexpected unit count: %d", len(loaded))
+	}
+	if !reflect.DeepEqual(loaded, units) {
+		t.Fatalf("unexpected unit list: %#v", loaded)
+	}
+	if jsonRepo.pathCalls["geography/states.json"] != 1 || jsonRepo.pathCalls["geography/geopolitical_zones.json"] != 1 || jsonRepo.pathCalls["geography/lgas.json"] != 1 {
+		t.Fatalf("unexpected per-path decode counts: %#v", jsonRepo.pathCalls)
+	}
+
+	loaded[0].Name = "Changed"
+	again, err := repo.ListLocalGovernmentUnits(context.Background())
+	if err != nil {
+		t.Fatalf("ListLocalGovernmentUnits() second call error = %v", err)
+	}
+	if again[0].Name != units[0].Name {
+		t.Fatal("ListLocalGovernmentUnits() shared mutable slice state")
+	}
+
+	fctUnits, err := repo.ListLocalGovernmentUnitsByStateID(context.Background(), "  fct  ")
+	if err != nil {
+		t.Fatalf("ListLocalGovernmentUnitsByStateID(fct) error = %v", err)
+	}
+	if len(fctUnits) != 6 {
+		t.Fatalf("unexpected FCT unit count: %d", len(fctUnits))
+	}
+	if fctUnits[0].ID != "fct-abaji" || fctUnits[1].ID != "fct-abuja-municipal" {
+		t.Fatalf("unexpected FCT ordering: %#v", fctUnits)
+	}
+
+	abiaUnits, err := repo.ListLocalGovernmentUnitsByStateID(context.Background(), "abia")
+	if err != nil {
+		t.Fatalf("ListLocalGovernmentUnitsByStateID(abia) error = %v", err)
+	}
+	if len(abiaUnits) != 17 {
+		t.Fatalf("unexpected Abia unit count: %d", len(abiaUnits))
+	}
+
+	if _, err := repo.ListLocalGovernmentUnitsByStateID(context.Background(), "missing"); !errors.Is(err, interfaces.ErrStateNotFound) {
+		t.Fatalf("missing state error = %v, want ErrStateNotFound", err)
+	}
+	if _, err := repo.ListLocalGovernmentUnitsByStateID(context.Background(), "Abia"); !errors.Is(err, interfaces.ErrStateNotFound) {
+		t.Fatalf("invalid state error = %v, want ErrStateNotFound", err)
+	}
+
+	abujaMunicipal, err := repo.GetLocalGovernmentUnit(context.Background(), "fct-abuja-municipal")
+	if err != nil {
+		t.Fatalf("GetLocalGovernmentUnit(fct-abuja-municipal) error = %v", err)
+	}
+	if abujaMunicipal.ID != "fct-abuja-municipal" || abujaMunicipal.Name != "Abuja Municipal" {
+		t.Fatalf("unexpected Abuja Municipal record: %#v", abujaMunicipal)
+	}
+
+	jamaare, err := repo.GetLocalGovernmentUnit(context.Background(), "bauchi-jama-are")
+	if err != nil {
+		t.Fatalf("GetLocalGovernmentUnit(bauchi-jama-are) error = %v", err)
+	}
+	if jamaare.Name != "Jama'are" {
+		t.Fatalf("unexpected Jama'are record: %#v", jamaare)
+	}
+
+	if _, err := repo.GetLocalGovernmentUnit(context.Background(), "Abuja Municipal"); !errors.Is(err, interfaces.ErrLocalGovernmentUnitNotFound) {
+		t.Fatalf("name lookup error = %v, want ErrLocalGovernmentUnitNotFound", err)
+	}
+	if _, err := repo.GetLocalGovernmentUnit(context.Background(), "123e4567-e89b-12d3-a456-426614174000"); !errors.Is(err, interfaces.ErrLocalGovernmentUnitNotFound) {
+		t.Fatalf("uuid lookup error = %v, want ErrLocalGovernmentUnitNotFound", err)
+	}
+	if _, err := repo.GetLocalGovernmentUnit(context.Background(), "missing"); !errors.Is(err, interfaces.ErrLocalGovernmentUnitNotFound) {
+		t.Fatalf("missing unit error = %v, want ErrLocalGovernmentUnitNotFound", err)
+	}
+}
+
+func TestGeographyRepositoryLocalGovernmentUnitDecodeCounts(t *testing.T) {
+	t.Parallel()
+
+	fixtureStates := loadApprovedStateFixture(t)
+	fixtureZones := loadApprovedZoneFixture(t)
+	fixtureUnits := loadApprovedLocalGovernmentUnitFixture(t)
+
+	tests := []struct {
+		name string
+		call func(*GeographyFileRepository) error
+	}{
+		{
+			name: "list all",
+			call: func(repo *GeographyFileRepository) error {
+				_, err := repo.ListLocalGovernmentUnits(context.Background())
+				return err
+			},
+		},
+		{
+			name: "list by state",
+			call: func(repo *GeographyFileRepository) error {
+				_, err := repo.ListLocalGovernmentUnitsByStateID(context.Background(), "fct")
+				return err
+			},
+		},
+		{
+			name: "get by id",
+			call: func(repo *GeographyFileRepository) error {
+				_, err := repo.GetLocalGovernmentUnit(context.Background(), "fct-abuja-municipal")
+				return err
+			},
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			jsonRepo := &geographyJSONRepoStub{states: fixtureStates, zones: fixtureZones, units: fixtureUnits, pathCalls: map[string]int{}}
+			repo, err := NewGeographyRepository(jsonRepo, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json")
+			if err != nil {
+				t.Fatalf("NewGeographyRepository() error = %v", err)
+			}
+			if err := tc.call(repo); err != nil {
+				t.Fatalf("%s() error = %v", tc.name, err)
+			}
+			if jsonRepo.pathCalls["geography/states.json"] != 1 || jsonRepo.pathCalls["geography/geopolitical_zones.json"] != 1 || jsonRepo.pathCalls["geography/lgas.json"] != 1 {
+				t.Fatalf("unexpected decode counts: %#v", jsonRepo.pathCalls)
+			}
+		})
+	}
+}
+
+func TestGeographyRepositoryRejectsInvalidLocalGovernmentUnitFixtures(t *testing.T) {
+	t.Parallel()
+
+	fixtureStates := loadApprovedStateFixture(t)
+	fixtureZones := loadApprovedZoneFixture(t)
+	fixtureUnits := loadApprovedLocalGovernmentUnitFixture(t)
+
+	type mutation func([]models.LocalGovernmentUnit) []models.LocalGovernmentUnit
+
+	tests := []struct {
+		name string
+		mut  mutation
+	}{
+		{
+			name: "nil slice",
+			mut: func([]models.LocalGovernmentUnit) []models.LocalGovernmentUnit {
+				return nil
+			},
+		},
+		{
+			name: "empty slice",
+			mut: func([]models.LocalGovernmentUnit) []models.LocalGovernmentUnit {
+				return make([]models.LocalGovernmentUnit, 0)
+			},
+		},
+		{
+			name: "773 records",
+			mut: func(units []models.LocalGovernmentUnit) []models.LocalGovernmentUnit {
+				return append([]models.LocalGovernmentUnit(nil), units[:773]...)
+			},
+		},
+		{
+			name: "775 records",
+			mut: func(units []models.LocalGovernmentUnit) []models.LocalGovernmentUnit {
+				out := append([]models.LocalGovernmentUnit(nil), units...)
+				return append(out, units[0])
+			},
+		},
+		{
+			name: "duplicate id",
+			mut: func(units []models.LocalGovernmentUnit) []models.LocalGovernmentUnit {
+				out := append([]models.LocalGovernmentUnit(nil), units...)
+				out[1].ID = out[0].ID
+				return out
+			},
+		},
+		{
+			name: "duplicate state name pair",
+			mut: func(units []models.LocalGovernmentUnit) []models.LocalGovernmentUnit {
+				out := append([]models.LocalGovernmentUnit(nil), units...)
+				out[1].Name = out[0].Name
+				out[1].ID = out[1].StateID + "-" + slugifyLocalGovernmentUnitName(out[1].Name)
+				return out
+			},
+		},
+		{
+			name: "invalid state id",
+			mut: func(units []models.LocalGovernmentUnit) []models.LocalGovernmentUnit {
+				out := append([]models.LocalGovernmentUnit(nil), units...)
+				out[0].StateID = "invalid"
+				out[0].ID = "invalid-" + slugifyLocalGovernmentUnitName(out[0].Name)
+				return out
+			},
+		},
+		{
+			name: "missing parent state",
+			mut: func(units []models.LocalGovernmentUnit) []models.LocalGovernmentUnit {
+				out := append([]models.LocalGovernmentUnit(nil), units...)
+				out[0].StateID = "missing-state"
+				out[0].ID = "missing-state-" + slugifyLocalGovernmentUnitName(out[0].Name)
+				return out
+			},
+		},
+		{
+			name: "malformed id",
+			mut: func(units []models.LocalGovernmentUnit) []models.LocalGovernmentUnit {
+				out := append([]models.LocalGovernmentUnit(nil), units...)
+				out[0].ID = "bad"
+				return out
+			},
+		},
+		{
+			name: "wrong state prefix",
+			mut: func(units []models.LocalGovernmentUnit) []models.LocalGovernmentUnit {
+				out := append([]models.LocalGovernmentUnit(nil), units...)
+				out[0].ID = "lagos-" + slugifyLocalGovernmentUnitName(out[0].Name)
+				return out
+			},
+		},
+		{
+			name: "wrong slug",
+			mut: func(units []models.LocalGovernmentUnit) []models.LocalGovernmentUnit {
+				out := append([]models.LocalGovernmentUnit(nil), units...)
+				out[0].ID = out[0].StateID + "-wrong"
+				return out
+			},
+		},
+		{
+			name: "invalid country code",
+			mut: func(units []models.LocalGovernmentUnit) []models.LocalGovernmentUnit {
+				out := append([]models.LocalGovernmentUnit(nil), units...)
+				out[0].CountryCode = "GH"
+				return out
+			},
+		},
+		{
+			name: "unsupported administrative type",
+			mut: func(units []models.LocalGovernmentUnit) []models.LocalGovernmentUnit {
+				out := append([]models.LocalGovernmentUnit(nil), units...)
+				out[0].AdministrativeType = "district"
+				return out
+			},
+		},
+		{
+			name: "fct lga type",
+			mut: func(units []models.LocalGovernmentUnit) []models.LocalGovernmentUnit {
+				out := append([]models.LocalGovernmentUnit(nil), units...)
+				for i := range out {
+					if out[i].StateID == "fct" {
+						out[i].AdministrativeType = "local_government_area"
+						break
+					}
+				}
+				return out
+			},
+		},
+		{
+			name: "non fct area council type",
+			mut: func(units []models.LocalGovernmentUnit) []models.LocalGovernmentUnit {
+				out := append([]models.LocalGovernmentUnit(nil), units...)
+				out[0].AdministrativeType = "area_council"
+				return out
+			},
+		},
+		{
+			name: "missing canonical fct record",
+			mut: func(units []models.LocalGovernmentUnit) []models.LocalGovernmentUnit {
+				out := append([]models.LocalGovernmentUnit(nil), units...)
+				for i := range out {
+					if out[i].ID == "fct-abuja-municipal" {
+						out[i].Name = "AMAC"
+						out[i].ID = "fct-amac"
+						break
+					}
+				}
+				return out
+			},
+		},
+		{
+			name: "unexpected fct record",
+			mut: func(units []models.LocalGovernmentUnit) []models.LocalGovernmentUnit {
+				out := append([]models.LocalGovernmentUnit(nil), units...)
+				out[0].StateID = "fct"
+				out[0].AdministrativeType = "area_council"
+				out[0].ID = "fct-extra"
+				out[0].Name = "Extra"
+				return out
+			},
+		},
+		{
+			name: "incorrect per state count",
+			mut: func(units []models.LocalGovernmentUnit) []models.LocalGovernmentUnit {
+				out := append([]models.LocalGovernmentUnit(nil), units...)
+				for i := range out {
+					if out[i].StateID == "abia" {
+						out[i].StateID = "lagos"
+						out[i].ID = "lagos-" + slugifyLocalGovernmentUnitName(out[i].Name)
+						break
+					}
+				}
+				return out
+			},
+		},
+		{
+			name: "incorrect zone-derived count",
+			mut: func(units []models.LocalGovernmentUnit) []models.LocalGovernmentUnit {
+				out := append([]models.LocalGovernmentUnit(nil), units...)
+				for i := range out {
+					if out[i].StateID == "lagos" {
+						out[i].StateID = "benue"
+						out[i].ID = "benue-" + slugifyLocalGovernmentUnitName(out[i].Name)
+						break
+					}
+				}
+				return out
+			},
+		},
+		{
+			name: "invalid ordering",
+			mut: func(units []models.LocalGovernmentUnit) []models.LocalGovernmentUnit {
+				out := append([]models.LocalGovernmentUnit(nil), units...)
+				out[0], out[1] = out[1], out[0]
+				return out
+			},
+		},
+		{
+			name: "unreferenced state",
+			mut: func(units []models.LocalGovernmentUnit) []models.LocalGovernmentUnit {
+				out := make([]models.LocalGovernmentUnit, 0, len(units))
+				for _, unit := range units {
+					if unit.StateID == "yobe" {
+						continue
+					}
+					out = append(out, unit)
+				}
+				for len(out) < len(units) {
+					out = append(out, units[0])
+				}
+				return out[:len(units)]
+			},
+		},
+		{
+			name: "unreferenced zone",
+			mut: func(units []models.LocalGovernmentUnit) []models.LocalGovernmentUnit {
+				out := append([]models.LocalGovernmentUnit(nil), units...)
+				for i := range out {
+					if out[i].StateID == "kebbi" {
+						out[i].StateID = "lagos"
+						out[i].ID = "lagos-" + slugifyLocalGovernmentUnitName(out[i].Name)
+						break
+					}
+				}
+				return out
+			},
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			repo := newGeographyRepoWithLocalGovernmentUnits(t, tc.mut(cloneTestUnits(fixtureUnits)), fixtureStates, fixtureZones)
+			if _, err := repo.ListLocalGovernmentUnits(context.Background()); !errors.Is(err, interfaces.ErrInvalidDatasetFile) {
+				t.Fatalf("ListLocalGovernmentUnits() error = %v, want ErrInvalidDatasetFile", err)
+			}
+		})
 	}
 }
 
@@ -260,7 +664,7 @@ func TestGeographyRepositoryContextAndDecodeErrors(t *testing.T) {
 				return nil
 			},
 		}
-		repo, err := NewGeographyRepository(stub, "geography/states.json")
+		repo, err := NewGeographyRepository(stub, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json")
 		if err != nil {
 			t.Fatalf("NewGeographyRepository() error = %v", err)
 		}
@@ -280,7 +684,7 @@ func TestGeographyRepositoryContextAndDecodeErrors(t *testing.T) {
 				return nil
 			},
 		}
-		repo, err := NewGeographyRepository(stub, "geography/states.json")
+		repo, err := NewGeographyRepository(stub, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json")
 		if err != nil {
 			t.Fatalf("NewGeographyRepository() error = %v", err)
 		}
@@ -307,6 +711,13 @@ func TestGeographyRepositoryContextAndDecodeErrors(t *testing.T) {
 		repo := newGeographyRepoForError(t, interfaces.ErrInvalidDatasetFile)
 		if _, err := repo.ListStates(context.Background()); !errors.Is(err, interfaces.ErrInvalidDatasetFile) {
 			t.Fatalf("ListStates() error = %v, want ErrInvalidDatasetFile", err)
+		}
+	})
+
+	t.Run("lgas", func(t *testing.T) {
+		repo := newGeographyRepoForError(t, interfaces.ErrDatasetFileUnavailable)
+		if _, err := repo.ListLocalGovernmentUnits(context.Background()); !errors.Is(err, interfaces.ErrDatasetFileUnavailable) {
+			t.Fatalf("ListLocalGovernmentUnits() error = %v, want ErrDatasetFileUnavailable", err)
 		}
 	})
 }
@@ -535,12 +946,24 @@ func TestGeographyRepositoryErrorsDoNotExposePathOrRecordContents(t *testing.T) 
 	if strings.Contains(err.Error(), "Abia") || strings.Contains(err.Error(), "states.json") || strings.Contains(err.Error(), "bad") {
 		t.Fatalf("error exposed unsafe details: %v", err)
 	}
+
+	lgaUnits := loadApprovedLocalGovernmentUnitFixture(t)
+	lgaUnits[0].CountryCode = "GH"
+	lgaRepo := newGeographyRepoWithLocalGovernmentUnits(t, lgaUnits, loadApprovedStateFixture(t), loadApprovedZoneFixture(t))
+	lgaRepo.localGovernmentUnitsPath = "../../../datasets/geography/lgas.json"
+	_, err = lgaRepo.ListLocalGovernmentUnits(context.Background())
+	if err == nil {
+		t.Fatal("expected lga validation error")
+	}
+	if strings.Contains(err.Error(), "lgas.json") || strings.Contains(err.Error(), "Abaji") || strings.Contains(err.Error(), "../../../datasets") {
+		t.Fatalf("error exposed unsafe details: %v", err)
+	}
 }
 
 func newGeographyRepoForError(t *testing.T, decodeErr error) *GeographyFileRepository {
 	t.Helper()
 
-	repo, err := NewGeographyRepository(&geographyJSONRepoStub{decodeFn: func(context.Context, string, any) error { return decodeErr }}, "geography/states.json")
+	repo, err := NewGeographyRepository(&geographyJSONRepoStub{decodeFn: func(context.Context, string, any) error { return decodeErr }}, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json")
 	if err != nil {
 		t.Fatalf("NewGeographyRepository() error = %v", err)
 	}
@@ -550,7 +973,7 @@ func newGeographyRepoForError(t *testing.T, decodeErr error) *GeographyFileRepos
 func newGeographyRepoWithStates(t *testing.T, states []models.State) *GeographyFileRepository {
 	t.Helper()
 
-	repo, err := NewGeographyRepository(&geographyJSONRepoStub{states: states, zones: loadApprovedZoneFixture(t)}, "geography/states.json")
+	repo, err := NewGeographyRepository(&geographyJSONRepoStub{states: states, zones: loadApprovedZoneFixture(t)}, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json")
 	if err != nil {
 		t.Fatalf("NewGeographyRepository() error = %v", err)
 	}
@@ -560,7 +983,17 @@ func newGeographyRepoWithStates(t *testing.T, states []models.State) *GeographyF
 func newGeographyRepoWithDecodeFn(t *testing.T, decodeFn func(context.Context, string, any) error) *GeographyFileRepository {
 	t.Helper()
 
-	repo, err := NewGeographyRepository(&geographyJSONRepoStub{decodeFn: decodeFn}, "geography/states.json")
+	repo, err := NewGeographyRepository(&geographyJSONRepoStub{decodeFn: decodeFn}, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json")
+	if err != nil {
+		t.Fatalf("NewGeographyRepository() error = %v", err)
+	}
+	return repo
+}
+
+func newGeographyRepoWithLocalGovernmentUnits(t *testing.T, units []models.LocalGovernmentUnit, states []models.State, zones []models.GeopoliticalZone) *GeographyFileRepository {
+	t.Helper()
+
+	repo, err := NewGeographyRepository(&geographyJSONRepoStub{states: states, zones: zones, units: units}, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json")
 	if err != nil {
 		t.Fatalf("NewGeographyRepository() error = %v", err)
 	}
@@ -611,6 +1044,28 @@ func loadApprovedZoneFixture(t *testing.T) []models.GeopoliticalZone {
 	return zones
 }
 
+func loadApprovedLocalGovernmentUnitFixture(t *testing.T) []models.LocalGovernmentUnit {
+	t.Helper()
+
+	path := filepath.Clean("../../../datasets/geography/lgas.json")
+	data, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatalf("read local government units fixture: %v", err)
+	}
+
+	dec := json.NewDecoder(bytes.NewReader(data))
+	dec.DisallowUnknownFields()
+
+	var units []models.LocalGovernmentUnit
+	if err := dec.Decode(&units); err != nil {
+		t.Fatalf("decode local government units fixture: %v", err)
+	}
+	if err := dec.Decode(new(any)); err == nil {
+		t.Fatal("local government unit fixture contains trailing json")
+	}
+	return units
+}
+
 func cloneTestStates(states []models.State) []models.State {
 	if len(states) == 0 {
 		return make([]models.State, 0)
@@ -626,5 +1081,14 @@ func cloneTestZones(zones []models.GeopoliticalZone) []models.GeopoliticalZone {
 	}
 	cloned := make([]models.GeopoliticalZone, len(zones))
 	copy(cloned, zones)
+	return cloned
+}
+
+func cloneTestUnits(units []models.LocalGovernmentUnit) []models.LocalGovernmentUnit {
+	if len(units) == 0 {
+		return make([]models.LocalGovernmentUnit, 0)
+	}
+	cloned := make([]models.LocalGovernmentUnit, len(units))
+	copy(cloned, units)
 	return cloned
 }
