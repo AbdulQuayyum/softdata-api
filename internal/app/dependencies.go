@@ -269,6 +269,9 @@ type geographyService interface {
 	GetState(context.Context, string) (models.State, error)
 	ListGeopoliticalZones(context.Context) ([]models.GeopoliticalZone, error)
 	GetGeopoliticalZone(context.Context, string) (models.GeopoliticalZone, error)
+	ListLocalGovernmentUnits(context.Context) ([]models.LocalGovernmentUnit, error)
+	ListLocalGovernmentUnitsByState(context.Context, string) ([]models.LocalGovernmentUnit, error)
+	GetLocalGovernmentUnit(context.Context, string) (models.LocalGovernmentUnit, error)
 }
 
 func buildGeographyHandler(

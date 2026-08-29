@@ -1059,8 +1059,13 @@ type routerGeographyStub struct {
 	getCalls           int
 	zoneListCalls      int
 	zoneGetCalls       int
+	lgaListCalls       int
+	lgaListByCalls     int
+	lgaGetCalls        int
 	lastStateID        string
 	lastZoneID         string
+	lastLGAID          string
+	lastLGAStateID     string
 	lastHadAPIKey      bool
 	lastAPIKeyIdentity services.APIKeyIdentity
 }
@@ -1121,6 +1126,50 @@ func (s *routerGeographyStub) GetGeopoliticalZone(ctx context.Context, zoneID st
 		s.lastAPIKeyIdentity = identity
 	}
 	return models.GeopoliticalZone{ID: zoneID, Name: strings.Title(strings.ReplaceAll(zoneID, "-", " "))}, nil
+}
+
+func (s *routerGeographyStub) ListLocalGovernmentUnits(ctx context.Context) ([]models.LocalGovernmentUnit, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.lgaListCalls++
+	if s.rec != nil {
+		s.rec.add("geography.lga.list")
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return []models.LocalGovernmentUnit{{ID: "lagos-ikeja", Name: "Ikeja", StateID: "lagos", CountryCode: "NG", AdministrativeType: "local_government_area"}}, nil
+}
+
+func (s *routerGeographyStub) ListLocalGovernmentUnitsByState(ctx context.Context, stateID string) ([]models.LocalGovernmentUnit, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.lgaListByCalls++
+	s.lastLGAStateID = stateID
+	if s.rec != nil {
+		s.rec.add("geography.lga.list-by:" + stateID)
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return []models.LocalGovernmentUnit{{ID: stateID + "-example", Name: "Example", StateID: stateID, CountryCode: "NG", AdministrativeType: "local_government_area"}}, nil
+}
+
+func (s *routerGeographyStub) GetLocalGovernmentUnit(ctx context.Context, unitID string) (models.LocalGovernmentUnit, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.lgaGetCalls++
+	s.lastLGAID = unitID
+	if s.rec != nil {
+		s.rec.add("geography.lga.get:" + unitID)
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return models.LocalGovernmentUnit{ID: unitID, Name: "Example", StateID: "lagos", CountryCode: "NG", AdministrativeType: "local_government_area"}, nil
 }
 
 type routerAPIKeyAuthenticatorStub struct {

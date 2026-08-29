@@ -113,6 +113,8 @@ func mapError(err error) mappedError {
 		return mappedError{status: http.StatusBadRequest, code: codeInvalidRequest, message: messageInvalidRequest}
 	case errors.Is(err, services.ErrInvalidStateID):
 		return mappedError{status: http.StatusBadRequest, code: codeInvalidRequest, message: messageInvalidRequest}
+	case errors.Is(err, services.ErrInvalidLocalGovernmentUnitID):
+		return mappedError{status: http.StatusBadRequest, code: codeInvalidRequest, message: messageInvalidRequest}
 	case errors.Is(err, services.ErrInvalidGeopoliticalZoneID):
 		return mappedError{status: http.StatusBadRequest, code: codeInvalidRequest, message: messageInvalidRequest}
 	case errors.Is(err, services.ErrDatasetNotFound), errors.Is(err, services.ErrAccountNotFound):
@@ -124,6 +126,8 @@ func mapError(err error) mappedError {
 	case errors.Is(err, services.ErrAccountInactive):
 		return mappedError{status: http.StatusForbidden, code: codeInvalidRequest, message: messageOperationNotAllowed}
 	case errors.Is(err, services.ErrStateNotFound):
+		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}
+	case errors.Is(err, services.ErrLocalGovernmentUnitNotFound):
 		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}
 	case errors.Is(err, services.ErrGeopoliticalZoneNotFound):
 		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}
