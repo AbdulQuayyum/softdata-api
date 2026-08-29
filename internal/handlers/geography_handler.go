@@ -15,6 +15,9 @@ type geographyService interface {
 	GetState(context.Context, string) (models.State, error)
 	ListGeopoliticalZones(context.Context) ([]models.GeopoliticalZone, error)
 	GetGeopoliticalZone(context.Context, string) (models.GeopoliticalZone, error)
+	ListLocalGovernmentUnits(context.Context) ([]models.LocalGovernmentUnit, error)
+	ListLocalGovernmentUnitsByState(context.Context, string) ([]models.LocalGovernmentUnit, error)
+	GetLocalGovernmentUnit(context.Context, string) (models.LocalGovernmentUnit, error)
 }
 
 type GeographyHandler struct {
@@ -106,4 +109,59 @@ func (h *GeographyHandler) GetGeopoliticalZone(w http.ResponseWriter, r *http.Re
 	}
 
 	_ = response.Success(w, http.StatusOK, zone)
+}
+
+func (h *GeographyHandler) ListLocalGovernmentUnits(w http.ResponseWriter, r *http.Request) {
+	if !allowMethod(w, r, http.MethodGet) {
+		return
+	}
+
+	requestID := requestIDFromContext(r.Context())
+	query, err := validators.ValidateLocalGovernmentUnitListQuery(r.URL.Query())
+	if err != nil {
+		if validationErr, ok := validationErrorsFrom(err); ok {
+			_ = response.Validation(w, requestID, validationErrorsToResponse(validationErr))
+			return
+		}
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	var units []models.LocalGovernmentUnit
+	if query.StateID == nil {
+		units, err = h.service.ListLocalGovernmentUnits(r.Context())
+	} else {
+		units, err = h.service.ListLocalGovernmentUnitsByState(r.Context(), *query.StateID)
+	}
+	if err != nil {
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	_ = response.List(w, http.StatusOK, units)
+}
+
+func (h *GeographyHandler) GetLocalGovernmentUnit(w http.ResponseWriter, r *http.Request) {
+	if !allowMethod(w, r, http.MethodGet) {
+		return
+	}
+
+	requestID := requestIDFromContext(r.Context())
+	unitID, err := validators.ValidateLocalGovernmentUnitID(r.PathValue("lga_id"))
+	if err != nil {
+		if validationErr, ok := validationErrorsFrom(err); ok {
+			_ = response.Validation(w, requestID, validationErrorsToResponse(validationErr))
+			return
+		}
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	unit, err := h.service.GetLocalGovernmentUnit(r.Context(), unitID)
+	if err != nil {
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	_ = response.Success(w, http.StatusOK, unit)
 }

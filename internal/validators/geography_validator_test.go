@@ -2,6 +2,7 @@ package validators
 
 import (
 	"errors"
+	"net/url"
 	"testing"
 )
 
@@ -109,6 +110,120 @@ func TestValidateGeopoliticalZoneIDRejectsInvalidValues(t *testing.T) {
 				t.Fatalf("ValidateGeopoliticalZoneID() error = %v, want ValidationErrors", err)
 			}
 			if len(validationErr.Fields) != 1 || validationErr.Fields[0].Field != "zone_id" {
+				t.Fatalf("unexpected validation errors: %#v", validationErr.Fields)
+			}
+		})
+	}
+}
+
+func TestValidateLocalGovernmentUnitListQuery(t *testing.T) {
+	values := url.Values{"state_id": []string{" lagos "}}
+	want := values.Encode()
+
+	query, err := ValidateLocalGovernmentUnitListQuery(url.Values{})
+	if err != nil {
+		t.Fatalf("ValidateLocalGovernmentUnitListQuery() error = %v", err)
+	}
+	if query.StateID != nil {
+		t.Fatalf("unexpected state filter: %#v", query.StateID)
+	}
+
+	query, err = ValidateLocalGovernmentUnitListQuery(values)
+	if err != nil {
+		t.Fatalf("ValidateLocalGovernmentUnitListQuery() error = %v", err)
+	}
+	if query.StateID == nil || *query.StateID != "lagos" {
+		t.Fatalf("unexpected state filter: %#v", query.StateID)
+	}
+	if got := values.Encode(); got != want {
+		t.Fatalf("query values mutated: got %q want %q", got, want)
+	}
+}
+
+func TestValidateLocalGovernmentUnitListQueryRejectsInvalidValues(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		value []string
+		field string
+	}{
+		{name: "empty", value: []string{""}, field: "state_id"},
+		{name: "whitespace", value: []string{"   "}, field: "state_id"},
+		{name: "uppercase", value: []string{"Lagos"}, field: "state_id"},
+		{name: "mixedcase", value: []string{"Akwa-ibom"}, field: "state_id"},
+		{name: "name", value: []string{"Lagos State"}, field: "state_id"},
+		{name: "uuid", value: []string{"550e8400-e29b-41d4-a716-446655440000"}, field: "state_id"},
+		{name: "unsupported", value: []string{"north-central"}, field: "state_id"},
+		{name: "duplicate", value: []string{"lagos", "fct"}, field: "state_id"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			_, err := ValidateLocalGovernmentUnitListQuery(url.Values{"state_id": tc.value})
+			if err == nil {
+				t.Fatal("expected validation error")
+			}
+			var validationErr ValidationErrors
+			if !errors.As(err, &validationErr) {
+				t.Fatalf("ValidateLocalGovernmentUnitListQuery() error = %v, want ValidationErrors", err)
+			}
+			if len(validationErr.Fields) == 0 || validationErr.Fields[0].Field != tc.field {
+				t.Fatalf("unexpected validation errors: %#v", validationErr.Fields)
+			}
+		})
+	}
+}
+
+func TestValidateLocalGovernmentUnitID(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		value string
+		want  string
+	}{
+		{name: "lagos", value: "lagos-ikeja", want: "lagos-ikeja"},
+		{name: "fct", value: " fct-abuja-municipal ", want: "fct-abuja-municipal"},
+		{name: "hyphenated state", value: "akwa-ibom-urue-offong-oruko", want: "akwa-ibom-urue-offong-oruko"},
+		{name: "punctuated slug", value: "bauchi-jama-are", want: "bauchi-jama-are"},
+		{name: "multiword slug", value: "plateau-qua-an-pan", want: "plateau-qua-an-pan"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			got, err := ValidateLocalGovernmentUnitID(tc.value)
+			if err != nil {
+				t.Fatalf("ValidateLocalGovernmentUnitID() error = %v", err)
+			}
+			if got != tc.want {
+				t.Fatalf("unexpected value: %q", got)
+			}
+		})
+	}
+}
+
+func TestValidateLocalGovernmentUnitIDRejectsInvalidValues(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		value string
+	}{
+		{name: "empty", value: ""},
+		{name: "whitespace", value: "   "},
+		{name: "uppercase", value: "LAGOS-IKEJA"},
+		{name: "mixedcase", value: "Lagos-ikeja"},
+		{name: "underscore", value: "lagos_ikeja"},
+		{name: "slash", value: "lagos/ikeja"},
+		{name: "apostrophe", value: "bauchi-jama'are"},
+		{name: "embedded whitespace", value: "lagos ikeja"},
+		{name: "state only", value: "fct"},
+		{name: "uuid", value: "550e8400-e29b-41d4-a716-446655440000"},
+		{name: "human name", value: "Aba North"},
+		{name: "unsupported state", value: "north-central-ikeja"},
+		{name: "trailing hyphen", value: "lagos-"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			got, err := ValidateLocalGovernmentUnitID(tc.value)
+			if err == nil {
+				t.Fatalf("ValidateLocalGovernmentUnitID() got %q, want error", got)
+			}
+			var validationErr ValidationErrors
+			if !errors.As(err, &validationErr) {
+				t.Fatalf("ValidateLocalGovernmentUnitID() error = %v, want ValidationErrors", err)
+			}
+			if len(validationErr.Fields) != 1 || validationErr.Fields[0].Field != "lga_id" {
 				t.Fatalf("unexpected validation errors: %#v", validationErr.Fields)
 			}
 		})

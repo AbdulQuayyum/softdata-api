@@ -418,6 +418,9 @@ func TestRouterRejectsUnknownRoutesAndUnsupportedMethods(t *testing.T) {
 		{name: "geopolitical zones wrong method", method: http.MethodPost, target: "/v1/geography/geopolitical-zones", allow: http.MethodGet, status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_geo_zones"},
 		{name: "geopolitical zone detail wrong method", method: http.MethodDelete, target: "/v1/geography/geopolitical-zones/north-central", allow: http.MethodGet, status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_geo_zone_detail"},
 		{name: "geopolitical zone nested route", method: http.MethodGet, target: "/v1/geography/geopolitical-zones/north-central/extra", status: http.StatusNotFound, wantCode: "RESOURCE_NOT_FOUND", wantRequest: "req_geo_zone_nested"},
+		{name: "lga wrong method", method: http.MethodPost, target: "/v1/geography/lgas", allow: http.MethodGet, status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_lga"},
+		{name: "lga detail wrong method", method: http.MethodDelete, target: "/v1/geography/lgas/lagos-ikeja", allow: http.MethodGet, status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_lga_detail"},
+		{name: "lga nested route", method: http.MethodGet, target: "/v1/geography/lgas/lagos-ikeja/extra", status: http.StatusNotFound, wantCode: "RESOURCE_NOT_FOUND", wantRequest: "req_lga_nested"},
 		{name: "ready not registered", method: http.MethodGet, target: "/ready", status: http.StatusNotFound, wantCode: "RESOURCE_NOT_FOUND", wantRequest: "req_ready"},
 	}
 
@@ -493,6 +496,26 @@ func TestRouterPreservesTrailingSlashPolicyForGeopoliticalZones(t *testing.T) {
 	}
 }
 
+func TestRouterPreservesTrailingSlashPolicyForLGAs(t *testing.T) {
+	rec := &routerRecorder{}
+	router := newTestRouter(t, rec)
+
+	rr := httptest.NewRecorder()
+	req := httptest.NewRequest(http.MethodGet, "/v1/geography/lgas/", nil)
+	req.Header.Set("X-Request-ID", "req_lga_slash")
+	router.ServeHTTP(rr, req)
+
+	if rr.Code != http.StatusNotFound {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if got := rr.Header().Get("Content-Type"); got != "text/plain; charset=utf-8" {
+		t.Fatalf("unexpected content type: %q", got)
+	}
+	if !strings.Contains(rr.Body.String(), "404 page not found") {
+		t.Fatalf("unexpected trailing-slash response: %s", rr.Body.String())
+	}
+}
+
 func TestRouterRejectsHeadRequestsWithJson405(t *testing.T) {
 	tests := []struct {
 		name   string
@@ -503,6 +526,8 @@ func TestRouterRejectsHeadRequestsWithJson405(t *testing.T) {
 		{name: "account", target: "/v1/account", allow: "GET, PATCH, DELETE"},
 		{name: "geography", target: "/v1/geography/states", allow: http.MethodGet},
 		{name: "geopolitical zones", target: "/v1/geography/geopolitical-zones", allow: http.MethodGet},
+		{name: "lgas", target: "/v1/geography/lgas", allow: http.MethodGet},
+		{name: "lga detail", target: "/v1/geography/lgas/lagos-ikeja", allow: http.MethodGet},
 	}
 
 	for _, tc := range tests {
@@ -718,6 +743,92 @@ func TestRouterUsesGeographyMiddlewarePolicy(t *testing.T) {
 		}
 	})
 
+	t.Run("lga anonymous", func(t *testing.T) {
+		harness = newGeographyPolicyRouter(t)
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/lgas", nil)
+		req.RemoteAddr = "203.0.113.10:1234"
+		req.Header.Set("User-Agent", "TestAgent/1.0")
+		req.URL.RawQuery = "state_id=fct"
+		harness.router.ServeHTTP(rr, req)
+
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if harness.rateLimit.request.SubjectKind != interfaces.RateLimitSubjectAnonymous {
+			t.Fatalf("unexpected subject kind: %#v", harness.rateLimit.request.SubjectKind)
+		}
+		if harness.rateLimit.request.Limit != 60 {
+			t.Fatalf("unexpected anonymous limit: %d", harness.rateLimit.request.Limit)
+		}
+		if harness.usage.input.Route != "/v1/geography/lgas" || harness.usage.input.DatasetGroup == nil || *harness.usage.input.DatasetGroup != "geography" {
+			t.Fatalf("unexpected usage record: %#v", harness.usage.input)
+		}
+		if harness.geography.lgaListByCalls != 1 {
+			t.Fatalf("unexpected lga list-by calls: %d", harness.geography.lgaListByCalls)
+		}
+		if harness.geography.lastLGAStateID != "fct" {
+			t.Fatalf("unexpected state id seen by handler: %q", harness.geography.lastLGAStateID)
+		}
+	})
+
+	t.Run("lga api key", func(t *testing.T) {
+		harness = newGeographyPolicyRouter(t)
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/lgas/lagos-ikeja", nil)
+		req.RemoteAddr = "203.0.113.10:1234"
+		req.Header.Set("X-API-Key", "sd_live_example")
+		harness.router.ServeHTTP(rr, req)
+
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if harness.rateLimit.request.SubjectKind != interfaces.RateLimitSubjectAPIKey {
+			t.Fatalf("unexpected subject kind: %#v", harness.rateLimit.request.SubjectKind)
+		}
+		if harness.rateLimit.request.Limit != 300 {
+			t.Fatalf("unexpected api-key limit: %d", harness.rateLimit.request.Limit)
+		}
+		if harness.rateLimit.request.Subject != "key_123" {
+			t.Fatalf("unexpected subject: %q", harness.rateLimit.request.Subject)
+		}
+		if harness.usage.input.Route != "/v1/geography/lgas/{lga_id}" || harness.usage.input.DatasetGroup == nil || *harness.usage.input.DatasetGroup != "geography" {
+			t.Fatalf("unexpected usage record: %#v", harness.usage.input)
+		}
+		if harness.geography.lgaGetCalls != 1 {
+			t.Fatalf("unexpected lga get calls: %d", harness.geography.lgaGetCalls)
+		}
+		if harness.geography.lastLGAID != "lagos-ikeja" {
+			t.Fatalf("unexpected lga id seen by handler: %q", harness.geography.lastLGAID)
+		}
+		if !harness.geography.lastHadAPIKey || harness.geography.lastAPIKeyIdentity.APIKeyID != "key_123" || harness.geography.lastAPIKeyIdentity.AccountID != "acc_123" {
+			t.Fatalf("unexpected api key identity seen by handler: %#v", harness.geography.lastAPIKeyIdentity)
+		}
+	})
+
+	t.Run("lga empty state query reaches handler", func(t *testing.T) {
+		harness = newGeographyPolicyRouter(t)
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/lgas", nil)
+		req.RemoteAddr = "203.0.113.10:1234"
+		req.Header.Set("User-Agent", "TestAgent/1.0")
+		req.URL.RawQuery = "state_id="
+		harness.router.ServeHTTP(rr, req)
+
+		if rr.Code != http.StatusUnprocessableEntity {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if harness.geography.lgaListCalls != 0 || harness.geography.lgaListByCalls != 0 {
+			t.Fatalf("handler validation should fail before service calls: %#v", harness.geography)
+		}
+		if harness.usage.calls != 1 {
+			t.Fatalf("usage should record the rejected handler response once: %d", harness.usage.calls)
+		}
+		if harness.usage.input.Route != "/v1/geography/lgas" {
+			t.Fatalf("unexpected usage route: %q", harness.usage.input.Route)
+		}
+	})
+
 	t.Run("rate limited", func(t *testing.T) {
 		harness := newGeographyPolicyRouter(t)
 		harness.rateLimit.result = interfaces.RateLimitResult{
@@ -762,6 +873,31 @@ func TestRouterUsesGeographyMiddlewarePolicy(t *testing.T) {
 		}
 		if harness.geography.zoneGetCalls != 0 {
 			t.Fatalf("handler should not run on rate-limited request: %d", harness.geography.zoneGetCalls)
+		}
+		if harness.usage.calls != 0 {
+			t.Fatalf("usage should not run on rate-limited request: %d", harness.usage.calls)
+		}
+	})
+
+	t.Run("lga rate limited", func(t *testing.T) {
+		harness := newGeographyPolicyRouter(t)
+		harness.rateLimit.result = interfaces.RateLimitResult{
+			Allowed:   false,
+			Limit:     60,
+			Remaining: 0,
+			ResetAt:   time.Now().UTC().Add(time.Minute),
+		}
+
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/lgas/lagos-ikeja", nil)
+		req.RemoteAddr = "203.0.113.10:1234"
+		harness.router.ServeHTTP(rr, req)
+
+		if rr.Code != http.StatusTooManyRequests {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if harness.geography.lgaGetCalls != 0 {
+			t.Fatalf("handler should not run on rate-limited request: %d", harness.geography.lgaGetCalls)
 		}
 		if harness.usage.calls != 0 {
 			t.Fatalf("usage should not run on rate-limited request: %d", harness.usage.calls)
@@ -866,6 +1002,16 @@ func newGeographyPolicyRouter(t *testing.T) geographyPolicyHarness {
 					AnonymousIdentifier: anonymous,
 				})
 			case "/v1/geography/geopolitical-zones/{zone_id}":
+				return middlewares.UsageTracking(usage, endpoint, datasetGroup, middlewares.UsageTrackingOptions{
+					Timeout:             time.Second,
+					AnonymousIdentifier: anonymous,
+				})
+			case "/v1/geography/lgas":
+				return middlewares.UsageTracking(usage, endpoint, datasetGroup, middlewares.UsageTrackingOptions{
+					Timeout:             time.Second,
+					AnonymousIdentifier: anonymous,
+				})
+			case "/v1/geography/lgas/{lga_id}":
 				return middlewares.UsageTracking(usage, endpoint, datasetGroup, middlewares.UsageTrackingOptions{
 					Timeout:             time.Second,
 					AnonymousIdentifier: anonymous,
@@ -1059,8 +1205,13 @@ type routerGeographyStub struct {
 	getCalls           int
 	zoneListCalls      int
 	zoneGetCalls       int
+	lgaListCalls       int
+	lgaListByCalls     int
+	lgaGetCalls        int
 	lastStateID        string
 	lastZoneID         string
+	lastLGAID          string
+	lastLGAStateID     string
 	lastHadAPIKey      bool
 	lastAPIKeyIdentity services.APIKeyIdentity
 }
@@ -1121,6 +1272,50 @@ func (s *routerGeographyStub) GetGeopoliticalZone(ctx context.Context, zoneID st
 		s.lastAPIKeyIdentity = identity
 	}
 	return models.GeopoliticalZone{ID: zoneID, Name: strings.Title(strings.ReplaceAll(zoneID, "-", " "))}, nil
+}
+
+func (s *routerGeographyStub) ListLocalGovernmentUnits(ctx context.Context) ([]models.LocalGovernmentUnit, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.lgaListCalls++
+	if s.rec != nil {
+		s.rec.add("geography.lga.list")
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return []models.LocalGovernmentUnit{{ID: "lagos-ikeja", Name: "Ikeja", StateID: "lagos", CountryCode: "NG", AdministrativeType: "local_government_area"}}, nil
+}
+
+func (s *routerGeographyStub) ListLocalGovernmentUnitsByState(ctx context.Context, stateID string) ([]models.LocalGovernmentUnit, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.lgaListByCalls++
+	s.lastLGAStateID = stateID
+	if s.rec != nil {
+		s.rec.add("geography.lga.list-by:" + stateID)
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return []models.LocalGovernmentUnit{{ID: stateID + "-example", Name: "Example", StateID: stateID, CountryCode: "NG", AdministrativeType: "local_government_area"}}, nil
+}
+
+func (s *routerGeographyStub) GetLocalGovernmentUnit(ctx context.Context, unitID string) (models.LocalGovernmentUnit, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.lgaGetCalls++
+	s.lastLGAID = unitID
+	if s.rec != nil {
+		s.rec.add("geography.lga.get:" + unitID)
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return models.LocalGovernmentUnit{ID: unitID, Name: "Example", StateID: "lagos", CountryCode: "NG", AdministrativeType: "local_government_area"}, nil
 }
 
 type routerAPIKeyAuthenticatorStub struct {

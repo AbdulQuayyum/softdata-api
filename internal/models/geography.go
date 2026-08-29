@@ -17,3 +17,12 @@ type GeopoliticalZone struct {
 	Name        string `json:"name"`
 	CountryCode string `json:"country_code"`
 }
+
+// LocalGovernmentUnit is the public record model for a Nigerian LGA or FCT area council.
+type LocalGovernmentUnit struct {
+	ID                 string `json:"id"`
+	Name               string `json:"name"`
+	StateID            string `json:"state_id"`
+	CountryCode        string `json:"country_code"`
+	AdministrativeType string `json:"administrative_type"`
+}

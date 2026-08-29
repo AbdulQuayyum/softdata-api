@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://softdata-api.local/schemas/geography/lgas.schema.json",
+  "title": "Nigeria Local Government Areas and FCT Area Councils",
+  "description": "Schema for the ng-lgas dataset compiled by SoftData.",
+  "type": "array",
+  "minItems": 774,
+  "maxItems": 774,
+  "uniqueItems": true,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "name",
+      "state_id",
+      "country_code",
+      "administrative_type"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)+$"
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1
+      },
+      "state_id": {
+        "type": "string",
+        "enum": [
+          "abia",
+          "adamawa",
+          "akwa-ibom",
+          "anambra",
+          "bauchi",
+          "bayelsa",
+          "benue",
+          "borno",
+          "cross-river",
+          "delta",
+          "ebonyi",
+          "edo",
+          "ekiti",
+          "enugu",
+          "fct",
+          "gombe",
+          "imo",
+          "jigawa",
+          "kaduna",
+          "kano",
+          "katsina",
+          "kebbi",
+          "kogi",
+          "kwara",
+          "lagos",
+          "nasarawa",
+          "niger",
+          "ogun",
+          "ondo",
+          "osun",
+          "oyo",
+          "plateau",
+          "rivers",
+          "sokoto",
+          "taraba",
+          "yobe",
+          "zamfara"
+        ]
+      },
+      "country_code": {
+        "type": "string",
+        "const": "NG"
+      },
+      "administrative_type": {
+        "type": "string",
+        "enum": [
+          "local_government_area",
+          "area_council"
+        ]
+      }
+    },
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "state_id": {
+              "const": "fct"
+            }
+          },
+          "required": [
+            "state_id"
+          ]
+        },
+        "then": {
+          "properties": {
+            "administrative_type": {
+              "const": "area_council"
+            }
+          }
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "state_id": {
+              "not": {
+                "const": "fct"
+              }
+            }
+          },
+          "required": [
+            "state_id"
+          ]
+        },
+        "then": {
+          "properties": {
+            "administrative_type": {
+              "const": "local_government_area"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

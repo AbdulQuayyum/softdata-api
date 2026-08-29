@@ -42,6 +42,18 @@ func (s *geographyServiceStub) GetGeopoliticalZone(context.Context, string) (mod
 	return models.GeopoliticalZone{}, nil
 }
 
+func (s *geographyServiceStub) ListLocalGovernmentUnits(context.Context) ([]models.LocalGovernmentUnit, error) {
+	return []models.LocalGovernmentUnit{}, nil
+}
+
+func (s *geographyServiceStub) ListLocalGovernmentUnitsByState(context.Context, string) ([]models.LocalGovernmentUnit, error) {
+	return []models.LocalGovernmentUnit{}, nil
+}
+
+func (s *geographyServiceStub) GetLocalGovernmentUnit(context.Context, string) (models.LocalGovernmentUnit, error) {
+	return models.LocalGovernmentUnit{}, nil
+}
+
 type geographyJSONRepoStub struct {
 	root     string
 	maxBytes int64
@@ -67,6 +79,18 @@ func (s *geographyRepoStub) ListGeopoliticalZones(context.Context) ([]models.Geo
 
 func (s *geographyRepoStub) GetGeopoliticalZone(context.Context, string) (models.GeopoliticalZone, error) {
 	return models.GeopoliticalZone{}, nil
+}
+
+func (s *geographyRepoStub) ListLocalGovernmentUnits(context.Context) ([]models.LocalGovernmentUnit, error) {
+	return nil, nil
+}
+
+func (s *geographyRepoStub) ListLocalGovernmentUnitsByStateID(context.Context, string) ([]models.LocalGovernmentUnit, error) {
+	return nil, nil
+}
+
+func (s *geographyRepoStub) GetLocalGovernmentUnit(context.Context, string) (models.LocalGovernmentUnit, error) {
+	return models.LocalGovernmentUnit{}, nil
 }
 
 func validGeographyStatesFixture() []models.State {
@@ -107,6 +131,8 @@ func TestBuildGeographyHandlerPassesConfiguredDatasetArgs(t *testing.T) {
 	var gotRoot string
 	var gotMaxBytes int64
 	var gotStatesPath string
+	var gotZonesPath string
+	var gotLgasPath string
 
 	handler, err := buildGeographyHandler(context.Background(), cfg,
 		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
@@ -114,8 +140,10 @@ func TestBuildGeographyHandlerPassesConfiguredDatasetArgs(t *testing.T) {
 			gotMaxBytes = maxBytes
 			return &geographyJSONRepoStub{root: root, maxBytes: maxBytes}, nil
 		},
-		func(repository interfaces.JSONFileRepository, statesPath string) (interfaces.GeographyRepository, error) {
+		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath string) (interfaces.GeographyRepository, error) {
 			gotStatesPath = statesPath
+			gotZonesPath = zonesPath
+			gotLgasPath = localGovernmentUnitsPath
 			return &geographyRepoStub{}, nil
 		},
 		func(repository interfaces.GeographyRepository) (geographyService, error) {
@@ -139,6 +167,12 @@ func TestBuildGeographyHandlerPassesConfiguredDatasetArgs(t *testing.T) {
 	}
 	if gotStatesPath != geographyStatesRelativePath {
 		t.Fatalf("unexpected states path: %q", gotStatesPath)
+	}
+	if gotZonesPath != geographyGeopoliticalZonesRelativePath {
+		t.Fatalf("unexpected zones path: %q", gotZonesPath)
+	}
+	if gotLgasPath != geographyLocalGovernmentUnitsRelativePath {
+		t.Fatalf("unexpected lgas path: %q", gotLgasPath)
 	}
 }
 
@@ -175,8 +209,8 @@ func TestBuildGeographyHandlerValidFixturePassesStartupVerification(t *testing.T
 		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
 			return fileRepo.NewJSONRepository(root, maxBytes)
 		},
-		func(repository interfaces.JSONFileRepository, statesPath string) (interfaces.GeographyRepository, error) {
-			return fileRepo.NewGeographyRepository(repository, statesPath)
+		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath string) (interfaces.GeographyRepository, error) {
+			return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath)
 		},
 		func(repository interfaces.GeographyRepository) (geographyService, error) {
 			return services.NewGeographyService(repository)
@@ -254,8 +288,8 @@ func TestBuildGeographyHandlerFailsSafelyForInvalidDatasets(t *testing.T) {
 				func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
 					return fileRepo.NewJSONRepository(root, maxBytes)
 				},
-				func(repository interfaces.JSONFileRepository, statesPath string) (interfaces.GeographyRepository, error) {
-					return fileRepo.NewGeographyRepository(repository, statesPath)
+				func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath string) (interfaces.GeographyRepository, error) {
+					return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath)
 				},
 				func(repository interfaces.GeographyRepository) (geographyService, error) {
 					return services.NewGeographyService(repository)
@@ -305,8 +339,8 @@ func TestBuildGeographyHandlerRejectsWrongRecordCount(t *testing.T) {
 		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
 			return fileRepo.NewJSONRepository(root, maxBytes)
 		},
-		func(repository interfaces.JSONFileRepository, statesPath string) (interfaces.GeographyRepository, error) {
-			return fileRepo.NewGeographyRepository(repository, statesPath)
+		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath string) (interfaces.GeographyRepository, error) {
+			return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath)
 		},
 		func(repository interfaces.GeographyRepository) (geographyService, error) {
 			return services.NewGeographyService(repository)
@@ -357,8 +391,8 @@ func TestBuildGeographyHandlerRejectsWrongFCTComposition(t *testing.T) {
 		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
 			return fileRepo.NewJSONRepository(root, maxBytes)
 		},
-		func(repository interfaces.JSONFileRepository, statesPath string) (interfaces.GeographyRepository, error) {
-			return fileRepo.NewGeographyRepository(repository, statesPath)
+		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath string) (interfaces.GeographyRepository, error) {
+			return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath)
 		},
 		func(repository interfaces.GeographyRepository) (geographyService, error) {
 			return services.NewGeographyService(repository)
@@ -406,7 +440,7 @@ func TestBuildGeographyHandlerPropagatesContextCancellation(t *testing.T) {
 		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
 			return &geographyJSONRepoStub{root: root, maxBytes: maxBytes}, nil
 		},
-		func(repository interfaces.JSONFileRepository, statesPath string) (interfaces.GeographyRepository, error) {
+		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath string) (interfaces.GeographyRepository, error) {
 			return &geographyRepoStub{}, nil
 		},
 		func(repository interfaces.GeographyRepository) (geographyService, error) {

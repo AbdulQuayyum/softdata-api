@@ -16,17 +16,25 @@ import (
 )
 
 type geographyHandlerStub struct {
-	listFn     func(context.Context) ([]models.State, error)
-	getFn      func(context.Context, string) (models.State, error)
-	zoneListFn func(context.Context) ([]models.GeopoliticalZone, error)
-	zoneGetFn  func(context.Context, string) (models.GeopoliticalZone, error)
+	listFn      func(context.Context) ([]models.State, error)
+	getFn       func(context.Context, string) (models.State, error)
+	zoneListFn  func(context.Context) ([]models.GeopoliticalZone, error)
+	zoneGetFn   func(context.Context, string) (models.GeopoliticalZone, error)
+	lgaListFn   func(context.Context) ([]models.LocalGovernmentUnit, error)
+	lgaListByFn func(context.Context, string) ([]models.LocalGovernmentUnit, error)
+	lgaGetFn    func(context.Context, string) (models.LocalGovernmentUnit, error)
 
-	listCalls     int
-	getCalls      int
-	zoneListCalls int
-	zoneGetCalls  int
-	lastID        string
-	lastZoneID    string
+	listCalls      int
+	getCalls       int
+	zoneListCalls  int
+	zoneGetCalls   int
+	lgaListCalls   int
+	lgaListByCalls int
+	lgaGetCalls    int
+	lastID         string
+	lastZoneID     string
+	lastLGAID      string
+	lastStateID    string
 }
 
 func (s *geographyHandlerStub) ListStates(ctx context.Context) ([]models.State, error) {
@@ -61,6 +69,32 @@ func (s *geographyHandlerStub) GetGeopoliticalZone(ctx context.Context, zoneID s
 		return s.zoneGetFn(ctx, zoneID)
 	}
 	return models.GeopoliticalZone{}, nil
+}
+
+func (s *geographyHandlerStub) ListLocalGovernmentUnits(ctx context.Context) ([]models.LocalGovernmentUnit, error) {
+	s.lgaListCalls++
+	if s.lgaListFn != nil {
+		return s.lgaListFn(ctx)
+	}
+	return nil, nil
+}
+
+func (s *geographyHandlerStub) ListLocalGovernmentUnitsByState(ctx context.Context, stateID string) ([]models.LocalGovernmentUnit, error) {
+	s.lgaListByCalls++
+	s.lastStateID = stateID
+	if s.lgaListByFn != nil {
+		return s.lgaListByFn(ctx, stateID)
+	}
+	return nil, nil
+}
+
+func (s *geographyHandlerStub) GetLocalGovernmentUnit(ctx context.Context, unitID string) (models.LocalGovernmentUnit, error) {
+	s.lgaGetCalls++
+	s.lastLGAID = unitID
+	if s.lgaGetFn != nil {
+		return s.lgaGetFn(ctx, unitID)
+	}
+	return models.LocalGovernmentUnit{}, nil
 }
 
 func TestNewGeographyHandlerRejectsNilService(t *testing.T) {
@@ -220,8 +254,8 @@ func TestGeographyHandlerErrorsAndMethodGuard(t *testing.T) {
 			t.Fatalf("NewGeographyHandler() error = %v", err)
 		}
 		rr := httptest.NewRecorder()
-		req := httptest.NewRequest(http.MethodGet, "/v1/geography/states/missing", nil)
-		req.SetPathValue("state_id", "missing")
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/states/abia", nil)
+		req.SetPathValue("state_id", "abia")
 		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
 			h.GetState(w, r)
 		}, rr)
@@ -244,8 +278,8 @@ func TestGeographyHandlerErrorsAndMethodGuard(t *testing.T) {
 			t.Fatalf("NewGeographyHandler() error = %v", err)
 		}
 		rr := httptest.NewRecorder()
-		req := httptest.NewRequest(http.MethodGet, "/v1/geography/states/missing", nil)
-		req.SetPathValue("state_id", "missing")
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/states/abia", nil)
+		req.SetPathValue("state_id", "abia")
 		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
 			h.GetState(w, r)
 		}, rr)
@@ -488,6 +522,354 @@ func TestGeographyHandlerGeopoliticalZoneErrors(t *testing.T) {
 		req.SetPathValue("zone_id", "north-central")
 		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
 			h.GetGeopoliticalZone(w, r)
+		}, rr)
+		if rr.Code != http.StatusInternalServerError {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if strings.Contains(rr.Body.String(), "database down") {
+			t.Fatalf("internal error details leaked: %s", rr.Body.String())
+		}
+	})
+}
+
+func TestGeographyHandlerListLocalGovernmentUnits(t *testing.T) {
+	t.Run("list all", func(t *testing.T) {
+		stub := &geographyHandlerStub{
+			lgaListFn: func(ctx context.Context) ([]models.LocalGovernmentUnit, error) {
+				if _, ok := middlewares.RequestIDFromContext(ctx); !ok {
+					t.Fatal("request context was not preserved")
+				}
+				return []models.LocalGovernmentUnit{
+					{ID: "lagos-ikeja", Name: "Ikeja", StateID: "lagos", CountryCode: "NG", AdministrativeType: "local_government_area"},
+				}, nil
+			},
+		}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/lgas", nil)
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.ListLocalGovernmentUnits(w, r)
+		}, rr)
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if stub.lgaListCalls != 1 || stub.lgaListByCalls != 0 {
+			t.Fatalf("unexpected call counts: list=%d by=%d", stub.lgaListCalls, stub.lgaListByCalls)
+		}
+		var body map[string]any
+		if err := json.Unmarshal(rr.Body.Bytes(), &body); err != nil {
+			t.Fatalf("json.Unmarshal: %v", err)
+		}
+		data := body["data"].([]any)
+		if len(data) != 1 {
+			t.Fatalf("unexpected lga payload: %#v", data)
+		}
+		item := data[0].(map[string]any)
+		if len(item) != 5 {
+			t.Fatalf("unexpected lga field count: %#v", item)
+		}
+		if item["id"] != "lagos-ikeja" || item["administrative_type"] != "local_government_area" {
+			t.Fatalf("unexpected lga payload: %#v", item)
+		}
+	})
+
+	t.Run("normalize nil slice", func(t *testing.T) {
+		stub := &geographyHandlerStub{
+			lgaListFn: func(context.Context) ([]models.LocalGovernmentUnit, error) {
+				return nil, nil
+			},
+		}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/lgas", nil)
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.ListLocalGovernmentUnits(w, r)
+		}, rr)
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		var body map[string]any
+		if err := json.Unmarshal(rr.Body.Bytes(), &body); err != nil {
+			t.Fatalf("json.Unmarshal: %v", err)
+		}
+		data := body["data"].([]any)
+		if len(data) != 0 {
+			t.Fatalf("unexpected nil normalization payload: %#v", data)
+		}
+	})
+
+	t.Run("list by state", func(t *testing.T) {
+		stub := &geographyHandlerStub{
+			lgaListByFn: func(ctx context.Context, stateID string) ([]models.LocalGovernmentUnit, error) {
+				if _, ok := middlewares.RequestIDFromContext(ctx); !ok {
+					t.Fatal("request context was not preserved")
+				}
+				if stateID != "fct" {
+					t.Fatalf("unexpected state id: %q", stateID)
+				}
+				return []models.LocalGovernmentUnit{
+					{ID: "fct-abaji", Name: "Abaji", StateID: "fct", CountryCode: "NG", AdministrativeType: "area_council"},
+				}, nil
+			},
+		}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/lgas?state_id=fct", nil)
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.ListLocalGovernmentUnits(w, r)
+		}, rr)
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if stub.lgaListCalls != 0 || stub.lgaListByCalls != 1 {
+			t.Fatalf("unexpected call counts: list=%d by=%d", stub.lgaListCalls, stub.lgaListByCalls)
+		}
+		if stub.lastStateID != "fct" {
+			t.Fatalf("unexpected state id: %q", stub.lastStateID)
+		}
+		var body map[string]any
+		if err := json.Unmarshal(rr.Body.Bytes(), &body); err != nil {
+			t.Fatalf("json.Unmarshal: %v", err)
+		}
+		item := body["data"].([]any)[0].(map[string]any)
+		if item["administrative_type"] != "area_council" {
+			t.Fatalf("unexpected lga payload: %#v", item)
+		}
+	})
+
+	t.Run("reject invalid query", func(t *testing.T) {
+		stub := &geographyHandlerStub{}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		for _, query := range []string{"state_id=", "state_id=%20%20%20", "state_id=Lagos", "state_id=lagos&state_id=fct", "state_id=north-central"} {
+			t.Run(query, func(t *testing.T) {
+				rr := httptest.NewRecorder()
+				req := httptest.NewRequest(http.MethodGet, "/v1/geography/lgas?"+query, nil)
+				invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+					h.ListLocalGovernmentUnits(w, r)
+				}, rr)
+				if rr.Code != http.StatusUnprocessableEntity {
+					t.Fatalf("unexpected status: %d", rr.Code)
+				}
+				if !strings.Contains(rr.Body.String(), "req_test") {
+					t.Fatalf("request id missing from validation response: %s", rr.Body.String())
+				}
+				if stub.lgaListCalls != 0 || stub.lgaListByCalls != 0 {
+					t.Fatalf("service should not be called for invalid query")
+				}
+			})
+		}
+	})
+
+	t.Run("method guard", func(t *testing.T) {
+		h, err := NewGeographyHandler(&geographyHandlerStub{})
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodPost, "/v1/geography/lgas", nil)
+		h.ListLocalGovernmentUnits(rr, req)
+		if rr.Code != http.StatusMethodNotAllowed {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if got := rr.Header().Get("Allow"); got != http.MethodGet {
+			t.Fatalf("unexpected allow header: %q", got)
+		}
+	})
+}
+
+func TestGeographyHandlerGetLocalGovernmentUnit(t *testing.T) {
+	stub := &geographyHandlerStub{
+		lgaGetFn: func(ctx context.Context, unitID string) (models.LocalGovernmentUnit, error) {
+			if _, ok := middlewares.RequestIDFromContext(ctx); !ok {
+				t.Fatal("request context was not preserved")
+			}
+			if unitID != "akwa-ibom-urue-offong-oruko" {
+				t.Fatalf("unexpected lga id: %q", unitID)
+			}
+			return models.LocalGovernmentUnit{
+				ID:                 unitID,
+				Name:               "Urue-Offong/Oruko",
+				StateID:            "akwa-ibom",
+				CountryCode:        "NG",
+				AdministrativeType: "local_government_area",
+			}, nil
+		},
+	}
+	h, err := NewGeographyHandler(stub)
+	if err != nil {
+		t.Fatalf("NewGeographyHandler() error = %v", err)
+	}
+
+	rr := httptest.NewRecorder()
+	req := httptest.NewRequest(http.MethodGet, "/v1/geography/lgas/akwa-ibom-urue-offong-oruko", nil)
+	req.SetPathValue("lga_id", " akwa-ibom-urue-offong-oruko ")
+	invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+		h.GetLocalGovernmentUnit(w, r)
+	}, rr)
+
+	if rr.Code != http.StatusOK {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if stub.lgaGetCalls != 1 {
+		t.Fatalf("unexpected get call count: %d", stub.lgaGetCalls)
+	}
+	if stub.lastLGAID != "akwa-ibom-urue-offong-oruko" {
+		t.Fatalf("unexpected lga id: %q", stub.lastLGAID)
+	}
+	if got := rr.Header().Get("Content-Type"); !strings.Contains(got, "application/json") {
+		t.Fatalf("unexpected content type: %q", got)
+	}
+
+	var body map[string]any
+	if err := json.Unmarshal(rr.Body.Bytes(), &body); err != nil {
+		t.Fatalf("json.Unmarshal: %v", err)
+	}
+	data := body["data"].(map[string]any)
+	if len(data) != 5 {
+		t.Fatalf("unexpected lga response: %#v", data)
+	}
+	if data["name"] != "Urue-Offong/Oruko" || data["administrative_type"] != "local_government_area" {
+		t.Fatalf("unexpected lga response: %#v", data)
+	}
+}
+
+func TestGeographyHandlerGetLocalGovernmentUnitMethodGuard(t *testing.T) {
+	h, err := NewGeographyHandler(&geographyHandlerStub{})
+	if err != nil {
+		t.Fatalf("NewGeographyHandler() error = %v", err)
+	}
+	rr := httptest.NewRecorder()
+	req := httptest.NewRequest(http.MethodPost, "/v1/geography/lgas/lagos-ikeja", nil)
+	req.SetPathValue("lga_id", "lagos-ikeja")
+	h.GetLocalGovernmentUnit(rr, req)
+	if rr.Code != http.StatusMethodNotAllowed {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if got := rr.Header().Get("Allow"); got != http.MethodGet {
+		t.Fatalf("unexpected allow header: %q", got)
+	}
+}
+
+func TestGeographyHandlerRejectsInvalidLocalGovernmentUnitIDs(t *testing.T) {
+	stub := &geographyHandlerStub{}
+	h, err := NewGeographyHandler(stub)
+	if err != nil {
+		t.Fatalf("NewGeographyHandler() error = %v", err)
+	}
+
+	for _, value := range []string{"Aba North", "LAGOS-IKEJA", "lagos_ikeja", "lagos/ikeja", "fct", "north-central", "550e8400-e29b-41d4-a716-446655440000", ""} {
+		t.Run(value, func(t *testing.T) {
+			rr := httptest.NewRecorder()
+			req := httptest.NewRequest(http.MethodGet, "/v1/geography/lgas/invalid", nil)
+			req.SetPathValue("lga_id", value)
+			invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+				h.GetLocalGovernmentUnit(w, r)
+			}, rr)
+
+			if rr.Code != http.StatusUnprocessableEntity {
+				t.Fatalf("unexpected status: %d", rr.Code)
+			}
+			if stub.lgaGetCalls != 0 {
+				t.Fatalf("service should not be called for invalid ids")
+			}
+		})
+	}
+}
+
+func TestGeographyHandlerLocalGovernmentUnitErrors(t *testing.T) {
+	t.Run("missing unit", func(t *testing.T) {
+		stub := &geographyHandlerStub{
+			lgaGetFn: func(context.Context, string) (models.LocalGovernmentUnit, error) {
+				return models.LocalGovernmentUnit{}, services.ErrLocalGovernmentUnitNotFound
+			},
+		}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/lgas/lagos-ikeja", nil)
+		req.SetPathValue("lga_id", "lagos-ikeja")
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.GetLocalGovernmentUnit(w, r)
+		}, rr)
+		if rr.Code != http.StatusNotFound {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if !strings.Contains(rr.Body.String(), "req_test") {
+			t.Fatalf("request id missing from error response: %s", rr.Body.String())
+		}
+	})
+
+	t.Run("wrapped missing unit", func(t *testing.T) {
+		stub := &geographyHandlerStub{
+			lgaGetFn: func(context.Context, string) (models.LocalGovernmentUnit, error) {
+				return models.LocalGovernmentUnit{}, fmtWrappedErr(services.ErrLocalGovernmentUnitNotFound)
+			},
+		}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/lgas/lagos-ikeja", nil)
+		req.SetPathValue("lga_id", "lagos-ikeja")
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.GetLocalGovernmentUnit(w, r)
+		}, rr)
+		if rr.Code != http.StatusNotFound {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+	})
+
+	t.Run("invalid service id", func(t *testing.T) {
+		stub := &geographyHandlerStub{
+			lgaGetFn: func(context.Context, string) (models.LocalGovernmentUnit, error) {
+				return models.LocalGovernmentUnit{}, services.ErrInvalidLocalGovernmentUnitID
+			},
+		}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/lgas/lagos-ikeja", nil)
+		req.SetPathValue("lga_id", "lagos-ikeja")
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.GetLocalGovernmentUnit(w, r)
+		}, rr)
+		if rr.Code != http.StatusBadRequest {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+	})
+
+	t.Run("unexpected service error", func(t *testing.T) {
+		stub := &geographyHandlerStub{
+			lgaGetFn: func(context.Context, string) (models.LocalGovernmentUnit, error) {
+				return models.LocalGovernmentUnit{}, errors.New("database down")
+			},
+		}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/lgas/lagos-ikeja", nil)
+		req.SetPathValue("lga_id", "lagos-ikeja")
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.GetLocalGovernmentUnit(w, r)
 		}, rr)
 		if rr.Code != http.StatusInternalServerError {
 			t.Fatalf("unexpected status: %d", rr.Code)
