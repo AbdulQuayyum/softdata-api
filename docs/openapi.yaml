@@ -11,6 +11,7 @@ tags:
   - name: Discovery
   - name: Datasets
   - name: Geography
+  - name: Finance
   - name: Authentication
   - name: Account
   - name: API Keys
@@ -202,6 +203,44 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/LocalGovernmentUnitResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/finance/payment-service-providers:
+    get:
+      tags: [Finance]
+      summary: List payment service provider memberships
+      description: Returns the verified CBN payment-service-provider snapshot as provider-category memberships. API-key identification remains optional once routed.
+      parameters:
+        - $ref: "#/components/parameters/PaymentServiceProviderTypeQuery"
+      responses:
+        "200":
+          description: Payment service provider memberships
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaymentServiceProviderListResponse"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/finance/payment-service-providers/{provider_id}:
+    get:
+      tags: [Finance]
+      summary: Get a payment service provider membership
+      description: Returns a verified provider-category membership from the CBN snapshot. API-key identification remains optional once routed.
+      parameters:
+        - $ref: "#/components/parameters/PaymentServiceProviderID"
+      responses:
+        "200":
+          description: Payment service provider membership
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaymentServiceProviderResponse"
         "404":
           $ref: "#/components/responses/NotFound"
         "422":
@@ -540,6 +579,21 @@ components:
       description: Stable public identifier for a local government unit or FCT Area Council.
       schema:
         type: string
+    PaymentServiceProviderID:
+      name: provider_id
+      in: path
+      required: true
+      description: Stable public identifier for a payment-service-provider membership.
+      schema:
+        type: string
+        pattern: '^[a-z0-9]+(?:-[a-z0-9]+)+$'
+    PaymentServiceProviderTypeQuery:
+      name: institution_type
+      in: query
+      required: false
+      description: Optional payment-service-provider category used to filter provider-category memberships.
+      schema:
+        $ref: "#/components/schemas/PaymentServiceProviderType"
     Page:
       name: page
       in: query
@@ -792,6 +846,50 @@ components:
           type: boolean
         data:
           $ref: "#/components/schemas/LocalGovernmentUnit"
+      required: [success, data]
+    PaymentServiceProviderType:
+      type: string
+      enum:
+        - mobile_money_operator
+        - switching_and_processing_company
+        - payment_solution_service_provider
+        - payment_terminal_service_provider
+        - super_agent
+        - payment_service_holding_company
+        - payment_terminal_service_aggregator
+    PaymentServiceProvider:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        institution_type:
+          $ref: "#/components/schemas/PaymentServiceProviderType"
+        country_code:
+          type: string
+          enum: [NG]
+      required: [id, name, institution_type, country_code]
+    PaymentServiceProviderListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/PaymentServiceProvider"
+      required: [success, data]
+    PaymentServiceProviderResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: "#/components/schemas/PaymentServiceProvider"
       required: [success, data]
     GeographyListResponse:
       type: object
