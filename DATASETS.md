@@ -145,6 +145,16 @@ Nigeria's current Central Bank of Nigeria IMTO register snapshot.
 
 The package contains 108 CBN-listed IMTO entries. Each record represents one current register listing, with the source-side concatenation defect at SN 63 normalized transparently in metadata. The package is names-only, does not record addresses or inferred country data, and IMTOs remain separate from the payment-service-provider register. No API routes are introduced by this dataset package.
 
+### `ng-universities`
+
+Nigeria's current National Universities Commission register of federal, state and private universities.
+
+- `datasets/education/universities.json`
+- `datasets/schemas/education/universities.schema.json`
+- `datasets/metadata/education/universities.json`
+
+The package contains 328 university records across the current NUC federal, state and private registers. Each record represents one university listing, with `state_id` linking the record to `ng-states` and `ownership_type` preserving the category published by the NUC.
+
 ## Directory Structure
 
 ```text
