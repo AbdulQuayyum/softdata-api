@@ -22,6 +22,7 @@ type financeServiceStub struct {
 	operators []models.InternationalMoneyTransferOperator
 	err       error
 	calls     int
+	imtoCalls int
 }
 
 func (s *financeServiceStub) ListPaymentServiceProviders(context.Context) ([]models.PaymentServiceProvider, error) {
@@ -41,6 +42,7 @@ func (s *financeServiceStub) GetPaymentServiceProvider(context.Context, string) 
 }
 
 func (s *financeServiceStub) ListInternationalMoneyTransferOperators(context.Context) ([]models.InternationalMoneyTransferOperator, error) {
+	s.imtoCalls++
 	return append([]models.InternationalMoneyTransferOperator(nil), s.operators...), nil
 }
 
@@ -90,8 +92,30 @@ func loadApprovedFinanceProviders(t *testing.T) []models.PaymentServiceProvider 
 	return providers
 }
 
+func loadApprovedIMTOOperators(t *testing.T) []models.InternationalMoneyTransferOperator {
+	t.Helper()
+
+	data, err := os.ReadFile(filepath.Clean("../../datasets/finance/international_money_transfer_operators.json"))
+	if err != nil {
+		t.Fatalf("ReadFile() error = %v", err)
+	}
+	var operators []models.InternationalMoneyTransferOperator
+	if err := json.Unmarshal(data, &operators); err != nil {
+		t.Fatalf("json.Unmarshal() error = %v", err)
+	}
+	return operators
+}
+
 func writeFinanceFixture(path string, providers []models.PaymentServiceProvider) error {
 	data, err := json.Marshal(providers)
+	if err != nil {
+		return err
+	}
+	return os.WriteFile(path, data, 0o600)
+}
+
+func writeIMTOFixture(path string, operators []models.InternationalMoneyTransferOperator) error {
+	data, err := json.Marshal(operators)
 	if err != nil {
 		return err
 	}
@@ -122,7 +146,10 @@ func TestBuildFinanceHandlerPassesConfiguredDatasetArgs(t *testing.T) {
 			return &financeRepositoryStub{}, nil
 		},
 		func(repository interfaces.FinanceRepository) (financeService, error) {
-			return &financeServiceStub{providers: loadApprovedFinanceProviders(t)}, nil
+			return &financeServiceStub{
+				providers: loadApprovedFinanceProviders(t),
+				operators: loadApprovedIMTOOperators(t),
+			}, nil
 		},
 		func(service financeService) (*handlers.FinanceHandler, error) {
 			return handlers.NewFinanceHandler(service)
@@ -159,11 +186,22 @@ func TestBuildFinanceHandlerValidFixturePassesStartupVerification(t *testing.T) 
 	if err := os.WriteFile(filepath.Join(root, "finance", "payment_service_providers.json"), data, 0o600); err != nil {
 		t.Fatalf("WriteFile() error = %v", err)
 	}
+	imtoData, err := os.ReadFile(filepath.Clean("../../datasets/finance/international_money_transfer_operators.json"))
+	if err != nil {
+		t.Fatalf("ReadFile() error = %v", err)
+	}
+	if err := os.WriteFile(filepath.Join(root, "finance", "international_money_transfer_operators.json"), imtoData, 0o600); err != nil {
+		t.Fatalf("WriteFile() error = %v", err)
+	}
+	maxBytes := int64(len(data))
+	if imtoLen := int64(len(imtoData)); imtoLen > maxBytes {
+		maxBytes = imtoLen
+	}
 
 	cfg := &config.Config{
 		Datasets: config.DatasetConfig{
 			Path:         root,
-			JSONMaxBytes: int64(len(data)) + 1024,
+			JSONMaxBytes: maxBytes + 1024,
 		},
 	}
 
@@ -172,7 +210,7 @@ func TestBuildFinanceHandlerValidFixturePassesStartupVerification(t *testing.T) 
 			return fileRepo.NewJSONRepository(root, maxBytes)
 		},
 		func(repository interfaces.JSONFileRepository, paymentServiceProvidersPath string) (interfaces.FinanceRepository, error) {
-			return fileRepo.NewFinanceRepository(repository, paymentServiceProvidersPath)
+			return fileRepo.NewFinanceRepository(repository, paymentServiceProvidersPath, financeInternationalMoneyTransferOperatorsRelativePath)
 		},
 		func(repository interfaces.FinanceRepository) (financeService, error) {
 			return services.NewFinanceService(repository)
@@ -193,6 +231,7 @@ func TestBuildFinanceHandlerFailsSafelyForInvalidDatasets(t *testing.T) {
 	t.Parallel()
 
 	fixture := loadApprovedFinanceProviders(t)
+	imtoFixture := loadApprovedIMTOOperators(t)
 	tests := []struct {
 		name string
 		set  func(root string) error
@@ -236,6 +275,27 @@ func TestBuildFinanceHandlerFailsSafelyForInvalidDatasets(t *testing.T) {
 				return writeFinanceFixture(filepath.Join(root, "finance", "payment_service_providers.json"), mutated)
 			},
 		},
+		{
+			name: "missing imto file",
+			set: func(root string) error {
+				if err := os.MkdirAll(filepath.Join(root, "finance"), 0o755); err != nil {
+					return err
+				}
+				return writeFinanceFixture(filepath.Join(root, "finance", "payment_service_providers.json"), fixture)
+			},
+		},
+		{
+			name: "wrong imto record count",
+			set: func(root string) error {
+				if err := os.MkdirAll(filepath.Join(root, "finance"), 0o755); err != nil {
+					return err
+				}
+				if err := writeFinanceFixture(filepath.Join(root, "finance", "payment_service_providers.json"), fixture); err != nil {
+					return err
+				}
+				return writeIMTOFixture(filepath.Join(root, "finance", "international_money_transfer_operators.json"), imtoFixture[:107])
+			},
+		},
 	}
 
 	for _, tc := range tests {
@@ -251,7 +311,7 @@ func TestBuildFinanceHandlerFailsSafelyForInvalidDatasets(t *testing.T) {
 					return fileRepo.NewJSONRepository(root, maxBytes)
 				},
 				func(repository interfaces.JSONFileRepository, paymentServiceProvidersPath string) (interfaces.FinanceRepository, error) {
-					return fileRepo.NewFinanceRepository(repository, paymentServiceProvidersPath)
+					return fileRepo.NewFinanceRepository(repository, paymentServiceProvidersPath, financeInternationalMoneyTransferOperatorsRelativePath)
 				},
 				func(repository interfaces.FinanceRepository) (financeService, error) {
 					return services.NewFinanceService(repository)
@@ -290,7 +350,10 @@ func TestBuildFinanceHandlerPropagatesContextCancellation(t *testing.T) {
 			return &financeRepositoryStub{}, nil
 		},
 		func(repository interfaces.FinanceRepository) (financeService, error) {
-			return &financeServiceStub{providers: loadApprovedFinanceProviders(t)}, nil
+			return &financeServiceStub{
+				providers: loadApprovedFinanceProviders(t),
+				operators: loadApprovedIMTOOperators(t),
+			}, nil
 		},
 		func(service financeService) (*handlers.FinanceHandler, error) {
 			return handlers.NewFinanceHandler(service)
@@ -304,7 +367,10 @@ func TestBuildFinanceHandlerPropagatesContextCancellation(t *testing.T) {
 func TestBuildFinanceHandlerVerifiesThroughServiceAbstraction(t *testing.T) {
 	t.Parallel()
 
-	service := &financeServiceStub{providers: loadApprovedFinanceProviders(t)}
+	service := &financeServiceStub{
+		providers: loadApprovedFinanceProviders(t),
+		operators: loadApprovedIMTOOperators(t),
+	}
 	handler, err := buildFinanceHandlerFromJSONRepository(context.Background(), &financeJSONRepoStub{},
 		func(repository interfaces.JSONFileRepository, paymentServiceProvidersPath string) (interfaces.FinanceRepository, error) {
 			return &financeRepositoryStub{}, nil
@@ -324,5 +390,8 @@ func TestBuildFinanceHandlerVerifiesThroughServiceAbstraction(t *testing.T) {
 	}
 	if service.calls != 1 {
 		t.Fatalf("expected startup verification to call list-all once, got %d", service.calls)
+	}
+	if service.imtoCalls != 1 {
+		t.Fatalf("expected startup verification to call IMTO list once, got %d", service.imtoCalls)
 	}
 }

@@ -26,11 +26,12 @@ import (
 )
 
 const (
-	defaultKeyPrefix                           = "softdata"
-	geographyStatesRelativePath                = "geography/states.json"
-	geographyGeopoliticalZonesRelativePath     = "geography/geopolitical_zones.json"
-	geographyLocalGovernmentUnitsRelativePath  = "geography/lgas.json"
-	financePaymentServiceProvidersRelativePath = "finance/payment_service_providers.json"
+	defaultKeyPrefix                                       = "softdata"
+	geographyStatesRelativePath                            = "geography/states.json"
+	geographyGeopoliticalZonesRelativePath                 = "geography/geopolitical_zones.json"
+	geographyLocalGovernmentUnitsRelativePath              = "geography/lgas.json"
+	financePaymentServiceProvidersRelativePath             = "finance/payment_service_providers.json"
+	financeInternationalMoneyTransferOperatorsRelativePath = "finance/international_money_transfer_operators.json"
 )
 
 func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Logger) (deps appDependencies, err error) {
@@ -129,7 +130,7 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	}
 	financeHandler, err := buildFinanceHandlerFromJSONRepository(ctx, jsonRepository,
 		func(repository interfaces.JSONFileRepository, paymentServiceProvidersPath string) (interfaces.FinanceRepository, error) {
-			return fileRepo.NewFinanceRepository(repository, paymentServiceProvidersPath)
+			return fileRepo.NewFinanceRepository(repository, paymentServiceProvidersPath, financeInternationalMoneyTransferOperatorsRelativePath)
 		},
 		func(repository interfaces.FinanceRepository) (financeService, error) {
 			return services.NewFinanceService(repository)
@@ -530,6 +531,20 @@ func verifyFinanceDataset(ctx context.Context, service financeService) error {
 		if counts[institutionType] != want {
 			return fmt.Errorf("verify finance dataset: %w", interfaces.ErrInvalidDatasetFile)
 		}
+	}
+
+	operators, err := service.ListInternationalMoneyTransferOperators(ctx)
+	if err != nil {
+		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+			return err
+		}
+		return fmt.Errorf("verify finance dataset: %w", err)
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+	if len(operators) != 108 {
+		return fmt.Errorf("verify finance dataset: %w", interfaces.ErrInvalidDatasetFile)
 	}
 	return nil
 }
