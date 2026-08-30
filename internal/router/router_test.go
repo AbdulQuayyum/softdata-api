@@ -99,6 +99,7 @@ func testHandlers(t *testing.T, rec *routerRecorder) Handlers {
 	usage := &routerUsageStub{rec: rec}
 	dataset := &routerDatasetStub{rec: rec}
 	geography := &routerGeographyStub{rec: rec}
+	education := &routerEducationStub{rec: rec}
 	finance := &routerFinanceStub{rec: rec}
 
 	authHandler, err := handlers.NewAuthHandler(auth, auth)
@@ -125,6 +126,10 @@ func testHandlers(t *testing.T, rec *routerRecorder) Handlers {
 	if err != nil {
 		t.Fatalf("NewGeographyHandler() error = %v", err)
 	}
+	educationHandler, err := handlers.NewEducationHandler(education)
+	if err != nil {
+		t.Fatalf("NewEducationHandler() error = %v", err)
+	}
 	financeHandler, err := handlers.NewFinanceHandler(finance)
 	if err != nil {
 		t.Fatalf("NewFinanceHandler() error = %v", err)
@@ -134,6 +139,7 @@ func testHandlers(t *testing.T, rec *routerRecorder) Handlers {
 		Health:    handlers.NewHealthHandler(),
 		Discovery: handlers.NewDiscoveryHandler(),
 		Geography: geographyHandler,
+		Education: educationHandler,
 		Finance:   financeHandler,
 		Auth:      authHandler,
 		Account:   accountHandler,
@@ -198,6 +204,16 @@ func TestNewRejectsMissingGeographyHandler(t *testing.T) {
 
 	if _, err := New(handlers, testMiddleware(rec)); err == nil || !strings.Contains(err.Error(), "geography handler") {
 		t.Fatalf("New() error = %v, want geography handler error", err)
+	}
+}
+
+func TestNewRejectsMissingEducationHandler(t *testing.T) {
+	rec := &routerRecorder{}
+	handlers := testHandlers(t, rec)
+	handlers.Education = nil
+
+	if _, err := New(handlers, testMiddleware(rec)); err == nil || !strings.Contains(err.Error(), "education handler") {
+		t.Fatalf("New() error = %v, want education handler error", err)
 	}
 }
 
@@ -1174,6 +1190,15 @@ type financePolicyHarness struct {
 	anonymous *routerAnonymousIdentifierStub
 }
 
+type educationPolicyHarness struct {
+	router    http.Handler
+	auth      *routerAPIKeyAuthenticatorStub
+	rateLimit *routerRateLimitRepoStub
+	usage     *routerUsageRecorderStub
+	education *routerEducationStub
+	anonymous *routerAnonymousIdentifierStub
+}
+
 func newGeographyPolicyRouter(t *testing.T) geographyPolicyHarness {
 	t.Helper()
 
@@ -1208,6 +1233,7 @@ func newGeographyPolicyRouter(t *testing.T) geographyPolicyHarness {
 		Health:    handlers.NewHealthHandler(),
 		Discovery: handlers.NewDiscoveryHandler(),
 		Geography: geographyHandler,
+		Education: baseHandlers.Education,
 		Finance:   baseHandlers.Finance,
 		Auth:      baseHandlers.Auth,
 		Account:   baseHandlers.Account,
@@ -1310,6 +1336,7 @@ func newFinancePolicyRouter(t *testing.T) financePolicyHarness {
 		Health:    handlers.NewHealthHandler(),
 		Discovery: handlers.NewDiscoveryHandler(),
 		Geography: baseHandlers.Geography,
+		Education: baseHandlers.Education,
 		Finance:   financeHandler,
 		Auth:      baseHandlers.Auth,
 		Account:   baseHandlers.Account,
@@ -1364,6 +1391,89 @@ func newFinancePolicyRouter(t *testing.T) financePolicyHarness {
 		rateLimit: rateLimit,
 		usage:     usage,
 		finance:   finance,
+		anonymous: anonymous,
+	}
+}
+
+func newEducationPolicyRouter(t *testing.T) educationPolicyHarness {
+	t.Helper()
+
+	cors, err := middlewares.NewCORS(middlewares.CORSOptions{
+		AllowedOrigins: []string{"https://example.com"},
+	})
+	if err != nil {
+		t.Fatalf("NewCORS() error = %v", err)
+	}
+
+	auth := &routerAPIKeyAuthenticatorStub{identity: services.APIKeyIdentity{APIKeyID: "key_123", AccountID: "acc_123"}}
+	anonymous := &routerAnonymousIdentifierStub{value: "anon-opaque"}
+	rateLimit := &routerRateLimitRepoStub{}
+	usage := &routerUsageRecorderStub{}
+	education := &routerEducationStub{}
+	educationHandler, err := handlers.NewEducationHandler(education)
+	if err != nil {
+		t.Fatalf("NewEducationHandler() error = %v", err)
+	}
+	baseHandlers := testHandlers(t, &routerRecorder{})
+	rateLimitMiddleware, err := middlewares.RateLimit(rateLimit, anonymous, middlewares.RateLimitPolicy{
+		AnonymousLimit: 60,
+		APIKeyLimit:    300,
+		DownloadLimit:  10,
+		Window:         time.Minute,
+	})
+	if err != nil {
+		t.Fatalf("RateLimit() error = %v", err)
+	}
+
+	routerHandler, err := New(Handlers{
+		Health:    handlers.NewHealthHandler(),
+		Discovery: handlers.NewDiscoveryHandler(),
+		Geography: baseHandlers.Geography,
+		Education: educationHandler,
+		Finance:   baseHandlers.Finance,
+		Auth:      baseHandlers.Auth,
+		Account:   baseHandlers.Account,
+		APIKey:    baseHandlers.APIKey,
+		Usage:     baseHandlers.Usage,
+		Dataset:   baseHandlers.Dataset,
+	}, Middleware{
+		RequestID:       middlewares.RequestID,
+		Recovery:        func(next http.Handler) http.Handler { return next },
+		Logger:          func(next http.Handler) http.Handler { return next },
+		SecurityHeaders: func(next http.Handler) http.Handler { return next },
+		CORS:            cors,
+		BodyLimit:       func(next http.Handler) http.Handler { return next },
+		Timeout:         func(next http.Handler) http.Handler { return next },
+		Authentication:  func(next http.Handler) http.Handler { return next },
+		OptionalAPIKey:  middlewares.OptionalAPIKey(auth),
+		StandardLimit:   rateLimitMiddleware,
+		UsageTracking: func(endpoint, datasetGroup string) (MiddlewareFunc, error) {
+			switch endpoint {
+			case "/v1/education/universities":
+				return middlewares.UsageTracking(usage, endpoint, datasetGroup, middlewares.UsageTrackingOptions{
+					Timeout:             time.Second,
+					AnonymousIdentifier: anonymous,
+				})
+			case "/v1/education/universities/{university_id}":
+				return middlewares.UsageTracking(usage, endpoint, datasetGroup, middlewares.UsageTrackingOptions{
+					Timeout:             time.Second,
+					AnonymousIdentifier: anonymous,
+				})
+			default:
+				return func(next http.Handler) http.Handler { return next }, nil
+			}
+		},
+	})
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	return educationPolicyHarness{
+		router:    routerHandler,
+		auth:      auth,
+		rateLimit: rateLimit,
+		usage:     usage,
+		education: education,
 		anonymous: anonymous,
 	}
 }
@@ -1737,6 +1847,47 @@ func (s *routerGeographyStub) GetLocalGovernmentUnit(ctx context.Context, unitID
 		s.lastAPIKeyIdentity = identity
 	}
 	return models.LocalGovernmentUnit{ID: unitID, Name: "Example", StateID: "lagos", CountryCode: "NG", AdministrativeType: "local_government_area"}, nil
+}
+
+type routerEducationStub struct {
+	rec                *routerRecorder
+	mu                 sync.Mutex
+	listCalls          int
+	getCalls           int
+	lastInput          services.UniversityListInput
+	lastUniversityID   string
+	lastHadAPIKey      bool
+	lastAPIKeyIdentity services.APIKeyIdentity
+}
+
+func (s *routerEducationStub) ListUniversities(ctx context.Context, input services.UniversityListInput) ([]models.University, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.listCalls++
+	s.lastInput = input
+	if s.rec != nil {
+		s.rec.add("education.list")
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return []models.University{{ID: "ahmadu-bello-university-zaria", Name: "Ahmadu Bello University, Zaria", OwnershipType: "federal", StateID: "kaduna", CountryCode: "NG"}}, nil
+}
+
+func (s *routerEducationStub) GetUniversity(ctx context.Context, universityID string) (models.University, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.getCalls++
+	s.lastUniversityID = universityID
+	if s.rec != nil {
+		s.rec.add("education.get:" + universityID)
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return models.University{ID: universityID, Name: "Example University", OwnershipType: "state", StateID: "taraba", CountryCode: "NG"}, nil
 }
 
 type routerAPIKeyAuthenticatorStub struct {

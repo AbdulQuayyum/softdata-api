@@ -1,0 +1,39 @@
+{
+  "dataset_key": "ng-universities",
+  "title": "Nigeria Universities",
+  "description": "Independently compiled factual reference data for the current National Universities Commission register of Nigerian universities. Each record represents one university listing in the federal, state or private category.",
+  "country_code": "NG",
+  "dataset_group": "education",
+  "format": "json",
+  "relative_path": "education/universities.json",
+  "schema_path": "schemas/education/universities.schema.json",
+  "record_count": 328,
+  "version": "1.0.0",
+  "license_id": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "methodology": "Independently compiled and cross-verified factual reference data from the public National Universities Commission university registers. The register was retrieved three times with consistent results on 2026-08-30. Observed counts: federal 77; state 69; private 182. SoftData compiled the current NUC-listed federal, state and private universities as the dataset boundary and normalized obvious typographical defects and former-name annotations in the public name only when supported by current official sources. The NUC register is mutable; these counts describe the verified snapshot and do not establish a universal institution identifier.",
+  "sources": [
+    {
+      "organization": "National Universities Commission",
+      "title": "Federal Universities",
+      "url": "https://www.nuc.edu.ng/nigerian-univerisities/federal-univeristies/",
+      "purpose": "Verify the current federal-university register snapshot used for compilation.",
+      "accessed_at": "2026-08-30"
+    },
+    {
+      "organization": "National Universities Commission",
+      "title": "State Universities",
+      "url": "https://www.nuc.edu.ng/nigerian-univerisities/state-univerisity/",
+      "purpose": "Verify the current state-university register snapshot used for compilation.",
+      "accessed_at": "2026-08-30"
+    },
+    {
+      "organization": "National Universities Commission",
+      "title": "Private Universities",
+      "url": "https://www.nuc.edu.ng/nigerian-univerisities/private-univeristies/",
+      "purpose": "Verify the current private-university register snapshot used for compilation.",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "verified_at": "2026-08-30"
+}

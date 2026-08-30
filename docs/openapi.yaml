@@ -11,6 +11,7 @@ tags:
   - name: Discovery
   - name: Datasets
   - name: Geography
+  - name: Education
   - name: Finance
   - name: Authentication
   - name: Account
@@ -203,6 +204,45 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/LocalGovernmentUnitResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/education/universities:
+    get:
+      tags: [Education]
+      summary: List universities
+      description: Returns the verified current NUC university register snapshot. Ownership and state filters are optional and may be combined.
+      parameters:
+        - $ref: "#/components/parameters/UniversityOwnershipType"
+        - $ref: "#/components/parameters/UniversityStateID"
+      responses:
+        "200":
+          description: University records
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UniversityListResponse"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/education/universities/{university_id}:
+    get:
+      tags: [Education]
+      summary: Get a university
+      description: Returns a verified university record from the current NUC register snapshot.
+      parameters:
+        - $ref: "#/components/parameters/UniversityID"
+      responses:
+        "200":
+          description: University record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UniversityResponse"
         "404":
           $ref: "#/components/responses/NotFound"
         "422":
@@ -613,6 +653,28 @@ components:
       description: Stable public identifier for a local government unit or FCT Area Council.
       schema:
         type: string
+    UniversityID:
+      name: university_id
+      in: path
+      required: true
+      description: Stable public identifier for a current NUC-listed university.
+      schema:
+        type: string
+        pattern: '^[a-z0-9]+(?:-[a-z0-9]+)+$'
+    UniversityOwnershipType:
+      name: ownership_type
+      in: query
+      required: false
+      description: Optional university ownership category used to filter universities.
+      schema:
+        $ref: "#/components/schemas/UniversityOwnershipType"
+    UniversityStateID:
+      name: state_id
+      in: query
+      required: false
+      description: Optional public state or FCT ID used to filter universities.
+      schema:
+        $ref: "#/components/schemas/UniversityStateID"
     PaymentServiceProviderID:
       name: provider_id
       in: path
@@ -888,6 +950,85 @@ components:
           type: boolean
         data:
           $ref: "#/components/schemas/LocalGovernmentUnit"
+      required: [success, data]
+    UniversityOwnershipType:
+      type: string
+      enum: [federal, state, private]
+    UniversityStateID:
+      type: string
+      enum:
+        - abia
+        - adamawa
+        - akwa-ibom
+        - anambra
+        - bauchi
+        - bayelsa
+        - benue
+        - borno
+        - cross-river
+        - delta
+        - ebonyi
+        - edo
+        - ekiti
+        - enugu
+        - fct
+        - gombe
+        - imo
+        - jigawa
+        - kaduna
+        - kano
+        - katsina
+        - kebbi
+        - kogi
+        - kwara
+        - lagos
+        - nasarawa
+        - niger
+        - ogun
+        - ondo
+        - osun
+        - oyo
+        - plateau
+        - rivers
+        - sokoto
+        - taraba
+        - yobe
+        - zamfara
+    University:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        ownership_type:
+          $ref: "#/components/schemas/UniversityOwnershipType"
+        state_id:
+          $ref: "#/components/schemas/UniversityStateID"
+        country_code:
+          type: string
+          enum: [NG]
+      required: [id, name, ownership_type, state_id, country_code]
+    UniversityListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/University"
+      required: [success, data]
+    UniversityResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: "#/components/schemas/University"
       required: [success, data]
     PaymentServiceProviderType:
       type: string

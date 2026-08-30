@@ -1,0 +1,2298 @@
+[
+  {
+    "id": "abubakar-tafawa-balewa-university-bauchi",
+    "name": "Abubakar Tafawa Balewa University, Bauchi",
+    "ownership_type": "federal",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "adeyemi-federal-university-of-education-ondo",
+    "name": "Adeyemi Federal University of Education, Ondo",
+    "ownership_type": "federal",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "admiralty-university-ibusa-delta-state",
+    "name": "Admiralty University Ibusa, Delta State",
+    "ownership_type": "federal",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "african-aviation-and-aerospace-university",
+    "name": "African Aviation and Aerospace University",
+    "ownership_type": "federal",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "ahmadu-bello-university-zaria",
+    "name": "Ahmadu Bello University, Zaria",
+    "ownership_type": "federal",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "air-force-institute-of-technology-kaduna",
+    "name": "Air Force Institute of Technology, Kaduna",
+    "ownership_type": "federal",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "alex-ekwueme-university-ndufu-alike-ebonyi-state",
+    "name": "Alex Ekwueme University, Ndufu-Alike, Ebonyi State",
+    "ownership_type": "federal",
+    "state_id": "ebonyi",
+    "country_code": "NG"
+  },
+  {
+    "id": "alvan-ikoku-federal-university-of-education-owerri-imo-state",
+    "name": "Alvan Ikoku Federal University of Education, Owerri, Imo State",
+    "ownership_type": "federal",
+    "state_id": "imo",
+    "country_code": "NG"
+  },
+  {
+    "id": "bayero-university-kano",
+    "name": "Bayero University, Kano",
+    "ownership_type": "federal",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "david-nweze-umahi-federal-university-of-medical-sciences-uburu",
+    "name": "David Nweze Umahi Federal University of Medical Sciences, Uburu",
+    "ownership_type": "federal",
+    "state_id": "ebonyi",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-gashua-yobe",
+    "name": "Federal University Gashua, Yobe",
+    "ownership_type": "federal",
+    "state_id": "yobe",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-agriculture-and-developmental-studies-iragbuji-osun-state",
+    "name": "Federal University of Agriculture and Developmental Studies, Iragbuji, Osun State",
+    "ownership_type": "federal",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-agriculture-and-technology-obio-akpa-akwa-ibom-state",
+    "name": "Federal University of Agriculture and Technology Obio-Akpa Akwa Ibom State",
+    "ownership_type": "federal",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-agriculture-and-technology-okeho-oyo-state",
+    "name": "Federal University of Agriculture and Technology Okeho, Oyo State",
+    "ownership_type": "federal",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-agriculture-bassam-biri-bayelsa",
+    "name": "Federal University of Agriculture Bassam-Biri, Bayelsa",
+    "ownership_type": "federal",
+    "state_id": "bayelsa",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-agriculture-abeokuta",
+    "name": "Federal University of Agriculture, Abeokuta",
+    "ownership_type": "federal",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-agriculture-mubi",
+    "name": "Federal University of Agriculture, Mubi",
+    "ownership_type": "federal",
+    "state_id": "adamawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-agriculture-zuru-kebbi-state",
+    "name": "Federal University of Agriculture, Zuru, Kebbi State",
+    "ownership_type": "federal",
+    "state_id": "kebbi",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-allied-health-sciences-enugu",
+    "name": "Federal University of Allied Health Sciences, Enugu",
+    "ownership_type": "federal",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-applied-sciences-kachia-kaduna-state",
+    "name": "Federal University of Applied Sciences, Kachia, Kaduna State",
+    "ownership_type": "federal",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-education-kontagora-niger-state",
+    "name": "Federal University of Education Kontagora, Niger State",
+    "ownership_type": "federal",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-education-pankshin-plateau-state",
+    "name": "Federal University of Education Pankshin, Plateau State",
+    "ownership_type": "federal",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-education-zaria-kaduna-state",
+    "name": "Federal University of Education, Zaria, Kaduna State",
+    "ownership_type": "federal",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-environment-and-technology-tai-town-ogoniland-rivers-state",
+    "name": "Federal University of Environment and Technology, Tai Town, Ogoniland, Rivers State",
+    "ownership_type": "federal",
+    "state_id": "rivers",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-health-science-and-technology-tsafe",
+    "name": "Federal University of Health Science and Technology, Tsafe",
+    "ownership_type": "federal",
+    "state_id": "zamfara",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-health-sciences-kwale-delta-state",
+    "name": "Federal University of Health Sciences Kwale, Delta State",
+    "ownership_type": "federal",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-health-sciences-azare-bauchi-state",
+    "name": "Federal University of Health Sciences, Azare, Bauchi State",
+    "ownership_type": "federal",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-health-sciences-ila-orangun-osun-state",
+    "name": "Federal University of Health Sciences, Ila Orangun, Osun State",
+    "ownership_type": "federal",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-health-sciences-katsina",
+    "name": "Federal University of Health Sciences, Katsina",
+    "ownership_type": "federal",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-health-sciences-otukpo-benue-state",
+    "name": "Federal University of Health Sciences, Otukpo, Benue State",
+    "ownership_type": "federal",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-medicine-and-medical-sciences-abeokuta",
+    "name": "Federal University of Medicine and Medical Sciences, Abeokuta",
+    "ownership_type": "federal",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-petroleum-resources-effurun",
+    "name": "Federal University of Petroleum Resources, Effurun",
+    "ownership_type": "federal",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "name": "Federal University of Science and Technology, Epe",
+    "ownership_type": "federal",
+    "state_id": "lagos",
+    "id": "federal-university-of-science-and-technology-epe",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-science-and-technology-kabo-kano",
+    "name": "Federal University of Science and Technology, Kabo, Kano",
+    "ownership_type": "federal",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-technology-and-environmental-studies-iyin-ekiti-ekiti-state",
+    "name": "Federal University of Technology and Environmental Studies, Iyin-Ekiti, Ekiti State.",
+    "ownership_type": "federal",
+    "state_id": "ekiti",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-technology-akure",
+    "name": "Federal University of Technology, Akure",
+    "ownership_type": "federal",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-technology-babura-jigawa-state",
+    "name": "Federal University of Technology, Babura, Jigawa State",
+    "ownership_type": "federal",
+    "state_id": "jigawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-technology-ikot-abasi-akwa-ibom-state",
+    "name": "Federal University of Technology, Ikot Abasi, Akwa Ibom State",
+    "ownership_type": "federal",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-technology-minna",
+    "name": "Federal University of Technology, Minna",
+    "ownership_type": "federal",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-technology-owerri",
+    "name": "Federal University of Technology, Owerri",
+    "ownership_type": "federal",
+    "state_id": "imo",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-of-transportation-daura-katsina",
+    "name": "Federal University of Transportation Daura, Katsina",
+    "ownership_type": "federal",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-birnin-kebbi",
+    "name": "Federal University, Birnin Kebbi",
+    "ownership_type": "federal",
+    "state_id": "kebbi",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-dutse-jigawa-state",
+    "name": "Federal University, Dutse, Jigawa State",
+    "ownership_type": "federal",
+    "state_id": "jigawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-dutsin-ma-katsina",
+    "name": "Federal University, Dutsin-Ma, Katsina",
+    "ownership_type": "federal",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-gusau-zamfara",
+    "name": "Federal University, Gusau Zamfara",
+    "ownership_type": "federal",
+    "state_id": "zamfara",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-kashere-gombe-state",
+    "name": "Federal University, Kashere, Gombe State",
+    "ownership_type": "federal",
+    "state_id": "gombe",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-lafia-nasarawa-state",
+    "name": "Federal University, Lafia, Nasarawa State",
+    "ownership_type": "federal",
+    "state_id": "nasarawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-lokoja-kogi-state",
+    "name": "Federal University, Lokoja, Kogi State",
+    "ownership_type": "federal",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-otuoke-bayelsa",
+    "name": "Federal University, Otuoke, Bayelsa",
+    "ownership_type": "federal",
+    "state_id": "bayelsa",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-oye-ekiti-ekiti-state",
+    "name": "Federal University, Oye-Ekiti, Ekiti State",
+    "ownership_type": "federal",
+    "state_id": "ekiti",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-university-wukari-taraba-state",
+    "name": "Federal University, Wukari, Taraba State",
+    "ownership_type": "federal",
+    "state_id": "taraba",
+    "country_code": "NG"
+  },
+  {
+    "id": "joseph-sarwuan-tarka-university-makurdi",
+    "name": "Joseph Sarwuan Tarka University, Makurdi",
+    "ownership_type": "federal",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "michael-okpara-university-of-agricultural-umudike",
+    "name": "Michael Okpara University of Agricultural Umudike",
+    "ownership_type": "federal",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "modibbo-adama-university-of-technology-yola",
+    "name": "Modibbo Adama University of Technology, Yola",
+    "ownership_type": "federal",
+    "state_id": "adamawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "national-open-university-of-nigeria-abuja",
+    "name": "National Open University of Nigeria, Abuja",
+    "ownership_type": "federal",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "national-university-of-science-and-technology-abuja",
+    "name": "National University of Science and Technology, Abuja",
+    "ownership_type": "federal",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "nigeria-police-academy-wudil",
+    "name": "Nigeria Police Academy Wudil",
+    "ownership_type": "federal",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "nigerian-army-university-biu",
+    "name": "Nigerian Army University Biu",
+    "ownership_type": "federal",
+    "state_id": "borno",
+    "country_code": "NG"
+  },
+  {
+    "id": "nigerian-defence-academy-kaduna",
+    "name": "Nigerian Defence Academy Kaduna",
+    "ownership_type": "federal",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "nigerian-maritime-university-okerenkoko-delta-state",
+    "name": "Nigerian Maritime University Okerenkoko, Delta State",
+    "ownership_type": "federal",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "nnamdi-azikiwe-university-awka",
+    "name": "Nnamdi Azikiwe University, Awka",
+    "ownership_type": "federal",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "obafemi-awolowo-university-ile-ife",
+    "name": "Obafemi Awolowo University, Ile-Ife",
+    "ownership_type": "federal",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "name": "Tai Solarin Federal University of Education, Ijagun, Ijebu Ode",
+    "ownership_type": "federal",
+    "state_id": "ogun",
+    "id": "tai-solarin-federal-university-of-education-ijagun-ijebu-ode",
+    "country_code": "NG"
+  },
+  {
+    "id": "university-of-abuja-gwagwalada",
+    "name": "University of Abuja, Gwagwalada",
+    "ownership_type": "federal",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "university-of-benin",
+    "name": "University of Benin",
+    "ownership_type": "federal",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "university-of-calabar",
+    "name": "University of Calabar",
+    "ownership_type": "federal",
+    "state_id": "cross-river",
+    "country_code": "NG"
+  },
+  {
+    "id": "university-of-ibadan",
+    "name": "University of Ibadan",
+    "ownership_type": "federal",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "university-of-ilorin",
+    "name": "University of Ilorin",
+    "ownership_type": "federal",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "university-of-jos",
+    "name": "University of Jos",
+    "ownership_type": "federal",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "university-of-lagos",
+    "name": "University of Lagos",
+    "ownership_type": "federal",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "university-of-maiduguri",
+    "name": "University of Maiduguri",
+    "ownership_type": "federal",
+    "state_id": "borno",
+    "country_code": "NG"
+  },
+  {
+    "id": "university-of-maritime-studies-oron-akwa-ibom-state",
+    "name": "University of Maritime Studies, Oron, Akwa Ibom State",
+    "ownership_type": "federal",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "university-of-nigeria-nsukka",
+    "name": "University of Nigeria, Nsukka",
+    "ownership_type": "federal",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "university-of-port-harcourt",
+    "name": "University of Port Harcourt",
+    "ownership_type": "federal",
+    "state_id": "rivers",
+    "country_code": "NG"
+  },
+  {
+    "id": "university-of-uyo",
+    "name": "University of Uyo",
+    "ownership_type": "federal",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "usumanu-danfodiyo-university",
+    "name": "Usumanu Danfodiyo University",
+    "ownership_type": "federal",
+    "state_id": "sokoto",
+    "country_code": "NG"
+  },
+  {
+    "id": "yusuf-maitama-sule-federal-university-of-education-kano",
+    "name": "Yusuf Maitama Sule Federal University of Education, Kano",
+    "ownership_type": "federal",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "abdulkadir-kure-university-minna",
+    "name": "Abdulkadir Kure University, Minna",
+    "ownership_type": "state",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "abdulsalam-abubakar-university-of-agriculture-and-climate-action-mokwa-niger-state",
+    "name": "Abdulsalam Abubakar University of Agriculture and Climate Action, Mokwa, Niger State",
+    "ownership_type": "state",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "abia-state-university-uturu",
+    "name": "Abia State University, Uturu",
+    "ownership_type": "state",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "adamawa-state-university-mubi",
+    "name": "Adamawa State University Mubi",
+    "ownership_type": "state",
+    "state_id": "adamawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "adekunle-ajasin-university-akungba",
+    "name": "Adekunle Ajasin University, Akungba",
+    "ownership_type": "state",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "akwa-ibom-state-university-ikot-akpaden",
+    "name": "Akwa Ibom State University, Ikot Akpaden",
+    "ownership_type": "state",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "aliko-dangote-university-of-science-technology-wudil",
+    "name": "Aliko Dangote university of Science & Technology, Wudil",
+    "ownership_type": "state",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "ambrose-alli-university-ekpoma",
+    "name": "Ambrose Alli University, Ekpoma",
+    "ownership_type": "state",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "bamidele-olumilua-university-of-science-and-technology-ikere-ekiti-state",
+    "name": "Bamidele Olumilua University of Science and Technology Ikere, Ekiti State",
+    "ownership_type": "state",
+    "state_id": "ekiti",
+    "country_code": "NG"
+  },
+  {
+    "id": "bauchi-state-university-gadau",
+    "name": "Bauchi State University, Gadau",
+    "ownership_type": "state",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "bayelsa-medical-university",
+    "name": "Bayelsa Medical University",
+    "ownership_type": "state",
+    "state_id": "bayelsa",
+    "country_code": "NG"
+  },
+  {
+    "id": "benue-state-university-of-agriculture-science-and-technology-ihugh",
+    "name": "Benue State University of Agriculture Science and Technology, Ihugh.",
+    "ownership_type": "state",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "chukwuemeka-odumegwu-ojukwu-university-uli",
+    "name": "Chukwuemeka Odumegwu Ojukwu University, Uli",
+    "ownership_type": "state",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "confluence-university-of-science-and-technology-osara-kogi",
+    "name": "Confluence University of Science and Technology Osara, Kogi",
+    "ownership_type": "state",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "cross-river-university-of-education-and-entrepreneurship-akamkpa-cross-river-state",
+    "name": "Cross River University of Education and Entrepreneurship, Akamkpa, Cross River State",
+    "ownership_type": "state",
+    "state_id": "cross-river",
+    "country_code": "NG"
+  },
+  {
+    "id": "delta-state-university-abraka",
+    "name": "Delta State University, Abraka",
+    "ownership_type": "state",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "delta-university-of-science-and-technology-ozoro",
+    "name": "Delta University of Science and Technology, Ozoro",
+    "ownership_type": "state",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "dennis-osadebe-university-asaba",
+    "name": "Dennis Osadebe University, Asaba",
+    "ownership_type": "state",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "ebonyi-state-university-of-ict-science-and-technology-oferekpe-ebonyi-state",
+    "name": "Ebonyi State University of ICT, Science and Technology, Oferekpe, Ebonyi State",
+    "ownership_type": "state",
+    "state_id": "ebonyi",
+    "country_code": "NG"
+  },
+  {
+    "id": "ebonyi-state-university-abakaliki",
+    "name": "Ebonyi State University, Abakaliki",
+    "ownership_type": "state",
+    "state_id": "ebonyi",
+    "country_code": "NG"
+  },
+  {
+    "id": "edo-state-university-iyamho",
+    "name": "Edo State University, Iyamho",
+    "ownership_type": "state",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "ekiti-state-university",
+    "name": "Ekiti State University",
+    "ownership_type": "state",
+    "state_id": "ekiti",
+    "country_code": "NG"
+  },
+  {
+    "id": "emanuel-alayande-university-of-education-oyo",
+    "name": "Emanuel Alayande University of Education Oyo",
+    "ownership_type": "state",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "enugu-state-university-of-science-and-technology-enugu",
+    "name": "Enugu State University of Science and Technology, Enugu",
+    "ownership_type": "state",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "first-technical-university-ibadan",
+    "name": "First Technical University Ibadan",
+    "ownership_type": "state",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "gombe-state-university-gombe",
+    "name": "Gombe State University, Gombe",
+    "ownership_type": "state",
+    "state_id": "gombe",
+    "country_code": "NG"
+  },
+  {
+    "id": "ibrahim-badamasi-babangida-university-lapai",
+    "name": "Ibrahim Badamasi Babangida University, Lapai",
+    "ownership_type": "state",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "ignatius-ajuru-university-of-education-rumuolumeni",
+    "name": "Ignatius Ajuru University of Education, Rumuolumeni",
+    "ownership_type": "state",
+    "state_id": "rivers",
+    "country_code": "NG"
+  },
+  {
+    "id": "imo-state-university-owerri",
+    "name": "Imo State University, Owerri",
+    "ownership_type": "state",
+    "state_id": "imo",
+    "country_code": "NG"
+  },
+  {
+    "id": "jigawa-state-university-of-medical-and-allied-health-sciences-majia",
+    "name": "Jigawa State University of Medical and Allied Health Sciences, Majia",
+    "ownership_type": "state",
+    "state_id": "jigawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "kaduna-state-university-kaduna",
+    "name": "Kaduna State University, Kaduna",
+    "ownership_type": "state",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "kashim-ibrahim-university-maiduguri",
+    "name": "Kashim Ibrahim University, Maiduguri",
+    "ownership_type": "state",
+    "state_id": "borno",
+    "country_code": "NG"
+  },
+  {
+    "id": "kebbi-state-university-of-science-and-technology-aliero",
+    "name": "Kebbi State University of Science and Technology, Aliero",
+    "ownership_type": "state",
+    "state_id": "kebbi",
+    "country_code": "NG"
+  },
+  {
+    "id": "kingsley-ozumba-mbadiwe-university-ogboko-imo-state",
+    "name": "Kingsley Ozumba Mbadiwe University Ogboko, Imo State",
+    "ownership_type": "state",
+    "state_id": "imo",
+    "country_code": "NG"
+  },
+  {
+    "id": "kogi-state-university-kabba",
+    "name": "Kogi State University, Kabba",
+    "ownership_type": "state",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "kwara-state-university-of-education-ilorin-kwara-state",
+    "name": "Kwara State University of Education, Ilorin, Kwara State",
+    "ownership_type": "state",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "kwara-state-university-ilorin",
+    "name": "Kwara State University, Ilorin",
+    "ownership_type": "state",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "ladoke-akintola-university-of-technology-ogbomoso",
+    "name": "Ladoke Akintola University of Technology, Ogbomoso",
+    "ownership_type": "state",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "lagos-state-university-of-education-ijanikin",
+    "name": "Lagos State University of Education, Ijanikin",
+    "ownership_type": "state",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "lagos-state-university-of-science-and-technology-ikorodu",
+    "name": "Lagos State University of Science and Technology Ikorodu",
+    "ownership_type": "state",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "lagos-state-university-ojo",
+    "name": "Lagos State University, Ojo",
+    "ownership_type": "state",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "moshood-abiola-university-of-science-and-technology-abeokuta",
+    "name": "Moshood Abiola University of Science and Technology Abeokuta",
+    "ownership_type": "state",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "nasarawa-state-university-keffi",
+    "name": "Nasarawa State University Keffi",
+    "ownership_type": "state",
+    "state_id": "nasarawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "niger-delta-university-yenagoa",
+    "name": "Niger Delta University, Yenagoa",
+    "ownership_type": "state",
+    "state_id": "bayelsa",
+    "country_code": "NG"
+  },
+  {
+    "id": "northwest-university-kano",
+    "name": "Northwest University, Kano",
+    "ownership_type": "state",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "olabisi-onabanjo-university-ago-iwoye",
+    "name": "Olabisi Onabanjo University, Ago Iwoye",
+    "ownership_type": "state",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "olusegun-agagu-university-of-science-and-technology-okitipupa-ondo",
+    "name": "Olusegun Agagu University of Science and Technology, Okitipupa, Ondo",
+    "ownership_type": "state",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "osun-state-university-osogbo",
+    "name": "Osun State University, Osogbo",
+    "ownership_type": "state",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "plateau-state-university-bokkos",
+    "name": "Plateau State University Bokkos",
+    "ownership_type": "state",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "prince-abubakar-audu-university-anyigba",
+    "name": "Prince Abubakar Audu University Anyigba",
+    "ownership_type": "state",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "rev-fr-moses-orshio-adasu-makurdi",
+    "name": "Rev. Fr. Moses Orshio Adasu, Makurdi",
+    "ownership_type": "state",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "rivers-state-university",
+    "name": "Rivers State University",
+    "ownership_type": "state",
+    "state_id": "rivers",
+    "country_code": "NG"
+  },
+  {
+    "id": "shehu-shagari-university-of-education-sokoto",
+    "name": "Shehu Shagari University of Education, Sokoto",
+    "ownership_type": "state",
+    "state_id": "sokoto",
+    "country_code": "NG"
+  },
+  {
+    "id": "sokoto-state-university",
+    "name": "Sokoto State University",
+    "ownership_type": "state",
+    "state_id": "sokoto",
+    "country_code": "NG"
+  },
+  {
+    "id": "state-university-of-medical-and-applied-sciences-igbo-eno-enugu",
+    "name": "State University of Medical and Applied Sciences, Igbo-Eno, Enugu",
+    "ownership_type": "state",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "sule-lamido-university-kafin-hausa-jigawa",
+    "name": "Sule Lamido University, Kafin Hausa, Jigawa",
+    "ownership_type": "state",
+    "state_id": "jigawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "taraba-state-university-of-tropical-agriculture-science-technology-and-climate-action-gembu",
+    "name": "Taraba State University of Tropical Agriculture, Science, Technology and Climate Action, Gembu",
+    "ownership_type": "state",
+    "state_id": "taraba",
+    "country_code": "NG"
+  },
+  {
+    "id": "taraba-state-university-jalingo",
+    "name": "Taraba State University, Jalingo",
+    "ownership_type": "state",
+    "state_id": "taraba",
+    "country_code": "NG"
+  },
+  {
+    "id": "umar-musa-yar-adua-university-katsina",
+    "name": "Umar Musa Yar' Adua University Katsina",
+    "ownership_type": "state",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "university-of-aeronautics-and-aerospace-engineering-ezza-ebonyi-state",
+    "name": "University of Aeronautics and Aerospace Engineering Ezza, Ebonyi State",
+    "ownership_type": "state",
+    "state_id": "ebonyi",
+    "country_code": "NG"
+  },
+  {
+    "id": "university-of-africa-toru-orua-bayelsa-state",
+    "name": "University of Africa Toru Orua, Bayelsa State",
+    "ownership_type": "state",
+    "state_id": "bayelsa",
+    "country_code": "NG"
+  },
+  {
+    "id": "university-of-agriculture-and-environmental-sciences-umuagwo-imo-state",
+    "name": "University of Agriculture and Environmental Sciences Umuagwo, Imo State",
+    "ownership_type": "state",
+    "state_id": "imo",
+    "country_code": "NG"
+  },
+  {
+    "id": "university-of-cross-river-state-calabar",
+    "name": "University of Cross River State, Calabar",
+    "ownership_type": "state",
+    "state_id": "cross-river",
+    "country_code": "NG"
+  },
+  {
+    "id": "university-of-delta-agbor",
+    "name": "University of Delta, Agbor",
+    "ownership_type": "state",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "university-of-ilesa-osun-state",
+    "name": "University of Ilesa, Osun State",
+    "ownership_type": "state",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "university-of-innovation-science-and-technology-omuma-imo-state",
+    "name": "University of Innovation, Science and Technology, Omuma, Imo State",
+    "ownership_type": "state",
+    "state_id": "imo",
+    "country_code": "NG"
+  },
+  {
+    "id": "university-of-medical-sciences-ondo-city-ondo-state",
+    "name": "University of Medical Sciences, Ondo City, Ondo State",
+    "ownership_type": "state",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "yobe-state-university-damaturu",
+    "name": "Yobe State University, Damaturu",
+    "ownership_type": "state",
+    "state_id": "yobe",
+    "country_code": "NG"
+  },
+  {
+    "id": "zamfara-state-university",
+    "name": "Zamfara State University",
+    "ownership_type": "state",
+    "state_id": "zamfara",
+    "country_code": "NG"
+  },
+  {
+    "id": "abdulfattah-durojaiye-university-abeokuta-ogun-state",
+    "name": "Abdulfattah Durojaiye University, Abeokuta Ogun State",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "abdulrasaq-abubakar-toyin-university-oke-ogba-ganmo-ilorin-kwara-state",
+    "name": "Abdulrasaq Abubakar Toyin University, Oke-Ogba, Ganmo, Ilorin, Kwara State",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "achievers-university-owo",
+    "name": "Achievers University, Owo",
+    "ownership_type": "private",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "adeche-momoh-university-igarra-edo-state",
+    "name": "Adeche Momoh University, Igarra, Edo State",
+    "ownership_type": "private",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "name": "Adeleke University, Ede",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "id": "adeleke-university-ede",
+    "country_code": "NG"
+  },
+  {
+    "id": "afe-babalola-university-ado-ekiti-ekiti-state",
+    "name": "Afe Babalola University, Ado-Ekiti - Ekiti State",
+    "ownership_type": "private",
+    "state_id": "ekiti",
+    "country_code": "NG"
+  },
+  {
+    "id": "african-university-of-economics-fct-abuja",
+    "name": "African University of Economics, FCT, Abuja",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "african-university-of-science-and-technology-abuja",
+    "name": "African University of Science and Technology, Abuja",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "ahman-pategi-university-kwara-state",
+    "name": "Ahman Pategi University, Kwara State",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "ajayi-crowther-university-ibadan",
+    "name": "Ajayi Crowther University, Ibadan",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "al-ansar-university-maiduguri-borno",
+    "name": "Al-Ansar University, Maiduguri, Borno",
+    "ownership_type": "private",
+    "state_id": "borno",
+    "country_code": "NG"
+  },
+  {
+    "id": "al-bayan-university-ankpa-kogi-state",
+    "name": "Al-Bayan University, Ankpa, Kogi State",
+    "ownership_type": "private",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "al-hikmah-university-ilorin",
+    "name": "Al-Hikmah University, Ilorin",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "al-istiqama-university-sumaila-kano-state",
+    "name": "Al-Istiqama University, Sumaila, Kano State",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "al-muhibbah-open-university-abuja",
+    "name": "Al-Muhibbah Open University, Abuja",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "al-qalam-university-katsina",
+    "name": "Al-Qalam University, Katsina",
+    "ownership_type": "private",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "aletheia-university-ago-iwoye-ogun-state",
+    "name": "Aletheia University, Ago-Iwoye Ogun State",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "amadeus-university-amizi-abia-state",
+    "name": "Amadeus University, Amizi, Abia State",
+    "ownership_type": "private",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "amaj-university-kwali-abuja",
+    "name": "Amaj University, Kwali, Abuja",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "american-open-university-abeokuta-ogun-state",
+    "name": "American Open University, Abeokuta, Ogun State",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "american-university-of-nigeria-yola",
+    "name": "American University of Nigeria, Yola",
+    "ownership_type": "private",
+    "state_id": "adamawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "anan-university-kwall-plateau-state",
+    "name": "Anan University, Kwall, Plateau State",
+    "ownership_type": "private",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "anchor-university-ayobo-lagos-state",
+    "name": "Anchor University Ayobo Lagos State",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "arthur-javis-university-akpoyubo-cross-river-state",
+    "name": "Arthur Javis University Akpoyubo Cross river State",
+    "ownership_type": "private",
+    "state_id": "cross-river",
+    "country_code": "NG"
+  },
+  {
+    "id": "atiba-university-oyo",
+    "name": "Atiba University Oyo",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "augustine-university",
+    "name": "Augustine University",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "ave-maria-university-piyanko-nasarawa-state",
+    "name": "Ave Maria University, Piyanko, Nasarawa State",
+    "ownership_type": "private",
+    "state_id": "nasarawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "azione-verde-university-amaigbo-imo-state",
+    "name": "Azione Verde University, Amaigbo, Imo State",
+    "ownership_type": "private",
+    "state_id": "imo",
+    "country_code": "NG"
+  },
+  {
+    "id": "azman-university-kano-state",
+    "name": "Azman University, Kano State",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "baba-ahmed-university-kano-state",
+    "name": "Baba Ahmed University, Kano State",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "babcock-university-ilishan-remo",
+    "name": "Babcock University, Ilishan-Remo",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "baze-university",
+    "name": "Baze University",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "bells-university-of-technology-otta",
+    "name": "Bells University of Technology, Otta",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "benson-idahosa-university-benin-city",
+    "name": "Benson Idahosa University, Benin City",
+    "ownership_type": "private",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "bingham-university-new-karu",
+    "name": "Bingham University, New Karu",
+    "ownership_type": "private",
+    "state_id": "nasarawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "bowen-university-iwo",
+    "name": "Bowen University, Iwo",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "bridget-university-mbaise-okirika-nweke-imo-state",
+    "name": "Bridget University Mbaise, Okirika-Nweke, Imo State",
+    "ownership_type": "private",
+    "state_id": "imo",
+    "country_code": "NG"
+  },
+  {
+    "id": "british-canadian-university-obufu-cross-river-state",
+    "name": "British Canadian University, Obufu Cross River State",
+    "ownership_type": "private",
+    "state_id": "cross-river",
+    "country_code": "NG"
+  },
+  {
+    "id": "caleb-university-lagos",
+    "name": "Caleb University, Lagos",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "canadian-university-of-nigeria-abuja",
+    "name": "Canadian University of Nigeria, Abuja",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "capital-city-university-kano-state",
+    "name": "Capital City University, Kano State",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "caritas-university-enugu",
+    "name": "Caritas University, Enugu",
+    "ownership_type": "private",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "chrisland-university",
+    "name": "Chrisland University",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "christopher-university-mowe",
+    "name": "Christopher University Mowe",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "city-university-abuja",
+    "name": "City University Abuja",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "claretian-university-of-nigeria-nekede-imo-state",
+    "name": "Claretian University of Nigeria, Nekede, Imo State",
+    "ownership_type": "private",
+    "state_id": "imo",
+    "country_code": "NG"
+  },
+  {
+    "id": "clifford-university-owerrinta-abia-state",
+    "name": "Clifford University Owerrinta Abia State",
+    "ownership_type": "private",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "coal-city-university-enugu-state",
+    "name": "Coal City University Enugu State",
+    "ownership_type": "private",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-petroleum-and-energy-studies-kaduna-state",
+    "name": "College of Petroleum and Energy Studies, Kaduna State",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "cosmopolitan-university-abuja",
+    "name": "Cosmopolitan University Abuja",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "covenant-university-ota",
+    "name": "Covenant University Ota",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "name": "Crawford University, Igbesa",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "id": "crawford-university-igbesa",
+    "country_code": "NG"
+  },
+  {
+    "id": "crescent-university",
+    "name": "Crescent University",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "dominican-university-ibadan-oyo-state",
+    "name": "Dominican University Ibadan Oyo State",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "dominion-university-ibadan-oyo-state",
+    "name": "Dominion University Ibadan, Oyo State",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "edusoko-university-bida-niger-state",
+    "name": "Edusoko University, Bida, Niger State",
+    "ownership_type": "private",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "edwin-clark-university-kaigbodo",
+    "name": "Edwin Clark University, Kaigbodo",
+    "ownership_type": "private",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "eko-university-of-medical-and-health-sciences-ijanikin-lagos",
+    "name": "Eko University of Medical and Health Sciences Ijanikin, Lagos",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "el-amin-university-minna-niger-state",
+    "name": "El-Amin University, Minna, Niger State",
+    "ownership_type": "private",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "elizade-university-ilara-mokin",
+    "name": "Elizade University, Ilara-Mokin",
+    "ownership_type": "private",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "elrazi-medical-university-yargaya-university-kano-state",
+    "name": "Elrazi Medical University Yargaya University, Kano State",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "eranova-university-abuja",
+    "name": "Eranova University, Abuja",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "name": "European University of Nigeria, Duboyi, FCT",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "id": "european-university-of-nigeria-duboyi-fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "euston-university-abakaliki-ebonyi-state",
+    "name": "Euston University, Abakaliki, Ebonyi State",
+    "ownership_type": "private",
+    "state_id": "ebonyi",
+    "country_code": "NG"
+  },
+  {
+    "id": "evangel-university-akaeze",
+    "name": "Evangel University, Akaeze",
+    "ownership_type": "private",
+    "state_id": "ebonyi",
+    "country_code": "NG"
+  },
+  {
+    "id": "fountain-university-osogbo",
+    "name": "Fountain University, Osogbo",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "franco-british-international-university-kaduna-state",
+    "name": "Franco British International University, Kaduna State",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "gerar-university-of-medical-science-imope-ijebu-ogun-state",
+    "name": "Gerar University of Medical Science Imope Ijebu, Ogun State.",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "glorious-vision-university-ogwa-edo-state",
+    "name": "Glorious Vision University, Ogwa, Edo State.",
+    "ownership_type": "private",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "godday-erewa-university-sapele-delta-state",
+    "name": "Godday Erewa University, Sapele, Delta State",
+    "ownership_type": "private",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "godfrey-okoye-university-ugwuomu-nike-enugu-state",
+    "name": "Godfrey Okoye University, Ugwuomu-Nike - Enugu State",
+    "ownership_type": "private",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "greenfield-university-kaduna",
+    "name": "Greenfield University, Kaduna",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "greenland-university-jalingo-taraba-state",
+    "name": "Greenland University, Jalingo, Taraba State",
+    "ownership_type": "private",
+    "state_id": "taraba",
+    "country_code": "NG"
+  },
+  {
+    "id": "gregory-university-uturu",
+    "name": "Gregory University, Uturu",
+    "ownership_type": "private",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "hallmark-university-ijebi-itele-ogun",
+    "name": "Hallmark University, Ijebi Itele, Ogun",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "havilla-university-nde-ikom-cross-river-state",
+    "name": "Havilla University, Nde-Ikom, Cross River State",
+    "ownership_type": "private",
+    "state_id": "cross-river",
+    "country_code": "NG"
+  },
+  {
+    "id": "hensard-university-toru-orua-sagbama-bayelsa-state",
+    "name": "Hensard University, Toru-Orua, Sagbama, Bayelsa State",
+    "ownership_type": "private",
+    "state_id": "bayelsa",
+    "country_code": "NG"
+  },
+  {
+    "id": "hezekiah-university-umudi",
+    "name": "Hezekiah University, Umudi",
+    "ownership_type": "private",
+    "state_id": "imo",
+    "country_code": "NG"
+  },
+  {
+    "id": "high-flyers-university-ikere-ekiti-ekiti-state",
+    "name": "High Flyers University, Ikere-Ekiti, Ekiti State",
+    "ownership_type": "private",
+    "state_id": "ekiti",
+    "country_code": "NG"
+  },
+  {
+    "id": "hillside-university-of-science-and-technology-okemisi-ekiti-state",
+    "name": "Hillside University of Science and Technology, Okemisi, Ekiti State",
+    "ownership_type": "private",
+    "state_id": "ekiti",
+    "country_code": "NG"
+  },
+  {
+    "id": "huda-university-gusau-zamfara-state",
+    "name": "Huda University, Gusau, Zamfara State",
+    "ownership_type": "private",
+    "state_id": "zamfara",
+    "country_code": "NG"
+  },
+  {
+    "id": "iconic-open-university-sokoto-state",
+    "name": "Iconic Open University, Sokoto State.",
+    "ownership_type": "private",
+    "state_id": "sokoto",
+    "country_code": "NG"
+  },
+  {
+    "id": "igbinedion-university-okada",
+    "name": "Igbinedion University Okada",
+    "ownership_type": "private",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "isaac-balami-university-of-aeronautics-and-management-lagos-state",
+    "name": "Isaac Balami University of Aeronautics and Management, Lagos State",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "james-hope-university-lagos-lagos-state",
+    "name": "James Hope University, Lagos, Lagos State",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "jefap-university-suleja-niger-state",
+    "name": "JEFAP University, Suleja, Niger State",
+    "ownership_type": "private",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "jewel-university-gombe-state",
+    "name": "Jewel University, Gombe state",
+    "ownership_type": "private",
+    "state_id": "gombe",
+    "country_code": "NG"
+  },
+  {
+    "id": "jimoh-babalola-university-ilorin-kwara-state",
+    "name": "Jimoh Babalola University, Ilorin, Kwara State",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "joseph-ayo-babalola-university-ikeji-arakeji",
+    "name": "Joseph Ayo Babalola University, Ikeji-Arakeji",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "karl-kumm-university-vom-plateau-state",
+    "name": "Karl-Kumm University, Vom, Plateau State",
+    "ownership_type": "private",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "kevin-eze-university-mgbowo-enugu-state",
+    "name": "Kevin Eze University, Mgbowo, Enugu State",
+    "ownership_type": "private",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "khalifa-isiyaku-rabiu-university-kano",
+    "name": "Khalifa Isiyaku Rabiu University, Kano",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "kings-university-ode-omu",
+    "name": "Kings University, Ode Omu",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "kola-daisi-university-ibadan-oyo-state",
+    "name": "Kola Daisi University Ibadan, Oyo State",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "kwararafa-university-wukari",
+    "name": "Kwararafa University, Wukari",
+    "ownership_type": "private",
+    "state_id": "taraba",
+    "country_code": "NG"
+  },
+  {
+    "id": "landmark-university-omu-aran",
+    "name": "Landmark University, Omu-Aran.",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "lead-city-university-ibadan",
+    "name": "Lead City University, Ibadan",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "name": "Leadership University, Abuja, FCT",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "id": "leadership-university-abuja-fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "legacy-university-okija-anambra-state",
+    "name": "Legacy University, Okija Anambra State",
+    "ownership_type": "private",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "lens-university-ilemona-kwara-state",
+    "name": "Lens University, Ilemona, Kwara State",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "lighthouse-university-evbobanosa-edo-state",
+    "name": "Lighthouse University, Evbobanosa, Edo State",
+    "ownership_type": "private",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "lux-mundi-university-umuahia-abia-state",
+    "name": "Lux Mundi University Umuahia, Abia State",
+    "ownership_type": "private",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "madonna-university-okija",
+    "name": "Madonna University, Okija",
+    "ownership_type": "private",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "maduka-university-ekwegbe-enugu-state",
+    "name": "Maduka University, Ekwegbe, Enugu State",
+    "ownership_type": "private",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "maranatha-university-lagos",
+    "name": "Maranatha University, Lagos",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "margaret-lawrence-university-umunede-delta-state",
+    "name": "Margaret Lawrence University, Umunede, Delta State",
+    "ownership_type": "private",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "maria-assumpta-university-owerri-imo-state",
+    "name": "Maria Assumpta University Owerri, Imo State",
+    "ownership_type": "private",
+    "state_id": "imo",
+    "country_code": "NG"
+  },
+  {
+    "id": "maryam-abacha-american-university-of-nigeria-kano-state",
+    "name": "Maryam Abacha American University of Nigeria, Kano State",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "mcpherson-university-seriki-sotayo-ajebo",
+    "name": "Mcpherson University, Seriki Sotayo, Ajebo",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "mercy-medical-university-iwo-ogun-state",
+    "name": "Mercy Medical University, Iwo, Ogun State",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "mewar-international-university-masaka-nasarawa-state",
+    "name": "Mewar International University, Masaka, Nasarawa State",
+    "ownership_type": "private",
+    "state_id": "nasarawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "micheal-cecilia-ibru-university",
+    "name": "Micheal & Cecilia Ibru University",
+    "ownership_type": "private",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "millenium-crest-university-ikare-akoko-ondo-state",
+    "name": "Millenium Crest University, Ikare Akoko, Ondo State",
+    "ownership_type": "private",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "minaret-university-ikirun-osun-state",
+    "name": "Minaret University, Ikirun, Osun State",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "miva-open-university-abuja-fct",
+    "name": "Miva Open University, Abuja FCT",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "monarch-university-iyesi-ota-ogun-state",
+    "name": "Monarch University, Iyesi-Ota, Ogun State",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "mountain-top-university",
+    "name": "Mountain Top University",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "mudiame-university-irrua-edo-state",
+    "name": "Mudiame University, Irrua, Edo State",
+    "ownership_type": "private",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "muhammad-kamalud-university-kwara",
+    "name": "Muhammad Kamalud University Kwara",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "new-city-university-ayetoro-ogun-state",
+    "name": "New City University, Ayetoro, Ogun State",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "newgate-university-minna-niger-state",
+    "name": "Newgate University, MInna, Niger State.",
+    "ownership_type": "private",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "nigerian-british-university-asa-abia-state",
+    "name": "Nigerian British University, Asa, Abia State",
+    "ownership_type": "private",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "nigerian-university-of-technology-and-management-apapa-lagos-state",
+    "name": "Nigerian University of Technology and Management, Apapa, Lagos State",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "nile-university-of-nigeria-abuja",
+    "name": "Nile University of Nigeria, Abuja",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "north-eastern-university-gombe",
+    "name": "North Eastern University, Gombe",
+    "ownership_type": "private",
+    "state_id": "gombe",
+    "country_code": "NG"
+  },
+  {
+    "id": "northwest-university-sokoto-state",
+    "name": "NorthWest University Sokoto State",
+    "ownership_type": "private",
+    "state_id": "sokoto",
+    "country_code": "NG"
+  },
+  {
+    "id": "novena-university-ogume",
+    "name": "Novena University, Ogume",
+    "ownership_type": "private",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "obong-university-obong-ntak",
+    "name": "Obong University, Obong Ntak",
+    "ownership_type": "private",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "oduduwa-university-ipetumodu-osun-state",
+    "name": "Oduduwa University, Ipetumodu - Osun State",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "ojaja-university-eiyenkorin-kwara-state",
+    "name": "Ojaja University Eiyenkorin, Kwara State",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "omega-university-kaduna",
+    "name": "Omega University Kaduna",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "owolabi-university-oke-ila-orangun",
+    "name": "Owolabi University, Oke Ila Orangun",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "pamo-university-of-medical-sciences-portharcourt",
+    "name": "PAMO University of Medical Sciences, Portharcourt",
+    "ownership_type": "private",
+    "state_id": "rivers",
+    "country_code": "NG"
+  },
+  {
+    "id": "pan-atlantic-university-lagos",
+    "name": "Pan-Atlantic University, Lagos",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "paul-university-awka-anambra-state",
+    "name": "Paul University, Awka - Anambra State",
+    "ownership_type": "private",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "peaceland-university-enugu-state",
+    "name": "PeaceLand University, Enugu State",
+    "ownership_type": "private",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "pearl-university-calabar-cross-river",
+    "name": "Pearl University, Calabar, Cross river",
+    "ownership_type": "private",
+    "state_id": "cross-river",
+    "country_code": "NG"
+  },
+  {
+    "id": "peter-university-achina-onneh-anambra-state",
+    "name": "Peter University, Achina-Onneh Anambra State",
+    "ownership_type": "private",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "philomath-university-kuje-abuja",
+    "name": "Philomath University, Kuje, Abuja",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "phoenix-university-agwada-nasarawa-state",
+    "name": "Phoenix University, Agwada, Nasarawa State",
+    "ownership_type": "private",
+    "state_id": "nasarawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "precious-cornerstone-university-oyo",
+    "name": "Precious Cornerstone University, Oyo",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "prime-university-kuje-fct-abuja",
+    "name": "Prime University, Kuje, FCT Abuja",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "rayhaan-university-kebbi",
+    "name": "Rayhaan University, Kebbi",
+    "ownership_type": "private",
+    "state_id": "kebbi",
+    "country_code": "NG"
+  },
+  {
+    "name": "Redeemer's University, Ede",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "id": "redeemer-s-university-ede",
+    "country_code": "NG"
+  },
+  {
+    "id": "regnum-medical-university-anthony-lagos-state",
+    "name": "Regnum Medical University, Anthony, Lagos State",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "renaissance-university-enugu",
+    "name": "Renaissance University, Enugu",
+    "ownership_type": "private",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "rhema-university-obeama-asa-rivers-state",
+    "name": "Rhema University, Obeama-Asa - Rivers State",
+    "ownership_type": "private",
+    "state_id": "rivers",
+    "country_code": "NG"
+  },
+  {
+    "id": "ritman-university-ikot-ekpene-akwa-ibom",
+    "name": "Ritman University, Ikot Ekpene, Akwa Ibom",
+    "ownership_type": "private",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "saisa-university-of-medical-sciences-and-technology-sokoto-state",
+    "name": "Saisa University of Medical Sciences and Technology, Sokoto State",
+    "ownership_type": "private",
+    "state_id": "sokoto",
+    "country_code": "NG"
+  },
+  {
+    "id": "salem-university-lokoja",
+    "name": "Salem University, Lokoja",
+    "ownership_type": "private",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "sam-maris-university-ondo",
+    "name": "Sam Maris University, Ondo",
+    "ownership_type": "private",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "sani-bello-university-kontagora-niger-state",
+    "name": "Sani Bello University, Kontagora Niger State",
+    "ownership_type": "private",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "shanahan-university-onitsha-anambra-state",
+    "name": "Shanahan University Onitsha, Anambra State",
+    "ownership_type": "private",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "skyline-university-kano",
+    "name": "Skyline University, Kano",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "southern-atlantic-university-uyo-akwa-ibom-state",
+    "name": "Southern Atlantic University, Uyo, Akwa Ibom State",
+    "ownership_type": "private",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "southwestern-university-oku-owa",
+    "name": "Southwestern University, Oku Owa",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "spiritan-university-nneochi-abia-state",
+    "name": "Spiritan University, Nneochi Abia State",
+    "ownership_type": "private",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "sports-university-idumuje-ugboko-delta-state",
+    "name": "Sports University, Idumuje, Ugboko, Delta State",
+    "ownership_type": "private",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "name": "Summit University, Offa",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "id": "summit-university-offa",
+    "country_code": "NG"
+  },
+  {
+    "name": "Tansian University, Umunya",
+    "ownership_type": "private",
+    "state_id": "anambra",
+    "id": "tansian-university-umunya",
+    "country_code": "NG"
+  },
+  {
+    "id": "tazkiyah-university-kaduna-kaduna-state",
+    "name": "Tazkiyah University, Kaduna, Kaduna State",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "the-duke-medical-university-calabar-cross-river-state",
+    "name": "The Duke Medical University, Calabar, Cross River State",
+    "ownership_type": "private",
+    "state_id": "cross-river",
+    "country_code": "NG"
+  },
+  {
+    "id": "thomas-adewumi-university-oko-irese-kwara-state",
+    "name": "Thomas Adewumi University, Oko-Irese, Kwara State",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "tonine-iredia-university-of-communication-benin-city-edo-state",
+    "name": "Tonine Iredia University of Communication, Benin City, Edo State",
+    "ownership_type": "private",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "topfaith-university-mkpatak-akwa-ibom-state",
+    "name": "Topfaith University, Mkpatak, Akwa Ibom State",
+    "ownership_type": "private",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "transatlantic-university-of-medine-and-health-sciences-umuchukwu-anambra-state",
+    "name": "Transatlantic University of Medine and Health Sciences, Umuchukwu, Anambra State",
+    "ownership_type": "private",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "trinity-university-ogun-state",
+    "name": "Trinity University Ogun State",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "ummah-university-of-nigeria-abuja",
+    "name": "Ummah University of Nigeria, Abuja",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "unique-open-university-ojo-lagos-state",
+    "name": "Unique Open University, Ojo, Lagos State",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "university-of-fortune-igbotako-ondo-state",
+    "name": "University of Fortune, Igbotako, Ondo State",
+    "ownership_type": "private",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "university-of-mkar-mkar",
+    "name": "University of Mkar, Mkar",
+    "ownership_type": "private",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "university-of-offa-kwara-state",
+    "name": "University of Offa, Kwara State",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "university-on-the-niger-umunya-anambra-state",
+    "name": "University on the Niger, Umunya, Anambra state",
+    "ownership_type": "private",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "venite-university-iloro-ekiti-ekiti-state",
+    "name": "Venite University, Iloro-Ekiti, Ekiti State",
+    "ownership_type": "private",
+    "state_id": "ekiti",
+    "country_code": "NG"
+  },
+  {
+    "id": "veritas-university-abuja",
+    "name": "Veritas University, Abuja",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "vision-university-ikogbo-ogun-state",
+    "name": "Vision University, Ikogbo, Ogun State",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "wellspring-university-evbuobanosa-edo-state",
+    "name": "Wellspring University, Evbuobanosa - Edo State",
+    "ownership_type": "private",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "wesley-university-ondo",
+    "name": "Wesley University Ondo",
+    "ownership_type": "private",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "west-midlands-open-university-ibadan-oyo-state",
+    "name": "West Midlands Open University, Ibadan, Oyo State",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "western-delta-university-oghara-delta-state",
+    "name": "Western Delta University, Oghara Delta State",
+    "ownership_type": "private",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "westland-university-iwo-osun-state",
+    "name": "Westland University Iwo, Osun State",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "wigwe-university-isiokpo-rivers-state",
+    "name": "Wigwe University, Isiokpo Rivers State",
+    "ownership_type": "private",
+    "state_id": "rivers",
+    "country_code": "NG"
+  }
+]

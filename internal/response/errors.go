@@ -127,6 +127,10 @@ func mapError(err error) mappedError {
 		return mappedError{status: http.StatusForbidden, code: codeInvalidRequest, message: messageOperationNotAllowed}
 	case errors.Is(err, services.ErrStateNotFound):
 		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}
+	case errors.Is(err, services.ErrUniversityNotFound):
+		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}
+	case errors.Is(err, services.ErrInvalidUniversityID), errors.Is(err, services.ErrInvalidUniversityOwnershipType), errors.Is(err, services.ErrInvalidUniversityStateID):
+		return mappedError{status: http.StatusBadRequest, code: codeInvalidRequest, message: messageInvalidRequest}
 	case errors.Is(err, services.ErrPaymentServiceProviderNotFound):
 		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}
 	case errors.Is(err, services.ErrInvalidPaymentServiceProviderID), errors.Is(err, services.ErrInvalidPaymentServiceProviderType):

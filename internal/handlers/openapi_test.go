@@ -117,6 +117,47 @@ func TestOpenAPIDocumentsInternationalMoneyTransferOperatorPaths(t *testing.T) {
 	requireContains(t, text, "InternationalMoneyTransferOperatorResponse:\n      type: object\n      additionalProperties: false\n      properties:\n        success:\n          type: boolean\n        data:\n          $ref: \"#/components/schemas/InternationalMoneyTransferOperator\"\n      required: [success, data]")
 }
 
+func TestOpenAPIDocumentsUniversityPaths(t *testing.T) {
+	doc, err := os.ReadFile("../../docs/openapi.yaml")
+	if err != nil {
+		t.Fatalf("ReadFile() error = %v", err)
+	}
+	text := string(doc)
+
+	listBlock := pathBlock(t, text, "/v1/education/universities")
+	detailBlock := pathBlock(t, text, "/v1/education/universities/{university_id}")
+
+	requireContains(t, text, "    UniversityID:")
+	requireContains(t, text, "    UniversityOwnershipType:")
+	requireContains(t, text, "    UniversityStateID:")
+	requireContains(t, text, "    University:")
+	requireContains(t, text, "    UniversityListResponse:")
+	requireContains(t, text, "    UniversityResponse:")
+
+	requireContains(t, listBlock, "get:")
+	requireContains(t, listBlock, "- $ref: \"#/components/parameters/UniversityOwnershipType\"")
+	requireContains(t, listBlock, "- $ref: \"#/components/parameters/UniversityStateID\"")
+	requireContains(t, listBlock, "\"422\":")
+	requireContains(t, listBlock, "\"500\":")
+	requireNotContains(t, listBlock, "security:")
+
+	requireContains(t, detailBlock, "get:")
+	requireContains(t, detailBlock, "- $ref: \"#/components/parameters/UniversityID\"")
+	requireContains(t, detailBlock, "\"404\":")
+	requireContains(t, detailBlock, "\"422\":")
+	requireContains(t, detailBlock, "\"500\":")
+	requireNotContains(t, detailBlock, "security:")
+
+	requireContains(t, text, "UniversityID:\n      name: university_id\n      in: path\n      required: true\n      description: Stable public identifier for a current NUC-listed university.\n      schema:\n        type: string\n        pattern: '^[a-z0-9]+(?:-[a-z0-9]+)+$'")
+	requireContains(t, text, "UniversityOwnershipType:\n      name: ownership_type\n      in: query\n      required: false\n      description: Optional university ownership category used to filter universities.\n      schema:\n        $ref: \"#/components/schemas/UniversityOwnershipType\"")
+	requireContains(t, text, "UniversityStateID:\n      name: state_id\n      in: query\n      required: false\n      description: Optional public state or FCT ID used to filter universities.\n      schema:\n        $ref: \"#/components/schemas/UniversityStateID\"")
+	requireContains(t, text, "UniversityOwnershipType:\n      type: string\n      enum: [federal, state, private]")
+	requireContains(t, text, "UniversityStateID:\n      type: string\n      enum:\n        - abia")
+	requireContains(t, text, "University:\n      type: object\n      additionalProperties: false\n      properties:\n        id:\n          type: string\n        name:\n          type: string\n        ownership_type:\n          $ref: \"#/components/schemas/UniversityOwnershipType\"\n        state_id:\n          $ref: \"#/components/schemas/UniversityStateID\"\n        country_code:\n          type: string\n          enum: [NG]\n      required: [id, name, ownership_type, state_id, country_code]")
+	requireContains(t, text, "UniversityListResponse:\n      type: object\n      additionalProperties: false\n      properties:\n        success:\n          type: boolean\n        data:\n          type: array\n          items:\n            $ref: \"#/components/schemas/University\"\n      required: [success, data]")
+	requireContains(t, text, "UniversityResponse:\n      type: object\n      additionalProperties: false\n      properties:\n        success:\n          type: boolean\n        data:\n          $ref: \"#/components/schemas/University\"\n      required: [success, data]")
+}
+
 func pathBlock(t *testing.T, doc, path string) string {
 	t.Helper()
 
