@@ -31,6 +31,7 @@ const (
 	geographyGeopoliticalZonesRelativePath                 = "geography/geopolitical_zones.json"
 	geographyLocalGovernmentUnitsRelativePath              = "geography/lgas.json"
 	educationUniversitiesRelativePath                      = "education/universities.json"
+	educationCollegesOfEducationRelativePath               = "education/colleges_of_education.json"
 	financePaymentServiceProvidersRelativePath             = "finance/payment_service_providers.json"
 	financeInternationalMoneyTransferOperatorsRelativePath = "finance/international_money_transfer_operators.json"
 )
@@ -140,8 +141,8 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 		return appDependencies{}, err
 	}
 	educationHandler, err := buildEducationHandlerFromJSONRepository(ctx, jsonRepository,
-		func(repository interfaces.JSONFileRepository, universitiesPath string) (interfaces.EducationRepository, error) {
-			return fileRepo.NewEducationRepository(repository, universitiesPath)
+		func(repository interfaces.JSONFileRepository, universitiesPath, collegesOfEducationPath string) (interfaces.EducationRepository, error) {
+			return fileRepo.NewEducationRepository(repository, universitiesPath, collegesOfEducationPath)
 		},
 		func(repository interfaces.EducationRepository) (educationService, error) {
 			return services.NewEducationService(repository)
@@ -408,7 +409,7 @@ func buildEducationHandler(
 	ctx context.Context,
 	cfg *config.Config,
 	newJSONRepository func(string, int64) (interfaces.JSONFileRepository, error),
-	newEducationRepository func(interfaces.JSONFileRepository, string) (interfaces.EducationRepository, error),
+	newEducationRepository func(interfaces.JSONFileRepository, string, string) (interfaces.EducationRepository, error),
 	newEducationService func(interfaces.EducationRepository) (educationService, error),
 	newEducationHandler func(educationService) (*handlers.EducationHandler, error),
 ) (*handlers.EducationHandler, error) {
@@ -438,7 +439,7 @@ func buildEducationHandler(
 func buildEducationHandlerFromJSONRepository(
 	ctx context.Context,
 	jsonRepository interfaces.JSONFileRepository,
-	newEducationRepository func(interfaces.JSONFileRepository, string) (interfaces.EducationRepository, error),
+	newEducationRepository func(interfaces.JSONFileRepository, string, string) (interfaces.EducationRepository, error),
 	newEducationService func(interfaces.EducationRepository) (educationService, error),
 	newEducationHandler func(educationService) (*handlers.EducationHandler, error),
 ) (*handlers.EducationHandler, error) {
@@ -458,7 +459,7 @@ func buildEducationHandlerFromJSONRepository(
 		return nil, fmt.Errorf("education handler factory is required")
 	}
 
-	educationRepository, err := newEducationRepository(jsonRepository, educationUniversitiesRelativePath)
+	educationRepository, err := newEducationRepository(jsonRepository, educationUniversitiesRelativePath, educationCollegesOfEducationRelativePath)
 	if err != nil {
 		return nil, fmt.Errorf("initialize education repository: %w", err)
 	}

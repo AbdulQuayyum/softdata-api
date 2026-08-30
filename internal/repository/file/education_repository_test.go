@@ -34,40 +34,56 @@ func (s *educationJSONRepoStub) Decode(ctx context.Context, relativePath string,
 		return s.decodeFn(ctx, relativePath, destination)
 	}
 
-	dest, ok := destination.(*[]models.University)
-	if !ok {
+	switch dest := destination.(type) {
+	case *[]models.University:
+		*dest = nil
+		return nil
+	case *[]models.CollegeOfEducation:
+		*dest = nil
+		return nil
+	default:
 		return fmt.Errorf("unexpected destination %T", destination)
 	}
-	*dest = nil
-	return nil
 }
 
 func TestNewEducationRepositoryRejectsInvalidInputs(t *testing.T) {
 	t.Parallel()
 
-	if _, err := NewEducationRepository(nil, "education/universities.json"); err == nil {
+	if _, err := NewEducationRepository(nil, "education/universities.json", "education/colleges_of_education.json"); err == nil {
 		t.Fatal("expected nil json repository to be rejected")
 	}
-	if _, err := NewEducationRepository(&educationJSONRepoStub{}, ""); err == nil {
+	if _, err := NewEducationRepository(&educationJSONRepoStub{}, "", "education/colleges_of_education.json"); err == nil {
 		t.Fatal("expected empty universities path to be rejected")
 	}
-	if _, err := NewEducationRepository(&educationJSONRepoStub{}, "   "); err == nil {
+	if _, err := NewEducationRepository(&educationJSONRepoStub{}, "   ", "education/colleges_of_education.json"); err == nil {
 		t.Fatal("expected whitespace universities path to be rejected")
 	}
-	if _, err := NewEducationRepository(&educationJSONRepoStub{}, "/tmp/education/universities.json"); err == nil {
+	if _, err := NewEducationRepository(&educationJSONRepoStub{}, "/tmp/education/universities.json", "education/colleges_of_education.json"); err == nil {
 		t.Fatal("expected absolute universities path to be rejected")
+	}
+	if _, err := NewEducationRepository(&educationJSONRepoStub{}, "education/universities.json", ""); err == nil {
+		t.Fatal("expected empty colleges path to be rejected")
+	}
+	if _, err := NewEducationRepository(&educationJSONRepoStub{}, "education/universities.json", "   "); err == nil {
+		t.Fatal("expected whitespace colleges path to be rejected")
+	}
+	if _, err := NewEducationRepository(&educationJSONRepoStub{}, "education/universities.json", "/tmp/education/colleges_of_education.json"); err == nil {
+		t.Fatal("expected absolute colleges path to be rejected")
 	}
 
 	stub := &educationJSONRepoStub{decodeFn: func(context.Context, string, any) error {
 		t.Fatal("constructor should not decode dataset files")
 		return nil
 	}}
-	repo, err := NewEducationRepository(stub, "  education/universities.json  ")
+	repo, err := NewEducationRepository(stub, "  education/universities.json  ", "  education/colleges_of_education.json  ")
 	if err != nil {
 		t.Fatalf("NewEducationRepository() error = %v", err)
 	}
 	if repo.universitiesPath != "education/universities.json" {
 		t.Fatalf("unexpected stored path: %q", repo.universitiesPath)
+	}
+	if repo.collegesOfEducationPath != "education/colleges_of_education.json" {
+		t.Fatalf("unexpected stored college path: %q", repo.collegesOfEducationPath)
 	}
 	if stub.calls != 0 {
 		t.Fatalf("constructor decoded dataset file %d times", stub.calls)
@@ -379,7 +395,7 @@ func TestEducationRepositoryContextAndSanitizedErrors(t *testing.T) {
 
 	secretErr := errors.New("/private/tmp/education/universities.json: permission denied")
 	stub := &educationJSONRepoStub{decodeFn: func(context.Context, string, any) error { return secretErr }}
-	sanitizedRepo, err := NewEducationRepository(stub, "education/universities.json")
+	sanitizedRepo, err := NewEducationRepository(stub, "education/universities.json", "education/colleges_of_education.json")
 	if err != nil {
 		t.Fatalf("NewEducationRepository() error = %v", err)
 	}
@@ -436,7 +452,7 @@ func TestEducationRepositoryDecodeCounts(t *testing.T) {
 			return fmt.Errorf("unexpected destination %T", destination)
 		}
 	}, pathCalls: map[string]int{}}
-	repo, err := NewEducationRepository(stub, "education/universities.json")
+	repo, err := NewEducationRepository(stub, "education/universities.json", "education/colleges_of_education.json")
 	if err != nil {
 		t.Fatalf("NewEducationRepository() error = %v", err)
 	}
@@ -501,7 +517,7 @@ func mustNewEducationRepositoryFromRecords(t *testing.T, universities []models.U
 	if err != nil {
 		t.Fatalf("NewJSONRepository() error = %v", err)
 	}
-	repo, err := NewEducationRepository(jsonRepo, "education/universities.json")
+	repo, err := NewEducationRepository(jsonRepo, "education/universities.json", "education/colleges_of_education.json")
 	if err != nil {
 		t.Fatalf("NewEducationRepository() error = %v", err)
 	}

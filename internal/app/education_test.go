@@ -47,6 +47,14 @@ func (s *educationRepositoryStub) GetUniversityByID(context.Context, string) (mo
 	return models.University{}, nil
 }
 
+func (s *educationRepositoryStub) ListCollegesOfEducation(context.Context, interfaces.CollegeOfEducationFilter) ([]models.CollegeOfEducation, error) {
+	return nil, nil
+}
+
+func (s *educationRepositoryStub) GetCollegeOfEducation(context.Context, string) (models.CollegeOfEducation, error) {
+	return models.CollegeOfEducation{}, nil
+}
+
 type educationJSONRepoStub struct{}
 
 func (s *educationJSONRepoStub) Decode(context.Context, string, any) error {
@@ -87,15 +95,17 @@ func TestBuildEducationHandlerPassesConfiguredDatasetArgs(t *testing.T) {
 
 	var gotRoot string
 	var gotMaxBytes int64
-	var gotPath string
+	var gotUniversityPath string
+	var gotCollegePath string
 	handler, err := buildEducationHandler(context.Background(), cfg,
 		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
 			gotRoot = root
 			gotMaxBytes = maxBytes
 			return &educationJSONRepoStub{}, nil
 		},
-		func(repository interfaces.JSONFileRepository, universitiesPath string) (interfaces.EducationRepository, error) {
-			gotPath = universitiesPath
+		func(repository interfaces.JSONFileRepository, universitiesPath, collegesOfEducationPath string) (interfaces.EducationRepository, error) {
+			gotUniversityPath = universitiesPath
+			gotCollegePath = collegesOfEducationPath
 			return &educationRepositoryStub{}, nil
 		},
 		func(repository interfaces.EducationRepository) (educationService, error) {
@@ -117,8 +127,11 @@ func TestBuildEducationHandlerPassesConfiguredDatasetArgs(t *testing.T) {
 	if gotMaxBytes != cfg.Datasets.JSONMaxBytes {
 		t.Fatalf("unexpected JSON max bytes: %d", gotMaxBytes)
 	}
-	if gotPath != educationUniversitiesRelativePath {
-		t.Fatalf("unexpected universities path: %q", gotPath)
+	if gotUniversityPath != educationUniversitiesRelativePath {
+		t.Fatalf("unexpected universities path: %q", gotUniversityPath)
+	}
+	if gotCollegePath != educationCollegesOfEducationRelativePath {
+		t.Fatalf("unexpected colleges path: %q", gotCollegePath)
 	}
 }
 
@@ -148,8 +161,8 @@ func TestBuildEducationHandlerValidFixturePassesStartupVerification(t *testing.T
 		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
 			return fileRepo.NewJSONRepository(root, maxBytes)
 		},
-		func(repository interfaces.JSONFileRepository, universitiesPath string) (interfaces.EducationRepository, error) {
-			return fileRepo.NewEducationRepository(repository, universitiesPath)
+		func(repository interfaces.JSONFileRepository, universitiesPath, collegesOfEducationPath string) (interfaces.EducationRepository, error) {
+			return fileRepo.NewEducationRepository(repository, universitiesPath, collegesOfEducationPath)
 		},
 		func(repository interfaces.EducationRepository) (educationService, error) {
 			return services.NewEducationService(repository)
@@ -227,8 +240,8 @@ func TestBuildEducationHandlerFailsSafelyForInvalidDatasets(t *testing.T) {
 				func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
 					return fileRepo.NewJSONRepository(root, maxBytes)
 				},
-				func(repository interfaces.JSONFileRepository, universitiesPath string) (interfaces.EducationRepository, error) {
-					return fileRepo.NewEducationRepository(repository, universitiesPath)
+				func(repository interfaces.JSONFileRepository, universitiesPath, collegesOfEducationPath string) (interfaces.EducationRepository, error) {
+					return fileRepo.NewEducationRepository(repository, universitiesPath, collegesOfEducationPath)
 				},
 				func(repository interfaces.EducationRepository) (educationService, error) {
 					return services.NewEducationService(repository)
@@ -264,7 +277,7 @@ func TestBuildEducationHandlerPropagatesContextCancellation(t *testing.T) {
 		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
 			return &educationJSONRepoStub{}, nil
 		},
-		func(repository interfaces.JSONFileRepository, universitiesPath string) (interfaces.EducationRepository, error) {
+		func(repository interfaces.JSONFileRepository, universitiesPath, collegesOfEducationPath string) (interfaces.EducationRepository, error) {
 			return &educationRepositoryStub{}, nil
 		},
 		func(repository interfaces.EducationRepository) (educationService, error) {
@@ -284,7 +297,7 @@ func TestBuildEducationHandlerVerifiesThroughServiceAbstraction(t *testing.T) {
 
 	service := &educationServiceStub{universities: loadApprovedUniversities(t)}
 	handler, err := buildEducationHandlerFromJSONRepository(context.Background(), &educationJSONRepoStub{},
-		func(repository interfaces.JSONFileRepository, universitiesPath string) (interfaces.EducationRepository, error) {
+		func(repository interfaces.JSONFileRepository, universitiesPath, collegesOfEducationPath string) (interfaces.EducationRepository, error) {
 			return &educationRepositoryStub{}, nil
 		},
 		func(repository interfaces.EducationRepository) (educationService, error) {

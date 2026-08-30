@@ -11,6 +11,7 @@ datasets/
 │   ├── lgas.json
 │   └── states.json
 ├── education/
+│   ├── colleges_of_education.json
 │   └── universities.json
 ├── finance/
 │   ├── international_money_transfer_operators.json
@@ -43,16 +44,19 @@ datasets/
 - `geography/geopolitical_zones.json` is the six-zone catalogue.
 - `geography/lgas.json` is the compiled catalogue of Local Government Areas and FCT Area Councils.
 - `geography/states.json` is the data file.
+- `education/colleges_of_education.json` is the compiled catalogue of current NCCE-listed colleges of education.
 - `education/universities.json` is the compiled catalogue of current NUC-listed Nigerian universities.
 - `finance/international_money_transfer_operators.json` is the compiled register snapshot of current CBN-listed IMTO entries.
 - `finance/payment_service_providers.json` is the compiled register snapshot of payment-service-provider memberships.
 - `schemas/geography/geopolitical_zones.schema.json` describes the zone record contract.
 - `schemas/geography/lgas.schema.json` describes the LGA and Area Council record contract.
 - `schemas/geography/states.schema.json` describes the record contract.
+- `schemas/education/colleges_of_education.schema.json` describes the college-of-education record contract.
 - `schemas/education/universities.schema.json` describes the university record contract.
 - `schemas/finance/international_money_transfer_operators.schema.json` describes the IMTO record contract.
 - `schemas/finance/payment_service_providers.schema.json` describes the payment-service-provider record contract.
 - `metadata/education/universities.json` records provenance, versioning and licensing details for the university catalogue.
+- `metadata/education/colleges_of_education.json` records provenance, versioning and licensing details for the colleges-of-education catalogue.
 - `metadata/geography/geopolitical_zones.json` records provenance, versioning and licensing details for the zone catalogue.
 - `metadata/geography/lgas.json` records provenance, versioning and licensing details for the LGA catalogue.
 - `metadata/geography/states.json` records provenance, versioning and licensing details.
@@ -61,6 +65,8 @@ datasets/
 - `LICENSE.md` explains the dataset-content licence.
 
 The IMTO catalogue is names-only, excludes addresses and inferred country data, and remains separate from the payment-service-provider catalogue. No HTTP routes are added by the dataset package itself.
+
+The colleges-of-education catalogue is compiled from the current NCCE accredited-colleges register, maps each record to `ng-states` through `state_id`, excludes the stale Cross River row that has a successor university in `ng-universities`, and keeps the public model compact at `id`, `name`, `ownership_type`, `state_id` and `country_code`. The package version is `1.0.0`, and the current boundary is 244 records split into 28 federal, 48 state and 168 private colleges. SoftData's independent compilation, schema and metadata are CC BY 4.0; the NCCE and other official publications retain their own rights.
 
 The university catalogue is compiled from the current National Universities Commission federal, state and private registers, and preserves `ownership_type` and `state_id` as the public grouping fields.
 
