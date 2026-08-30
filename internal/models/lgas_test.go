@@ -238,7 +238,8 @@ func TestNigeriaLocalGovernmentUnitsMetadataSchemaAndNotice(t *testing.T) {
 	if verifiedAt.Format("2006-01-02") != "2026-08-28" {
 		t.Fatalf("unexpected verified_at: %q", metadata.VerifiedAt)
 	}
-	for _, invalid := range []string{"", "2026-13-01", "2026-08-29", "not-a-date"} {
+	futureVerifiedAt := nowUTC.Add(24 * time.Hour).Format("2006-01-02")
+	for _, invalid := range []string{"", "2026-13-01", futureVerifiedAt, "not-a-date"} {
 		if _, err := parseVerifiedAt(invalid, nowUTC); err == nil {
 			t.Fatalf("expected invalid verified_at to fail: %q", invalid)
 		}

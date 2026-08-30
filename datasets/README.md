@@ -10,16 +10,22 @@ datasets/
 │   ├── geopolitical_zones.json
 │   ├── lgas.json
 │   └── states.json
+├── finance/
+│   └── payment_service_providers.json
 ├── metadata/
 │   └── geography/
 │       ├── geopolitical_zones.json
 │       ├── lgas.json
 │       └── states.json
+│   └── finance/
+│       └── payment_service_providers.json
 ├── schemas/
 │   └── geography/
 │       ├── geopolitical_zones.schema.json
 │       ├── lgas.schema.json
 │       └── states.schema.json
+│   └── finance/
+│       └── payment_service_providers.schema.json
 └── LICENSE.md
 ```
 
@@ -28,12 +34,15 @@ datasets/
 - `geography/geopolitical_zones.json` is the six-zone catalogue.
 - `geography/lgas.json` is the compiled catalogue of Local Government Areas and FCT Area Councils.
 - `geography/states.json` is the data file.
+- `finance/payment_service_providers.json` is the compiled register snapshot of payment-service-provider memberships.
 - `schemas/geography/geopolitical_zones.schema.json` describes the zone record contract.
 - `schemas/geography/lgas.schema.json` describes the LGA and Area Council record contract.
 - `schemas/geography/states.schema.json` describes the record contract.
+- `schemas/finance/payment_service_providers.schema.json` describes the payment-service-provider record contract.
 - `metadata/geography/geopolitical_zones.json` records provenance, versioning and licensing details for the zone catalogue.
 - `metadata/geography/lgas.json` records provenance, versioning and licensing details for the LGA catalogue.
 - `metadata/geography/states.json` records provenance, versioning and licensing details.
+- `metadata/finance/payment_service_providers.json` records provenance, versioning and licensing details for the payment-service-provider catalogue.
 - `LICENSE.md` explains the dataset-content licence.
 
 ## Licensing

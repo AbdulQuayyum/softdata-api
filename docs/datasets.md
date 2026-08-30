@@ -44,6 +44,16 @@ Nigeria's 768 Local Government Areas and the Federal Capital Territory's six Are
 
 Each unit links to `state_id`, and geopolitical-zone membership is derived from the state dataset.
 
+### `ng-payment-service-providers`
+
+Nigeria's current Central Bank of Nigeria payment-service-provider register snapshot.
+
+- Data: `datasets/finance/payment_service_providers.json`
+- Schema: `datasets/schemas/finance/payment_service_providers.schema.json`
+- Metadata: `datasets/metadata/finance/payment_service_providers.json`
+
+The package contains 255 provider-category memberships across seven approved PSP categories. Each record is one provider-category membership, and a provider may appear in multiple categories.
+
 ## Dataset Principles
 
 - Every dataset should have a stable identifier.

@@ -1,0 +1,25 @@
+{
+  "dataset_key": "ng-payment-service-providers",
+  "title": "Nigeria Payment Service Providers",
+  "description": "Independently compiled factual reference data for the current Central Bank of Nigeria payment-service-provider register snapshot. Each record represents one provider-category membership across the seven approved CBN PSP sections.",
+  "country_code": "NG",
+  "dataset_group": "finance",
+  "format": "json",
+  "relative_path": "finance/payment_service_providers.json",
+  "schema_path": "schemas/finance/payment_service_providers.schema.json",
+  "record_count": 255,
+  "version": "1.0.0",
+  "license_id": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "methodology": "Independently compiled and cross-verified factual reference data from the public Central Bank of Nigeria PSP register. The register was retrieved three times with consistent results on 2026-08-29. Observed counts: mobile_money_operator 17; switching_and_processing_company 19; payment_solution_service_provider 108; payment_terminal_service_provider 47; super_agent 61; payment_service_holding_company 1; payment_terminal_service_aggregator 2. SoftData anchored extraction to the seven approved PSP sections and excluded card schemes, payment schemes, clearing-house content, IMTOs and adjacent page material. The CBN register is mutable; these counts describe the verified snapshot and do not establish a universal institution identifier. Former-name annotations were preserved in the working audit, then removed from the public display name only when clearly indicated.",
+  "sources": [
+    {
+      "organization": "Central Bank of Nigeria",
+      "title": "Payment Service Providers",
+      "url": "https://www.cbn.gov.ng/PaymentsSystem/PSPs.html",
+      "purpose": "Verify the seven approved PSP sections, the current provider-category counts, and the public snapshot used for compilation.",
+      "accessed_at": "2026-08-29"
+    }
+  ],
+  "verified_at": "2026-08-29"
+}

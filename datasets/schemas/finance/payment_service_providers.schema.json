@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://softdata-api.local/schemas/finance/payment_service_providers.schema.json",
+  "title": "Nigeria Payment Service Providers",
+  "description": "Schema for the ng-payment-service-providers dataset compiled by SoftData.",
+  "type": "array",
+  "minItems": 255,
+  "maxItems": 255,
+  "uniqueItems": true,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "name",
+      "institution_type",
+      "country_code"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)+$"
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1
+      },
+      "institution_type": {
+        "type": "string",
+        "enum": [
+          "mobile_money_operator",
+          "switching_and_processing_company",
+          "payment_solution_service_provider",
+          "payment_terminal_service_provider",
+          "super_agent",
+          "payment_service_holding_company",
+          "payment_terminal_service_aggregator"
+        ]
+      },
+      "country_code": {
+        "type": "string",
+        "const": "NG"
+      }
+    }
+  }
+}
