@@ -323,6 +323,8 @@ type geographyService interface {
 type educationService interface {
 	ListUniversities(context.Context, services.UniversityListInput) ([]models.University, error)
 	GetUniversity(context.Context, string) (models.University, error)
+	ListCollegesOfEducation(context.Context, services.CollegeOfEducationListInput) ([]models.CollegeOfEducation, error)
+	GetCollegeOfEducation(context.Context, string) (models.CollegeOfEducation, error)
 }
 
 type financeService interface {

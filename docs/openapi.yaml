@@ -249,6 +249,45 @@ paths:
           $ref: "#/components/responses/ValidationFailed"
         "500":
           $ref: "#/components/responses/InternalError"
+  /v1/education/colleges-of-education:
+    get:
+      tags: [Education]
+      summary: List colleges of education
+      description: Returns the verified current NCCE colleges-of-education snapshot. Ownership and state filters are optional and may be combined.
+      parameters:
+        - $ref: "#/components/parameters/CollegeOfEducationOwnershipType"
+        - $ref: "#/components/parameters/CollegeOfEducationStateID"
+      responses:
+        "200":
+          description: College of education records
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CollegeOfEducationListResponse"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/education/colleges-of-education/{college_id}:
+    get:
+      tags: [Education]
+      summary: Get a college of education
+      description: Returns a verified college of education record from the current NCCE register snapshot.
+      parameters:
+        - $ref: "#/components/parameters/CollegeOfEducationID"
+      responses:
+        "200":
+          description: College of education record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CollegeOfEducationResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
   /v1/finance/payment-service-providers:
     get:
       tags: [Finance]
@@ -675,6 +714,28 @@ components:
       description: Optional public state or FCT ID used to filter universities.
       schema:
         $ref: "#/components/schemas/UniversityStateID"
+    CollegeOfEducationID:
+      name: college_id
+      in: path
+      required: true
+      description: Stable public identifier for a college of education.
+      schema:
+        type: string
+        pattern: '^[a-z0-9]+(?:-[a-z0-9]+)+$'
+    CollegeOfEducationOwnershipType:
+      name: ownership_type
+      in: query
+      required: false
+      description: Optional college-of-education ownership category used to filter colleges.
+      schema:
+        $ref: "#/components/schemas/CollegeOfEducationOwnershipType"
+    CollegeOfEducationStateID:
+      name: state_id
+      in: query
+      required: false
+      description: Optional public state or FCT ID used to filter college-of-education records.
+      schema:
+        $ref: "#/components/schemas/CollegeOfEducationStateID"
     PaymentServiceProviderID:
       name: provider_id
       in: path
@@ -1029,6 +1090,85 @@ components:
           type: boolean
         data:
           $ref: "#/components/schemas/University"
+      required: [success, data]
+    CollegeOfEducationOwnershipType:
+      type: string
+      enum: [federal, state, private]
+    CollegeOfEducationStateID:
+      type: string
+      enum:
+        - abia
+        - adamawa
+        - akwa-ibom
+        - anambra
+        - bauchi
+        - bayelsa
+        - benue
+        - borno
+        - cross-river
+        - delta
+        - ebonyi
+        - edo
+        - ekiti
+        - enugu
+        - fct
+        - gombe
+        - imo
+        - jigawa
+        - kaduna
+        - kano
+        - katsina
+        - kebbi
+        - kogi
+        - kwara
+        - lagos
+        - nasarawa
+        - niger
+        - ogun
+        - ondo
+        - osun
+        - oyo
+        - plateau
+        - rivers
+        - sokoto
+        - taraba
+        - yobe
+        - zamfara
+    CollegeOfEducation:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        ownership_type:
+          $ref: "#/components/schemas/CollegeOfEducationOwnershipType"
+        state_id:
+          $ref: "#/components/schemas/CollegeOfEducationStateID"
+        country_code:
+          type: string
+          enum: [NG]
+      required: [id, name, ownership_type, state_id, country_code]
+    CollegeOfEducationListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/CollegeOfEducation"
+      required: [success, data]
+    CollegeOfEducationResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: "#/components/schemas/CollegeOfEducation"
       required: [success, data]
     PaymentServiceProviderType:
       type: string

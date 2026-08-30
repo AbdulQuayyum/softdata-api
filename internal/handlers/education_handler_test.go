@@ -14,13 +14,19 @@ import (
 )
 
 type educationHandlerStub struct {
-	listFn func(context.Context, services.UniversityListInput) ([]models.University, error)
-	getFn  func(context.Context, string) (models.University, error)
+	listFn        func(context.Context, services.UniversityListInput) ([]models.University, error)
+	getFn         func(context.Context, string) (models.University, error)
+	collegeListFn func(context.Context, services.CollegeOfEducationListInput) ([]models.CollegeOfEducation, error)
+	collegeGetFn  func(context.Context, string) (models.CollegeOfEducation, error)
 
-	listCalls int
-	getCalls  int
-	lastInput services.UniversityListInput
-	lastID    string
+	listCalls        int
+	getCalls         int
+	collegeListCalls int
+	collegeGetCalls  int
+	lastInput        services.UniversityListInput
+	lastID           string
+	lastCollegeInput services.CollegeOfEducationListInput
+	lastCollegeID    string
 }
 
 func (s *educationHandlerStub) ListUniversities(ctx context.Context, input services.UniversityListInput) ([]models.University, error) {
@@ -39,6 +45,24 @@ func (s *educationHandlerStub) GetUniversity(ctx context.Context, universityID s
 		return s.getFn(ctx, universityID)
 	}
 	return models.University{}, nil
+}
+
+func (s *educationHandlerStub) ListCollegesOfEducation(ctx context.Context, input services.CollegeOfEducationListInput) ([]models.CollegeOfEducation, error) {
+	s.collegeListCalls++
+	s.lastCollegeInput = input
+	if s.collegeListFn != nil {
+		return s.collegeListFn(ctx, input)
+	}
+	return nil, nil
+}
+
+func (s *educationHandlerStub) GetCollegeOfEducation(ctx context.Context, collegeID string) (models.CollegeOfEducation, error) {
+	s.collegeGetCalls++
+	s.lastCollegeID = collegeID
+	if s.collegeGetFn != nil {
+		return s.collegeGetFn(ctx, collegeID)
+	}
+	return models.CollegeOfEducation{}, nil
 }
 
 func TestNewEducationHandlerRejectsNilService(t *testing.T) {

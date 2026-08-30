@@ -1854,8 +1854,12 @@ type routerEducationStub struct {
 	mu                 sync.Mutex
 	listCalls          int
 	getCalls           int
+	collegeListCalls   int
+	collegeGetCalls    int
 	lastInput          services.UniversityListInput
 	lastUniversityID   string
+	lastCollegeInput   services.CollegeOfEducationListInput
+	lastCollegeID      string
 	lastHadAPIKey      bool
 	lastAPIKeyIdentity services.APIKeyIdentity
 }
@@ -1888,6 +1892,36 @@ func (s *routerEducationStub) GetUniversity(ctx context.Context, universityID st
 		s.lastAPIKeyIdentity = identity
 	}
 	return models.University{ID: universityID, Name: "Example University", OwnershipType: "state", StateID: "taraba", CountryCode: "NG"}, nil
+}
+
+func (s *routerEducationStub) ListCollegesOfEducation(ctx context.Context, input services.CollegeOfEducationListInput) ([]models.CollegeOfEducation, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.collegeListCalls++
+	s.lastCollegeInput = input
+	if s.rec != nil {
+		s.rec.add("education.college.list")
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return []models.CollegeOfEducation{{ID: "federal-college-of-education-zaria", Name: "Federal College of Education, Zaria", OwnershipType: "federal", StateID: "kaduna", CountryCode: "NG"}}, nil
+}
+
+func (s *routerEducationStub) GetCollegeOfEducation(ctx context.Context, collegeID string) (models.CollegeOfEducation, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.collegeGetCalls++
+	s.lastCollegeID = collegeID
+	if s.rec != nil {
+		s.rec.add("education.college.get:" + collegeID)
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return models.CollegeOfEducation{ID: collegeID, Name: "Example College of Education", OwnershipType: "state", StateID: "taraba", CountryCode: "NG"}, nil
 }
 
 type routerAPIKeyAuthenticatorStub struct {

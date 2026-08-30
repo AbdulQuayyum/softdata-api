@@ -37,6 +37,14 @@ func (s *educationServiceStub) GetUniversity(context.Context, string) (models.Un
 	return models.University{}, nil
 }
 
+func (s *educationServiceStub) ListCollegesOfEducation(context.Context, services.CollegeOfEducationListInput) ([]models.CollegeOfEducation, error) {
+	return nil, nil
+}
+
+func (s *educationServiceStub) GetCollegeOfEducation(context.Context, string) (models.CollegeOfEducation, error) {
+	return models.CollegeOfEducation{}, nil
+}
+
 type educationRepositoryStub struct{}
 
 func (s *educationRepositoryStub) ListUniversities(context.Context, interfaces.UniversityFilter) ([]models.University, error) {

@@ -158,6 +158,47 @@ func TestOpenAPIDocumentsUniversityPaths(t *testing.T) {
 	requireContains(t, text, "UniversityResponse:\n      type: object\n      additionalProperties: false\n      properties:\n        success:\n          type: boolean\n        data:\n          $ref: \"#/components/schemas/University\"\n      required: [success, data]")
 }
 
+func TestOpenAPIDocumentsCollegeOfEducationPaths(t *testing.T) {
+	doc, err := os.ReadFile("../../docs/openapi.yaml")
+	if err != nil {
+		t.Fatalf("ReadFile() error = %v", err)
+	}
+	text := string(doc)
+
+	listBlock := pathBlock(t, text, "/v1/education/colleges-of-education")
+	detailBlock := pathBlock(t, text, "/v1/education/colleges-of-education/{college_id}")
+
+	requireContains(t, text, "    CollegeOfEducationID:")
+	requireContains(t, text, "    CollegeOfEducationOwnershipType:")
+	requireContains(t, text, "    CollegeOfEducationStateID:")
+	requireContains(t, text, "    CollegeOfEducation:")
+	requireContains(t, text, "    CollegeOfEducationListResponse:")
+	requireContains(t, text, "    CollegeOfEducationResponse:")
+
+	requireContains(t, listBlock, "get:")
+	requireContains(t, listBlock, "- $ref: \"#/components/parameters/CollegeOfEducationOwnershipType\"")
+	requireContains(t, listBlock, "- $ref: \"#/components/parameters/CollegeOfEducationStateID\"")
+	requireContains(t, listBlock, "\"422\":")
+	requireContains(t, listBlock, "\"500\":")
+	requireNotContains(t, listBlock, "security:")
+
+	requireContains(t, detailBlock, "get:")
+	requireContains(t, detailBlock, "- $ref: \"#/components/parameters/CollegeOfEducationID\"")
+	requireContains(t, detailBlock, "\"404\":")
+	requireContains(t, detailBlock, "\"422\":")
+	requireContains(t, detailBlock, "\"500\":")
+	requireNotContains(t, detailBlock, "security:")
+
+	requireContains(t, text, "CollegeOfEducationID:\n      name: college_id\n      in: path\n      required: true\n      description: Stable public identifier for a college of education.\n      schema:\n        type: string\n        pattern: '^[a-z0-9]+(?:-[a-z0-9]+)+$'")
+	requireContains(t, text, "CollegeOfEducationOwnershipType:\n      name: ownership_type\n      in: query\n      required: false\n      description: Optional college-of-education ownership category used to filter colleges.\n      schema:\n        $ref: \"#/components/schemas/CollegeOfEducationOwnershipType\"")
+	requireContains(t, text, "CollegeOfEducationStateID:\n      name: state_id\n      in: query\n      required: false\n      description: Optional public state or FCT ID used to filter college-of-education records.\n      schema:\n        $ref: \"#/components/schemas/CollegeOfEducationStateID\"")
+	requireContains(t, text, "CollegeOfEducationOwnershipType:\n      type: string\n      enum: [federal, state, private]")
+	requireContains(t, text, "CollegeOfEducationStateID:\n      type: string\n      enum:\n        - abia")
+	requireContains(t, text, "CollegeOfEducation:\n      type: object\n      additionalProperties: false\n      properties:\n        id:\n          type: string\n        name:\n          type: string\n        ownership_type:\n          $ref: \"#/components/schemas/CollegeOfEducationOwnershipType\"\n        state_id:\n          $ref: \"#/components/schemas/CollegeOfEducationStateID\"\n        country_code:\n          type: string\n          enum: [NG]\n      required: [id, name, ownership_type, state_id, country_code]")
+	requireContains(t, text, "CollegeOfEducationListResponse:\n      type: object\n      additionalProperties: false\n      properties:\n        success:\n          type: boolean\n        data:\n          type: array\n          items:\n            $ref: \"#/components/schemas/CollegeOfEducation\"\n      required: [success, data]")
+	requireContains(t, text, "CollegeOfEducationResponse:\n      type: object\n      additionalProperties: false\n      properties:\n        success:\n          type: boolean\n        data:\n          $ref: \"#/components/schemas/CollegeOfEducation\"\n      required: [success, data]")
+}
+
 func pathBlock(t *testing.T, doc, path string) string {
 	t.Helper()
 
