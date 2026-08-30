@@ -29,4 +29,6 @@ var (
 	ErrLocalGovernmentUnitNotFound = errors.New("repository: local government unit not found")
 	// ErrPaymentServiceProviderNotFound reports that a requested payment service provider is not present in the dataset.
 	ErrPaymentServiceProviderNotFound = errors.New("repository: payment service provider not found")
+	// ErrInternationalMoneyTransferOperatorNotFound reports that a requested IMTO is not present in the dataset.
+	ErrInternationalMoneyTransferOperatorNotFound = errors.New("repository: international money transfer operator not found")
 )

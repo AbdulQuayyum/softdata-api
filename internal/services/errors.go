@@ -27,4 +27,6 @@ var (
 	ErrInvalidPaymentServiceProviderType = errors.New("services: invalid payment service provider type")
 	ErrLocalGovernmentUnitNotFound       = errors.New("services: local government unit not found")
 	ErrInvalidLocalGovernmentUnitID      = errors.New("services: invalid local government unit id")
+	ErrInternationalMoneyTransferOperatorNotFound = errors.New("services: international money transfer operator not found")
+	ErrInvalidInternationalMoneyTransferOperatorID = errors.New("services: invalid international money transfer operator id")
 )
