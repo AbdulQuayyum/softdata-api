@@ -14,6 +14,8 @@ type financeService interface {
 	ListPaymentServiceProviders(context.Context) ([]models.PaymentServiceProvider, error)
 	ListPaymentServiceProvidersByType(context.Context, string) ([]models.PaymentServiceProvider, error)
 	GetPaymentServiceProvider(context.Context, string) (models.PaymentServiceProvider, error)
+	ListInternationalMoneyTransferOperators(context.Context) ([]models.InternationalMoneyTransferOperator, error)
+	GetInternationalMoneyTransferOperator(context.Context, string) (models.InternationalMoneyTransferOperator, error)
 }
 
 // FinanceHandler serves public payment-service-provider endpoints.
@@ -84,4 +86,46 @@ func (h *FinanceHandler) GetPaymentServiceProvider(w http.ResponseWriter, r *htt
 	}
 
 	_ = response.Success(w, http.StatusOK, provider)
+}
+
+// ListInternationalMoneyTransferOperators handles GET /v1/finance/international-money-transfer-operators.
+func (h *FinanceHandler) ListInternationalMoneyTransferOperators(w http.ResponseWriter, r *http.Request) {
+	if !allowMethod(w, r, http.MethodGet) {
+		return
+	}
+
+	requestID := requestIDFromContext(r.Context())
+	operators, err := h.service.ListInternationalMoneyTransferOperators(r.Context())
+	if err != nil {
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	_ = response.List(w, http.StatusOK, operators)
+}
+
+// GetInternationalMoneyTransferOperator handles GET /v1/finance/international-money-transfer-operators/{operator_id}.
+func (h *FinanceHandler) GetInternationalMoneyTransferOperator(w http.ResponseWriter, r *http.Request) {
+	if !allowMethod(w, r, http.MethodGet) {
+		return
+	}
+
+	requestID := requestIDFromContext(r.Context())
+	operatorID, err := validators.ValidateInternationalMoneyTransferOperatorID(r.PathValue("operator_id"))
+	if err != nil {
+		if validationErr, ok := validationErrorsFrom(err); ok {
+			_ = response.Validation(w, requestID, validationErrorsToResponse(validationErr))
+			return
+		}
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	operator, err := h.service.GetInternationalMoneyTransferOperator(r.Context(), operatorID)
+	if err != nil {
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	_ = response.Success(w, http.StatusOK, operator)
 }

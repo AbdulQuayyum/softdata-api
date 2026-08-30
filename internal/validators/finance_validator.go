@@ -7,6 +7,7 @@ import (
 )
 
 var financePaymentServiceProviderIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)+$`)
+var financeInternationalMoneyTransferOperatorIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)*$`)
 
 var financePaymentServiceProviderTypes = map[string]struct{}{
 	"mobile_money_operator":               {},
@@ -31,6 +32,18 @@ func ValidatePaymentServiceProviderID(value string) (string, error) {
 	}
 	if !financePaymentServiceProviderIDPattern.MatchString(value) || uuidLikePattern.MatchString(value) {
 		return "", invalidField("provider_id", "Provider ID must be a valid lowercase public slug.")
+	}
+	return value, nil
+}
+
+// ValidateInternationalMoneyTransferOperatorID validates the documented public IMTO identifier.
+func ValidateInternationalMoneyTransferOperatorID(value string) (string, error) {
+	value = strings.TrimSpace(value)
+	if value == "" {
+		return "", requiredError("operator_id", "Operator ID is required.")
+	}
+	if !financeInternationalMoneyTransferOperatorIDPattern.MatchString(value) || uuidLikePattern.MatchString(value) {
+		return "", invalidField("operator_id", "Operator ID must be a valid lowercase public slug.")
 	}
 	return value, nil
 }

@@ -84,6 +84,39 @@ func TestOpenAPIDocumentsPaymentServiceProviderPaths(t *testing.T) {
 	requireContains(t, text, "PaymentServiceProviderResponse:\n      type: object\n      additionalProperties: false\n      properties:\n        success:\n          type: boolean\n        data:\n          $ref: \"#/components/schemas/PaymentServiceProvider\"\n      required: [success, data]")
 }
 
+func TestOpenAPIDocumentsInternationalMoneyTransferOperatorPaths(t *testing.T) {
+	doc, err := os.ReadFile("../../docs/openapi.yaml")
+	if err != nil {
+		t.Fatalf("ReadFile() error = %v", err)
+	}
+	text := string(doc)
+
+	listBlock := pathBlock(t, text, "/v1/finance/international-money-transfer-operators")
+	detailBlock := pathBlock(t, text, "/v1/finance/international-money-transfer-operators/{operator_id}")
+
+	requireContains(t, text, "    InternationalMoneyTransferOperatorID:")
+	requireContains(t, text, "    InternationalMoneyTransferOperator:")
+	requireContains(t, text, "    InternationalMoneyTransferOperatorListResponse:")
+	requireContains(t, text, "    InternationalMoneyTransferOperatorResponse:")
+
+	requireContains(t, listBlock, "get:")
+	requireNotContains(t, listBlock, "parameters:")
+	requireContains(t, listBlock, "\"500\":")
+	requireNotContains(t, listBlock, "security:")
+
+	requireContains(t, detailBlock, "get:")
+	requireContains(t, detailBlock, "- $ref: \"#/components/parameters/InternationalMoneyTransferOperatorID\"")
+	requireContains(t, detailBlock, "\"404\":")
+	requireContains(t, detailBlock, "\"422\":")
+	requireContains(t, detailBlock, "\"500\":")
+	requireNotContains(t, detailBlock, "security:")
+
+	requireContains(t, text, "InternationalMoneyTransferOperatorID:\n      name: operator_id\n      in: path\n      required: true\n      description: Stable public identifier for an international money transfer operator.\n      schema:\n        type: string\n        pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'")
+	requireContains(t, text, "InternationalMoneyTransferOperator:\n      type: object\n      additionalProperties: false\n      properties:\n        id:\n          type: string\n        name:\n          type: string\n      required: [id, name]")
+	requireContains(t, text, "InternationalMoneyTransferOperatorListResponse:\n      type: object\n      additionalProperties: false\n      properties:\n        success:\n          type: boolean\n        data:\n          type: array\n          items:\n            $ref: \"#/components/schemas/InternationalMoneyTransferOperator\"\n      required: [success, data]")
+	requireContains(t, text, "InternationalMoneyTransferOperatorResponse:\n      type: object\n      additionalProperties: false\n      properties:\n        success:\n          type: boolean\n        data:\n          $ref: \"#/components/schemas/InternationalMoneyTransferOperator\"\n      required: [success, data]")
+}
+
 func pathBlock(t *testing.T, doc, path string) string {
 	t.Helper()
 

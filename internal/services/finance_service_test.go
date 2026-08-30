@@ -16,14 +16,21 @@ type financeRepositoryStub struct {
 	listAllResult  []models.PaymentServiceProvider
 	listByType     map[string][]models.PaymentServiceProvider
 	getResultByID  map[string]models.PaymentServiceProvider
+	listIMTOResult []models.InternationalMoneyTransferOperator
+	getIMTOResult  map[string]models.InternationalMoneyTransferOperator
 	listAllErr     error
 	listByTypeErr  error
 	getErr         error
+	listIMTOErr    error
+	getIMTOErr     error
 	listAllCalls   int
 	listByTypeCall int
 	getCalls       int
+	listIMTOCalls  int
+	getIMTOCalls   int
 	lastType       string
 	lastID         string
+	lastIMTOID     string
 }
 
 func (s *financeRepositoryStub) ListPaymentServiceProviders(context.Context) ([]models.PaymentServiceProvider, error) {
@@ -58,6 +65,28 @@ func (s *financeRepositoryStub) GetPaymentServiceProvider(_ context.Context, pro
 		}
 	}
 	return models.PaymentServiceProvider{}, interfaces.ErrPaymentServiceProviderNotFound
+}
+
+func (s *financeRepositoryStub) ListInternationalMoneyTransferOperators(context.Context) ([]models.InternationalMoneyTransferOperator, error) {
+	s.listIMTOCalls++
+	if s.listIMTOErr != nil {
+		return nil, s.listIMTOErr
+	}
+	return cloneInternationalMoneyTransferOperatorList(s.listIMTOResult), nil
+}
+
+func (s *financeRepositoryStub) GetInternationalMoneyTransferOperator(_ context.Context, operatorID string) (models.InternationalMoneyTransferOperator, error) {
+	s.getIMTOCalls++
+	s.lastIMTOID = operatorID
+	if s.getIMTOErr != nil {
+		return models.InternationalMoneyTransferOperator{}, s.getIMTOErr
+	}
+	if s.getIMTOResult != nil {
+		if operator, ok := s.getIMTOResult[operatorID]; ok {
+			return operator, nil
+		}
+	}
+	return models.InternationalMoneyTransferOperator{}, interfaces.ErrInternationalMoneyTransferOperatorNotFound
 }
 
 func TestFinanceServiceListAllAndTypeAndLookup(t *testing.T) {

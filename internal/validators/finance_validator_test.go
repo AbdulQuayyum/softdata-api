@@ -161,3 +161,57 @@ func TestValidatePaymentServiceProviderListQueryRejectsInvalidValues(t *testing.
 		})
 	}
 }
+
+func TestValidateInternationalMoneyTransferOperatorID(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		value string
+		want  string
+	}{
+		{name: "trimmed", value: " olive-monies-express-limited ", want: "olive-monies-express-limited"},
+		{name: "single token", value: "nouveau", want: "nouveau"},
+		{name: "multi token", value: "nouveau-mobile-limited", want: "nouveau-mobile-limited"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			got, err := ValidateInternationalMoneyTransferOperatorID(tc.value)
+			if err != nil {
+				t.Fatalf("ValidateInternationalMoneyTransferOperatorID() error = %v", err)
+			}
+			if got != tc.want {
+				t.Fatalf("unexpected value: %q", got)
+			}
+		})
+	}
+}
+
+func TestValidateInternationalMoneyTransferOperatorIDRejectsInvalidValues(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		value string
+	}{
+		{name: "empty", value: ""},
+		{name: "whitespace", value: "   "},
+		{name: "uppercase", value: "Olive-Monies-Express-Limited"},
+		{name: "mixedcase", value: "olive-Monies-express-limited"},
+		{name: "underscore", value: "olive_monies_express_limited"},
+		{name: "spaces", value: "olive monies express limited"},
+		{name: "leading hyphen", value: "-olive-monies-express-limited"},
+		{name: "trailing hyphen", value: "olive-monies-express-limited-"},
+		{name: "double hyphen", value: "olive--monies-express-limited"},
+		{name: "uuid", value: "550e8400-e29b-41d4-a716-446655440000"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			got, err := ValidateInternationalMoneyTransferOperatorID(tc.value)
+			if err == nil {
+				t.Fatalf("ValidateInternationalMoneyTransferOperatorID() got %q, want error", got)
+			}
+			var validationErr ValidationErrors
+			if !errors.As(err, &validationErr) {
+				t.Fatalf("ValidateInternationalMoneyTransferOperatorID() error = %v, want ValidationErrors", err)
+			}
+			if len(validationErr.Fields) != 1 || validationErr.Fields[0].Field != "operator_id" {
+				t.Fatalf("unexpected validation errors: %#v", validationErr.Fields)
+			}
+		})
+	}
+}

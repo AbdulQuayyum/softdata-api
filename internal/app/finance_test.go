@@ -19,6 +19,7 @@ import (
 
 type financeServiceStub struct {
 	providers []models.PaymentServiceProvider
+	operators []models.InternationalMoneyTransferOperator
 	err       error
 	calls     int
 }
@@ -39,6 +40,14 @@ func (s *financeServiceStub) GetPaymentServiceProvider(context.Context, string) 
 	return models.PaymentServiceProvider{}, nil
 }
 
+func (s *financeServiceStub) ListInternationalMoneyTransferOperators(context.Context) ([]models.InternationalMoneyTransferOperator, error) {
+	return append([]models.InternationalMoneyTransferOperator(nil), s.operators...), nil
+}
+
+func (s *financeServiceStub) GetInternationalMoneyTransferOperator(context.Context, string) (models.InternationalMoneyTransferOperator, error) {
+	return models.InternationalMoneyTransferOperator{}, nil
+}
+
 type financeRepositoryStub struct{}
 
 func (s *financeRepositoryStub) ListPaymentServiceProviders(context.Context) ([]models.PaymentServiceProvider, error) {
@@ -51,6 +60,14 @@ func (s *financeRepositoryStub) ListPaymentServiceProvidersByType(context.Contex
 
 func (s *financeRepositoryStub) GetPaymentServiceProvider(context.Context, string) (models.PaymentServiceProvider, error) {
 	return models.PaymentServiceProvider{}, nil
+}
+
+func (s *financeRepositoryStub) ListInternationalMoneyTransferOperators(context.Context) ([]models.InternationalMoneyTransferOperator, error) {
+	return nil, nil
+}
+
+func (s *financeRepositoryStub) GetInternationalMoneyTransferOperator(context.Context, string) (models.InternationalMoneyTransferOperator, error) {
+	return models.InternationalMoneyTransferOperator{}, nil
 }
 
 type financeJSONRepoStub struct{}

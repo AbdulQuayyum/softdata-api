@@ -145,6 +145,34 @@ func TestPublicRoutesServeFinancePaymentServiceProviders(t *testing.T) {
 	}
 }
 
+func TestPublicRoutesServeFinanceInternationalMoneyTransferOperators(t *testing.T) {
+	rec := &routerRecorder{}
+	router := newTestRouter(t, rec)
+
+	rr := httptest.NewRecorder()
+	req := httptest.NewRequest(http.MethodGet, "/v1/finance/international-money-transfer-operators", nil)
+	router.ServeHTTP(rr, req)
+	if rr.Code != http.StatusOK {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if !strings.Contains(strings.Join(rec.snapshot(), ","), "finance.imto.list") {
+		t.Fatalf("expected imto list handler to run: %v", rec.snapshot())
+	}
+
+	rec = &routerRecorder{}
+	router = newTestRouter(t, rec)
+
+	rr = httptest.NewRecorder()
+	req = httptest.NewRequest(http.MethodGet, "/v1/finance/international-money-transfer-operators/olive-monies-express-limited", nil)
+	router.ServeHTTP(rr, req)
+	if rr.Code != http.StatusOK {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if !strings.Contains(strings.Join(rec.snapshot(), ","), "finance.imto.get:olive-monies-express-limited") {
+		t.Fatalf("expected imto detail handler to run: %v", rec.snapshot())
+	}
+}
+
 func TestPublicRoutesRejectUnsupportedMethods(t *testing.T) {
 	rec := &routerRecorder{}
 	router := newTestRouter(t, rec)

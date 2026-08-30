@@ -132,5 +132,31 @@ func registerPublicRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers,
 		return err
 	}
 
+	financeIMTOsList, err := buildRouteMiddlewares(mw, "/v1/finance/international-money-transfer-operators", "finance", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build finance international-money-transfer-operators middleware: %w", err)
+	}
+	mux.Handle("GET /v1/finance/international-money-transfer-operators", compose(http.HandlerFunc(h.Finance.ListInternationalMoneyTransferOperators), financeIMTOsList...))
+	if err := catalog.add("GET /v1/finance/international-money-transfer-operators"); err != nil {
+		return err
+	}
+
+	financeIMTODetail, err := buildRouteMiddlewares(mw, "/v1/finance/international-money-transfer-operators/{operator_id}", "finance", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build finance international-money-transfer-operators detail middleware: %w", err)
+	}
+	mux.Handle("GET /v1/finance/international-money-transfer-operators/{operator_id}", compose(http.HandlerFunc(h.Finance.GetInternationalMoneyTransferOperator), financeIMTODetail...))
+	if err := catalog.add("GET /v1/finance/international-money-transfer-operators/{operator_id}"); err != nil {
+		return err
+	}
+
 	return nil
 }
