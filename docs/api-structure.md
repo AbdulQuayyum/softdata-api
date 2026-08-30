@@ -6,7 +6,7 @@ SoftData API uses a layered Go layout that keeps entry points, configuration, da
 
 - `cmd/` holds executable entry points.
 - `internal/` contains the core application logic, including configuration, database access, repositories, security helpers, request validators, response helpers, and domain/API models.
-- `datasets/` contains versioned geography and finance datasets, schemas, metadata, and licensing notes.
+- `datasets/` contains versioned geography and finance datasets, schemas, metadata, and licensing notes, including payment service providers and international money transfer operators.
 - `database/` contains PostgreSQL migrations and handwritten SQL queries.
 - `docs/` holds API and project documentation.
 - Root tooling files such as `Makefile`, `sqlc.yaml`, `.air.toml`, and `.env.example` support local development and database generation.
@@ -182,6 +182,7 @@ softdata-api/
 │   │   ├── dataset_source.go
 │   │   ├── dataset_version.go
 │   │   ├── finance.go
+│   │   ├── finance_imto_test.go
 │   │   ├── finance_test.go
 │   │   ├── geography.go
 │   │   ├── geography_test.go
