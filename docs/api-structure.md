@@ -6,7 +6,7 @@ SoftData API uses a layered Go layout that keeps entry points, configuration, da
 
 - `cmd/` holds executable entry points.
 - `internal/` contains the core application logic, including configuration, database access, repositories, security helpers, request validators, response helpers, and domain/API models.
-- `datasets/` contains versioned geography and finance datasets, schemas, metadata, and licensing notes, including payment service providers and international money transfer operators.
+- `datasets/` contains versioned geography, education, and finance datasets, schemas, metadata, and licensing notes, including universities, payment service providers, and international money transfer operators.
 - `database/` contains PostgreSQL migrations and handwritten SQL queries.
 - `docs/` holds API and project documentation.
 - Root tooling files such as `Makefile`, `sqlc.yaml`, `.air.toml`, and `.env.example` support local development and database generation.
@@ -58,6 +58,8 @@ softdata-api/
 │       ├── sessions.sql
 │       └── usage.sql
 ├── datasets
+│   ├── education
+│   │   └── universities.json
 │   ├── finance
 │   │   ├── international_money_transfer_operators.json
 │   │   └── payment_service_providers.json
@@ -67,6 +69,8 @@ softdata-api/
 │   │   └── states.json
 │   ├── LICENSE.md
 │   ├── metadata
+│   │   ├── education
+│   │   │   └── universities.json
 │   │   ├── finance
 │   │   │   ├── international_money_transfer_operators.json
 │   │   │   └── payment_service_providers.json
@@ -76,6 +80,8 @@ softdata-api/
 │   │       └── states.json
 │   ├── README.md
 │   └── schemas
+│       ├── education
+│       │   └── universities.schema.json
 │       ├── finance
 │       │   ├── international_money_transfer_operators.schema.json
 │       │   └── payment_service_providers.schema.json
@@ -100,6 +106,7 @@ softdata-api/
 │   │   ├── app.go
 │   │   ├── app_test.go
 │   │   ├── dependencies.go
+│   │   ├── education_test.go
 │   │   ├── finance_test.go
 │   │   ├── geography_test.go
 │   │   └── shutdown.go
@@ -138,6 +145,8 @@ softdata-api/
 │   │   ├── dataset_handler_test.go
 │   │   ├── discovery_handler.go
 │   │   ├── discovery_handler_test.go
+│   │   ├── education_handler.go
+│   │   ├── education_handler_test.go
 │   │   ├── finance_handler.go
 │   │   ├── finance_handler_test.go
 │   │   ├── geography_handler.go
@@ -181,12 +190,14 @@ softdata-api/
 │   │   ├── dataset_public_test.go
 │   │   ├── dataset_source.go
 │   │   ├── dataset_version.go
+│   │   ├── education.go
 │   │   ├── finance.go
 │   │   ├── finance_imto_test.go
 │   │   ├── finance_test.go
 │   │   ├── geography.go
 │   │   ├── geography_test.go
 │   │   ├── lgas_test.go
+│   │   ├── universities_test.go
 │   │   ├── session.go
 │   │   ├── usage_summary.go
 │   │   └── usage_summary_test.go
@@ -197,6 +208,8 @@ softdata-api/
 │   │   ├── file
 │   │   │   ├── csv_repository.go
 │   │   │   ├── csv_repository_test.go
+│   │   │   ├── education_repository.go
+│   │   │   ├── education_repository_test.go
 │   │   │   ├── finance_repository.go
 │   │   │   ├── finance_repository_test.go
 │   │   │   ├── geography_repository.go
@@ -211,6 +224,7 @@ softdata-api/
 │   │   │   ├── account_repository.go
 │   │   │   ├── api_key_repository.go
 │   │   │   ├── dataset_repository.go
+│   │   │   ├── education_repository.go
 │   │   │   ├── errors.go
 │   │   │   ├── file_repository.go
 │   │   │   ├── finance_repository.go
@@ -268,6 +282,8 @@ softdata-api/
 │   │   ├── auth_service_test.go
 │   │   ├── dataset_service.go
 │   │   ├── dataset_service_test.go
+│   │   ├── education_service.go
+│   │   ├── education_service_test.go
 │   │   ├── errors.go
 │   │   ├── finance_service.go
 │   │   ├── finance_service_test.go
@@ -284,6 +300,8 @@ softdata-api/
 │       ├── auth_validator_test.go
 │       ├── dataset_validator.go
 │       ├── dataset_validator_test.go
+│       ├── education_validator.go
+│       ├── education_validator_test.go
 │       ├── finance_validator.go
 │       ├── finance_validator_test.go
 │       ├── geography_validator.go
