@@ -7,3 +7,9 @@ type PaymentServiceProvider struct {
 	InstitutionType string `json:"institution_type"`
 	CountryCode     string `json:"country_code"`
 }
+
+// InternationalMoneyTransferOperator represents one current CBN-listed IMTO entry.
+type InternationalMoneyTransferOperator struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}

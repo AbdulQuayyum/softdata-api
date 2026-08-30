@@ -1,0 +1,434 @@
+[
+  {
+    "id": "91-payments-limited",
+    "name": "91 PAYMENTS LIMITED"
+  },
+  {
+    "id": "acha-global-hub-limited",
+    "name": "ACHA GLOBAL HUB LIMITED"
+  },
+  {
+    "id": "afriex-inc",
+    "name": "AFRIEX INC"
+  },
+  {
+    "id": "afrisurge-technologies-limited",
+    "name": "AFRISURGE TECHNOLOGIES LIMITED"
+  },
+  {
+    "id": "ayg-limited",
+    "name": "AYG LIMITED"
+  },
+  {
+    "id": "ayot-global-synergy-limited",
+    "name": "AYOT GLOBAL SYNERGY LIMITED"
+  },
+  {
+    "id": "banffpay-limited",
+    "name": "BANFFPAY LIMITED"
+  },
+  {
+    "id": "belyfted-limited",
+    "name": "BELYFTED LIMITED"
+  },
+  {
+    "id": "blaaiz-innvoations-technology-limited",
+    "name": "BLAAIZ INNVOATIONS TECHNOLOGY LIMITED"
+  },
+  {
+    "id": "brails-financial-inc",
+    "name": "BRAILS FINANCIAL INC"
+  },
+  {
+    "id": "broad-money-transfer-limited",
+    "name": "BROAD MONEY TRANSFER LIMITED"
+  },
+  {
+    "id": "bud-technology-services",
+    "name": "BUD TECHNOLOGY SERVICES"
+  },
+  {
+    "id": "cashpot-limited",
+    "name": "CASHPOT LIMITED"
+  },
+  {
+    "id": "centrexcard-limited-t-a-transferboss",
+    "name": "CENTREXCARD LIMITED T/A (TransferBoss)"
+  },
+  {
+    "id": "chime-inc-sendwave",
+    "name": "CHIME INC (SENDWAVE)"
+  },
+  {
+    "id": "chrisborough-solutions-limited",
+    "name": "CHRISBOROUGH SOLUTIONS LIMITED"
+  },
+  {
+    "id": "colony-capital-limited",
+    "name": "COLONY CAPITAL LIMITED"
+  },
+  {
+    "id": "comet-trading-limited",
+    "name": "COMET TRADING LIMITED"
+  },
+  {
+    "id": "cowrie-integrated-systems-limited",
+    "name": "COWRIE INTEGRATED SYSTEMS LIMITED"
+  },
+  {
+    "id": "cp-express-limited",
+    "name": "CP EXPRESS LIMITED"
+  },
+  {
+    "id": "csl-pay-limited",
+    "name": "CSL PAY LIMITED"
+  },
+  {
+    "id": "currenzo-nigeria-limited",
+    "name": "CURRENZO NIGERIA LIMITED"
+  },
+  {
+    "id": "d-way-services-limited",
+    "name": "D-WAY SERVICES LIMITED"
+  },
+  {
+    "id": "direkt-wire-uk-limited",
+    "name": "DIREKT WIRE UK LIMITED"
+  },
+  {
+    "id": "dt-t-corporation",
+    "name": "DT&T CORPORATION"
+  },
+  {
+    "id": "e-2-e-pay-limited",
+    "name": "e-2-e PAY LIMITED"
+  },
+  {
+    "id": "e27-partners-uk-limited",
+    "name": "E27 PARTNERS UK LIMITED"
+  },
+  {
+    "id": "eazzy-tranzact-payment-services-africa-limited",
+    "name": "EAZZY TRANZACT PAYMENT SERVICES AFRICA LIMITED"
+  },
+  {
+    "id": "etiti-worldwide-innovations-limited",
+    "name": "ETITI WORLDWIDE INNOVATIONS LIMITED"
+  },
+  {
+    "id": "etranzact-international-plc",
+    "name": "eTRANZACT INTERNATIONAL PLC"
+  },
+  {
+    "id": "exactrem-limited",
+    "name": "EXACTREM LIMITED"
+  },
+  {
+    "id": "fa-global-bk-finance",
+    "name": "FA GLOBAL BK FINANCE"
+  },
+  {
+    "id": "fincra-technologies-limited",
+    "name": "FINCRA TECHNOLOGIES LIMITED"
+  },
+  {
+    "id": "flutterwave-tech-payments-limited",
+    "name": "FLUTTERWAVE TECH PAYMENTS LIMITED"
+  },
+  {
+    "id": "funtech-global-communications-limited",
+    "name": "FUNTECH GLOBAL COMMUNICATIONS LIMITED"
+  },
+  {
+    "id": "gabtrans-uk-limited-money-to-limited",
+    "name": "GABTRANS UK LIMITED/MONEY TO LIMITED"
+  },
+  {
+    "id": "global-currency-travel-tours-limited",
+    "name": "GLOBAL CURRENCY TRAVEL & TOURS LIMITED"
+  },
+  {
+    "id": "global-wire-ng-limited",
+    "name": "GLOBAL WIRE NG LIMITED"
+  },
+  {
+    "id": "goldstack-technologies-limited",
+    "name": "GOLDSTACK TECHNOLOGIES LIMITED"
+  },
+  {
+    "id": "grants-payments-solutions-limited",
+    "name": "GRANTS PAYMENTS SOLUTIONS LIMITED"
+  },
+  {
+    "id": "gtxn-co",
+    "name": "GTXN CO"
+  },
+  {
+    "id": "idt-payment-services-inc",
+    "name": "IDT PAYMENT SERVICES INC."
+  },
+  {
+    "id": "interswitch-limited",
+    "name": "INTERSWITCH LIMITED"
+  },
+  {
+    "id": "jitaku-financial-services-limited",
+    "name": "JITAKU FINANCIAL SERVICES LIMITED"
+  },
+  {
+    "id": "juba-express",
+    "name": "JUBA EXPRESS"
+  },
+  {
+    "id": "juice-technology-systems-limited",
+    "name": "JUICE TECHNOLOGY SYSTEMS LIMITED"
+  },
+  {
+    "id": "kredete-technology-limited",
+    "name": "KREDETE TECHNOLOGY LIMITED"
+  },
+  {
+    "id": "kupa-imto-nigeria-limited",
+    "name": "KUPA IMTO NIGERIA LIMITED"
+  },
+  {
+    "id": "leadremit-inc-first-apple",
+    "name": "LEADREMIT INC (FIRST APPLE)"
+  },
+  {
+    "id": "lightway-finance-limited",
+    "name": "LIGHTWAY FINANCE LIMITED"
+  },
+  {
+    "id": "linemark-associates-limited",
+    "name": "LINEMARK ASSOCIATES LIMITED"
+  },
+  {
+    "id": "mansu-direct-limited",
+    "name": "MANSU DIRECT LIMITED"
+  },
+  {
+    "id": "mastercard-transaction-services-mts",
+    "name": "MASTERCARD TRANSACTION SERVICES (MTS)"
+  },
+  {
+    "id": "me-interchange-nigeria-limited",
+    "name": "ME INTERCHANGE NIGERIA LIMITED"
+  },
+  {
+    "id": "moneygram",
+    "name": "MONEYGRAM"
+  },
+  {
+    "id": "more-money-transfers-limited",
+    "name": "MORE MONEY TRANSFERS LIMITED"
+  },
+  {
+    "id": "multigate-network-pay-inc",
+    "name": "MULTIGATE NETWORK PAY INC"
+  },
+  {
+    "id": "naira-gram-llc-ngn-gram-limited",
+    "name": "NAIRA GRAM LLC/ NGN GRAM LIMITED"
+  },
+  {
+    "id": "nala-payments-limited",
+    "name": "NALA PAYMENTS LIMITED"
+  },
+  {
+    "id": "nash-technology-limited",
+    "name": "NASH TECHNOLOGY LIMITED"
+  },
+  {
+    "id": "nouveau-mobile-limited",
+    "name": "NOUVEAU MOBILE LIMITED"
+  },
+  {
+    "id": "novac-remit-limited",
+    "name": "NOVAC REMIT LIMITED"
+  },
+  {
+    "id": "obsidian-achernar-payments-limited",
+    "name": "OBSIDIAN ACHERNAR PAYMENTS LIMITED"
+  },
+  {
+    "id": "olive-monies-express-limited",
+    "name": "OLIVE MONIES EXPRESS LIMITED"
+  },
+  {
+    "id": "oxford-19-limited",
+    "name": "OXFORD 19 LIMITED"
+  },
+  {
+    "id": "paga-remit-limited",
+    "name": "PAGA REMIT LIMITED"
+  },
+  {
+    "id": "payaza-africa-limited",
+    "name": "PAYAZA AFRICA LIMITED"
+  },
+  {
+    "id": "payceler-limited",
+    "name": "PAYCELER LIMITED"
+  },
+  {
+    "id": "payment-processing-inc",
+    "name": "PAYMENT PROCESSING INC."
+  },
+  {
+    "id": "paysend-plc",
+    "name": "PAYSEND PLC"
+  },
+  {
+    "id": "pearl-payments-limited",
+    "name": "PEARL PAYMENTS LIMITED"
+  },
+  {
+    "id": "peniel-services-limited",
+    "name": "PENIEL SERVICES LIMITED"
+  },
+  {
+    "id": "ping-express",
+    "name": "PING EXPRESS"
+  },
+  {
+    "id": "pumpchain-technologies-platform-limited",
+    "name": "PUMPCHAIN TECHNOLOGIES PLATFORM LIMITED"
+  },
+  {
+    "id": "quickremit-limited",
+    "name": "QUICKREMIT LIMITED"
+  },
+  {
+    "id": "radiantlife-financial-services-limited",
+    "name": "RADIANTLIFE FINANCIAL SERVICES LIMITED"
+  },
+  {
+    "id": "raenest-inc",
+    "name": "RAENEST INC"
+  },
+  {
+    "id": "refitok-international-limited",
+    "name": "REFITOK INTERNATIONAL LIMITED"
+  },
+  {
+    "id": "remitix-limited-mukuru",
+    "name": "REMITIX LIMITED (MUKURU)"
+  },
+  {
+    "id": "remitly-inc",
+    "name": "REMITLY INC."
+  },
+  {
+    "id": "ria-financials",
+    "name": "RIA FINANCIALS"
+  },
+  {
+    "id": "rightcard-payment-services-ltd-a-lemfi-brand-company",
+    "name": "RIGHTCARD PAYMENT SERVICES LTD (A LEMFI BRAND COMPANY)"
+  },
+  {
+    "id": "saana-capital-llc",
+    "name": "SAANA CAPITAL LLC"
+  },
+  {
+    "id": "sendfirst-enterprises-limited",
+    "name": "SENDFIRST ENTERPRISES LIMITED"
+  },
+  {
+    "id": "sharperly-limited",
+    "name": "SHARPERLY LIMITED"
+  },
+  {
+    "id": "simbapay-limited",
+    "name": "SIMBAPAY LIMITED"
+  },
+  {
+    "id": "simplify-international-synergy-limited",
+    "name": "SIMPLIFY INTERNATIONAL SYNERGY LIMITED"
+  },
+  {
+    "id": "small-world-financial-services-group-limited",
+    "name": "SMALL WORLD FINANCIAL SERVICES GROUP LIMITED"
+  },
+  {
+    "id": "super-transfer-uk-limited",
+    "name": "SUPER TRANSFER UK LIMITED"
+  },
+  {
+    "id": "swift-payment-limited",
+    "name": "SWIFT PAYMENT LIMITED"
+  },
+  {
+    "id": "taptap-send-uk-limited",
+    "name": "TAPTAP SEND UK LIMITED"
+  },
+  {
+    "id": "tcf-services-limited",
+    "name": "TCF SERVICES LIMITED"
+  },
+  {
+    "id": "technest-limited",
+    "name": "TECHNEST LIMITED"
+  },
+  {
+    "id": "terra-payment-services-uk-limited",
+    "name": "TERRA PAYMENT SERVICES (UK) LIMITED"
+  },
+  {
+    "id": "tetrad-incorporation-limited",
+    "name": "TETRAD INCORPORATION LIMITED"
+  },
+  {
+    "id": "transfer-zero-money-transfer-e-p-s-a",
+    "name": "TRANSFER ZERO MONEY TRANSFER E.P., S.A."
+  },
+  {
+    "id": "transfercorp-limited-vfd-group",
+    "name": "TRANSFERCORP LIMITED/VFD GROUP"
+  },
+  {
+    "id": "transferto-mobile-financial-services-limited-thunes",
+    "name": "TRANSFERTO MOBILE FINANCIAL SERVICES LIMITED (THUNES)"
+  },
+  {
+    "id": "velocity-transfers-limited",
+    "name": "VELOCITY TRANSFERS LIMITED"
+  },
+  {
+    "id": "venture-garden-group",
+    "name": "VENTURE GARDEN GROUP"
+  },
+  {
+    "id": "vertofx-ltd",
+    "name": "VERTOFX LTD"
+  },
+  {
+    "id": "volopa-financial-services-scotland-limited",
+    "name": "VOLOPA FINANCIAL SERVICES (SCOTLAND) LIMITED"
+  },
+  {
+    "id": "voyse-technologies-nigeria-limited",
+    "name": "VOYSE TECHNOLOGIES (NIGERIA) LIMITED"
+  },
+  {
+    "id": "waza-technologies-inc",
+    "name": "WAZA TECHNOLOGIES INC"
+  },
+  {
+    "id": "weblink-international-limited",
+    "name": "WEBLINK INTERNATIONAL LIMITED"
+  },
+  {
+    "id": "western-union",
+    "name": "WESTERN UNION"
+  },
+  {
+    "id": "worldremit-limited",
+    "name": "WORLDREMIT LIMITED"
+  },
+  {
+    "id": "zytrex-payments-limited",
+    "name": "ZYTREX PAYMENTS LIMITED"
+  }
+]

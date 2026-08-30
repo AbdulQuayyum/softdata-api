@@ -247,6 +247,40 @@ paths:
           $ref: "#/components/responses/ValidationFailed"
         "500":
           $ref: "#/components/responses/InternalError"
+  /v1/finance/international-money-transfer-operators:
+    get:
+      tags: [Finance]
+      summary: List international money transfer operators
+      description: Returns the verified current CBN IMTO register snapshot. API-key identification remains optional once routed.
+      responses:
+        "200":
+          description: International money transfer operator records
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternationalMoneyTransferOperatorListResponse"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/finance/international-money-transfer-operators/{operator_id}:
+    get:
+      tags: [Finance]
+      summary: Get an international money transfer operator
+      description: Returns a verified IMTO record from the CBN snapshot. API-key identification remains optional once routed.
+      parameters:
+        - $ref: "#/components/parameters/InternationalMoneyTransferOperatorID"
+      responses:
+        "200":
+          description: International money transfer operator record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternationalMoneyTransferOperatorResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
   /v1/auth/register:
     post:
       tags: [Authentication]
@@ -594,6 +628,14 @@ components:
       description: Optional payment-service-provider category used to filter provider-category memberships.
       schema:
         $ref: "#/components/schemas/PaymentServiceProviderType"
+    InternationalMoneyTransferOperatorID:
+      name: operator_id
+      in: path
+      required: true
+      description: Stable public identifier for an international money transfer operator.
+      schema:
+        type: string
+        pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'
     Page:
       name: page
       in: query
@@ -890,6 +932,35 @@ components:
           type: boolean
         data:
           $ref: "#/components/schemas/PaymentServiceProvider"
+      required: [success, data]
+    InternationalMoneyTransferOperator:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      required: [id, name]
+    InternationalMoneyTransferOperatorListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/InternationalMoneyTransferOperator"
+      required: [success, data]
+    InternationalMoneyTransferOperatorResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: "#/components/schemas/InternationalMoneyTransferOperator"
       required: [success, data]
     GeographyListResponse:
       type: object

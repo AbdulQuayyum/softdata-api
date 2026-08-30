@@ -430,6 +430,9 @@ func TestRouterRejectsUnknownRoutesAndUnsupportedMethods(t *testing.T) {
 		{name: "finance wrong method", method: http.MethodPost, target: "/v1/finance/payment-service-providers", allow: http.MethodGet, status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_finance"},
 		{name: "finance detail wrong method", method: http.MethodDelete, target: "/v1/finance/payment-service-providers/super-agent-fairmoney", allow: http.MethodGet, status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_finance_detail"},
 		{name: "finance nested route", method: http.MethodGet, target: "/v1/finance/payment-service-providers/super-agent-fairmoney/extra", status: http.StatusNotFound, wantCode: "RESOURCE_NOT_FOUND", wantRequest: "req_finance_nested"},
+		{name: "imto wrong method", method: http.MethodPost, target: "/v1/finance/international-money-transfer-operators", allow: http.MethodGet, status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_imto"},
+		{name: "imto detail wrong method", method: http.MethodDelete, target: "/v1/finance/international-money-transfer-operators/olive-monies-express-limited", allow: http.MethodGet, status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_imto_detail"},
+		{name: "imto nested route", method: http.MethodGet, target: "/v1/finance/international-money-transfer-operators/olive-monies-express-limited/extra", status: http.StatusNotFound, wantCode: "RESOURCE_NOT_FOUND", wantRequest: "req_imto_nested"},
 		{name: "ready not registered", method: http.MethodGet, target: "/ready", status: http.StatusNotFound, wantCode: "RESOURCE_NOT_FOUND", wantRequest: "req_ready"},
 	}
 
@@ -539,6 +542,8 @@ func TestRouterRejectsHeadRequestsWithJson405(t *testing.T) {
 		{name: "lga detail", target: "/v1/geography/lgas/lagos-ikeja", allow: http.MethodGet},
 		{name: "finance", target: "/v1/finance/payment-service-providers", allow: http.MethodGet},
 		{name: "finance detail", target: "/v1/finance/payment-service-providers/super-agent-fairmoney", allow: http.MethodGet},
+		{name: "imto", target: "/v1/finance/international-money-transfer-operators", allow: http.MethodGet},
+		{name: "imto detail", target: "/v1/finance/international-money-transfer-operators/olive-monies-express-limited", allow: http.MethodGet},
 	}
 
 	for _, tc := range tests {
@@ -1025,6 +1030,55 @@ func TestRouterUsesFinanceMiddlewarePolicy(t *testing.T) {
 		}
 	})
 
+	t.Run("imto list", func(t *testing.T) {
+		harness = newFinancePolicyRouter(t)
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/finance/international-money-transfer-operators", nil)
+		req.RemoteAddr = "203.0.113.10:1234"
+		harness.router.ServeHTTP(rr, req)
+
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if harness.rateLimit.request.SubjectKind != interfaces.RateLimitSubjectAnonymous {
+			t.Fatalf("unexpected subject kind: %#v", harness.rateLimit.request.SubjectKind)
+		}
+		if harness.usage.input.Route != "/v1/finance/international-money-transfer-operators" || harness.usage.input.DatasetGroup == nil || *harness.usage.input.DatasetGroup != "finance" {
+			t.Fatalf("unexpected usage record: %#v", harness.usage.input)
+		}
+		if harness.finance.listIMTOCalls != 1 {
+			t.Fatalf("unexpected imto list calls: %d", harness.finance.listIMTOCalls)
+		}
+	})
+
+	t.Run("imto detail", func(t *testing.T) {
+		harness = newFinancePolicyRouter(t)
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/finance/international-money-transfer-operators/olive-monies-express-limited", nil)
+		req.RemoteAddr = "203.0.113.10:1234"
+		req.Header.Set("X-API-Key", "sd_live_example")
+		harness.router.ServeHTTP(rr, req)
+
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if harness.rateLimit.request.SubjectKind != interfaces.RateLimitSubjectAPIKey {
+			t.Fatalf("unexpected subject kind: %#v", harness.rateLimit.request.SubjectKind)
+		}
+		if harness.rateLimit.request.Subject != "key_123" {
+			t.Fatalf("unexpected subject: %q", harness.rateLimit.request.Subject)
+		}
+		if harness.usage.input.Route != "/v1/finance/international-money-transfer-operators/{operator_id}" || harness.usage.input.DatasetGroup == nil || *harness.usage.input.DatasetGroup != "finance" {
+			t.Fatalf("unexpected usage record: %#v", harness.usage.input)
+		}
+		if harness.finance.lastOperatorID != "olive-monies-express-limited" {
+			t.Fatalf("unexpected operator id seen by handler: %q", harness.finance.lastOperatorID)
+		}
+		if !harness.finance.lastHadAPIKey || harness.finance.lastAPIKeyIdentity.APIKeyID != "key_123" || harness.finance.lastAPIKeyIdentity.AccountID != "acc_123" {
+			t.Fatalf("unexpected api key identity seen by handler: %#v", harness.finance.lastAPIKeyIdentity)
+		}
+	})
+
 	t.Run("invalid query reaches handler", func(t *testing.T) {
 		harness = newFinancePolicyRouter(t)
 		rr := httptest.NewRecorder()
@@ -1066,6 +1120,31 @@ func TestRouterUsesFinanceMiddlewarePolicy(t *testing.T) {
 		}
 		if harness.finance.listCalls != 0 {
 			t.Fatalf("handler should not run on rate-limited request: %d", harness.finance.listCalls)
+		}
+		if harness.usage.calls != 0 {
+			t.Fatalf("usage should not run on rate-limited request: %d", harness.usage.calls)
+		}
+	})
+
+	t.Run("imto rate limited", func(t *testing.T) {
+		harness = newFinancePolicyRouter(t)
+		harness.rateLimit.result = interfaces.RateLimitResult{
+			Allowed:   false,
+			Limit:     60,
+			Remaining: 0,
+			ResetAt:   time.Now().UTC().Add(time.Minute),
+		}
+
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/finance/international-money-transfer-operators", nil)
+		req.RemoteAddr = "203.0.113.10:1234"
+		harness.router.ServeHTTP(rr, req)
+
+		if rr.Code != http.StatusTooManyRequests {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if harness.finance.listIMTOCalls != 0 {
+			t.Fatalf("handler should not run on rate-limited request: %d", harness.finance.listIMTOCalls)
 		}
 		if harness.usage.calls != 0 {
 			t.Fatalf("usage should not run on rate-limited request: %d", harness.usage.calls)
@@ -1256,6 +1335,16 @@ func newFinancePolicyRouter(t *testing.T) financePolicyHarness {
 					AnonymousIdentifier: anonymous,
 				})
 			case "/v1/finance/payment-service-providers/{provider_id}":
+				return middlewares.UsageTracking(usage, endpoint, datasetGroup, middlewares.UsageTrackingOptions{
+					Timeout:             time.Second,
+					AnonymousIdentifier: anonymous,
+				})
+			case "/v1/finance/international-money-transfer-operators":
+				return middlewares.UsageTracking(usage, endpoint, datasetGroup, middlewares.UsageTrackingOptions{
+					Timeout:             time.Second,
+					AnonymousIdentifier: anonymous,
+				})
+			case "/v1/finance/international-money-transfer-operators/{operator_id}":
 				return middlewares.UsageTracking(usage, endpoint, datasetGroup, middlewares.UsageTrackingOptions{
 					Timeout:             time.Second,
 					AnonymousIdentifier: anonymous,
@@ -1466,8 +1555,11 @@ type routerFinanceStub struct {
 	listCalls           int
 	listByTypeCalls     int
 	getCalls            int
+	listIMTOCalls       int
+	getIMTOCalls        int
 	lastInstitutionType string
 	lastProviderID      string
+	lastOperatorID      string
 	lastHadAPIKey       bool
 	lastAPIKeyIdentity  services.APIKeyIdentity
 }
@@ -1514,6 +1606,35 @@ func (s *routerFinanceStub) GetPaymentServiceProvider(ctx context.Context, provi
 		s.lastAPIKeyIdentity = identity
 	}
 	return models.PaymentServiceProvider{ID: providerID, Name: "Example", InstitutionType: "super_agent", CountryCode: "NG"}, nil
+}
+
+func (s *routerFinanceStub) ListInternationalMoneyTransferOperators(ctx context.Context) ([]models.InternationalMoneyTransferOperator, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.listIMTOCalls++
+	if s.rec != nil {
+		s.rec.add("finance.imto.list")
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return []models.InternationalMoneyTransferOperator{{ID: "olive-monies-express-limited", Name: "OLIVE MONIES EXPRESS LIMITED"}}, nil
+}
+
+func (s *routerFinanceStub) GetInternationalMoneyTransferOperator(ctx context.Context, operatorID string) (models.InternationalMoneyTransferOperator, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.getIMTOCalls++
+	s.lastOperatorID = operatorID
+	if s.rec != nil {
+		s.rec.add("finance.imto.get:" + operatorID)
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return models.InternationalMoneyTransferOperator{ID: operatorID, Name: "OLIVE MONIES EXPRESS LIMITED"}, nil
 }
 
 func (s *routerGeographyStub) ListStates(ctx context.Context) ([]models.State, error) {

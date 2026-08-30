@@ -12,6 +12,7 @@ import (
 )
 
 var financePaymentServiceProviderIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)+$`)
+var financeInternationalMoneyTransferOperatorIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)*$`)
 
 var allowedFinanceInstitutionTypes = map[string]struct{}{
 	"mobile_money_operator":               {},
@@ -81,6 +82,44 @@ func (s *FinanceService) GetPaymentServiceProvider(ctx context.Context, provider
 	return provider, nil
 }
 
+func (s *FinanceService) ListInternationalMoneyTransferOperators(ctx context.Context) ([]models.InternationalMoneyTransferOperator, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+
+	operators, err := s.repository.ListInternationalMoneyTransferOperators(ctx)
+	if err != nil {
+		return nil, translateFinanceServiceError("list international money transfer operators", err)
+	}
+	return cloneInternationalMoneyTransferOperatorList(operators), nil
+}
+
+func (s *FinanceService) GetInternationalMoneyTransferOperator(ctx context.Context, operatorID string) (models.InternationalMoneyTransferOperator, error) {
+	if err := ctx.Err(); err != nil {
+		return models.InternationalMoneyTransferOperator{}, err
+	}
+
+	normalizedID, err := normalizeFinanceInternationalMoneyTransferOperatorID(operatorID)
+	if err != nil {
+		return models.InternationalMoneyTransferOperator{}, err
+	}
+
+	operator, err := s.repository.GetInternationalMoneyTransferOperator(ctx, normalizedID)
+	if err != nil {
+		return models.InternationalMoneyTransferOperator{}, translateFinanceIMTOLookupError(err)
+	}
+	return operator, nil
+}
+
+func cloneInternationalMoneyTransferOperatorList(operators []models.InternationalMoneyTransferOperator) []models.InternationalMoneyTransferOperator {
+	if len(operators) == 0 {
+		return make([]models.InternationalMoneyTransferOperator, 0)
+	}
+	cloned := make([]models.InternationalMoneyTransferOperator, len(operators))
+	copy(cloned, operators)
+	return cloned
+}
+
 func clonePaymentServiceProviderList(providers []models.PaymentServiceProvider) []models.PaymentServiceProvider {
 	if len(providers) == 0 {
 		return make([]models.PaymentServiceProvider, 0)
@@ -96,6 +135,14 @@ func normalizeFinancePaymentServiceProviderID(providerID string) (string, error)
 		return "", ErrInvalidPaymentServiceProviderID
 	}
 	return providerID, nil
+}
+
+func normalizeFinanceInternationalMoneyTransferOperatorID(operatorID string) (string, error) {
+	operatorID = strings.TrimSpace(operatorID)
+	if operatorID == "" || !financeInternationalMoneyTransferOperatorIDPattern.MatchString(operatorID) {
+		return "", ErrInvalidInternationalMoneyTransferOperatorID
+	}
+	return operatorID, nil
 }
 
 func normalizeFinanceInstitutionType(institutionType string) (string, error) {
@@ -121,6 +168,21 @@ func translateFinanceServiceLookupError(err error) error {
 		return fmt.Errorf("get payment service provider: repository unavailable")
 	default:
 		return fmt.Errorf("get payment service provider: repository unavailable")
+	}
+}
+
+func translateFinanceIMTOLookupError(err error) error {
+	switch {
+	case err == nil:
+		return nil
+	case errors.Is(err, context.Canceled), errors.Is(err, context.DeadlineExceeded):
+		return err
+	case errors.Is(err, interfaces.ErrInternationalMoneyTransferOperatorNotFound):
+		return ErrInternationalMoneyTransferOperatorNotFound
+	case errors.Is(err, interfaces.ErrInvalidDatasetFile), errors.Is(err, interfaces.ErrDatasetFileNotFound), errors.Is(err, interfaces.ErrDatasetFileUnavailable):
+		return fmt.Errorf("get international money transfer operator: repository unavailable")
+	default:
+		return fmt.Errorf("get international money transfer operator: repository unavailable")
 	}
 }
 

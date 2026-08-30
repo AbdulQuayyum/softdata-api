@@ -17,12 +17,17 @@ type financeHandlerStub struct {
 	listAllFn    func(context.Context) ([]models.PaymentServiceProvider, error)
 	listByTypeFn func(context.Context, string) ([]models.PaymentServiceProvider, error)
 	getFn        func(context.Context, string) (models.PaymentServiceProvider, error)
+	listIMTOFn   func(context.Context) ([]models.InternationalMoneyTransferOperator, error)
+	getIMTOFn    func(context.Context, string) (models.InternationalMoneyTransferOperator, error)
 
 	listAllCalls    int
 	listByTypeCalls int
 	getCalls        int
+	listIMTOCalls   int
+	getIMTOCalls    int
 	lastType        string
 	lastID          string
+	lastIMTOID      string
 }
 
 func (s *financeHandlerStub) ListPaymentServiceProviders(ctx context.Context) ([]models.PaymentServiceProvider, error) {
@@ -49,6 +54,23 @@ func (s *financeHandlerStub) GetPaymentServiceProvider(ctx context.Context, prov
 		return s.getFn(ctx, providerID)
 	}
 	return models.PaymentServiceProvider{}, nil
+}
+
+func (s *financeHandlerStub) ListInternationalMoneyTransferOperators(ctx context.Context) ([]models.InternationalMoneyTransferOperator, error) {
+	s.listIMTOCalls++
+	if s.listIMTOFn != nil {
+		return s.listIMTOFn(ctx)
+	}
+	return nil, nil
+}
+
+func (s *financeHandlerStub) GetInternationalMoneyTransferOperator(ctx context.Context, operatorID string) (models.InternationalMoneyTransferOperator, error) {
+	s.getIMTOCalls++
+	s.lastIMTOID = operatorID
+	if s.getIMTOFn != nil {
+		return s.getIMTOFn(ctx, operatorID)
+	}
+	return models.InternationalMoneyTransferOperator{}, nil
 }
 
 func TestNewFinanceHandlerRejectsNilService(t *testing.T) {
@@ -355,6 +377,139 @@ func TestFinanceHandlerGetPaymentServiceProviderErrors(t *testing.T) {
 		}
 		if got := rr.Header().Get("Allow"); got != http.MethodGet {
 			t.Fatalf("unexpected allow header: %q", got)
+		}
+	})
+}
+
+func TestFinanceHandlerListInternationalMoneyTransferOperators(t *testing.T) {
+	t.Run("list all", func(t *testing.T) {
+		stub := &financeHandlerStub{
+			listIMTOFn: func(context.Context) ([]models.InternationalMoneyTransferOperator, error) {
+				return []models.InternationalMoneyTransferOperator{{
+					ID:   "olive-monies-express-limited",
+					Name: "OLIVE MONIES EXPRESS LIMITED",
+				}}, nil
+			},
+		}
+		h, err := NewFinanceHandler(stub)
+		if err != nil {
+			t.Fatalf("NewFinanceHandler() error = %v", err)
+		}
+
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/finance/international-money-transfer-operators", nil)
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.ListInternationalMoneyTransferOperators(w, r)
+		}, rr)
+
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if stub.listIMTOCalls != 1 || stub.getIMTOCalls != 0 {
+			t.Fatalf("unexpected call counts: list=%d get=%d", stub.listIMTOCalls, stub.getIMTOCalls)
+		}
+
+		var body map[string]any
+		if err := json.Unmarshal(rr.Body.Bytes(), &body); err != nil {
+			t.Fatalf("json.Unmarshal: %v", err)
+		}
+		data := body["data"].([]any)
+		if len(data) != 1 {
+			t.Fatalf("unexpected operator payload: %#v", data)
+		}
+		item := data[0].(map[string]any)
+		if len(item) != 2 || item["id"] != "olive-monies-express-limited" || item["name"] != "OLIVE MONIES EXPRESS LIMITED" {
+			t.Fatalf("unexpected operator response: %#v", item)
+		}
+	})
+}
+
+func TestFinanceHandlerGetInternationalMoneyTransferOperator(t *testing.T) {
+	stub := &financeHandlerStub{
+		getIMTOFn: func(ctx context.Context, operatorID string) (models.InternationalMoneyTransferOperator, error) {
+			if operatorID != "olive-monies-express-limited" {
+				t.Fatalf("unexpected operator id: %q", operatorID)
+			}
+			return models.InternationalMoneyTransferOperator{
+				ID:   operatorID,
+				Name: "OLIVE MONIES EXPRESS LIMITED",
+			}, nil
+		},
+	}
+	h, err := NewFinanceHandler(stub)
+	if err != nil {
+		t.Fatalf("NewFinanceHandler() error = %v", err)
+	}
+
+	rr := httptest.NewRecorder()
+	req := httptest.NewRequest(http.MethodGet, "/v1/finance/international-money-transfer-operators/olive-monies-express-limited", nil)
+	req.SetPathValue("operator_id", " olive-monies-express-limited ")
+	invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+		h.GetInternationalMoneyTransferOperator(w, r)
+	}, rr)
+
+	if rr.Code != http.StatusOK {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if stub.getIMTOCalls != 1 {
+		t.Fatalf("unexpected get call count: %d", stub.getIMTOCalls)
+	}
+	if stub.lastIMTOID != "olive-monies-express-limited" {
+		t.Fatalf("unexpected operator id: %q", stub.lastIMTOID)
+	}
+
+	var body map[string]any
+	if err := json.Unmarshal(rr.Body.Bytes(), &body); err != nil {
+		t.Fatalf("json.Unmarshal: %v", err)
+	}
+	data := body["data"].(map[string]any)
+	if len(data) != 2 {
+		t.Fatalf("unexpected operator payload: %#v", data)
+	}
+	if data["name"] != "OLIVE MONIES EXPRESS LIMITED" {
+		t.Fatalf("unexpected operator response: %#v", data)
+	}
+}
+
+func TestFinanceHandlerGetInternationalMoneyTransferOperatorErrors(t *testing.T) {
+	t.Run("invalid id", func(t *testing.T) {
+		stub := &financeHandlerStub{}
+		h, err := NewFinanceHandler(stub)
+		if err != nil {
+			t.Fatalf("NewFinanceHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/finance/international-money-transfer-operators/invalid", nil)
+		req.SetPathValue("operator_id", "Olive Monies")
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.GetInternationalMoneyTransferOperator(w, r)
+		}, rr)
+		if rr.Code != http.StatusUnprocessableEntity {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if stub.getIMTOCalls != 0 {
+			t.Fatalf("service should not be called for invalid operator ids")
+		}
+	})
+
+	t.Run("missing operator", func(t *testing.T) {
+		stub := &financeHandlerStub{
+			getIMTOFn: func(context.Context, string) (models.InternationalMoneyTransferOperator, error) {
+				return models.InternationalMoneyTransferOperator{}, services.ErrInternationalMoneyTransferOperatorNotFound
+			},
+		}
+		h, err := NewFinanceHandler(stub)
+		if err != nil {
+			t.Fatalf("NewFinanceHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/finance/international-money-transfer-operators/missing", nil)
+		req.SetPathValue("operator_id", "missing")
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.GetInternationalMoneyTransferOperator(w, r)
+		}, rr)
+		if rr.Code != http.StatusNotFound {
+			t.Fatalf("unexpected status: %d", rr.Code)
 		}
 	})
 }

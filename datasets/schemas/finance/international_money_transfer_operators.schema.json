@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://softdata-api.local/schemas/finance/international_money_transfer_operators.schema.json",
+  "title": "Nigeria International Money Transfer Operators",
+  "description": "Schema for the ng-international-money-transfer-operators dataset compiled by SoftData.",
+  "type": "array",
+  "minItems": 108,
+  "maxItems": 108,
+  "uniqueItems": true,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "name"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}
