@@ -1,0 +1,25 @@
+{
+  "dataset_key": "ng-international-money-transfer-operators",
+  "title": "Nigeria International Money Transfer Operators",
+  "description": "Independently compiled factual reference data for the current Central Bank of Nigeria IMTO register snapshot.",
+  "country_code": "NG",
+  "dataset_group": "finance",
+  "format": "json",
+  "relative_path": "finance/international_money_transfer_operators.json",
+  "schema_path": "schemas/finance/international_money_transfer_operators.schema.json",
+  "record_count": 108,
+  "version": "1.0.0",
+  "license_id": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "methodology": "Independently compiled and cross-verified factual reference data from the public Central Bank of Nigeria International Money Transfer Operators register. The register was retrieved three times with consistent 108-row results on 2026-08-30. SoftData compiled the current CBN-licensed IMTO entries as the dataset boundary and normalized the source-side concatenation defect at SN 63 by compiling OLIVE MONIES EXPRESS LIMITED while keeping NOUVEAU MOBILE LIMITED as the separate SN 60 listing. Former-name annotations were preserved in working audit notes only and are not part of the public names. Addresses, incorporation country, licence numbers, status labels and corridor assumptions were not inferred. No downloadable or alternate machine-readable register was observed, and no visible last-updated date was present. Inclusion does not guarantee current availability for any particular customer or transfer corridor.",
+  "sources": [
+    {
+      "organization": "Central Bank of Nigeria",
+      "title": "International Money Transfer Operators",
+      "url": "https://www.cbn.gov.ng/PaymentsSystem/InternationalMoneyTransferOperators.html",
+      "purpose": "Verify the current CBN-licensed IMTO register snapshot and the source-side concatenation defect at SN 63.",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "verified_at": "2026-08-30"
+}

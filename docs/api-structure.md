@@ -59,6 +59,7 @@ softdata-api/
 │       └── usage.sql
 ├── datasets
 │   ├── finance
+│   │   ├── international_money_transfer_operators.json
 │   │   └── payment_service_providers.json
 │   ├── geography
 │   │   ├── geopolitical_zones.json
@@ -67,6 +68,7 @@ softdata-api/
 │   ├── LICENSE.md
 │   ├── metadata
 │   │   ├── finance
+│   │   │   ├── international_money_transfer_operators.json
 │   │   │   └── payment_service_providers.json
 │   │   └── geography
 │   │       ├── geopolitical_zones.json
@@ -75,6 +77,7 @@ softdata-api/
 │   ├── README.md
 │   └── schemas
 │       ├── finance
+│       │   ├── international_money_transfer_operators.schema.json
 │       │   └── payment_service_providers.schema.json
 │       └── geography
 │           ├── geopolitical_zones.schema.json

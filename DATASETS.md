@@ -135,6 +135,16 @@ Nigeria's current Central Bank of Nigeria payment-service-provider register snap
 
 The package contains 255 provider-category memberships across seven approved PSP categories. Each record represents one provider-category membership, and a provider may appear in multiple categories.
 
+### `ng-international-money-transfer-operators`
+
+Nigeria's current Central Bank of Nigeria IMTO register snapshot.
+
+- `datasets/finance/international_money_transfer_operators.json`
+- `datasets/schemas/finance/international_money_transfer_operators.schema.json`
+- `datasets/metadata/finance/international_money_transfer_operators.json`
+
+The package contains 108 CBN-listed IMTO entries. Each record represents one current register listing, with the source-side concatenation defect at SN 63 normalized transparently in metadata. The package is names-only, does not record addresses or inferred country data, and IMTOs remain separate from the payment-service-provider register. No API routes are introduced by this dataset package.
+
 ## Directory Structure
 
 ```text
