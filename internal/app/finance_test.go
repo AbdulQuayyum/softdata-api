@@ -1,0 +1,311 @@
+package app
+
+import (
+	"context"
+	"encoding/json"
+	"errors"
+	"os"
+	"path/filepath"
+	"strings"
+	"testing"
+
+	"github.com/AbdulQuayyum/softdata-api/internal/config"
+	"github.com/AbdulQuayyum/softdata-api/internal/handlers"
+	"github.com/AbdulQuayyum/softdata-api/internal/models"
+	fileRepo "github.com/AbdulQuayyum/softdata-api/internal/repository/file"
+	"github.com/AbdulQuayyum/softdata-api/internal/repository/interfaces"
+	"github.com/AbdulQuayyum/softdata-api/internal/services"
+)
+
+type financeServiceStub struct {
+	providers []models.PaymentServiceProvider
+	err       error
+	calls     int
+}
+
+func (s *financeServiceStub) ListPaymentServiceProviders(context.Context) ([]models.PaymentServiceProvider, error) {
+	s.calls++
+	if s.err != nil {
+		return nil, s.err
+	}
+	return append([]models.PaymentServiceProvider(nil), s.providers...), nil
+}
+
+func (s *financeServiceStub) ListPaymentServiceProvidersByType(context.Context, string) ([]models.PaymentServiceProvider, error) {
+	return nil, nil
+}
+
+func (s *financeServiceStub) GetPaymentServiceProvider(context.Context, string) (models.PaymentServiceProvider, error) {
+	return models.PaymentServiceProvider{}, nil
+}
+
+type financeRepositoryStub struct{}
+
+func (s *financeRepositoryStub) ListPaymentServiceProviders(context.Context) ([]models.PaymentServiceProvider, error) {
+	return nil, nil
+}
+
+func (s *financeRepositoryStub) ListPaymentServiceProvidersByType(context.Context, string) ([]models.PaymentServiceProvider, error) {
+	return nil, nil
+}
+
+func (s *financeRepositoryStub) GetPaymentServiceProvider(context.Context, string) (models.PaymentServiceProvider, error) {
+	return models.PaymentServiceProvider{}, nil
+}
+
+type financeJSONRepoStub struct{}
+
+func (s *financeJSONRepoStub) Decode(context.Context, string, any) error {
+	return nil
+}
+
+func loadApprovedFinanceProviders(t *testing.T) []models.PaymentServiceProvider {
+	t.Helper()
+
+	data, err := os.ReadFile(filepath.Clean("../../datasets/finance/payment_service_providers.json"))
+	if err != nil {
+		t.Fatalf("ReadFile() error = %v", err)
+	}
+	var providers []models.PaymentServiceProvider
+	if err := json.Unmarshal(data, &providers); err != nil {
+		t.Fatalf("json.Unmarshal() error = %v", err)
+	}
+	return providers
+}
+
+func writeFinanceFixture(path string, providers []models.PaymentServiceProvider) error {
+	data, err := json.Marshal(providers)
+	if err != nil {
+		return err
+	}
+	return os.WriteFile(path, data, 0o600)
+}
+
+func TestBuildFinanceHandlerPassesConfiguredDatasetArgs(t *testing.T) {
+	t.Parallel()
+
+	cfg := &config.Config{
+		Datasets: config.DatasetConfig{
+			Path:         "/tmp/custom-datasets",
+			JSONMaxBytes: 9876,
+		},
+	}
+
+	var gotRoot string
+	var gotMaxBytes int64
+	var gotPath string
+	handler, err := buildFinanceHandler(context.Background(), cfg,
+		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
+			gotRoot = root
+			gotMaxBytes = maxBytes
+			return &financeJSONRepoStub{}, nil
+		},
+		func(repository interfaces.JSONFileRepository, paymentServiceProvidersPath string) (interfaces.FinanceRepository, error) {
+			gotPath = paymentServiceProvidersPath
+			return &financeRepositoryStub{}, nil
+		},
+		func(repository interfaces.FinanceRepository) (financeService, error) {
+			return &financeServiceStub{providers: loadApprovedFinanceProviders(t)}, nil
+		},
+		func(service financeService) (*handlers.FinanceHandler, error) {
+			return handlers.NewFinanceHandler(service)
+		},
+	)
+	if err != nil {
+		t.Fatalf("buildFinanceHandler() error = %v", err)
+	}
+	if handler == nil {
+		t.Fatal("buildFinanceHandler() returned nil handler")
+	}
+	if gotRoot != cfg.Datasets.Path {
+		t.Fatalf("unexpected dataset root: %q", gotRoot)
+	}
+	if gotMaxBytes != cfg.Datasets.JSONMaxBytes {
+		t.Fatalf("unexpected JSON max bytes: %d", gotMaxBytes)
+	}
+	if gotPath != financePaymentServiceProvidersRelativePath {
+		t.Fatalf("unexpected finance dataset path: %q", gotPath)
+	}
+}
+
+func TestBuildFinanceHandlerValidFixturePassesStartupVerification(t *testing.T) {
+	t.Parallel()
+
+	root := t.TempDir()
+	if err := os.MkdirAll(filepath.Join(root, "finance"), 0o755); err != nil {
+		t.Fatalf("MkdirAll() error = %v", err)
+	}
+	data, err := os.ReadFile(filepath.Clean("../../datasets/finance/payment_service_providers.json"))
+	if err != nil {
+		t.Fatalf("ReadFile() error = %v", err)
+	}
+	if err := os.WriteFile(filepath.Join(root, "finance", "payment_service_providers.json"), data, 0o600); err != nil {
+		t.Fatalf("WriteFile() error = %v", err)
+	}
+
+	cfg := &config.Config{
+		Datasets: config.DatasetConfig{
+			Path:         root,
+			JSONMaxBytes: int64(len(data)) + 1024,
+		},
+	}
+
+	handler, err := buildFinanceHandler(context.Background(), cfg,
+		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
+			return fileRepo.NewJSONRepository(root, maxBytes)
+		},
+		func(repository interfaces.JSONFileRepository, paymentServiceProvidersPath string) (interfaces.FinanceRepository, error) {
+			return fileRepo.NewFinanceRepository(repository, paymentServiceProvidersPath)
+		},
+		func(repository interfaces.FinanceRepository) (financeService, error) {
+			return services.NewFinanceService(repository)
+		},
+		func(service financeService) (*handlers.FinanceHandler, error) {
+			return handlers.NewFinanceHandler(service)
+		},
+	)
+	if err != nil {
+		t.Fatalf("buildFinanceHandler() error = %v", err)
+	}
+	if handler == nil {
+		t.Fatal("buildFinanceHandler() returned nil handler")
+	}
+}
+
+func TestBuildFinanceHandlerFailsSafelyForInvalidDatasets(t *testing.T) {
+	t.Parallel()
+
+	fixture := loadApprovedFinanceProviders(t)
+	tests := []struct {
+		name string
+		set  func(root string) error
+	}{
+		{
+			name: "missing file",
+			set: func(root string) error {
+				return os.MkdirAll(root, 0o755)
+			},
+		},
+		{
+			name: "malformed json",
+			set: func(root string) error {
+				if err := os.MkdirAll(filepath.Join(root, "finance"), 0o755); err != nil {
+					return err
+				}
+				return os.WriteFile(filepath.Join(root, "finance", "payment_service_providers.json"), []byte("{bad"), 0o600)
+			},
+		},
+		{
+			name: "wrong record count",
+			set: func(root string) error {
+				if err := os.MkdirAll(filepath.Join(root, "finance"), 0o755); err != nil {
+					return err
+				}
+				return writeFinanceFixture(filepath.Join(root, "finance", "payment_service_providers.json"), fixture[:254])
+			},
+		},
+		{
+			name: "wrong category composition",
+			set: func(root string) error {
+				if err := os.MkdirAll(filepath.Join(root, "finance"), 0o755); err != nil {
+					return err
+				}
+				mutated := append([]models.PaymentServiceProvider(nil), fixture...)
+				if mutated[0].InstitutionType == "mobile_money_operator" {
+					mutated[0].InstitutionType = "switching_and_processing_company"
+				} else {
+					mutated[0].InstitutionType = "mobile_money_operator"
+				}
+				return writeFinanceFixture(filepath.Join(root, "finance", "payment_service_providers.json"), mutated)
+			},
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			root := t.TempDir()
+			if err := tc.set(root); err != nil {
+				t.Fatalf("setup() error = %v", err)
+			}
+
+			cfg := &config.Config{Datasets: config.DatasetConfig{Path: root, JSONMaxBytes: 2048}}
+			_, err := buildFinanceHandler(context.Background(), cfg,
+				func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
+					return fileRepo.NewJSONRepository(root, maxBytes)
+				},
+				func(repository interfaces.JSONFileRepository, paymentServiceProvidersPath string) (interfaces.FinanceRepository, error) {
+					return fileRepo.NewFinanceRepository(repository, paymentServiceProvidersPath)
+				},
+				func(repository interfaces.FinanceRepository) (financeService, error) {
+					return services.NewFinanceService(repository)
+				},
+				func(service financeService) (*handlers.FinanceHandler, error) {
+					return handlers.NewFinanceHandler(service)
+				},
+			)
+			if err == nil {
+				t.Fatal("buildFinanceHandler() error = nil, want failure")
+			}
+			if strings.Contains(err.Error(), root) {
+				t.Fatalf("error leaked dataset root: %v", err)
+			}
+		})
+	}
+}
+
+func TestBuildFinanceHandlerPropagatesContextCancellation(t *testing.T) {
+	t.Parallel()
+
+	cfg := &config.Config{
+		Datasets: config.DatasetConfig{
+			Path:         t.TempDir(),
+			JSONMaxBytes: 1,
+		},
+	}
+	ctx, cancel := context.WithCancel(context.Background())
+	cancel()
+
+	_, err := buildFinanceHandler(ctx, cfg,
+		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
+			return &financeJSONRepoStub{}, nil
+		},
+		func(repository interfaces.JSONFileRepository, paymentServiceProvidersPath string) (interfaces.FinanceRepository, error) {
+			return &financeRepositoryStub{}, nil
+		},
+		func(repository interfaces.FinanceRepository) (financeService, error) {
+			return &financeServiceStub{providers: loadApprovedFinanceProviders(t)}, nil
+		},
+		func(service financeService) (*handlers.FinanceHandler, error) {
+			return handlers.NewFinanceHandler(service)
+		},
+	)
+	if !errors.Is(err, context.Canceled) {
+		t.Fatalf("buildFinanceHandler() error = %v, want context.Canceled", err)
+	}
+}
+
+func TestBuildFinanceHandlerVerifiesThroughServiceAbstraction(t *testing.T) {
+	t.Parallel()
+
+	service := &financeServiceStub{providers: loadApprovedFinanceProviders(t)}
+	handler, err := buildFinanceHandlerFromJSONRepository(context.Background(), &financeJSONRepoStub{},
+		func(repository interfaces.JSONFileRepository, paymentServiceProvidersPath string) (interfaces.FinanceRepository, error) {
+			return &financeRepositoryStub{}, nil
+		},
+		func(repository interfaces.FinanceRepository) (financeService, error) {
+			return service, nil
+		},
+		func(service financeService) (*handlers.FinanceHandler, error) {
+			return handlers.NewFinanceHandler(service)
+		},
+	)
+	if err != nil {
+		t.Fatalf("buildFinanceHandlerFromJSONRepository() error = %v", err)
+	}
+	if handler == nil {
+		t.Fatal("buildFinanceHandlerFromJSONRepository() returned nil handler")
+	}
+	if service.calls != 1 {
+		t.Fatalf("expected startup verification to call list-all once, got %d", service.calls)
+	}
+}

@@ -6,7 +6,7 @@ SoftData API uses a layered Go layout that keeps entry points, configuration, da
 
 - `cmd/` holds executable entry points.
 - `internal/` contains the core application logic, including configuration, database access, repositories, security helpers, request validators, response helpers, and domain/API models.
-- `datasets/` contains versioned geography datasets, schemas, metadata, and licensing notes.
+- `datasets/` contains versioned geography and finance datasets, schemas, metadata, and licensing notes.
 - `database/` contains PostgreSQL migrations and handwritten SQL queries.
 - `docs/` holds API and project documentation.
 - Root tooling files such as `Makefile`, `sqlc.yaml`, `.air.toml`, and `.env.example` support local development and database generation.
@@ -58,18 +58,24 @@ softdata-api/
 │       ├── sessions.sql
 │       └── usage.sql
 ├── datasets
+│   ├── finance
+│   │   └── payment_service_providers.json
 │   ├── geography
 │   │   ├── geopolitical_zones.json
 │   │   ├── lgas.json
 │   │   └── states.json
 │   ├── LICENSE.md
 │   ├── metadata
+│   │   ├── finance
+│   │   │   └── payment_service_providers.json
 │   │   └── geography
 │   │       ├── geopolitical_zones.json
 │   │       ├── lgas.json
 │   │       └── states.json
 │   ├── README.md
 │   └── schemas
+│       ├── finance
+│       │   └── payment_service_providers.schema.json
 │       └── geography
 │           ├── geopolitical_zones.schema.json
 │           ├── lgas.schema.json
@@ -91,6 +97,7 @@ softdata-api/
 │   │   ├── app.go
 │   │   ├── app_test.go
 │   │   ├── dependencies.go
+│   │   ├── finance_test.go
 │   │   ├── geography_test.go
 │   │   └── shutdown.go
 │   ├── config
@@ -128,6 +135,8 @@ softdata-api/
 │   │   ├── dataset_handler_test.go
 │   │   ├── discovery_handler.go
 │   │   ├── discovery_handler_test.go
+│   │   ├── finance_handler.go
+│   │   ├── finance_handler_test.go
 │   │   ├── geography_handler.go
 │   │   ├── geography_handler_test.go
 │   │   ├── health_handler.go
@@ -169,6 +178,8 @@ softdata-api/
 │   │   ├── dataset_public_test.go
 │   │   ├── dataset_source.go
 │   │   ├── dataset_version.go
+│   │   ├── finance.go
+│   │   ├── finance_test.go
 │   │   ├── geography.go
 │   │   ├── geography_test.go
 │   │   ├── lgas_test.go
@@ -182,6 +193,8 @@ softdata-api/
 │   │   ├── file
 │   │   │   ├── csv_repository.go
 │   │   │   ├── csv_repository_test.go
+│   │   │   ├── finance_repository.go
+│   │   │   ├── finance_repository_test.go
 │   │   │   ├── geography_repository.go
 │   │   │   ├── geography_repository_test.go
 │   │   │   ├── geojson_repository.go
@@ -196,6 +209,7 @@ softdata-api/
 │   │   │   ├── dataset_repository.go
 │   │   │   ├── errors.go
 │   │   │   ├── file_repository.go
+│   │   │   ├── finance_repository.go
 │   │   │   ├── geography_repository.go
 │   │   │   ├── rate_limit_repository.go
 │   │   │   ├── session_repository.go
@@ -216,6 +230,7 @@ softdata-api/
 │   ├── response
 │   │   ├── errors.go
 │   │   ├── errors_test.go
+│   │   ├── finance_response_test.go
 │   │   ├── pagination.go
 │   │   ├── response.go
 │   │   └── response_test.go
@@ -250,6 +265,8 @@ softdata-api/
 │   │   ├── dataset_service.go
 │   │   ├── dataset_service_test.go
 │   │   ├── errors.go
+│   │   ├── finance_service.go
+│   │   ├── finance_service_test.go
 │   │   ├── geography_service.go
 │   │   ├── geography_service_test.go
 │   │   ├── usage_service.go
@@ -263,6 +280,8 @@ softdata-api/
 │       ├── auth_validator_test.go
 │       ├── dataset_validator.go
 │       ├── dataset_validator_test.go
+│       ├── finance_validator.go
+│       ├── finance_validator_test.go
 │       ├── geography_validator.go
 │       ├── geography_validator_test.go
 │       ├── query_validator.go

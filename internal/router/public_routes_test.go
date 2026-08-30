@@ -104,6 +104,47 @@ func TestPublicRoutesServeGeographyLGAs(t *testing.T) {
 	}
 }
 
+func TestPublicRoutesServeFinancePaymentServiceProviders(t *testing.T) {
+	rec := &routerRecorder{}
+	router := newTestRouter(t, rec)
+
+	rr := httptest.NewRecorder()
+	req := httptest.NewRequest(http.MethodGet, "/v1/finance/payment-service-providers", nil)
+	router.ServeHTTP(rr, req)
+	if rr.Code != http.StatusOK {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if !strings.Contains(strings.Join(rec.snapshot(), ","), "finance.list") {
+		t.Fatalf("expected finance list handler to run: %v", rec.snapshot())
+	}
+
+	rec = &routerRecorder{}
+	router = newTestRouter(t, rec)
+
+	rr = httptest.NewRecorder()
+	req = httptest.NewRequest(http.MethodGet, "/v1/finance/payment-service-providers?institution_type=super_agent", nil)
+	router.ServeHTTP(rr, req)
+	if rr.Code != http.StatusOK {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if !strings.Contains(strings.Join(rec.snapshot(), ","), "finance.list-by:super_agent") {
+		t.Fatalf("expected finance filtered handler to run: %v", rec.snapshot())
+	}
+
+	rec = &routerRecorder{}
+	router = newTestRouter(t, rec)
+
+	rr = httptest.NewRecorder()
+	req = httptest.NewRequest(http.MethodGet, "/v1/finance/payment-service-providers/super-agent-fairmoney", nil)
+	router.ServeHTTP(rr, req)
+	if rr.Code != http.StatusOK {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if !strings.Contains(strings.Join(rec.snapshot(), ","), "finance.get:super-agent-fairmoney") {
+		t.Fatalf("expected finance detail handler to run: %v", rec.snapshot())
+	}
+}
+
 func TestPublicRoutesRejectUnsupportedMethods(t *testing.T) {
 	rec := &routerRecorder{}
 	router := newTestRouter(t, rec)
@@ -121,6 +162,16 @@ func TestPublicRoutesRejectUnsupportedMethods(t *testing.T) {
 
 	rr = httptest.NewRecorder()
 	req = httptest.NewRequest(http.MethodHead, "/v1/geography/geopolitical-zones/north-central", nil)
+	router.ServeHTTP(rr, req)
+	if rr.Code != http.StatusMethodNotAllowed {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if got := rr.Header().Get("Allow"); got != http.MethodGet {
+		t.Fatalf("unexpected allow header: %q", got)
+	}
+
+	rr = httptest.NewRecorder()
+	req = httptest.NewRequest(http.MethodHead, "/v1/finance/payment-service-providers/super-agent-fairmoney", nil)
 	router.ServeHTTP(rr, req)
 	if rr.Code != http.StatusMethodNotAllowed {
 		t.Fatalf("unexpected status: %d", rr.Code)

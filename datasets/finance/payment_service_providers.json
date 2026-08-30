@@ -1,0 +1,1532 @@
+[
+  {
+    "id": "mobile-money-operator-abeg-technologies-limited",
+    "name": "Abeg Technologies Limited",
+    "institution_type": "mobile_money_operator",
+    "country_code": "NG"
+  },
+  {
+    "id": "mobile-money-operator-chams-mobile",
+    "name": "Chams Mobile",
+    "institution_type": "mobile_money_operator",
+    "country_code": "NG"
+  },
+  {
+    "id": "mobile-money-operator-etranzact-international-limited",
+    "name": "eTranzact International Limited",
+    "institution_type": "mobile_money_operator",
+    "country_code": "NG"
+  },
+  {
+    "id": "mobile-money-operator-fortis-mobile-money-limited",
+    "name": "Fortis Mobile Money Limited",
+    "institution_type": "mobile_money_operator",
+    "country_code": "NG"
+  },
+  {
+    "id": "mobile-money-operator-funds-and-electronic-transfer-fets-limited",
+    "name": "Funds And Electronic Transfer (FETS) Limited",
+    "institution_type": "mobile_money_operator",
+    "country_code": "NG"
+  },
+  {
+    "id": "mobile-money-operator-hedonmark-management-services-limited",
+    "name": "Hedonmark Management Services Limited",
+    "institution_type": "mobile_money_operator",
+    "country_code": "NG"
+  },
+  {
+    "id": "mobile-money-operator-kongapay-technologies-limited",
+    "name": "KongaPay Technologies Limited",
+    "institution_type": "mobile_money_operator",
+    "country_code": "NG"
+  },
+  {
+    "id": "mobile-money-operator-mkudi-limited",
+    "name": "Mkudi Limited",
+    "institution_type": "mobile_money_operator",
+    "country_code": "NG"
+  },
+  {
+    "id": "mobile-money-operator-nownow-digital-systems-limited",
+    "name": "NowNow Digital Systems Limited",
+    "institution_type": "mobile_money_operator",
+    "country_code": "NG"
+  },
+  {
+    "id": "mobile-money-operator-opay-digital-services-limited",
+    "name": "Opay Digital Services Limited",
+    "institution_type": "mobile_money_operator",
+    "country_code": "NG"
+  },
+  {
+    "id": "mobile-money-operator-pagatech-limited",
+    "name": "Pagatech Limited",
+    "institution_type": "mobile_money_operator",
+    "country_code": "NG"
+  },
+  {
+    "id": "mobile-money-operator-palmpay-limited",
+    "name": "PalmPay Limited",
+    "institution_type": "mobile_money_operator",
+    "country_code": "NG"
+  },
+  {
+    "id": "mobile-money-operator-parkway-projects-limited",
+    "name": "Parkway Projects Limited.",
+    "institution_type": "mobile_money_operator",
+    "country_code": "NG"
+  },
+  {
+    "id": "mobile-money-operator-teasy-international-company-ltd",
+    "name": "Teasy International Company Ltd",
+    "institution_type": "mobile_money_operator",
+    "country_code": "NG"
+  },
+  {
+    "id": "mobile-money-operator-visual-ict-limited",
+    "name": "Visual ICT Limited",
+    "institution_type": "mobile_money_operator",
+    "country_code": "NG"
+  },
+  {
+    "id": "mobile-money-operator-vtnetwork-limited",
+    "name": "VTNetwork Limited",
+    "institution_type": "mobile_money_operator",
+    "country_code": "NG"
+  },
+  {
+    "id": "mobile-money-operator-xpress-mts-limited",
+    "name": "Xpress MTS Limited",
+    "institution_type": "mobile_money_operator",
+    "country_code": "NG"
+  },
+  {
+    "id": "switching-and-processing-company-arca-payments-company-limited",
+    "name": "Arca Payments Company Limited",
+    "institution_type": "switching_and_processing_company",
+    "country_code": "NG"
+  },
+  {
+    "id": "switching-and-processing-company-belema-financial-technology-limited",
+    "name": "Belema Financial Technology Limited",
+    "institution_type": "switching_and_processing_company",
+    "country_code": "NG"
+  },
+  {
+    "id": "switching-and-processing-company-chamswitch-limited",
+    "name": "Chamswitch Limited",
+    "institution_type": "switching_and_processing_company",
+    "country_code": "NG"
+  },
+  {
+    "id": "switching-and-processing-company-coralpay-technology-nigeria-limited",
+    "name": "Coralpay Technology Nigeria Limited",
+    "institution_type": "switching_and_processing_company",
+    "country_code": "NG"
+  },
+  {
+    "id": "switching-and-processing-company-etranzact-international-limited",
+    "name": "eTranzact International Limited",
+    "institution_type": "switching_and_processing_company",
+    "country_code": "NG"
+  },
+  {
+    "id": "switching-and-processing-company-flutterwave-technology-solutions-limited",
+    "name": "Flutterwave Technology Solutions Limited",
+    "institution_type": "switching_and_processing_company",
+    "country_code": "NG"
+  },
+  {
+    "id": "switching-and-processing-company-habaripay-limited",
+    "name": "Habaripay Limited",
+    "institution_type": "switching_and_processing_company",
+    "country_code": "NG"
+  },
+  {
+    "id": "switching-and-processing-company-hydrogen-payment-services-limited",
+    "name": "Hydrogen Payment Services Limited",
+    "institution_type": "switching_and_processing_company",
+    "country_code": "NG"
+  },
+  {
+    "id": "switching-and-processing-company-interswitch-limited",
+    "name": "Interswitch Limited",
+    "institution_type": "switching_and_processing_company",
+    "country_code": "NG"
+  },
+  {
+    "id": "switching-and-processing-company-network-international",
+    "name": "Network International",
+    "institution_type": "switching_and_processing_company",
+    "country_code": "NG"
+  },
+  {
+    "id": "switching-and-processing-company-paystack-payment-limited",
+    "name": "Paystack Payment Limited",
+    "institution_type": "switching_and_processing_company",
+    "country_code": "NG"
+  },
+  {
+    "id": "switching-and-processing-company-remita-payment-service-limited",
+    "name": "Remita Payment Service Limited",
+    "institution_type": "switching_and_processing_company",
+    "country_code": "NG"
+  },
+  {
+    "id": "switching-and-processing-company-say-switch-limited",
+    "name": "Say Switch Limited",
+    "institution_type": "switching_and_processing_company",
+    "country_code": "NG"
+  },
+  {
+    "id": "switching-and-processing-company-teamapt-limited",
+    "name": "Teamapt Limited",
+    "institution_type": "switching_and_processing_company",
+    "country_code": "NG"
+  },
+  {
+    "id": "switching-and-processing-company-terra-switching-processing-company-limited",
+    "name": "Terra Switching & Processing Company Limited",
+    "institution_type": "switching_and_processing_company",
+    "country_code": "NG"
+  },
+  {
+    "id": "switching-and-processing-company-unified-payment-services-limited",
+    "name": "Unified Payment Services Limited",
+    "institution_type": "switching_and_processing_company",
+    "country_code": "NG"
+  },
+  {
+    "id": "switching-and-processing-company-uniswitch-technology-limited",
+    "name": "Uniswitch Technology Limited",
+    "institution_type": "switching_and_processing_company",
+    "country_code": "NG"
+  },
+  {
+    "id": "switching-and-processing-company-xpress-payments-solution-limited",
+    "name": "Xpress Payments Solution Limited",
+    "institution_type": "switching_and_processing_company",
+    "country_code": "NG"
+  },
+  {
+    "id": "switching-and-processing-company-zone-payment-network-limited",
+    "name": "Zone Payment Network Limited",
+    "institution_type": "switching_and_processing_company",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-accesspower-payments-solutions-limited",
+    "name": "AccessPower Payments Solutions Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-afara-partners-limited",
+    "name": "Afara Partners Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-akupay-services-limited",
+    "name": "Akupay Services Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-alaje-technology-limited",
+    "name": "Alaje Technology Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-aliancepay-limited",
+    "name": "Aliancepay Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-angala-financial-technologies-limited",
+    "name": "Angala Financial Technologies Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-appglobal-technologies-limited",
+    "name": "Appglobal Technologies Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-appmart-integrated-limited",
+    "name": "Appmart Integrated Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-aspapay-limited",
+    "name": "Aspapay Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-bestaff-payment-solutions-limited",
+    "name": "Bestaff Payment Solutions Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-betastack-technology-limited",
+    "name": "Betastack Technology Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-billzone-solutions-limited",
+    "name": "Billzone Solutions Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-bluesalt-financial-services-limited",
+    "name": "Bluesalt Financial Services Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-bt-payments-services-nigeria-limited",
+    "name": "BT Payments Services Nigeria Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-bud-infrastructure-limited",
+    "name": "Bud Infrastructure Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-bvnk-services-limited",
+    "name": "Bvnk Services Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-callphone-limited",
+    "name": "Callphone Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-capricorn-digital-limited",
+    "name": "Capricorn Digital Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-cbi-technologies-ltd",
+    "name": "CBI Technologies Ltd",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-cellulant-nigeria-limited",
+    "name": "Cellulant Nigeria Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-centric-gateway-limited",
+    "name": "Centric Gateway Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-ceviant-payments-nigeria-limited",
+    "name": "Ceviant Payments Nigeria Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-clane-company-nig-ltd",
+    "name": "Clane Company Nig. Ltd.",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-cyberpay-limited",
+    "name": "Cyberpay Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-demerge-nigeria-limited",
+    "name": "Demerge Nigeria Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-dot-financial-inclusion-technologies-limited",
+    "name": "Dot Financial Inclusion Technologies Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-duplo-limited",
+    "name": "Duplo Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-e-settlement-limited",
+    "name": "E-Settlement Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-easypay-international-services-limited",
+    "name": "Easypay International Services Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-echezona-digital-gateway-limited",
+    "name": "Echezona Digital Gateway Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-egole-pay-limited",
+    "name": "Egole Pay Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-elipa-payments-limited",
+    "name": "Elipa Payments Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-end2end-technologies-limited",
+    "name": "End2end Technologies Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-epic-payment-technologies-limited",
+    "name": "Epic Payment Technologies Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-ercas-integrated-solutions-limited",
+    "name": "Ercas Integrated Solutions Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-eyowo-integrated-payments-limited",
+    "name": "Eyowo Integrated Payments Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-fairsure-payments-limited",
+    "name": "Fairsure Payments Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-figours-innovation-limited",
+    "name": "Figours Innovation Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-fincra-technologies-limited",
+    "name": "Fincra Technologies Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-fountain-payment-systems-solution",
+    "name": "Fountain Payment Systems Solution",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-futurepay-tech-solutions-nigeria-limited",
+    "name": "Futurepay Tech Solutions Nigeria Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-gemspay-limited",
+    "name": "Gemspay Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-global-accelerex-limited",
+    "name": "Global Accelerex Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-gpay-instant-solution-limited",
+    "name": "Gpay Instant Solution Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-gtp-client-services-limited",
+    "name": "GTP Client Services Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-hea-dew-solutions-nigeria-limited",
+    "name": "Hea-Dew Solutions Nigeria Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-hellopay-africa-integrated-service-ltd",
+    "name": "Hellopay Africa Integrated Service Ltd.",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-huiospay-limited",
+    "name": "Huiospay Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-icad-concord-limited",
+    "name": "ICAD Concord Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-infiniti-segments-limited",
+    "name": "Infiniti Segments Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-integrated-revenue-collection-and-management-solution-ircms-limited",
+    "name": "Integrated Revenue Collection and Management Solution(IRCMS) Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-irecharge-technology-innovations-limited",
+    "name": "Irecharge Technology Innovations Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-irofit-technologies-limitedd",
+    "name": "Irofit Technologies LimitedD",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-itex-integrated-services-limited",
+    "name": "Itex Integrated Services Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-jupiter-payment-services-limited",
+    "name": "Jupiter Payment Services Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-karrabo-financial-solutions-limited",
+    "name": "Karrabo Financial Solutions Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-katsu-network-limited",
+    "name": "Katsu Network Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-klasha-technologies-limited",
+    "name": "Klasha Technologies Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-konetpay-nigeria-limited",
+    "name": "Konetpay Nigeria Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-kora-payments",
+    "name": "Kora Payments",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-leadremit-limited",
+    "name": "Leadremit Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-linq-payment-technology-limited",
+    "name": "Linq Payment Technology Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-moment-nigeria-pay2-ltd",
+    "name": "Moment Nigeria Pay2 Ltd",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-moneta-technology-limited",
+    "name": "Moneta Technology Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-montra-technology-solutions-limited",
+    "name": "Montra Technology Solutions Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-msia-oculus-technologies-limited",
+    "name": "Msia Oculus Technologies Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-multigate-payment-limited",
+    "name": "Multigate Payment Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-netapps-technologies-limited",
+    "name": "Netapps Technologies Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-netplusdotcom-nigeria-limited",
+    "name": "Netplusdotcom Nigeria Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-nomba-financial-services-limited",
+    "name": "Nomba Financial Services Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-novac-payment-solutions-limited",
+    "name": "Novac Payment Solutions Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-okra-technologies-limited",
+    "name": "Okra Technologies Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-olive-payment-solutions-limited",
+    "name": "Olive Payment Solutions Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-onepipe-io-services-ltd",
+    "name": "Onepipe.Io Services Ltd",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-payaza-africa-limited",
+    "name": "Payaza Africa Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-payfixy-nigeria-limited",
+    "name": "Payfixy Nigeria Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-payinvert-limited",
+    "name": "Payinvert Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-paylode-services-limited",
+    "name": "Paylode Services Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-payment-access-system-limited",
+    "name": "Payment Access System Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-payment-island-services-limited",
+    "name": "Payment Island Services Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-paymi-solutions-limited",
+    "name": "Paymi Solutions Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-paymishtech-limited",
+    "name": "Paymishtech Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-paysharp-limited",
+    "name": "Paysharp Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-paysure-technologies-limited",
+    "name": "Paysure Technologies Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-payu-payments-nigeria-limited",
+    "name": "Payu Payments Nigeria Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-pethahiah-rehoboth-international-limited",
+    "name": "Pethahiah Rehoboth International Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-pixelplay-systems-limited",
+    "name": "Pixelplay Systems Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-prophius-limited",
+    "name": "Prophius Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-qrios-networks-limited",
+    "name": "Qrios Networks Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-r-lab-limited",
+    "name": "R-Lab Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-redtech-limited",
+    "name": "Redtech Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-resident-fintech-limited",
+    "name": "Resident Fintech Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-rexel-limited",
+    "name": "Rexel Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-routepay-fintech-limited",
+    "name": "Routepay Fintech Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-saanapay-corporate-investments-management-limited-saanacorp",
+    "name": "Saanapay Corporate Investments Management Limited (SAANACORP)",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-shago-payments-ltd",
+    "name": "Shago Payments Ltd",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-sid-digital-limited",
+    "name": "SID Digital Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-simplify-international-synergy-limited",
+    "name": "Simplify International Synergy Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-smile-identity-nigeria-limited",
+    "name": "Smile Identity Nigeria Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-soft-alliance-resources-limited",
+    "name": "Soft Alliance & Resources Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-soti-payment-limited",
+    "name": "Soti Payment Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-spay-business-solutions-limited",
+    "name": "Spay Business Solutions Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-spout-payment-solutions",
+    "name": "Spout Payment Solutions",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-swift-link-nz-global-services-ltd",
+    "name": "Swift Link-NZ Global Services Ltd.",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-swift-paygate-limited",
+    "name": "Swift Paygate Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-swwipe-financial-services-limited",
+    "name": "SWWIPE Financial Services Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-teinnovate-capital-limited",
+    "name": "Teinnovate Capital Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-solution-service-provider-tgipay-limited",
+    "name": "Tgipay Limited",
+    "institution_type": "payment_solution_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-3gee-pay-limited",
+    "name": "3gee Pay Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-3line-card-management",
+    "name": "3Line Card Management",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-appmart-integrated-limited",
+    "name": "Appmart Integrated Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-bestaff-payment-solutions-limited",
+    "name": "Bestaff Payment Solutions Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-betastack-technology-limited",
+    "name": "Betastack Technology Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-bizzdesk-global-solutions-limited",
+    "name": "Bizzdesk Global Solutions Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-blusalt-financial-services-limited",
+    "name": "Blusalt Financial Services Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-c24-limited",
+    "name": "C24 Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-callphone-limited",
+    "name": "Callphone Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-capricorn-digital-limited",
+    "name": "Capricorn Digital Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-cbi-technologies-ltd",
+    "name": "CBI Technologies Ltd",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-citiserve-limited",
+    "name": "Citiserve Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-clane-company-nig-ltd",
+    "name": "Clane Company Nig. Ltd.",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-computer-warehouse-group",
+    "name": "Computer Warehouse Group",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-cyberpay-limited",
+    "name": "Cyberpay Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-dot-financial-inclusion-technologies-limited",
+    "name": "Dot Financial Inclusion Technologies Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-egole-pay-limited",
+    "name": "Egole Pay Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-epic-payment-technologies-limited",
+    "name": "Epic Payment Technologies Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-etop-nigeria-limited",
+    "name": "Etop Nigeria Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-eyowo-integrated-payments-limited",
+    "name": "Eyowo Integrated Payments Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-fidesic-nigeria-limited",
+    "name": "Fidesic Nigeria Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-funds-konnect-limited",
+    "name": "Funds Konnect Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-global-accelerex-limited",
+    "name": "Global Accelerex Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-intellifin-solution-limited",
+    "name": "Intellifin Solution Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-intergrated-revenue-collection-and-management-solution-ircms-limited",
+    "name": "Intergrated Revenue Collection and Management Solution (IRCMS) Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-irofit-technologies-limited",
+    "name": "Irofit Technologies Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-itex-integrated-services-limited",
+    "name": "Itex Integrated Services Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-jupiter-payment-services-limited",
+    "name": "Jupiter Payment Services Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-karrabo-financial-solutions-limited",
+    "name": "Karrabo Financial Solutions Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-katsu-network-limited",
+    "name": "Katsu Network Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-konetpay-nigeria-limited",
+    "name": "Konetpay Nigeria Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-netop-business-systems-limited",
+    "name": "Netop Business Systems Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-netplusdotcom-nigeria-limited",
+    "name": "Netplusdotcom Nigeria Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-nomba-financial-services-limited",
+    "name": "Nomba Financial Services Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-olive-payment-solutions-limited",
+    "name": "Olive Payment Solutions Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-onecard-topup-services-limited",
+    "name": "Onecard Topup Services Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-paymi-solutions-limited",
+    "name": "Paymi Solutions Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-prophius-limited",
+    "name": "Prophius Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-reedpriceman-technologies-limited",
+    "name": "Reedpriceman Technologies Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-shago-payments-ltd",
+    "name": "Shago Payments LTD",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-soti-investments-limited",
+    "name": "Soti Investments Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-spout-payment-solutions",
+    "name": "Spout Payment Solutions",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-swift-link-nz-global-services-ltd",
+    "name": "Swift Link-NZ Global Services LTD",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-traction-payments-limited",
+    "name": "Traction Payments Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-upperlink-limited",
+    "name": "Upperlink Limited",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-waxed-mobile-nigeria-ltd",
+    "name": "Waxed Mobile Nigeria LTD",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-provider-wi-pay",
+    "name": "Wi-Pay",
+    "institution_type": "payment_terminal_service_provider",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-3line-card-management",
+    "name": "3Line Card Management",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-5554-technologies-limited",
+    "name": "5554 Technologies Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-accelerex-networks-limited",
+    "name": "Accelerex Networks Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-africa-mama-atm-limited",
+    "name": "Africa Mama Atm Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-africave-technologies-limited",
+    "name": "Africave Technologies Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-airtel-mobile-commerce-nigeria-limited-airtel",
+    "name": "Airtel Mobile Commerce Nigeria Limited (Airtel)",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-allstream-information-technology-solutions-limited",
+    "name": "Allstream Information Technology Solutions Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-angala-financial-technologies-limited",
+    "name": "Angala Financial Technologies Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-appmart-integrated-limited",
+    "name": "Appmart Integrated Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-atn-wayya-limited",
+    "name": "ATN Wayya Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-bestaff-payment-solutions-limited",
+    "name": "Bestaff Payment Solutions Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-betastack-technology-limited",
+    "name": "Betastack Technology Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-c24-limited",
+    "name": "C24 Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-callphone-limited",
+    "name": "Callphone Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-capricorn-digital-limited",
+    "name": "Capricorn Digital Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-cbi-technologies-ltd",
+    "name": "CBI Technologies Ltd",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-cicoserve-payments-limited",
+    "name": "Cicoserve Payments Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-citiserve-limited",
+    "name": "Citiserve Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-clane-company-nig-ltd",
+    "name": "Clane Company Nig. Ltd",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-connectpoint-technology-solutions-limited",
+    "name": "Connectpoint Technology Solutions Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-crowd-force-limited",
+    "name": "Crowd Force Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-dot-financial-inclusion-technologies-limited",
+    "name": "Dot Financial Inclusion Technologies Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-e-settlement-limited",
+    "name": "E-Settlement Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-egole-pay-limited",
+    "name": "Egole Pay Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-epic-payment-technologies-limited",
+    "name": "Epic Payment Technologies Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-errand-p-limited",
+    "name": "Errand P Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-fountain-payment-systems-solution",
+    "name": "Fountain Payment Systems Solution",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-fucil-datatech-limited",
+    "name": "Fucil Datatech Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-gwills-payments-service-limited",
+    "name": "Gwills Payments Service Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-horizonpay-nigeria-limited",
+    "name": "Horizonpay Nigeria Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-infibranches-technology-limited",
+    "name": "Infibranches Technology Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-intergrated-revenue-collection-and-management-solution-ircms-limited",
+    "name": "Intergrated Revenue Collection and Management Solution (IRCMS) Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-interswitch-financial-inclusion-services-limited",
+    "name": "Interswitch Financial Inclusion Services Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-irofit-technologies-limited",
+    "name": "Irofit Technologies Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-itex-integrated-services-limited",
+    "name": "Itex Integrated Services Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-jupiter-payment-services-limited",
+    "name": "Jupiter Payment Services Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-kadick-integrated-limited",
+    "name": "Kadick Integrated Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-katsu-network-limited",
+    "name": "Katsu Network Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-liberty-pay-limited",
+    "name": "Liberty Pay Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-lukeport-nigeria-limited",
+    "name": "Lukeport Nigeria Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-microsystems-investment-and-development-limited",
+    "name": "Microsystems Investment And Development Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-moneymaster-limited",
+    "name": "Moneymaster Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-montra-technology-solutions-limited",
+    "name": "Montra Technology Solutions Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-nigerian-postal-service-nipost",
+    "name": "Nigerian Postal Service (NIPOST)",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-nomba-financial-services-limited",
+    "name": "Nomba Financial Services Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-olive-payment-solutions-limited",
+    "name": "Olive Payment Solutions Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-olivepeak-international-limited",
+    "name": "Olivepeak International Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-paycluster-technology-limited",
+    "name": "Paycluster Technology Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-paygo-limited",
+    "name": "Paygo Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-paymi-solutions-limited",
+    "name": "Paymi Solutions Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-shago-payments-ltd",
+    "name": "Shago Payments Ltd",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-spout-payment-solutions",
+    "name": "Spout Payment Solutions",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-supplysmart-nigeria-limited",
+    "name": "Supplysmart Nigeria Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-swift-link-nz-global-services-ltd",
+    "name": "Swift Link-NZ Global Services Ltd",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-traction-payments-ltd",
+    "name": "Traction Payments Ltd",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-transbill-solution-limited",
+    "name": "Transbill Solution Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-upperlink-limited",
+    "name": "Upperlink Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-vatebra-pay-limited",
+    "name": "Vatebra Pay Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-waxed-mobile-nigeria-ltd",
+    "name": "Waxed Mobile Nigeria Ltd",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-xchange-box-solutions-limited",
+    "name": "Xchange Box Solutions Limited",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "super-agent-y-ello-digital-financial-services",
+    "name": "Y'ello Digital Financial Services..",
+    "institution_type": "super_agent",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-service-holding-company-interswitch-pshc-nigeria-limited",
+    "name": "Interswitch PSHC Nigeria Limited",
+    "institution_type": "payment_service_holding_company",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-aggregator-nigeria-inter-bank-settlement-system-plc",
+    "name": "Nigeria Inter-Bank Settlement System PLC",
+    "institution_type": "payment_terminal_service_aggregator",
+    "country_code": "NG"
+  },
+  {
+    "id": "payment-terminal-service-aggregator-unified-payment-services-limited",
+    "name": "Unified Payment Services Limited",
+    "institution_type": "payment_terminal_service_aggregator",
+    "country_code": "NG"
+  }
+]

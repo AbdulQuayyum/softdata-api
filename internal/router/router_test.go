@@ -99,6 +99,7 @@ func testHandlers(t *testing.T, rec *routerRecorder) Handlers {
 	usage := &routerUsageStub{rec: rec}
 	dataset := &routerDatasetStub{rec: rec}
 	geography := &routerGeographyStub{rec: rec}
+	finance := &routerFinanceStub{rec: rec}
 
 	authHandler, err := handlers.NewAuthHandler(auth, auth)
 	if err != nil {
@@ -124,11 +125,16 @@ func testHandlers(t *testing.T, rec *routerRecorder) Handlers {
 	if err != nil {
 		t.Fatalf("NewGeographyHandler() error = %v", err)
 	}
+	financeHandler, err := handlers.NewFinanceHandler(finance)
+	if err != nil {
+		t.Fatalf("NewFinanceHandler() error = %v", err)
+	}
 
 	return Handlers{
 		Health:    handlers.NewHealthHandler(),
 		Discovery: handlers.NewDiscoveryHandler(),
 		Geography: geographyHandler,
+		Finance:   financeHandler,
 		Auth:      authHandler,
 		Account:   accountHandler,
 		APIKey:    apiKeyHandler,
@@ -421,6 +427,9 @@ func TestRouterRejectsUnknownRoutesAndUnsupportedMethods(t *testing.T) {
 		{name: "lga wrong method", method: http.MethodPost, target: "/v1/geography/lgas", allow: http.MethodGet, status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_lga"},
 		{name: "lga detail wrong method", method: http.MethodDelete, target: "/v1/geography/lgas/lagos-ikeja", allow: http.MethodGet, status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_lga_detail"},
 		{name: "lga nested route", method: http.MethodGet, target: "/v1/geography/lgas/lagos-ikeja/extra", status: http.StatusNotFound, wantCode: "RESOURCE_NOT_FOUND", wantRequest: "req_lga_nested"},
+		{name: "finance wrong method", method: http.MethodPost, target: "/v1/finance/payment-service-providers", allow: http.MethodGet, status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_finance"},
+		{name: "finance detail wrong method", method: http.MethodDelete, target: "/v1/finance/payment-service-providers/super-agent-fairmoney", allow: http.MethodGet, status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_finance_detail"},
+		{name: "finance nested route", method: http.MethodGet, target: "/v1/finance/payment-service-providers/super-agent-fairmoney/extra", status: http.StatusNotFound, wantCode: "RESOURCE_NOT_FOUND", wantRequest: "req_finance_nested"},
 		{name: "ready not registered", method: http.MethodGet, target: "/ready", status: http.StatusNotFound, wantCode: "RESOURCE_NOT_FOUND", wantRequest: "req_ready"},
 	}
 
@@ -528,6 +537,8 @@ func TestRouterRejectsHeadRequestsWithJson405(t *testing.T) {
 		{name: "geopolitical zones", target: "/v1/geography/geopolitical-zones", allow: http.MethodGet},
 		{name: "lgas", target: "/v1/geography/lgas", allow: http.MethodGet},
 		{name: "lga detail", target: "/v1/geography/lgas/lagos-ikeja", allow: http.MethodGet},
+		{name: "finance", target: "/v1/finance/payment-service-providers", allow: http.MethodGet},
+		{name: "finance detail", target: "/v1/finance/payment-service-providers/super-agent-fairmoney", allow: http.MethodGet},
 	}
 
 	for _, tc := range tests {
@@ -925,12 +936,162 @@ func TestRouterUsesGeographyMiddlewarePolicy(t *testing.T) {
 	}
 }
 
+func TestRouterUsesFinanceMiddlewarePolicy(t *testing.T) {
+	t.Parallel()
+
+	harness := newFinancePolicyRouter(t)
+
+	t.Run("anonymous", func(t *testing.T) {
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/finance/payment-service-providers", nil)
+		req.RemoteAddr = "203.0.113.10:1234"
+		req.Header.Set("User-Agent", "TestAgent/1.0")
+		harness.router.ServeHTTP(rr, req)
+
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if harness.rateLimit.request.SubjectKind != interfaces.RateLimitSubjectAnonymous {
+			t.Fatalf("unexpected subject kind: %#v", harness.rateLimit.request.SubjectKind)
+		}
+		if harness.rateLimit.request.Limit != 60 {
+			t.Fatalf("unexpected anonymous limit: %d", harness.rateLimit.request.Limit)
+		}
+		if harness.usage.input.Route != "/v1/finance/payment-service-providers" || harness.usage.input.DatasetGroup == nil || *harness.usage.input.DatasetGroup != "finance" {
+			t.Fatalf("unexpected usage record: %#v", harness.usage.input)
+		}
+		if harness.finance.listCalls != 1 {
+			t.Fatalf("unexpected finance list calls: %d", harness.finance.listCalls)
+		}
+	})
+
+	t.Run("api key", func(t *testing.T) {
+		harness = newFinancePolicyRouter(t)
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/finance/payment-service-providers", nil)
+		req.RemoteAddr = "203.0.113.10:1234"
+		req.Header.Set("X-API-Key", "sd_live_example")
+		req.URL.RawQuery = "institution_type=super_agent"
+		harness.router.ServeHTTP(rr, req)
+
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if harness.rateLimit.request.SubjectKind != interfaces.RateLimitSubjectAPIKey {
+			t.Fatalf("unexpected subject kind: %#v", harness.rateLimit.request.SubjectKind)
+		}
+		if harness.rateLimit.request.Limit != 300 {
+			t.Fatalf("unexpected api-key limit: %d", harness.rateLimit.request.Limit)
+		}
+		if harness.rateLimit.request.Subject != "key_123" {
+			t.Fatalf("unexpected subject: %q", harness.rateLimit.request.Subject)
+		}
+		if harness.usage.input.Route != "/v1/finance/payment-service-providers" || harness.usage.input.DatasetGroup == nil || *harness.usage.input.DatasetGroup != "finance" {
+			t.Fatalf("unexpected usage record: %#v", harness.usage.input)
+		}
+		if harness.finance.lastInstitutionType != "super_agent" {
+			t.Fatalf("unexpected institution type seen by handler: %q", harness.finance.lastInstitutionType)
+		}
+	})
+
+	t.Run("detail", func(t *testing.T) {
+		harness = newFinancePolicyRouter(t)
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/finance/payment-service-providers/super-agent-fairmoney", nil)
+		req.RemoteAddr = "203.0.113.10:1234"
+		req.Header.Set("X-API-Key", "sd_live_example")
+		harness.router.ServeHTTP(rr, req)
+
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if harness.rateLimit.request.SubjectKind != interfaces.RateLimitSubjectAPIKey {
+			t.Fatalf("unexpected subject kind: %#v", harness.rateLimit.request.SubjectKind)
+		}
+		if harness.rateLimit.request.Limit != 300 {
+			t.Fatalf("unexpected api-key limit: %d", harness.rateLimit.request.Limit)
+		}
+		if harness.rateLimit.request.Subject != "key_123" {
+			t.Fatalf("unexpected subject: %q", harness.rateLimit.request.Subject)
+		}
+		if harness.usage.input.Route != "/v1/finance/payment-service-providers/{provider_id}" || harness.usage.input.DatasetGroup == nil || *harness.usage.input.DatasetGroup != "finance" {
+			t.Fatalf("unexpected usage record: %#v", harness.usage.input)
+		}
+		if harness.finance.lastProviderID != "super-agent-fairmoney" {
+			t.Fatalf("unexpected provider id seen by handler: %q", harness.finance.lastProviderID)
+		}
+		if !harness.finance.lastHadAPIKey || harness.finance.lastAPIKeyIdentity.APIKeyID != "key_123" || harness.finance.lastAPIKeyIdentity.AccountID != "acc_123" {
+			t.Fatalf("unexpected api key identity seen by handler: %#v", harness.finance.lastAPIKeyIdentity)
+		}
+	})
+
+	t.Run("invalid query reaches handler", func(t *testing.T) {
+		harness = newFinancePolicyRouter(t)
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/finance/payment-service-providers", nil)
+		req.RemoteAddr = "203.0.113.10:1234"
+		req.URL.RawQuery = "institution_type="
+		harness.router.ServeHTTP(rr, req)
+
+		if rr.Code != http.StatusUnprocessableEntity {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if harness.finance.listCalls != 0 || harness.finance.listByTypeCalls != 0 {
+			t.Fatalf("service should not be called for invalid query: %#v", harness.finance)
+		}
+		if harness.usage.calls != 1 {
+			t.Fatalf("usage should record the rejected handler response once: %d", harness.usage.calls)
+		}
+		if harness.usage.input.Route != "/v1/finance/payment-service-providers" || harness.usage.input.DatasetGroup == nil || *harness.usage.input.DatasetGroup != "finance" {
+			t.Fatalf("unexpected usage record: %#v", harness.usage.input)
+		}
+	})
+
+	t.Run("rate limited", func(t *testing.T) {
+		harness = newFinancePolicyRouter(t)
+		harness.rateLimit.result = interfaces.RateLimitResult{
+			Allowed:   false,
+			Limit:     60,
+			Remaining: 0,
+			ResetAt:   time.Now().UTC().Add(time.Minute),
+		}
+
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/finance/payment-service-providers", nil)
+		req.RemoteAddr = "203.0.113.10:1234"
+		harness.router.ServeHTTP(rr, req)
+
+		if rr.Code != http.StatusTooManyRequests {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if harness.finance.listCalls != 0 {
+			t.Fatalf("handler should not run on rate-limited request: %d", harness.finance.listCalls)
+		}
+		if harness.usage.calls != 0 {
+			t.Fatalf("usage should not run on rate-limited request: %d", harness.usage.calls)
+		}
+	})
+
+	if harness.rateLimit.request.SubjectKind == interfaces.RateLimitSubjectDownload {
+		t.Fatal("finance routes must not use download rate limit policy")
+	}
+}
+
 type geographyPolicyHarness struct {
 	router    http.Handler
 	auth      *routerAPIKeyAuthenticatorStub
 	rateLimit *routerRateLimitRepoStub
 	usage     *routerUsageRecorderStub
 	geography *routerGeographyStub
+	anonymous *routerAnonymousIdentifierStub
+}
+
+type financePolicyHarness struct {
+	router    http.Handler
+	auth      *routerAPIKeyAuthenticatorStub
+	rateLimit *routerRateLimitRepoStub
+	usage     *routerUsageRecorderStub
+	finance   *routerFinanceStub
 	anonymous *routerAnonymousIdentifierStub
 }
 
@@ -968,6 +1129,7 @@ func newGeographyPolicyRouter(t *testing.T) geographyPolicyHarness {
 		Health:    handlers.NewHealthHandler(),
 		Discovery: handlers.NewDiscoveryHandler(),
 		Geography: geographyHandler,
+		Finance:   baseHandlers.Finance,
 		Auth:      baseHandlers.Auth,
 		Account:   baseHandlers.Account,
 		APIKey:    baseHandlers.APIKey,
@@ -1031,6 +1193,88 @@ func newGeographyPolicyRouter(t *testing.T) geographyPolicyHarness {
 		rateLimit: rateLimit,
 		usage:     usage,
 		geography: geography,
+		anonymous: anonymous,
+	}
+}
+
+func newFinancePolicyRouter(t *testing.T) financePolicyHarness {
+	t.Helper()
+
+	cors, err := middlewares.NewCORS(middlewares.CORSOptions{
+		AllowedOrigins: []string{"https://example.com"},
+	})
+	if err != nil {
+		t.Fatalf("NewCORS() error = %v", err)
+	}
+
+	auth := &routerAPIKeyAuthenticatorStub{identity: services.APIKeyIdentity{APIKeyID: "key_123", AccountID: "acc_123"}}
+	anonymous := &routerAnonymousIdentifierStub{value: "anon-opaque"}
+	rateLimit := &routerRateLimitRepoStub{}
+	usage := &routerUsageRecorderStub{}
+	finance := &routerFinanceStub{}
+	financeHandler, err := handlers.NewFinanceHandler(finance)
+	if err != nil {
+		t.Fatalf("NewFinanceHandler() error = %v", err)
+	}
+	baseHandlers := testHandlers(t, &routerRecorder{})
+	rateLimitMiddleware, err := middlewares.RateLimit(rateLimit, anonymous, middlewares.RateLimitPolicy{
+		AnonymousLimit: 60,
+		APIKeyLimit:    300,
+		DownloadLimit:  10,
+		Window:         time.Minute,
+	})
+	if err != nil {
+		t.Fatalf("RateLimit() error = %v", err)
+	}
+
+	routerHandler, err := New(Handlers{
+		Health:    handlers.NewHealthHandler(),
+		Discovery: handlers.NewDiscoveryHandler(),
+		Geography: baseHandlers.Geography,
+		Finance:   financeHandler,
+		Auth:      baseHandlers.Auth,
+		Account:   baseHandlers.Account,
+		APIKey:    baseHandlers.APIKey,
+		Usage:     baseHandlers.Usage,
+		Dataset:   baseHandlers.Dataset,
+	}, Middleware{
+		RequestID:       middlewares.RequestID,
+		Recovery:        func(next http.Handler) http.Handler { return next },
+		Logger:          func(next http.Handler) http.Handler { return next },
+		SecurityHeaders: func(next http.Handler) http.Handler { return next },
+		CORS:            cors,
+		BodyLimit:       func(next http.Handler) http.Handler { return next },
+		Timeout:         func(next http.Handler) http.Handler { return next },
+		Authentication:  func(next http.Handler) http.Handler { return next },
+		OptionalAPIKey:  middlewares.OptionalAPIKey(auth),
+		StandardLimit:   rateLimitMiddleware,
+		UsageTracking: func(endpoint, datasetGroup string) (MiddlewareFunc, error) {
+			switch endpoint {
+			case "/v1/finance/payment-service-providers":
+				return middlewares.UsageTracking(usage, endpoint, datasetGroup, middlewares.UsageTrackingOptions{
+					Timeout:             time.Second,
+					AnonymousIdentifier: anonymous,
+				})
+			case "/v1/finance/payment-service-providers/{provider_id}":
+				return middlewares.UsageTracking(usage, endpoint, datasetGroup, middlewares.UsageTrackingOptions{
+					Timeout:             time.Second,
+					AnonymousIdentifier: anonymous,
+				})
+			default:
+				return func(next http.Handler) http.Handler { return next }, nil
+			}
+		},
+	})
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	return financePolicyHarness{
+		router:    routerHandler,
+		auth:      auth,
+		rateLimit: rateLimit,
+		usage:     usage,
+		finance:   finance,
 		anonymous: anonymous,
 	}
 }
@@ -1214,6 +1458,62 @@ type routerGeographyStub struct {
 	lastLGAStateID     string
 	lastHadAPIKey      bool
 	lastAPIKeyIdentity services.APIKeyIdentity
+}
+
+type routerFinanceStub struct {
+	rec                 *routerRecorder
+	mu                  sync.Mutex
+	listCalls           int
+	listByTypeCalls     int
+	getCalls            int
+	lastInstitutionType string
+	lastProviderID      string
+	lastHadAPIKey       bool
+	lastAPIKeyIdentity  services.APIKeyIdentity
+}
+
+func (s *routerFinanceStub) ListPaymentServiceProviders(ctx context.Context) ([]models.PaymentServiceProvider, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.listCalls++
+	if s.rec != nil {
+		s.rec.add("finance.list")
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return []models.PaymentServiceProvider{{ID: "mobile-money-operator-abeg-technologies-limited", Name: "Abeg Technologies Limited", InstitutionType: "mobile_money_operator", CountryCode: "NG"}}, nil
+}
+
+func (s *routerFinanceStub) ListPaymentServiceProvidersByType(ctx context.Context, institutionType string) ([]models.PaymentServiceProvider, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.listByTypeCalls++
+	s.lastInstitutionType = institutionType
+	if s.rec != nil {
+		s.rec.add("finance.list-by:" + institutionType)
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return []models.PaymentServiceProvider{{ID: institutionType + "-example", Name: "Example", InstitutionType: institutionType, CountryCode: "NG"}}, nil
+}
+
+func (s *routerFinanceStub) GetPaymentServiceProvider(ctx context.Context, providerID string) (models.PaymentServiceProvider, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.getCalls++
+	s.lastProviderID = providerID
+	if s.rec != nil {
+		s.rec.add("finance.get:" + providerID)
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return models.PaymentServiceProvider{ID: providerID, Name: "Example", InstitutionType: "super_agent", CountryCode: "NG"}, nil
 }
 
 func (s *routerGeographyStub) ListStates(ctx context.Context) ([]models.State, error) {
