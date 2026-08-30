@@ -104,6 +104,34 @@ func TestPublicRoutesServeGeographyLGAs(t *testing.T) {
 	}
 }
 
+func TestPublicRoutesServeEducationUniversities(t *testing.T) {
+	rec := &routerRecorder{}
+	router := newTestRouter(t, rec)
+
+	rr := httptest.NewRecorder()
+	req := httptest.NewRequest(http.MethodGet, "/v1/education/universities", nil)
+	router.ServeHTTP(rr, req)
+	if rr.Code != http.StatusOK {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if !strings.Contains(strings.Join(rec.snapshot(), ","), "education.list") {
+		t.Fatalf("expected education list handler to run: %v", rec.snapshot())
+	}
+
+	rec = &routerRecorder{}
+	router = newTestRouter(t, rec)
+
+	rr = httptest.NewRecorder()
+	req = httptest.NewRequest(http.MethodGet, "/v1/education/universities/ahmadu-bello-university-zaria", nil)
+	router.ServeHTTP(rr, req)
+	if rr.Code != http.StatusOK {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if !strings.Contains(strings.Join(rec.snapshot(), ","), "education.get:ahmadu-bello-university-zaria") {
+		t.Fatalf("expected education detail handler to run: %v", rec.snapshot())
+	}
+}
+
 func TestPublicRoutesServeFinancePaymentServiceProviders(t *testing.T) {
 	rec := &routerRecorder{}
 	router := newTestRouter(t, rec)

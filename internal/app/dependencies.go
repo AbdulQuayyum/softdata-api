@@ -30,9 +30,20 @@ const (
 	geographyStatesRelativePath                            = "geography/states.json"
 	geographyGeopoliticalZonesRelativePath                 = "geography/geopolitical_zones.json"
 	geographyLocalGovernmentUnitsRelativePath              = "geography/lgas.json"
+	educationUniversitiesRelativePath                      = "education/universities.json"
 	financePaymentServiceProvidersRelativePath             = "finance/payment_service_providers.json"
 	financeInternationalMoneyTransferOperatorsRelativePath = "finance/international_money_transfer_operators.json"
 )
+
+var approvedUniversityStateIDs = map[string]struct{}{
+	"abia": {}, "adamawa": {}, "akwa-ibom": {}, "anambra": {}, "bauchi": {},
+	"bayelsa": {}, "benue": {}, "borno": {}, "cross-river": {}, "delta": {},
+	"ebonyi": {}, "edo": {}, "ekiti": {}, "enugu": {}, "fct": {}, "gombe": {},
+	"imo": {}, "jigawa": {}, "kaduna": {}, "kano": {}, "katsina": {},
+	"kebbi": {}, "kogi": {}, "kwara": {}, "lagos": {}, "nasarawa": {},
+	"niger": {}, "ogun": {}, "ondo": {}, "osun": {}, "oyo": {}, "plateau": {},
+	"rivers": {}, "sokoto": {}, "taraba": {}, "yobe": {}, "zamfara": {},
+}
 
 func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Logger) (deps appDependencies, err error) {
 	if ctx == nil {
@@ -123,6 +134,20 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 		},
 		func(service geographyService) (*handlers.GeographyHandler, error) {
 			return handlers.NewGeographyHandler(service)
+		},
+	)
+	if err != nil {
+		return appDependencies{}, err
+	}
+	educationHandler, err := buildEducationHandlerFromJSONRepository(ctx, jsonRepository,
+		func(repository interfaces.JSONFileRepository, universitiesPath string) (interfaces.EducationRepository, error) {
+			return fileRepo.NewEducationRepository(repository, universitiesPath)
+		},
+		func(repository interfaces.EducationRepository) (educationService, error) {
+			return services.NewEducationService(repository)
+		},
+		func(service educationService) (*handlers.EducationHandler, error) {
+			return handlers.NewEducationHandler(service)
 		},
 	)
 	if err != nil {
@@ -222,6 +247,7 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 		Health:    healthHandler,
 		Discovery: discoveryHandler,
 		Geography: geographyHandler,
+		Education: educationHandler,
 		Finance:   financeHandler,
 		Auth:      authHandler,
 		Account:   accountHandler,
@@ -291,6 +317,11 @@ type geographyService interface {
 	ListLocalGovernmentUnits(context.Context) ([]models.LocalGovernmentUnit, error)
 	ListLocalGovernmentUnitsByState(context.Context, string) ([]models.LocalGovernmentUnit, error)
 	GetLocalGovernmentUnit(context.Context, string) (models.LocalGovernmentUnit, error)
+}
+
+type educationService interface {
+	ListUniversities(context.Context, services.UniversityListInput) ([]models.University, error)
+	GetUniversity(context.Context, string) (models.University, error)
 }
 
 type financeService interface {
@@ -371,6 +402,78 @@ func buildGeographyHandlerFromJSONRepository(
 		return nil, fmt.Errorf("initialize geography handler: %w", err)
 	}
 	return geographyHandler, nil
+}
+
+func buildEducationHandler(
+	ctx context.Context,
+	cfg *config.Config,
+	newJSONRepository func(string, int64) (interfaces.JSONFileRepository, error),
+	newEducationRepository func(interfaces.JSONFileRepository, string) (interfaces.EducationRepository, error),
+	newEducationService func(interfaces.EducationRepository) (educationService, error),
+	newEducationHandler func(educationService) (*handlers.EducationHandler, error),
+) (*handlers.EducationHandler, error) {
+	if cfg == nil {
+		return nil, fmt.Errorf("config is required")
+	}
+	if newJSONRepository == nil {
+		return nil, fmt.Errorf("json repository factory is required")
+	}
+	if newEducationRepository == nil {
+		return nil, fmt.Errorf("education repository factory is required")
+	}
+	if newEducationService == nil {
+		return nil, fmt.Errorf("education service factory is required")
+	}
+	if newEducationHandler == nil {
+		return nil, fmt.Errorf("education handler factory is required")
+	}
+
+	jsonRepository, err := newJSONRepository(cfg.Datasets.Path, cfg.Datasets.JSONMaxBytes)
+	if err != nil {
+		return nil, fmt.Errorf("initialize education json repository: %w", err)
+	}
+	return buildEducationHandlerFromJSONRepository(ctx, jsonRepository, newEducationRepository, newEducationService, newEducationHandler)
+}
+
+func buildEducationHandlerFromJSONRepository(
+	ctx context.Context,
+	jsonRepository interfaces.JSONFileRepository,
+	newEducationRepository func(interfaces.JSONFileRepository, string) (interfaces.EducationRepository, error),
+	newEducationService func(interfaces.EducationRepository) (educationService, error),
+	newEducationHandler func(educationService) (*handlers.EducationHandler, error),
+) (*handlers.EducationHandler, error) {
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if jsonRepository == nil {
+		return nil, fmt.Errorf("json repository is required")
+	}
+	if newEducationRepository == nil {
+		return nil, fmt.Errorf("education repository factory is required")
+	}
+	if newEducationService == nil {
+		return nil, fmt.Errorf("education service factory is required")
+	}
+	if newEducationHandler == nil {
+		return nil, fmt.Errorf("education handler factory is required")
+	}
+
+	educationRepository, err := newEducationRepository(jsonRepository, educationUniversitiesRelativePath)
+	if err != nil {
+		return nil, fmt.Errorf("initialize education repository: %w", err)
+	}
+	educationService, err := newEducationService(educationRepository)
+	if err != nil {
+		return nil, fmt.Errorf("initialize education service: %w", err)
+	}
+	if err := verifyEducationDataset(ctx, educationService); err != nil {
+		return nil, err
+	}
+	educationHandler, err := newEducationHandler(educationService)
+	if err != nil {
+		return nil, fmt.Errorf("initialize education handler: %w", err)
+	}
+	return educationHandler, nil
 }
 
 func buildFinanceHandler(
@@ -482,6 +585,59 @@ func verifyGeographyDataset(ctx context.Context, service geographyService) error
 	}
 	if stateCount != 36 || fctCount != 1 {
 		return fmt.Errorf("verify geography dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+	return nil
+}
+
+func verifyEducationDataset(ctx context.Context, service educationService) error {
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if service == nil {
+		return fmt.Errorf("verify education dataset: education service is required")
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+
+	universities, err := service.ListUniversities(ctx, services.UniversityListInput{})
+	if err != nil {
+		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+			return err
+		}
+		return fmt.Errorf("verify education dataset: %w", err)
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+	if len(universities) != 328 {
+		return fmt.Errorf("verify education dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+
+	ownershipCounts := map[string]int{
+		"federal": 0,
+		"state":   0,
+		"private": 0,
+	}
+	stateSeen := make(map[string]struct{}, 37)
+	for _, university := range universities {
+		if university.CountryCode != "NG" || university.StateID == "" {
+			return fmt.Errorf("verify education dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+		if _, ok := ownershipCounts[university.OwnershipType]; !ok {
+			return fmt.Errorf("verify education dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+		if _, ok := approvedUniversityStateIDs[university.StateID]; !ok {
+			return fmt.Errorf("verify education dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+		ownershipCounts[university.OwnershipType]++
+		stateSeen[university.StateID] = struct{}{}
+	}
+	if ownershipCounts["federal"] != 77 || ownershipCounts["state"] != 69 || ownershipCounts["private"] != 182 {
+		return fmt.Errorf("verify education dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+	if len(stateSeen) != 37 {
+		return fmt.Errorf("verify education dataset: %w", interfaces.ErrInvalidDatasetFile)
 	}
 	return nil
 }
