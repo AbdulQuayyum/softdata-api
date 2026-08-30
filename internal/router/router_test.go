@@ -1172,6 +1172,100 @@ func TestRouterUsesFinanceMiddlewarePolicy(t *testing.T) {
 	}
 }
 
+func TestRouterUsesEducationMiddlewarePolicy(t *testing.T) {
+	t.Parallel()
+
+	harness := newEducationPolicyRouter(t)
+
+	t.Run("anonymous list", func(t *testing.T) {
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/education/colleges-of-education", nil)
+		req.RemoteAddr = "203.0.113.10:1234"
+		req.Header.Set("User-Agent", "TestAgent/1.0")
+		req.URL.RawQuery = "state_id=lagos&ownership_type=private"
+		harness.router.ServeHTTP(rr, req)
+
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if harness.rateLimit.request.SubjectKind != interfaces.RateLimitSubjectAnonymous {
+			t.Fatalf("unexpected subject kind: %#v", harness.rateLimit.request.SubjectKind)
+		}
+		if harness.rateLimit.request.Limit != 60 {
+			t.Fatalf("unexpected anonymous limit: %d", harness.rateLimit.request.Limit)
+		}
+		if harness.usage.input.Route != "/v1/education/colleges-of-education" || harness.usage.input.DatasetGroup == nil || *harness.usage.input.DatasetGroup != "education" {
+			t.Fatalf("unexpected usage record: %#v", harness.usage.input)
+		}
+		if harness.education.collegeListCalls != 1 {
+			t.Fatalf("unexpected college list calls: %d", harness.education.collegeListCalls)
+		}
+		if harness.education.lastCollegeInput.StateID != "lagos" || harness.education.lastCollegeInput.OwnershipType != "private" {
+			t.Fatalf("unexpected college query: %#v", harness.education.lastCollegeInput)
+		}
+	})
+
+	t.Run("api key detail", func(t *testing.T) {
+		harness = newEducationPolicyRouter(t)
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/education/colleges-of-education/federal-college-of-education-zaria", nil)
+		req.RemoteAddr = "203.0.113.10:1234"
+		req.Header.Set("X-API-Key", "sd_live_example")
+		harness.router.ServeHTTP(rr, req)
+
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if harness.rateLimit.request.SubjectKind != interfaces.RateLimitSubjectAPIKey {
+			t.Fatalf("unexpected subject kind: %#v", harness.rateLimit.request.SubjectKind)
+		}
+		if harness.rateLimit.request.Limit != 300 {
+			t.Fatalf("unexpected api-key limit: %d", harness.rateLimit.request.Limit)
+		}
+		if harness.rateLimit.request.Subject != "key_123" {
+			t.Fatalf("unexpected subject: %q", harness.rateLimit.request.Subject)
+		}
+		if harness.usage.input.Route != "/v1/education/colleges-of-education/{college_id}" || harness.usage.input.DatasetGroup == nil || *harness.usage.input.DatasetGroup != "education" {
+			t.Fatalf("unexpected usage record: %#v", harness.usage.input)
+		}
+		if harness.education.lastCollegeID != "federal-college-of-education-zaria" {
+			t.Fatalf("unexpected college id seen by handler: %q", harness.education.lastCollegeID)
+		}
+		if !harness.education.lastHadAPIKey || harness.education.lastAPIKeyIdentity.APIKeyID != "key_123" || harness.education.lastAPIKeyIdentity.AccountID != "acc_123" {
+			t.Fatalf("unexpected api key identity seen by handler: %#v", harness.education.lastAPIKeyIdentity)
+		}
+	})
+
+	t.Run("rate limited", func(t *testing.T) {
+		harness = newEducationPolicyRouter(t)
+		harness.rateLimit.result = interfaces.RateLimitResult{
+			Allowed:   false,
+			Limit:     60,
+			Remaining: 0,
+			ResetAt:   time.Now().UTC().Add(time.Minute),
+		}
+
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/education/colleges-of-education", nil)
+		req.RemoteAddr = "203.0.113.10:1234"
+		harness.router.ServeHTTP(rr, req)
+
+		if rr.Code != http.StatusTooManyRequests {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if harness.education.collegeListCalls != 0 {
+			t.Fatalf("handler should not run on rate-limited request: %d", harness.education.collegeListCalls)
+		}
+		if harness.usage.calls != 0 {
+			t.Fatalf("usage should not run on rate-limited request: %d", harness.usage.calls)
+		}
+	})
+
+	if harness.rateLimit.request.SubjectKind == interfaces.RateLimitSubjectDownload {
+		t.Fatal("education routes must not use download rate limit policy")
+	}
+}
+
 type geographyPolicyHarness struct {
 	router    http.Handler
 	auth      *routerAPIKeyAuthenticatorStub
@@ -1455,6 +1549,16 @@ func newEducationPolicyRouter(t *testing.T) educationPolicyHarness {
 					AnonymousIdentifier: anonymous,
 				})
 			case "/v1/education/universities/{university_id}":
+				return middlewares.UsageTracking(usage, endpoint, datasetGroup, middlewares.UsageTrackingOptions{
+					Timeout:             time.Second,
+					AnonymousIdentifier: anonymous,
+				})
+			case "/v1/education/colleges-of-education":
+				return middlewares.UsageTracking(usage, endpoint, datasetGroup, middlewares.UsageTrackingOptions{
+					Timeout:             time.Second,
+					AnonymousIdentifier: anonymous,
+				})
+			case "/v1/education/colleges-of-education/{college_id}":
 				return middlewares.UsageTracking(usage, endpoint, datasetGroup, middlewares.UsageTrackingOptions{
 					Timeout:             time.Second,
 					AnonymousIdentifier: anonymous,

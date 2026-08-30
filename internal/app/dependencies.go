@@ -472,6 +472,9 @@ func buildEducationHandlerFromJSONRepository(
 	if err := verifyEducationDataset(ctx, educationService); err != nil {
 		return nil, err
 	}
+	if err := verifyCollegeOfEducationDataset(ctx, educationService); err != nil {
+		return nil, err
+	}
 	educationHandler, err := newEducationHandler(educationService)
 	if err != nil {
 		return nil, fmt.Errorf("initialize education handler: %w", err)
@@ -637,6 +640,59 @@ func verifyEducationDataset(ctx context.Context, service educationService) error
 		stateSeen[university.StateID] = struct{}{}
 	}
 	if ownershipCounts["federal"] != 77 || ownershipCounts["state"] != 69 || ownershipCounts["private"] != 182 {
+		return fmt.Errorf("verify education dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+	if len(stateSeen) != 37 {
+		return fmt.Errorf("verify education dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+	return nil
+}
+
+func verifyCollegeOfEducationDataset(ctx context.Context, service educationService) error {
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if service == nil {
+		return fmt.Errorf("verify education dataset: education service is required")
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+
+	colleges, err := service.ListCollegesOfEducation(ctx, services.CollegeOfEducationListInput{})
+	if err != nil {
+		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+			return err
+		}
+		return fmt.Errorf("verify education dataset: %w", err)
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+	if len(colleges) != 244 {
+		return fmt.Errorf("verify education dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+
+	ownershipCounts := map[string]int{
+		"federal": 0,
+		"state":   0,
+		"private": 0,
+	}
+	stateSeen := make(map[string]struct{}, 37)
+	for _, college := range colleges {
+		if college.CountryCode != "NG" || college.ID == "" || college.Name == "" || college.StateID == "" {
+			return fmt.Errorf("verify education dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+		if _, ok := ownershipCounts[college.OwnershipType]; !ok {
+			return fmt.Errorf("verify education dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+		if _, ok := approvedUniversityStateIDs[college.StateID]; !ok {
+			return fmt.Errorf("verify education dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+		ownershipCounts[college.OwnershipType]++
+		stateSeen[college.StateID] = struct{}{}
+	}
+	if ownershipCounts["federal"] != 28 || ownershipCounts["state"] != 48 || ownershipCounts["private"] != 168 {
 		return fmt.Errorf("verify education dataset: %w", interfaces.ErrInvalidDatasetFile)
 	}
 	if len(stateSeen) != 37 {

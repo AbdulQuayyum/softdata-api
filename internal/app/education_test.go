@@ -19,8 +19,10 @@ import (
 
 type educationServiceStub struct {
 	universities []models.University
+	colleges     []models.CollegeOfEducation
 	err          error
 	calls        int
+	collegeCalls int
 	lastInput    services.UniversityListInput
 }
 
@@ -38,7 +40,8 @@ func (s *educationServiceStub) GetUniversity(context.Context, string) (models.Un
 }
 
 func (s *educationServiceStub) ListCollegesOfEducation(context.Context, services.CollegeOfEducationListInput) ([]models.CollegeOfEducation, error) {
-	return nil, nil
+	s.collegeCalls++
+	return append([]models.CollegeOfEducation(nil), s.colleges...), nil
 }
 
 func (s *educationServiceStub) GetCollegeOfEducation(context.Context, string) (models.CollegeOfEducation, error) {
@@ -83,6 +86,20 @@ func loadApprovedUniversities(t *testing.T) []models.University {
 	return universities
 }
 
+func loadApprovedColleges(t *testing.T) []models.CollegeOfEducation {
+	t.Helper()
+
+	data, err := os.ReadFile(filepath.Clean("../../datasets/education/colleges_of_education.json"))
+	if err != nil {
+		t.Fatalf("ReadFile() error = %v", err)
+	}
+	var colleges []models.CollegeOfEducation
+	if err := json.Unmarshal(data, &colleges); err != nil {
+		t.Fatalf("json.Unmarshal() error = %v", err)
+	}
+	return colleges
+}
+
 func writeEducationFixture(path string, universities []models.University) error {
 	data, err := json.Marshal(universities)
 	if err != nil {
@@ -105,8 +122,10 @@ func TestBuildEducationHandlerPassesConfiguredDatasetArgs(t *testing.T) {
 	var gotMaxBytes int64
 	var gotUniversityPath string
 	var gotCollegePath string
+	newJSONCalls := 0
 	handler, err := buildEducationHandler(context.Background(), cfg,
 		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
+			newJSONCalls++
 			gotRoot = root
 			gotMaxBytes = maxBytes
 			return &educationJSONRepoStub{}, nil
@@ -117,7 +136,10 @@ func TestBuildEducationHandlerPassesConfiguredDatasetArgs(t *testing.T) {
 			return &educationRepositoryStub{}, nil
 		},
 		func(repository interfaces.EducationRepository) (educationService, error) {
-			return &educationServiceStub{universities: loadApprovedUniversities(t)}, nil
+			return &educationServiceStub{
+				universities: loadApprovedUniversities(t),
+				colleges:     loadApprovedColleges(t),
+			}, nil
 		},
 		func(service educationService) (*handlers.EducationHandler, error) {
 			return handlers.NewEducationHandler(service)
@@ -141,6 +163,9 @@ func TestBuildEducationHandlerPassesConfiguredDatasetArgs(t *testing.T) {
 	if gotCollegePath != educationCollegesOfEducationRelativePath {
 		t.Fatalf("unexpected colleges path: %q", gotCollegePath)
 	}
+	if newJSONCalls != 1 {
+		t.Fatalf("unexpected json repository construction count: %d", newJSONCalls)
+	}
 }
 
 func TestBuildEducationHandlerValidFixturePassesStartupVerification(t *testing.T) {
@@ -155,6 +180,13 @@ func TestBuildEducationHandlerValidFixturePassesStartupVerification(t *testing.T
 		t.Fatalf("ReadFile() error = %v", err)
 	}
 	if err := os.WriteFile(filepath.Join(root, "education", "universities.json"), data, 0o600); err != nil {
+		t.Fatalf("WriteFile() error = %v", err)
+	}
+	collegeData, err := os.ReadFile(filepath.Clean("../../datasets/education/colleges_of_education.json"))
+	if err != nil {
+		t.Fatalf("ReadFile() error = %v", err)
+	}
+	if err := os.WriteFile(filepath.Join(root, "education", "colleges_of_education.json"), collegeData, 0o600); err != nil {
 		t.Fatalf("WriteFile() error = %v", err)
 	}
 
@@ -191,6 +223,7 @@ func TestBuildEducationHandlerFailsSafelyForInvalidDatasets(t *testing.T) {
 	t.Parallel()
 
 	fixture := loadApprovedUniversities(t)
+	collegeFixture := loadApprovedColleges(t)
 	tests := []struct {
 		name string
 		set  func(root string) error
@@ -266,6 +299,91 @@ func TestBuildEducationHandlerFailsSafelyForInvalidDatasets(t *testing.T) {
 			}
 		})
 	}
+
+	collegeTests := []struct {
+		name string
+		set  func(root string) error
+	}{
+		{
+			name: "missing file",
+			set: func(root string) error {
+				return os.MkdirAll(root, 0o755)
+			},
+		},
+		{
+			name: "malformed json",
+			set: func(root string) error {
+				if err := os.MkdirAll(filepath.Join(root, "education"), 0o755); err != nil {
+					return err
+				}
+				return os.WriteFile(filepath.Join(root, "education", "colleges_of_education.json"), []byte("{bad"), 0o600)
+			},
+		},
+		{
+			name: "empty data",
+			set: func(root string) error {
+				if err := os.MkdirAll(filepath.Join(root, "education"), 0o755); err != nil {
+					return err
+				}
+				return writeCollegeFixture(filepath.Join(root, "education", "colleges_of_education.json"), []models.CollegeOfEducation{})
+			},
+		},
+		{
+			name: "wrong record count",
+			set: func(root string) error {
+				if err := os.MkdirAll(filepath.Join(root, "education"), 0o755); err != nil {
+					return err
+				}
+				return writeCollegeFixture(filepath.Join(root, "education", "colleges_of_education.json"), collegeFixture[:243])
+			},
+		},
+		{
+			name: "wrong composition",
+			set: func(root string) error {
+				if err := os.MkdirAll(filepath.Join(root, "education"), 0o755); err != nil {
+					return err
+				}
+				mutated := append([]models.CollegeOfEducation(nil), collegeFixture...)
+				if mutated[0].OwnershipType == "federal" {
+					mutated[0].OwnershipType = "private"
+				} else {
+					mutated[0].OwnershipType = "federal"
+				}
+				return writeCollegeFixture(filepath.Join(root, "education", "colleges_of_education.json"), mutated)
+			},
+		},
+	}
+
+	for _, tc := range collegeTests {
+		t.Run("colleges_"+tc.name, func(t *testing.T) {
+			root := t.TempDir()
+			if err := tc.set(root); err != nil {
+				t.Fatalf("setup() error = %v", err)
+			}
+
+			cfg := &config.Config{Datasets: config.DatasetConfig{Path: root, JSONMaxBytes: 4096}}
+			_, err := buildEducationHandler(context.Background(), cfg,
+				func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
+					return fileRepo.NewJSONRepository(root, maxBytes)
+				},
+				func(repository interfaces.JSONFileRepository, universitiesPath, collegesOfEducationPath string) (interfaces.EducationRepository, error) {
+					return fileRepo.NewEducationRepository(repository, universitiesPath, collegesOfEducationPath)
+				},
+				func(repository interfaces.EducationRepository) (educationService, error) {
+					return services.NewEducationService(repository)
+				},
+				func(service educationService) (*handlers.EducationHandler, error) {
+					return handlers.NewEducationHandler(service)
+				},
+			)
+			if err == nil {
+				t.Fatal("buildEducationHandler() error = nil, want failure")
+			}
+			if strings.Contains(err.Error(), root) {
+				t.Fatalf("error leaked dataset root: %v", err)
+			}
+		})
+	}
 }
 
 func TestBuildEducationHandlerPropagatesContextCancellation(t *testing.T) {
@@ -289,7 +407,10 @@ func TestBuildEducationHandlerPropagatesContextCancellation(t *testing.T) {
 			return &educationRepositoryStub{}, nil
 		},
 		func(repository interfaces.EducationRepository) (educationService, error) {
-			return &educationServiceStub{universities: loadApprovedUniversities(t)}, nil
+			return &educationServiceStub{
+				universities: loadApprovedUniversities(t),
+				colleges:     loadApprovedColleges(t),
+			}, nil
 		},
 		func(service educationService) (*handlers.EducationHandler, error) {
 			return handlers.NewEducationHandler(service)
@@ -303,7 +424,7 @@ func TestBuildEducationHandlerPropagatesContextCancellation(t *testing.T) {
 func TestBuildEducationHandlerVerifiesThroughServiceAbstraction(t *testing.T) {
 	t.Parallel()
 
-	service := &educationServiceStub{universities: loadApprovedUniversities(t)}
+	service := &educationServiceStub{universities: loadApprovedUniversities(t), colleges: loadApprovedColleges(t)}
 	handler, err := buildEducationHandlerFromJSONRepository(context.Background(), &educationJSONRepoStub{},
 		func(repository interfaces.JSONFileRepository, universitiesPath, collegesOfEducationPath string) (interfaces.EducationRepository, error) {
 			return &educationRepositoryStub{}, nil
@@ -322,6 +443,17 @@ func TestBuildEducationHandlerVerifiesThroughServiceAbstraction(t *testing.T) {
 		t.Fatal("buildEducationHandlerFromJSONRepository() returned nil handler")
 	}
 	if service.calls != 1 {
-		t.Fatalf("expected startup verification to call list-all once, got %d", service.calls)
+		t.Fatalf("expected startup verification to call university list-all once, got %d", service.calls)
 	}
+	if service.collegeCalls != 1 {
+		t.Fatalf("expected startup verification to call college list-all once, got %d", service.collegeCalls)
+	}
+}
+
+func writeCollegeFixture(path string, colleges []models.CollegeOfEducation) error {
+	data, err := json.Marshal(colleges)
+	if err != nil {
+		return err
+	}
+	return os.WriteFile(path, data, 0o600)
 }

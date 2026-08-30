@@ -132,6 +132,47 @@ func TestPublicRoutesServeEducationUniversities(t *testing.T) {
 	}
 }
 
+func TestPublicRoutesServeEducationCollegesOfEducation(t *testing.T) {
+	rec := &routerRecorder{}
+	router := newTestRouter(t, rec)
+
+	rr := httptest.NewRecorder()
+	req := httptest.NewRequest(http.MethodGet, "/v1/education/colleges-of-education", nil)
+	router.ServeHTTP(rr, req)
+	if rr.Code != http.StatusOK {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if !strings.Contains(strings.Join(rec.snapshot(), ","), "education.college.list") {
+		t.Fatalf("expected college list handler to run: %v", rec.snapshot())
+	}
+
+	rec = &routerRecorder{}
+	router = newTestRouter(t, rec)
+
+	rr = httptest.NewRecorder()
+	req = httptest.NewRequest(http.MethodGet, "/v1/education/colleges-of-education/federal-college-of-education-zaria", nil)
+	router.ServeHTTP(rr, req)
+	if rr.Code != http.StatusOK {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if !strings.Contains(strings.Join(rec.snapshot(), ","), "education.college.get:federal-college-of-education-zaria") {
+		t.Fatalf("expected college detail handler to run: %v", rec.snapshot())
+	}
+
+	rec = &routerRecorder{}
+	router = newTestRouter(t, rec)
+
+	rr = httptest.NewRecorder()
+	req = httptest.NewRequest(http.MethodGet, "/v1/education/colleges-of-education?state_id=lagos&ownership_type=private", nil)
+	router.ServeHTTP(rr, req)
+	if rr.Code != http.StatusOK {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if !strings.Contains(strings.Join(rec.snapshot(), ","), "education.college.list") {
+		t.Fatalf("expected college filtered handler to run: %v", rec.snapshot())
+	}
+}
+
 func TestPublicRoutesServeFinancePaymentServiceProviders(t *testing.T) {
 	rec := &routerRecorder{}
 	router := newTestRouter(t, rec)
