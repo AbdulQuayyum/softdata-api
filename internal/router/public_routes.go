@@ -106,5 +106,31 @@ func registerPublicRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers,
 		return err
 	}
 
+	financeList, err := buildRouteMiddlewares(mw, "/v1/finance/payment-service-providers", "finance", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build finance payment-service-providers middleware: %w", err)
+	}
+	mux.Handle("GET /v1/finance/payment-service-providers", compose(http.HandlerFunc(h.Finance.ListPaymentServiceProviders), financeList...))
+	if err := catalog.add("GET /v1/finance/payment-service-providers"); err != nil {
+		return err
+	}
+
+	financeDetail, err := buildRouteMiddlewares(mw, "/v1/finance/payment-service-providers/{provider_id}", "finance", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build finance payment-service-providers detail middleware: %w", err)
+	}
+	mux.Handle("GET /v1/finance/payment-service-providers/{provider_id}", compose(http.HandlerFunc(h.Finance.GetPaymentServiceProvider), financeDetail...))
+	if err := catalog.add("GET /v1/finance/payment-service-providers/{provider_id}"); err != nil {
+		return err
+	}
+
 	return nil
 }

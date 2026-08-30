@@ -26,10 +26,11 @@ import (
 )
 
 const (
-	defaultKeyPrefix                          = "softdata"
-	geographyStatesRelativePath               = "geography/states.json"
-	geographyGeopoliticalZonesRelativePath    = "geography/geopolitical_zones.json"
-	geographyLocalGovernmentUnitsRelativePath = "geography/lgas.json"
+	defaultKeyPrefix                           = "softdata"
+	geographyStatesRelativePath                = "geography/states.json"
+	geographyGeopoliticalZonesRelativePath     = "geography/geopolitical_zones.json"
+	geographyLocalGovernmentUnitsRelativePath  = "geography/lgas.json"
+	financePaymentServiceProvidersRelativePath = "finance/payment_service_providers.json"
 )
 
 func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Logger) (deps appDependencies, err error) {
@@ -107,10 +108,12 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	if err != nil {
 		return appDependencies{}, err
 	}
-	geographyHandler, err := buildGeographyHandler(ctx, cfg,
-		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
-			return fileRepo.NewJSONRepository(root, maxBytes)
-		},
+	jsonRepository, err := fileRepo.NewJSONRepository(cfg.Datasets.Path, cfg.Datasets.JSONMaxBytes)
+	if err != nil {
+		return appDependencies{}, fmt.Errorf("initialize json repository: %w", err)
+	}
+
+	geographyHandler, err := buildGeographyHandlerFromJSONRepository(ctx, jsonRepository,
 		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath string) (interfaces.GeographyRepository, error) {
 			return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath)
 		},
@@ -119,6 +122,20 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 		},
 		func(service geographyService) (*handlers.GeographyHandler, error) {
 			return handlers.NewGeographyHandler(service)
+		},
+	)
+	if err != nil {
+		return appDependencies{}, err
+	}
+	financeHandler, err := buildFinanceHandlerFromJSONRepository(ctx, jsonRepository,
+		func(repository interfaces.JSONFileRepository, paymentServiceProvidersPath string) (interfaces.FinanceRepository, error) {
+			return fileRepo.NewFinanceRepository(repository, paymentServiceProvidersPath)
+		},
+		func(repository interfaces.FinanceRepository) (financeService, error) {
+			return services.NewFinanceService(repository)
+		},
+		func(service financeService) (*handlers.FinanceHandler, error) {
+			return handlers.NewFinanceHandler(service)
 		},
 	)
 	if err != nil {
@@ -204,6 +221,7 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 		Health:    healthHandler,
 		Discovery: discoveryHandler,
 		Geography: geographyHandler,
+		Finance:   financeHandler,
 		Auth:      authHandler,
 		Account:   accountHandler,
 		APIKey:    apiKeyHandler,
@@ -274,6 +292,12 @@ type geographyService interface {
 	GetLocalGovernmentUnit(context.Context, string) (models.LocalGovernmentUnit, error)
 }
 
+type financeService interface {
+	ListPaymentServiceProviders(context.Context) ([]models.PaymentServiceProvider, error)
+	ListPaymentServiceProvidersByType(context.Context, string) ([]models.PaymentServiceProvider, error)
+	GetPaymentServiceProvider(context.Context, string) (models.PaymentServiceProvider, error)
+}
+
 func buildGeographyHandler(
 	ctx context.Context,
 	cfg *config.Config,
@@ -282,9 +306,6 @@ func buildGeographyHandler(
 	newGeographyService func(interfaces.GeographyRepository) (geographyService, error),
 	newGeographyHandler func(geographyService) (*handlers.GeographyHandler, error),
 ) (*handlers.GeographyHandler, error) {
-	if ctx == nil {
-		ctx = context.Background()
-	}
 	if cfg == nil {
 		return nil, fmt.Errorf("config is required")
 	}
@@ -305,6 +326,32 @@ func buildGeographyHandler(
 	if err != nil {
 		return nil, fmt.Errorf("initialize geography json repository: %w", err)
 	}
+	return buildGeographyHandlerFromJSONRepository(ctx, jsonRepository, newGeographyRepository, newGeographyService, newGeographyHandler)
+}
+
+func buildGeographyHandlerFromJSONRepository(
+	ctx context.Context,
+	jsonRepository interfaces.JSONFileRepository,
+	newGeographyRepository func(interfaces.JSONFileRepository, string, string, string) (interfaces.GeographyRepository, error),
+	newGeographyService func(interfaces.GeographyRepository) (geographyService, error),
+	newGeographyHandler func(geographyService) (*handlers.GeographyHandler, error),
+) (*handlers.GeographyHandler, error) {
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if jsonRepository == nil {
+		return nil, fmt.Errorf("json repository is required")
+	}
+	if newGeographyRepository == nil {
+		return nil, fmt.Errorf("geography repository factory is required")
+	}
+	if newGeographyService == nil {
+		return nil, fmt.Errorf("geography service factory is required")
+	}
+	if newGeographyHandler == nil {
+		return nil, fmt.Errorf("geography handler factory is required")
+	}
+
 	geographyRepository, err := newGeographyRepository(jsonRepository, geographyStatesRelativePath, geographyGeopoliticalZonesRelativePath, geographyLocalGovernmentUnitsRelativePath)
 	if err != nil {
 		return nil, fmt.Errorf("initialize geography repository: %w", err)
@@ -321,6 +368,78 @@ func buildGeographyHandler(
 		return nil, fmt.Errorf("initialize geography handler: %w", err)
 	}
 	return geographyHandler, nil
+}
+
+func buildFinanceHandler(
+	ctx context.Context,
+	cfg *config.Config,
+	newJSONRepository func(string, int64) (interfaces.JSONFileRepository, error),
+	newFinanceRepository func(interfaces.JSONFileRepository, string) (interfaces.FinanceRepository, error),
+	newFinanceService func(interfaces.FinanceRepository) (financeService, error),
+	newFinanceHandler func(financeService) (*handlers.FinanceHandler, error),
+) (*handlers.FinanceHandler, error) {
+	if cfg == nil {
+		return nil, fmt.Errorf("config is required")
+	}
+	if newJSONRepository == nil {
+		return nil, fmt.Errorf("json repository factory is required")
+	}
+	if newFinanceRepository == nil {
+		return nil, fmt.Errorf("finance repository factory is required")
+	}
+	if newFinanceService == nil {
+		return nil, fmt.Errorf("finance service factory is required")
+	}
+	if newFinanceHandler == nil {
+		return nil, fmt.Errorf("finance handler factory is required")
+	}
+
+	jsonRepository, err := newJSONRepository(cfg.Datasets.Path, cfg.Datasets.JSONMaxBytes)
+	if err != nil {
+		return nil, fmt.Errorf("initialize finance json repository: %w", err)
+	}
+	return buildFinanceHandlerFromJSONRepository(ctx, jsonRepository, newFinanceRepository, newFinanceService, newFinanceHandler)
+}
+
+func buildFinanceHandlerFromJSONRepository(
+	ctx context.Context,
+	jsonRepository interfaces.JSONFileRepository,
+	newFinanceRepository func(interfaces.JSONFileRepository, string) (interfaces.FinanceRepository, error),
+	newFinanceService func(interfaces.FinanceRepository) (financeService, error),
+	newFinanceHandler func(financeService) (*handlers.FinanceHandler, error),
+) (*handlers.FinanceHandler, error) {
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if jsonRepository == nil {
+		return nil, fmt.Errorf("json repository is required")
+	}
+	if newFinanceRepository == nil {
+		return nil, fmt.Errorf("finance repository factory is required")
+	}
+	if newFinanceService == nil {
+		return nil, fmt.Errorf("finance service factory is required")
+	}
+	if newFinanceHandler == nil {
+		return nil, fmt.Errorf("finance handler factory is required")
+	}
+
+	financeRepository, err := newFinanceRepository(jsonRepository, financePaymentServiceProvidersRelativePath)
+	if err != nil {
+		return nil, fmt.Errorf("initialize finance repository: %w", err)
+	}
+	financeService, err := newFinanceService(financeRepository)
+	if err != nil {
+		return nil, fmt.Errorf("initialize finance service: %w", err)
+	}
+	if err := verifyFinanceDataset(ctx, financeService); err != nil {
+		return nil, err
+	}
+	financeHandler, err := newFinanceHandler(financeService)
+	if err != nil {
+		return nil, fmt.Errorf("initialize finance handler: %w", err)
+	}
+	return financeHandler, nil
 }
 
 func verifyGeographyDataset(ctx context.Context, service geographyService) error {
@@ -360,6 +479,55 @@ func verifyGeographyDataset(ctx context.Context, service geographyService) error
 	}
 	if stateCount != 36 || fctCount != 1 {
 		return fmt.Errorf("verify geography dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+	return nil
+}
+
+func verifyFinanceDataset(ctx context.Context, service financeService) error {
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if service == nil {
+		return fmt.Errorf("verify finance dataset: finance service is required")
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+
+	providers, err := service.ListPaymentServiceProviders(ctx)
+	if err != nil {
+		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+			return err
+		}
+		return fmt.Errorf("verify finance dataset: %w", err)
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+	if len(providers) != 255 {
+		return fmt.Errorf("verify finance dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+
+	expectedCounts := map[string]int{
+		"mobile_money_operator":               17,
+		"switching_and_processing_company":    19,
+		"payment_solution_service_provider":   108,
+		"payment_terminal_service_provider":   47,
+		"super_agent":                         61,
+		"payment_service_holding_company":     1,
+		"payment_terminal_service_aggregator": 2,
+	}
+	counts := make(map[string]int, len(expectedCounts))
+	for _, provider := range providers {
+		if _, ok := expectedCounts[provider.InstitutionType]; !ok {
+			return fmt.Errorf("verify finance dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+		counts[provider.InstitutionType]++
+	}
+	for institutionType, want := range expectedCounts {
+		if counts[institutionType] != want {
+			return fmt.Errorf("verify finance dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
 	}
 	return nil
 }

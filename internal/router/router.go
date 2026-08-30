@@ -19,6 +19,7 @@ type Handlers struct {
 	Health    *handlers.HealthHandler
 	Discovery *handlers.DiscoveryHandler
 	Geography *handlers.GeographyHandler
+	Finance   *handlers.FinanceHandler
 	Auth      *handlers.AuthHandler
 	Account   *handlers.AccountHandler
 	APIKey    *handlers.APIKeyHandler
@@ -83,6 +84,8 @@ func validateDependencies(h Handlers, mw Middleware) error {
 		return fmt.Errorf("discovery handler is required")
 	case h.Geography == nil:
 		return fmt.Errorf("geography handler is required")
+	case h.Finance == nil:
+		return fmt.Errorf("finance handler is required")
 	case h.Auth == nil:
 		return fmt.Errorf("auth handler is required")
 	case h.Account == nil:
