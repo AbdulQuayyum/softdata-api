@@ -41,25 +41,31 @@ var expectedUniversityStateCounts = map[string]int{
 
 // EducationFileRepository reads university records from a JSON dataset file.
 type EducationFileRepository struct {
-	jsonRepository   interfaces.JSONFileRepository
-	universitiesPath string
+	jsonRepository          interfaces.JSONFileRepository
+	universitiesPath        string
+	collegesOfEducationPath string
 }
 
 var _ interfaces.EducationRepository = (*EducationFileRepository)(nil)
 
 // NewEducationRepository constructs a file-backed education repository.
-func NewEducationRepository(jsonRepository interfaces.JSONFileRepository, universitiesPath string) (*EducationFileRepository, error) {
+func NewEducationRepository(jsonRepository interfaces.JSONFileRepository, universitiesPath, collegesOfEducationPath string) (*EducationFileRepository, error) {
 	if jsonRepository == nil {
 		return nil, fmt.Errorf("json repository is required")
 	}
-	cleanedPath, err := validateGeographyDatasetPath("universities", universitiesPath)
+	cleanedUniversitiesPath, err := validateGeographyDatasetPath("universities", universitiesPath)
+	if err != nil {
+		return nil, err
+	}
+	cleanedCollegesPath, err := validateGeographyDatasetPath("colleges of education", collegesOfEducationPath)
 	if err != nil {
 		return nil, err
 	}
 
 	return &EducationFileRepository{
-		jsonRepository:   jsonRepository,
-		universitiesPath: cleanedPath,
+		jsonRepository:          jsonRepository,
+		universitiesPath:        cleanedUniversitiesPath,
+		collegesOfEducationPath: cleanedCollegesPath,
 	}, nil
 }
 

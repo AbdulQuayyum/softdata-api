@@ -1,0 +1,124 @@
+{
+  "dataset_key": "ng-colleges-of-education",
+  "title": "Nigeria Colleges of Education",
+  "description": "Independently compiled factual reference data for the current National Commission for Colleges of Education register of active colleges of education. Each record represents one college of education listing after excluding non-COE NCE-awarding institutions and the stale Cross River row that has a successor university in the current universities register.",
+  "country_code": "NG",
+  "dataset_group": "education",
+  "format": "json",
+  "relative_path": "education/colleges_of_education.json",
+  "schema_path": "schemas/education/colleges_of_education.schema.json",
+  "record_count": 244,
+  "ownership_counts": {
+    "federal": 28,
+    "state": 48,
+    "private": 168
+  },
+  "version": "1.0.0",
+  "license_id": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "methodology": "Independently compiled and cross-verified factual reference data from the public NCCE Accredited Colleges register. The register was retrieved three times with consistent 245-row results on 2026-08-30 before excluding the stale Cross River State Coll. of Education, Akampa row, which current Cross River State Government publications describe as transformed into the University of Education and Entrepreneurship, Akamkpa, already represented in ng-universities. SoftData compiled the 245-college NCCE boundary, excluded 19 non-COE NCE-awarding institutions, removed the directory-only OPEN marker from public names, normalized defective state labels, corrected five ownership cells that displayed the literal value 1 using official institution or government evidence, retained source spellings where no stronger official correction was found for Al-Ibadan COE, St. Paul's College of Education NNewi and A.D. Rufa’i College of Education, Legal and General Studies, and recorded the Yusuf Maitama Sule correction to Yusuf Maitama Sule College of Education & Advanced Studies, Ghari using the official institution site. The legacy archive was treated as a candidate inventory only. SoftData's independent compilation, schema and metadata are CC BY 4.0; NCCE and other official publications retain their own rights.",
+  "sources": [
+    {
+      "organization": "National Commission for Colleges of Education",
+      "title": "Accredited Colleges",
+      "url": "https://www.ncce.gov.ng/AccreditedColleges",
+      "purpose": "Verify the current roster boundary and the 245-college active set.",
+      "accessed_at": "2026-08-30"
+    },
+    {
+      "organization": "National Commission for Colleges of Education",
+      "title": "College Details: FCT College of Education, Zuba",
+      "url": "https://www.ncce.gov.ng/AccreditedColleges/Details?Id=b8633901-a8d9-4a16-9aa2-92a0740fd26b",
+      "purpose": "Confirm the title and document the broken ownership cell that displayed the literal value 1.",
+      "accessed_at": "2026-08-30"
+    },
+    {
+      "organization": "National Commission for Colleges of Education",
+      "title": "College Details: Federal College of Education (Special), Oyo",
+      "url": "https://www.ncce.gov.ng/AccreditedColleges/Details?Id=fde63c25-f7ca-4b4d-aaa9-00cdd8a5b9e1",
+      "purpose": "Confirm the title and document the broken ownership cell that displayed the literal value 1.",
+      "accessed_at": "2026-08-30"
+    },
+    {
+      "organization": "National Commission for Colleges of Education",
+      "title": "College Details: Federal College of Education (T), Umunze",
+      "url": "https://www.ncce.gov.ng/AccreditedColleges/Details?Id=fc860bfb-1a9a-40c1-9f47-cf4337f3618a",
+      "purpose": "Confirm the title and document the broken ownership cell that displayed the literal value 1.",
+      "accessed_at": "2026-08-30"
+    },
+    {
+      "organization": "National Commission for Colleges of Education",
+      "title": "College Details: Federal College of Education Ofeme-Ohuhu",
+      "url": "https://www.ncce.gov.ng/AccreditedColleges/Details?Id=f562c9dc-a68a-496b-99b7-135d99ae6413",
+      "purpose": "Confirm the title and document the broken ownership cell that displayed the literal value 1.",
+      "accessed_at": "2026-08-30"
+    },
+    {
+      "organization": "National Commission for Colleges of Education",
+      "title": "College Details: Isaac Jasper Boro COE, Sagbama",
+      "url": "https://www.ncce.gov.ng/AccreditedColleges/Details?Id=f5fa50fb-329d-4fe2-aa38-3b3d1f63590c",
+      "purpose": "Confirm the title and document the broken ownership cell that displayed the literal value 1.",
+      "accessed_at": "2026-08-30"
+    },
+    {
+      "organization": "National Commission for Colleges of Education",
+      "title": "College Details: Cross River State Coll. of Education, Akampa",
+      "url": "https://www.ncce.gov.ng/AccreditedColleges/Details?Id=3425a68c-2a61-4f2c-b4cc-827a4ae393fe",
+      "purpose": "Document the stale NCCE row excluded from the active dataset boundary.",
+      "accessed_at": "2026-08-30"
+    },
+    {
+      "organization": "FCT College of Education, Zuba",
+      "title": "Official website",
+      "url": "https://www.fctcoezuba.com.ng/admin.php",
+      "purpose": "Corroborate the identity and public designation of the FCT college.",
+      "accessed_at": "2026-08-30"
+    },
+    {
+      "organization": "Bayelsa State Ministry of Information, Orientation and Strategy",
+      "title": "Isaac Jasper Boro College of Education appoints acting provost",
+      "url": "https://moios.bayelsastate.gov.ng/isaac-jasper-boro-college-of-education-appoints-acting-provost/",
+      "purpose": "Corroborate Bayelsa state ownership for Isaac Jasper Boro COE, Sagbama.",
+      "accessed_at": "2026-08-30"
+    },
+    {
+      "organization": "Cross River State Ministry of Education",
+      "title": "Education sector transformation update",
+      "url": "https://education.crossriverstate.gov.ng/2026/05/30/criver-commissioner-showcases-education-sector-transformation-at-abuja-town-hall/",
+      "purpose": "Document the Cross River conversion to the University of Education and Entrepreneurship, Akamkpa.",
+      "accessed_at": "2026-08-30"
+    },
+    {
+      "organization": "Yusuf Maitama Sule College of Education & Advanced Studies",
+      "title": "About",
+      "url": "https://yumsceas.com.ng/about/",
+      "purpose": "Corroborate the corrected public name for the Ghari institution.",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "excluded_institutions": [
+    "Abubakar Tatari Polytechnic",
+    "Aminu Kano College of Islamic and Legal Studies",
+    "Bauchi Institute for Arabic and Islamic Studies",
+    "Hassan Usman Katsina Polytechnic",
+    "Institute of Ecumenical Education (Thinkers Corner)",
+    "Jigawa State Polytechnic",
+    "Kaduna Polytechnics",
+    "Kano State Polytechnic",
+    "Kebbi State Polytechnic",
+    "Muhammad Goni College of Legal and Islamic Studies (MOGOLIS)",
+    "National Institute for Nigerian Languages",
+    "National Teachers Institute (NTI)",
+    "Nigerian Army College of Education (NACOE), Ilorin",
+    "Nuhu Bamalli Polytechnic",
+    "Plateau State Polytechnic",
+    "Ramat Polytechnic",
+    "The Polytechnic Iree, Osun State",
+    "Waziri Umaru Federal Polytechnic",
+    "Zaria Institute of Information Technology"
+  ],
+  "exclusion_notes": [
+    "Cross River State Coll. of Education, Akampa was excluded from the active dataset because current Cross River State Government publications describe the institution as transformed into the University of Education and Entrepreneurship, Akamkpa, and the successor university is already represented in ng-universities. The exclusion should be rechecked during future updates."
+  ],
+  "verified_at": "2026-08-30"
+}

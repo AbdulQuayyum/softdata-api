@@ -14,6 +14,8 @@ import (
 type educationService interface {
 	ListUniversities(context.Context, services.UniversityListInput) ([]models.University, error)
 	GetUniversity(context.Context, string) (models.University, error)
+	ListCollegesOfEducation(context.Context, services.CollegeOfEducationListInput) ([]models.CollegeOfEducation, error)
+	GetCollegeOfEducation(context.Context, string) (models.CollegeOfEducation, error)
 }
 
 // EducationHandler serves public university endpoints.
@@ -87,4 +89,56 @@ func (h *EducationHandler) GetUniversity(w http.ResponseWriter, r *http.Request)
 	}
 
 	_ = response.Success(w, http.StatusOK, university)
+}
+
+// ListCollegesOfEducation handles GET /v1/education/colleges-of-education.
+func (h *EducationHandler) ListCollegesOfEducation(w http.ResponseWriter, r *http.Request) {
+	if !allowMethod(w, r, http.MethodGet) {
+		return
+	}
+
+	requestID := requestIDFromContext(r.Context())
+	query, err := validators.ValidateCollegeOfEducationListQuery(r.URL.Query())
+	if err != nil {
+		if validationErr, ok := validationErrorsFrom(err); ok {
+			_ = response.Validation(w, requestID, validationErrorsToResponse(validationErr))
+			return
+		}
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	colleges, err := h.service.ListCollegesOfEducation(r.Context(), query)
+	if err != nil {
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	_ = response.List(w, http.StatusOK, colleges)
+}
+
+// GetCollegeOfEducation handles GET /v1/education/colleges-of-education/{college_id}.
+func (h *EducationHandler) GetCollegeOfEducation(w http.ResponseWriter, r *http.Request) {
+	if !allowMethod(w, r, http.MethodGet) {
+		return
+	}
+
+	requestID := requestIDFromContext(r.Context())
+	collegeID, err := validators.ValidateCollegeOfEducationID(r.PathValue("college_id"))
+	if err != nil {
+		if validationErr, ok := validationErrorsFrom(err); ok {
+			_ = response.Validation(w, requestID, validationErrorsToResponse(validationErr))
+			return
+		}
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	college, err := h.service.GetCollegeOfEducation(r.Context(), collegeID)
+	if err != nil {
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	_ = response.Success(w, http.StatusOK, college)
 }

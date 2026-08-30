@@ -132,6 +132,32 @@ func registerPublicRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers,
 		return err
 	}
 
+	educationCollegesList, err := buildRouteMiddlewares(mw, "/v1/education/colleges-of-education", "education", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build education colleges-of-education middleware: %w", err)
+	}
+	mux.Handle("GET /v1/education/colleges-of-education", compose(http.HandlerFunc(h.Education.ListCollegesOfEducation), educationCollegesList...))
+	if err := catalog.add("GET /v1/education/colleges-of-education"); err != nil {
+		return err
+	}
+
+	educationCollegesDetail, err := buildRouteMiddlewares(mw, "/v1/education/colleges-of-education/{college_id}", "education", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build education colleges-of-education detail middleware: %w", err)
+	}
+	mux.Handle("GET /v1/education/colleges-of-education/{college_id}", compose(http.HandlerFunc(h.Education.GetCollegeOfEducation), educationCollegesDetail...))
+	if err := catalog.add("GET /v1/education/colleges-of-education/{college_id}"); err != nil {
+		return err
+	}
+
 	financeList, err := buildRouteMiddlewares(mw, "/v1/finance/payment-service-providers", "finance", routeOptions{
 		useOptionalAPIKey: true,
 		useRateLimit:      true,

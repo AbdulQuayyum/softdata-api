@@ -29,6 +29,8 @@ var (
 	ErrLocalGovernmentUnitNotFound = errors.New("repository: local government unit not found")
 	// ErrUniversityNotFound reports that a requested university is not present in the dataset.
 	ErrUniversityNotFound = errors.New("repository: university not found")
+	// ErrCollegeOfEducationNotFound reports that a requested college of education is not present in the dataset.
+	ErrCollegeOfEducationNotFound = errors.New("repository: college of education not found")
 	// ErrPaymentServiceProviderNotFound reports that a requested payment service provider is not present in the dataset.
 	ErrPaymentServiceProviderNotFound = errors.New("repository: payment service provider not found")
 	// ErrInternationalMoneyTransferOperatorNotFound reports that a requested IMTO is not present in the dataset.

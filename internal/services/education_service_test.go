@@ -52,6 +52,17 @@ func (s *educationRepositoryStub) GetUniversityByID(_ context.Context, universit
 	return models.University{}, interfaces.ErrUniversityNotFound
 }
 
+func (s *educationRepositoryStub) ListCollegesOfEducation(_ context.Context, filter interfaces.CollegeOfEducationFilter) ([]models.CollegeOfEducation, error) {
+	s.listCalls++
+	return nil, nil
+}
+
+func (s *educationRepositoryStub) GetCollegeOfEducation(_ context.Context, collegeID string) (models.CollegeOfEducation, error) {
+	s.getCalls++
+	s.lastID = collegeID
+	return models.CollegeOfEducation{}, interfaces.ErrCollegeOfEducationNotFound
+}
+
 func TestNewEducationServiceRejectsNilRepository(t *testing.T) {
 	t.Parallel()
 

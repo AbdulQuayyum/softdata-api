@@ -6,7 +6,7 @@ SoftData API uses a layered Go layout that keeps entry points, configuration, da
 
 - `cmd/` holds executable entry points.
 - `internal/` contains the core application logic, including configuration, database access, repositories, security helpers, request validators, response helpers, and domain/API models.
-- `datasets/` contains versioned geography, education, and finance datasets, schemas, metadata, and licensing notes, including universities, payment service providers, and international money transfer operators.
+- `datasets/` contains versioned geography, education, and finance datasets, schemas, metadata, and licensing notes, including universities, colleges of education, payment service providers, and international money transfer operators.
 - `database/` contains PostgreSQL migrations and handwritten SQL queries.
 - `docs/` holds API and project documentation.
 - Root tooling files such as `Makefile`, `sqlc.yaml`, `.air.toml`, and `.env.example` support local development and database generation.
@@ -59,6 +59,7 @@ softdata-api/
 │       └── usage.sql
 ├── datasets
 │   ├── education
+│   │   ├── colleges_of_education.json
 │   │   └── universities.json
 │   ├── finance
 │   │   ├── international_money_transfer_operators.json
@@ -70,6 +71,7 @@ softdata-api/
 │   ├── LICENSE.md
 │   ├── metadata
 │   │   ├── education
+│   │   │   ├── colleges_of_education.json
 │   │   │   └── universities.json
 │   │   ├── finance
 │   │   │   ├── international_money_transfer_operators.json
@@ -81,6 +83,7 @@ softdata-api/
 │   ├── README.md
 │   └── schemas
 │       ├── education
+│       │   ├── colleges_of_education.schema.json
 │       │   └── universities.schema.json
 │       ├── finance
 │       │   ├── international_money_transfer_operators.schema.json
@@ -145,6 +148,7 @@ softdata-api/
 │   │   ├── dataset_handler_test.go
 │   │   ├── discovery_handler.go
 │   │   ├── discovery_handler_test.go
+│   │   ├── education_colleges_handler_test.go
 │   │   ├── education_handler.go
 │   │   ├── education_handler_test.go
 │   │   ├── finance_handler.go
@@ -191,6 +195,7 @@ softdata-api/
 │   │   ├── dataset_source.go
 │   │   ├── dataset_version.go
 │   │   ├── education.go
+│   │   ├── colleges_of_education_test.go
 │   │   ├── finance.go
 │   │   ├── finance_imto_test.go
 │   │   ├── finance_test.go
@@ -208,6 +213,8 @@ softdata-api/
 │   │   ├── file
 │   │   │   ├── csv_repository.go
 │   │   │   ├── csv_repository_test.go
+│   │   │   ├── education_colleges_repository.go
+│   │   │   ├── education_colleges_repository_test.go
 │   │   │   ├── education_repository.go
 │   │   │   ├── education_repository_test.go
 │   │   │   ├── finance_repository.go
@@ -283,6 +290,8 @@ softdata-api/
 │   │   ├── dataset_service.go
 │   │   ├── dataset_service_test.go
 │   │   ├── education_service.go
+│   │   ├── education_colleges_service.go
+│   │   ├── education_colleges_service_test.go
 │   │   ├── education_service_test.go
 │   │   ├── errors.go
 │   │   ├── finance_service.go
@@ -301,6 +310,7 @@ softdata-api/
 │       ├── dataset_validator.go
 │       ├── dataset_validator_test.go
 │       ├── education_validator.go
+│       ├── education_colleges_validator_test.go
 │       ├── education_validator_test.go
 │       ├── finance_validator.go
 │       ├── finance_validator_test.go
@@ -309,9 +319,6 @@ softdata-api/
 │       ├── query_validator.go
 │       └── query_validator_test.go
 ├── sqlc.yaml
-└── tmp
-    ├── build-errors.log
-    └── main
 ```
 
 ## What Each Area Does

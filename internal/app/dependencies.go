@@ -31,6 +31,7 @@ const (
 	geographyGeopoliticalZonesRelativePath                 = "geography/geopolitical_zones.json"
 	geographyLocalGovernmentUnitsRelativePath              = "geography/lgas.json"
 	educationUniversitiesRelativePath                      = "education/universities.json"
+	educationCollegesOfEducationRelativePath               = "education/colleges_of_education.json"
 	financePaymentServiceProvidersRelativePath             = "finance/payment_service_providers.json"
 	financeInternationalMoneyTransferOperatorsRelativePath = "finance/international_money_transfer_operators.json"
 )
@@ -140,8 +141,8 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 		return appDependencies{}, err
 	}
 	educationHandler, err := buildEducationHandlerFromJSONRepository(ctx, jsonRepository,
-		func(repository interfaces.JSONFileRepository, universitiesPath string) (interfaces.EducationRepository, error) {
-			return fileRepo.NewEducationRepository(repository, universitiesPath)
+		func(repository interfaces.JSONFileRepository, universitiesPath, collegesOfEducationPath string) (interfaces.EducationRepository, error) {
+			return fileRepo.NewEducationRepository(repository, universitiesPath, collegesOfEducationPath)
 		},
 		func(repository interfaces.EducationRepository) (educationService, error) {
 			return services.NewEducationService(repository)
@@ -322,6 +323,8 @@ type geographyService interface {
 type educationService interface {
 	ListUniversities(context.Context, services.UniversityListInput) ([]models.University, error)
 	GetUniversity(context.Context, string) (models.University, error)
+	ListCollegesOfEducation(context.Context, services.CollegeOfEducationListInput) ([]models.CollegeOfEducation, error)
+	GetCollegeOfEducation(context.Context, string) (models.CollegeOfEducation, error)
 }
 
 type financeService interface {
@@ -408,7 +411,7 @@ func buildEducationHandler(
 	ctx context.Context,
 	cfg *config.Config,
 	newJSONRepository func(string, int64) (interfaces.JSONFileRepository, error),
-	newEducationRepository func(interfaces.JSONFileRepository, string) (interfaces.EducationRepository, error),
+	newEducationRepository func(interfaces.JSONFileRepository, string, string) (interfaces.EducationRepository, error),
 	newEducationService func(interfaces.EducationRepository) (educationService, error),
 	newEducationHandler func(educationService) (*handlers.EducationHandler, error),
 ) (*handlers.EducationHandler, error) {
@@ -438,7 +441,7 @@ func buildEducationHandler(
 func buildEducationHandlerFromJSONRepository(
 	ctx context.Context,
 	jsonRepository interfaces.JSONFileRepository,
-	newEducationRepository func(interfaces.JSONFileRepository, string) (interfaces.EducationRepository, error),
+	newEducationRepository func(interfaces.JSONFileRepository, string, string) (interfaces.EducationRepository, error),
 	newEducationService func(interfaces.EducationRepository) (educationService, error),
 	newEducationHandler func(educationService) (*handlers.EducationHandler, error),
 ) (*handlers.EducationHandler, error) {
@@ -458,7 +461,7 @@ func buildEducationHandlerFromJSONRepository(
 		return nil, fmt.Errorf("education handler factory is required")
 	}
 
-	educationRepository, err := newEducationRepository(jsonRepository, educationUniversitiesRelativePath)
+	educationRepository, err := newEducationRepository(jsonRepository, educationUniversitiesRelativePath, educationCollegesOfEducationRelativePath)
 	if err != nil {
 		return nil, fmt.Errorf("initialize education repository: %w", err)
 	}
@@ -467,6 +470,9 @@ func buildEducationHandlerFromJSONRepository(
 		return nil, fmt.Errorf("initialize education service: %w", err)
 	}
 	if err := verifyEducationDataset(ctx, educationService); err != nil {
+		return nil, err
+	}
+	if err := verifyCollegeOfEducationDataset(ctx, educationService); err != nil {
 		return nil, err
 	}
 	educationHandler, err := newEducationHandler(educationService)
@@ -634,6 +640,59 @@ func verifyEducationDataset(ctx context.Context, service educationService) error
 		stateSeen[university.StateID] = struct{}{}
 	}
 	if ownershipCounts["federal"] != 77 || ownershipCounts["state"] != 69 || ownershipCounts["private"] != 182 {
+		return fmt.Errorf("verify education dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+	if len(stateSeen) != 37 {
+		return fmt.Errorf("verify education dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+	return nil
+}
+
+func verifyCollegeOfEducationDataset(ctx context.Context, service educationService) error {
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if service == nil {
+		return fmt.Errorf("verify education dataset: education service is required")
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+
+	colleges, err := service.ListCollegesOfEducation(ctx, services.CollegeOfEducationListInput{})
+	if err != nil {
+		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+			return err
+		}
+		return fmt.Errorf("verify education dataset: %w", err)
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+	if len(colleges) != 244 {
+		return fmt.Errorf("verify education dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+
+	ownershipCounts := map[string]int{
+		"federal": 0,
+		"state":   0,
+		"private": 0,
+	}
+	stateSeen := make(map[string]struct{}, 37)
+	for _, college := range colleges {
+		if college.CountryCode != "NG" || college.ID == "" || college.Name == "" || college.StateID == "" {
+			return fmt.Errorf("verify education dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+		if _, ok := ownershipCounts[college.OwnershipType]; !ok {
+			return fmt.Errorf("verify education dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+		if _, ok := approvedUniversityStateIDs[college.StateID]; !ok {
+			return fmt.Errorf("verify education dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+		ownershipCounts[college.OwnershipType]++
+		stateSeen[college.StateID] = struct{}{}
+	}
+	if ownershipCounts["federal"] != 28 || ownershipCounts["state"] != 48 || ownershipCounts["private"] != 168 {
 		return fmt.Errorf("verify education dataset: %w", interfaces.ErrInvalidDatasetFile)
 	}
 	if len(stateSeen) != 37 {

@@ -1,0 +1,1710 @@
+[
+  {
+    "id": "a-d-rufa-i-college-of-education-legal-and-general-studies",
+    "name": "A.D. Rufa’i College of Education, Legal and General Studies",
+    "ownership_type": "state",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "abdullahi-maikano-college-of-education-wase",
+    "name": "Abdullahi Maikano College of Education, Wase",
+    "ownership_type": "private",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "abubakar-garba-zagada-zagada-college-of-education-bajoga",
+    "name": "Abubakar Garba Zagada- Zagada College of Education, Bajoga",
+    "ownership_type": "private",
+    "state_id": "gombe",
+    "country_code": "NG"
+  },
+  {
+    "id": "adamu-augie-college-of-education-argungu",
+    "name": "Adamu Augie College of Education, Argungu",
+    "ownership_type": "state",
+    "state_id": "kebbi",
+    "country_code": "NG"
+  },
+  {
+    "id": "adamu-garkuwa-coe-toro",
+    "name": "Adamu Garkuwa COE, Toro",
+    "ownership_type": "private",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "adamu-tafawa-balewa-coe-kangere",
+    "name": "Adamu Tafawa Balewa COE, Kangere",
+    "ownership_type": "state",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "adesina-college-of-education-share-kwara-state",
+    "name": "Adesina College of Education, Share, Kwara State",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "adigrace-coe-byepyi",
+    "name": "Adigrace COE, Byepyi",
+    "ownership_type": "private",
+    "state_id": "taraba",
+    "country_code": "NG"
+  },
+  {
+    "id": "african-thinkers-community-of-inquiry-coe-enugu",
+    "name": "African Thinkers Community of Inquiry COE, Enugu",
+    "ownership_type": "private",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "ahlus-suffah-coe-ira",
+    "name": "Ahlus-Suffah COE, Ira",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "ajetumobi-coe-ira",
+    "name": "Ajetumobi COE, Ira",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "akwa-ibom-state-college-of-education-afahansit",
+    "name": "Akwa Ibom State College of Education, Afahansit",
+    "ownership_type": "state",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "al-hikma-college-of-education-ankpa",
+    "name": "AL HIKMA COLLEGE OF EDUCATION, ANKPA",
+    "ownership_type": "private",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "al-fajr-college-of-education-kano",
+    "name": "Al-fajr College of Education, Kano",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "al-ibadan-coe",
+    "name": "Al-Ibadan COE",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "al-iman-college-of-education",
+    "name": "Al-Iman College of Education",
+    "ownership_type": "private",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "al-madinah-coe-oshogbo",
+    "name": "Al-Madinah COE Oshogbo",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "al-mustafa-college-of-education-kano",
+    "name": "Al-Mustafa College of Education, Kano",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "al-ummah-coe-umcoed",
+    "name": "Al-Ummah COE (UMCOED)",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "ameenuddeen-college-of-education",
+    "name": "Ameenuddeen College of Education",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "ameer-shehu-idris-college-of-advanced-studies-zaria",
+    "name": "Ameer Shehu Idris College of Advanced Studies, Zaria",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "aminu-kano-college-of-education",
+    "name": "Aminu Kano College of Education",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "aminu-sale-college-of-education-azare",
+    "name": "Aminu Sale College of Education, Azare",
+    "ownership_type": "state",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "angel-crown-coe",
+    "name": "Angel Crown COE",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "annur-college-of-education-kano",
+    "name": "Annur College of Education Kano",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "ansar-ud-deen-college-of-education-isolo",
+    "name": "Ansar-Ud-Deen College of Education, Isolo",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "apa-coe-aido",
+    "name": "Apa COE, Aido",
+    "ownership_type": "private",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "archbishop-alexander-ibezim-coe-anambra",
+    "name": "Archbishop Alexander Ibezim COE, Anambra",
+    "ownership_type": "private",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "assanusiya-coe-odeomu-osun",
+    "name": "Assanusiya COE, Odeomu, Osun",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "awori-district-coe",
+    "name": "Awori District COE",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "bayo-tijani-coe-lagos",
+    "name": "Bayo Tijani COE, Lagos",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "benjamin-uwajumogu-state-college-of-education-ihitte-uboma",
+    "name": "Benjamin Uwajumogu (State) College of Education, Ihitte Uboma",
+    "ownership_type": "state",
+    "state_id": "imo",
+    "country_code": "NG"
+  },
+  {
+    "id": "best-legacy-coe-ogbomoso",
+    "name": "Best Legacy COE Ogbomoso",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "bethel-coe-ijare-ondo",
+    "name": "BETHEL COE IJARE, ONDO",
+    "ownership_type": "private",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "biga-college-of-education",
+    "name": "Biga College of Education",
+    "ownership_type": "private",
+    "state_id": "sokoto",
+    "country_code": "NG"
+  },
+  {
+    "id": "bogoro-college-of-education",
+    "name": "Bogoro College of Education",
+    "ownership_type": "private",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "bright-college-of-education-kachia",
+    "name": "Bright College of Education, Kachia",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "calvin-foundation-coe",
+    "name": "Calvin Foundation COE",
+    "ownership_type": "private",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "christian-chukwuma-onoh-coe",
+    "name": "Christian Chukwuma Onoh COE",
+    "ownership_type": "private",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "christian-college-of-education-gombe",
+    "name": "Christian College of Education, Gombe",
+    "ownership_type": "private",
+    "state_id": "gombe",
+    "country_code": "NG"
+  },
+  {
+    "id": "city-college-of-education-mararaba",
+    "name": "City College of Education, Mararaba",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "climax-college-of-education-bauchi",
+    "name": "Climax College of Education, Bauchi",
+    "ownership_type": "private",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "coastline-college-of-education",
+    "name": "COASTLINE COLLEGE OF EDUCATION",
+    "ownership_type": "private",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "coe-moro-ife-north",
+    "name": "COE, Moro, Ife-North",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "cokwills-college-of-education",
+    "name": "COKWILLS COLLEGE OF EDUCATION",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-education-technical-dass",
+    "name": "College of Education (Technical), Dass",
+    "ownership_type": "state",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-education-akwanga",
+    "name": "College of Education Akwanga",
+    "ownership_type": "state",
+    "state_id": "nasarawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-education-and-entrepreneurship-studies-lessel",
+    "name": "College of Education and Entrepreneurship Studies, Lessel",
+    "ownership_type": "private",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-education-and-legal-studies-nguru",
+    "name": "College of Education and Legal Studies, Nguru",
+    "ownership_type": "state",
+    "state_id": "yobe",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-education-ilemona",
+    "name": "College of Education Ilemona",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-education-kura",
+    "name": "College of Education Kura",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-education-llorin",
+    "name": "College of Education llorin",
+    "ownership_type": "state",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-education-oju",
+    "name": "College of Education Oju",
+    "ownership_type": "state",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-education-oro",
+    "name": "College of Education Oro",
+    "ownership_type": "state",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-education-arochukwu-abia",
+    "name": "College of Education, Arochukwu, Abia",
+    "ownership_type": "state",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-education-billiri",
+    "name": "College of Education, Billiri",
+    "ownership_type": "state",
+    "state_id": "gombe",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-education-darazo",
+    "name": "College of Education, Darazo",
+    "ownership_type": "private",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-education-dutsen-tanshi",
+    "name": "College of Education, Dutsen Tanshi",
+    "ownership_type": "private",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-education-gindiri",
+    "name": "College of Education, Gindiri",
+    "ownership_type": "state",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-education-hong",
+    "name": "College of Education, Hong",
+    "ownership_type": "state",
+    "state_id": "adamawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-education-ikere-ekiti",
+    "name": "College of Education, Ikere-Ekiti",
+    "ownership_type": "state",
+    "state_id": "ekiti",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-education-ila-orangun-osun-state",
+    "name": "College of Education, Ila-Orangun, Osun State",
+    "ownership_type": "state",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-education-katsina-ala",
+    "name": "College of Education, katsina-Ala",
+    "ownership_type": "state",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-education-waka-biu",
+    "name": "College of Education, Waka BIU",
+    "ownership_type": "state",
+    "state_id": "borno",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-education-warri",
+    "name": "College of Education, Warri",
+    "ownership_type": "state",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-education-zing",
+    "name": "College of Education, Zing",
+    "ownership_type": "state",
+    "state_id": "taraba",
+    "country_code": "NG"
+  },
+  {
+    "id": "community-coe-kano",
+    "name": "Community COE, Kano",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "corner-stone-college-of-education-ikeja",
+    "name": "Corner Stone College of Education, Ikeja",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "corona-coe-lekki",
+    "name": "Corona COE Lekki",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "covenant-college-of-education-ccoe",
+    "name": "Covenant College of Education (CCOE)",
+    "ownership_type": "private",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "crescent-pearls-technical-college-of-education-abuja",
+    "name": "Crescent Pearls Technical College of Education, Abuja",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "crestfield-college-of-education",
+    "name": "CRESTFIELD COLLEGE OF EDUCATION",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "dala-college-of-education-kano",
+    "name": "Dala College of Education, Kano",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "danyaya-college-of-education-ningi",
+    "name": "Danyaya College of Education, Ningi",
+    "ownership_type": "private",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "dee-perfect-class-college-of-education-ifon-osun-osun-state",
+    "name": "Dee-Perfect Class College of Education, Ifon-Osun, Osun State",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "delar-college-of-education",
+    "name": "Delar College of Education",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "delta-state-college-of-education-mosogar",
+    "name": "Delta State College of Education, Mosogar",
+    "ownership_type": "state",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "diamond-college-of-education-aba",
+    "name": "DIAMOND COLLEGE OF EDUCATION, ABA",
+    "ownership_type": "private",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "doviana-coe-gboko",
+    "name": "Doviana COE, Gboko",
+    "ownership_type": "private",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "eagle-mountain-college-of-education-abo-mbaise",
+    "name": "Eagle Mountain College of Education Abo Mbaise",
+    "ownership_type": "private",
+    "state_id": "imo",
+    "country_code": "NG"
+  },
+  {
+    "id": "ebenezer-college-of-education-amangwu",
+    "name": "Ebenezer College of Education Amangwu",
+    "ownership_type": "private",
+    "state_id": "ebonyi",
+    "country_code": "NG"
+  },
+  {
+    "id": "ebonyi-state-college-of-education-t-ikwo",
+    "name": "Ebonyi State College of Education, (T) Ikwo",
+    "ownership_type": "state",
+    "state_id": "ebonyi",
+    "country_code": "NG"
+  },
+  {
+    "id": "ecwa-coe-igbaja",
+    "name": "ECWA COE Igbaja",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "ecwa-coe-bayara",
+    "name": "ECWA COE, Bayara",
+    "ownership_type": "private",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "ecwa-college-of-education-jos-ecoej",
+    "name": "ECWA College of Education, Jos (ECOEJ)",
+    "ownership_type": "private",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "edexcel-college-of-education",
+    "name": "Edexcel College of Education",
+    "ownership_type": "private",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "edo-state-college-of-education-igueben",
+    "name": "Edo State College of Education, Igueben",
+    "ownership_type": "state",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "elder-oyama-memorial-coe-ofat",
+    "name": "Elder Oyama Memorial COE, Ofat",
+    "ownership_type": "private",
+    "state_id": "cross-river",
+    "country_code": "NG"
+  },
+  {
+    "id": "elibest-college-of-education",
+    "name": "Elibest College of Education",
+    "ownership_type": "private",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "elizabeth-memorial-college-of-education-nsukka",
+    "name": "Elizabeth Memorial College of Education Nsukka",
+    "ownership_type": "private",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "emamor-college-of-education",
+    "name": "Emamor College of Education",
+    "ownership_type": "private",
+    "state_id": "rivers",
+    "country_code": "NG"
+  },
+  {
+    "id": "emirate-college-of-education",
+    "name": "Emirate College of Education",
+    "ownership_type": "private",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "emmanuel-ebije-ikwue-college-of-education",
+    "name": "Emmanuel Ebije Ikwue College Of Education",
+    "ownership_type": "private",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "enugu-state-coll-of-education-t-enugu",
+    "name": "Enugu State Coll. of Education (T), Enugu",
+    "ownership_type": "state",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "fct-college-of-education-zuba",
+    "name": "FCT College of Education, Zuba",
+    "ownership_type": "federal",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-fce-gwoza",
+    "name": "Federal College of Education (FCE) Gwoza",
+    "ownership_type": "federal",
+    "state_id": "borno",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-special-oyo",
+    "name": "Federal College of Education (Special), Oyo",
+    "ownership_type": "federal",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-t-isu-ebonyi-state",
+    "name": "Federal College of Education (T), ISU Ebonyi State",
+    "ownership_type": "federal",
+    "state_id": "ebonyi",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-t-umunze",
+    "name": "Federal College of Education (T), Umunze",
+    "ownership_type": "federal",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-tech-potiskum",
+    "name": "Federal College of Education (Tech), Potiskum",
+    "ownership_type": "federal",
+    "state_id": "yobe",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-technical-in-yauri",
+    "name": "Federal College of Education (Technical) in Yauri",
+    "ownership_type": "federal",
+    "state_id": "kebbi",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-technical-akoka",
+    "name": "Federal College of Education (Technical), Akoka",
+    "ownership_type": "federal",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-technical-asaba",
+    "name": "Federal College of Education (Technical), Asaba",
+    "ownership_type": "federal",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-technical-bichi",
+    "name": "Federal College of Education (Technical), Bichi",
+    "ownership_type": "federal",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-technical-gombe",
+    "name": "Federal College of Education (Technical), Gombe",
+    "ownership_type": "federal",
+    "state_id": "gombe",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-technical-gusau",
+    "name": "Federal College of Education (Technical), Gusau",
+    "ownership_type": "federal",
+    "state_id": "zamfara",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-technical-omoku",
+    "name": "Federal College of Education (Technical), Omoku",
+    "ownership_type": "federal",
+    "state_id": "rivers",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-bauchi",
+    "name": "Federal College of Education Bauchi",
+    "ownership_type": "federal",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-edo",
+    "name": "Federal College of Education Edo",
+    "ownership_type": "federal",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-ilawe-ekiti",
+    "name": "Federal College of Education Ilawe-Ekiti",
+    "ownership_type": "federal",
+    "state_id": "ekiti",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-ofeme-ohuhu",
+    "name": "Federal College of Education Ofeme-Ohuhu",
+    "ownership_type": "federal",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-osun",
+    "name": "Federal College of Education Osun",
+    "ownership_type": "federal",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-sokoto",
+    "name": "Federal College of Education Sokoto",
+    "ownership_type": "federal",
+    "state_id": "sokoto",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-technical-keana",
+    "name": "Federal College Of Education(Technical), Keana",
+    "ownership_type": "federal",
+    "state_id": "nasarawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-abeokuta",
+    "name": "Federal College of Education, Abeokuta",
+    "ownership_type": "federal",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-eha-amufu",
+    "name": "Federal College of Education, Eha-Amufu",
+    "ownership_type": "federal",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-ididep",
+    "name": "Federal College of Education, Ididep",
+    "ownership_type": "federal",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-katsina",
+    "name": "Federal College of Education, Katsina",
+    "ownership_type": "federal",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-obudu",
+    "name": "Federal College of Education, Obudu",
+    "ownership_type": "federal",
+    "state_id": "cross-river",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-odugbo-benue-state",
+    "name": "Federal College of Education, Odugbo, Benue State",
+    "ownership_type": "federal",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-okene",
+    "name": "Federal College of Education, Okene",
+    "ownership_type": "federal",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-education-yola",
+    "name": "Federal College of Education, Yola",
+    "ownership_type": "federal",
+    "state_id": "adamawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "festmed-college-of-education-ondo-state",
+    "name": "FESTMED COLLEGE OF EDUCATION, ONDO STATE",
+    "ownership_type": "private",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "first-de-wise-college-of-education-ilorin",
+    "name": "First De-Wise College of Education, Ilorin",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "folrac-fortified-college-of-education",
+    "name": "Folrac Fortified College of Education",
+    "ownership_type": "private",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "gand-plus-college-of-education",
+    "name": "Gand-Plus College of Education",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "gboko-college-of-education-benue-state",
+    "name": "Gboko College of Education Benue State",
+    "ownership_type": "private",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "global-coe-bukuru",
+    "name": "Global COE, Bukuru",
+    "ownership_type": "private",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "gombe-state-coe-nafada",
+    "name": "Gombe State COE, NAFADA",
+    "ownership_type": "state",
+    "state_id": "gombe",
+    "country_code": "NG"
+  },
+  {
+    "id": "good-shepperd-coe",
+    "name": "Good Shepperd COE",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "grace-city-college-of-education",
+    "name": "Grace City College of Education",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "grace-college-of-education",
+    "name": "GRACE COLLEGE OF EDUCATION",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "hamzainab-college-of-education-oshogbo",
+    "name": "Hamzainab College of Education, Oshogbo",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "havard-wilson-college-of-education-aba",
+    "name": "Havard Wilson College of Education, Aba",
+    "ownership_type": "private",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "hill-coe-gwanje-akwanga",
+    "name": "Hill COE, Gwanje, Akwanga",
+    "ownership_type": "private",
+    "state_id": "nasarawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "his-grace-college-of-education-ilorin",
+    "name": "His Grace College of Education, Ilorin",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "hope-and-anchor-college-of-education",
+    "name": "Hope and Anchor College of Education",
+    "ownership_type": "private",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "ife-college-of-education-abejukolo-omala",
+    "name": "Ife College of Education, Abejukolo, Omala",
+    "ownership_type": "private",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "ikeduru-college-of-education",
+    "name": "Ikeduru College of Education",
+    "ownership_type": "private",
+    "state_id": "imo",
+    "country_code": "NG"
+  },
+  {
+    "id": "imam-hamzat-coe-ilorin",
+    "name": "Imam Hamzat COE, Ilorin",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "imam-saidu-coe-funtua",
+    "name": "Imam Saidu COE, Funtua",
+    "ownership_type": "private",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "innovative-college-of-education-karu",
+    "name": "Innovative College of Education, Karu",
+    "ownership_type": "private",
+    "state_id": "nasarawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "international-college-of-education-langtang",
+    "name": "International College of Education, Langtang",
+    "ownership_type": "private",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "isa-kaita-college-of-education-dutsin-ma",
+    "name": "Isa Kaita College of Education, Dutsin-Ma",
+    "ownership_type": "state",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "isaac-jasper-boro-coe-sagbama",
+    "name": "Isaac Jasper Boro COE, Sagbama",
+    "ownership_type": "state",
+    "state_id": "bayelsa",
+    "country_code": "NG"
+  },
+  {
+    "id": "islamic-coe-potiskum",
+    "name": "Islamic COE, Potiskum",
+    "ownership_type": "private",
+    "state_id": "yobe",
+    "country_code": "NG"
+  },
+  {
+    "id": "jibwis-coe-jama-are",
+    "name": "JIBWIS COE, Jama’are",
+    "ownership_type": "private",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "jibwis-coe-jega-kebbi",
+    "name": "JIBWIS COE, Jega, Kebbi",
+    "ownership_type": "private",
+    "state_id": "kebbi",
+    "country_code": "NG"
+  },
+  {
+    "id": "jibwis-coe-zuru-kebbi-state",
+    "name": "Jibwis COE, Zuru, Kebbi State",
+    "ownership_type": "private",
+    "state_id": "kebbi",
+    "country_code": "NG"
+  },
+  {
+    "id": "jibwis-college-of-education",
+    "name": "JIBWIS College of Education",
+    "ownership_type": "private",
+    "state_id": "nasarawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "jibwis-college-of-education-gombe",
+    "name": "JIBWIS College of Education Gombe",
+    "ownership_type": "private",
+    "state_id": "gombe",
+    "country_code": "NG"
+  },
+  {
+    "id": "jibwis-college-of-education-jos",
+    "name": "JIBWIS College of Education Jos",
+    "ownership_type": "private",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "jibwis-college-of-education-gumau",
+    "name": "Jibwis College of Education, Gumau",
+    "ownership_type": "private",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "jigawa-state-college-of-education-and-legal-studies-ringim",
+    "name": "JIGAWA STATE COLLEGE OF EDUCATION AND LEGAL STUDIES, RINGIM",
+    "ownership_type": "state",
+    "state_id": "jigawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "jigawa-state-college-of-education-gumel",
+    "name": "Jigawa State College of Education, Gumel",
+    "ownership_type": "state",
+    "state_id": "jigawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "job-college-of-education-ila-orangun",
+    "name": "Job College of Education, Ila-Orangun",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "jornato-college-of-education",
+    "name": "Jornato College of Education",
+    "ownership_type": "private",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "kaduna-state-college-of-education-gidan-waya-kafanchan",
+    "name": "Kaduna State College of Education, Gidan-Waya, Kafanchan",
+    "ownership_type": "state",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "kano-state-college-of-education-and-preliminary-studies-kascepts",
+    "name": "Kano State College of Education and Preliminary Studies (KASCEPTS)",
+    "ownership_type": "state",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "kashim-ibrahim-college-of-education",
+    "name": "Kashim Ibrahim College of Education",
+    "ownership_type": "state",
+    "state_id": "borno",
+    "country_code": "NG"
+  },
+  {
+    "id": "kazaure-college-of-education",
+    "name": "Kazaure College of Education",
+    "ownership_type": "private",
+    "state_id": "jigawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "kogi-east-college-of-education",
+    "name": "Kogi East College of Education",
+    "ownership_type": "private",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "kogi-state-college-of-education-ankpa",
+    "name": "Kogi State College of Education, Ankpa",
+    "ownership_type": "state",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "kogi-state-college-of-education-kabba",
+    "name": "Kogi State College of Education, Kabba",
+    "ownership_type": "state",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "kwaine-coe-gombe",
+    "name": "Kwaine COE, Gombe",
+    "ownership_type": "private",
+    "state_id": "gombe",
+    "country_code": "NG"
+  },
+  {
+    "id": "kwara-state-college-of-education-technical-lafiagi",
+    "name": "Kwara State College of Education (Technical), Lafiagi",
+    "ownership_type": "state",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "kwararafa-coe-otukpo",
+    "name": "Kwararafa COE, Otukpo",
+    "ownership_type": "private",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "lakeview-coe-jalingo",
+    "name": "Lakeview COE, Jalingo",
+    "ownership_type": "private",
+    "state_id": "taraba",
+    "country_code": "NG"
+  },
+  {
+    "id": "lasting-glory-college-of-education-erunmu-egbeda",
+    "name": "Lasting Glory College of Education, Erunmu Egbeda",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "lessel-coe-gboko",
+    "name": "Lessel COE Gboko",
+    "ownership_type": "private",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "lifegate-college-of-education-asa",
+    "name": "Lifegate College of Education, Asa",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "maryam-idris-umar-college-of-education-limited",
+    "name": "MARYAM IDRIS UMAR COLLEGE OF EDUCATION LIMITED",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "mcf-coe-agbarha-otor-delta",
+    "name": "MCF COE Agbarha-Otor, Delta",
+    "ownership_type": "private",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "meadow-hall-coe",
+    "name": "Meadow Hall COE",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "metro-coe-adogi-lafia",
+    "name": "Metro COE, Adogi-Lafia",
+    "ownership_type": "private",
+    "state_id": "nasarawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "moje-college-of-education-erin-ile",
+    "name": "Moje College of Education, Erin-Ile",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "muftau-olanihun-college-of-education-ibadan",
+    "name": "Muftau Olanihun College of Education, Ibadan",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "muhyideen-college-of-education-ilorin",
+    "name": "Muhyideen College of Education, Ilorin",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "muritadha-coe-olodo",
+    "name": "Muritadha COE, Olodo",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "mus-ab-bn-umair-college-of-education-bajoga",
+    "name": "Mus'ab Bn Umair College of Education Bajoga",
+    "ownership_type": "private",
+    "state_id": "gombe",
+    "country_code": "NG"
+  },
+  {
+    "id": "nana-aishat-memorial-coe",
+    "name": "Nana Aishat Memorial COE",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "niger-state-college-of-education-minna",
+    "name": "Niger State College of Education, Minna",
+    "ownership_type": "state",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "nosakhare-coe-benin-city",
+    "name": "Nosakhare COE, Benin City",
+    "ownership_type": "private",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "nwafor-orizu-college-of-education-nsugbe",
+    "name": "Nwafor Orizu College of Education, Nsugbe",
+    "ownership_type": "state",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "olekamba-college-of-education",
+    "name": "Olekamba College of Education",
+    "ownership_type": "private",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "omaga-aejigbo-college-of-education-ajiolo-ojiaji",
+    "name": "Omaga aejigbo College of education Ajiolo-Ojiaji",
+    "ownership_type": "private",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "onit-coe-abagana",
+    "name": "ONIT COE, Abagana",
+    "ownership_type": "private",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "osan-ekiti-coe-ekiti-state",
+    "name": "Osan Ekiti COE, Ekiti State",
+    "ownership_type": "private",
+    "state_id": "ekiti",
+    "country_code": "NG"
+  },
+  {
+    "id": "osi-college-of-education",
+    "name": "Osi College of Education",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "osisa-tech-college-of-education-enugu",
+    "name": "Osisa Tech. College of Education, Enugu",
+    "ownership_type": "private",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "oswald-waller-coe-shendam",
+    "name": "Oswald Waller COE Shendam",
+    "ownership_type": "private",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "owu-college-of-education",
+    "name": "Owu College of Education",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "oyo-state-college-of-education-lanlate",
+    "name": "Oyo State College of Education, Lanlate",
+    "ownership_type": "state",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "pan-africa-entrepreneurship-and-vocational-college-of-education",
+    "name": "Pan Africa Entrepreneurship and Vocational College of Education",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "pan-african-coe-offa",
+    "name": "PAN African COE Offa",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "peace-college-of-education-ankpa",
+    "name": "Peace College Of Education Ankpa",
+    "ownership_type": "private",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "peaceland-college-of-education-enugu",
+    "name": "Peaceland College of Education, Enugu",
+    "ownership_type": "private",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "peacock-college-of-education-jalingo",
+    "name": "Peacock College of Education Jalingo",
+    "ownership_type": "private",
+    "state_id": "taraba",
+    "country_code": "NG"
+  },
+  {
+    "id": "peter-oyeleye-fasua-college-of-education",
+    "name": "Peter Oyeleye Fasua College of Education",
+    "ownership_type": "private",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "petriot-college-of-education",
+    "name": "Petriot College of Education",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "piaget-college-of-education",
+    "name": "Piaget College of Education",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "pineville-college-of-education",
+    "name": "Pineville College of Education",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "premier-coe-osun",
+    "name": "Premier COE, Osun",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "pristine-college-of-education",
+    "name": "Pristine College of Education",
+    "ownership_type": "private",
+    "state_id": "imo",
+    "country_code": "NG"
+  },
+  {
+    "id": "providence-international-college-of-education-ibadan",
+    "name": "Providence International College of Education, Ibadan",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "raphat-coe",
+    "name": "Raphat COE",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "royal-city-coe-iyesi-ota",
+    "name": "Royal City COE, Iyesi-Ota",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "royal-coe-ikeja-lagos-state",
+    "name": "Royal COE, Ikeja, Lagos State",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "royal-college-of-education-ogun-state",
+    "name": "Royal College of Education, Ogun State",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "s-light-college-of-education-kano",
+    "name": "S. Light College of Education, Kano",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "sa-adatu-rimi-college-of-education-kumbotso-kano",
+    "name": "Sa'adatu Rimi College of Education, Kumbotso, Kano",
+    "ownership_type": "state",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "sam-ale-college-of-education",
+    "name": "Sam Ale College of Education",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "sarkin-yama-community-college-of-education",
+    "name": "Sarkin Yama Community College of Education",
+    "ownership_type": "private",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "sharifat-institute-of-professional-and-islamic-legal-studies",
+    "name": "Sharifat Institute of Professional and Islamic Legal Studies",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "shehu-shagari-college-of-education-sokoto",
+    "name": "Shehu Shagari College of Education, Sokoto",
+    "ownership_type": "state",
+    "state_id": "sokoto",
+    "country_code": "NG"
+  },
+  {
+    "id": "sikiru-adetona-college-of-education-science-and-technology-omu-ajose",
+    "name": "Sikiru Adetona College of Education, Science and Technology, Omu-Ajose",
+    "ownership_type": "state",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "sinai-coe-ent-studies-gboko-benue",
+    "name": "Sinai COE & Ent. Studies Gboko, Benue",
+    "ownership_type": "private",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "st-augustine-college-of-education-akoka-lagos",
+    "name": "St. Augustine College of Education Akoka, Lagos",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "st-frances-asissi-college-of-education-zaria",
+    "name": "St. Frances Asissi College of Education, Zaria",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "st-paul-s-college-of-education-nnewi",
+    "name": "St. Paul's College of Education NNewi",
+    "ownership_type": "private",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "steady-flow-coe-ikom",
+    "name": "STEADY FLOW COE, IKOM",
+    "ownership_type": "private",
+    "state_id": "cross-river",
+    "country_code": "NG"
+  },
+  {
+    "id": "talent-finders-college-of-education-ilala-kwara-state",
+    "name": "Talent Finders College of Education, Ilala, Kwara State",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "tamic-coe-lagos",
+    "name": "Tamic COE, Lagos",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "tcnn-college-of-education-bukuru",
+    "name": "TCNN College of Education, Bukuru",
+    "ownership_type": "private",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "the-college-of-education-iseyin",
+    "name": "The College of Education Iseyin",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "the-college-of-education-nsukka",
+    "name": "The College of Education, Nsukka",
+    "ownership_type": "private",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "the-heritage-college-of-education",
+    "name": "The Heritage College of Education",
+    "ownership_type": "private",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "tijjani-ibrahim-college-of-education",
+    "name": "Tijjani Ibrahim College of Education",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "tony-g-erewa-college-of-education",
+    "name": "Tony G Erewa College of Education",
+    "ownership_type": "private",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "top-sprout-coe-ilorin",
+    "name": "Top Sprout Coe, Ilorin",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "top-most-coe-ipaja-agbado",
+    "name": "Top-Most COE, Ipaja-Agbado",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "turath-coe-kano",
+    "name": "Turath COE, Kano",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "uli-college-of-education-uli",
+    "name": "Uli College of Education, Uli",
+    "ownership_type": "private",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "umar-bun-khatab-college-of-education-tudun-nupawa-kaduna",
+    "name": "Umar Bun Khatab College of Education, Tudun Nupawa, Kaduna",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "umar-ibn-ibrahim-el-kanemi-college-of-education-science-and-technology-bama",
+    "name": "Umar Ibn Ibrahim El-Kanemi College of Education, Science and Technology, Bama",
+    "ownership_type": "state",
+    "state_id": "borno",
+    "country_code": "NG"
+  },
+  {
+    "id": "umar-suleiman-college-of-education-gashua",
+    "name": "Umar Suleiman College of Education Gashua",
+    "ownership_type": "state",
+    "state_id": "yobe",
+    "country_code": "NG"
+  },
+  {
+    "id": "unity-college-of-education-aukpa-adoka-benue",
+    "name": "Unity College of Education, Aukpa Adoka, Benue",
+    "ownership_type": "private",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "upland-college-of-education-science-and-technology",
+    "name": "Upland College of Education, Science and Technology",
+    "ownership_type": "private",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "victory-belt-college-of-education-iyale",
+    "name": "Victory Belt College of Education,Iyale",
+    "ownership_type": "private",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "waterside-college-of-education",
+    "name": "WATERSIDE COLLEGE OF EDUCATION",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "yewa-central-college-of-education-ayetoro-abeokuta",
+    "name": "Yewa Central College of Education, Ayetoro, Abeokuta",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "yusuf-bala-usman-coe-and-legal-studies-daura",
+    "name": "Yusuf Bala Usman CoE and Legal Studies, Daura",
+    "ownership_type": "state",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "yusuf-maitama-sule-college-of-education-advanced-studies-ghari",
+    "name": "Yusuf Maitama Sule College of Education & Advanced Studies, Ghari",
+    "ownership_type": "state",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "zamfara-state-college-of-education-maru",
+    "name": "Zamfara State College of Education, Maru",
+    "ownership_type": "state",
+    "state_id": "zamfara",
+    "country_code": "NG"
+  }
+]

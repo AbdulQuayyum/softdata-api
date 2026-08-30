@@ -155,6 +155,16 @@ Nigeria's current National Universities Commission register of federal, state an
 
 The package contains 328 university records across the current NUC federal, state and private registers. Each record represents one university listing, with `state_id` linking the record to `ng-states` and `ownership_type` preserving the category published by the NUC.
 
+### `ng-colleges-of-education`
+
+Nigeria's current National Commission for Colleges of Education register of active colleges of education.
+
+- `datasets/education/colleges_of_education.json`
+- `datasets/schemas/education/colleges_of_education.schema.json`
+- `datasets/metadata/education/colleges_of_education.json`
+
+The package version is `1.0.0` and contains 244 college records across the current NCCE federal, state and private categories (`28` federal, `48` state, `168` private). Each record represents one active college listing, with `state_id` linking the record to `ng-states` and `ownership_type` preserving the category published by the NCCE. The stale `Cross River State Coll. of Education, Akampa` row is excluded because current Cross River State Government evidence describes the successor as a university that is already represented in `ng-universities`. SoftData's independent compilation, schema and metadata are CC BY 4.0; the NCCE and other official publications retain their own rights.
+
 ## Directory Structure
 
 ```text
