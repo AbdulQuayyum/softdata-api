@@ -30,6 +30,7 @@ const (
 	geographyStatesRelativePath                            = "geography/states.json"
 	geographyGeopoliticalZonesRelativePath                 = "geography/geopolitical_zones.json"
 	geographyLocalGovernmentUnitsRelativePath              = "geography/lgas.json"
+	geographyCountriesAndAreasRelativePath                 = "geography/countries_and_areas.json"
 	educationUniversitiesRelativePath                      = "education/universities.json"
 	educationCollegesOfEducationRelativePath               = "education/colleges_of_education.json"
 	financePaymentServiceProvidersRelativePath             = "finance/payment_service_providers.json"
@@ -127,8 +128,8 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	}
 
 	geographyHandler, err := buildGeographyHandlerFromJSONRepository(ctx, jsonRepository,
-		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath string) (interfaces.GeographyRepository, error) {
-			return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath)
+		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, countriesAndAreasPath string) (interfaces.GeographyRepository, error) {
+			return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath, countriesAndAreasPath)
 		},
 		func(repository interfaces.GeographyRepository) (geographyService, error) {
 			return services.NewGeographyService(repository)
@@ -318,6 +319,8 @@ type geographyService interface {
 	ListLocalGovernmentUnits(context.Context) ([]models.LocalGovernmentUnit, error)
 	ListLocalGovernmentUnitsByState(context.Context, string) ([]models.LocalGovernmentUnit, error)
 	GetLocalGovernmentUnit(context.Context, string) (models.LocalGovernmentUnit, error)
+	ListCountriesAndAreas(context.Context, services.CountryOrAreaListInput) ([]models.CountryOrArea, error)
+	GetCountryOrArea(context.Context, string) (models.CountryOrArea, error)
 }
 
 type educationService interface {
@@ -339,7 +342,7 @@ func buildGeographyHandler(
 	ctx context.Context,
 	cfg *config.Config,
 	newJSONRepository func(string, int64) (interfaces.JSONFileRepository, error),
-	newGeographyRepository func(interfaces.JSONFileRepository, string, string, string) (interfaces.GeographyRepository, error),
+	newGeographyRepository func(interfaces.JSONFileRepository, string, string, string, string) (interfaces.GeographyRepository, error),
 	newGeographyService func(interfaces.GeographyRepository) (geographyService, error),
 	newGeographyHandler func(geographyService) (*handlers.GeographyHandler, error),
 ) (*handlers.GeographyHandler, error) {
@@ -369,7 +372,7 @@ func buildGeographyHandler(
 func buildGeographyHandlerFromJSONRepository(
 	ctx context.Context,
 	jsonRepository interfaces.JSONFileRepository,
-	newGeographyRepository func(interfaces.JSONFileRepository, string, string, string) (interfaces.GeographyRepository, error),
+	newGeographyRepository func(interfaces.JSONFileRepository, string, string, string, string) (interfaces.GeographyRepository, error),
 	newGeographyService func(interfaces.GeographyRepository) (geographyService, error),
 	newGeographyHandler func(geographyService) (*handlers.GeographyHandler, error),
 ) (*handlers.GeographyHandler, error) {
@@ -389,7 +392,7 @@ func buildGeographyHandlerFromJSONRepository(
 		return nil, fmt.Errorf("geography handler factory is required")
 	}
 
-	geographyRepository, err := newGeographyRepository(jsonRepository, geographyStatesRelativePath, geographyGeopoliticalZonesRelativePath, geographyLocalGovernmentUnitsRelativePath)
+	geographyRepository, err := newGeographyRepository(jsonRepository, geographyStatesRelativePath, geographyGeopoliticalZonesRelativePath, geographyLocalGovernmentUnitsRelativePath, geographyCountriesAndAreasRelativePath)
 	if err != nil {
 		return nil, fmt.Errorf("initialize geography repository: %w", err)
 	}

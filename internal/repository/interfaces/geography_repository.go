@@ -15,4 +15,12 @@ type GeographyRepository interface {
 	ListLocalGovernmentUnits(ctx context.Context) ([]models.LocalGovernmentUnit, error)
 	ListLocalGovernmentUnitsByStateID(ctx context.Context, stateID string) ([]models.LocalGovernmentUnit, error)
 	GetLocalGovernmentUnit(ctx context.Context, unitID string) (models.LocalGovernmentUnit, error)
+	ListCountriesAndAreas(ctx context.Context, filter CountryOrAreaFilter) ([]models.CountryOrArea, error)
+	GetCountryOrArea(ctx context.Context, countryOrAreaID string) (models.CountryOrArea, error)
+}
+
+// CountryOrAreaFilter narrows the countries-and-areas dataset by geography codes.
+type CountryOrAreaFilter struct {
+	RegionCode    string
+	SubregionCode string
 }
