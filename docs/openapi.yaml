@@ -210,6 +210,64 @@ paths:
           $ref: "#/components/responses/ValidationFailed"
         "500":
           $ref: "#/components/responses/InternalError"
+  /v1/geography/countries:
+    get:
+      tags: [Geography]
+      summary: List countries and areas
+      description: Returns the current UN M49 countries or areas snapshot. Region and subregion filters are optional and may be combined. Statistical designations are used for reference only and do not imply political recognition or legal status.
+      parameters:
+        - $ref: "#/components/parameters/CountryOrAreaRegionCode"
+        - $ref: "#/components/parameters/CountryOrAreaSubregionCode"
+      responses:
+        "200":
+          description: Country-or-area records
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CountryOrAreaListResponse"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/geography/countries/{country_id}:
+    get:
+      tags: [Geography]
+      summary: Get a country or area
+      description: Returns a verified country-or-area record from the current UN M49 snapshot. Statistical designations are used for reference only and do not imply political recognition or legal status.
+      parameters:
+        - $ref: "#/components/parameters/CountryOrAreaID"
+      responses:
+        "200":
+          description: Country-or-area record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CountryOrAreaResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/assets/flags/{country_id}.svg:
+    get:
+      tags: [Geography]
+      summary: Get a country or area flag SVG
+      parameters:
+        - $ref: "#/components/parameters/CountryOrAreaFlagID"
+      responses:
+        "200":
+          description: Country or area flag SVG
+          content:
+            image/svg+xml:
+              schema:
+                type: string
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
   /v1/education/universities:
     get:
       tags: [Education]
@@ -692,6 +750,39 @@ components:
       description: Stable public identifier for a local government unit or FCT Area Council.
       schema:
         type: string
+        pattern: '^[a-z0-9]+(?:-[a-z0-9]+)+$'
+    CountryOrAreaID:
+      name: country_id
+      in: path
+      required: true
+      description: Stable lowercase alpha-2 identifier for a UN M49 country or area.
+      schema:
+        type: string
+        pattern: '^[a-z]{2}$'
+    CountryOrAreaFlagID:
+      name: country_id
+      in: path
+      required: true
+      description: Stable lowercase alpha-2 identifier for a UN M49 country or area SVG flag asset.
+      schema:
+        type: string
+        pattern: '^[a-z]{2}\.svg$'
+    CountryOrAreaRegionCode:
+      name: region_code
+      in: query
+      required: false
+      description: Optional UN M49 region code used to filter country or area records.
+      schema:
+        type: string
+        pattern: '^[0-9]{3}$'
+    CountryOrAreaSubregionCode:
+      name: subregion_code
+      in: query
+      required: false
+      description: Optional UN M49 subregion code used to filter country or area records.
+      schema:
+        type: string
+        pattern: '^[0-9]{3}$'
     UniversityID:
       name: university_id
       in: path
@@ -1011,6 +1102,97 @@ components:
           type: boolean
         data:
           $ref: "#/components/schemas/LocalGovernmentUnit"
+      required: [success, data]
+    CountryOrArea:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          pattern: '^[a-z]{2}$'
+        name:
+          type: string
+        alpha_2_code:
+          type: string
+          pattern: '^[A-Z]{2}$'
+        alpha_3_code:
+          type: string
+          pattern: '^[A-Z]{3}$'
+        numeric_code:
+          type: string
+          pattern: '^[0-9]{3}$'
+        calling_codes:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: string
+            pattern: '^\+[1-9][0-9]{0,2}(?:-[0-9]{1,4})*$'
+        flag_emoji:
+          type: string
+        flag_svg_url:
+          type: string
+          pattern: '^/v1/assets/flags/[a-z]{2}\.svg$'
+        region_code:
+          type: string
+          pattern: '^[0-9]{3}$'
+        region_name:
+          type: string
+        subregion_code:
+          type: string
+          pattern: '^[0-9]{3}$'
+        subregion_name:
+          type: string
+        intermediate_region_code:
+          type: string
+          pattern: '^[0-9]{3}$'
+        intermediate_region_name:
+          type: string
+      required: [id, name, alpha_2_code, alpha_3_code, numeric_code]
+      allOf:
+        - if:
+            required: [region_code]
+          then:
+            required: [region_name]
+        - if:
+            required: [region_name]
+          then:
+            required: [region_code]
+        - if:
+            required: [subregion_code]
+          then:
+            required: [subregion_name]
+        - if:
+            required: [subregion_name]
+          then:
+            required: [subregion_code]
+        - if:
+            required: [intermediate_region_code]
+          then:
+            required: [intermediate_region_name]
+        - if:
+            required: [intermediate_region_name]
+          then:
+            required: [intermediate_region_code]
+    CountryOrAreaListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/CountryOrArea"
+      required: [success, data]
+    CountryOrAreaResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: "#/components/schemas/CountryOrArea"
       required: [success, data]
     UniversityOwnershipType:
       type: string

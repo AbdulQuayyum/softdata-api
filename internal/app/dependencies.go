@@ -30,6 +30,7 @@ const (
 	geographyStatesRelativePath                            = "geography/states.json"
 	geographyGeopoliticalZonesRelativePath                 = "geography/geopolitical_zones.json"
 	geographyLocalGovernmentUnitsRelativePath              = "geography/lgas.json"
+	geographyCountriesAndAreasRelativePath                 = "geography/countries_and_areas.json"
 	educationUniversitiesRelativePath                      = "education/universities.json"
 	educationCollegesOfEducationRelativePath               = "education/colleges_of_education.json"
 	financePaymentServiceProvidersRelativePath             = "finance/payment_service_providers.json"
@@ -127,8 +128,8 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	}
 
 	geographyHandler, err := buildGeographyHandlerFromJSONRepository(ctx, jsonRepository,
-		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath string) (interfaces.GeographyRepository, error) {
-			return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath)
+		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, countriesAndAreasPath string) (interfaces.GeographyRepository, error) {
+			return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath, countriesAndAreasPath)
 		},
 		func(repository interfaces.GeographyRepository) (geographyService, error) {
 			return services.NewGeographyService(repository)
@@ -318,6 +319,8 @@ type geographyService interface {
 	ListLocalGovernmentUnits(context.Context) ([]models.LocalGovernmentUnit, error)
 	ListLocalGovernmentUnitsByState(context.Context, string) ([]models.LocalGovernmentUnit, error)
 	GetLocalGovernmentUnit(context.Context, string) (models.LocalGovernmentUnit, error)
+	ListCountriesAndAreas(context.Context, services.CountryOrAreaListInput) ([]models.CountryOrArea, error)
+	GetCountryOrArea(context.Context, string) (models.CountryOrArea, error)
 }
 
 type educationService interface {
@@ -339,7 +342,7 @@ func buildGeographyHandler(
 	ctx context.Context,
 	cfg *config.Config,
 	newJSONRepository func(string, int64) (interfaces.JSONFileRepository, error),
-	newGeographyRepository func(interfaces.JSONFileRepository, string, string, string) (interfaces.GeographyRepository, error),
+	newGeographyRepository func(interfaces.JSONFileRepository, string, string, string, string) (interfaces.GeographyRepository, error),
 	newGeographyService func(interfaces.GeographyRepository) (geographyService, error),
 	newGeographyHandler func(geographyService) (*handlers.GeographyHandler, error),
 ) (*handlers.GeographyHandler, error) {
@@ -369,7 +372,7 @@ func buildGeographyHandler(
 func buildGeographyHandlerFromJSONRepository(
 	ctx context.Context,
 	jsonRepository interfaces.JSONFileRepository,
-	newGeographyRepository func(interfaces.JSONFileRepository, string, string, string) (interfaces.GeographyRepository, error),
+	newGeographyRepository func(interfaces.JSONFileRepository, string, string, string, string) (interfaces.GeographyRepository, error),
 	newGeographyService func(interfaces.GeographyRepository) (geographyService, error),
 	newGeographyHandler func(geographyService) (*handlers.GeographyHandler, error),
 ) (*handlers.GeographyHandler, error) {
@@ -389,7 +392,7 @@ func buildGeographyHandlerFromJSONRepository(
 		return nil, fmt.Errorf("geography handler factory is required")
 	}
 
-	geographyRepository, err := newGeographyRepository(jsonRepository, geographyStatesRelativePath, geographyGeopoliticalZonesRelativePath, geographyLocalGovernmentUnitsRelativePath)
+	geographyRepository, err := newGeographyRepository(jsonRepository, geographyStatesRelativePath, geographyGeopoliticalZonesRelativePath, geographyLocalGovernmentUnitsRelativePath, geographyCountriesAndAreasRelativePath)
 	if err != nil {
 		return nil, fmt.Errorf("initialize geography repository: %w", err)
 	}
@@ -592,7 +595,163 @@ func verifyGeographyDataset(ctx context.Context, service geographyService) error
 	if stateCount != 36 || fctCount != 1 {
 		return fmt.Errorf("verify geography dataset: %w", interfaces.ErrInvalidDatasetFile)
 	}
+
+	countries, err := service.ListCountriesAndAreas(ctx, services.CountryOrAreaListInput{})
+	if err != nil {
+		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+			return err
+		}
+		return fmt.Errorf("verify geography dataset: %w", err)
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+	if err := validateCountryOrAreasSnapshot(countries); err != nil {
+		return fmt.Errorf("verify geography dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
 	return nil
+}
+
+func validateCountryOrAreasSnapshot(countries []models.CountryOrArea) error {
+	if len(countries) != 248 {
+		return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+	}
+
+	seenIDs := make(map[string]struct{}, len(countries))
+	seenAlpha2 := make(map[string]struct{}, len(countries))
+	seenAlpha3 := make(map[string]struct{}, len(countries))
+	seenNumeric := make(map[string]struct{}, len(countries))
+	requiredNames := map[string]struct{}{
+		"Holy See":           {},
+		"State of Palestine": {},
+		"Western Sahara":     {},
+		"China, Hong Kong Special Administrative Region": {},
+		"China, Macao Special Administrative Region":     {},
+		"Antarctica": {},
+	}
+	foundRequiredNames := make(map[string]struct{}, len(requiredNames))
+	foundNigeria := false
+	foundAlgeria := false
+	foundKosovo := false
+
+	for _, country := range countries {
+		if country.ID == "" || country.Name == "" || country.Alpha2Code == "" || country.Alpha3Code == "" || country.NumericCode == "" {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if !isLowerAlpha2Code(country.ID) || country.ID != strings.ToLower(country.Alpha2Code) {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if !isUpperAlpha2Code(country.Alpha2Code) || !isUpperAlpha3Code(country.Alpha3Code) || !isThreeDigitCode(country.NumericCode) {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if _, ok := seenIDs[country.ID]; ok {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if _, ok := seenAlpha2[country.Alpha2Code]; ok {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if _, ok := seenAlpha3[country.Alpha3Code]; ok {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if _, ok := seenNumeric[country.NumericCode]; ok {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if (country.RegionCode == "") != (country.RegionName == "") {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if (country.SubregionCode == "") != (country.SubregionName == "") {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if (country.IntermediateRegionCode == "") != (country.IntermediateRegionName == "") {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if country.RegionCode != "" && !isThreeDigitCode(country.RegionCode) {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if country.SubregionCode != "" && !isThreeDigitCode(country.SubregionCode) {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if country.IntermediateRegionCode != "" && !isThreeDigitCode(country.IntermediateRegionCode) {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+
+		seenIDs[country.ID] = struct{}{}
+		seenAlpha2[country.Alpha2Code] = struct{}{}
+		seenAlpha3[country.Alpha3Code] = struct{}{}
+		seenNumeric[country.NumericCode] = struct{}{}
+
+		if country.ID == "ng" {
+			if country.Name != "Nigeria" || country.Alpha2Code != "NG" || country.Alpha3Code != "NGA" || country.NumericCode != "566" {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+			foundNigeria = true
+		}
+		if country.Name == "Algeria" {
+			if country.NumericCode != "012" {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+			foundAlgeria = true
+		}
+		if country.Name == "Kosovo" || country.ID == "xk" {
+			foundKosovo = true
+		}
+		if _, ok := requiredNames[country.Name]; ok {
+			foundRequiredNames[country.Name] = struct{}{}
+		}
+	}
+
+	if !foundNigeria || !foundAlgeria || foundKosovo || len(foundRequiredNames) != len(requiredNames) {
+		return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+	}
+	return nil
+}
+
+func isLowerAlpha2Code(value string) bool {
+	if len(value) != 2 {
+		return false
+	}
+	for i := 0; i < len(value); i++ {
+		if value[i] < 'a' || value[i] > 'z' {
+			return false
+		}
+	}
+	return true
+}
+
+func isUpperAlpha2Code(value string) bool {
+	if len(value) != 2 {
+		return false
+	}
+	for i := 0; i < len(value); i++ {
+		if value[i] < 'A' || value[i] > 'Z' {
+			return false
+		}
+	}
+	return true
+}
+
+func isUpperAlpha3Code(value string) bool {
+	if len(value) != 3 {
+		return false
+	}
+	for i := 0; i < len(value); i++ {
+		if value[i] < 'A' || value[i] > 'Z' {
+			return false
+		}
+	}
+	return true
+}
+
+func isThreeDigitCode(value string) bool {
+	if len(value) != 3 {
+		return false
+	}
+	for i := 0; i < len(value); i++ {
+		if value[i] < '0' || value[i] > '9' {
+			return false
+		}
+	}
+	return true
 }
 
 func verifyEducationDataset(ctx context.Context, service educationService) error {

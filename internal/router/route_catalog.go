@@ -71,14 +71,7 @@ func (r routePattern) matchesPath(path string) bool {
 	}
 
 	for i := range templateParts {
-		templatePart := templateParts[i]
-		if isRouteParam(templatePart) {
-			if pathParts[i] == "" {
-				return false
-			}
-			continue
-		}
-		if templatePart != pathParts[i] {
+		if !routeSegmentMatches(templateParts[i], pathParts[i]) {
 			return false
 		}
 	}
@@ -99,6 +92,32 @@ func splitRoutePath(path string) []string {
 
 func isRouteParam(segment string) bool {
 	return strings.HasPrefix(segment, "{") && strings.HasSuffix(segment, "}") && len(segment) > 2
+}
+
+func routeSegmentMatches(templatePart, pathPart string) bool {
+	if isRouteParam(templatePart) {
+		return pathPart != ""
+	}
+
+	if _, suffix, ok := splitRouteParamSuffix(templatePart); ok {
+		if pathPart == "" || suffix == "" || !strings.HasSuffix(pathPart, suffix) {
+			return false
+		}
+		return len(pathPart) > len(suffix)
+	}
+
+	return templatePart == pathPart
+}
+
+func splitRouteParamSuffix(segment string) (wildcard, suffix string, ok bool) {
+	if !strings.HasPrefix(segment, "{") {
+		return "", "", false
+	}
+	closeIdx := strings.IndexByte(segment, '}')
+	if closeIdx <= 1 || closeIdx == len(segment)-1 {
+		return "", "", false
+	}
+	return segment[1:closeIdx], segment[closeIdx+1:], true
 }
 
 func containsMethod(methods []string, method string) bool {

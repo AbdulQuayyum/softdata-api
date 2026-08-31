@@ -16,6 +16,18 @@ SoftData organizes public data into a small set of dataset groups with consisten
 
 The published geography packages include:
 
+### `world-countries-and-areas`
+
+The current English United Nations M49 table of 248 countries or areas.
+
+- Data: `datasets/geography/countries_and_areas.json`
+- Schema: `datasets/schemas/geography/countries_and_areas.schema.json`
+- Metadata: `datasets/metadata/geography/countries_and_areas.json`
+
+Each record uses the lowercase alpha-2 code as its public `id`, preserves the source English name and published codes, and includes `calling_codes`, `flag_emoji`, `flag_svg_url` and region hierarchy fields when the source table provides them. The package follows the current UN statistical manifest boundary, keeps territories and other areas where they appear in the official table, and states in metadata that the designations are statistical references only and do not imply political recognition or legal status. SoftData's independent compilation, schema and metadata are CC BY 4.0, while the UN source material retains its own rights. Flag SVG assets are vendored separately from MIT-licensed flag-icons v7.5.0.
+
+This global package is separate from the Nigerian geography datasets, which continue to use `country_code: NG`.
+
 ### `ng-states`
 
 Nigeria's 36 states and the Federal Capital Territory.

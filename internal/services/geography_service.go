@@ -13,6 +13,14 @@ import (
 
 var geographyStateIDPattern = regexp.MustCompile(`^[a-z]+(?:-[a-z]+)*$`)
 var geographyLocalGovernmentUnitIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)+$`)
+var geographyCountryOrAreaIDPattern = regexp.MustCompile(`^[a-z]{2}$`)
+var geographyThreeDigitCodePattern = regexp.MustCompile(`^[0-9]{3}$`)
+
+// CountryOrAreaListInput carries optional UN M49 region filters.
+type CountryOrAreaListInput struct {
+	RegionCode    string
+	SubregionCode string
+}
 
 // GeographyService provides state lookup operations over the geography repository.
 type GeographyService struct {
@@ -96,6 +104,65 @@ func (s *GeographyService) ListLocalGovernmentUnits(ctx context.Context) ([]mode
 	return cloneLocalGovernmentUnitList(units), nil
 }
 
+func (s *GeographyService) ListCountriesAndAreas(ctx context.Context, input CountryOrAreaListInput) ([]models.CountryOrArea, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+
+	input.RegionCode = strings.TrimSpace(input.RegionCode)
+	input.SubregionCode = strings.TrimSpace(input.SubregionCode)
+	if input.RegionCode != "" && !geographyThreeDigitCodePattern.MatchString(input.RegionCode) {
+		return nil, ErrInvalidCountryOrAreaRegionCode
+	}
+	if input.SubregionCode != "" && !geographyThreeDigitCodePattern.MatchString(input.SubregionCode) {
+		return nil, ErrInvalidCountryOrAreaSubregionCode
+	}
+
+	countries, err := s.repository.ListCountriesAndAreas(ctx, interfaces.CountryOrAreaFilter{
+		RegionCode:    input.RegionCode,
+		SubregionCode: input.SubregionCode,
+	})
+	if err != nil {
+		switch {
+		case errors.Is(err, context.Canceled), errors.Is(err, context.DeadlineExceeded):
+			return nil, err
+		case errors.Is(err, interfaces.ErrCountryOrAreaNotFound):
+			return nil, ErrCountryOrAreaNotFound
+		case errors.Is(err, interfaces.ErrInvalidDatasetFile):
+			return nil, fmt.Errorf("list countries and areas: repository unavailable")
+		default:
+			return nil, fmt.Errorf("list countries and areas: repository unavailable")
+		}
+	}
+	return cloneCountryOrAreaList(countries), nil
+}
+
+func (s *GeographyService) GetCountryOrArea(ctx context.Context, countryOrAreaID string) (models.CountryOrArea, error) {
+	if err := ctx.Err(); err != nil {
+		return models.CountryOrArea{}, err
+	}
+
+	countryOrAreaID = strings.TrimSpace(countryOrAreaID)
+	if countryOrAreaID == "" || !geographyCountryOrAreaIDPattern.MatchString(countryOrAreaID) {
+		return models.CountryOrArea{}, ErrInvalidCountryOrAreaID
+	}
+
+	country, err := s.repository.GetCountryOrArea(ctx, countryOrAreaID)
+	if err != nil {
+		switch {
+		case errors.Is(err, context.Canceled), errors.Is(err, context.DeadlineExceeded):
+			return models.CountryOrArea{}, err
+		case errors.Is(err, interfaces.ErrCountryOrAreaNotFound):
+			return models.CountryOrArea{}, ErrCountryOrAreaNotFound
+		case errors.Is(err, interfaces.ErrInvalidDatasetFile):
+			return models.CountryOrArea{}, fmt.Errorf("get country or area: repository unavailable")
+		default:
+			return models.CountryOrArea{}, fmt.Errorf("get country or area: repository unavailable")
+		}
+	}
+	return country, nil
+}
+
 func (s *GeographyService) ListLocalGovernmentUnitsByState(ctx context.Context, stateID string) ([]models.LocalGovernmentUnit, error) {
 	if err := ctx.Err(); err != nil {
 		return nil, err
@@ -166,6 +233,15 @@ func cloneLocalGovernmentUnitList(units []models.LocalGovernmentUnit) []models.L
 	return cloned
 }
 
+func cloneCountryOrAreaList(countries []models.CountryOrArea) []models.CountryOrArea {
+	if len(countries) == 0 {
+		return make([]models.CountryOrArea, 0)
+	}
+	cloned := make([]models.CountryOrArea, len(countries))
+	copy(cloned, countries)
+	return cloned
+}
+
 func translateGeographyServiceLookupError(err error) error {
 	switch {
 	case err == nil:
@@ -208,6 +284,21 @@ func translateGeographyLocalGovernmentUnitLookupError(err error) error {
 		return fmt.Errorf("get local government unit: repository unavailable")
 	default:
 		return fmt.Errorf("get local government unit: repository unavailable")
+	}
+}
+
+func translateGeographyCountryOrAreaLookupError(err error) error {
+	switch {
+	case err == nil:
+		return nil
+	case errors.Is(err, context.Canceled), errors.Is(err, context.DeadlineExceeded):
+		return err
+	case errors.Is(err, interfaces.ErrCountryOrAreaNotFound):
+		return ErrCountryOrAreaNotFound
+	case errors.Is(err, interfaces.ErrInvalidDatasetFile):
+		return fmt.Errorf("get country or area: repository unavailable")
+	default:
+		return fmt.Errorf("get country or area: repository unavailable")
 	}
 }
 

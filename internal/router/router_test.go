@@ -325,6 +325,79 @@ func TestRouterRegistersGeographyRoutes(t *testing.T) {
 		}
 	})
 
+	t.Run("countries", func(t *testing.T) {
+		t.Run("list", func(t *testing.T) {
+			rec := &routerRecorder{}
+			router := newTestRouter(t, rec)
+
+			rr := httptest.NewRecorder()
+			req := httptest.NewRequest(http.MethodGet, "/v1/geography/countries?region_code=002&subregion_code=015", nil)
+			router.ServeHTTP(rr, req)
+			if rr.Code != http.StatusOK {
+				t.Fatalf("unexpected status: %d", rr.Code)
+			}
+			got := strings.Join(rec.snapshot(), ",")
+			for _, want := range []string{
+				"optional_api_key",
+				"rate_limit",
+				"usage:/v1/geography/countries|geography",
+				"geography.country.list",
+			} {
+				if !strings.Contains(got, want) {
+					t.Fatalf("expected %q in middleware sequence: %v", want, rec.snapshot())
+				}
+			}
+		})
+
+		t.Run("detail", func(t *testing.T) {
+			rec := &routerRecorder{}
+			router := newTestRouter(t, rec)
+
+			rr := httptest.NewRecorder()
+			req := httptest.NewRequest(http.MethodGet, "/v1/geography/countries/ng", nil)
+			router.ServeHTTP(rr, req)
+			if rr.Code != http.StatusOK {
+				t.Fatalf("unexpected status: %d", rr.Code)
+			}
+			got := strings.Join(rec.snapshot(), ",")
+			for _, want := range []string{
+				"optional_api_key",
+				"rate_limit",
+				"usage:/v1/geography/countries/{country_id}|geography",
+				"geography.country.get:ng",
+			} {
+				if !strings.Contains(got, want) {
+					t.Fatalf("expected %q in middleware sequence: %v", want, rec.snapshot())
+				}
+			}
+		})
+	})
+
+	t.Run("country flags", func(t *testing.T) {
+		rec := &routerRecorder{}
+		router := newTestRouter(t, rec)
+
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/assets/flags/ng.svg", nil)
+		router.ServeHTTP(rr, req)
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		got := strings.Join(rec.snapshot(), ",")
+		for _, want := range []string{
+			"optional_api_key",
+			"rate_limit",
+			"usage:/v1/assets/flags/{country_id}.svg|geography",
+		} {
+			if !strings.Contains(got, want) {
+				t.Fatalf("expected %q in middleware sequence: %v", want, rec.snapshot())
+			}
+		}
+		if got := rr.Header().Get("Content-Type"); got != "image/svg+xml" {
+			t.Fatalf("unexpected content type: %q", got)
+		}
+	})
+
 	t.Run("geopolitical zones", func(t *testing.T) {
 		t.Run("list", func(t *testing.T) {
 			rec := &routerRecorder{}
@@ -1755,10 +1828,13 @@ type routerGeographyStub struct {
 	lgaListCalls       int
 	lgaListByCalls     int
 	lgaGetCalls        int
+	countryListCalls   int
+	countryGetCalls    int
 	lastStateID        string
 	lastZoneID         string
 	lastLGAID          string
 	lastLGAStateID     string
+	lastCountryID      string
 	lastHadAPIKey      bool
 	lastAPIKeyIdentity services.APIKeyIdentity
 }
@@ -1951,6 +2027,35 @@ func (s *routerGeographyStub) GetLocalGovernmentUnit(ctx context.Context, unitID
 		s.lastAPIKeyIdentity = identity
 	}
 	return models.LocalGovernmentUnit{ID: unitID, Name: "Example", StateID: "lagos", CountryCode: "NG", AdministrativeType: "local_government_area"}, nil
+}
+
+func (s *routerGeographyStub) ListCountriesAndAreas(ctx context.Context, input services.CountryOrAreaListInput) ([]models.CountryOrArea, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.countryListCalls++
+	if s.rec != nil {
+		s.rec.add("geography.country.list")
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return []models.CountryOrArea{{ID: "ng", Name: "Nigeria", Alpha2Code: "NG", Alpha3Code: "NGA", NumericCode: "566"}}, nil
+}
+
+func (s *routerGeographyStub) GetCountryOrArea(ctx context.Context, countryID string) (models.CountryOrArea, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.countryGetCalls++
+	s.lastCountryID = countryID
+	if s.rec != nil {
+		s.rec.add("geography.country.get:" + countryID)
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return models.CountryOrArea{ID: countryID, Name: "Nigeria", Alpha2Code: "NG", Alpha3Code: "NGA", NumericCode: "566"}, nil
 }
 
 type routerEducationStub struct {

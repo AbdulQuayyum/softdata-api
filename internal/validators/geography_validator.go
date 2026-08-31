@@ -5,12 +5,16 @@ import (
 	"regexp"
 	"sort"
 	"strings"
+
+	"github.com/AbdulQuayyum/softdata-api/internal/services"
 )
 
 var stateIDPattern = regexp.MustCompile(`^[a-z]+(?:-[a-z]+)*$`)
 var geopoliticalZoneIDPattern = regexp.MustCompile(`^[a-z]+(?:-[a-z]+)*$`)
 var localGovernmentUnitIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)+$`)
 var localGovernmentUnitSlugPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)*$`)
+var countryOrAreaIDPattern = regexp.MustCompile(`^[a-z]{2}$`)
+var countryOrAreaCodePattern = regexp.MustCompile(`^[0-9]{3}$`)
 var uuidLikePattern = regexp.MustCompile(`^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$`)
 
 var approvedStateIDs = []string{
@@ -165,6 +169,110 @@ func ValidateLocalGovernmentUnitID(value string) (string, error) {
 		return "", invalidField("lga_id", "LGA ID must be a valid state-prefixed lowercase public slug.")
 	}
 	return value, nil
+}
+
+// ValidateCountryOrAreaID validates the documented public country-or-area identifier.
+func ValidateCountryOrAreaID(value string) (string, error) {
+	value = strings.TrimSpace(value)
+	if value == "" {
+		return "", requiredError("country_id", "Country or area ID is required.")
+	}
+	if !countryOrAreaIDPattern.MatchString(value) {
+		return "", invalidField("country_id", "Country or area ID must be a valid lowercase alpha-2 code.")
+	}
+	return value, nil
+}
+
+// ValidateCountryOrAreaRegionCode validates the optional UN M49 region code filter.
+func ValidateCountryOrAreaRegionCode(value string) (string, error) {
+	value = strings.TrimSpace(value)
+	if value == "" {
+		return "", requiredError("region_code", "Region code is required.")
+	}
+	if !countryOrAreaCodePattern.MatchString(value) {
+		return "", invalidField("region_code", "Region code must be a valid three-digit UN M49 code.")
+	}
+	return value, nil
+}
+
+// ValidateCountryOrAreaSubregionCode validates the optional UN M49 subregion code filter.
+func ValidateCountryOrAreaSubregionCode(value string) (string, error) {
+	value = strings.TrimSpace(value)
+	if value == "" {
+		return "", requiredError("subregion_code", "Subregion code is required.")
+	}
+	if !countryOrAreaCodePattern.MatchString(value) {
+		return "", invalidField("subregion_code", "Subregion code must be a valid three-digit UN M49 code.")
+	}
+	return value, nil
+}
+
+// ValidateCountryOrAreaListQuery validates the documented country-or-area list query.
+func ValidateCountryOrAreaListQuery(values url.Values) (services.CountryOrAreaListInput, error) {
+	var errs ValidationErrors
+
+	regionValues := values["region_code"]
+	if len(regionValues) > 1 {
+		errs.Add("region_code", codeMalformed, "Region code may be provided at most once.")
+	}
+	if len(regionValues) > 0 {
+		regionCode, err := ValidateCountryOrAreaRegionCode(regionValues[0])
+		if err != nil {
+			if validationErr, ok := err.(ValidationErrors); ok {
+				errs.Fields = append(errs.Fields, validationErr.Fields...)
+			} else {
+				return services.CountryOrAreaListInput{}, err
+			}
+		} else {
+			input := services.CountryOrAreaListInput{RegionCode: regionCode}
+			subregionValues := values["subregion_code"]
+			if len(subregionValues) > 1 {
+				errs.Add("subregion_code", codeMalformed, "Subregion code may be provided at most once.")
+			}
+			if len(subregionValues) > 0 {
+				subregionCode, err := ValidateCountryOrAreaSubregionCode(subregionValues[0])
+				if err != nil {
+					if validationErr, ok := err.(ValidationErrors); ok {
+						errs.Fields = append(errs.Fields, validationErr.Fields...)
+					} else {
+						return services.CountryOrAreaListInput{}, err
+					}
+				} else {
+					input.SubregionCode = subregionCode
+				}
+			}
+			if len(errs.Fields) > 0 {
+				return services.CountryOrAreaListInput{}, errs
+			}
+			return input, nil
+		}
+	}
+
+	subregionValues := values["subregion_code"]
+	if len(subregionValues) > 1 {
+		errs.Add("subregion_code", codeMalformed, "Subregion code may be provided at most once.")
+	}
+	if len(subregionValues) > 0 {
+		subregionCode, err := ValidateCountryOrAreaSubregionCode(subregionValues[0])
+		if err != nil {
+			if validationErr, ok := err.(ValidationErrors); ok {
+				errs.Fields = append(errs.Fields, validationErr.Fields...)
+			} else {
+				return services.CountryOrAreaListInput{}, err
+			}
+		} else {
+			if len(errs.Fields) > 0 {
+				return services.CountryOrAreaListInput{}, errs
+			}
+			return services.CountryOrAreaListInput{SubregionCode: subregionCode}, nil
+		}
+	}
+
+	if len(errs.Fields) > 0 {
+		return services.CountryOrAreaListInput{}, errs
+	}
+
+	return services.CountryOrAreaListInput{}, nil
 }
 
 func splitLocalGovernmentUnitID(value string) (string, string, bool) {

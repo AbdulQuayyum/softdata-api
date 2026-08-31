@@ -17,6 +17,7 @@ type geographyRepoStub struct {
 	states           []models.State
 	zones            []models.GeopoliticalZone
 	units            []models.LocalGovernmentUnit
+	countries        []models.CountryOrArea
 	listErr          error
 	getErr           error
 	zoneListErr      error
@@ -24,6 +25,8 @@ type geographyRepoStub struct {
 	unitListErr      error
 	unitGetErr       error
 	unitByStateErr   error
+	countryListErr   error
+	countryGetErr    error
 	listCalls        int
 	getCalls         int
 	zoneListCalls    int
@@ -31,10 +34,13 @@ type geographyRepoStub struct {
 	unitListCalls    int
 	unitGetCalls     int
 	unitByStateCalls int
+	countryListCalls int
+	countryGetCalls  int
 	lastID           string
 	lastZoneID       string
 	lastStateID      string
 	lastUnitID       string
+	lastCountryID    string
 }
 
 func (s *geographyRepoStub) ListStates(context.Context) ([]models.State, error) {
@@ -122,6 +128,45 @@ func (s *geographyRepoStub) GetLocalGovernmentUnit(_ context.Context, unitID str
 		}
 	}
 	return models.LocalGovernmentUnit{}, interfaces.ErrLocalGovernmentUnitNotFound
+}
+
+func (s *geographyRepoStub) ListCountriesAndAreas(_ context.Context, filter interfaces.CountryOrAreaFilter) ([]models.CountryOrArea, error) {
+	s.countryListCalls++
+	if s.countryListErr != nil {
+		return nil, s.countryListErr
+	}
+	if s.countries == nil {
+		return nil, nil
+	}
+	return cloneServiceCountries(s.filterCountries(filter)), nil
+}
+
+func (s *geographyRepoStub) GetCountryOrArea(_ context.Context, countryOrAreaID string) (models.CountryOrArea, error) {
+	s.countryGetCalls++
+	s.lastCountryID = countryOrAreaID
+	if s.countryGetErr != nil {
+		return models.CountryOrArea{}, s.countryGetErr
+	}
+	for _, country := range s.countries {
+		if country.ID == countryOrAreaID {
+			return country, nil
+		}
+	}
+	return models.CountryOrArea{}, interfaces.ErrCountryOrAreaNotFound
+}
+
+func (s *geographyRepoStub) filterCountries(filter interfaces.CountryOrAreaFilter) []models.CountryOrArea {
+	filtered := make([]models.CountryOrArea, 0, len(s.countries))
+	for _, country := range s.countries {
+		if filter.RegionCode != "" && country.RegionCode != filter.RegionCode {
+			continue
+		}
+		if filter.SubregionCode != "" && country.SubregionCode != filter.SubregionCode {
+			continue
+		}
+		filtered = append(filtered, country)
+	}
+	return filtered
 }
 
 func TestNewGeographyServiceRejectsNilRepository(t *testing.T) {
@@ -657,6 +702,15 @@ func cloneServiceLocalGovernmentUnits(units []models.LocalGovernmentUnit) []mode
 	return cloned
 }
 
+func cloneServiceCountries(countries []models.CountryOrArea) []models.CountryOrArea {
+	if len(countries) == 0 {
+		return make([]models.CountryOrArea, 0)
+	}
+	cloned := make([]models.CountryOrArea, len(countries))
+	copy(cloned, countries)
+	return cloned
+}
+
 func loadServiceStateFixture(t *testing.T) []models.State {
 	t.Helper()
 
@@ -712,4 +766,25 @@ func loadServiceLocalGovernmentUnitFixture(t *testing.T) []models.LocalGovernmen
 		t.Fatal("local government unit fixture contains trailing json")
 	}
 	return units
+}
+
+func loadServiceCountryFixture(t *testing.T) []models.CountryOrArea {
+	t.Helper()
+
+	data, err := os.ReadFile("../../datasets/geography/countries_and_areas.json")
+	if err != nil {
+		t.Fatalf("read countries and areas fixture: %v", err)
+	}
+
+	dec := json.NewDecoder(strings.NewReader(string(data)))
+	dec.DisallowUnknownFields()
+
+	var countries []models.CountryOrArea
+	if err := dec.Decode(&countries); err != nil {
+		t.Fatalf("decode countries and areas fixture: %v", err)
+	}
+	if err := dec.Decode(new(any)); err == nil {
+		t.Fatal("countries and areas fixture contains trailing json")
+	}
+	return countries
 }
