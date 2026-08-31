@@ -14,6 +14,7 @@ import (
 var financePaymentServiceProviderIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)+$`)
 var financeInternationalMoneyTransferOperatorIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)*$`)
 var financeCurrencyIDPattern = regexp.MustCompile(`^[a-z]{3}$`)
+var financeCurrencyCountryAreaIDPattern = regexp.MustCompile(`^[a-z]{2}$`)
 
 var allowedFinanceInstitutionTypes = map[string]struct{}{
 	"mobile_money_operator":               {},
@@ -28,6 +29,11 @@ var allowedFinanceInstitutionTypes = map[string]struct{}{
 // FinanceService provides payment-service-provider lookups over the finance repository.
 type FinanceService struct {
 	repository interfaces.FinanceRepository
+}
+
+// CurrencyListInput narrows currency list results by country or area.
+type CurrencyListInput struct {
+	CountryAreaID string
 }
 
 func NewFinanceService(repository interfaces.FinanceRepository) (*FinanceService, error) {
@@ -112,12 +118,17 @@ func (s *FinanceService) GetInternationalMoneyTransferOperator(ctx context.Conte
 	return operator, nil
 }
 
-func (s *FinanceService) ListCurrencies(ctx context.Context) ([]models.Currency, error) {
+func (s *FinanceService) ListCurrencies(ctx context.Context, input CurrencyListInput) ([]models.Currency, error) {
 	if err := ctx.Err(); err != nil {
 		return nil, err
 	}
 
-	currencies, err := s.repository.ListCurrencies(ctx)
+	filter, err := normalizeFinanceCurrencyListInput(input)
+	if err != nil {
+		return nil, err
+	}
+
+	currencies, err := s.repository.ListCurrencies(ctx, interfaces.CurrencyFilter{CountryAreaID: filter})
 	if err != nil {
 		return nil, translateFinanceCurrencyServiceError("list currencies", err)
 	}
@@ -192,6 +203,17 @@ func normalizeFinanceCurrencyID(currencyID string) (string, error) {
 	return currencyID, nil
 }
 
+func normalizeFinanceCurrencyListInput(input CurrencyListInput) (string, error) {
+	countryAreaID := strings.TrimSpace(input.CountryAreaID)
+	if countryAreaID == "" {
+		return "", nil
+	}
+	if !financeCurrencyCountryAreaIDPattern.MatchString(countryAreaID) {
+		return "", ErrInvalidCurrencyCountryAreaID
+	}
+	return countryAreaID, nil
+}
+
 func normalizeFinanceInstitutionType(institutionType string) (string, error) {
 	institutionType = strings.TrimSpace(institutionType)
 	if institutionType == "" {
@@ -241,6 +263,8 @@ func translateFinanceCurrencyLookupError(err error) error {
 		return err
 	case errors.Is(err, interfaces.ErrCurrencyNotFound):
 		return ErrCurrencyNotFound
+	case errors.Is(err, interfaces.ErrInvalidCurrencyCountryAreaID):
+		return ErrInvalidCurrencyCountryAreaID
 	case errors.Is(err, interfaces.ErrInvalidDatasetFile), errors.Is(err, interfaces.ErrDatasetFileNotFound), errors.Is(err, interfaces.ErrDatasetFileUnavailable):
 		return fmt.Errorf("get currency: repository unavailable")
 	default:
@@ -254,6 +278,8 @@ func translateFinanceCurrencyServiceError(op string, err error) error {
 		return nil
 	case errors.Is(err, context.Canceled), errors.Is(err, context.DeadlineExceeded):
 		return err
+	case errors.Is(err, interfaces.ErrInvalidCurrencyCountryAreaID):
+		return ErrInvalidCurrencyCountryAreaID
 	case errors.Is(err, interfaces.ErrInvalidDatasetFile), errors.Is(err, interfaces.ErrDatasetFileNotFound), errors.Is(err, interfaces.ErrDatasetFileUnavailable):
 		return fmt.Errorf("%s: repository unavailable", op)
 	default:

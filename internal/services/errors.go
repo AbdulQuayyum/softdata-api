@@ -43,4 +43,5 @@ var (
 	ErrInvalidInternationalMoneyTransferOperatorID = errors.New("services: invalid international money transfer operator id")
 	ErrCurrencyNotFound                            = errors.New("services: currency not found")
 	ErrInvalidCurrencyID                           = errors.New("services: invalid currency id")
+	ErrInvalidCurrencyCountryAreaID                = errors.New("services: invalid currency country area id")
 )

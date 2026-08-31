@@ -42,7 +42,7 @@ func TestFinanceRepositoryCurrenciesListGetAndOwnership(t *testing.T) {
 	countries := readFinanceDatasetBytes(t, financeDatasetPath("geography", "countries_and_areas.json"))
 	repo := mustNewCurrencyRepositoryFromRecords(t, fixture, countries)
 
-	listed, err := repo.ListCurrencies(context.Background())
+	listed, err := repo.ListCurrencies(context.Background(), interfaces.CurrencyFilter{})
 	if err != nil {
 		t.Fatalf("ListCurrencies() error = %v", err)
 	}
@@ -54,7 +54,7 @@ func TestFinanceRepositoryCurrenciesListGetAndOwnership(t *testing.T) {
 	}
 
 	listed[0].Name = "Changed"
-	again, err := repo.ListCurrencies(context.Background())
+	again, err := repo.ListCurrencies(context.Background(), interfaces.CurrencyFilter{})
 	if err != nil {
 		t.Fatalf("ListCurrencies() second call error = %v", err)
 	}
@@ -83,6 +83,70 @@ func TestFinanceRepositoryCurrenciesListGetAndOwnership(t *testing.T) {
 	}
 	if _, err := repo.GetCurrency(context.Background(), "zzz"); !errors.Is(err, interfaces.ErrCurrencyNotFound) {
 		t.Fatalf("unexpected missing lookup error: %v", err)
+	}
+}
+
+func TestFinanceRepositoryCurrencyFilterCases(t *testing.T) {
+	t.Parallel()
+
+	fixture := loadApprovedCurrencies(t)
+	countries := readFinanceDatasetBytes(t, financeDatasetPath("geography", "countries_and_areas.json"))
+	repo := mustNewCurrencyRepositoryFromRecords(t, fixture, countries)
+
+	tests := []struct {
+		name      string
+		filter    string
+		wantEmpty bool
+	}{
+		{name: "all", filter: ""},
+		{name: "ng", filter: "ng"},
+		{name: "bt", filter: "bt"},
+		{name: "sv", filter: "sv"},
+		{name: "ht", filter: "ht"},
+		{name: "ls", filter: "ls"},
+		{name: "na", filter: "na"},
+		{name: "pa", filter: "pa"},
+		{name: "ve", filter: "ve"},
+		{name: "zero aq", filter: "aq", wantEmpty: true},
+		{name: "zero ps", filter: "ps", wantEmpty: true},
+		{name: "zero gs", filter: "gs", wantEmpty: true},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got, err := repo.ListCurrencies(context.Background(), interfaces.CurrencyFilter{CountryAreaID: tc.filter})
+			if err != nil {
+				t.Fatalf("ListCurrencies(%q) error = %v", tc.filter, err)
+			}
+			if got == nil {
+				t.Fatalf("ListCurrencies(%q) returned nil slice", tc.filter)
+			}
+
+			want := filterApprovedCurrenciesByCountryAreaID(fixture, tc.filter)
+			if !reflect.DeepEqual(got, want) {
+				t.Fatalf("ListCurrencies(%q) = %#v, want %#v", tc.filter, got, want)
+			}
+			if tc.wantEmpty && len(got) != 0 {
+				t.Fatalf("ListCurrencies(%q) returned %d records, want 0", tc.filter, len(got))
+			}
+
+			if tc.filter == "ng" && len(got) > 0 && len(got[0].CountryAreaIDs) > 0 {
+				got[0].CountryAreaIDs[0] = "zz"
+				again, err := repo.ListCurrencies(context.Background(), interfaces.CurrencyFilter{CountryAreaID: tc.filter})
+				if err != nil {
+					t.Fatalf("ListCurrencies(%q) second call error = %v", tc.filter, err)
+				}
+				if again[0].CountryAreaIDs[0] == "zz" {
+					t.Fatal("ListCurrencies() returned shared nested CountryAreaIDs slice")
+				}
+			}
+		})
+	}
+
+	for _, filter := range []string{"NG", "n g", "ng-", "1g", "abc"} {
+		if _, err := repo.ListCurrencies(context.Background(), interfaces.CurrencyFilter{CountryAreaID: filter}); !errors.Is(err, interfaces.ErrInvalidCurrencyCountryAreaID) {
+			t.Fatalf("ListCurrencies(%q) error = %v, want ErrInvalidCurrencyCountryAreaID", filter, err)
+		}
 	}
 }
 
@@ -188,7 +252,7 @@ func TestFinanceRepositoryCurrenciesRejectInvalidFixtures(t *testing.T) {
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
 			repo := mustNewCurrencyRepositoryFromRecords(t, tc.mutate(fixture), tc.countryRaw)
-			_, err := repo.ListCurrencies(context.Background())
+			_, err := repo.ListCurrencies(context.Background(), interfaces.CurrencyFilter{})
 			if err == nil {
 				t.Fatal("expected failure")
 			}
@@ -228,7 +292,7 @@ func TestFinanceRepositoryCurrencyDecodeCountsAndSanitizedErrors(t *testing.T) {
 		{
 			name: "list",
 			fn: func() error {
-				_, err := repo.ListCurrencies(context.Background())
+				_, err := repo.ListCurrencies(context.Background(), interfaces.CurrencyFilter{})
 				return err
 			},
 		},
@@ -259,7 +323,7 @@ func TestFinanceRepositoryCurrencyDecodeCountsAndSanitizedErrors(t *testing.T) {
 	if err != nil {
 		t.Fatalf("NewFinanceRepository() error = %v", err)
 	}
-	_, err = sanitizedRepo.ListCurrencies(context.Background())
+	_, err = sanitizedRepo.ListCurrencies(context.Background(), interfaces.CurrencyFilter{})
 	if err == nil {
 		t.Fatal("expected sanitized error")
 	}
@@ -293,6 +357,22 @@ func loadApprovedCountryOrAreas(t *testing.T) []models.CountryOrArea {
 		t.Fatalf("decode approved countries dataset: %v", err)
 	}
 	return countries
+}
+
+func filterApprovedCurrenciesByCountryAreaID(currencies []models.Currency, countryAreaID string) []models.Currency {
+	if countryAreaID == "" {
+		return cloneCurrencyList(currencies)
+	}
+	filtered := make([]models.Currency, 0)
+	for _, currency := range currencies {
+		for _, id := range currency.CountryAreaIDs {
+			if id == countryAreaID {
+				filtered = append(filtered, cloneCurrency(currency))
+				break
+			}
+		}
+	}
+	return filtered
 }
 
 func mustNewCurrencyRepositoryFromRecords(t *testing.T, currencies []models.Currency, countryRaw []byte) *FinanceFileRepository {

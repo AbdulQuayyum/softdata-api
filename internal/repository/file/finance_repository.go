@@ -196,12 +196,32 @@ func (r *FinanceFileRepository) GetInternationalMoneyTransferOperator(ctx contex
 }
 
 // ListCurrencies returns the ordered list of current monetary currencies.
-func (r *FinanceFileRepository) ListCurrencies(ctx context.Context) ([]models.Currency, error) {
-	currencies, err := r.loadCurrencies(ctx)
+func (r *FinanceFileRepository) ListCurrencies(ctx context.Context, filter interfaces.CurrencyFilter) ([]models.Currency, error) {
+	currencies, countryIDs, err := r.loadCurrencies(ctx)
 	if err != nil {
 		return nil, err
 	}
-	return cloneCurrencyList(currencies), nil
+	countryAreaID := strings.TrimSpace(filter.CountryAreaID)
+	if countryAreaID == "" {
+		return cloneCurrencyList(currencies), nil
+	}
+	if !financeCurrencyCountryAreaIDPattern.MatchString(countryAreaID) {
+		return nil, fmt.Errorf("%w", interfaces.ErrInvalidCurrencyCountryAreaID)
+	}
+	if _, ok := countryIDs[countryAreaID]; !ok {
+		return nil, fmt.Errorf("%w", interfaces.ErrInvalidCurrencyCountryAreaID)
+	}
+
+	filtered := make([]models.Currency, 0)
+	for _, currency := range currencies {
+		for _, countryID := range currency.CountryAreaIDs {
+			if countryID == countryAreaID {
+				filtered = append(filtered, cloneCurrency(currency))
+				break
+			}
+		}
+	}
+	return filtered, nil
 }
 
 // GetCurrency returns a single currency using its public alpha-3 code identifier.
@@ -211,7 +231,7 @@ func (r *FinanceFileRepository) GetCurrency(ctx context.Context, currencyID stri
 		return models.Currency{}, fmt.Errorf("%w", interfaces.ErrCurrencyNotFound)
 	}
 
-	currencies, err := r.loadCurrencies(ctx)
+	currencies, _, err := r.loadCurrencies(ctx)
 	if err != nil {
 		return models.Currency{}, err
 	}
@@ -284,40 +304,40 @@ func (r *FinanceFileRepository) loadInternationalMoneyTransferOperators(ctx cont
 	return operators, nil
 }
 
-func (r *FinanceFileRepository) loadCurrencies(ctx context.Context) ([]models.Currency, error) {
+func (r *FinanceFileRepository) loadCurrencies(ctx context.Context) ([]models.Currency, map[string]struct{}, error) {
 	if r == nil || r.jsonRepository == nil {
-		return nil, fmt.Errorf("%w", interfaces.ErrDatasetFileUnavailable)
+		return nil, nil, fmt.Errorf("%w", interfaces.ErrDatasetFileUnavailable)
 	}
 	if strings.TrimSpace(r.currenciesPath) == "" || strings.TrimSpace(r.countriesAndAreasPath) == "" {
-		return nil, fmt.Errorf("%w", interfaces.ErrDatasetFileUnavailable)
+		return nil, nil, fmt.Errorf("%w", interfaces.ErrDatasetFileUnavailable)
 	}
 	if ctx == nil {
 		ctx = context.Background()
 	}
 	if err := ctx.Err(); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	var currencies []models.Currency
 	if err := r.jsonRepository.Decode(ctx, r.currenciesPath, &currencies); err != nil {
-		return nil, translateFinanceLoadError(err)
+		return nil, nil, translateFinanceLoadError(err)
 	}
 	if err := ctx.Err(); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 	if currencies == nil || len(currencies) == 0 {
-		return nil, fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		return nil, nil, fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
 	}
 
 	countryIDs, err := r.loadCountryAndAreaIDs(ctx)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 	if err := validateCurrencies(currencies, countryIDs); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
-	return currencies, nil
+	return currencies, countryIDs, nil
 }
 
 func (r *FinanceFileRepository) loadCountryAndAreaIDs(ctx context.Context) (map[string]struct{}, error) {
@@ -659,11 +679,18 @@ func cloneCurrencyList(currencies []models.Currency) []models.Currency {
 		return make([]models.Currency, 0)
 	}
 	cloned := make([]models.Currency, len(currencies))
-	copy(cloned, currencies)
+	for i := range currencies {
+		cloned[i] = cloneCurrency(currencies[i])
+	}
 	return cloned
 }
 
 func cloneCurrency(currency models.Currency) models.Currency {
+	if len(currency.CountryAreaIDs) > 0 {
+		currency.CountryAreaIDs = append([]string(nil), currency.CountryAreaIDs...)
+	} else if currency.CountryAreaIDs == nil {
+		currency.CountryAreaIDs = []string{}
+	}
 	return currency
 }
 

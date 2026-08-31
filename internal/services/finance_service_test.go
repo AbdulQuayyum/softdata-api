@@ -39,6 +39,7 @@ type financeRepositoryStub struct {
 	lastID             string
 	lastIMTOID         string
 	lastCurrencyID     string
+	lastCurrencyFilter string
 }
 
 func (s *financeRepositoryStub) ListPaymentServiceProviders(context.Context) ([]models.PaymentServiceProvider, error) {
@@ -97,12 +98,25 @@ func (s *financeRepositoryStub) GetInternationalMoneyTransferOperator(_ context.
 	return models.InternationalMoneyTransferOperator{}, interfaces.ErrInternationalMoneyTransferOperatorNotFound
 }
 
-func (s *financeRepositoryStub) ListCurrencies(context.Context) ([]models.Currency, error) {
+func (s *financeRepositoryStub) ListCurrencies(_ context.Context, filter interfaces.CurrencyFilter) ([]models.Currency, error) {
 	s.listCurrencyCalls++
 	if s.listCurrencyErr != nil {
 		return nil, s.listCurrencyErr
 	}
-	return cloneCurrencyList(s.listCurrencyResult), nil
+	s.lastCurrencyFilter = filter.CountryAreaID
+	if filter.CountryAreaID == "" {
+		return cloneCurrencyList(s.listCurrencyResult), nil
+	}
+	filtered := make([]models.Currency, 0)
+	for _, currency := range s.listCurrencyResult {
+		for _, countryAreaID := range currency.CountryAreaIDs {
+			if countryAreaID == filter.CountryAreaID {
+				filtered = append(filtered, cloneCurrencyList([]models.Currency{currency})[0])
+				break
+			}
+		}
+	}
+	return filtered, nil
 }
 
 func (s *financeRepositoryStub) GetCurrency(_ context.Context, currencyID string) (models.Currency, error) {
@@ -389,7 +403,7 @@ func TestFinanceServiceCurrenciesListGetAndValidation(t *testing.T) {
 		t.Fatalf("NewFinanceService() error = %v", err)
 	}
 
-	listed, err := svc.ListCurrencies(context.Background())
+	listed, err := svc.ListCurrencies(context.Background(), CurrencyListInput{})
 	if err != nil {
 		t.Fatalf("ListCurrencies() error = %v", err)
 	}
@@ -400,7 +414,7 @@ func TestFinanceServiceCurrenciesListGetAndValidation(t *testing.T) {
 		t.Fatalf("unexpected list result: %#v", listed)
 	}
 	listed[0].Name = "Changed"
-	again, err := svc.ListCurrencies(context.Background())
+	again, err := svc.ListCurrencies(context.Background(), CurrencyListInput{})
 	if err != nil {
 		t.Fatalf("ListCurrencies() second call error = %v", err)
 	}
@@ -438,7 +452,7 @@ func TestFinanceServiceCurrencyErrorTranslationAndContextPreservation(t *testing
 		t.Fatalf("NewFinanceService() error = %v", err)
 	}
 
-	if _, err := svc.ListCurrencies(context.Background()); err == nil || !strings.Contains(err.Error(), "repository unavailable") {
+	if _, err := svc.ListCurrencies(context.Background(), CurrencyListInput{}); err == nil || !strings.Contains(err.Error(), "repository unavailable") {
 		t.Fatalf("unexpected list error: %v", err)
 	}
 	if _, err := svc.GetCurrency(context.Background(), "usd"); !errors.Is(err, ErrCurrencyNotFound) {
@@ -447,7 +461,7 @@ func TestFinanceServiceCurrencyErrorTranslationAndContextPreservation(t *testing
 
 	ctx, cancel := context.WithCancel(context.Background())
 	cancel()
-	if _, err := svc.ListCurrencies(ctx); !errors.Is(err, context.Canceled) {
+	if _, err := svc.ListCurrencies(ctx, CurrencyListInput{}); !errors.Is(err, context.Canceled) {
 		t.Fatalf("canceled list error = %v, want context.Canceled", err)
 	}
 	deadlineCtx, cancelDeadline := context.WithTimeout(context.Background(), time.Nanosecond)
@@ -455,5 +469,79 @@ func TestFinanceServiceCurrencyErrorTranslationAndContextPreservation(t *testing
 	cancelDeadline()
 	if _, err := svc.GetCurrency(deadlineCtx, "usd"); !errors.Is(err, context.Canceled) && !errors.Is(err, context.DeadlineExceeded) {
 		t.Fatalf("deadline error = %v, want context cancellation/deadline", err)
+	}
+}
+
+func TestFinanceServiceCurrencyCountryAreaFiltering(t *testing.T) {
+	t.Parallel()
+
+	stub := &financeRepositoryStub{
+		listCurrencyResult: []models.Currency{
+			{ID: "ngn", Name: "Naira", AlphabeticCode: "NGN", NumericCode: "566", MinorUnit: 2, CountryAreaIDs: []string{"ng"}},
+			{ID: "btn", Name: "Ngultrum", AlphabeticCode: "BTN", NumericCode: "064", MinorUnit: 2, CountryAreaIDs: []string{"bt", "in"}},
+			{ID: "usd", Name: "US Dollar", AlphabeticCode: "USD", NumericCode: "840", MinorUnit: 2, CountryAreaIDs: []string{"ht", "ls", "na", "pa", "sv", "ve"}},
+		},
+	}
+	svc, err := NewFinanceService(stub)
+	if err != nil {
+		t.Fatalf("NewFinanceService() error = %v", err)
+	}
+
+	tests := []struct {
+		name     string
+		input    string
+		want     []models.Currency
+		wantLast string
+	}{
+		{name: "trimmed all", input: "   ", want: cloneCurrencyList(stub.listCurrencyResult), wantLast: ""},
+		{name: "ng", input: " ng ", want: []models.Currency{{ID: "ngn", Name: "Naira", AlphabeticCode: "NGN", NumericCode: "566", MinorUnit: 2, CountryAreaIDs: []string{"ng"}}}, wantLast: "ng"},
+		{name: "bt", input: "bt", want: []models.Currency{{ID: "btn", Name: "Ngultrum", AlphabeticCode: "BTN", NumericCode: "064", MinorUnit: 2, CountryAreaIDs: []string{"bt", "in"}}}, wantLast: "bt"},
+		{name: "zero result", input: "aq", want: []models.Currency{}, wantLast: "aq"},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			before := stub.listCurrencyCalls
+			got, err := svc.ListCurrencies(context.Background(), CurrencyListInput{CountryAreaID: tc.input})
+			if err != nil {
+				t.Fatalf("ListCurrencies(%q) error = %v", tc.input, err)
+			}
+			if got == nil {
+				t.Fatalf("ListCurrencies(%q) returned nil slice", tc.input)
+			}
+			if !reflect.DeepEqual(got, tc.want) {
+				t.Fatalf("ListCurrencies(%q) = %#v, want %#v", tc.input, got, tc.want)
+			}
+			if stub.lastCurrencyFilter != tc.wantLast {
+				t.Fatalf("repository received filter %q, want %q", stub.lastCurrencyFilter, tc.wantLast)
+			}
+			if stub.listCurrencyCalls != before+1 {
+				t.Fatalf("repository calls = %d, want %d", stub.listCurrencyCalls, before+1)
+			}
+		})
+	}
+
+	freshStub := &financeRepositoryStub{listCurrencyResult: stub.listCurrencyResult}
+	freshSvc, err := NewFinanceService(freshStub)
+	if err != nil {
+		t.Fatalf("NewFinanceService() error = %v", err)
+	}
+	for _, input := range []string{"NG", "n g", "ng-", "1g"} {
+		before := freshStub.listCurrencyCalls
+		if _, err := freshSvc.ListCurrencies(context.Background(), CurrencyListInput{CountryAreaID: input}); !errors.Is(err, ErrInvalidCurrencyCountryAreaID) {
+			t.Fatalf("ListCurrencies(%q) error = %v, want ErrInvalidCurrencyCountryAreaID", input, err)
+		}
+		if freshStub.listCurrencyCalls != before {
+			t.Fatalf("repository was called for invalid input %q", input)
+		}
+	}
+
+	unknownStub := &financeRepositoryStub{listCurrencyErr: interfaces.ErrInvalidCurrencyCountryAreaID}
+	unknownSvc, err := NewFinanceService(unknownStub)
+	if err != nil {
+		t.Fatalf("NewFinanceService() error = %v", err)
+	}
+	if _, err := unknownSvc.ListCurrencies(context.Background(), CurrencyListInput{CountryAreaID: "zz"}); !errors.Is(err, ErrInvalidCurrencyCountryAreaID) {
+		t.Fatalf("ListCurrencies(zz) error = %v, want ErrInvalidCurrencyCountryAreaID", err)
 	}
 }

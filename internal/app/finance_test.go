@@ -72,7 +72,7 @@ func (s *financeRepositoryStub) GetInternationalMoneyTransferOperator(context.Co
 	return models.InternationalMoneyTransferOperator{}, nil
 }
 
-func (s *financeRepositoryStub) ListCurrencies(context.Context) ([]models.Currency, error) {
+func (s *financeRepositoryStub) ListCurrencies(context.Context, interfaces.CurrencyFilter) ([]models.Currency, error) {
 	return nil, nil
 }
 
