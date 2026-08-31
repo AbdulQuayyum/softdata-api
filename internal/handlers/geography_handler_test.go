@@ -16,25 +16,31 @@ import (
 )
 
 type geographyHandlerStub struct {
-	listFn      func(context.Context) ([]models.State, error)
-	getFn       func(context.Context, string) (models.State, error)
-	zoneListFn  func(context.Context) ([]models.GeopoliticalZone, error)
-	zoneGetFn   func(context.Context, string) (models.GeopoliticalZone, error)
-	lgaListFn   func(context.Context) ([]models.LocalGovernmentUnit, error)
-	lgaListByFn func(context.Context, string) ([]models.LocalGovernmentUnit, error)
-	lgaGetFn    func(context.Context, string) (models.LocalGovernmentUnit, error)
+	listFn        func(context.Context) ([]models.State, error)
+	getFn         func(context.Context, string) (models.State, error)
+	zoneListFn    func(context.Context) ([]models.GeopoliticalZone, error)
+	zoneGetFn     func(context.Context, string) (models.GeopoliticalZone, error)
+	lgaListFn     func(context.Context) ([]models.LocalGovernmentUnit, error)
+	lgaListByFn   func(context.Context, string) ([]models.LocalGovernmentUnit, error)
+	lgaGetFn      func(context.Context, string) (models.LocalGovernmentUnit, error)
+	countryListFn func(context.Context, services.CountryOrAreaListInput) ([]models.CountryOrArea, error)
+	countryGetFn  func(context.Context, string) (models.CountryOrArea, error)
 
-	listCalls      int
-	getCalls       int
-	zoneListCalls  int
-	zoneGetCalls   int
-	lgaListCalls   int
-	lgaListByCalls int
-	lgaGetCalls    int
-	lastID         string
-	lastZoneID     string
-	lastLGAID      string
-	lastStateID    string
+	listCalls        int
+	getCalls         int
+	zoneListCalls    int
+	zoneGetCalls     int
+	lgaListCalls     int
+	lgaListByCalls   int
+	lgaGetCalls      int
+	countryListCalls int
+	countryGetCalls  int
+	lastID           string
+	lastZoneID       string
+	lastLGAID        string
+	lastStateID      string
+	lastCountryID    string
+	lastCountryQuery services.CountryOrAreaListInput
 }
 
 func (s *geographyHandlerStub) ListStates(ctx context.Context) ([]models.State, error) {
@@ -95,6 +101,24 @@ func (s *geographyHandlerStub) GetLocalGovernmentUnit(ctx context.Context, unitI
 		return s.lgaGetFn(ctx, unitID)
 	}
 	return models.LocalGovernmentUnit{}, nil
+}
+
+func (s *geographyHandlerStub) ListCountriesAndAreas(ctx context.Context, input services.CountryOrAreaListInput) ([]models.CountryOrArea, error) {
+	s.countryListCalls++
+	s.lastCountryQuery = input
+	if s.countryListFn != nil {
+		return s.countryListFn(ctx, input)
+	}
+	return nil, nil
+}
+
+func (s *geographyHandlerStub) GetCountryOrArea(ctx context.Context, countryID string) (models.CountryOrArea, error) {
+	s.countryGetCalls++
+	s.lastCountryID = countryID
+	if s.countryGetFn != nil {
+		return s.countryGetFn(ctx, countryID)
+	}
+	return models.CountryOrArea{}, nil
 }
 
 func TestNewGeographyHandlerRejectsNilService(t *testing.T) {
@@ -760,6 +784,339 @@ func TestGeographyHandlerGetLocalGovernmentUnitMethodGuard(t *testing.T) {
 	if got := rr.Header().Get("Allow"); got != http.MethodGet {
 		t.Fatalf("unexpected allow header: %q", got)
 	}
+}
+
+func TestGeographyHandlerListCountriesAndAreas(t *testing.T) {
+	t.Run("list all", func(t *testing.T) {
+		stub := &geographyHandlerStub{
+			countryListFn: func(ctx context.Context, input services.CountryOrAreaListInput) ([]models.CountryOrArea, error) {
+				if _, ok := middlewares.RequestIDFromContext(ctx); !ok {
+					t.Fatal("request context was not preserved")
+				}
+				if input.RegionCode != "" || input.SubregionCode != "" {
+					t.Fatalf("unexpected query input: %#v", input)
+				}
+				return []models.CountryOrArea{{ID: "ng", Name: "Nigeria", Alpha2Code: "NG", Alpha3Code: "NGA", NumericCode: "566", RegionCode: "002", RegionName: "Africa", SubregionCode: "015", SubregionName: "Northern Africa", IntermediateRegionCode: "014", IntermediateRegionName: "Eastern Africa"}}, nil
+			},
+		}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/countries", nil)
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.ListCountriesAndAreas(w, r)
+		}, rr)
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if stub.countryListCalls != 1 || stub.countryGetCalls != 0 {
+			t.Fatalf("unexpected call counts: list=%d get=%d", stub.countryListCalls, stub.countryGetCalls)
+		}
+		var body map[string]any
+		if err := json.Unmarshal(rr.Body.Bytes(), &body); err != nil {
+			t.Fatalf("json.Unmarshal: %v", err)
+		}
+		data := body["data"].([]any)
+		if len(data) != 1 {
+			t.Fatalf("unexpected country payload: %#v", data)
+		}
+		item := data[0].(map[string]any)
+		if len(item) != 11 {
+			t.Fatalf("unexpected country field count: %#v", item)
+		}
+		if item["id"] != "ng" || item["alpha_2_code"] != "NG" || item["numeric_code"] != "566" {
+			t.Fatalf("unexpected country payload: %#v", item)
+		}
+	})
+
+	t.Run("filter by region", func(t *testing.T) {
+		stub := &geographyHandlerStub{
+			countryListFn: func(ctx context.Context, input services.CountryOrAreaListInput) ([]models.CountryOrArea, error) {
+				if input.RegionCode != "002" || input.SubregionCode != "" {
+					t.Fatalf("unexpected query input: %#v", input)
+				}
+				return []models.CountryOrArea{{ID: "ng", Name: "Nigeria", Alpha2Code: "NG", Alpha3Code: "NGA", NumericCode: "566"}}, nil
+			},
+		}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/countries?region_code=002", nil)
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.ListCountriesAndAreas(w, r)
+		}, rr)
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if stub.countryListCalls != 1 || stub.countryGetCalls != 0 {
+			t.Fatalf("unexpected call counts: list=%d get=%d", stub.countryListCalls, stub.countryGetCalls)
+		}
+	})
+
+	t.Run("filter by subregion", func(t *testing.T) {
+		stub := &geographyHandlerStub{
+			countryListFn: func(ctx context.Context, input services.CountryOrAreaListInput) ([]models.CountryOrArea, error) {
+				if input.RegionCode != "" || input.SubregionCode != "015" {
+					t.Fatalf("unexpected query input: %#v", input)
+				}
+				return []models.CountryOrArea{{ID: "ng", Name: "Nigeria", Alpha2Code: "NG", Alpha3Code: "NGA", NumericCode: "566"}}, nil
+			},
+		}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/countries?subregion_code=015", nil)
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.ListCountriesAndAreas(w, r)
+		}, rr)
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+	})
+
+	t.Run("filter by both", func(t *testing.T) {
+		stub := &geographyHandlerStub{
+			countryListFn: func(ctx context.Context, input services.CountryOrAreaListInput) ([]models.CountryOrArea, error) {
+				if input.RegionCode != "002" || input.SubregionCode != "015" {
+					t.Fatalf("unexpected query input: %#v", input)
+				}
+				return []models.CountryOrArea{{ID: "ng", Name: "Nigeria", Alpha2Code: "NG", Alpha3Code: "NGA", NumericCode: "566"}}, nil
+			},
+		}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/countries?region_code=002&subregion_code=015", nil)
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.ListCountriesAndAreas(w, r)
+		}, rr)
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+	})
+
+	t.Run("reject invalid query", func(t *testing.T) {
+		stub := &geographyHandlerStub{}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		for _, query := range []string{"region_code=", "region_code=02", "region_code=002&region_code=019", "subregion_code=", "subregion_code=2"} {
+			t.Run(query, func(t *testing.T) {
+				rr := httptest.NewRecorder()
+				req := httptest.NewRequest(http.MethodGet, "/v1/geography/countries?"+query, nil)
+				invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+					h.ListCountriesAndAreas(w, r)
+				}, rr)
+				if rr.Code != http.StatusUnprocessableEntity {
+					t.Fatalf("unexpected status: %d", rr.Code)
+				}
+				if stub.countryListCalls != 0 {
+					t.Fatalf("service should not be called for invalid query")
+				}
+			})
+		}
+	})
+
+	t.Run("method guard", func(t *testing.T) {
+		h, err := NewGeographyHandler(&geographyHandlerStub{})
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodPost, "/v1/geography/countries", nil)
+		h.ListCountriesAndAreas(rr, req)
+		if rr.Code != http.StatusMethodNotAllowed {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if got := rr.Header().Get("Allow"); got != http.MethodGet {
+			t.Fatalf("unexpected allow header: %q", got)
+		}
+	})
+}
+
+func TestGeographyHandlerGetCountryOrArea(t *testing.T) {
+	stub := &geographyHandlerStub{
+		countryGetFn: func(ctx context.Context, countryID string) (models.CountryOrArea, error) {
+			if _, ok := middlewares.RequestIDFromContext(ctx); !ok {
+				t.Fatal("request context was not preserved")
+			}
+			if countryID != "ng" {
+				t.Fatalf("unexpected country id: %q", countryID)
+			}
+			return models.CountryOrArea{ID: "ng", Name: "Nigeria", Alpha2Code: "NG", Alpha3Code: "NGA", NumericCode: "566"}, nil
+		},
+	}
+	h, err := NewGeographyHandler(stub)
+	if err != nil {
+		t.Fatalf("NewGeographyHandler() error = %v", err)
+	}
+
+	rr := httptest.NewRecorder()
+	req := httptest.NewRequest(http.MethodGet, "/v1/geography/countries/ng", nil)
+	req.SetPathValue("country_id", " ng ")
+	invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+		h.GetCountryOrArea(w, r)
+	}, rr)
+
+	if rr.Code != http.StatusOK {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if stub.countryGetCalls != 1 {
+		t.Fatalf("unexpected get call count: %d", stub.countryGetCalls)
+	}
+	if stub.lastCountryID != "ng" {
+		t.Fatalf("unexpected country id: %q", stub.lastCountryID)
+	}
+
+	var body map[string]any
+	if err := json.Unmarshal(rr.Body.Bytes(), &body); err != nil {
+		t.Fatalf("json.Unmarshal: %v", err)
+	}
+	data := body["data"].(map[string]any)
+	if len(data) != 5 {
+		t.Fatalf("unexpected country response: %#v", data)
+	}
+	if _, ok := data["region_code"]; ok {
+		t.Fatalf("unexpected optional field: %#v", data)
+	}
+	if data["alpha_2_code"] != "NG" || data["alpha_3_code"] != "NGA" || data["numeric_code"] != "566" {
+		t.Fatalf("unexpected country response: %#v", data)
+	}
+}
+
+func TestGeographyHandlerGetCountryOrAreaErrors(t *testing.T) {
+	t.Run("not found", func(t *testing.T) {
+		stub := &geographyHandlerStub{
+			countryGetFn: func(context.Context, string) (models.CountryOrArea, error) {
+				return models.CountryOrArea{}, services.ErrCountryOrAreaNotFound
+			},
+		}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/countries/ng", nil)
+		req.SetPathValue("country_id", "ng")
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.GetCountryOrArea(w, r)
+		}, rr)
+		if rr.Code != http.StatusNotFound {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+	})
+
+	t.Run("wrapped not found", func(t *testing.T) {
+		stub := &geographyHandlerStub{
+			countryGetFn: func(context.Context, string) (models.CountryOrArea, error) {
+				return models.CountryOrArea{}, fmtWrappedErr(services.ErrCountryOrAreaNotFound)
+			},
+		}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/countries/ng", nil)
+		req.SetPathValue("country_id", "ng")
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.GetCountryOrArea(w, r)
+		}, rr)
+		if rr.Code != http.StatusNotFound {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+	})
+
+	t.Run("invalid service id", func(t *testing.T) {
+		stub := &geographyHandlerStub{
+			countryGetFn: func(context.Context, string) (models.CountryOrArea, error) {
+				return models.CountryOrArea{}, services.ErrInvalidCountryOrAreaID
+			},
+		}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/countries/ng", nil)
+		req.SetPathValue("country_id", "ng")
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.GetCountryOrArea(w, r)
+		}, rr)
+		if rr.Code != http.StatusBadRequest {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+	})
+
+	t.Run("unexpected service error", func(t *testing.T) {
+		stub := &geographyHandlerStub{
+			countryGetFn: func(context.Context, string) (models.CountryOrArea, error) {
+				return models.CountryOrArea{}, errors.New("database down")
+			},
+		}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/countries/ng", nil)
+		req.SetPathValue("country_id", "ng")
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.GetCountryOrArea(w, r)
+		}, rr)
+		if rr.Code != http.StatusInternalServerError {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if strings.Contains(rr.Body.String(), "database down") {
+			t.Fatalf("internal error details leaked: %s", rr.Body.String())
+		}
+	})
+
+	t.Run("invalid id rejected before service", func(t *testing.T) {
+		stub := &geographyHandlerStub{}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/countries/invalid", nil)
+		req.SetPathValue("country_id", "NG")
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.GetCountryOrArea(w, r)
+		}, rr)
+		if rr.Code != http.StatusUnprocessableEntity {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if stub.countryGetCalls != 0 {
+			t.Fatalf("service should not be called for invalid ids")
+		}
+	})
+
+	t.Run("method guard", func(t *testing.T) {
+		h, err := NewGeographyHandler(&geographyHandlerStub{})
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodPost, "/v1/geography/countries/ng", nil)
+		req.SetPathValue("country_id", "ng")
+		h.GetCountryOrArea(rr, req)
+		if rr.Code != http.StatusMethodNotAllowed {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if got := rr.Header().Get("Allow"); got != http.MethodGet {
+			t.Fatalf("unexpected allow header: %q", got)
+		}
+	})
 }
 
 func TestGeographyHandlerRejectsInvalidLocalGovernmentUnitIDs(t *testing.T) {

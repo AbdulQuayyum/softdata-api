@@ -7,6 +7,7 @@ import (
 
 	"github.com/AbdulQuayyum/softdata-api/internal/models"
 	"github.com/AbdulQuayyum/softdata-api/internal/response"
+	"github.com/AbdulQuayyum/softdata-api/internal/services"
 	"github.com/AbdulQuayyum/softdata-api/internal/validators"
 )
 
@@ -18,6 +19,8 @@ type geographyService interface {
 	ListLocalGovernmentUnits(context.Context) ([]models.LocalGovernmentUnit, error)
 	ListLocalGovernmentUnitsByState(context.Context, string) ([]models.LocalGovernmentUnit, error)
 	GetLocalGovernmentUnit(context.Context, string) (models.LocalGovernmentUnit, error)
+	ListCountriesAndAreas(context.Context, services.CountryOrAreaListInput) ([]models.CountryOrArea, error)
+	GetCountryOrArea(context.Context, string) (models.CountryOrArea, error)
 }
 
 type GeographyHandler struct {
@@ -164,4 +167,54 @@ func (h *GeographyHandler) GetLocalGovernmentUnit(w http.ResponseWriter, r *http
 	}
 
 	_ = response.Success(w, http.StatusOK, unit)
+}
+
+func (h *GeographyHandler) ListCountriesAndAreas(w http.ResponseWriter, r *http.Request) {
+	if !allowMethod(w, r, http.MethodGet) {
+		return
+	}
+
+	requestID := requestIDFromContext(r.Context())
+	query, err := validators.ValidateCountryOrAreaListQuery(r.URL.Query())
+	if err != nil {
+		if validationErr, ok := validationErrorsFrom(err); ok {
+			_ = response.Validation(w, requestID, validationErrorsToResponse(validationErr))
+			return
+		}
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	countries, err := h.service.ListCountriesAndAreas(r.Context(), query)
+	if err != nil {
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	_ = response.List(w, http.StatusOK, countries)
+}
+
+func (h *GeographyHandler) GetCountryOrArea(w http.ResponseWriter, r *http.Request) {
+	if !allowMethod(w, r, http.MethodGet) {
+		return
+	}
+
+	requestID := requestIDFromContext(r.Context())
+	countryID, err := validators.ValidateCountryOrAreaID(r.PathValue("country_id"))
+	if err != nil {
+		if validationErr, ok := validationErrorsFrom(err); ok {
+			_ = response.Validation(w, requestID, validationErrorsToResponse(validationErr))
+			return
+		}
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	country, err := h.service.GetCountryOrArea(r.Context(), countryID)
+	if err != nil {
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	_ = response.Success(w, http.StatusOK, country)
 }

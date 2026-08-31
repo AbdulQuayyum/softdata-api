@@ -229,3 +229,194 @@ func TestValidateLocalGovernmentUnitIDRejectsInvalidValues(t *testing.T) {
 		})
 	}
 }
+
+func TestValidateCountryOrAreaID(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		value string
+		want  string
+	}{
+		{name: "ng", value: "ng", want: "ng"},
+		{name: "us trimmed", value: " us ", want: "us"},
+		{name: "xk", value: "xk", want: "xk"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			got, err := ValidateCountryOrAreaID(tc.value)
+			if err != nil {
+				t.Fatalf("ValidateCountryOrAreaID() error = %v", err)
+			}
+			if got != tc.want {
+				t.Fatalf("unexpected value: %q", got)
+			}
+		})
+	}
+}
+
+func TestValidateCountryOrAreaIDRejectsInvalidValues(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		value string
+		field string
+	}{
+		{name: "empty", value: "", field: "country_id"},
+		{name: "whitespace", value: "   ", field: "country_id"},
+		{name: "uppercase", value: "NG", field: "country_id"},
+		{name: "mixedcase", value: "Ng", field: "country_id"},
+		{name: "too short", value: "n", field: "country_id"},
+		{name: "too long", value: "nga", field: "country_id"},
+		{name: "numeric", value: "56", field: "country_id"},
+		{name: "with hyphen", value: "n-g", field: "country_id"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			got, err := ValidateCountryOrAreaID(tc.value)
+			if err == nil {
+				t.Fatalf("ValidateCountryOrAreaID() got %q, want error", got)
+			}
+			var validationErr ValidationErrors
+			if !errors.As(err, &validationErr) {
+				t.Fatalf("ValidateCountryOrAreaID() error = %v, want ValidationErrors", err)
+			}
+			if len(validationErr.Fields) != 1 || validationErr.Fields[0].Field != tc.field {
+				t.Fatalf("unexpected validation errors: %#v", validationErr.Fields)
+			}
+		})
+	}
+}
+
+func TestValidateCountryOrAreaRegionAndSubregionCodes(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		value string
+		want  string
+	}{
+		{name: "region", value: "002", want: "002"},
+		{name: "region trimmed", value: " 150 ", want: "150"},
+		{name: "subregion", value: "015", want: "015"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			got, err := ValidateCountryOrAreaRegionCode(tc.value)
+			if err == nil {
+				if got != tc.want {
+					t.Fatalf("unexpected region code: %q", got)
+				}
+			}
+			got, err = ValidateCountryOrAreaSubregionCode(tc.value)
+			if err == nil {
+				if got != tc.want {
+					t.Fatalf("unexpected subregion code: %q", got)
+				}
+			}
+		})
+	}
+}
+
+func TestValidateCountryOrAreaRegionAndSubregionCodesRejectInvalidValues(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		value string
+		field string
+	}{
+		{name: "empty region", value: "", field: "region_code"},
+		{name: "whitespace region", value: "   ", field: "region_code"},
+		{name: "bad region", value: "02", field: "region_code"},
+		{name: "alpha region", value: "ABC", field: "region_code"},
+		{name: "signed region", value: "+02", field: "region_code"},
+		{name: "decimal region", value: "02.0", field: "region_code"},
+		{name: "empty subregion", value: "", field: "subregion_code"},
+		{name: "whitespace subregion", value: "   ", field: "subregion_code"},
+		{name: "bad subregion", value: "2", field: "subregion_code"},
+		{name: "alpha subregion", value: "ABC", field: "subregion_code"},
+		{name: "signed subregion", value: "-02", field: "subregion_code"},
+		{name: "decimal subregion", value: "02.0", field: "subregion_code"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			var err error
+			if tc.field == "region_code" {
+				_, err = ValidateCountryOrAreaRegionCode(tc.value)
+			} else {
+				_, err = ValidateCountryOrAreaSubregionCode(tc.value)
+			}
+			if err == nil {
+				t.Fatal("expected validation error")
+			}
+			var validationErr ValidationErrors
+			if !errors.As(err, &validationErr) {
+				t.Fatalf("unexpected error type: %v", err)
+			}
+			if len(validationErr.Fields) != 1 || validationErr.Fields[0].Field != tc.field {
+				t.Fatalf("unexpected validation errors: %#v", validationErr.Fields)
+			}
+		})
+	}
+}
+
+func TestValidateCountryOrAreaListQuery(t *testing.T) {
+	query, err := ValidateCountryOrAreaListQuery(url.Values{})
+	if err != nil {
+		t.Fatalf("ValidateCountryOrAreaListQuery() error = %v", err)
+	}
+	if query.RegionCode != "" || query.SubregionCode != "" {
+		t.Fatalf("unexpected empty query: %#v", query)
+	}
+
+	values := url.Values{"region_code": []string{" 002 ", "ignored"}, "subregion_code": []string{" 015 "}}
+	query, err = ValidateCountryOrAreaListQuery(values)
+	if err == nil {
+		t.Fatal("expected validation error for duplicate region_code")
+	}
+	var validationErr ValidationErrors
+	if !errors.As(err, &validationErr) {
+		t.Fatalf("unexpected error type: %v", err)
+	}
+	if len(validationErr.Fields) != 1 || validationErr.Fields[0].Field != "region_code" {
+		t.Fatalf("unexpected validation errors: %#v", validationErr.Fields)
+	}
+
+	values = url.Values{"region_code": []string{"002"}, "subregion_code": []string{"015"}}
+	query, err = ValidateCountryOrAreaListQuery(values)
+	if err != nil {
+		t.Fatalf("ValidateCountryOrAreaListQuery() error = %v", err)
+	}
+	if query.RegionCode != "002" || query.SubregionCode != "015" {
+		t.Fatalf("unexpected query: %#v", query)
+	}
+
+	values = url.Values{"subregion_code": []string{"019"}}
+	query, err = ValidateCountryOrAreaListQuery(values)
+	if err != nil {
+		t.Fatalf("ValidateCountryOrAreaListQuery() error = %v", err)
+	}
+	if query.RegionCode != "" || query.SubregionCode != "019" {
+		t.Fatalf("unexpected subregion-only query: %#v", query)
+	}
+}
+
+func TestValidateCountryOrAreaListQueryRejectsInvalidValues(t *testing.T) {
+	for _, tc := range []struct {
+		name   string
+		values url.Values
+		field  string
+	}{
+		{name: "empty region", values: url.Values{"region_code": []string{""}}, field: "region_code"},
+		{name: "whitespace region", values: url.Values{"region_code": []string{"   "}}, field: "region_code"},
+		{name: "bad region", values: url.Values{"region_code": []string{"02"}}, field: "region_code"},
+		{name: "empty subregion", values: url.Values{"subregion_code": []string{""}}, field: "subregion_code"},
+		{name: "whitespace subregion", values: url.Values{"subregion_code": []string{"   "}}, field: "subregion_code"},
+		{name: "bad subregion", values: url.Values{"subregion_code": []string{"2"}}, field: "subregion_code"},
+		{name: "duplicate subregion", values: url.Values{"subregion_code": []string{"002", "019"}}, field: "subregion_code"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			_, err := ValidateCountryOrAreaListQuery(tc.values)
+			if err == nil {
+				t.Fatal("expected validation error")
+			}
+			var validationErr ValidationErrors
+			if !errors.As(err, &validationErr) {
+				t.Fatalf("unexpected error type: %v", err)
+			}
+			if len(validationErr.Fields) == 0 || validationErr.Fields[0].Field != tc.field {
+				t.Fatalf("unexpected validation errors: %#v", validationErr.Fields)
+			}
+		})
+	}
+}
