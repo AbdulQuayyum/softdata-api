@@ -80,6 +80,32 @@ func registerPublicRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers,
 		return err
 	}
 
+	geographyCountriesList, err := buildRouteMiddlewares(mw, "/v1/geography/countries", "geography", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build geography countries middleware: %w", err)
+	}
+	mux.Handle("GET /v1/geography/countries", compose(http.HandlerFunc(h.Geography.ListCountriesAndAreas), geographyCountriesList...))
+	if err := catalog.add("GET /v1/geography/countries"); err != nil {
+		return err
+	}
+
+	geographyCountryDetail, err := buildRouteMiddlewares(mw, "/v1/geography/countries/{country_id}", "geography", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build geography countries detail middleware: %w", err)
+	}
+	mux.Handle("GET /v1/geography/countries/{country_id}", compose(http.HandlerFunc(h.Geography.GetCountryOrArea), geographyCountryDetail...))
+	if err := catalog.add("GET /v1/geography/countries/{country_id}"); err != nil {
+		return err
+	}
+
 	geographyLGAsList, err := buildRouteMiddlewares(mw, "/v1/geography/lgas", "geography", routeOptions{
 		useOptionalAPIKey: true,
 		useRateLimit:      true,

@@ -104,6 +104,40 @@ func TestPublicRoutesServeGeographyLGAs(t *testing.T) {
 	}
 }
 
+func TestPublicRoutesServeGeographyCountriesAndAreas(t *testing.T) {
+	rec := &routerRecorder{}
+	router := newTestRouter(t, rec)
+
+	rr := httptest.NewRecorder()
+	req := httptest.NewRequest(http.MethodGet, "/v1/geography/countries", nil)
+	router.ServeHTTP(rr, req)
+	if rr.Code != http.StatusOK {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if !strings.Contains(strings.Join(rec.snapshot(), ","), "usage:/v1/geography/countries|geography") {
+		t.Fatalf("expected country list usage middleware to run: %v", rec.snapshot())
+	}
+	if !strings.Contains(strings.Join(rec.snapshot(), ","), "geography.country.list") {
+		t.Fatalf("expected country list handler to run: %v", rec.snapshot())
+	}
+
+	rec = &routerRecorder{}
+	router = newTestRouter(t, rec)
+
+	rr = httptest.NewRecorder()
+	req = httptest.NewRequest(http.MethodGet, "/v1/geography/countries/ng", nil)
+	router.ServeHTTP(rr, req)
+	if rr.Code != http.StatusOK {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if !strings.Contains(strings.Join(rec.snapshot(), ","), "usage:/v1/geography/countries/{country_id}|geography") {
+		t.Fatalf("expected country detail usage middleware to run: %v", rec.snapshot())
+	}
+	if !strings.Contains(strings.Join(rec.snapshot(), ","), "geography.country.get:ng") {
+		t.Fatalf("expected country detail handler to run: %v", rec.snapshot())
+	}
+}
+
 func TestPublicRoutesServeEducationUniversities(t *testing.T) {
 	rec := &routerRecorder{}
 	router := newTestRouter(t, rec)
@@ -259,6 +293,16 @@ func TestPublicRoutesRejectUnsupportedMethods(t *testing.T) {
 
 	rr = httptest.NewRecorder()
 	req = httptest.NewRequest(http.MethodHead, "/v1/geography/geopolitical-zones/north-central", nil)
+	router.ServeHTTP(rr, req)
+	if rr.Code != http.StatusMethodNotAllowed {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if got := rr.Header().Get("Allow"); got != http.MethodGet {
+		t.Fatalf("unexpected allow header: %q", got)
+	}
+
+	rr = httptest.NewRecorder()
+	req = httptest.NewRequest(http.MethodHead, "/v1/geography/countries/ng", nil)
 	router.ServeHTTP(rr, req)
 	if rr.Code != http.StatusMethodNotAllowed {
 		t.Fatalf("unexpected status: %d", rr.Code)

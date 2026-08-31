@@ -325,6 +325,54 @@ func TestRouterRegistersGeographyRoutes(t *testing.T) {
 		}
 	})
 
+	t.Run("countries", func(t *testing.T) {
+		t.Run("list", func(t *testing.T) {
+			rec := &routerRecorder{}
+			router := newTestRouter(t, rec)
+
+			rr := httptest.NewRecorder()
+			req := httptest.NewRequest(http.MethodGet, "/v1/geography/countries?region_code=002&subregion_code=015", nil)
+			router.ServeHTTP(rr, req)
+			if rr.Code != http.StatusOK {
+				t.Fatalf("unexpected status: %d", rr.Code)
+			}
+			got := strings.Join(rec.snapshot(), ",")
+			for _, want := range []string{
+				"optional_api_key",
+				"rate_limit",
+				"usage:/v1/geography/countries|geography",
+				"geography.country.list",
+			} {
+				if !strings.Contains(got, want) {
+					t.Fatalf("expected %q in middleware sequence: %v", want, rec.snapshot())
+				}
+			}
+		})
+
+		t.Run("detail", func(t *testing.T) {
+			rec := &routerRecorder{}
+			router := newTestRouter(t, rec)
+
+			rr := httptest.NewRecorder()
+			req := httptest.NewRequest(http.MethodGet, "/v1/geography/countries/ng", nil)
+			router.ServeHTTP(rr, req)
+			if rr.Code != http.StatusOK {
+				t.Fatalf("unexpected status: %d", rr.Code)
+			}
+			got := strings.Join(rec.snapshot(), ",")
+			for _, want := range []string{
+				"optional_api_key",
+				"rate_limit",
+				"usage:/v1/geography/countries/{country_id}|geography",
+				"geography.country.get:ng",
+			} {
+				if !strings.Contains(got, want) {
+					t.Fatalf("expected %q in middleware sequence: %v", want, rec.snapshot())
+				}
+			}
+		})
+	})
+
 	t.Run("geopolitical zones", func(t *testing.T) {
 		t.Run("list", func(t *testing.T) {
 			rec := &routerRecorder{}
