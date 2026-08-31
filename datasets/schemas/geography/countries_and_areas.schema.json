@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://softdata-api.local/schemas/geography/countries_and_areas.schema.json",
+  "title": "World Countries and Areas",
+  "description": "Schema for the ng-countries-and-areas dataset compiled by SoftData from the current English UN M49 overview table.",
+  "type": "array",
+  "minItems": 248,
+  "maxItems": 248,
+  "uniqueItems": true,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "name",
+      "alpha_2_code",
+      "alpha_3_code",
+      "numeric_code"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z]{2}$"
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1
+      },
+      "alpha_2_code": {
+        "type": "string",
+        "pattern": "^[A-Z]{2}$"
+      },
+      "alpha_3_code": {
+        "type": "string",
+        "pattern": "^[A-Z]{3}$"
+      },
+      "numeric_code": {
+        "type": "string",
+        "pattern": "^[0-9]{3}$"
+      },
+      "region_code": {
+        "type": "string",
+        "pattern": "^[0-9]{3}$"
+      },
+      "region_name": {
+        "type": "string",
+        "minLength": 1
+      },
+      "subregion_code": {
+        "type": "string",
+        "pattern": "^[0-9]{3}$"
+      },
+      "subregion_name": {
+        "type": "string",
+        "minLength": 1
+      },
+      "intermediate_region_code": {
+        "type": "string",
+        "pattern": "^[0-9]{3}$"
+      },
+      "intermediate_region_name": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "allOf": [
+      {
+        "if": {
+          "required": [
+            "region_code"
+          ]
+        },
+        "then": {
+          "required": [
+            "region_name"
+          ]
+        }
+      },
+      {
+        "if": {
+          "required": [
+            "region_name"
+          ]
+        },
+        "then": {
+          "required": [
+            "region_code"
+          ]
+        }
+      },
+      {
+        "if": {
+          "required": [
+            "subregion_code"
+          ]
+        },
+        "then": {
+          "required": [
+            "subregion_name"
+          ]
+        }
+      },
+      {
+        "if": {
+          "required": [
+            "subregion_name"
+          ]
+        },
+        "then": {
+          "required": [
+            "subregion_code"
+          ]
+        }
+      },
+      {
+        "if": {
+          "required": [
+            "intermediate_region_code"
+          ]
+        },
+        "then": {
+          "required": [
+            "intermediate_region_name"
+          ]
+        }
+      },
+      {
+        "if": {
+          "required": [
+            "intermediate_region_name"
+          ]
+        },
+        "then": {
+          "required": [
+            "intermediate_region_code"
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "dataset_key": "world-countries-and-areas",
+  "title": "World Countries and Areas",
+  "description": "Independently compiled factual reference data for the current English United Nations M49 overview table. Each record represents one current country or area in the UN statistical manifest.",
+  "country_code": "001",
+  "dataset_group": "geography",
+  "format": "json",
+  "relative_path": "geography/countries_and_areas.json",
+  "schema_path": "schemas/geography/countries_and_areas.schema.json",
+  "record_count": 248,
+  "version": "1.0.0",
+  "license_id": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "methodology": "Independently compiled factual reference data from the current English United Nations Statistics Division M49 overview table. The source page was retrieved three times with consistent results on 2026-08-30T22:54:39Z, 2026-08-30T22:54:40Z and 2026-08-30T22:54:42Z. The current manifest contains 248 rows and was normalized into deterministic name order. SoftData preserved alpha-2, alpha-3, numeric, region and subregion codes as published, omitted hierarchy fields only when the source table leaves them blank, and excluded historical or deleted entries outside the current manifest. Kosovo is not present in the approved current manifest. UN statistical designations and groupings are used for statistical reference only and do not imply political recognition or legal status. ISO-derived alpha codes are included as published in the UN M49 table; ISO standards text itself is not reproduced. The UN source material retains its own rights, while SoftData's independent compilation, schema and metadata are licensed under CC BY 4.0.",
+  "sources": [
+    {
+      "organization": "United Nations Statistics Division",
+      "title": "Standard country or area codes for statistical use (M49)",
+      "url": "https://unstats.un.org/unsd/methodology/m49/overview/",
+      "purpose": "Verify the current English M49 overview-table snapshot used for the 248-row world countries-and-areas manifest.",
+      "accessed_at": "2026-08-30T22:54:39Z"
+    },
+    {
+      "organization": "United Nations Statistics Division",
+      "title": "Standard country or area codes for statistical use (M49)",
+      "url": "https://unstats.un.org/unsd/methodology/m49/overview/",
+      "purpose": "Verify the current English M49 overview-table snapshot used for the 248-row world countries-and-areas manifest.",
+      "accessed_at": "2026-08-30T22:54:40Z"
+    },
+    {
+      "organization": "United Nations Statistics Division",
+      "title": "Standard country or area codes for statistical use (M49)",
+      "url": "https://unstats.un.org/unsd/methodology/m49/overview/",
+      "purpose": "Verify the current English M49 overview-table snapshot used for the 248-row world countries-and-areas manifest.",
+      "accessed_at": "2026-08-30T22:54:42Z"
+    }
+  ],
+  "verified_at": "2026-08-30"
+}

@@ -26,3 +26,18 @@ type LocalGovernmentUnit struct {
 	CountryCode        string `json:"country_code"`
 	AdministrativeType string `json:"administrative_type"`
 }
+
+// CountryOrArea is the public record model for a UN M49 country or area.
+type CountryOrArea struct {
+	ID                     string `json:"id"`
+	Name                   string `json:"name"`
+	Alpha2Code             string `json:"alpha_2_code"`
+	Alpha3Code             string `json:"alpha_3_code"`
+	NumericCode            string `json:"numeric_code"`
+	RegionCode             string `json:"region_code,omitempty"`
+	RegionName             string `json:"region_name,omitempty"`
+	SubregionCode          string `json:"subregion_code,omitempty"`
+	SubregionName          string `json:"subregion_name,omitempty"`
+	IntermediateRegionCode string `json:"intermediate_region_code,omitempty"`
+	IntermediateRegionName string `json:"intermediate_region_name,omitempty"`
+}
