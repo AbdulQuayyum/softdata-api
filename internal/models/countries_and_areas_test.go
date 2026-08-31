@@ -51,11 +51,17 @@ type countryAreaSchema struct {
 		AdditionalProperties bool     `json:"additionalProperties"`
 		Required             []string `json:"required"`
 		Properties           map[string]struct {
-			Type      string   `json:"type"`
-			Pattern   string   `json:"pattern,omitempty"`
-			MinLength int      `json:"minLength,omitempty"`
-			Enum      []string `json:"enum,omitempty"`
-			Const     string   `json:"const,omitempty"`
+			Type        string   `json:"type"`
+			Pattern     string   `json:"pattern,omitempty"`
+			MinLength   int      `json:"minLength,omitempty"`
+			Enum        []string `json:"enum,omitempty"`
+			Const       string   `json:"const,omitempty"`
+			UniqueItems bool     `json:"uniqueItems,omitempty"`
+			MinItems    int      `json:"minItems,omitempty"`
+			Items       *struct {
+				Type    string `json:"type"`
+				Pattern string `json:"pattern,omitempty"`
+			} `json:"items,omitempty"`
 		} `json:"properties"`
 		AllOf []struct {
 			If struct {
@@ -93,6 +99,9 @@ func TestWorldCountriesAndAreasDatasetMatchesApprovedManifest(t *testing.T) {
 		"alpha_2_code":             {},
 		"alpha_3_code":             {},
 		"numeric_code":             {},
+		"calling_codes":            {},
+		"flag_emoji":               {},
+		"flag_svg_url":             {},
 		"region_code":              {},
 		"region_name":              {},
 		"subregion_code":           {},
@@ -105,14 +114,18 @@ func TestWorldCountriesAndAreasDatasetMatchesApprovedManifest(t *testing.T) {
 		allowedNames[field] = struct{}{}
 	}
 
+	rawRows := loadCountryOrAreaRawDataset(t)
+
 	seenIDs := make(map[string]struct{}, len(rows))
 	seenAlpha2 := make(map[string]struct{}, len(rows))
 	seenAlpha3 := make(map[string]struct{}, len(rows))
 	seenNumeric := make(map[string]struct{}, len(rows))
 	seenNames := make(map[string]struct{}, len(rows))
 	withoutRegion := 0
+	callingCodeCount := 0
 
 	for i, row := range rows {
+		raw := rawRows[i]
 		if row.ID == "" || row.Name == "" || row.Alpha2Code == "" || row.Alpha3Code == "" || row.NumericCode == "" {
 			t.Fatalf("record %d has empty required field: %#v", i, row)
 		}
@@ -130,6 +143,35 @@ func TestWorldCountriesAndAreasDatasetMatchesApprovedManifest(t *testing.T) {
 		}
 		if !regexp.MustCompile(`^[0-9]{3}$`).MatchString(row.NumericCode) {
 			t.Fatalf("record %d has invalid numeric code %q", i, row.NumericCode)
+		}
+		if row.FlagEmoji != flagEmojiFromAlpha2(row.Alpha2Code) {
+			t.Fatalf("record %d has invalid flag emoji %q", i, row.FlagEmoji)
+		}
+		if row.FlagSVGURL != "/v1/assets/flags/"+row.ID+".svg" {
+			t.Fatalf("record %d has invalid flag svg url %q", i, row.FlagSVGURL)
+		}
+		if row.ID == "aq" {
+			if row.CallingCodes != nil {
+				t.Fatalf("record %d should omit calling codes: %#v", i, row)
+			}
+		} else {
+			if len(row.CallingCodes) == 0 {
+				t.Fatalf("record %d is missing calling codes", i)
+			}
+			seenCallingCodes := make(map[string]struct{}, len(row.CallingCodes))
+			for j, code := range row.CallingCodes {
+				if !regexp.MustCompile(`^\+[1-9][0-9]{0,2}(?:-[0-9]{1,4})*$`).MatchString(code) {
+					t.Fatalf("record %d has invalid calling code %q", i, code)
+				}
+				if _, ok := seenCallingCodes[code]; ok {
+					t.Fatalf("record %d has duplicate calling code %q", i, code)
+				}
+				if j > 0 && strings.Compare(row.CallingCodes[j-1], code) > 0 {
+					t.Fatalf("record %d calling codes are not sorted: %#v", i, row.CallingCodes)
+				}
+				seenCallingCodes[code] = struct{}{}
+			}
+			callingCodeCount += len(row.CallingCodes)
 		}
 		if _, ok := seenIDs[row.ID]; ok {
 			t.Fatalf("duplicate id found: %q", row.ID)
@@ -178,18 +220,25 @@ func TestWorldCountriesAndAreasDatasetMatchesApprovedManifest(t *testing.T) {
 			t.Fatalf("record %d has intermediate region without subregion: %#v", i, row)
 		}
 
-		marshaled, err := json.Marshal(row)
-		if err != nil {
-			t.Fatalf("marshal record %d: %v", i, err)
-		}
-		var raw map[string]json.RawMessage
-		if err := json.Unmarshal(marshaled, &raw); err != nil {
-			t.Fatalf("unmarshal marshaled record %d: %v", i, err)
-		}
 		for key := range raw {
 			if _, ok := allowedNames[key]; !ok {
 				t.Fatalf("record %d contains unexpected field %q", i, key)
 			}
+		}
+		if row.ID == "aq" {
+			if _, ok := raw["calling_codes"]; ok {
+				t.Fatalf("record %d should omit calling_codes in public JSON", i)
+			}
+		} else {
+			if _, ok := raw["calling_codes"]; !ok {
+				t.Fatalf("record %d should include calling_codes in public JSON", i)
+			}
+		}
+		if _, ok := raw["flag_emoji"]; !ok {
+			t.Fatalf("record %d should include flag_emoji in public JSON", i)
+		}
+		if _, ok := raw["flag_svg_url"]; !ok {
+			t.Fatalf("record %d should include flag_svg_url in public JSON", i)
 		}
 	}
 
@@ -198,6 +247,9 @@ func TestWorldCountriesAndAreasDatasetMatchesApprovedManifest(t *testing.T) {
 	}
 	if withoutRegion != 1 {
 		t.Fatalf("unexpected number of records without region hierarchy: got %d want 1", withoutRegion)
+	}
+	if callingCodeCount != 251 {
+		t.Fatalf("unexpected calling code total: got %d want 251", callingCodeCount)
 	}
 
 	checkCountryOrAreaRecord(t, rows, "NG", "Nigeria", "NGA", "566")
@@ -208,6 +260,18 @@ func TestWorldCountriesAndAreasDatasetMatchesApprovedManifest(t *testing.T) {
 	checkCountryOrAreaRecord(t, rows, "HK", "China, Hong Kong Special Administrative Region", "HKG", "344")
 	checkCountryOrAreaRecord(t, rows, "MO", "China, Macao Special Administrative Region", "MAC", "446")
 	checkCountryOrAreaRecord(t, rows, "AQ", "Antarctica", "ATA", "010")
+	checkCountryOrAreaCallingCodes(t, rows, "NG", []string{"+234"})
+	checkCountryOrAreaCallingCodes(t, rows, "BS", []string{"+1-242"})
+	checkCountryOrAreaCallingCodes(t, rows, "BB", []string{"+1-246"})
+	checkCountryOrAreaCallingCodes(t, rows, "BM", []string{"+1-441"})
+	checkCountryOrAreaCallingCodes(t, rows, "JM", []string{"+1-658", "+1-876"})
+	checkCountryOrAreaCallingCodes(t, rows, "PR", []string{"+1-787", "+1-939"})
+	checkCountryOrAreaCallingCodes(t, rows, "DO", []string{"+1-809", "+1-829", "+1-849"})
+	checkCountryOrAreaCallingCodes(t, rows, "GB", []string{"+44"})
+	checkCountryOrAreaCallingCodes(t, rows, "HK", []string{"+852"})
+	checkCountryOrAreaCallingCodes(t, rows, "MO", []string{"+853"})
+	checkCountryOrAreaCallingCodes(t, rows, "PS", []string{"+970"})
+	checkCountryOrAreaCallingCodes(t, rows, "AQ", nil)
 
 	if hasCountryOrAreaRecord(rows, "XK") {
 		t.Fatal("kosovo should be absent from the approved current manifest")
@@ -252,7 +316,7 @@ func TestWorldCountriesAndAreasMetadataSchemaAndNotice(t *testing.T) {
 	if verifiedAt.After(time.Now().UTC()) {
 		t.Fatalf("verified_at is in the future: %s", metadata.VerifiedAt)
 	}
-	if len(metadata.Sources) != 3 {
+	if len(metadata.Sources) != 5 {
 		t.Fatalf("unexpected source count: %d", len(metadata.Sources))
 	}
 
@@ -260,23 +324,35 @@ func TestWorldCountriesAndAreasMetadataSchemaAndNotice(t *testing.T) {
 		"2026-08-30T22:54:39Z",
 		"2026-08-30T22:54:40Z",
 		"2026-08-30T22:54:42Z",
+		"2026-08-31T16:16:18Z",
+		"2026-08-31T16:16:18Z",
 	}
 	for i, source := range metadata.Sources {
-		if source.Organization != "United Nations Statistics Division" || source.Title != "Standard country or area codes for statistical use (M49)" || source.URL != "https://unstats.un.org/unsd/methodology/m49/overview/" {
-			t.Fatalf("unexpected provenance source %d: %#v", i, source)
-		}
-		if source.Purpose == "" || source.AccessedAt == "" {
+		if source.Purpose == "" || source.AccessedAt == "" || source.Organization == "" || source.Title == "" || source.URL == "" {
 			t.Fatalf("incomplete provenance source %d: %#v", i, source)
 		}
 		if source.AccessedAt != wantTimestamps[i] {
 			t.Fatalf("unexpected accessed_at for source %d: got %q want %q", i, source.AccessedAt, wantTimestamps[i])
 		}
 	}
+	if metadata.Sources[0].Organization != "United Nations Statistics Division" || metadata.Sources[0].Title != "Standard country or area codes for statistical use (M49)" || metadata.Sources[0].URL != "https://unstats.un.org/unsd/methodology/m49/overview/" {
+		t.Fatalf("unexpected first provenance source: %#v", metadata.Sources[0])
+	}
+	if metadata.Sources[3].Organization != "International Telecommunication Union" || metadata.Sources[3].URL != "https://www.itu.int/oth/T0202.aspx?parent=T0202" {
+		t.Fatalf("unexpected ITU provenance source: %#v", metadata.Sources[3])
+	}
+	if metadata.Sources[4].Organization != "lipis/flag-icons" || metadata.Sources[4].URL != "https://github.com/lipis/flag-icons/releases/tag/v7.5.0" {
+		t.Fatalf("unexpected flag-icons provenance source: %#v", metadata.Sources[4])
+	}
 
 	requiredSnippets := []string{
 		"248 rows",
 		"retrieved three times",
 		"deterministic name order",
+		"251 calling code values",
+		"flag_emoji",
+		"flag_svg_url",
+		"MIT-licensed flag-icons v7.5.0",
 		"statistical reference only",
 		"political recognition",
 		"ISO-derived alpha codes are included as published",
@@ -314,13 +390,20 @@ func TestWorldCountriesAndAreasMetadataSchemaAndNotice(t *testing.T) {
 		}
 	}
 
-	for _, field := range []string{"region_code", "region_name", "subregion_code", "subregion_name", "intermediate_region_code", "intermediate_region_name"} {
+	for _, field := range []string{"calling_codes", "flag_emoji", "flag_svg_url", "region_code", "region_name", "subregion_code", "subregion_name", "intermediate_region_code", "intermediate_region_name"} {
 		prop, ok := schema.Items.Properties[field]
 		if !ok {
 			t.Fatalf("schema missing optional property %q", field)
 		}
-		if prop.Type != "string" {
-			t.Fatalf("schema optional property %q has unexpected type %q", field, prop.Type)
+		switch field {
+		case "calling_codes":
+			if prop.Type != "array" || !prop.UniqueItems || prop.MinItems != 1 || prop.Items == nil || prop.Items.Type != "string" || prop.Items.Pattern == "" {
+				t.Fatalf("schema optional property %q has unexpected shape: %#v", field, prop)
+			}
+		case "flag_emoji", "flag_svg_url", "region_code", "region_name", "subregion_code", "subregion_name", "intermediate_region_code", "intermediate_region_name":
+			if prop.Type != "string" {
+				t.Fatalf("schema optional property %q has unexpected type %q", field, prop.Type)
+			}
 		}
 	}
 	if len(schema.Items.AllOf) != 6 {
@@ -332,6 +415,12 @@ func TestWorldCountriesAndAreasMetadataSchemaAndNotice(t *testing.T) {
 	assertPairRule(t, schema.Items.AllOf[3], "subregion_name", "subregion_code")
 	assertPairRule(t, schema.Items.AllOf[4], "intermediate_region_code", "intermediate_region_name")
 	assertPairRule(t, schema.Items.AllOf[5], "intermediate_region_name", "intermediate_region_code")
+	if !strings.Contains(readTextFile(t, datasetPath("schemas", "geography", "countries_and_areas.schema.json")), "\"calling_codes\"") {
+		t.Fatal("schema missing calling_codes field definition")
+	}
+	if !strings.Contains(readTextFile(t, datasetPath("schemas", "geography", "countries_and_areas.schema.json")), "\"flag_emoji\"") || !strings.Contains(readTextFile(t, datasetPath("schemas", "geography", "countries_and_areas.schema.json")), "\"flag_svg_url\"") {
+		t.Fatal("schema missing flag field definitions")
+	}
 }
 
 func loadCountryOrAreaDataset(t *testing.T) []CountryOrArea {
@@ -344,6 +433,20 @@ func loadCountryOrAreaDataset(t *testing.T) []CountryOrArea {
 	var rows []CountryOrArea
 	if err := json.Unmarshal(data, &rows); err != nil {
 		t.Fatalf("unmarshal dataset: %v", err)
+	}
+	return rows
+}
+
+func loadCountryOrAreaRawDataset(t *testing.T) []map[string]json.RawMessage {
+	t.Helper()
+
+	data, err := os.ReadFile(datasetPath("geography", "countries_and_areas.json"))
+	if err != nil {
+		t.Fatalf("read dataset: %v", err)
+	}
+	var rows []map[string]json.RawMessage
+	if err := json.Unmarshal(data, &rows); err != nil {
+		t.Fatalf("unmarshal raw dataset: %v", err)
 	}
 	return rows
 }
@@ -382,6 +485,26 @@ func checkCountryOrAreaRecord(t *testing.T, rows []CountryOrArea, alpha2, name, 
 	t.Fatalf("missing expected record for alpha-2 code %q", alpha2)
 }
 
+func checkCountryOrAreaCallingCodes(t *testing.T, rows []CountryOrArea, alpha2 string, want []string) {
+	t.Helper()
+
+	for _, row := range rows {
+		if row.Alpha2Code == alpha2 {
+			if want == nil {
+				if row.CallingCodes != nil {
+					t.Fatalf("unexpected calling codes for %s: %#v", alpha2, row.CallingCodes)
+				}
+				return
+			}
+			if !reflect.DeepEqual(row.CallingCodes, want) {
+				t.Fatalf("unexpected calling codes for %s: got %#v want %#v", alpha2, row.CallingCodes, want)
+			}
+			return
+		}
+	}
+	t.Fatalf("missing expected record for alpha-2 code %q", alpha2)
+}
+
 func hasCountryOrAreaRecord(rows []CountryOrArea, alpha2 string) bool {
 	for _, row := range rows {
 		if row.Alpha2Code == alpha2 {
@@ -406,4 +529,20 @@ func assertPairRule(t *testing.T, rule schemaConditionalRule, wantIf, wantThen s
 	if len(rule.Then.Required) != 1 || rule.Then.Required[0] != wantThen {
 		t.Fatalf("unexpected then-required pair: %#v", rule)
 	}
+}
+
+func flagEmojiFromAlpha2(alpha2 string) string {
+	if len(alpha2) != 2 {
+		return ""
+	}
+	const regionalIndicatorBase = 0x1F1E6
+	var b strings.Builder
+	for i := 0; i < len(alpha2); i++ {
+		ch := alpha2[i]
+		if ch < 'A' || ch > 'Z' {
+			return ""
+		}
+		b.WriteRune(rune(regionalIndicatorBase + rune(ch-'A')))
+	}
+	return b.String()
 }

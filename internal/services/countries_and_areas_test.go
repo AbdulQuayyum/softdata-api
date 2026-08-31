@@ -3,6 +3,7 @@ package services
 import (
 	"context"
 	"errors"
+	"reflect"
 	"strings"
 	"testing"
 	"time"
@@ -205,13 +206,5 @@ func filterServiceCountries(countries []models.CountryOrArea, input CountryOrAre
 }
 
 func countrySliceEqual(a, b []models.CountryOrArea) bool {
-	if len(a) != len(b) {
-		return false
-	}
-	for i := range a {
-		if a[i] != b[i] {
-			return false
-		}
-	}
-	return true
+	return reflect.DeepEqual(a, b)
 }

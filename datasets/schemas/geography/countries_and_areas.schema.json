@@ -38,6 +38,23 @@
         "type": "string",
         "pattern": "^[0-9]{3}$"
       },
+      "calling_codes": {
+        "type": "array",
+        "uniqueItems": true,
+        "minItems": 1,
+        "items": {
+          "type": "string",
+          "pattern": "^\\+[1-9][0-9]{0,2}(?:-[0-9]{1,4})*$"
+        }
+      },
+      "flag_emoji": {
+        "type": "string",
+        "minLength": 1
+      },
+      "flag_svg_url": {
+        "type": "string",
+        "pattern": "^/v1/assets/flags/[a-z]{2}\\.svg$"
+      },
       "region_code": {
         "type": "string",
         "pattern": "^[0-9]{3}$"

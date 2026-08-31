@@ -373,6 +373,31 @@ func TestRouterRegistersGeographyRoutes(t *testing.T) {
 		})
 	})
 
+	t.Run("country flags", func(t *testing.T) {
+		rec := &routerRecorder{}
+		router := newTestRouter(t, rec)
+
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/assets/flags/ng.svg", nil)
+		router.ServeHTTP(rr, req)
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		got := strings.Join(rec.snapshot(), ",")
+		for _, want := range []string{
+			"optional_api_key",
+			"rate_limit",
+			"usage:/v1/assets/flags/{country_id}.svg|geography",
+		} {
+			if !strings.Contains(got, want) {
+				t.Fatalf("expected %q in middleware sequence: %v", want, rec.snapshot())
+			}
+		}
+		if got := rr.Header().Get("Content-Type"); got != "image/svg+xml" {
+			t.Fatalf("unexpected content type: %q", got)
+		}
+	})
+
 	t.Run("geopolitical zones", func(t *testing.T) {
 		t.Run("list", func(t *testing.T) {
 			rec := &routerRecorder{}

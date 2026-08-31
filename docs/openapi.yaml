@@ -249,6 +249,25 @@ paths:
           $ref: "#/components/responses/ValidationFailed"
         "500":
           $ref: "#/components/responses/InternalError"
+  /v1/assets/flags/{country_id}.svg:
+    get:
+      tags: [Geography]
+      summary: Get a country or area flag SVG
+      parameters:
+        - $ref: "#/components/parameters/CountryOrAreaFlagID"
+      responses:
+        "200":
+          description: Country or area flag SVG
+          content:
+            image/svg+xml:
+              schema:
+                type: string
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
   /v1/education/universities:
     get:
       tags: [Education]
@@ -740,6 +759,14 @@ components:
       schema:
         type: string
         pattern: '^[a-z]{2}$'
+    CountryOrAreaFlagID:
+      name: country_id
+      in: path
+      required: true
+      description: Stable lowercase alpha-2 identifier for a UN M49 country or area SVG flag asset.
+      schema:
+        type: string
+        pattern: '^[a-z]{2}\.svg$'
     CountryOrAreaRegionCode:
       name: region_code
       in: query
@@ -1094,6 +1121,18 @@ components:
         numeric_code:
           type: string
           pattern: '^[0-9]{3}$'
+        calling_codes:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: string
+            pattern: '^\+[1-9][0-9]{0,2}(?:-[0-9]{1,4})*$'
+        flag_emoji:
+          type: string
+        flag_svg_url:
+          type: string
+          pattern: '^/v1/assets/flags/[a-z]{2}\.svg$'
         region_code:
           type: string
           pattern: '^[0-9]{3}$'

@@ -67,7 +67,7 @@ datasets/
 - `metadata/finance/payment_service_providers.json` records provenance, versioning and licensing details for the payment-service-provider catalogue.
 - `LICENSE.md` explains the dataset-content licence.
 
-The world countries-and-areas catalogue is compiled from the current English UN M49 overview table, uses the lowercase alpha-2 code as its public `id`, and preserves the source names, ISO alpha codes, numeric codes and available region hierarchy fields. Its current boundary is 248 countries or areas, and SoftData's independent compilation, schema and metadata are CC BY 4.0 while the UN source material retains its own rights and is used for statistical reference only.
+The world countries-and-areas catalogue is compiled from the current English UN M49 overview table, uses the lowercase alpha-2 code as its public `id`, and preserves the source names, ISO alpha codes, numeric codes, calling codes, flag emoji, flag SVG URLs and available region hierarchy fields. Its current boundary is 248 countries or areas, and SoftData's independent compilation, schema and metadata are CC BY 4.0 while the UN source material retains its own rights and is used for statistical reference only. Flag SVG assets are vendored separately from MIT-licensed flag-icons v7.5.0.
 
 This global package is separate from the Nigerian geography datasets, which continue to use `country_code: NG`.
 

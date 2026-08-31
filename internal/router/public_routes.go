@@ -106,6 +106,19 @@ func registerPublicRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers,
 		return err
 	}
 
+	geographyCountryFlags, err := buildRouteMiddlewares(mw, "/v1/assets/flags/{country_id}.svg", "geography", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build geography flag asset middleware: %w", err)
+	}
+	mux.Handle("GET /v1/assets/flags/{country_id}", compose(http.HandlerFunc(serveCountryFlagSVG), geographyCountryFlags...))
+	if err := catalog.add("GET /v1/assets/flags/{country_id}.svg"); err != nil {
+		return err
+	}
+
 	geographyLGAsList, err := buildRouteMiddlewares(mw, "/v1/geography/lgas", "geography", routeOptions{
 		useOptionalAPIKey: true,
 		useRateLimit:      true,

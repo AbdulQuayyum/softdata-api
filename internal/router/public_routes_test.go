@@ -138,6 +138,24 @@ func TestPublicRoutesServeGeographyCountriesAndAreas(t *testing.T) {
 	}
 }
 
+func TestPublicRoutesServeCountryFlagAssets(t *testing.T) {
+	rec := &routerRecorder{}
+	router := newTestRouter(t, rec)
+
+	rr := httptest.NewRecorder()
+	req := httptest.NewRequest(http.MethodGet, "/v1/assets/flags/ng.svg", nil)
+	router.ServeHTTP(rr, req)
+	if rr.Code != http.StatusOK {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if got := rr.Header().Get("Content-Type"); got != "image/svg+xml" {
+		t.Fatalf("unexpected content type: %q", got)
+	}
+	if !strings.Contains(strings.Join(rec.snapshot(), ","), "usage:/v1/assets/flags/{country_id}.svg|geography") {
+		t.Fatalf("expected flag asset usage middleware to run: %v", rec.snapshot())
+	}
+}
+
 func TestPublicRoutesServeEducationUniversities(t *testing.T) {
 	rec := &routerRecorder{}
 	router := newTestRouter(t, rec)
@@ -313,6 +331,16 @@ func TestPublicRoutesRejectUnsupportedMethods(t *testing.T) {
 
 	rr = httptest.NewRecorder()
 	req = httptest.NewRequest(http.MethodHead, "/v1/finance/payment-service-providers/super-agent-fairmoney", nil)
+	router.ServeHTTP(rr, req)
+	if rr.Code != http.StatusMethodNotAllowed {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if got := rr.Header().Get("Allow"); got != http.MethodGet {
+		t.Fatalf("unexpected allow header: %q", got)
+	}
+
+	rr = httptest.NewRecorder()
+	req = httptest.NewRequest(http.MethodHead, "/v1/assets/flags/ng.svg", nil)
 	router.ServeHTTP(rr, req)
 	if rr.Code != http.StatusMethodNotAllowed {
 		t.Fatalf("unexpected status: %d", rr.Code)

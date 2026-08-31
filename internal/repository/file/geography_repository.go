@@ -19,6 +19,7 @@ var countryOrAreaIDPattern = regexp.MustCompile(`^[a-z]{2}$`)
 var countryAlpha2CodePattern = regexp.MustCompile(`^[A-Z]{2}$`)
 var countryAlpha3CodePattern = regexp.MustCompile(`^[A-Z]{3}$`)
 var countryNumericCodePattern = regexp.MustCompile(`^[0-9]{3}$`)
+var countryCallingCodePattern = regexp.MustCompile(`^\+[1-9][0-9]{0,2}(?:-[0-9]{1,4})*$`)
 
 var validGeopoliticalZones = map[string]struct{}{
 	"north-central": {},
@@ -727,6 +728,7 @@ func validateCountryOrAreas(countries []models.CountryOrArea) error {
 
 	var prevName string
 	var prevAlpha2 string
+	callingCodeCount := 0
 
 	for i, country := range countries {
 		if country.ID == "" || country.Name == "" || country.Alpha2Code == "" || country.Alpha3Code == "" || country.NumericCode == "" {
@@ -805,6 +807,37 @@ func validateCountryOrAreas(countries []models.CountryOrArea) error {
 		if hasIntermediateCode && country.IntermediateRegionName == "" {
 			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
 		}
+		if country.FlagEmoji != flagEmojiFromAlpha2(country.Alpha2Code) {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if country.FlagSVGURL != "/v1/assets/flags/"+country.ID+".svg" {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if country.ID == "aq" {
+			if country.CallingCodes != nil {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+		} else {
+			if len(country.CallingCodes) == 0 {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+			seenCallingCodes := make(map[string]struct{}, len(country.CallingCodes))
+			var prevCallingCode string
+			for j, callingCode := range country.CallingCodes {
+				if !countryCallingCodePattern.MatchString(callingCode) {
+					return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+				}
+				if _, ok := seenCallingCodes[callingCode]; ok {
+					return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+				}
+				if j > 0 && strings.Compare(prevCallingCode, callingCode) > 0 {
+					return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+				}
+				seenCallingCodes[callingCode] = struct{}{}
+				prevCallingCode = callingCode
+			}
+			callingCodeCount += len(country.CallingCodes)
+		}
 
 		seenIDs[country.ID] = struct{}{}
 		seenAlpha2[country.Alpha2Code] = struct{}{}
@@ -870,6 +903,9 @@ func validateCountryOrAreas(countries []models.CountryOrArea) error {
 		if id == "ng" && countries[0].Name == "" {
 			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
 		}
+	}
+	if callingCodeCount != 251 {
+		return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
 	}
 
 	return nil
@@ -956,6 +992,23 @@ func slugifyLocalGovernmentUnitName(name string) string {
 	name = regexp.MustCompile(`[^a-z0-9]+`).ReplaceAllString(name, "-")
 	name = regexp.MustCompile(`-+`).ReplaceAllString(name, "-")
 	return strings.Trim(name, "-")
+}
+
+func flagEmojiFromAlpha2(alpha2 string) string {
+	if len(alpha2) != 2 {
+		return ""
+	}
+
+	const regionalIndicatorBase = 0x1F1E6
+	var b strings.Builder
+	for i := 0; i < len(alpha2); i++ {
+		ch := alpha2[i]
+		if ch < 'A' || ch > 'Z' {
+			return ""
+		}
+		b.WriteRune(rune(regionalIndicatorBase + rune(ch-'A')))
+	}
+	return b.String()
 }
 
 func translateGeographyLoadError(err error) error {

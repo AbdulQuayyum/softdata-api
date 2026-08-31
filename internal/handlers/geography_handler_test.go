@@ -796,7 +796,7 @@ func TestGeographyHandlerListCountriesAndAreas(t *testing.T) {
 				if input.RegionCode != "" || input.SubregionCode != "" {
 					t.Fatalf("unexpected query input: %#v", input)
 				}
-				return []models.CountryOrArea{{ID: "ng", Name: "Nigeria", Alpha2Code: "NG", Alpha3Code: "NGA", NumericCode: "566", RegionCode: "002", RegionName: "Africa", SubregionCode: "015", SubregionName: "Northern Africa", IntermediateRegionCode: "014", IntermediateRegionName: "Eastern Africa"}}, nil
+				return []models.CountryOrArea{{ID: "ng", Name: "Nigeria", Alpha2Code: "NG", Alpha3Code: "NGA", NumericCode: "566", FlagEmoji: "🇳🇬", FlagSVGURL: "/v1/assets/flags/ng.svg", RegionCode: "002", RegionName: "Africa", SubregionCode: "015", SubregionName: "Northern Africa", IntermediateRegionCode: "014", IntermediateRegionName: "Eastern Africa"}}, nil
 			},
 		}
 		h, err := NewGeographyHandler(stub)
@@ -823,10 +823,10 @@ func TestGeographyHandlerListCountriesAndAreas(t *testing.T) {
 			t.Fatalf("unexpected country payload: %#v", data)
 		}
 		item := data[0].(map[string]any)
-		if len(item) != 11 {
+		if len(item) != 13 {
 			t.Fatalf("unexpected country field count: %#v", item)
 		}
-		if item["id"] != "ng" || item["alpha_2_code"] != "NG" || item["numeric_code"] != "566" {
+		if item["id"] != "ng" || item["alpha_2_code"] != "NG" || item["numeric_code"] != "566" || item["flag_emoji"] != "🇳🇬" || item["flag_svg_url"] != "/v1/assets/flags/ng.svg" {
 			t.Fatalf("unexpected country payload: %#v", item)
 		}
 	})
@@ -837,7 +837,7 @@ func TestGeographyHandlerListCountriesAndAreas(t *testing.T) {
 				if input.RegionCode != "002" || input.SubregionCode != "" {
 					t.Fatalf("unexpected query input: %#v", input)
 				}
-				return []models.CountryOrArea{{ID: "ng", Name: "Nigeria", Alpha2Code: "NG", Alpha3Code: "NGA", NumericCode: "566"}}, nil
+				return []models.CountryOrArea{{ID: "ng", Name: "Nigeria", Alpha2Code: "NG", Alpha3Code: "NGA", NumericCode: "566", FlagEmoji: "🇳🇬", FlagSVGURL: "/v1/assets/flags/ng.svg"}}, nil
 			},
 		}
 		h, err := NewGeographyHandler(stub)
@@ -863,7 +863,7 @@ func TestGeographyHandlerListCountriesAndAreas(t *testing.T) {
 				if input.RegionCode != "" || input.SubregionCode != "015" {
 					t.Fatalf("unexpected query input: %#v", input)
 				}
-				return []models.CountryOrArea{{ID: "ng", Name: "Nigeria", Alpha2Code: "NG", Alpha3Code: "NGA", NumericCode: "566"}}, nil
+				return []models.CountryOrArea{{ID: "ng", Name: "Nigeria", Alpha2Code: "NG", Alpha3Code: "NGA", NumericCode: "566", FlagEmoji: "🇳🇬", FlagSVGURL: "/v1/assets/flags/ng.svg"}}, nil
 			},
 		}
 		h, err := NewGeographyHandler(stub)
@@ -886,7 +886,7 @@ func TestGeographyHandlerListCountriesAndAreas(t *testing.T) {
 				if input.RegionCode != "002" || input.SubregionCode != "015" {
 					t.Fatalf("unexpected query input: %#v", input)
 				}
-				return []models.CountryOrArea{{ID: "ng", Name: "Nigeria", Alpha2Code: "NG", Alpha3Code: "NGA", NumericCode: "566"}}, nil
+				return []models.CountryOrArea{{ID: "ng", Name: "Nigeria", Alpha2Code: "NG", Alpha3Code: "NGA", NumericCode: "566", FlagEmoji: "🇳🇬", FlagSVGURL: "/v1/assets/flags/ng.svg"}}, nil
 			},
 		}
 		h, err := NewGeographyHandler(stub)
@@ -952,7 +952,7 @@ func TestGeographyHandlerGetCountryOrArea(t *testing.T) {
 			if countryID != "ng" {
 				t.Fatalf("unexpected country id: %q", countryID)
 			}
-			return models.CountryOrArea{ID: "ng", Name: "Nigeria", Alpha2Code: "NG", Alpha3Code: "NGA", NumericCode: "566"}, nil
+			return models.CountryOrArea{ID: "ng", Name: "Nigeria", Alpha2Code: "NG", Alpha3Code: "NGA", NumericCode: "566", FlagEmoji: "🇳🇬", FlagSVGURL: "/v1/assets/flags/ng.svg"}, nil
 		},
 	}
 	h, err := NewGeographyHandler(stub)
@@ -982,13 +982,13 @@ func TestGeographyHandlerGetCountryOrArea(t *testing.T) {
 		t.Fatalf("json.Unmarshal: %v", err)
 	}
 	data := body["data"].(map[string]any)
-	if len(data) != 5 {
+	if len(data) != 7 {
 		t.Fatalf("unexpected country response: %#v", data)
 	}
 	if _, ok := data["region_code"]; ok {
 		t.Fatalf("unexpected optional field: %#v", data)
 	}
-	if data["alpha_2_code"] != "NG" || data["alpha_3_code"] != "NGA" || data["numeric_code"] != "566" {
+	if data["alpha_2_code"] != "NG" || data["alpha_3_code"] != "NGA" || data["numeric_code"] != "566" || data["flag_emoji"] != "🇳🇬" || data["flag_svg_url"] != "/v1/assets/flags/ng.svg" {
 		t.Fatalf("unexpected country response: %#v", data)
 	}
 }

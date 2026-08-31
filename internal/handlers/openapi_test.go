@@ -52,6 +52,7 @@ func TestOpenAPIDocumentsCountryOrAreaPaths(t *testing.T) {
 
 	listBlock := pathBlock(t, text, "/v1/geography/countries")
 	detailBlock := pathBlock(t, text, "/v1/geography/countries/{country_id}")
+	flagBlock := pathBlock(t, text, "/v1/assets/flags/{country_id}.svg")
 
 	requireContains(t, text, "    CountryOrAreaID:")
 	requireContains(t, text, "    CountryOrAreaRegionCode:")
@@ -59,6 +60,7 @@ func TestOpenAPIDocumentsCountryOrAreaPaths(t *testing.T) {
 	requireContains(t, text, "    CountryOrArea:")
 	requireContains(t, text, "    CountryOrAreaListResponse:")
 	requireContains(t, text, "    CountryOrAreaResponse:")
+	requireContains(t, text, "    CountryOrAreaFlagID:")
 
 	requireContains(t, listBlock, "get:")
 	requireContains(t, listBlock, "- $ref: \"#/components/parameters/CountryOrAreaRegionCode\"")
@@ -78,12 +80,21 @@ func TestOpenAPIDocumentsCountryOrAreaPaths(t *testing.T) {
 	requireNotContains(t, detailBlock, "security:")
 
 	requireContains(t, text, "CountryOrAreaID:\n      name: country_id\n      in: path\n      required: true\n      description: Stable lowercase alpha-2 identifier for a UN M49 country or area.\n      schema:\n        type: string\n        pattern: '^[a-z]{2}$'")
+	requireContains(t, text, "CountryOrAreaFlagID:\n      name: country_id\n      in: path\n      required: true\n      description: Stable lowercase alpha-2 identifier for a UN M49 country or area SVG flag asset.\n      schema:\n        type: string\n        pattern: '^[a-z]{2}\\.svg$'")
 	requireContains(t, text, "CountryOrAreaRegionCode:\n      name: region_code\n      in: query\n      required: false\n      description: Optional UN M49 region code used to filter country or area records.\n      schema:\n        type: string\n        pattern: '^[0-9]{3}$'")
 	requireContains(t, text, "CountryOrAreaSubregionCode:\n      name: subregion_code\n      in: query\n      required: false\n      description: Optional UN M49 subregion code used to filter country or area records.\n      schema:\n        type: string\n        pattern: '^[0-9]{3}$'")
-	requireContains(t, text, "CountryOrArea:\n      type: object\n      additionalProperties: false\n      properties:\n        id:\n          type: string\n          pattern: '^[a-z]{2}$'\n        name:\n          type: string\n        alpha_2_code:\n          type: string\n          pattern: '^[A-Z]{2}$'\n        alpha_3_code:\n          type: string\n          pattern: '^[A-Z]{3}$'\n        numeric_code:\n          type: string\n          pattern: '^[0-9]{3}$'\n        region_code:\n          type: string\n          pattern: '^[0-9]{3}$'\n        region_name:\n          type: string\n        subregion_code:\n          type: string\n          pattern: '^[0-9]{3}$'\n        subregion_name:\n          type: string\n        intermediate_region_code:\n          type: string\n          pattern: '^[0-9]{3}$'\n        intermediate_region_name:\n          type: string\n      required: [id, name, alpha_2_code, alpha_3_code, numeric_code]")
+	requireContains(t, text, "CountryOrArea:\n      type: object\n      additionalProperties: false\n      properties:\n        id:\n          type: string\n          pattern: '^[a-z]{2}$'\n        name:\n          type: string\n        alpha_2_code:\n          type: string\n          pattern: '^[A-Z]{2}$'\n        alpha_3_code:\n          type: string\n          pattern: '^[A-Z]{3}$'\n        numeric_code:\n          type: string\n          pattern: '^[0-9]{3}$'\n        calling_codes:\n          type: array\n          uniqueItems: true\n          minItems: 1\n          items:\n            type: string\n            pattern: '^\\+[1-9][0-9]{0,2}(?:-[0-9]{1,4})*$'\n        flag_emoji:\n          type: string\n        flag_svg_url:\n          type: string\n          pattern: '^/v1/assets/flags/[a-z]{2}\\.svg$'\n        region_code:\n          type: string\n          pattern: '^[0-9]{3}$'\n        region_name:\n          type: string\n        subregion_code:\n          type: string\n          pattern: '^[0-9]{3}$'\n        subregion_name:\n          type: string\n        intermediate_region_code:\n          type: string\n          pattern: '^[0-9]{3}$'\n        intermediate_region_name:\n          type: string\n      required: [id, name, alpha_2_code, alpha_3_code, numeric_code]")
 	requireContains(t, text, "CountryOrAreaListResponse:\n      type: object\n      additionalProperties: false\n      properties:\n        success:\n          type: boolean\n        data:\n          type: array\n          items:\n            $ref: \"#/components/schemas/CountryOrArea\"\n      required: [success, data]")
 	requireContains(t, text, "CountryOrAreaResponse:\n      type: object\n      additionalProperties: false\n      properties:\n        success:\n          type: boolean\n        data:\n          $ref: \"#/components/schemas/CountryOrArea\"\n      required: [success, data]")
 	requireContains(t, text, "Statistical designations are used for reference only and do not imply political recognition or legal status.")
+
+	requireContains(t, flagBlock, "get:")
+	requireContains(t, flagBlock, "\"200\":")
+	requireContains(t, flagBlock, "\"404\":")
+	requireContains(t, flagBlock, "\"422\":")
+	requireContains(t, flagBlock, "\"500\":")
+	requireContains(t, flagBlock, "image/svg+xml")
+	requireContains(t, flagBlock, "- $ref: \"#/components/parameters/CountryOrAreaFlagID\"")
 }
 
 func TestOpenAPIDocumentsPaymentServiceProviderPaths(t *testing.T) {
