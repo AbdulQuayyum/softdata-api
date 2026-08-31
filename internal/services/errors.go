@@ -41,4 +41,6 @@ var (
 	ErrInvalidCollegeOfEducationStateID            = errors.New("services: invalid college of education state id")
 	ErrInternationalMoneyTransferOperatorNotFound  = errors.New("services: international money transfer operator not found")
 	ErrInvalidInternationalMoneyTransferOperatorID = errors.New("services: invalid international money transfer operator id")
+	ErrCurrencyNotFound                            = errors.New("services: currency not found")
+	ErrInvalidCurrencyID                           = errors.New("services: invalid currency id")
 )

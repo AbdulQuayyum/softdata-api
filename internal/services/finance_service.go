@@ -13,6 +13,7 @@ import (
 
 var financePaymentServiceProviderIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)+$`)
 var financeInternationalMoneyTransferOperatorIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)*$`)
+var financeCurrencyIDPattern = regexp.MustCompile(`^[a-z]{3}$`)
 
 var allowedFinanceInstitutionTypes = map[string]struct{}{
 	"mobile_money_operator":               {},
@@ -111,6 +112,35 @@ func (s *FinanceService) GetInternationalMoneyTransferOperator(ctx context.Conte
 	return operator, nil
 }
 
+func (s *FinanceService) ListCurrencies(ctx context.Context) ([]models.Currency, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+
+	currencies, err := s.repository.ListCurrencies(ctx)
+	if err != nil {
+		return nil, translateFinanceCurrencyServiceError("list currencies", err)
+	}
+	return cloneCurrencyList(currencies), nil
+}
+
+func (s *FinanceService) GetCurrency(ctx context.Context, currencyID string) (models.Currency, error) {
+	if err := ctx.Err(); err != nil {
+		return models.Currency{}, err
+	}
+
+	normalizedID, err := normalizeFinanceCurrencyID(currencyID)
+	if err != nil {
+		return models.Currency{}, err
+	}
+
+	currency, err := s.repository.GetCurrency(ctx, normalizedID)
+	if err != nil {
+		return models.Currency{}, translateFinanceCurrencyLookupError(err)
+	}
+	return currency, nil
+}
+
 func cloneInternationalMoneyTransferOperatorList(operators []models.InternationalMoneyTransferOperator) []models.InternationalMoneyTransferOperator {
 	if len(operators) == 0 {
 		return make([]models.InternationalMoneyTransferOperator, 0)
@@ -129,6 +159,15 @@ func clonePaymentServiceProviderList(providers []models.PaymentServiceProvider) 
 	return cloned
 }
 
+func cloneCurrencyList(currencies []models.Currency) []models.Currency {
+	if len(currencies) == 0 {
+		return make([]models.Currency, 0)
+	}
+	cloned := make([]models.Currency, len(currencies))
+	copy(cloned, currencies)
+	return cloned
+}
+
 func normalizeFinancePaymentServiceProviderID(providerID string) (string, error) {
 	providerID = strings.TrimSpace(providerID)
 	if providerID == "" || !financePaymentServiceProviderIDPattern.MatchString(providerID) {
@@ -143,6 +182,14 @@ func normalizeFinanceInternationalMoneyTransferOperatorID(operatorID string) (st
 		return "", ErrInvalidInternationalMoneyTransferOperatorID
 	}
 	return operatorID, nil
+}
+
+func normalizeFinanceCurrencyID(currencyID string) (string, error) {
+	currencyID = strings.TrimSpace(currencyID)
+	if currencyID == "" || !financeCurrencyIDPattern.MatchString(currencyID) {
+		return "", ErrInvalidCurrencyID
+	}
+	return currencyID, nil
 }
 
 func normalizeFinanceInstitutionType(institutionType string) (string, error) {
@@ -183,6 +230,34 @@ func translateFinanceIMTOLookupError(err error) error {
 		return fmt.Errorf("get international money transfer operator: repository unavailable")
 	default:
 		return fmt.Errorf("get international money transfer operator: repository unavailable")
+	}
+}
+
+func translateFinanceCurrencyLookupError(err error) error {
+	switch {
+	case err == nil:
+		return nil
+	case errors.Is(err, context.Canceled), errors.Is(err, context.DeadlineExceeded):
+		return err
+	case errors.Is(err, interfaces.ErrCurrencyNotFound):
+		return ErrCurrencyNotFound
+	case errors.Is(err, interfaces.ErrInvalidDatasetFile), errors.Is(err, interfaces.ErrDatasetFileNotFound), errors.Is(err, interfaces.ErrDatasetFileUnavailable):
+		return fmt.Errorf("get currency: repository unavailable")
+	default:
+		return fmt.Errorf("get currency: repository unavailable")
+	}
+}
+
+func translateFinanceCurrencyServiceError(op string, err error) error {
+	switch {
+	case err == nil:
+		return nil
+	case errors.Is(err, context.Canceled), errors.Is(err, context.DeadlineExceeded):
+		return err
+	case errors.Is(err, interfaces.ErrInvalidDatasetFile), errors.Is(err, interfaces.ErrDatasetFileNotFound), errors.Is(err, interfaces.ErrDatasetFileUnavailable):
+		return fmt.Errorf("%s: repository unavailable", op)
+	default:
+		return fmt.Errorf("%s: repository unavailable", op)
 	}
 }
 

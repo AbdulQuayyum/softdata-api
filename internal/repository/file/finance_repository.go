@@ -7,6 +7,7 @@ import (
 	"path/filepath"
 	"reflect"
 	"regexp"
+	"sort"
 	"strings"
 
 	"github.com/AbdulQuayyum/softdata-api/internal/models"
@@ -20,6 +21,11 @@ var financePaymentServiceProviderCollapsePattern = regexp.MustCompile(`-+`)
 var financeInternationalMoneyTransferOperatorIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)*$`)
 var financeInternationalMoneyTransferOperatorSlugPattern = regexp.MustCompile(`[^a-z0-9]+`)
 var financeInternationalMoneyTransferOperatorCollapsePattern = regexp.MustCompile(`-+`)
+
+var financeCurrencyIDPattern = regexp.MustCompile(`^[a-z]{3}$`)
+var financeCurrencyAlphabeticCodePattern = regexp.MustCompile(`^[A-Z]{3}$`)
+var financeCurrencyNumericCodePattern = regexp.MustCompile(`^[0-9]{3}$`)
+var financeCurrencyCountryAreaIDPattern = regexp.MustCompile(`^[a-z]{2}$`)
 
 var financePaymentServiceProviderTypeOrder = map[string]int{
 	"mobile_money_operator":               0,
@@ -43,6 +49,26 @@ var financeExpectedPaymentServiceProviderCounts = map[string]int{
 
 var financeExpectedInternationalMoneyTransferOperatorCount = 108
 
+var financeExpectedCurrencyCount = 155
+var financeExpectedCurrencyRelationshipCount = 252
+var financeExpectedCurrencyCountryAreaCount = 245
+var financeCurrencyZeroMappingCountryAreaIDs = map[string]struct{}{
+	"aq": {},
+	"gs": {},
+	"ps": {},
+}
+
+var financeCurrencyExcludedCodes = map[string]struct{}{
+	"BOV": {}, "CHE": {}, "CHW": {}, "CLF": {}, "COU": {}, "MXV": {}, "USN": {}, "UYI": {}, "UYW": {},
+	"XAD": {}, "XAG": {}, "XAU": {}, "XBA": {}, "XBB": {}, "XBC": {}, "XBD": {}, "XDR": {}, "XPD": {},
+	"XPT": {}, "XSU": {}, "XTS": {}, "XUA": {}, "XXX": {},
+}
+
+const (
+	financeCurrenciesRelativePath        = "finance/currencies.json"
+	financeCountriesAndAreasRelativePath = "geography/countries_and_areas.json"
+)
+
 var financeInternationalMoneyTransferOperatorFormerNames = map[string]struct{}{
 	"FLUTTERWAVE TECHNOLOGY SOLUTIONS LTD": {},
 	"STERLING CURRENCY EXCHANGE LTD":       {},
@@ -55,9 +81,11 @@ var financeInternationalMoneyTransferOperatorFormerNames = map[string]struct{}{
 
 // FinanceFileRepository reads payment-service-provider records from a JSON dataset file.
 type FinanceFileRepository struct {
-	jsonRepository                             interfaces.JSONFileRepository
-	paymentServiceProvidersPath                string
-	internationalMoneyTransferOperatorsPath    string
+	jsonRepository                          interfaces.JSONFileRepository
+	paymentServiceProvidersPath             string
+	internationalMoneyTransferOperatorsPath string
+	currenciesPath                          string
+	countriesAndAreasPath                   string
 }
 
 var _ interfaces.FinanceRepository = (*FinanceFileRepository)(nil)
@@ -86,6 +114,8 @@ func NewFinanceRepository(jsonRepository interfaces.JSONFileRepository, paymentS
 		jsonRepository:                          jsonRepository,
 		paymentServiceProvidersPath:             cleanedPath,
 		internationalMoneyTransferOperatorsPath: imtoPath,
+		currenciesPath:                          financeCurrenciesRelativePath,
+		countriesAndAreasPath:                   financeCountriesAndAreasRelativePath,
 	}, nil
 }
 
@@ -165,6 +195,36 @@ func (r *FinanceFileRepository) GetInternationalMoneyTransferOperator(ctx contex
 	return models.InternationalMoneyTransferOperator{}, fmt.Errorf("%w", interfaces.ErrInternationalMoneyTransferOperatorNotFound)
 }
 
+// ListCurrencies returns the ordered list of current monetary currencies.
+func (r *FinanceFileRepository) ListCurrencies(ctx context.Context) ([]models.Currency, error) {
+	currencies, err := r.loadCurrencies(ctx)
+	if err != nil {
+		return nil, err
+	}
+	return cloneCurrencyList(currencies), nil
+}
+
+// GetCurrency returns a single currency using its public alpha-3 code identifier.
+func (r *FinanceFileRepository) GetCurrency(ctx context.Context, currencyID string) (models.Currency, error) {
+	currencyID = strings.TrimSpace(currencyID)
+	if currencyID == "" || !financeCurrencyIDPattern.MatchString(currencyID) {
+		return models.Currency{}, fmt.Errorf("%w", interfaces.ErrCurrencyNotFound)
+	}
+
+	currencies, err := r.loadCurrencies(ctx)
+	if err != nil {
+		return models.Currency{}, err
+	}
+
+	for _, currency := range currencies {
+		if currency.ID == currencyID {
+			return cloneCurrency(currency), nil
+		}
+	}
+
+	return models.Currency{}, fmt.Errorf("%w", interfaces.ErrCurrencyNotFound)
+}
+
 func (r *FinanceFileRepository) loadPaymentServiceProviders(ctx context.Context) ([]models.PaymentServiceProvider, error) {
 	if r == nil || r.jsonRepository == nil {
 		return nil, fmt.Errorf("%w", interfaces.ErrDatasetFileUnavailable)
@@ -222,6 +282,81 @@ func (r *FinanceFileRepository) loadInternationalMoneyTransferOperators(ctx cont
 	}
 
 	return operators, nil
+}
+
+func (r *FinanceFileRepository) loadCurrencies(ctx context.Context) ([]models.Currency, error) {
+	if r == nil || r.jsonRepository == nil {
+		return nil, fmt.Errorf("%w", interfaces.ErrDatasetFileUnavailable)
+	}
+	if strings.TrimSpace(r.currenciesPath) == "" || strings.TrimSpace(r.countriesAndAreasPath) == "" {
+		return nil, fmt.Errorf("%w", interfaces.ErrDatasetFileUnavailable)
+	}
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+
+	var currencies []models.Currency
+	if err := r.jsonRepository.Decode(ctx, r.currenciesPath, &currencies); err != nil {
+		return nil, translateFinanceLoadError(err)
+	}
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	if currencies == nil || len(currencies) == 0 {
+		return nil, fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+	}
+
+	countryIDs, err := r.loadCountryAndAreaIDs(ctx)
+	if err != nil {
+		return nil, err
+	}
+	if err := validateCurrencies(currencies, countryIDs); err != nil {
+		return nil, err
+	}
+
+	return currencies, nil
+}
+
+func (r *FinanceFileRepository) loadCountryAndAreaIDs(ctx context.Context) (map[string]struct{}, error) {
+	if r == nil || r.jsonRepository == nil {
+		return nil, fmt.Errorf("%w", interfaces.ErrDatasetFileUnavailable)
+	}
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+
+	var countries []models.CountryOrArea
+	if err := r.jsonRepository.Decode(ctx, r.countriesAndAreasPath, &countries); err != nil {
+		return nil, translateFinanceLoadError(err)
+	}
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	if countries == nil || len(countries) == 0 {
+		return nil, fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+	}
+	if len(countries) != 248 {
+		return nil, fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+	}
+
+	allowed := make(map[string]struct{}, len(countries))
+	for _, country := range countries {
+		if country.ID == "" || !financeCurrencyCountryAreaIDPattern.MatchString(country.ID) {
+			return nil, fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if _, ok := allowed[country.ID]; ok {
+			return nil, fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		allowed[country.ID] = struct{}{}
+	}
+
+	return allowed, nil
 }
 
 func validatePaymentServiceProviders(providers []models.PaymentServiceProvider) error {
@@ -380,6 +515,119 @@ func validateInternationalMoneyTransferOperators(operators []models.Internationa
 	return nil
 }
 
+func validateCurrencies(currencies []models.Currency, countryIDs map[string]struct{}) error {
+	if len(currencies) != financeExpectedCurrencyCount {
+		return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+	}
+
+	seenIDs := make(map[string]struct{}, len(currencies))
+	seenAlphabetic := make(map[string]struct{}, len(currencies))
+	seenNumeric := make(map[string]struct{}, len(currencies))
+	countryToCodes := make(map[string][]string, financeExpectedCurrencyCountryAreaCount)
+	relationships := 0
+	zeroCount := 0
+	prevName := ""
+	prevAlphabetic := ""
+
+	for _, currency := range currencies {
+		if currency.ID == "" || currency.Name == "" || currency.AlphabeticCode == "" || currency.NumericCode == "" {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if !financeCurrencyIDPattern.MatchString(currency.ID) {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if currency.ID != strings.ToLower(currency.AlphabeticCode) {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if !financeCurrencyAlphabeticCodePattern.MatchString(currency.AlphabeticCode) {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if !financeCurrencyNumericCodePattern.MatchString(currency.NumericCode) {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if currency.MinorUnit != 0 && currency.MinorUnit != 2 && currency.MinorUnit != 3 {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if _, forbidden := financeCurrencyExcludedCodes[currency.AlphabeticCode]; forbidden {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if _, ok := seenIDs[currency.ID]; ok {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if _, ok := seenAlphabetic[currency.AlphabeticCode]; ok {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if _, ok := seenNumeric[currency.NumericCode]; ok {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if currency.CountryAreaIDs == nil {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if len(currency.CountryAreaIDs) == 0 {
+			zeroCount++
+			if currency.AlphabeticCode != "TWD" {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+		}
+		if len(currency.CountryAreaIDs) > 0 {
+			if !reflect.DeepEqual(currency.CountryAreaIDs, sortedFinanceStrings(currency.CountryAreaIDs)) {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+			seenCountries := make(map[string]struct{}, len(currency.CountryAreaIDs))
+			for _, countryID := range currency.CountryAreaIDs {
+				if !financeCurrencyCountryAreaIDPattern.MatchString(countryID) {
+					return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+				}
+				if _, ok := countryIDs[countryID]; !ok {
+					return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+				}
+				if _, ok := seenCountries[countryID]; ok {
+					return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+				}
+				seenCountries[countryID] = struct{}{}
+				countryToCodes[countryID] = append(countryToCodes[countryID], currency.AlphabeticCode)
+			}
+		}
+
+		if prevName != "" {
+			if strings.Compare(prevName, currency.Name) > 0 || (strings.Compare(prevName, currency.Name) == 0 && strings.Compare(prevAlphabetic, currency.AlphabeticCode) > 0) {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+		}
+
+		seenIDs[currency.ID] = struct{}{}
+		seenAlphabetic[currency.AlphabeticCode] = struct{}{}
+		seenNumeric[currency.NumericCode] = struct{}{}
+		relationships += len(currency.CountryAreaIDs)
+		prevName = currency.Name
+		prevAlphabetic = currency.AlphabeticCode
+	}
+
+	if zeroCount != 1 {
+		return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+	}
+	if relationships != financeExpectedCurrencyRelationshipCount {
+		return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+	}
+	if len(countryToCodes) != financeExpectedCurrencyCountryAreaCount {
+		return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+	}
+	for countryID := range countryIDs {
+		_, isZeroMapping := financeCurrencyZeroMappingCountryAreaIDs[countryID]
+		if isZeroMapping {
+			if len(countryToCodes[countryID]) != 0 {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+			continue
+		}
+		if len(countryToCodes[countryID]) == 0 {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+	}
+
+	return nil
+}
+
 func clonePaymentServiceProviderList(providers []models.PaymentServiceProvider) []models.PaymentServiceProvider {
 	if len(providers) == 0 {
 		return make([]models.PaymentServiceProvider, 0)
@@ -404,6 +652,28 @@ func cloneInternationalMoneyTransferOperatorList(operators []models.Internationa
 
 func cloneInternationalMoneyTransferOperator(operator models.InternationalMoneyTransferOperator) models.InternationalMoneyTransferOperator {
 	return operator
+}
+
+func cloneCurrencyList(currencies []models.Currency) []models.Currency {
+	if len(currencies) == 0 {
+		return make([]models.Currency, 0)
+	}
+	cloned := make([]models.Currency, len(currencies))
+	copy(cloned, currencies)
+	return cloned
+}
+
+func cloneCurrency(currency models.Currency) models.Currency {
+	return currency
+}
+
+func sortedFinanceStrings(values []string) []string {
+	if len(values) == 0 {
+		return []string{}
+	}
+	clone := append([]string(nil), values...)
+	sort.Strings(clone)
+	return clone
 }
 
 func validateFinanceDatasetPath(datasetPath string) (string, error) {
