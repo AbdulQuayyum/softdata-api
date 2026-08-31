@@ -6,7 +6,7 @@ SoftData API uses a layered Go layout that keeps entry points, configuration, da
 
 - `cmd/` holds executable entry points.
 - `internal/` contains the core application logic, including configuration, database access, repositories, security helpers, request validators, response helpers, and domain/API models.
-- `datasets/` contains versioned geography, education, and finance datasets, schemas, metadata, and licensing notes, including universities, colleges of education, payment service providers, and international money transfer operators.
+- `datasets/` contains versioned geography, education, finance, and UN M49 countries-and-areas datasets, schemas, metadata, and licensing notes, including universities, colleges of education, payment service providers, international money transfer operators, and world countries or areas.
 - `database/` contains PostgreSQL migrations and handwritten SQL queries.
 - `docs/` holds API and project documentation.
 - Root tooling files such as `Makefile`, `sqlc.yaml`, `.air.toml`, and `.env.example` support local development and database generation.
@@ -65,6 +65,7 @@ softdata-api/
 │   │   ├── international_money_transfer_operators.json
 │   │   └── payment_service_providers.json
 │   ├── geography
+│   │   ├── countries_and_areas.json
 │   │   ├── geopolitical_zones.json
 │   │   ├── lgas.json
 │   │   └── states.json
@@ -77,6 +78,7 @@ softdata-api/
 │   │   │   ├── international_money_transfer_operators.json
 │   │   │   └── payment_service_providers.json
 │   │   └── geography
+│   │       ├── countries_and_areas.json
 │   │       ├── geopolitical_zones.json
 │   │       ├── lgas.json
 │   │       └── states.json
@@ -89,6 +91,7 @@ softdata-api/
 │       │   ├── international_money_transfer_operators.schema.json
 │       │   └── payment_service_providers.schema.json
 │       └── geography
+│           ├── countries_and_areas.schema.json
 │           ├── geopolitical_zones.schema.json
 │           ├── lgas.schema.json
 │           └── states.schema.json
@@ -199,6 +202,7 @@ softdata-api/
 │   │   ├── finance.go
 │   │   ├── finance_imto_test.go
 │   │   ├── finance_test.go
+│   │   ├── countries_and_areas_test.go
 │   │   ├── geography.go
 │   │   ├── geography_test.go
 │   │   ├── lgas_test.go
@@ -219,6 +223,7 @@ softdata-api/
 │   │   │   ├── education_repository_test.go
 │   │   │   ├── finance_repository.go
 │   │   │   ├── finance_repository_test.go
+│   │   │   ├── countries_and_areas_test.go
 │   │   │   ├── geography_repository.go
 │   │   │   ├── geography_repository_test.go
 │   │   │   ├── geojson_repository.go
@@ -296,6 +301,7 @@ softdata-api/
 │   │   ├── errors.go
 │   │   ├── finance_service.go
 │   │   ├── finance_service_test.go
+│   │   ├── countries_and_areas_test.go
 │   │   ├── geography_service.go
 │   │   ├── geography_service_test.go
 │   │   ├── usage_service.go
@@ -333,7 +339,7 @@ Environment-driven application configuration, including server, database, securi
 
 ### `datasets/`
 
-Versioned geography dataset files, schemas, provenance metadata, and licensing notes for the compiled data.
+Versioned geography, education, finance, and UN M49 countries-and-areas dataset files, schemas, provenance metadata, and licensing notes for the compiled data.
 
 ### `internal/database/`
 
