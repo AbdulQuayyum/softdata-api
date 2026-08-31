@@ -28,6 +28,16 @@ Each record uses the lowercase alpha-2 code as its public `id`, preserves the so
 
 This global package is separate from the Nigerian geography datasets, which continue to use `country_code: NG`.
 
+### `world-currencies`
+
+The current ISO 4217 monetary-currency snapshot compiled from the SIX List One XML.
+
+- Data: `datasets/finance/currencies.json`
+- Schema: `datasets/schemas/finance/currencies.schema.json`
+- Metadata: `datasets/metadata/finance/currencies.json`
+
+Each record uses the lowercase alphabetic code as its public `id`, preserves `name`, `alphabetic_code`, `numeric_code`, `minor_unit` and `country_area_ids`, and links approved `world-countries-and-areas` IDs through `country_area_ids`. The package contains 155 current monetary currencies, excludes special-purpose and historical codes, keeps TWD with an empty `country_area_ids` array, and omits reverse mappings for Antarctica, State of Palestine and South Georgia and the South Sandwich Islands. SoftData's independent compilation, schema and metadata are CC BY 4.0, while the ISO and SIX source publications retain their own rights.
+
 ### `ng-states`
 
 Nigeria's 36 states and the Federal Capital Territory.

@@ -15,6 +15,7 @@ datasets/
 │   ├── colleges_of_education.json
 │   └── universities.json
 ├── finance/
+│   ├── currencies.json
 │   ├── international_money_transfer_operators.json
 │   └── payment_service_providers.json
 ├── metadata/
@@ -26,6 +27,7 @@ datasets/
 │   ├── education/
 │   │   └── universities.json
 │   └── finance/
+│       ├── currencies.json
 │       ├── international_money_transfer_operators.json
 │       └── payment_service_providers.json
 ├── schemas/
@@ -37,6 +39,7 @@ datasets/
 │   ├── education/
 │   │   └── universities.schema.json
 │   └── finance/
+│       ├── currencies.schema.json
 │       ├── international_money_transfer_operators.schema.json
 │       └── payment_service_providers.schema.json
 └── LICENSE.md
@@ -50,6 +53,7 @@ datasets/
 - `education/colleges_of_education.json` is the compiled catalogue of current NCCE-listed colleges of education.
 - `education/universities.json` is the compiled catalogue of current NUC-listed Nigerian universities.
 - `finance/international_money_transfer_operators.json` is the compiled register snapshot of current CBN-listed IMTO entries.
+- `finance/currencies.json` is the compiled snapshot of current ISO 4217 monetary currencies.
 - `finance/payment_service_providers.json` is the compiled register snapshot of payment-service-provider memberships.
 - `schemas/geography/geopolitical_zones.schema.json` describes the zone record contract.
 - `schemas/geography/lgas.schema.json` describes the LGA and Area Council record contract.
@@ -57,6 +61,7 @@ datasets/
 - `schemas/education/colleges_of_education.schema.json` describes the college-of-education record contract.
 - `schemas/education/universities.schema.json` describes the university record contract.
 - `schemas/finance/international_money_transfer_operators.schema.json` describes the IMTO record contract.
+- `schemas/finance/currencies.schema.json` describes the currency record contract.
 - `schemas/finance/payment_service_providers.schema.json` describes the payment-service-provider record contract.
 - `metadata/education/universities.json` records provenance, versioning and licensing details for the university catalogue.
 - `metadata/education/colleges_of_education.json` records provenance, versioning and licensing details for the colleges-of-education catalogue.
@@ -64,6 +69,7 @@ datasets/
 - `metadata/geography/lgas.json` records provenance, versioning and licensing details for the LGA catalogue.
 - `metadata/geography/states.json` records provenance, versioning and licensing details.
 - `metadata/finance/international_money_transfer_operators.json` records provenance, versioning and licensing details for the IMTO catalogue.
+- `metadata/finance/currencies.json` records provenance, versioning and licensing details for the currency catalogue.
 - `metadata/finance/payment_service_providers.json` records provenance, versioning and licensing details for the payment-service-provider catalogue.
 - `LICENSE.md` explains the dataset-content licence.
 
@@ -72,6 +78,8 @@ The world countries-and-areas catalogue is compiled from the current English UN 
 This global package is separate from the Nigerian geography datasets, which continue to use `country_code: NG`.
 
 The IMTO catalogue is names-only, excludes addresses and inferred country data, and remains separate from the payment-service-provider catalogue. No HTTP routes are added by the dataset package itself.
+
+The world-currencies catalogue is compiled from the current ISO 4217 monetary-currency snapshot published in the SIX List One XML, uses the lowercase alphabetic code as its public `id`, keeps `name`, `alphabetic_code`, `numeric_code`, `minor_unit` and `country_area_ids` as the public fields, and maps approved `world-countries-and-areas` IDs through `country_area_ids`. The package contains 155 current monetary currencies, excludes special-purpose and historical codes, keeps TWD with an empty `country_area_ids` array, and omits reverse mappings for Antarctica, State of Palestine and South Georgia and the South Sandwich Islands. SoftData's independent compilation, schema and metadata are CC BY 4.0, while the ISO and SIX source publications retain their own rights.
 
 The colleges-of-education catalogue is compiled from the current NCCE accredited-colleges register, maps each record to `ng-states` through `state_id`, excludes the stale Cross River row that has a successor university in `ng-universities`, and keeps the public model compact at `id`, `name`, `ownership_type`, `state_id` and `country_code`. The package version is `1.0.0`, and the current boundary is 244 records split into 28 federal, 48 state and 168 private colleges. SoftData's independent compilation, schema and metadata are CC BY 4.0; the NCCE and other official publications retain their own rights.
 
