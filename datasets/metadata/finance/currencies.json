@@ -18,21 +18,21 @@
       "title": "ISO 4217 List One XML",
       "url": "https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml",
       "purpose": "Verify the current monetary-currency snapshot, row counts, currency names, numeric codes and minor units used for compilation.",
-      "accessed_at": "2026-08-30T22:54:39Z"
+      "accessed_at": "2026-08-31T20:50:56Z"
     },
     {
       "organization": "SIX Group",
       "title": "ISO 4217 List One XML",
       "url": "https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml",
       "purpose": "Verify the current monetary-currency snapshot, row counts, currency names, numeric codes and minor units used for compilation.",
-      "accessed_at": "2026-08-30T22:54:40Z"
+      "accessed_at": "2026-08-31T20:50:57Z"
     },
     {
       "organization": "SIX Group",
       "title": "ISO 4217 List One XML",
       "url": "https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml",
       "purpose": "Verify the current monetary-currency snapshot, row counts, currency names, numeric codes and minor units used for compilation.",
-      "accessed_at": "2026-08-30T22:54:42Z"
+      "accessed_at": "2026-08-31T20:50:58Z"
     },
     {
       "organization": "ISO",
@@ -49,5 +49,5 @@
       "accessed_at": "2026-08-30"
     }
   ],
-  "verified_at": "2026-08-30"
+  "verified_at": "2026-08-31"
 }

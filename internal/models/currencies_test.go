@@ -252,7 +252,7 @@ func TestCurrenciesMetadataSchemaAndAttribution(t *testing.T) {
 	if metadata.LicenseID != "CC-BY-4.0" || metadata.LicenseURL != "https://creativecommons.org/licenses/by/4.0/" {
 		t.Fatalf("unexpected license metadata: %#v", metadata)
 	}
-	if metadata.VerifiedAt != "2026-08-30" {
+	if metadata.VerifiedAt != "2026-08-31" {
 		t.Fatalf("unexpected verified_at: %q", metadata.VerifiedAt)
 	}
 	verifiedAt, err := time.Parse("2006-01-02", metadata.VerifiedAt)
@@ -273,7 +273,7 @@ func TestCurrenciesMetadataSchemaAndAttribution(t *testing.T) {
 	if metadata.Sources[0].URL != "https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml" || metadata.Sources[1].URL != metadata.Sources[0].URL || metadata.Sources[2].URL != metadata.Sources[0].URL {
 		t.Fatalf("unexpected SIX XML sources: %#v", metadata.Sources[:3])
 	}
-	if metadata.Sources[0].AccessedAt != "2026-08-30T22:54:39Z" || metadata.Sources[1].AccessedAt != "2026-08-30T22:54:40Z" || metadata.Sources[2].AccessedAt != "2026-08-30T22:54:42Z" {
+	if metadata.Sources[0].AccessedAt != "2026-08-31T20:50:56Z" || metadata.Sources[1].AccessedAt != "2026-08-31T20:50:57Z" || metadata.Sources[2].AccessedAt != "2026-08-31T20:50:58Z" {
 		t.Fatalf("unexpected XML retrieval timestamps: %#v", metadata.Sources[:3])
 	}
 	for _, snippet := range []string{
