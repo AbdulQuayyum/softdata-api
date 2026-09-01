@@ -6,7 +6,7 @@ SoftData API uses a layered Go layout that keeps entry points, configuration, da
 
 - `cmd/` holds executable entry points.
 - `internal/` contains the core application logic, including configuration, database access, repositories, security helpers, request validators, response helpers, and domain/API models.
-- `datasets/` contains versioned geography, education, finance, and UN M49 countries-and-areas datasets, schemas, metadata, licensing notes, and embedded flag assets, including universities, colleges of education, payment service providers, international money transfer operators, and world countries or areas.
+- `datasets/` contains versioned geography, education, finance, and UN M49 countries-and-areas datasets, schemas, metadata, licensing notes, and embedded flag assets, including universities, colleges of education, payment service providers, international money transfer operators, currencies, and world countries or areas.
 - `database/` contains PostgreSQL migrations and handwritten SQL queries.
 - `docs/` holds API and project documentation.
 - Root tooling files such as `Makefile`, `sqlc.yaml`, `.air.toml`, and `.env.example` support local development and database generation.
@@ -70,6 +70,7 @@ softdata-api/
 │   │   ├── colleges_of_education.json
 │   │   └── universities.json
 │   ├── finance
+│   │   ├── currencies.json
 │   │   ├── international_money_transfer_operators.json
 │   │   └── payment_service_providers.json
 │   ├── geography
@@ -83,6 +84,7 @@ softdata-api/
 │   │   │   ├── colleges_of_education.json
 │   │   │   └── universities.json
 │   │   ├── finance
+│   │   │   ├── currencies.json
 │   │   │   ├── international_money_transfer_operators.json
 │   │   │   └── payment_service_providers.json
 │   │   └── geography
@@ -96,6 +98,7 @@ softdata-api/
 │       │   ├── colleges_of_education.schema.json
 │       │   └── universities.schema.json
 │       ├── finance
+│       │   ├── currencies.schema.json
 │       │   ├── international_money_transfer_operators.schema.json
 │       │   └── payment_service_providers.schema.json
 │       └── geography
@@ -207,6 +210,7 @@ softdata-api/
 │   │   ├── dataset_version.go
 │   │   ├── education.go
 │   │   ├── colleges_of_education_test.go
+│   │   ├── currencies_test.go
 │   │   ├── finance.go
 │   │   ├── finance_imto_test.go
 │   │   ├── finance_test.go
@@ -229,6 +233,7 @@ softdata-api/
 │   │   │   ├── education_colleges_repository_test.go
 │   │   │   ├── education_repository.go
 │   │   │   ├── education_repository_test.go
+│   │   │   ├── finance_currency_test.go
 │   │   │   ├── finance_repository.go
 │   │   │   ├── finance_repository_test.go
 │   │   │   ├── countries_and_areas_test.go
