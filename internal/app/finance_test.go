@@ -503,3 +503,41 @@ func TestBuildFinanceHandlerVerifiesThroughServiceAbstraction(t *testing.T) {
 		t.Fatalf("expected startup verification to call currency list once, got %d", service.currCalls)
 	}
 }
+
+func TestBuildFinanceHandlerRejectsWrongCurrencyAnchorCounts(t *testing.T) {
+	t.Parallel()
+
+	currencies := loadApprovedCurrencies(t)
+	for i := range currencies {
+		if currencies[i].AlphabeticCode == "EUR" {
+			currencies[i].CountryAreaIDs = append([]string(nil), currencies[i].CountryAreaIDs[:35]...)
+			break
+		}
+	}
+	service := &financeServiceStub{
+		providers:  loadApprovedFinanceProviders(t),
+		operators:  loadApprovedIMTOOperators(t),
+		currencies: currencies,
+	}
+
+	_, err := buildFinanceHandlerFromJSONRepository(context.Background(), &financeJSONRepoStub{},
+		func(repository interfaces.JSONFileRepository, paymentServiceProvidersPath string) (interfaces.FinanceRepository, error) {
+			return &financeRepositoryStub{}, nil
+		},
+		func(repository interfaces.FinanceRepository) (financeService, error) {
+			return service, nil
+		},
+		func(service financeService) (*handlers.FinanceHandler, error) {
+			return handlers.NewFinanceHandler(service)
+		},
+	)
+	if err == nil {
+		t.Fatal("buildFinanceHandlerFromJSONRepository() error = nil, want failure")
+	}
+	if !strings.Contains(err.Error(), "verify currency dataset") {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if service.currCalls != 1 {
+		t.Fatalf("expected startup verification to call currency list once, got %d", service.currCalls)
+	}
+}

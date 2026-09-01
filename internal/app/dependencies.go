@@ -955,6 +955,19 @@ func verifyCurrencyDataset(ctx context.Context, service financeService) error {
 
 	const expectedRelationships = 252
 	const expectedMappedCountryAreas = 245
+	expectedSharedCurrencyCounts := map[string]int{
+		"AUD": 8,
+		"DKK": 3,
+		"EUR": 36,
+		"GBP": 4,
+		"NZD": 5,
+		"USD": 19,
+		"XAF": 6,
+		"XCD": 8,
+		"XCG": 2,
+		"XOF": 8,
+		"XPF": 3,
+	}
 	zeroMapping := map[string]struct{}{
 		"aq": {},
 		"gs": {},
@@ -972,6 +985,9 @@ func verifyCurrencyDataset(ctx context.Context, service financeService) error {
 				return fmt.Errorf("verify currency dataset: %w", interfaces.ErrInvalidDatasetFile)
 			}
 			continue
+		}
+		if expected, ok := expectedSharedCurrencyCounts[currency.AlphabeticCode]; ok && len(currency.CountryAreaIDs) != expected {
+			return fmt.Errorf("verify currency dataset: %w", interfaces.ErrInvalidDatasetFile)
 		}
 		relationships += len(currency.CountryAreaIDs)
 		for _, countryAreaID := range currency.CountryAreaIDs {
