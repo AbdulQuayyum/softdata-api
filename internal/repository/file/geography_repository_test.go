@@ -21,6 +21,7 @@ type geographyJSONRepoStub struct {
 	states    []models.State
 	zones     []models.GeopoliticalZone
 	units     []models.LocalGovernmentUnit
+	timeZones []models.TimeZone
 	countries []models.CountryOrArea
 	decodeFn  func(context.Context, string, any) error
 
@@ -54,6 +55,11 @@ func (s *geographyJSONRepoStub) Decode(ctx context.Context, relativePath string,
 		*countryDest = cloneTestCountries(s.countries)
 		return nil
 	}
+	timeZoneDest, ok := destination.(*[]models.TimeZone)
+	if ok {
+		*timeZoneDest = cloneTestTimeZones(s.timeZones)
+		return nil
+	}
 	zoneDest, ok := destination.(*[]models.GeopoliticalZone)
 	if !ok {
 		return fmt.Errorf("unexpected destination %T", destination)
@@ -65,23 +71,23 @@ func (s *geographyJSONRepoStub) Decode(ctx context.Context, relativePath string,
 func TestNewGeographyRepositoryRejectsInvalidInputs(t *testing.T) {
 	t.Parallel()
 
-	if _, err := NewGeographyRepository(nil, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/countries_and_areas.json"); err == nil {
+	if _, err := NewGeographyRepository(nil, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", "geography/countries_and_areas.json"); err == nil {
 		t.Fatal("expected nil json repository to be rejected")
 	}
-	if _, err := NewGeographyRepository(&geographyJSONRepoStub{}, "", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/countries_and_areas.json"); err == nil {
+	if _, err := NewGeographyRepository(&geographyJSONRepoStub{}, "", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", "geography/countries_and_areas.json"); err == nil {
 		t.Fatal("expected empty states path to be rejected")
 	}
-	if _, err := NewGeographyRepository(&geographyJSONRepoStub{}, "geography/states.json", "   ", "geography/lgas.json", "geography/countries_and_areas.json"); err == nil {
+	if _, err := NewGeographyRepository(&geographyJSONRepoStub{}, "geography/states.json", "   ", "geography/lgas.json", "geography/time_zones.json", "geography/countries_and_areas.json"); err == nil {
 		t.Fatal("expected whitespace zones path to be rejected")
 	}
-	if _, err := NewGeographyRepository(&geographyJSONRepoStub{}, "geography/states.json", "geography/geopolitical_zones.json", "   ", "geography/countries_and_areas.json"); err == nil {
+	if _, err := NewGeographyRepository(&geographyJSONRepoStub{}, "geography/states.json", "geography/geopolitical_zones.json", "   ", "geography/time_zones.json", "geography/countries_and_areas.json"); err == nil {
 		t.Fatal("expected whitespace lga path to be rejected")
 	}
-	if _, err := NewGeographyRepository(&geographyJSONRepoStub{}, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "   "); err == nil {
+	if _, err := NewGeographyRepository(&geographyJSONRepoStub{}, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", "   "); err == nil {
 		t.Fatal("expected whitespace countries path to be rejected")
 	}
 
-	repo, err := NewGeographyRepository(&geographyJSONRepoStub{}, "  geography/states.json  ", " geography/geopolitical_zones.json ", " geography/lgas.json ", " geography/countries_and_areas.json ")
+	repo, err := NewGeographyRepository(&geographyJSONRepoStub{}, "  geography/states.json  ", " geography/geopolitical_zones.json ", " geography/lgas.json ", " geography/time_zones.json ", " geography/countries_and_areas.json ")
 	if err != nil {
 		t.Fatalf("NewGeographyRepository() error = %v", err)
 	}
@@ -94,6 +100,9 @@ func TestNewGeographyRepositoryRejectsInvalidInputs(t *testing.T) {
 	if repo.localGovernmentUnitsPath != "geography/lgas.json" {
 		t.Fatalf("unexpected stored lga path: %q", repo.localGovernmentUnitsPath)
 	}
+	if repo.timeZonesPath != "geography/time_zones.json" {
+		t.Fatalf("unexpected stored time zones path: %q", repo.timeZonesPath)
+	}
 }
 
 func TestGeographyRepositoryListStatesAndGetStateByID(t *testing.T) {
@@ -102,7 +111,7 @@ func TestGeographyRepositoryListStatesAndGetStateByID(t *testing.T) {
 	fixture := loadApprovedStateFixture(t)
 	zones := loadApprovedZoneFixture(t)
 	jsonRepo := &geographyJSONRepoStub{states: fixture, zones: zones, pathCalls: map[string]int{}}
-	repo, err := NewGeographyRepository(jsonRepo, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/countries_and_areas.json")
+	repo, err := NewGeographyRepository(jsonRepo, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", "geography/countries_and_areas.json")
 	if err != nil {
 		t.Fatalf("NewGeographyRepository() error = %v", err)
 	}
@@ -180,7 +189,7 @@ func TestGeographyRepositoryListGeopoliticalZonesAndGetGeopoliticalZone(t *testi
 	states := loadApprovedStateFixture(t)
 	zones := loadApprovedZoneFixture(t)
 	jsonRepo := &geographyJSONRepoStub{states: states, zones: zones, pathCalls: map[string]int{}}
-	repo, err := NewGeographyRepository(jsonRepo, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/countries_and_areas.json")
+	repo, err := NewGeographyRepository(jsonRepo, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", "geography/countries_and_areas.json")
 	if err != nil {
 		t.Fatalf("NewGeographyRepository() error = %v", err)
 	}
@@ -234,7 +243,7 @@ func TestGeographyRepositoryListLocalGovernmentUnitsAndLookups(t *testing.T) {
 	zones := loadApprovedZoneFixture(t)
 	units := loadApprovedLocalGovernmentUnitFixture(t)
 	jsonRepo := &geographyJSONRepoStub{states: states, zones: zones, units: units, pathCalls: map[string]int{}}
-	repo, err := NewGeographyRepository(jsonRepo, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/countries_and_areas.json")
+	repo, err := NewGeographyRepository(jsonRepo, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", "geography/countries_and_areas.json")
 	if err != nil {
 		t.Fatalf("NewGeographyRepository() error = %v", err)
 	}
@@ -355,7 +364,7 @@ func TestGeographyRepositoryLocalGovernmentUnitDecodeCounts(t *testing.T) {
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
 			jsonRepo := &geographyJSONRepoStub{states: fixtureStates, zones: fixtureZones, units: fixtureUnits, pathCalls: map[string]int{}}
-			repo, err := NewGeographyRepository(jsonRepo, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/countries_and_areas.json")
+			repo, err := NewGeographyRepository(jsonRepo, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", "geography/countries_and_areas.json")
 			if err != nil {
 				t.Fatalf("NewGeographyRepository() error = %v", err)
 			}
@@ -673,7 +682,7 @@ func TestGeographyRepositoryContextAndDecodeErrors(t *testing.T) {
 				return nil
 			},
 		}
-		repo, err := NewGeographyRepository(stub, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/countries_and_areas.json")
+		repo, err := NewGeographyRepository(stub, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", "geography/countries_and_areas.json")
 		if err != nil {
 			t.Fatalf("NewGeographyRepository() error = %v", err)
 		}
@@ -693,7 +702,7 @@ func TestGeographyRepositoryContextAndDecodeErrors(t *testing.T) {
 				return nil
 			},
 		}
-		repo, err := NewGeographyRepository(stub, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/countries_and_areas.json")
+		repo, err := NewGeographyRepository(stub, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", "geography/countries_and_areas.json")
 		if err != nil {
 			t.Fatalf("NewGeographyRepository() error = %v", err)
 		}
@@ -972,7 +981,7 @@ func TestGeographyRepositoryErrorsDoNotExposePathOrRecordContents(t *testing.T) 
 func newGeographyRepoForError(t *testing.T, decodeErr error) *GeographyFileRepository {
 	t.Helper()
 
-	repo, err := NewGeographyRepository(&geographyJSONRepoStub{decodeFn: func(context.Context, string, any) error { return decodeErr }}, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/countries_and_areas.json")
+	repo, err := NewGeographyRepository(&geographyJSONRepoStub{decodeFn: func(context.Context, string, any) error { return decodeErr }}, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", "geography/countries_and_areas.json")
 	if err != nil {
 		t.Fatalf("NewGeographyRepository() error = %v", err)
 	}
@@ -982,7 +991,7 @@ func newGeographyRepoForError(t *testing.T, decodeErr error) *GeographyFileRepos
 func newGeographyRepoWithStates(t *testing.T, states []models.State) *GeographyFileRepository {
 	t.Helper()
 
-	repo, err := NewGeographyRepository(&geographyJSONRepoStub{states: states, zones: loadApprovedZoneFixture(t)}, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/countries_and_areas.json")
+	repo, err := NewGeographyRepository(&geographyJSONRepoStub{states: states, zones: loadApprovedZoneFixture(t)}, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", "geography/countries_and_areas.json")
 	if err != nil {
 		t.Fatalf("NewGeographyRepository() error = %v", err)
 	}
@@ -992,7 +1001,7 @@ func newGeographyRepoWithStates(t *testing.T, states []models.State) *GeographyF
 func newGeographyRepoWithDecodeFn(t *testing.T, decodeFn func(context.Context, string, any) error) *GeographyFileRepository {
 	t.Helper()
 
-	repo, err := NewGeographyRepository(&geographyJSONRepoStub{decodeFn: decodeFn}, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/countries_and_areas.json")
+	repo, err := NewGeographyRepository(&geographyJSONRepoStub{decodeFn: decodeFn}, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", "geography/countries_and_areas.json")
 	if err != nil {
 		t.Fatalf("NewGeographyRepository() error = %v", err)
 	}
@@ -1002,7 +1011,7 @@ func newGeographyRepoWithDecodeFn(t *testing.T, decodeFn func(context.Context, s
 func newGeographyRepoWithLocalGovernmentUnits(t *testing.T, units []models.LocalGovernmentUnit, states []models.State, zones []models.GeopoliticalZone) *GeographyFileRepository {
 	t.Helper()
 
-	repo, err := NewGeographyRepository(&geographyJSONRepoStub{states: states, zones: zones, units: units}, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/countries_and_areas.json")
+	repo, err := NewGeographyRepository(&geographyJSONRepoStub{states: states, zones: zones, units: units}, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", "geography/countries_and_areas.json")
 	if err != nil {
 		t.Fatalf("NewGeographyRepository() error = %v", err)
 	}
@@ -1130,5 +1139,26 @@ func cloneTestCountries(countries []models.CountryOrArea) []models.CountryOrArea
 	}
 	cloned := make([]models.CountryOrArea, len(countries))
 	copy(cloned, countries)
+	return cloned
+}
+
+func cloneTestTimeZones(timeZones []models.TimeZone) []models.TimeZone {
+	if len(timeZones) == 0 {
+		return make([]models.TimeZone, 0)
+	}
+	cloned := make([]models.TimeZone, len(timeZones))
+	for i, timeZone := range timeZones {
+		cloned[i] = timeZone
+		cloned[i].CountryAreaIDs = cloneTestCountryAreaIDs(timeZone.CountryAreaIDs)
+	}
+	return cloned
+}
+
+func cloneTestCountryAreaIDs(ids []string) []string {
+	if len(ids) == 0 {
+		return make([]string, 0)
+	}
+	cloned := make([]string, len(ids))
+	copy(cloned, ids)
 	return cloned
 }

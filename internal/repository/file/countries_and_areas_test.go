@@ -16,10 +16,10 @@ import (
 func TestGeographyRepositoryCountriesAndAreasConstructor(t *testing.T) {
 	t.Parallel()
 
-	if _, err := NewGeographyRepository(nil, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/countries_and_areas.json"); err == nil {
+	if _, err := NewGeographyRepository(nil, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", "geography/countries_and_areas.json"); err == nil {
 		t.Fatal("expected nil json repository to be rejected")
 	}
-	if _, err := NewGeographyRepository(&geographyJSONRepoStub{}, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", ""); err == nil {
+	if _, err := NewGeographyRepository(&geographyJSONRepoStub{}, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", ""); err == nil {
 		t.Fatal("expected empty countries path to be rejected")
 	}
 
@@ -28,7 +28,7 @@ func TestGeographyRepositoryCountriesAndAreasConstructor(t *testing.T) {
 		calls++
 		return nil
 	}}
-	repo, err := NewGeographyRepository(stub, " geography/states.json ", " geography/geopolitical_zones.json ", " geography/lgas.json ", " geography/countries_and_areas.json ")
+	repo, err := NewGeographyRepository(stub, " geography/states.json ", " geography/geopolitical_zones.json ", " geography/lgas.json ", " geography/time_zones.json ", " geography/countries_and_areas.json ")
 	if err != nil {
 		t.Fatalf("NewGeographyRepository() error = %v", err)
 	}
@@ -54,7 +54,7 @@ func TestGeographyRepositoryCountriesAndAreasListGetAndFiltering(t *testing.T) {
 		countries: countries,
 		pathCalls: map[string]int{},
 	}
-	repo, err := NewGeographyRepository(jsonRepo, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/countries_and_areas.json")
+	repo, err := NewGeographyRepository(jsonRepo, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", "geography/countries_and_areas.json")
 	if err != nil {
 		t.Fatalf("NewGeographyRepository() error = %v", err)
 	}
@@ -149,7 +149,7 @@ func TestGeographyRepositoryCountriesAndAreasOperationalIndependence(t *testing.
 
 	t.Run("country operations only read countries file", func(t *testing.T) {
 		jsonRepo := &geographyJSONRepoStub{states: states, zones: zones, units: units, countries: countries, pathCalls: map[string]int{}}
-		repo, err := NewGeographyRepository(jsonRepo, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/countries_and_areas.json")
+		repo, err := NewGeographyRepository(jsonRepo, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", "geography/countries_and_areas.json")
 		if err != nil {
 			t.Fatalf("NewGeographyRepository() error = %v", err)
 		}
@@ -166,7 +166,7 @@ func TestGeographyRepositoryCountriesAndAreasOperationalIndependence(t *testing.
 
 	t.Run("state zone and lga operations do not read country file", func(t *testing.T) {
 		jsonRepo := &geographyJSONRepoStub{states: states, zones: zones, units: units, countries: countries, pathCalls: map[string]int{}}
-		repo, err := NewGeographyRepository(jsonRepo, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/countries_and_areas.json")
+		repo, err := NewGeographyRepository(jsonRepo, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", "geography/countries_and_areas.json")
 		if err != nil {
 			t.Fatalf("NewGeographyRepository() error = %v", err)
 		}
@@ -374,7 +374,7 @@ func TestGeographyRepositoryCountriesAndAreasSafeErrorTranslation(t *testing.T) 
 	stub := &geographyJSONRepoStub{decodeFn: func(context.Context, string, any) error {
 		return fmt.Errorf("wrapped: %w", interfaces.ErrDatasetFileNotFound)
 	}}
-	repo, err := NewGeographyRepository(stub, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/countries_and_areas.json")
+	repo, err := NewGeographyRepository(stub, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", "geography/countries_and_areas.json")
 	if err != nil {
 		t.Fatalf("NewGeographyRepository() error = %v", err)
 	}
@@ -399,6 +399,7 @@ func newCountryRepositoryForTest(t *testing.T, countries []models.CountryOrArea,
 		"geography/states.json",
 		"geography/geopolitical_zones.json",
 		"geography/lgas.json",
+		"geography/time_zones.json",
 		"geography/countries_and_areas.json",
 	)
 	if err != nil {

@@ -16,6 +16,7 @@ import (
 var stateIDPattern = regexp.MustCompile(`^[a-z]+(?:-[a-z]+)*$`)
 var localGovernmentUnitIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)+$`)
 var countryOrAreaIDPattern = regexp.MustCompile(`^[a-z]{2}$`)
+var timeZoneIDPattern = regexp.MustCompile(`^[A-Za-z][A-Za-z0-9._+-]*(?:/[A-Za-z0-9._+-]+)+$`)
 var countryAlpha2CodePattern = regexp.MustCompile(`^[A-Z]{2}$`)
 var countryAlpha3CodePattern = regexp.MustCompile(`^[A-Z]{3}$`)
 var countryNumericCodePattern = regexp.MustCompile(`^[0-9]{3}$`)
@@ -74,13 +75,14 @@ type GeographyFileRepository struct {
 	statesPath               string
 	zonesPath                string
 	localGovernmentUnitsPath string
+	timeZonesPath            string
 	countriesAndAreasPath    string
 }
 
 var _ interfaces.GeographyRepository = (*GeographyFileRepository)(nil)
 
 // NewGeographyRepository constructs a file-backed geography repository.
-func NewGeographyRepository(jsonRepository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, countriesAndAreasPath string) (*GeographyFileRepository, error) {
+func NewGeographyRepository(jsonRepository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath string) (*GeographyFileRepository, error) {
 	if jsonRepository == nil {
 		return nil, fmt.Errorf("json repository is required")
 	}
@@ -96,6 +98,10 @@ func NewGeographyRepository(jsonRepository interfaces.JSONFileRepository, states
 	if err != nil {
 		return nil, err
 	}
+	cleanedTimeZonesPath, err := validateGeographyDatasetPath("time zones", timeZonesPath)
+	if err != nil {
+		return nil, err
+	}
 	cleanedCountriesAndAreasPath, err := validateGeographyDatasetPath("countries and areas", countriesAndAreasPath)
 	if err != nil {
 		return nil, err
@@ -106,6 +112,7 @@ func NewGeographyRepository(jsonRepository interfaces.JSONFileRepository, states
 		statesPath:               cleanedStatesPath,
 		zonesPath:                cleanedZonesPath,
 		localGovernmentUnitsPath: cleanedLocalGovernmentUnitsPath,
+		timeZonesPath:            cleanedTimeZonesPath,
 		countriesAndAreasPath:    cleanedCountriesAndAreasPath,
 	}, nil
 }
