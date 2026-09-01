@@ -14,33 +14,39 @@ import (
 )
 
 type geographyRepoStub struct {
-	states           []models.State
-	zones            []models.GeopoliticalZone
-	units            []models.LocalGovernmentUnit
-	countries        []models.CountryOrArea
-	listErr          error
-	getErr           error
-	zoneListErr      error
-	zoneGetErr       error
-	unitListErr      error
-	unitGetErr       error
-	unitByStateErr   error
-	countryListErr   error
-	countryGetErr    error
-	listCalls        int
-	getCalls         int
-	zoneListCalls    int
-	zoneGetCalls     int
-	unitListCalls    int
-	unitGetCalls     int
-	unitByStateCalls int
-	countryListCalls int
-	countryGetCalls  int
-	lastID           string
-	lastZoneID       string
-	lastStateID      string
-	lastUnitID       string
-	lastCountryID    string
+	states            []models.State
+	zones             []models.GeopoliticalZone
+	units             []models.LocalGovernmentUnit
+	timeZones         []models.TimeZone
+	countries         []models.CountryOrArea
+	listErr           error
+	getErr            error
+	zoneListErr       error
+	zoneGetErr        error
+	unitListErr       error
+	unitGetErr        error
+	unitByStateErr    error
+	timeZoneListErr   error
+	timeZoneGetErr    error
+	countryListErr    error
+	countryGetErr     error
+	listCalls         int
+	getCalls          int
+	zoneListCalls     int
+	zoneGetCalls      int
+	unitListCalls     int
+	unitGetCalls      int
+	unitByStateCalls  int
+	timeZoneListCalls int
+	timeZoneGetCalls  int
+	countryListCalls  int
+	countryGetCalls   int
+	lastID            string
+	lastZoneID        string
+	lastStateID       string
+	lastUnitID        string
+	lastCountryID     string
+	lastTimeZoneID    string
 }
 
 func (s *geographyRepoStub) ListStates(context.Context) ([]models.State, error) {
@@ -130,6 +136,38 @@ func (s *geographyRepoStub) GetLocalGovernmentUnit(_ context.Context, unitID str
 	return models.LocalGovernmentUnit{}, interfaces.ErrLocalGovernmentUnitNotFound
 }
 
+func (s *geographyRepoStub) ListTimeZones(_ context.Context, filter interfaces.TimeZoneFilter) ([]models.TimeZone, error) {
+	s.timeZoneListCalls++
+	if s.timeZoneListErr != nil {
+		return nil, s.timeZoneListErr
+	}
+	if s.timeZones == nil {
+		return nil, nil
+	}
+	filtered := make([]models.TimeZone, 0, len(s.timeZones))
+	for _, timeZone := range s.timeZones {
+		if filter.CountryAreaID != "" && !containsString(timeZone.CountryAreaIDs, filter.CountryAreaID) {
+			continue
+		}
+		filtered = append(filtered, cloneServiceTimeZone(timeZone))
+	}
+	return filtered, nil
+}
+
+func (s *geographyRepoStub) GetTimeZone(_ context.Context, timeZoneID string) (models.TimeZone, error) {
+	s.timeZoneGetCalls++
+	s.lastTimeZoneID = timeZoneID
+	if s.timeZoneGetErr != nil {
+		return models.TimeZone{}, s.timeZoneGetErr
+	}
+	for _, timeZone := range s.timeZones {
+		if timeZone.ID == timeZoneID {
+			return cloneServiceTimeZone(timeZone), nil
+		}
+	}
+	return models.TimeZone{}, interfaces.ErrTimeZoneNotFound
+}
+
 func (s *geographyRepoStub) ListCountriesAndAreas(_ context.Context, filter interfaces.CountryOrAreaFilter) ([]models.CountryOrArea, error) {
 	s.countryListCalls++
 	if s.countryListErr != nil {
@@ -153,6 +191,21 @@ func (s *geographyRepoStub) GetCountryOrArea(_ context.Context, countryOrAreaID 
 		}
 	}
 	return models.CountryOrArea{}, interfaces.ErrCountryOrAreaNotFound
+}
+
+func containsString(values []string, candidate string) bool {
+	for _, value := range values {
+		if value == candidate {
+			return true
+		}
+	}
+	return false
+}
+
+func cloneServiceTimeZone(timeZone models.TimeZone) models.TimeZone {
+	cloned := timeZone
+	cloned.CountryAreaIDs = append([]string(nil), timeZone.CountryAreaIDs...)
+	return cloned
 }
 
 func (s *geographyRepoStub) filterCountries(filter interfaces.CountryOrAreaFilter) []models.CountryOrArea {

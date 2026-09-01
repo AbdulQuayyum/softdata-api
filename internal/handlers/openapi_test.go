@@ -289,6 +289,47 @@ func TestOpenAPIDocumentsCollegeOfEducationPaths(t *testing.T) {
 	requireContains(t, text, "CollegeOfEducationResponse:\n      type: object\n      additionalProperties: false\n      properties:\n        success:\n          type: boolean\n        data:\n          $ref: \"#/components/schemas/CollegeOfEducation\"\n      required: [success, data]")
 }
 
+func TestOpenAPIDocumentsTimeZonePaths(t *testing.T) {
+	doc, err := os.ReadFile("../../docs/openapi.yaml")
+	if err != nil {
+		t.Fatalf("ReadFile() error = %v", err)
+	}
+	text := string(doc)
+
+	listBlock := pathBlock(t, text, "/v1/geography/time-zones")
+	detailBlock := pathBlock(t, text, "/v1/geography/time-zones/{time_zone_id}")
+
+	requireContains(t, text, "    TimeZoneID:")
+	requireContains(t, text, "    TimeZoneCountryAreaID:")
+	requireContains(t, text, "    TimeZone:")
+	requireContains(t, text, "    TimeZoneListResponse:")
+	requireContains(t, text, "    TimeZoneResponse:")
+
+	requireContains(t, listBlock, "get:")
+	requireContains(t, listBlock, "- $ref: \"#/components/parameters/TimeZoneCountryAreaID\"")
+	requireContains(t, listBlock, "\"422\":")
+	requireContains(t, listBlock, "\"500\":")
+	requireNotContains(t, listBlock, "security:")
+
+	requireContains(t, detailBlock, "get:")
+	requireContains(t, detailBlock, "- $ref: \"#/components/parameters/TimeZoneID\"")
+	requireContains(t, detailBlock, "\"404\":")
+	requireContains(t, detailBlock, "\"422\":")
+	requireContains(t, detailBlock, "\"500\":")
+	requireNotContains(t, detailBlock, "security:")
+
+	requireContains(t, text, "TimeZoneID:\n      name: time_zone_id\n      in: path\n      required: true\n      allowReserved: true\n      description: Exact canonical IANA time-zone identifier. Percent-encoded slashes are accepted by the HTTP layer and decoded before validation. Aliases are excluded from v1.\n      schema:\n        type: string")
+	requireContains(t, text, "TimeZoneCountryAreaID:\n      name: country_area_id\n      in: query\n      required: false\n      description: Optional public country or area ID used to filter time-zone records.\n      schema:\n        type: string\n        pattern: '^[a-z]{2}$'")
+	requireContains(t, text, "TimeZone:\n      type: object\n      additionalProperties: false\n      properties:\n        id:\n          type: string\n        country_area_ids:\n          type: array\n          uniqueItems: true\n          items:\n            type: string\n            pattern: '^[a-z]{2}$'\n      required: [id, country_area_ids]")
+	requireContains(t, text, "TimeZoneListResponse:\n      type: object\n      additionalProperties: false\n      properties:\n        success:\n          type: boolean\n        data:\n          type: array\n          items:\n            $ref: \"#/components/schemas/TimeZone\"\n      required: [success, data]")
+	requireContains(t, text, "TimeZoneResponse:\n      type: object\n      additionalProperties: false\n      properties:\n        success:\n          type: boolean\n        data:\n          $ref: \"#/components/schemas/TimeZone\"\n      required: [success, data]")
+	requireContains(t, text, "canonical IANA time-zone manifest")
+	requireContains(t, text, "zone1970.tab")
+	requireContains(t, text, "Asia/Taipei")
+	requireContains(t, text, "bv")
+	requireContains(t, text, "hm")
+}
+
 func pathBlock(t *testing.T, doc, path string) string {
 	t.Helper()
 

@@ -1,0 +1,149 @@
+{
+  "dataset_key": "world-time-zones",
+  "title": "World Time Zones",
+  "description": "Independently compiled factual reference data for the canonical IANA tzdb zone1970.tab manifest from release 2026c. Each record represents one current IANA time-zone identifier and its mapped SoftData world-countries-and-areas relationships.",
+  "country_code": "001",
+  "dataset_group": "geography",
+  "format": "json",
+  "relative_path": "geography/time_zones.json",
+  "schema_path": "schemas/geography/time_zones.schema.json",
+  "record_count": 312,
+  "version": "1.0.0",
+  "verified_at": "2026-09-01",
+  "license_id": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "source_title": "Internet Assigned Numbers Authority, IANA Time Zone Database, release 2026c",
+  "source_url": "https://data.iana.org/time-zones/releases/tzdb-2026c.tar.lz",
+  "archive_sha256": "427a11b1c5f2ebccad18f11650221c4f0465b4f1bb7f44dd02ff192d2808d944",
+  "archive_size_bytes": 563235,
+  "archive_last_modified": "Wed, 08 Jul 2026 18:02:48 GMT",
+  "archive_etag": "\"89823-6561d50afc200\"",
+  "retrieval_timestamps": [
+    "2026-09-01T12:43:48Z",
+    "2026-09-01T12:43:53Z",
+    "2026-09-01T12:43:58Z"
+  ],
+  "source_file_hashes": {
+    "zone1970.tab": "77b5e45415fa684fcc42de3421a6b0f15cc9b2c137f258083850346e8f76eea8",
+    "zone.tab": "7cc78ea166261b3dedf951cdd721051460851e6fcd96c12b8e3194cf25677f21",
+    "iso3166.tab": "837c80785080c8433fd9d4ea87e78f161ac7a40389301c5153d4f90198baeb2a",
+    "backward": "d2f4c8953f204982ddf4dc0c2debf41b2464de376dad7d546d0fc70f889fa706",
+    "backzone": "63fb39adae0b0d8b2179629725a9dfb694c7a386b99750b636a017d896d28dfa",
+    "LICENSE": "0613408568889f5739e5ae252b722a2659c02002839ad970a63dc5e9174b27cf",
+    "README": "f6d96b82996a6ccac80027816704183c63a754d5b1eb2e7b25858e32164e2707",
+    "theory.html": "88fb142cca79196eb804c3eb3b7511f6f366fef36d3e53bd2640f3c24d1d127e"
+  },
+  "boundary": {
+    "canonical_source": "zone1970.tab",
+    "canonical_records": 312,
+    "zone_tab_excluded": true,
+    "backzone_excluded": true,
+    "alias_policy": "backward aliases are excluded from v1 as independent records; only canonical zone1970.tab identifiers are published.",
+    "alias_audit": {
+      "backward_aliases": 256,
+      "canonical_targets": 241,
+      "excluded_targets": 15
+    },
+    "coordinate_exclusion": true,
+    "comment_exclusion": true,
+    "offset_and_dst_exclusion": true,
+    "asia_taipei_empty_mapping": true,
+    "unmatched_iana_code": "TW",
+    "zero_zone_m49_ids": [
+      "bv",
+      "hm"
+    ],
+    "zero_zone_count": 2
+  },
+  "crosswalk_counts": {
+    "total_relationships": 422,
+    "unique_mapped_country_area_ids": 246,
+    "forward_zero": 1,
+    "forward_one": 277,
+    "forward_multiple": 34,
+    "reverse_zero": 2,
+    "reverse_one": 213,
+    "reverse_multiple": 33
+  },
+  "deterministic_sorting": "Records are sorted bytewise by exact IANA identifier; each country_area_ids array is sorted lexicographically and deduplicated.",
+  "mapping_anchors": {
+    "Africa/Lagos": [
+      "ao",
+      "bj",
+      "cd",
+      "cf",
+      "cg",
+      "cm",
+      "ga",
+      "gq",
+      "ne",
+      "ng"
+    ],
+    "Europe/Simferopol": [
+      "ru",
+      "ua"
+    ],
+    "Asia/Gaza": [
+      "ps"
+    ],
+    "Asia/Hebron": [
+      "ps"
+    ],
+    "Asia/Hong_Kong": [
+      "hk"
+    ],
+    "Asia/Macau": [
+      "mo"
+    ],
+    "Europe/London": [
+      "gb",
+      "gg",
+      "im",
+      "je"
+    ],
+    "Atlantic/Faroe": [
+      "fo"
+    ],
+    "Asia/Taipei": []
+  },
+  "multi_country_zones": [
+    "Asia/Dubai",
+    "Pacific/Pago_Pago",
+    "Europe/Brussels",
+    "America/Toronto",
+    "Europe/Zurich",
+    "Africa/Abidjan",
+    "Europe/Prague",
+    "Europe/Berlin",
+    "Europe/Helsinki",
+    "Europe/Paris",
+    "Europe/London",
+    "Pacific/Guam",
+    "Europe/Rome",
+    "Asia/Tokyo",
+    "Africa/Nairobi",
+    "Pacific/Tarawa",
+    "Asia/Yangon",
+    "Indian/Maldives",
+    "Asia/Kuching",
+    "Africa/Maputo",
+    "Africa/Lagos",
+    "Pacific/Auckland",
+    "America/Panama",
+    "Pacific/Port_Moresby",
+    "America/Puerto_Rico",
+    "Asia/Qatar",
+    "Europe/Belgrade",
+    "Europe/Simferopol",
+    "Asia/Riyadh",
+    "Pacific/Guadalcanal",
+    "Asia/Singapore",
+    "Asia/Bangkok",
+    "America/Phoenix",
+    "Africa/Johannesburg"
+  ],
+  "update_policy": "Refresh on each new IANA tzdb release after verifying the archive hash, version file and zone1970.tab boundary.",
+  "versioning_policy": "Use semantic versioning for SoftData compilation changes; bump major for boundary or contract changes, minor for additive compatible changes, and patch for corrections.",
+  "licensing_boundary": "IANA tzdb data files used for this compilation are public domain unless otherwise specified. SoftData independently compiled the JSON dataset, schema and metadata, and SoftData's compilation/schema/metadata are CC BY 4.0. IANA source files are cited and not relicensed as CC BY 4.0. No BSD-licensed helper code was copied into the dataset.",
+  "recommended_attribution": "Source: Internet Assigned Numbers Authority, IANA Time Zone Database, release 2026c, accessed 2026-09-01."
+}

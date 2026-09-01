@@ -10,6 +10,7 @@ datasets/
 │   ├── countries_and_areas.json
 │   ├── geopolitical_zones.json
 │   ├── lgas.json
+│   ├── time_zones.json
 │   └── states.json
 ├── education/
 │   ├── colleges_of_education.json
@@ -23,6 +24,7 @@ datasets/
 │   │   ├── countries_and_areas.json
 │   │   ├── geopolitical_zones.json
 │   │   ├── lgas.json
+│   │   ├── time_zones.json
 │   │   └── states.json
 │   ├── education/
 │   │   └── universities.json
@@ -35,6 +37,7 @@ datasets/
 │   │   ├── countries_and_areas.schema.json
 │   │   ├── geopolitical_zones.schema.json
 │   │   ├── lgas.schema.json
+│   │   ├── time_zones.schema.json
 │   │   └── states.schema.json
 │   ├── education/
 │   │   └── universities.schema.json
@@ -50,6 +53,7 @@ datasets/
 - `geography/geopolitical_zones.json` is the six-zone catalogue.
 - `geography/lgas.json` is the compiled catalogue of Local Government Areas and FCT Area Councils.
 - `geography/states.json` is the data file.
+- `geography/time_zones.json` is the compiled catalogue of canonical IANA time zones from `zone1970.tab`.
 - `education/colleges_of_education.json` is the compiled catalogue of current NCCE-listed colleges of education.
 - `education/universities.json` is the compiled catalogue of current NUC-listed Nigerian universities.
 - `finance/international_money_transfer_operators.json` is the compiled register snapshot of current CBN-listed IMTO entries.
@@ -58,6 +62,7 @@ datasets/
 - `schemas/geography/geopolitical_zones.schema.json` describes the zone record contract.
 - `schemas/geography/lgas.schema.json` describes the LGA and Area Council record contract.
 - `schemas/geography/states.schema.json` describes the record contract.
+- `schemas/geography/time_zones.schema.json` describes the canonical IANA time-zone record contract.
 - `schemas/education/colleges_of_education.schema.json` describes the college-of-education record contract.
 - `schemas/education/universities.schema.json` describes the university record contract.
 - `schemas/finance/international_money_transfer_operators.schema.json` describes the IMTO record contract.
@@ -68,6 +73,7 @@ datasets/
 - `metadata/geography/geopolitical_zones.json` records provenance, versioning and licensing details for the zone catalogue.
 - `metadata/geography/lgas.json` records provenance, versioning and licensing details for the LGA catalogue.
 - `metadata/geography/states.json` records provenance, versioning and licensing details.
+- `metadata/geography/time_zones.json` records provenance, versioning and licensing details for the time-zone catalogue.
 - `metadata/finance/international_money_transfer_operators.json` records provenance, versioning and licensing details for the IMTO catalogue.
 - `metadata/finance/currencies.json` records provenance, versioning and licensing details for the currency catalogue.
 - `metadata/finance/payment_service_providers.json` records provenance, versioning and licensing details for the payment-service-provider catalogue.
@@ -76,6 +82,8 @@ datasets/
 The world countries-and-areas catalogue is compiled from the current English UN M49 overview table, uses the lowercase alpha-2 code as its public `id`, and preserves the source names, ISO alpha codes, numeric codes, calling codes, flag emoji, flag SVG URLs and available region hierarchy fields. Its current boundary is 248 countries or areas, and SoftData's independent compilation, schema and metadata are CC BY 4.0 while the UN source material retains its own rights and is used for statistical reference only. Flag SVG assets are vendored separately from MIT-licensed flag-icons v7.5.0.
 
 This global package is separate from the Nigerian geography datasets, which continue to use `country_code: NG`.
+
+The world time-zones catalogue is compiled from the canonical IANA tzdb `zone1970.tab` manifest in release `2026c`, uses the exact IANA identifier as its public `id`, and maps approved `world-countries-and-areas` IDs through `country_area_ids`. Its current boundary is 312 time zones, `Asia/Taipei` intentionally carries an empty `country_area_ids` array, and `bv` plus `hm` are the two M49 country/area IDs with zero canonical zones. Aliases, `zone.tab`-only records, `backzone`, static offsets, DST fields and coordinates are excluded from v1. SoftData's independent compilation, schema and metadata are CC BY 4.0 while the IANA source files retain their own rights and are cited for reference only.
 
 The IMTO catalogue is names-only, excludes addresses and inferred country data, and remains separate from the payment-service-provider catalogue. No HTTP routes are added by the dataset package itself.
 

@@ -106,6 +106,32 @@ func registerPublicRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers,
 		return err
 	}
 
+	geographyTimeZonesList, err := buildRouteMiddlewares(mw, "/v1/geography/time-zones", "geography", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build geography time zones middleware: %w", err)
+	}
+	mux.Handle("GET /v1/geography/time-zones", compose(http.HandlerFunc(h.Geography.ListTimeZones), geographyTimeZonesList...))
+	if err := catalog.add("GET /v1/geography/time-zones"); err != nil {
+		return err
+	}
+
+	geographyTimeZoneDetail, err := buildRouteMiddlewares(mw, "/v1/geography/time-zones/{time_zone_id...}", "geography", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build geography time zones detail middleware: %w", err)
+	}
+	mux.Handle("GET /v1/geography/time-zones/{time_zone_id...}", compose(http.HandlerFunc(h.Geography.GetTimeZone), geographyTimeZoneDetail...))
+	if err := catalog.add("GET /v1/geography/time-zones/{time_zone_id...}"); err != nil {
+		return err
+	}
+
 	geographyCountryFlags, err := buildRouteMiddlewares(mw, "/v1/assets/flags/{country_id}.svg", "geography", routeOptions{
 		useOptionalAPIKey: true,
 		useRateLimit:      true,

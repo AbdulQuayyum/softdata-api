@@ -22,6 +22,7 @@ import (
 	"github.com/AbdulQuayyum/softdata-api/internal/router"
 	"github.com/AbdulQuayyum/softdata-api/internal/security"
 	"github.com/AbdulQuayyum/softdata-api/internal/services"
+	"github.com/AbdulQuayyum/softdata-api/internal/validators"
 	redisv9 "github.com/redis/go-redis/v9"
 )
 
@@ -30,6 +31,7 @@ const (
 	geographyStatesRelativePath                            = "geography/states.json"
 	geographyGeopoliticalZonesRelativePath                 = "geography/geopolitical_zones.json"
 	geographyLocalGovernmentUnitsRelativePath              = "geography/lgas.json"
+	geographyTimeZonesRelativePath                         = "geography/time_zones.json"
 	geographyCountriesAndAreasRelativePath                 = "geography/countries_and_areas.json"
 	educationUniversitiesRelativePath                      = "education/universities.json"
 	educationCollegesOfEducationRelativePath               = "education/colleges_of_education.json"
@@ -128,8 +130,8 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	}
 
 	geographyHandler, err := buildGeographyHandlerFromJSONRepository(ctx, jsonRepository,
-		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, countriesAndAreasPath string) (interfaces.GeographyRepository, error) {
-			return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath, countriesAndAreasPath)
+		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath string) (interfaces.GeographyRepository, error) {
+			return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath)
 		},
 		func(repository interfaces.GeographyRepository) (geographyService, error) {
 			return services.NewGeographyService(repository)
@@ -319,6 +321,8 @@ type geographyService interface {
 	ListLocalGovernmentUnits(context.Context) ([]models.LocalGovernmentUnit, error)
 	ListLocalGovernmentUnitsByState(context.Context, string) ([]models.LocalGovernmentUnit, error)
 	GetLocalGovernmentUnit(context.Context, string) (models.LocalGovernmentUnit, error)
+	ListTimeZones(context.Context, services.TimeZoneListInput) ([]models.TimeZone, error)
+	GetTimeZone(context.Context, string) (models.TimeZone, error)
 	ListCountriesAndAreas(context.Context, services.CountryOrAreaListInput) ([]models.CountryOrArea, error)
 	GetCountryOrArea(context.Context, string) (models.CountryOrArea, error)
 }
@@ -344,7 +348,7 @@ func buildGeographyHandler(
 	ctx context.Context,
 	cfg *config.Config,
 	newJSONRepository func(string, int64) (interfaces.JSONFileRepository, error),
-	newGeographyRepository func(interfaces.JSONFileRepository, string, string, string, string) (interfaces.GeographyRepository, error),
+	newGeographyRepository func(interfaces.JSONFileRepository, string, string, string, string, string) (interfaces.GeographyRepository, error),
 	newGeographyService func(interfaces.GeographyRepository) (geographyService, error),
 	newGeographyHandler func(geographyService) (*handlers.GeographyHandler, error),
 ) (*handlers.GeographyHandler, error) {
@@ -374,7 +378,7 @@ func buildGeographyHandler(
 func buildGeographyHandlerFromJSONRepository(
 	ctx context.Context,
 	jsonRepository interfaces.JSONFileRepository,
-	newGeographyRepository func(interfaces.JSONFileRepository, string, string, string, string) (interfaces.GeographyRepository, error),
+	newGeographyRepository func(interfaces.JSONFileRepository, string, string, string, string, string) (interfaces.GeographyRepository, error),
 	newGeographyService func(interfaces.GeographyRepository) (geographyService, error),
 	newGeographyHandler func(geographyService) (*handlers.GeographyHandler, error),
 ) (*handlers.GeographyHandler, error) {
@@ -394,7 +398,7 @@ func buildGeographyHandlerFromJSONRepository(
 		return nil, fmt.Errorf("geography handler factory is required")
 	}
 
-	geographyRepository, err := newGeographyRepository(jsonRepository, geographyStatesRelativePath, geographyGeopoliticalZonesRelativePath, geographyLocalGovernmentUnitsRelativePath, geographyCountriesAndAreasRelativePath)
+	geographyRepository, err := newGeographyRepository(jsonRepository, geographyStatesRelativePath, geographyGeopoliticalZonesRelativePath, geographyLocalGovernmentUnitsRelativePath, geographyTimeZonesRelativePath, geographyCountriesAndAreasRelativePath)
 	if err != nil {
 		return nil, fmt.Errorf("initialize geography repository: %w", err)
 	}
@@ -614,6 +618,20 @@ func verifyGeographyDataset(ctx context.Context, service geographyService) error
 	if err := validateCountryOrAreasSnapshot(countries); err != nil {
 		return fmt.Errorf("verify geography dataset: %w", interfaces.ErrInvalidDatasetFile)
 	}
+
+	timeZones, err := service.ListTimeZones(ctx, services.TimeZoneListInput{})
+	if err != nil {
+		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+			return err
+		}
+		return fmt.Errorf("verify geography dataset: %w", err)
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+	if err := validateTimeZonesSnapshot(timeZones, countries); err != nil {
+		return fmt.Errorf("verify geography dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
 	return nil
 }
 
@@ -711,6 +729,263 @@ func validateCountryOrAreasSnapshot(countries []models.CountryOrArea) error {
 	return nil
 }
 
+func validateTimeZonesSnapshot(timeZones []models.TimeZone, countries []models.CountryOrArea) error {
+	if len(timeZones) != 312 {
+		return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+	}
+
+	countryAreaIDs := make(map[string]struct{}, len(countries))
+	for _, country := range countries {
+		countryAreaIDs[country.ID] = struct{}{}
+	}
+
+	expectedZeroCountryAreaIDs := map[string]struct{}{
+		"bv": {},
+		"hm": {},
+	}
+	expectedForwardHistogram := map[int]int{
+		0:  1,
+		1:  277,
+		2:  15,
+		3:  7,
+		4:  2,
+		5:  4,
+		6:  1,
+		8:  1,
+		10: 2,
+		12: 1,
+		20: 1,
+	}
+	expectedReverseHistogram := map[int]int{
+		1:  213,
+		2:  16,
+		3:  5,
+		4:  3,
+		7:  1,
+		11: 1,
+		12: 2,
+		13: 1,
+		16: 1,
+		23: 1,
+		27: 1,
+		29: 1,
+	}
+	expectedAnchors := map[string][]string{
+		"Africa/Abidjan":       {"bf", "ci", "gh", "gm", "gn", "is", "ml", "mr", "sh", "sl", "sn", "tg"},
+		"Africa/Johannesburg":  {"ls", "sz", "za"},
+		"Africa/Lagos":         {"ao", "bj", "cd", "cf", "cg", "cm", "ga", "gq", "ne", "ng"},
+		"Africa/Maputo":        {"bi", "bw", "cd", "mw", "mz", "rw", "zm", "zw"},
+		"Africa/Nairobi":       {"dj", "er", "et", "ke", "km", "mg", "so", "tz", "ug", "yt"},
+		"America/Panama":       {"ca", "ky", "pa"},
+		"America/Phoenix":      {"ca", "us"},
+		"America/Puerto_Rico":  {"ag", "ai", "aw", "bl", "bq", "ca", "cw", "dm", "gd", "gp", "kn", "lc", "mf", "ms", "pr", "sx", "tt", "vc", "vg", "vi"},
+		"America/Toronto":      {"bs", "ca"},
+		"Asia/Bangkok":         {"cx", "kh", "la", "th", "vn"},
+		"Asia/Dubai":           {"ae", "om", "re", "sc", "tf"},
+		"Asia/Gaza":            {"ps"},
+		"Asia/Hebron":          {"ps"},
+		"Asia/Hong_Kong":       {"hk"},
+		"Asia/Kuching":         {"bn", "my"},
+		"Asia/Macau":           {"mo"},
+		"Asia/Qatar":           {"bh", "qa"},
+		"Asia/Riyadh":          {"aq", "kw", "sa", "ye"},
+		"Asia/Singapore":       {"aq", "my", "sg"},
+		"Asia/Taipei":          {},
+		"Asia/Tokyo":           {"au", "jp"},
+		"Asia/Yangon":          {"cc", "mm"},
+		"Atlantic/Faroe":       {"fo"},
+		"Europe/Belgrade":      {"ba", "hr", "me", "mk", "rs", "si"},
+		"Europe/Berlin":        {"de", "dk", "no", "se", "sj"},
+		"Europe/Brussels":      {"be", "lu", "nl"},
+		"Europe/Helsinki":      {"ax", "fi"},
+		"Europe/London":        {"gb", "gg", "im", "je"},
+		"Europe/Paris":         {"fr", "mc"},
+		"Europe/Prague":        {"cz", "sk"},
+		"Europe/Rome":          {"it", "sm", "va"},
+		"Europe/Simferopol":    {"ru", "ua"},
+		"Europe/Zurich":        {"ch", "de", "li"},
+		"Indian/Maldives":      {"mv", "tf"},
+		"Pacific/Auckland":     {"aq", "nz"},
+		"Pacific/Guadalcanal":  {"fm", "sb"},
+		"Pacific/Guam":         {"gu", "mp"},
+		"Pacific/Pago_Pago":    {"as", "um"},
+		"Pacific/Port_Moresby": {"aq", "fm", "pg"},
+		"Pacific/Tarawa":       {"ki", "mh", "tv", "um", "wf"},
+	}
+	expectedMultiZoneIDs := []string{
+		"Africa/Abidjan",
+		"Africa/Johannesburg",
+		"Africa/Lagos",
+		"Africa/Maputo",
+		"Africa/Nairobi",
+		"America/Panama",
+		"America/Phoenix",
+		"America/Puerto_Rico",
+		"America/Toronto",
+		"Asia/Bangkok",
+		"Asia/Dubai",
+		"Asia/Kuching",
+		"Asia/Qatar",
+		"Asia/Riyadh",
+		"Asia/Singapore",
+		"Asia/Tokyo",
+		"Asia/Yangon",
+		"Europe/Belgrade",
+		"Europe/Berlin",
+		"Europe/Brussels",
+		"Europe/Helsinki",
+		"Europe/London",
+		"Europe/Paris",
+		"Europe/Prague",
+		"Europe/Rome",
+		"Europe/Simferopol",
+		"Europe/Zurich",
+		"Indian/Maldives",
+		"Pacific/Auckland",
+		"Pacific/Guadalcanal",
+		"Pacific/Guam",
+		"Pacific/Pago_Pago",
+		"Pacific/Port_Moresby",
+		"Pacific/Tarawa",
+	}
+
+	seenIDs := make(map[string]struct{}, len(timeZones))
+	reverseCounts := make(map[string]int, len(countries))
+	for _, country := range countries {
+		reverseCounts[country.ID] = 0
+	}
+
+	zeroZones := 0
+	oneZones := 0
+	multiZones := 0
+	totalRelationships := 0
+	forwardHistogram := make(map[int]int)
+	observedMultiZoneIDs := make([]string, 0, len(expectedMultiZoneIDs))
+	prevZoneID := ""
+
+	for _, timeZone := range timeZones {
+		canonicalID, err := validators.ValidateTimeZoneID(timeZone.ID)
+		if err != nil || canonicalID != timeZone.ID {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if prevZoneID != "" && timeZone.ID <= prevZoneID {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		prevZoneID = timeZone.ID
+		if _, ok := seenIDs[timeZone.ID]; ok {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		seenIDs[timeZone.ID] = struct{}{}
+
+		if timeZone.CountryAreaIDs == nil {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if len(timeZone.CountryAreaIDs) == 0 {
+			if timeZone.ID != "Asia/Taipei" {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+			zeroZones++
+			forwardHistogram[0]++
+			continue
+		}
+
+		if len(timeZone.CountryAreaIDs) == 1 {
+			oneZones++
+		} else {
+			multiZones++
+			observedMultiZoneIDs = append(observedMultiZoneIDs, timeZone.ID)
+		}
+		forwardHistogram[len(timeZone.CountryAreaIDs)]++
+
+		prevCountryAreaID := ""
+		for _, countryAreaID := range timeZone.CountryAreaIDs {
+			normalized, err := validators.ValidateTimeZoneCountryAreaID(countryAreaID)
+			if err != nil || normalized != countryAreaID {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+			if countryAreaID == "tw" || countryAreaID == "eu" || countryAreaID == "xk" {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+			if _, ok := countryAreaIDs[countryAreaID]; !ok {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+			if prevCountryAreaID != "" && countryAreaID <= prevCountryAreaID {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+			prevCountryAreaID = countryAreaID
+			reverseCounts[countryAreaID]++
+			totalRelationships++
+		}
+	}
+
+	if zeroZones != 1 || oneZones != 277 || multiZones != 34 {
+		return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+	}
+	if totalRelationships != 422 {
+		return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+	}
+	if len(seenIDs) != 312 {
+		return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+	}
+	if len(observedMultiZoneIDs) != len(expectedMultiZoneIDs) {
+		return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+	}
+	for i := range expectedMultiZoneIDs {
+		if observedMultiZoneIDs[i] != expectedMultiZoneIDs[i] {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+	}
+	for zoneID, want := range expectedAnchors {
+		var actual []string
+		for _, timeZone := range timeZones {
+			if timeZone.ID == zoneID {
+				actual = timeZone.CountryAreaIDs
+				break
+			}
+		}
+		if len(actual) != len(want) {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		for i := range want {
+			if actual[i] != want[i] {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+		}
+	}
+	for countryAreaID := range expectedZeroCountryAreaIDs {
+		if reverseCounts[countryAreaID] != 0 {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+	}
+	uniqueMapped := 0
+	for countryAreaID, count := range reverseCounts {
+		if count == 0 {
+			if _, ok := expectedZeroCountryAreaIDs[countryAreaID]; !ok {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+			continue
+		}
+		uniqueMapped++
+	}
+	if uniqueMapped != 246 {
+		return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+	}
+	if !equalIntHistograms(forwardHistogram, expectedForwardHistogram) {
+		return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+	}
+	reverseHistogram := make(map[int]int)
+	for _, count := range reverseCounts {
+		if count == 0 {
+			continue
+		}
+		reverseHistogram[count]++
+	}
+	if !equalIntHistograms(reverseHistogram, expectedReverseHistogram) {
+		return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+	}
+	return nil
+}
+
 func isLowerAlpha2Code(value string) bool {
 	if len(value) != 2 {
 		return false
@@ -753,6 +1028,23 @@ func isThreeDigitCode(value string) bool {
 	}
 	for i := 0; i < len(value); i++ {
 		if value[i] < '0' || value[i] > '9' {
+			return false
+		}
+	}
+	return true
+}
+
+func equalIntHistograms(got, want map[int]int) bool {
+	if len(got) != len(want) {
+		return false
+	}
+	for key, wantValue := range want {
+		if got[key] != wantValue {
+			return false
+		}
+	}
+	for key := range got {
+		if _, ok := want[key]; !ok {
 			return false
 		}
 	}

@@ -149,6 +149,64 @@ func testHandlers(t *testing.T, rec *routerRecorder) Handlers {
 	}
 }
 
+func testHandlersWithGeography(t *testing.T, rec *routerRecorder, geography *routerGeographyStub) Handlers {
+	t.Helper()
+
+	auth := &routerAuthStub{rec: rec}
+	account := &routerAccountStub{rec: rec}
+	apiKey := &routerAPIKeyStub{rec: rec}
+	usage := &routerUsageStub{rec: rec}
+	dataset := &routerDatasetStub{rec: rec}
+	education := &routerEducationStub{rec: rec}
+	finance := &routerFinanceStub{rec: rec}
+
+	authHandler, err := handlers.NewAuthHandler(auth, auth)
+	if err != nil {
+		t.Fatalf("NewAuthHandler() error = %v", err)
+	}
+	accountHandler, err := handlers.NewAccountHandler(account)
+	if err != nil {
+		t.Fatalf("NewAccountHandler() error = %v", err)
+	}
+	apiKeyHandler, err := handlers.NewAPIKeyHandler(apiKey)
+	if err != nil {
+		t.Fatalf("NewAPIKeyHandler() error = %v", err)
+	}
+	usageHandler, err := handlers.NewUsageHandler(usage)
+	if err != nil {
+		t.Fatalf("NewUsageHandler() error = %v", err)
+	}
+	datasetHandler, err := handlers.NewDatasetHandler(dataset)
+	if err != nil {
+		t.Fatalf("NewDatasetHandler() error = %v", err)
+	}
+	geographyHandler, err := handlers.NewGeographyHandler(geography)
+	if err != nil {
+		t.Fatalf("NewGeographyHandler() error = %v", err)
+	}
+	educationHandler, err := handlers.NewEducationHandler(education)
+	if err != nil {
+		t.Fatalf("NewEducationHandler() error = %v", err)
+	}
+	financeHandler, err := handlers.NewFinanceHandler(finance)
+	if err != nil {
+		t.Fatalf("NewFinanceHandler() error = %v", err)
+	}
+
+	return Handlers{
+		Health:    handlers.NewHealthHandler(),
+		Discovery: handlers.NewDiscoveryHandler(),
+		Geography: geographyHandler,
+		Education: educationHandler,
+		Finance:   financeHandler,
+		Auth:      authHandler,
+		Account:   accountHandler,
+		APIKey:    apiKeyHandler,
+		Usage:     usageHandler,
+		Dataset:   datasetHandler,
+	}
+}
+
 func newTestRouter(t *testing.T, rec *routerRecorder) http.Handler {
 	t.Helper()
 
@@ -481,6 +539,93 @@ func TestRouterRegistersGeographyRoutes(t *testing.T) {
 		rr := httptest.NewRecorder()
 		req := httptest.NewRequest(http.MethodHead, "/v1/geography/states/abia", nil)
 		req.Header.Set("X-Request-ID", "req_geo_head")
+		router.ServeHTTP(rr, req)
+		if rr.Code != http.StatusMethodNotAllowed {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if got := rr.Header().Get("Allow"); got != http.MethodGet {
+			t.Fatalf("unexpected allow header: %q", got)
+		}
+	})
+}
+
+func TestRouterRegistersTimeZoneRoutes(t *testing.T) {
+	t.Run("list", func(t *testing.T) {
+		rec := &routerRecorder{}
+		geography := &routerGeographyStub{rec: rec}
+		router, err := New(testHandlersWithGeography(t, rec, geography), testMiddleware(rec))
+		if err != nil {
+			t.Fatalf("New() error = %v", err)
+		}
+
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/time-zones?country_area_id=ng", nil)
+		router.ServeHTTP(rr, req)
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if geography.timeZoneListCalls != 1 {
+			t.Fatalf("unexpected time zone list calls: %d", geography.timeZoneListCalls)
+		}
+		if geography.lastTimeZoneInput.CountryAreaID != "ng" {
+			t.Fatalf("unexpected time zone filter: %#v", geography.lastTimeZoneInput)
+		}
+		got := strings.Join(rec.snapshot(), ",")
+		for _, want := range []string{
+			"optional_api_key",
+			"rate_limit",
+			"usage:/v1/geography/time-zones|geography",
+			"geography.time-zone.list",
+		} {
+			if !strings.Contains(got, want) {
+				t.Fatalf("expected %q in middleware sequence: %v", want, rec.snapshot())
+			}
+		}
+	})
+
+	t.Run("detail", func(t *testing.T) {
+		rec := &routerRecorder{}
+		geography := &routerGeographyStub{rec: rec}
+		router, err := New(testHandlersWithGeography(t, rec, geography), testMiddleware(rec))
+		if err != nil {
+			t.Fatalf("New() error = %v", err)
+		}
+
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/time-zones/America/Argentina/Buenos_Aires", nil)
+		router.ServeHTTP(rr, req)
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if geography.timeZoneGetCalls != 1 {
+			t.Fatalf("unexpected time zone get calls: %d", geography.timeZoneGetCalls)
+		}
+		if geography.lastTimeZoneID != "America/Argentina/Buenos_Aires" {
+			t.Fatalf("unexpected time zone id: %q", geography.lastTimeZoneID)
+		}
+		got := strings.Join(rec.snapshot(), ",")
+		for _, want := range []string{
+			"optional_api_key",
+			"rate_limit",
+			"usage:/v1/geography/time-zones/{time_zone_id...}|geography",
+			"geography.time-zone.get:America/Argentina/Buenos_Aires",
+		} {
+			if !strings.Contains(got, want) {
+				t.Fatalf("expected %q in middleware sequence: %v", want, rec.snapshot())
+			}
+		}
+	})
+
+	t.Run("method not allowed", func(t *testing.T) {
+		rec := &routerRecorder{}
+		geography := &routerGeographyStub{rec: rec}
+		router, err := New(testHandlersWithGeography(t, rec, geography), testMiddleware(rec))
+		if err != nil {
+			t.Fatalf("New() error = %v", err)
+		}
+
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodPost, "/v1/geography/time-zones/Africa/Lagos", nil)
 		router.ServeHTTP(rr, req)
 		if rr.Code != http.StatusMethodNotAllowed {
 			t.Fatalf("unexpected status: %d", rr.Code)
@@ -1938,11 +2083,15 @@ type routerGeographyStub struct {
 	lgaListCalls       int
 	lgaListByCalls     int
 	lgaGetCalls        int
+	timeZoneListCalls  int
+	timeZoneGetCalls   int
+	lastTimeZoneInput  services.TimeZoneListInput
 	countryListCalls   int
 	countryGetCalls    int
 	lastStateID        string
 	lastZoneID         string
 	lastLGAID          string
+	lastTimeZoneID     string
 	lastLGAStateID     string
 	lastCountryID      string
 	lastHadAPIKey      bool
@@ -2171,6 +2320,36 @@ func (s *routerGeographyStub) GetLocalGovernmentUnit(ctx context.Context, unitID
 		s.lastAPIKeyIdentity = identity
 	}
 	return models.LocalGovernmentUnit{ID: unitID, Name: "Example", StateID: "lagos", CountryCode: "NG", AdministrativeType: "local_government_area"}, nil
+}
+
+func (s *routerGeographyStub) ListTimeZones(ctx context.Context, input services.TimeZoneListInput) ([]models.TimeZone, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.timeZoneListCalls++
+	s.lastTimeZoneInput = input
+	if s.rec != nil {
+		s.rec.add("geography.time-zone.list")
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return []models.TimeZone{{ID: "Africa/Lagos", CountryAreaIDs: []string{"ng"}}}, nil
+}
+
+func (s *routerGeographyStub) GetTimeZone(ctx context.Context, timeZoneID string) (models.TimeZone, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.timeZoneGetCalls++
+	s.lastTimeZoneID = timeZoneID
+	if s.rec != nil {
+		s.rec.add("geography.time-zone.get:" + timeZoneID)
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return models.TimeZone{ID: timeZoneID, CountryAreaIDs: []string{"ng"}}, nil
 }
 
 func (s *routerGeographyStub) ListCountriesAndAreas(ctx context.Context, input services.CountryOrAreaListInput) ([]models.CountryOrArea, error) {

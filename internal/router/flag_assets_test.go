@@ -104,3 +104,26 @@ func TestRouteCatalogMatchesOnlyFlagAssetSuffixRoute(t *testing.T) {
 		t.Fatal("catalog should not match truncated flag path")
 	}
 }
+
+func TestRouteCatalogMatchesTimeZoneCatchAllRoute(t *testing.T) {
+	var catalog routeCatalog
+	if err := catalog.add("GET /v1/geography/time-zones"); err != nil {
+		t.Fatalf("catalog.add() error = %v", err)
+	}
+	if err := catalog.add("GET /v1/geography/time-zones/{time_zone_id...}"); err != nil {
+		t.Fatalf("catalog.add() error = %v", err)
+	}
+
+	if !catalog.supports("GET", "/v1/geography/time-zones/Africa/Lagos") {
+		t.Fatal("expected catalog to support nested time-zone path")
+	}
+	if !catalog.supports("GET", "/v1/geography/time-zones/America/Argentina/Buenos_Aires") {
+		t.Fatal("expected catalog to support multi-segment time-zone path")
+	}
+	if !catalog.supports("GET", "/v1/geography/time-zones") {
+		t.Fatal("expected catalog to support time-zone list path")
+	}
+	if allow := catalog.allow("/v1/geography/time-zones/Africa/Lagos"); len(allow) != 1 || allow[0] != "GET" {
+		t.Fatalf("unexpected allow header set: %#v", allow)
+	}
+}

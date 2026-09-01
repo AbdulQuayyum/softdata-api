@@ -66,16 +66,29 @@ func (c *routeCatalog) supports(method, path string) bool {
 func (r routePattern) matchesPath(path string) bool {
 	templateParts := splitRoutePath(r.path)
 	pathParts := splitRoutePath(path)
-	if len(templateParts) != len(pathParts) {
-		return false
-	}
-
-	for i := range templateParts {
+	for i := 0; i < len(templateParts); i++ {
+		if isRouteCatchAll(templateParts[i]) {
+			if i != len(templateParts)-1 {
+				return false
+			}
+			if len(pathParts) <= i {
+				return false
+			}
+			for _, part := range pathParts[i:] {
+				if part == "" {
+					return false
+				}
+			}
+			return true
+		}
+		if i >= len(pathParts) {
+			return false
+		}
 		if !routeSegmentMatches(templateParts[i], pathParts[i]) {
 			return false
 		}
 	}
-	return true
+	return len(templateParts) == len(pathParts)
 }
 
 func splitRoutePath(path string) []string {
@@ -94,7 +107,14 @@ func isRouteParam(segment string) bool {
 	return strings.HasPrefix(segment, "{") && strings.HasSuffix(segment, "}") && len(segment) > 2
 }
 
+func isRouteCatchAll(segment string) bool {
+	return strings.HasPrefix(segment, "{") && strings.HasSuffix(segment, "...}") && len(segment) > len("{...}")
+}
+
 func routeSegmentMatches(templatePart, pathPart string) bool {
+	if isRouteCatchAll(templatePart) {
+		return pathPart != ""
+	}
 	if isRouteParam(templatePart) {
 		return pathPart != ""
 	}

@@ -6,9 +6,10 @@ SoftData API uses a layered Go layout that keeps entry points, configuration, da
 
 - `cmd/` holds executable entry points.
 - `internal/` contains the core application logic, including configuration, database access, repositories, security helpers, request validators, response helpers, and domain/API models.
-- `datasets/` contains versioned geography, education, finance, and UN M49 countries-and-areas datasets, schemas, metadata, licensing notes, and embedded flag assets, including universities, colleges of education, payment service providers, international money transfer operators, currencies, and world countries or areas.
+- `datasets/` contains versioned geography, education, finance, and UN M49 countries-and-areas datasets, schemas, metadata, licensing notes, and embedded flag assets, including states, geopolitical zones, local government areas, time zones, universities, colleges of education, payment service providers, international money transfer operators, currencies, and world countries or areas.
 - `database/` contains PostgreSQL migrations and handwritten SQL queries.
 - `docs/` holds API and project documentation.
+- `tmp/` contains local scratch outputs used during development and verification.
 - Root tooling files such as `Makefile`, `sqlc.yaml`, `.air.toml`, and `.env.example` support local development and database generation.
 
 ## Project Tree
@@ -77,7 +78,8 @@ softdata-api/
 │   │   ├── countries_and_areas.json
 │   │   ├── geopolitical_zones.json
 │   │   ├── lgas.json
-│   │   └── states.json
+│   │   ├── states.json
+│   │   └── time_zones.json
 │   ├── LICENSE.md
 │   ├── metadata
 │   │   ├── education
@@ -91,7 +93,8 @@ softdata-api/
 │   │       ├── countries_and_areas.json
 │   │       ├── geopolitical_zones.json
 │   │       ├── lgas.json
-│   │       └── states.json
+│   │       ├── states.json
+│   │       └── time_zones.json
 │   ├── README.md
 │   └── schemas
 │       ├── education
@@ -105,7 +108,8 @@ softdata-api/
 │           ├── countries_and_areas.schema.json
 │           ├── geopolitical_zones.schema.json
 │           ├── lgas.schema.json
-│           └── states.schema.json
+│           ├── states.schema.json
+│           └── time_zones.schema.json
 ├── docs
 │   ├── api-keys.md
 │   ├── api-structure.md
@@ -218,6 +222,7 @@ softdata-api/
 │   │   ├── geography.go
 │   │   ├── geography_test.go
 │   │   ├── lgas_test.go
+│   │   ├── time_zones_test.go
 │   │   ├── universities_test.go
 │   │   ├── session.go
 │   │   ├── usage_summary.go
@@ -239,6 +244,8 @@ softdata-api/
 │   │   │   ├── countries_and_areas_test.go
 │   │   │   ├── geography_repository.go
 │   │   │   ├── geography_repository_test.go
+│   │   │   ├── geography_time_zones.go
+│   │   │   ├── time_zones_test.go
 │   │   │   ├── geojson_repository.go
 │   │   │   ├── geojson_repository_test.go
 │   │   │   ├── json_repository.go
@@ -319,6 +326,8 @@ softdata-api/
 │   │   ├── countries_and_areas_test.go
 │   │   ├── geography_service.go
 │   │   ├── geography_service_test.go
+│   │   ├── geography_time_zones.go
+│   │   ├── time_zones_test.go
 │   │   ├── usage_service.go
 │   │   └── usage_service_test.go
 │   └── validators

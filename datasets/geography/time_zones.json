@@ -1,0 +1,1983 @@
+[
+  {
+    "id": "Africa/Abidjan",
+    "country_area_ids": [
+      "bf",
+      "ci",
+      "gh",
+      "gm",
+      "gn",
+      "is",
+      "ml",
+      "mr",
+      "sh",
+      "sl",
+      "sn",
+      "tg"
+    ]
+  },
+  {
+    "id": "Africa/Algiers",
+    "country_area_ids": [
+      "dz"
+    ]
+  },
+  {
+    "id": "Africa/Bissau",
+    "country_area_ids": [
+      "gw"
+    ]
+  },
+  {
+    "id": "Africa/Cairo",
+    "country_area_ids": [
+      "eg"
+    ]
+  },
+  {
+    "id": "Africa/Casablanca",
+    "country_area_ids": [
+      "ma"
+    ]
+  },
+  {
+    "id": "Africa/Ceuta",
+    "country_area_ids": [
+      "es"
+    ]
+  },
+  {
+    "id": "Africa/El_Aaiun",
+    "country_area_ids": [
+      "eh"
+    ]
+  },
+  {
+    "id": "Africa/Johannesburg",
+    "country_area_ids": [
+      "ls",
+      "sz",
+      "za"
+    ]
+  },
+  {
+    "id": "Africa/Juba",
+    "country_area_ids": [
+      "ss"
+    ]
+  },
+  {
+    "id": "Africa/Khartoum",
+    "country_area_ids": [
+      "sd"
+    ]
+  },
+  {
+    "id": "Africa/Lagos",
+    "country_area_ids": [
+      "ao",
+      "bj",
+      "cd",
+      "cf",
+      "cg",
+      "cm",
+      "ga",
+      "gq",
+      "ne",
+      "ng"
+    ]
+  },
+  {
+    "id": "Africa/Maputo",
+    "country_area_ids": [
+      "bi",
+      "bw",
+      "cd",
+      "mw",
+      "mz",
+      "rw",
+      "zm",
+      "zw"
+    ]
+  },
+  {
+    "id": "Africa/Monrovia",
+    "country_area_ids": [
+      "lr"
+    ]
+  },
+  {
+    "id": "Africa/Nairobi",
+    "country_area_ids": [
+      "dj",
+      "er",
+      "et",
+      "ke",
+      "km",
+      "mg",
+      "so",
+      "tz",
+      "ug",
+      "yt"
+    ]
+  },
+  {
+    "id": "Africa/Ndjamena",
+    "country_area_ids": [
+      "td"
+    ]
+  },
+  {
+    "id": "Africa/Sao_Tome",
+    "country_area_ids": [
+      "st"
+    ]
+  },
+  {
+    "id": "Africa/Tripoli",
+    "country_area_ids": [
+      "ly"
+    ]
+  },
+  {
+    "id": "Africa/Tunis",
+    "country_area_ids": [
+      "tn"
+    ]
+  },
+  {
+    "id": "Africa/Windhoek",
+    "country_area_ids": [
+      "na"
+    ]
+  },
+  {
+    "id": "America/Adak",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "America/Anchorage",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "America/Araguaina",
+    "country_area_ids": [
+      "br"
+    ]
+  },
+  {
+    "id": "America/Argentina/Buenos_Aires",
+    "country_area_ids": [
+      "ar"
+    ]
+  },
+  {
+    "id": "America/Argentina/Catamarca",
+    "country_area_ids": [
+      "ar"
+    ]
+  },
+  {
+    "id": "America/Argentina/Cordoba",
+    "country_area_ids": [
+      "ar"
+    ]
+  },
+  {
+    "id": "America/Argentina/Jujuy",
+    "country_area_ids": [
+      "ar"
+    ]
+  },
+  {
+    "id": "America/Argentina/La_Rioja",
+    "country_area_ids": [
+      "ar"
+    ]
+  },
+  {
+    "id": "America/Argentina/Mendoza",
+    "country_area_ids": [
+      "ar"
+    ]
+  },
+  {
+    "id": "America/Argentina/Rio_Gallegos",
+    "country_area_ids": [
+      "ar"
+    ]
+  },
+  {
+    "id": "America/Argentina/Salta",
+    "country_area_ids": [
+      "ar"
+    ]
+  },
+  {
+    "id": "America/Argentina/San_Juan",
+    "country_area_ids": [
+      "ar"
+    ]
+  },
+  {
+    "id": "America/Argentina/San_Luis",
+    "country_area_ids": [
+      "ar"
+    ]
+  },
+  {
+    "id": "America/Argentina/Tucuman",
+    "country_area_ids": [
+      "ar"
+    ]
+  },
+  {
+    "id": "America/Argentina/Ushuaia",
+    "country_area_ids": [
+      "ar"
+    ]
+  },
+  {
+    "id": "America/Asuncion",
+    "country_area_ids": [
+      "py"
+    ]
+  },
+  {
+    "id": "America/Bahia",
+    "country_area_ids": [
+      "br"
+    ]
+  },
+  {
+    "id": "America/Bahia_Banderas",
+    "country_area_ids": [
+      "mx"
+    ]
+  },
+  {
+    "id": "America/Barbados",
+    "country_area_ids": [
+      "bb"
+    ]
+  },
+  {
+    "id": "America/Belem",
+    "country_area_ids": [
+      "br"
+    ]
+  },
+  {
+    "id": "America/Belize",
+    "country_area_ids": [
+      "bz"
+    ]
+  },
+  {
+    "id": "America/Boa_Vista",
+    "country_area_ids": [
+      "br"
+    ]
+  },
+  {
+    "id": "America/Bogota",
+    "country_area_ids": [
+      "co"
+    ]
+  },
+  {
+    "id": "America/Boise",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "America/Cambridge_Bay",
+    "country_area_ids": [
+      "ca"
+    ]
+  },
+  {
+    "id": "America/Campo_Grande",
+    "country_area_ids": [
+      "br"
+    ]
+  },
+  {
+    "id": "America/Cancun",
+    "country_area_ids": [
+      "mx"
+    ]
+  },
+  {
+    "id": "America/Caracas",
+    "country_area_ids": [
+      "ve"
+    ]
+  },
+  {
+    "id": "America/Cayenne",
+    "country_area_ids": [
+      "gf"
+    ]
+  },
+  {
+    "id": "America/Chicago",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "America/Chihuahua",
+    "country_area_ids": [
+      "mx"
+    ]
+  },
+  {
+    "id": "America/Ciudad_Juarez",
+    "country_area_ids": [
+      "mx"
+    ]
+  },
+  {
+    "id": "America/Costa_Rica",
+    "country_area_ids": [
+      "cr"
+    ]
+  },
+  {
+    "id": "America/Coyhaique",
+    "country_area_ids": [
+      "cl"
+    ]
+  },
+  {
+    "id": "America/Cuiaba",
+    "country_area_ids": [
+      "br"
+    ]
+  },
+  {
+    "id": "America/Danmarkshavn",
+    "country_area_ids": [
+      "gl"
+    ]
+  },
+  {
+    "id": "America/Dawson",
+    "country_area_ids": [
+      "ca"
+    ]
+  },
+  {
+    "id": "America/Dawson_Creek",
+    "country_area_ids": [
+      "ca"
+    ]
+  },
+  {
+    "id": "America/Denver",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "America/Detroit",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "America/Edmonton",
+    "country_area_ids": [
+      "ca"
+    ]
+  },
+  {
+    "id": "America/Eirunepe",
+    "country_area_ids": [
+      "br"
+    ]
+  },
+  {
+    "id": "America/El_Salvador",
+    "country_area_ids": [
+      "sv"
+    ]
+  },
+  {
+    "id": "America/Fort_Nelson",
+    "country_area_ids": [
+      "ca"
+    ]
+  },
+  {
+    "id": "America/Fortaleza",
+    "country_area_ids": [
+      "br"
+    ]
+  },
+  {
+    "id": "America/Glace_Bay",
+    "country_area_ids": [
+      "ca"
+    ]
+  },
+  {
+    "id": "America/Goose_Bay",
+    "country_area_ids": [
+      "ca"
+    ]
+  },
+  {
+    "id": "America/Grand_Turk",
+    "country_area_ids": [
+      "tc"
+    ]
+  },
+  {
+    "id": "America/Guatemala",
+    "country_area_ids": [
+      "gt"
+    ]
+  },
+  {
+    "id": "America/Guayaquil",
+    "country_area_ids": [
+      "ec"
+    ]
+  },
+  {
+    "id": "America/Guyana",
+    "country_area_ids": [
+      "gy"
+    ]
+  },
+  {
+    "id": "America/Halifax",
+    "country_area_ids": [
+      "ca"
+    ]
+  },
+  {
+    "id": "America/Havana",
+    "country_area_ids": [
+      "cu"
+    ]
+  },
+  {
+    "id": "America/Hermosillo",
+    "country_area_ids": [
+      "mx"
+    ]
+  },
+  {
+    "id": "America/Indiana/Indianapolis",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "America/Indiana/Knox",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "America/Indiana/Marengo",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "America/Indiana/Petersburg",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "America/Indiana/Tell_City",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "America/Indiana/Vevay",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "America/Indiana/Vincennes",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "America/Indiana/Winamac",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "America/Inuvik",
+    "country_area_ids": [
+      "ca"
+    ]
+  },
+  {
+    "id": "America/Iqaluit",
+    "country_area_ids": [
+      "ca"
+    ]
+  },
+  {
+    "id": "America/Jamaica",
+    "country_area_ids": [
+      "jm"
+    ]
+  },
+  {
+    "id": "America/Juneau",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "America/Kentucky/Louisville",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "America/Kentucky/Monticello",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "America/La_Paz",
+    "country_area_ids": [
+      "bo"
+    ]
+  },
+  {
+    "id": "America/Lima",
+    "country_area_ids": [
+      "pe"
+    ]
+  },
+  {
+    "id": "America/Los_Angeles",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "America/Maceio",
+    "country_area_ids": [
+      "br"
+    ]
+  },
+  {
+    "id": "America/Managua",
+    "country_area_ids": [
+      "ni"
+    ]
+  },
+  {
+    "id": "America/Manaus",
+    "country_area_ids": [
+      "br"
+    ]
+  },
+  {
+    "id": "America/Martinique",
+    "country_area_ids": [
+      "mq"
+    ]
+  },
+  {
+    "id": "America/Matamoros",
+    "country_area_ids": [
+      "mx"
+    ]
+  },
+  {
+    "id": "America/Mazatlan",
+    "country_area_ids": [
+      "mx"
+    ]
+  },
+  {
+    "id": "America/Menominee",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "America/Merida",
+    "country_area_ids": [
+      "mx"
+    ]
+  },
+  {
+    "id": "America/Metlakatla",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "America/Mexico_City",
+    "country_area_ids": [
+      "mx"
+    ]
+  },
+  {
+    "id": "America/Miquelon",
+    "country_area_ids": [
+      "pm"
+    ]
+  },
+  {
+    "id": "America/Moncton",
+    "country_area_ids": [
+      "ca"
+    ]
+  },
+  {
+    "id": "America/Monterrey",
+    "country_area_ids": [
+      "mx"
+    ]
+  },
+  {
+    "id": "America/Montevideo",
+    "country_area_ids": [
+      "uy"
+    ]
+  },
+  {
+    "id": "America/New_York",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "America/Nome",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "America/Noronha",
+    "country_area_ids": [
+      "br"
+    ]
+  },
+  {
+    "id": "America/North_Dakota/Beulah",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "America/North_Dakota/Center",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "America/North_Dakota/New_Salem",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "America/Nuuk",
+    "country_area_ids": [
+      "gl"
+    ]
+  },
+  {
+    "id": "America/Ojinaga",
+    "country_area_ids": [
+      "mx"
+    ]
+  },
+  {
+    "id": "America/Panama",
+    "country_area_ids": [
+      "ca",
+      "ky",
+      "pa"
+    ]
+  },
+  {
+    "id": "America/Paramaribo",
+    "country_area_ids": [
+      "sr"
+    ]
+  },
+  {
+    "id": "America/Phoenix",
+    "country_area_ids": [
+      "ca",
+      "us"
+    ]
+  },
+  {
+    "id": "America/Port-au-Prince",
+    "country_area_ids": [
+      "ht"
+    ]
+  },
+  {
+    "id": "America/Porto_Velho",
+    "country_area_ids": [
+      "br"
+    ]
+  },
+  {
+    "id": "America/Puerto_Rico",
+    "country_area_ids": [
+      "ag",
+      "ai",
+      "aw",
+      "bl",
+      "bq",
+      "ca",
+      "cw",
+      "dm",
+      "gd",
+      "gp",
+      "kn",
+      "lc",
+      "mf",
+      "ms",
+      "pr",
+      "sx",
+      "tt",
+      "vc",
+      "vg",
+      "vi"
+    ]
+  },
+  {
+    "id": "America/Punta_Arenas",
+    "country_area_ids": [
+      "cl"
+    ]
+  },
+  {
+    "id": "America/Rankin_Inlet",
+    "country_area_ids": [
+      "ca"
+    ]
+  },
+  {
+    "id": "America/Recife",
+    "country_area_ids": [
+      "br"
+    ]
+  },
+  {
+    "id": "America/Regina",
+    "country_area_ids": [
+      "ca"
+    ]
+  },
+  {
+    "id": "America/Resolute",
+    "country_area_ids": [
+      "ca"
+    ]
+  },
+  {
+    "id": "America/Rio_Branco",
+    "country_area_ids": [
+      "br"
+    ]
+  },
+  {
+    "id": "America/Santarem",
+    "country_area_ids": [
+      "br"
+    ]
+  },
+  {
+    "id": "America/Santiago",
+    "country_area_ids": [
+      "cl"
+    ]
+  },
+  {
+    "id": "America/Santo_Domingo",
+    "country_area_ids": [
+      "do"
+    ]
+  },
+  {
+    "id": "America/Sao_Paulo",
+    "country_area_ids": [
+      "br"
+    ]
+  },
+  {
+    "id": "America/Scoresbysund",
+    "country_area_ids": [
+      "gl"
+    ]
+  },
+  {
+    "id": "America/Sitka",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "America/St_Johns",
+    "country_area_ids": [
+      "ca"
+    ]
+  },
+  {
+    "id": "America/Swift_Current",
+    "country_area_ids": [
+      "ca"
+    ]
+  },
+  {
+    "id": "America/Tegucigalpa",
+    "country_area_ids": [
+      "hn"
+    ]
+  },
+  {
+    "id": "America/Thule",
+    "country_area_ids": [
+      "gl"
+    ]
+  },
+  {
+    "id": "America/Tijuana",
+    "country_area_ids": [
+      "mx"
+    ]
+  },
+  {
+    "id": "America/Toronto",
+    "country_area_ids": [
+      "bs",
+      "ca"
+    ]
+  },
+  {
+    "id": "America/Vancouver",
+    "country_area_ids": [
+      "ca"
+    ]
+  },
+  {
+    "id": "America/Whitehorse",
+    "country_area_ids": [
+      "ca"
+    ]
+  },
+  {
+    "id": "America/Winnipeg",
+    "country_area_ids": [
+      "ca"
+    ]
+  },
+  {
+    "id": "America/Yakutat",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "Antarctica/Casey",
+    "country_area_ids": [
+      "aq"
+    ]
+  },
+  {
+    "id": "Antarctica/Davis",
+    "country_area_ids": [
+      "aq"
+    ]
+  },
+  {
+    "id": "Antarctica/Macquarie",
+    "country_area_ids": [
+      "au"
+    ]
+  },
+  {
+    "id": "Antarctica/Mawson",
+    "country_area_ids": [
+      "aq"
+    ]
+  },
+  {
+    "id": "Antarctica/Palmer",
+    "country_area_ids": [
+      "aq"
+    ]
+  },
+  {
+    "id": "Antarctica/Rothera",
+    "country_area_ids": [
+      "aq"
+    ]
+  },
+  {
+    "id": "Antarctica/Troll",
+    "country_area_ids": [
+      "aq"
+    ]
+  },
+  {
+    "id": "Antarctica/Vostok",
+    "country_area_ids": [
+      "aq"
+    ]
+  },
+  {
+    "id": "Asia/Almaty",
+    "country_area_ids": [
+      "kz"
+    ]
+  },
+  {
+    "id": "Asia/Amman",
+    "country_area_ids": [
+      "jo"
+    ]
+  },
+  {
+    "id": "Asia/Anadyr",
+    "country_area_ids": [
+      "ru"
+    ]
+  },
+  {
+    "id": "Asia/Aqtau",
+    "country_area_ids": [
+      "kz"
+    ]
+  },
+  {
+    "id": "Asia/Aqtobe",
+    "country_area_ids": [
+      "kz"
+    ]
+  },
+  {
+    "id": "Asia/Ashgabat",
+    "country_area_ids": [
+      "tm"
+    ]
+  },
+  {
+    "id": "Asia/Atyrau",
+    "country_area_ids": [
+      "kz"
+    ]
+  },
+  {
+    "id": "Asia/Baghdad",
+    "country_area_ids": [
+      "iq"
+    ]
+  },
+  {
+    "id": "Asia/Baku",
+    "country_area_ids": [
+      "az"
+    ]
+  },
+  {
+    "id": "Asia/Bangkok",
+    "country_area_ids": [
+      "cx",
+      "kh",
+      "la",
+      "th",
+      "vn"
+    ]
+  },
+  {
+    "id": "Asia/Barnaul",
+    "country_area_ids": [
+      "ru"
+    ]
+  },
+  {
+    "id": "Asia/Beirut",
+    "country_area_ids": [
+      "lb"
+    ]
+  },
+  {
+    "id": "Asia/Bishkek",
+    "country_area_ids": [
+      "kg"
+    ]
+  },
+  {
+    "id": "Asia/Chita",
+    "country_area_ids": [
+      "ru"
+    ]
+  },
+  {
+    "id": "Asia/Colombo",
+    "country_area_ids": [
+      "lk"
+    ]
+  },
+  {
+    "id": "Asia/Damascus",
+    "country_area_ids": [
+      "sy"
+    ]
+  },
+  {
+    "id": "Asia/Dhaka",
+    "country_area_ids": [
+      "bd"
+    ]
+  },
+  {
+    "id": "Asia/Dili",
+    "country_area_ids": [
+      "tl"
+    ]
+  },
+  {
+    "id": "Asia/Dubai",
+    "country_area_ids": [
+      "ae",
+      "om",
+      "re",
+      "sc",
+      "tf"
+    ]
+  },
+  {
+    "id": "Asia/Dushanbe",
+    "country_area_ids": [
+      "tj"
+    ]
+  },
+  {
+    "id": "Asia/Famagusta",
+    "country_area_ids": [
+      "cy"
+    ]
+  },
+  {
+    "id": "Asia/Gaza",
+    "country_area_ids": [
+      "ps"
+    ]
+  },
+  {
+    "id": "Asia/Hebron",
+    "country_area_ids": [
+      "ps"
+    ]
+  },
+  {
+    "id": "Asia/Ho_Chi_Minh",
+    "country_area_ids": [
+      "vn"
+    ]
+  },
+  {
+    "id": "Asia/Hong_Kong",
+    "country_area_ids": [
+      "hk"
+    ]
+  },
+  {
+    "id": "Asia/Hovd",
+    "country_area_ids": [
+      "mn"
+    ]
+  },
+  {
+    "id": "Asia/Irkutsk",
+    "country_area_ids": [
+      "ru"
+    ]
+  },
+  {
+    "id": "Asia/Jakarta",
+    "country_area_ids": [
+      "id"
+    ]
+  },
+  {
+    "id": "Asia/Jayapura",
+    "country_area_ids": [
+      "id"
+    ]
+  },
+  {
+    "id": "Asia/Jerusalem",
+    "country_area_ids": [
+      "il"
+    ]
+  },
+  {
+    "id": "Asia/Kabul",
+    "country_area_ids": [
+      "af"
+    ]
+  },
+  {
+    "id": "Asia/Kamchatka",
+    "country_area_ids": [
+      "ru"
+    ]
+  },
+  {
+    "id": "Asia/Karachi",
+    "country_area_ids": [
+      "pk"
+    ]
+  },
+  {
+    "id": "Asia/Kathmandu",
+    "country_area_ids": [
+      "np"
+    ]
+  },
+  {
+    "id": "Asia/Khandyga",
+    "country_area_ids": [
+      "ru"
+    ]
+  },
+  {
+    "id": "Asia/Kolkata",
+    "country_area_ids": [
+      "in"
+    ]
+  },
+  {
+    "id": "Asia/Krasnoyarsk",
+    "country_area_ids": [
+      "ru"
+    ]
+  },
+  {
+    "id": "Asia/Kuching",
+    "country_area_ids": [
+      "bn",
+      "my"
+    ]
+  },
+  {
+    "id": "Asia/Macau",
+    "country_area_ids": [
+      "mo"
+    ]
+  },
+  {
+    "id": "Asia/Magadan",
+    "country_area_ids": [
+      "ru"
+    ]
+  },
+  {
+    "id": "Asia/Makassar",
+    "country_area_ids": [
+      "id"
+    ]
+  },
+  {
+    "id": "Asia/Manila",
+    "country_area_ids": [
+      "ph"
+    ]
+  },
+  {
+    "id": "Asia/Nicosia",
+    "country_area_ids": [
+      "cy"
+    ]
+  },
+  {
+    "id": "Asia/Novokuznetsk",
+    "country_area_ids": [
+      "ru"
+    ]
+  },
+  {
+    "id": "Asia/Novosibirsk",
+    "country_area_ids": [
+      "ru"
+    ]
+  },
+  {
+    "id": "Asia/Omsk",
+    "country_area_ids": [
+      "ru"
+    ]
+  },
+  {
+    "id": "Asia/Oral",
+    "country_area_ids": [
+      "kz"
+    ]
+  },
+  {
+    "id": "Asia/Pontianak",
+    "country_area_ids": [
+      "id"
+    ]
+  },
+  {
+    "id": "Asia/Pyongyang",
+    "country_area_ids": [
+      "kp"
+    ]
+  },
+  {
+    "id": "Asia/Qatar",
+    "country_area_ids": [
+      "bh",
+      "qa"
+    ]
+  },
+  {
+    "id": "Asia/Qostanay",
+    "country_area_ids": [
+      "kz"
+    ]
+  },
+  {
+    "id": "Asia/Qyzylorda",
+    "country_area_ids": [
+      "kz"
+    ]
+  },
+  {
+    "id": "Asia/Riyadh",
+    "country_area_ids": [
+      "aq",
+      "kw",
+      "sa",
+      "ye"
+    ]
+  },
+  {
+    "id": "Asia/Sakhalin",
+    "country_area_ids": [
+      "ru"
+    ]
+  },
+  {
+    "id": "Asia/Samarkand",
+    "country_area_ids": [
+      "uz"
+    ]
+  },
+  {
+    "id": "Asia/Seoul",
+    "country_area_ids": [
+      "kr"
+    ]
+  },
+  {
+    "id": "Asia/Shanghai",
+    "country_area_ids": [
+      "cn"
+    ]
+  },
+  {
+    "id": "Asia/Singapore",
+    "country_area_ids": [
+      "aq",
+      "my",
+      "sg"
+    ]
+  },
+  {
+    "id": "Asia/Srednekolymsk",
+    "country_area_ids": [
+      "ru"
+    ]
+  },
+  {
+    "id": "Asia/Taipei",
+    "country_area_ids": []
+  },
+  {
+    "id": "Asia/Tashkent",
+    "country_area_ids": [
+      "uz"
+    ]
+  },
+  {
+    "id": "Asia/Tbilisi",
+    "country_area_ids": [
+      "ge"
+    ]
+  },
+  {
+    "id": "Asia/Tehran",
+    "country_area_ids": [
+      "ir"
+    ]
+  },
+  {
+    "id": "Asia/Thimphu",
+    "country_area_ids": [
+      "bt"
+    ]
+  },
+  {
+    "id": "Asia/Tokyo",
+    "country_area_ids": [
+      "au",
+      "jp"
+    ]
+  },
+  {
+    "id": "Asia/Tomsk",
+    "country_area_ids": [
+      "ru"
+    ]
+  },
+  {
+    "id": "Asia/Ulaanbaatar",
+    "country_area_ids": [
+      "mn"
+    ]
+  },
+  {
+    "id": "Asia/Urumqi",
+    "country_area_ids": [
+      "cn"
+    ]
+  },
+  {
+    "id": "Asia/Ust-Nera",
+    "country_area_ids": [
+      "ru"
+    ]
+  },
+  {
+    "id": "Asia/Vladivostok",
+    "country_area_ids": [
+      "ru"
+    ]
+  },
+  {
+    "id": "Asia/Yakutsk",
+    "country_area_ids": [
+      "ru"
+    ]
+  },
+  {
+    "id": "Asia/Yangon",
+    "country_area_ids": [
+      "cc",
+      "mm"
+    ]
+  },
+  {
+    "id": "Asia/Yekaterinburg",
+    "country_area_ids": [
+      "ru"
+    ]
+  },
+  {
+    "id": "Asia/Yerevan",
+    "country_area_ids": [
+      "am"
+    ]
+  },
+  {
+    "id": "Atlantic/Azores",
+    "country_area_ids": [
+      "pt"
+    ]
+  },
+  {
+    "id": "Atlantic/Bermuda",
+    "country_area_ids": [
+      "bm"
+    ]
+  },
+  {
+    "id": "Atlantic/Canary",
+    "country_area_ids": [
+      "es"
+    ]
+  },
+  {
+    "id": "Atlantic/Cape_Verde",
+    "country_area_ids": [
+      "cv"
+    ]
+  },
+  {
+    "id": "Atlantic/Faroe",
+    "country_area_ids": [
+      "fo"
+    ]
+  },
+  {
+    "id": "Atlantic/Madeira",
+    "country_area_ids": [
+      "pt"
+    ]
+  },
+  {
+    "id": "Atlantic/South_Georgia",
+    "country_area_ids": [
+      "gs"
+    ]
+  },
+  {
+    "id": "Atlantic/Stanley",
+    "country_area_ids": [
+      "fk"
+    ]
+  },
+  {
+    "id": "Australia/Adelaide",
+    "country_area_ids": [
+      "au"
+    ]
+  },
+  {
+    "id": "Australia/Brisbane",
+    "country_area_ids": [
+      "au"
+    ]
+  },
+  {
+    "id": "Australia/Broken_Hill",
+    "country_area_ids": [
+      "au"
+    ]
+  },
+  {
+    "id": "Australia/Darwin",
+    "country_area_ids": [
+      "au"
+    ]
+  },
+  {
+    "id": "Australia/Eucla",
+    "country_area_ids": [
+      "au"
+    ]
+  },
+  {
+    "id": "Australia/Hobart",
+    "country_area_ids": [
+      "au"
+    ]
+  },
+  {
+    "id": "Australia/Lindeman",
+    "country_area_ids": [
+      "au"
+    ]
+  },
+  {
+    "id": "Australia/Lord_Howe",
+    "country_area_ids": [
+      "au"
+    ]
+  },
+  {
+    "id": "Australia/Melbourne",
+    "country_area_ids": [
+      "au"
+    ]
+  },
+  {
+    "id": "Australia/Perth",
+    "country_area_ids": [
+      "au"
+    ]
+  },
+  {
+    "id": "Australia/Sydney",
+    "country_area_ids": [
+      "au"
+    ]
+  },
+  {
+    "id": "Europe/Andorra",
+    "country_area_ids": [
+      "ad"
+    ]
+  },
+  {
+    "id": "Europe/Astrakhan",
+    "country_area_ids": [
+      "ru"
+    ]
+  },
+  {
+    "id": "Europe/Athens",
+    "country_area_ids": [
+      "gr"
+    ]
+  },
+  {
+    "id": "Europe/Belgrade",
+    "country_area_ids": [
+      "ba",
+      "hr",
+      "me",
+      "mk",
+      "rs",
+      "si"
+    ]
+  },
+  {
+    "id": "Europe/Berlin",
+    "country_area_ids": [
+      "de",
+      "dk",
+      "no",
+      "se",
+      "sj"
+    ]
+  },
+  {
+    "id": "Europe/Brussels",
+    "country_area_ids": [
+      "be",
+      "lu",
+      "nl"
+    ]
+  },
+  {
+    "id": "Europe/Bucharest",
+    "country_area_ids": [
+      "ro"
+    ]
+  },
+  {
+    "id": "Europe/Budapest",
+    "country_area_ids": [
+      "hu"
+    ]
+  },
+  {
+    "id": "Europe/Chisinau",
+    "country_area_ids": [
+      "md"
+    ]
+  },
+  {
+    "id": "Europe/Dublin",
+    "country_area_ids": [
+      "ie"
+    ]
+  },
+  {
+    "id": "Europe/Gibraltar",
+    "country_area_ids": [
+      "gi"
+    ]
+  },
+  {
+    "id": "Europe/Helsinki",
+    "country_area_ids": [
+      "ax",
+      "fi"
+    ]
+  },
+  {
+    "id": "Europe/Istanbul",
+    "country_area_ids": [
+      "tr"
+    ]
+  },
+  {
+    "id": "Europe/Kaliningrad",
+    "country_area_ids": [
+      "ru"
+    ]
+  },
+  {
+    "id": "Europe/Kirov",
+    "country_area_ids": [
+      "ru"
+    ]
+  },
+  {
+    "id": "Europe/Kyiv",
+    "country_area_ids": [
+      "ua"
+    ]
+  },
+  {
+    "id": "Europe/Lisbon",
+    "country_area_ids": [
+      "pt"
+    ]
+  },
+  {
+    "id": "Europe/London",
+    "country_area_ids": [
+      "gb",
+      "gg",
+      "im",
+      "je"
+    ]
+  },
+  {
+    "id": "Europe/Madrid",
+    "country_area_ids": [
+      "es"
+    ]
+  },
+  {
+    "id": "Europe/Malta",
+    "country_area_ids": [
+      "mt"
+    ]
+  },
+  {
+    "id": "Europe/Minsk",
+    "country_area_ids": [
+      "by"
+    ]
+  },
+  {
+    "id": "Europe/Moscow",
+    "country_area_ids": [
+      "ru"
+    ]
+  },
+  {
+    "id": "Europe/Paris",
+    "country_area_ids": [
+      "fr",
+      "mc"
+    ]
+  },
+  {
+    "id": "Europe/Prague",
+    "country_area_ids": [
+      "cz",
+      "sk"
+    ]
+  },
+  {
+    "id": "Europe/Riga",
+    "country_area_ids": [
+      "lv"
+    ]
+  },
+  {
+    "id": "Europe/Rome",
+    "country_area_ids": [
+      "it",
+      "sm",
+      "va"
+    ]
+  },
+  {
+    "id": "Europe/Samara",
+    "country_area_ids": [
+      "ru"
+    ]
+  },
+  {
+    "id": "Europe/Saratov",
+    "country_area_ids": [
+      "ru"
+    ]
+  },
+  {
+    "id": "Europe/Simferopol",
+    "country_area_ids": [
+      "ru",
+      "ua"
+    ]
+  },
+  {
+    "id": "Europe/Sofia",
+    "country_area_ids": [
+      "bg"
+    ]
+  },
+  {
+    "id": "Europe/Tallinn",
+    "country_area_ids": [
+      "ee"
+    ]
+  },
+  {
+    "id": "Europe/Tirane",
+    "country_area_ids": [
+      "al"
+    ]
+  },
+  {
+    "id": "Europe/Ulyanovsk",
+    "country_area_ids": [
+      "ru"
+    ]
+  },
+  {
+    "id": "Europe/Vienna",
+    "country_area_ids": [
+      "at"
+    ]
+  },
+  {
+    "id": "Europe/Vilnius",
+    "country_area_ids": [
+      "lt"
+    ]
+  },
+  {
+    "id": "Europe/Volgograd",
+    "country_area_ids": [
+      "ru"
+    ]
+  },
+  {
+    "id": "Europe/Warsaw",
+    "country_area_ids": [
+      "pl"
+    ]
+  },
+  {
+    "id": "Europe/Zurich",
+    "country_area_ids": [
+      "ch",
+      "de",
+      "li"
+    ]
+  },
+  {
+    "id": "Indian/Chagos",
+    "country_area_ids": [
+      "io"
+    ]
+  },
+  {
+    "id": "Indian/Maldives",
+    "country_area_ids": [
+      "mv",
+      "tf"
+    ]
+  },
+  {
+    "id": "Indian/Mauritius",
+    "country_area_ids": [
+      "mu"
+    ]
+  },
+  {
+    "id": "Pacific/Apia",
+    "country_area_ids": [
+      "ws"
+    ]
+  },
+  {
+    "id": "Pacific/Auckland",
+    "country_area_ids": [
+      "aq",
+      "nz"
+    ]
+  },
+  {
+    "id": "Pacific/Bougainville",
+    "country_area_ids": [
+      "pg"
+    ]
+  },
+  {
+    "id": "Pacific/Chatham",
+    "country_area_ids": [
+      "nz"
+    ]
+  },
+  {
+    "id": "Pacific/Easter",
+    "country_area_ids": [
+      "cl"
+    ]
+  },
+  {
+    "id": "Pacific/Efate",
+    "country_area_ids": [
+      "vu"
+    ]
+  },
+  {
+    "id": "Pacific/Fakaofo",
+    "country_area_ids": [
+      "tk"
+    ]
+  },
+  {
+    "id": "Pacific/Fiji",
+    "country_area_ids": [
+      "fj"
+    ]
+  },
+  {
+    "id": "Pacific/Galapagos",
+    "country_area_ids": [
+      "ec"
+    ]
+  },
+  {
+    "id": "Pacific/Gambier",
+    "country_area_ids": [
+      "pf"
+    ]
+  },
+  {
+    "id": "Pacific/Guadalcanal",
+    "country_area_ids": [
+      "fm",
+      "sb"
+    ]
+  },
+  {
+    "id": "Pacific/Guam",
+    "country_area_ids": [
+      "gu",
+      "mp"
+    ]
+  },
+  {
+    "id": "Pacific/Honolulu",
+    "country_area_ids": [
+      "us"
+    ]
+  },
+  {
+    "id": "Pacific/Kanton",
+    "country_area_ids": [
+      "ki"
+    ]
+  },
+  {
+    "id": "Pacific/Kiritimati",
+    "country_area_ids": [
+      "ki"
+    ]
+  },
+  {
+    "id": "Pacific/Kosrae",
+    "country_area_ids": [
+      "fm"
+    ]
+  },
+  {
+    "id": "Pacific/Kwajalein",
+    "country_area_ids": [
+      "mh"
+    ]
+  },
+  {
+    "id": "Pacific/Marquesas",
+    "country_area_ids": [
+      "pf"
+    ]
+  },
+  {
+    "id": "Pacific/Nauru",
+    "country_area_ids": [
+      "nr"
+    ]
+  },
+  {
+    "id": "Pacific/Niue",
+    "country_area_ids": [
+      "nu"
+    ]
+  },
+  {
+    "id": "Pacific/Norfolk",
+    "country_area_ids": [
+      "nf"
+    ]
+  },
+  {
+    "id": "Pacific/Noumea",
+    "country_area_ids": [
+      "nc"
+    ]
+  },
+  {
+    "id": "Pacific/Pago_Pago",
+    "country_area_ids": [
+      "as",
+      "um"
+    ]
+  },
+  {
+    "id": "Pacific/Palau",
+    "country_area_ids": [
+      "pw"
+    ]
+  },
+  {
+    "id": "Pacific/Pitcairn",
+    "country_area_ids": [
+      "pn"
+    ]
+  },
+  {
+    "id": "Pacific/Port_Moresby",
+    "country_area_ids": [
+      "aq",
+      "fm",
+      "pg"
+    ]
+  },
+  {
+    "id": "Pacific/Rarotonga",
+    "country_area_ids": [
+      "ck"
+    ]
+  },
+  {
+    "id": "Pacific/Tahiti",
+    "country_area_ids": [
+      "pf"
+    ]
+  },
+  {
+    "id": "Pacific/Tarawa",
+    "country_area_ids": [
+      "ki",
+      "mh",
+      "tv",
+      "um",
+      "wf"
+    ]
+  },
+  {
+    "id": "Pacific/Tongatapu",
+    "country_area_ids": [
+      "to"
+    ]
+  }
+]
