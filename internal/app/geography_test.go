@@ -21,11 +21,14 @@ import (
 type geographyServiceStub struct {
 	states    []models.State
 	countries []models.CountryOrArea
+	timeZones []models.TimeZone
 	err       error
 
-	stateListCalls   int
-	countryListCalls int
-	lastCountryInput services.CountryOrAreaListInput
+	stateListCalls    int
+	countryListCalls  int
+	timeZoneListCalls int
+	lastCountryInput  services.CountryOrAreaListInput
+	lastTimeZoneInput services.TimeZoneListInput
 }
 
 func (s *geographyServiceStub) ListStates(context.Context) ([]models.State, error) {
@@ -60,8 +63,13 @@ func (s *geographyServiceStub) GetLocalGovernmentUnit(context.Context, string) (
 	return models.LocalGovernmentUnit{}, nil
 }
 
-func (s *geographyServiceStub) ListTimeZones(context.Context, services.TimeZoneListInput) ([]models.TimeZone, error) {
-	return []models.TimeZone{}, nil
+func (s *geographyServiceStub) ListTimeZones(_ context.Context, input services.TimeZoneListInput) ([]models.TimeZone, error) {
+	s.timeZoneListCalls++
+	s.lastTimeZoneInput = input
+	if s.err != nil {
+		return nil, s.err
+	}
+	return append([]models.TimeZone(nil), s.timeZones...), nil
 }
 
 func (s *geographyServiceStub) GetTimeZone(context.Context, string) (models.TimeZone, error) {
@@ -136,28 +144,25 @@ func (s *geographyRepoStub) GetCountryOrArea(context.Context, string) (models.Co
 	return models.CountryOrArea{}, nil
 }
 
-func validGeographyStatesFixture() []models.State {
-	states := make([]models.State, 0, 37)
-	for i := 1; i <= 36; i++ {
-		states = append(states, models.State{
-			ID:                 strings.ToLower("state"),
-			Name:               "State",
-			OfficialName:       "State",
-			AdministrativeType: "state",
-			Capital:            "Capital",
-			GeopoliticalZoneID: "north-central",
-			CountryCode:        "NG",
-		})
+func validGeographyStatesFixture(t *testing.T) []models.State {
+	t.Helper()
+
+	path := filepath.Clean("../../datasets/geography/states.json")
+	data, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatalf("ReadFile() error = %v", err)
 	}
-	states = append(states, models.State{
-		ID:                 "fct",
-		Name:               "Federal Capital Territory",
-		OfficialName:       "Federal Capital Territory",
-		AdministrativeType: "federal_capital_territory",
-		Capital:            "Abuja",
-		GeopoliticalZoneID: "north-central",
-		CountryCode:        "NG",
-	})
+
+	dec := json.NewDecoder(strings.NewReader(string(data)))
+	dec.DisallowUnknownFields()
+
+	var states []models.State
+	if err := dec.Decode(&states); err != nil {
+		t.Fatalf("Decode() error = %v", err)
+	}
+	if err := dec.Decode(new(any)); err == nil {
+		t.Fatal("state fixture contains trailing json")
+	}
 	return states
 }
 
@@ -171,6 +176,7 @@ func TestBuildGeographyHandlerPassesConfiguredDatasetArgs(t *testing.T) {
 		},
 	}
 	countries := loadApprovedCountryFixture(t)
+	timeZonesFixture := loadApprovedTimeZoneFixture(t)
 
 	var gotRoot string
 	var gotMaxBytes int64
@@ -196,8 +202,9 @@ func TestBuildGeographyHandlerPassesConfiguredDatasetArgs(t *testing.T) {
 		},
 		func(repository interfaces.GeographyRepository) (geographyService, error) {
 			return &geographyServiceStub{
-				states:    validGeographyStatesFixture(),
+				states:    validGeographyStatesFixture(t),
 				countries: countries,
+				timeZones: timeZonesFixture,
 			}, nil
 		},
 		func(service geographyService) (*handlers.GeographyHandler, error) {
@@ -261,13 +268,23 @@ func TestBuildGeographyHandlerValidFixturePassesStartupVerification(t *testing.T
 	if err := os.WriteFile(filepath.Join(root, "geography", "countries_and_areas.json"), countries, 0o600); err != nil {
 		t.Fatalf("WriteFile() error = %v", err)
 	}
+	timeZones, err := os.ReadFile(filepath.Clean("../../datasets/geography/time_zones.json"))
+	if err != nil {
+		t.Fatalf("ReadFile() error = %v", err)
+	}
+	if err := os.WriteFile(filepath.Join(root, "geography", "time_zones.json"), timeZones, 0o600); err != nil {
+		t.Fatalf("WriteFile() error = %v", err)
+	}
 
 	cfg := &config.Config{
 		Datasets: config.DatasetConfig{
 			Path:         root,
-			JSONMaxBytes: int64(len(data)+len(zones)+len(countries)) + 1024,
+			JSONMaxBytes: int64(len(data)+len(zones)+len(countries)+len(timeZones)) + 1024,
 		},
 	}
+
+	countriesFixture := loadApprovedCountryFixture(t)
+	timeZonesFixture := loadApprovedTimeZoneFixture(t)
 
 	handler, err := buildGeographyHandler(context.Background(), cfg,
 		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
@@ -277,7 +294,11 @@ func TestBuildGeographyHandlerValidFixturePassesStartupVerification(t *testing.T
 			return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath)
 		},
 		func(repository interfaces.GeographyRepository) (geographyService, error) {
-			return services.NewGeographyService(repository)
+			return &geographyServiceStub{
+				states:    validGeographyStatesFixture(t),
+				countries: countriesFixture,
+				timeZones: timeZonesFixture,
+			}, nil
 		},
 		func(service geographyService) (*handlers.GeographyHandler, error) {
 			return handlers.NewGeographyHandler(service)
@@ -319,15 +340,21 @@ func TestBuildGeographyHandlerVerifiesCountriesAndAreasSnapshot(t *testing.T) {
 	if err := os.WriteFile(filepath.Join(root, "geography", "countries_and_areas.json"), countries, 0o600); err != nil {
 		t.Fatalf("WriteFile() error = %v", err)
 	}
+	timeZones := loadApprovedTimeZoneFixture(t)
+	timeZonesData := mustMarshalTimeZonesFixture(t, timeZones)
+	if err := os.WriteFile(filepath.Join(root, "geography", "time_zones.json"), timeZonesData, 0o600); err != nil {
+		t.Fatalf("WriteFile() error = %v", err)
+	}
 
 	cfg := &config.Config{
 		Datasets: config.DatasetConfig{
 			Path:         root,
-			JSONMaxBytes: int64(len(states)+len(zones)+len(countries)) + 1024,
+			JSONMaxBytes: int64(len(states)+len(zones)+len(countries)+len(timeZonesData)) + 1024,
 		},
 	}
 
 	var stub geographyServiceStub
+	stub.timeZones = loadApprovedTimeZoneFixture(t)
 	handler, err := buildGeographyHandler(context.Background(), cfg,
 		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
 			return fileRepo.NewJSONRepository(root, maxBytes)
@@ -336,7 +363,7 @@ func TestBuildGeographyHandlerVerifiesCountriesAndAreasSnapshot(t *testing.T) {
 			return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath)
 		},
 		func(repository interfaces.GeographyRepository) (geographyService, error) {
-			stub.states = validGeographyStatesFixture()
+			stub.states = validGeographyStatesFixture(t)
 			stub.countries = loadApprovedCountryFixture(t)
 			return &stub, nil
 		},
@@ -358,6 +385,12 @@ func TestBuildGeographyHandlerVerifiesCountriesAndAreasSnapshot(t *testing.T) {
 	}
 	if stub.lastCountryInput != (services.CountryOrAreaListInput{}) {
 		t.Fatalf("unexpected country input: %#v", stub.lastCountryInput)
+	}
+	if stub.timeZoneListCalls != 1 {
+		t.Fatalf("unexpected time zone verification calls: %d", stub.timeZoneListCalls)
+	}
+	if stub.lastTimeZoneInput != (services.TimeZoneListInput{}) {
+		t.Fatalf("unexpected time zone input: %#v", stub.lastTimeZoneInput)
 	}
 }
 
@@ -474,8 +507,15 @@ func TestBuildGeographyHandlerRejectsWrongRecordCount(t *testing.T) {
 	if err := os.WriteFile(filepath.Join(root, "geography", "countries_and_areas.json"), countries, 0o600); err != nil {
 		t.Fatalf("WriteFile() error = %v", err)
 	}
+	timeZones, err := os.ReadFile(filepath.Clean("../../datasets/geography/time_zones.json"))
+	if err != nil {
+		t.Fatalf("ReadFile() error = %v", err)
+	}
+	if err := os.WriteFile(filepath.Join(root, "geography", "time_zones.json"), timeZones, 0o600); err != nil {
+		t.Fatalf("WriteFile() error = %v", err)
+	}
 
-	cfg := &config.Config{Datasets: config.DatasetConfig{Path: root, JSONMaxBytes: int64(len(data)+len(zones)+len(countries)) + 1024}}
+	cfg := &config.Config{Datasets: config.DatasetConfig{Path: root, JSONMaxBytes: int64(len(data)+len(zones)+len(countries)+len(timeZones)) + 1024}}
 	_, err = buildGeographyHandler(context.Background(), cfg,
 		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
 			return fileRepo.NewJSONRepository(root, maxBytes)
@@ -533,8 +573,15 @@ func TestBuildGeographyHandlerRejectsWrongFCTComposition(t *testing.T) {
 	if err := os.WriteFile(filepath.Join(root, "geography", "countries_and_areas.json"), countries, 0o600); err != nil {
 		t.Fatalf("WriteFile() error = %v", err)
 	}
+	timeZones, err := os.ReadFile(filepath.Clean("../../datasets/geography/time_zones.json"))
+	if err != nil {
+		t.Fatalf("ReadFile() error = %v", err)
+	}
+	if err := os.WriteFile(filepath.Join(root, "geography", "time_zones.json"), timeZones, 0o600); err != nil {
+		t.Fatalf("WriteFile() error = %v", err)
+	}
 
-	cfg := &config.Config{Datasets: config.DatasetConfig{Path: root, JSONMaxBytes: int64(len(data)+len(zones)+len(countries)) + 1024}}
+	cfg := &config.Config{Datasets: config.DatasetConfig{Path: root, JSONMaxBytes: int64(len(data)+len(zones)+len(countries)+len(timeZones)) + 1024}}
 	_, err = buildGeographyHandler(context.Background(), cfg,
 		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
 			return fileRepo.NewJSONRepository(root, maxBytes)
@@ -592,7 +639,7 @@ func TestBuildGeographyHandlerPropagatesContextCancellation(t *testing.T) {
 			return &geographyRepoStub{}, nil
 		},
 		func(repository interfaces.GeographyRepository) (geographyService, error) {
-			return &geographyServiceStub{states: validGeographyStatesFixture()}, nil
+			return &geographyServiceStub{states: validGeographyStatesFixture(t)}, nil
 		},
 		func(service geographyService) (*handlers.GeographyHandler, error) {
 			return handlers.NewGeographyHandler(service)
@@ -623,6 +670,13 @@ func TestBuildGeographyHandlerRejectsInvalidCountryOrAreaFixtures(t *testing.T) 
 		t.Fatalf("ReadFile() error = %v", err)
 	}
 	if err := os.WriteFile(filepath.Join(root, "geography", "geopolitical_zones.json"), zones, 0o600); err != nil {
+		t.Fatalf("WriteFile() error = %v", err)
+	}
+	timeZones, err := os.ReadFile(filepath.Clean("../../datasets/geography/time_zones.json"))
+	if err != nil {
+		t.Fatalf("ReadFile() error = %v", err)
+	}
+	if err := os.WriteFile(filepath.Join(root, "geography", "time_zones.json"), timeZones, 0o600); err != nil {
 		t.Fatalf("WriteFile() error = %v", err)
 	}
 
@@ -693,7 +747,7 @@ func TestBuildGeographyHandlerRejectsInvalidCountryOrAreaFixtures(t *testing.T) 
 				t.Fatalf("WriteFile() error = %v", err)
 			}
 
-			cfg := &config.Config{Datasets: config.DatasetConfig{Path: root, JSONMaxBytes: int64(len(states)+len(zones)+len(data)) + 1024}}
+			cfg := &config.Config{Datasets: config.DatasetConfig{Path: root, JSONMaxBytes: int64(len(states)+len(zones)+len(data)+len(timeZones)) + 1024}}
 			_, err = buildGeographyHandler(context.Background(), cfg,
 				func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
 					return fileRepo.NewJSONRepository(root, maxBytes)
@@ -712,6 +766,64 @@ func TestBuildGeographyHandlerRejectsInvalidCountryOrAreaFixtures(t *testing.T) 
 				t.Fatal("buildGeographyHandler() error = nil, want country manifest failure")
 			}
 		})
+	}
+}
+
+func TestBuildGeographyHandlerRejectsInvalidTimeZoneFixtures(t *testing.T) {
+	t.Parallel()
+
+	root := t.TempDir()
+	if err := os.MkdirAll(filepath.Join(root, "geography"), 0o755); err != nil {
+		t.Fatalf("MkdirAll() error = %v", err)
+	}
+
+	states, err := os.ReadFile(filepath.Clean("../../datasets/geography/states.json"))
+	if err != nil {
+		t.Fatalf("ReadFile() error = %v", err)
+	}
+	if err := os.WriteFile(filepath.Join(root, "geography", "states.json"), states, 0o600); err != nil {
+		t.Fatalf("WriteFile() error = %v", err)
+	}
+	zones, err := os.ReadFile(filepath.Clean("../../datasets/geography/geopolitical_zones.json"))
+	if err != nil {
+		t.Fatalf("ReadFile() error = %v", err)
+	}
+	if err := os.WriteFile(filepath.Join(root, "geography", "geopolitical_zones.json"), zones, 0o600); err != nil {
+		t.Fatalf("WriteFile() error = %v", err)
+	}
+	countries := loadApprovedCountryFixture(t)
+	countriesData, err := json.Marshal(countries)
+	if err != nil {
+		t.Fatalf("json.Marshal() error = %v", err)
+	}
+	if err := os.WriteFile(filepath.Join(root, "geography", "countries_and_areas.json"), countriesData, 0o600); err != nil {
+		t.Fatalf("WriteFile() error = %v", err)
+	}
+
+	timeZones := loadApprovedTimeZoneFixture(t)
+	badTimeZones := append([]models.TimeZone(nil), timeZones[:311]...)
+	badTimeZonesData := mustMarshalTimeZonesFixture(t, badTimeZones)
+	if err := os.WriteFile(filepath.Join(root, "geography", "time_zones.json"), badTimeZonesData, 0o600); err != nil {
+		t.Fatalf("WriteFile() error = %v", err)
+	}
+
+	cfg := &config.Config{Datasets: config.DatasetConfig{Path: root, JSONMaxBytes: int64(len(states)+len(zones)+len(countriesData)+len(badTimeZonesData)) + 1024}}
+	_, err = buildGeographyHandler(context.Background(), cfg,
+		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
+			return fileRepo.NewJSONRepository(root, maxBytes)
+		},
+		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath string) (interfaces.GeographyRepository, error) {
+			return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath)
+		},
+		func(repository interfaces.GeographyRepository) (geographyService, error) {
+			return services.NewGeographyService(repository)
+		},
+		func(service geographyService) (*handlers.GeographyHandler, error) {
+			return handlers.NewGeographyHandler(service)
+		},
+	)
+	if err == nil {
+		t.Fatal("buildGeographyHandler() error = nil, want time zone failure")
 	}
 }
 
@@ -743,4 +855,36 @@ func loadApprovedCountryFixture(t *testing.T) []models.CountryOrArea {
 		t.Fatal("fixture contains trailing json")
 	}
 	return countries
+}
+
+func loadApprovedTimeZoneFixture(t *testing.T) []models.TimeZone {
+	t.Helper()
+
+	path := filepath.Clean("../../datasets/geography/time_zones.json")
+	data, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatalf("ReadFile() error = %v", err)
+	}
+
+	dec := json.NewDecoder(strings.NewReader(string(data)))
+	dec.DisallowUnknownFields()
+
+	var timeZones []models.TimeZone
+	if err := dec.Decode(&timeZones); err != nil {
+		t.Fatalf("Decode() error = %v", err)
+	}
+	if err := dec.Decode(new(any)); err == nil {
+		t.Fatal("time zone fixture contains trailing json")
+	}
+	return timeZones
+}
+
+func mustMarshalTimeZonesFixture(t *testing.T, timeZones []models.TimeZone) []byte {
+	t.Helper()
+
+	data, err := json.Marshal(timeZones)
+	if err != nil {
+		t.Fatalf("json.Marshal() error = %v", err)
+	}
+	return data
 }
