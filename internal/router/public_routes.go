@@ -249,5 +249,31 @@ func registerPublicRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers,
 		return err
 	}
 
+	financeCurrenciesList, err := buildRouteMiddlewares(mw, "/v1/finance/currencies", "finance", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build finance currencies middleware: %w", err)
+	}
+	mux.Handle("GET /v1/finance/currencies", compose(http.HandlerFunc(h.Finance.ListCurrencies), financeCurrenciesList...))
+	if err := catalog.add("GET /v1/finance/currencies"); err != nil {
+		return err
+	}
+
+	financeCurrencyDetail, err := buildRouteMiddlewares(mw, "/v1/finance/currencies/{currency_id}", "finance", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build finance currencies detail middleware: %w", err)
+	}
+	mux.Handle("GET /v1/finance/currencies/{currency_id}", compose(http.HandlerFunc(h.Finance.GetCurrency), financeCurrencyDetail...))
+	if err := catalog.add("GET /v1/finance/currencies/{currency_id}"); err != nil {
+		return err
+	}
+
 	return nil
 }

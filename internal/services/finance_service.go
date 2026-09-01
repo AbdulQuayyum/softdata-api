@@ -13,6 +13,8 @@ import (
 
 var financePaymentServiceProviderIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)+$`)
 var financeInternationalMoneyTransferOperatorIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)*$`)
+var financeCurrencyIDPattern = regexp.MustCompile(`^[a-z]{3}$`)
+var financeCurrencyCountryAreaIDPattern = regexp.MustCompile(`^[a-z]{2}$`)
 
 var allowedFinanceInstitutionTypes = map[string]struct{}{
 	"mobile_money_operator":               {},
@@ -27,6 +29,11 @@ var allowedFinanceInstitutionTypes = map[string]struct{}{
 // FinanceService provides payment-service-provider lookups over the finance repository.
 type FinanceService struct {
 	repository interfaces.FinanceRepository
+}
+
+// CurrencyListInput narrows currency list results by country or area.
+type CurrencyListInput struct {
+	CountryAreaID string
 }
 
 func NewFinanceService(repository interfaces.FinanceRepository) (*FinanceService, error) {
@@ -111,6 +118,40 @@ func (s *FinanceService) GetInternationalMoneyTransferOperator(ctx context.Conte
 	return operator, nil
 }
 
+func (s *FinanceService) ListCurrencies(ctx context.Context, input CurrencyListInput) ([]models.Currency, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+
+	filter, err := normalizeFinanceCurrencyListInput(input)
+	if err != nil {
+		return nil, err
+	}
+
+	currencies, err := s.repository.ListCurrencies(ctx, interfaces.CurrencyFilter{CountryAreaID: filter})
+	if err != nil {
+		return nil, translateFinanceCurrencyServiceError("list currencies", err)
+	}
+	return cloneCurrencyList(currencies), nil
+}
+
+func (s *FinanceService) GetCurrency(ctx context.Context, currencyID string) (models.Currency, error) {
+	if err := ctx.Err(); err != nil {
+		return models.Currency{}, err
+	}
+
+	normalizedID, err := normalizeFinanceCurrencyID(currencyID)
+	if err != nil {
+		return models.Currency{}, err
+	}
+
+	currency, err := s.repository.GetCurrency(ctx, normalizedID)
+	if err != nil {
+		return models.Currency{}, translateFinanceCurrencyLookupError(err)
+	}
+	return currency, nil
+}
+
 func cloneInternationalMoneyTransferOperatorList(operators []models.InternationalMoneyTransferOperator) []models.InternationalMoneyTransferOperator {
 	if len(operators) == 0 {
 		return make([]models.InternationalMoneyTransferOperator, 0)
@@ -129,6 +170,15 @@ func clonePaymentServiceProviderList(providers []models.PaymentServiceProvider) 
 	return cloned
 }
 
+func cloneCurrencyList(currencies []models.Currency) []models.Currency {
+	if len(currencies) == 0 {
+		return make([]models.Currency, 0)
+	}
+	cloned := make([]models.Currency, len(currencies))
+	copy(cloned, currencies)
+	return cloned
+}
+
 func normalizeFinancePaymentServiceProviderID(providerID string) (string, error) {
 	providerID = strings.TrimSpace(providerID)
 	if providerID == "" || !financePaymentServiceProviderIDPattern.MatchString(providerID) {
@@ -143,6 +193,25 @@ func normalizeFinanceInternationalMoneyTransferOperatorID(operatorID string) (st
 		return "", ErrInvalidInternationalMoneyTransferOperatorID
 	}
 	return operatorID, nil
+}
+
+func normalizeFinanceCurrencyID(currencyID string) (string, error) {
+	currencyID = strings.TrimSpace(currencyID)
+	if currencyID == "" || !financeCurrencyIDPattern.MatchString(currencyID) {
+		return "", ErrInvalidCurrencyID
+	}
+	return currencyID, nil
+}
+
+func normalizeFinanceCurrencyListInput(input CurrencyListInput) (string, error) {
+	countryAreaID := strings.TrimSpace(input.CountryAreaID)
+	if countryAreaID == "" {
+		return "", nil
+	}
+	if !financeCurrencyCountryAreaIDPattern.MatchString(countryAreaID) {
+		return "", ErrInvalidCurrencyCountryAreaID
+	}
+	return countryAreaID, nil
 }
 
 func normalizeFinanceInstitutionType(institutionType string) (string, error) {
@@ -183,6 +252,38 @@ func translateFinanceIMTOLookupError(err error) error {
 		return fmt.Errorf("get international money transfer operator: repository unavailable")
 	default:
 		return fmt.Errorf("get international money transfer operator: repository unavailable")
+	}
+}
+
+func translateFinanceCurrencyLookupError(err error) error {
+	switch {
+	case err == nil:
+		return nil
+	case errors.Is(err, context.Canceled), errors.Is(err, context.DeadlineExceeded):
+		return err
+	case errors.Is(err, interfaces.ErrCurrencyNotFound):
+		return ErrCurrencyNotFound
+	case errors.Is(err, interfaces.ErrInvalidCurrencyCountryAreaID):
+		return ErrInvalidCurrencyCountryAreaID
+	case errors.Is(err, interfaces.ErrInvalidDatasetFile), errors.Is(err, interfaces.ErrDatasetFileNotFound), errors.Is(err, interfaces.ErrDatasetFileUnavailable):
+		return fmt.Errorf("get currency: repository unavailable")
+	default:
+		return fmt.Errorf("get currency: repository unavailable")
+	}
+}
+
+func translateFinanceCurrencyServiceError(op string, err error) error {
+	switch {
+	case err == nil:
+		return nil
+	case errors.Is(err, context.Canceled), errors.Is(err, context.DeadlineExceeded):
+		return err
+	case errors.Is(err, interfaces.ErrInvalidCurrencyCountryAreaID):
+		return ErrInvalidCurrencyCountryAreaID
+	case errors.Is(err, interfaces.ErrInvalidDatasetFile), errors.Is(err, interfaces.ErrDatasetFileNotFound), errors.Is(err, interfaces.ErrDatasetFileUnavailable):
+		return fmt.Errorf("%s: repository unavailable", op)
+	default:
+		return fmt.Errorf("%s: repository unavailable", op)
 	}
 }
 

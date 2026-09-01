@@ -1,0 +1,53 @@
+{
+  "dataset_key": "world-currencies",
+  "title": "World Currencies",
+  "description": "Independently compiled factual reference data for the current ISO 4217 monetary currency snapshot from the SIX List One XML. Each record represents one current monetary currency and its approved world-countries-and-areas relationships.",
+  "country_code": "001",
+  "dataset_group": "finance",
+  "format": "json",
+  "relative_path": "finance/currencies.json",
+  "schema_path": "schemas/finance/currencies.schema.json",
+  "record_count": 155,
+  "version": "1.0.0",
+  "license_id": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "methodology": "Independently compiled and cross-verified factual reference data from the current SIX ISO 4217 List One XML. The XML payload was retrieved three times with consistent results and a source SHA-256 of 838dfb991648cf36df939edd5fe3811737962b75a32252847d239cedd1e291c9. The source snapshot contained 280 rows and 178 unique currency codes; after excluding historical, special-purpose, fund, testing, metal and no-currency codes, 155 current monetary currencies remained. SoftData aggregated entity rows into one record per monetary currency, preserved the source currency name, numeric code and minor unit as published, sorted the final manifest into deterministic name order by name then alphabetic_code, and sorted every country_area_ids array lexicographically. The approved crosswalk to world-countries-and-areas uses public M49 country/area IDs only; TWD intentionally has an empty country_area_ids array; Antarctica, State of Palestine and South Georgia and the South Sandwich Islands carry no reverse currency relationship; Kosovo and the European Union are not added as SoftData country/area IDs; ISO-derived alpha codes are used as public factual identifiers, while ISO and SIX source publications retain their own rights and are cited for reference only. SoftData's independent compilation, schema and metadata are licensed under CC BY 4.0.",
+  "sources": [
+    {
+      "organization": "SIX Group",
+      "title": "ISO 4217 List One XML",
+      "url": "https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml",
+      "purpose": "Verify the current monetary-currency snapshot, row counts, currency names, numeric codes and minor units used for compilation.",
+      "accessed_at": "2026-08-31T20:50:56Z"
+    },
+    {
+      "organization": "SIX Group",
+      "title": "ISO 4217 List One XML",
+      "url": "https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml",
+      "purpose": "Verify the current monetary-currency snapshot, row counts, currency names, numeric codes and minor units used for compilation.",
+      "accessed_at": "2026-08-31T20:50:57Z"
+    },
+    {
+      "organization": "SIX Group",
+      "title": "ISO 4217 List One XML",
+      "url": "https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml",
+      "purpose": "Verify the current monetary-currency snapshot, row counts, currency names, numeric codes and minor units used for compilation.",
+      "accessed_at": "2026-08-31T20:50:58Z"
+    },
+    {
+      "organization": "ISO",
+      "title": "ISO 4217 currency codes",
+      "url": "https://www.iso.org/iso-4217-currency-codes.html",
+      "purpose": "Reference the official ISO 4217 programme and published code list used for the monetary-currency contract boundary.",
+      "accessed_at": "2026-08-30"
+    },
+    {
+      "organization": "SIX Group",
+      "title": "Market reference data standards",
+      "url": "https://www.six-group.com/en/products-services/financial-information/market-reference-data/data-standards.html",
+      "purpose": "Reference the SIX market-reference-data standards page that hosts the public ISO 4217 List One XML distribution.",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "verified_at": "2026-08-31"
+}

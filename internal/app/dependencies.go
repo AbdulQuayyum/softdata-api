@@ -336,6 +336,8 @@ type financeService interface {
 	GetPaymentServiceProvider(context.Context, string) (models.PaymentServiceProvider, error)
 	ListInternationalMoneyTransferOperators(context.Context) ([]models.InternationalMoneyTransferOperator, error)
 	GetInternationalMoneyTransferOperator(context.Context, string) (models.InternationalMoneyTransferOperator, error)
+	ListCurrencies(context.Context, services.CurrencyListInput) ([]models.Currency, error)
+	GetCurrency(context.Context, string) (models.Currency, error)
 }
 
 func buildGeographyHandler(
@@ -548,6 +550,9 @@ func buildFinanceHandlerFromJSONRepository(
 		return nil, fmt.Errorf("initialize finance service: %w", err)
 	}
 	if err := verifyFinanceDataset(ctx, financeService); err != nil {
+		return nil, err
+	}
+	if err := verifyCurrencyDataset(ctx, financeService); err != nil {
 		return nil, err
 	}
 	financeHandler, err := newFinanceHandler(financeService)
@@ -919,6 +924,87 @@ func verifyFinanceDataset(ctx context.Context, service financeService) error {
 	}
 	if len(operators) != 108 {
 		return fmt.Errorf("verify finance dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+	return nil
+}
+
+func verifyCurrencyDataset(ctx context.Context, service financeService) error {
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if service == nil {
+		return fmt.Errorf("verify currency dataset: finance service is required")
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+
+	currencies, err := service.ListCurrencies(ctx, services.CurrencyListInput{})
+	if err != nil {
+		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+			return err
+		}
+		return fmt.Errorf("verify currency dataset: %w", err)
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+	if len(currencies) != 155 {
+		return fmt.Errorf("verify currency dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+
+	const expectedRelationships = 252
+	const expectedMappedCountryAreas = 245
+	expectedSharedCurrencyCounts := map[string]int{
+		"AUD": 8,
+		"DKK": 3,
+		"EUR": 36,
+		"GBP": 4,
+		"NZD": 5,
+		"USD": 19,
+		"XAF": 6,
+		"XCD": 8,
+		"XCG": 2,
+		"XOF": 8,
+		"XPF": 3,
+	}
+	zeroMapping := map[string]struct{}{
+		"aq": {},
+		"gs": {},
+		"ps": {},
+	}
+
+	relationships := 0
+	mappedCountryAreas := make(map[string]struct{}, expectedMappedCountryAreas)
+	for _, currency := range currencies {
+		if currency.ID == "" || currency.Name == "" || currency.AlphabeticCode == "" || currency.NumericCode == "" {
+			return fmt.Errorf("verify currency dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+		if len(currency.CountryAreaIDs) == 0 {
+			if currency.AlphabeticCode != "TWD" {
+				return fmt.Errorf("verify currency dataset: %w", interfaces.ErrInvalidDatasetFile)
+			}
+			continue
+		}
+		if expected, ok := expectedSharedCurrencyCounts[currency.AlphabeticCode]; ok && len(currency.CountryAreaIDs) != expected {
+			return fmt.Errorf("verify currency dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+		relationships += len(currency.CountryAreaIDs)
+		for _, countryAreaID := range currency.CountryAreaIDs {
+			mappedCountryAreas[countryAreaID] = struct{}{}
+		}
+	}
+
+	if relationships != expectedRelationships {
+		return fmt.Errorf("verify currency dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+	if len(mappedCountryAreas) != expectedMappedCountryAreas {
+		return fmt.Errorf("verify currency dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+	for countryAreaID := range zeroMapping {
+		if _, ok := mappedCountryAreas[countryAreaID]; ok {
+			return fmt.Errorf("verify currency dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
 	}
 	return nil
 }

@@ -143,6 +143,10 @@ func mapError(err error) mappedError {
 		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}
 	case errors.Is(err, services.ErrInvalidInternationalMoneyTransferOperatorID):
 		return mappedError{status: http.StatusBadRequest, code: codeInvalidRequest, message: messageInvalidRequest}
+	case errors.Is(err, services.ErrCurrencyNotFound):
+		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}
+	case errors.Is(err, services.ErrInvalidCurrencyID), errors.Is(err, services.ErrInvalidCurrencyCountryAreaID):
+		return mappedError{status: http.StatusBadRequest, code: codeInvalidRequest, message: messageInvalidRequest}
 	case errors.Is(err, services.ErrCountryOrAreaNotFound):
 		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}
 	case errors.Is(err, services.ErrInvalidCountryOrAreaID), errors.Is(err, services.ErrInvalidCountryOrAreaRegionCode), errors.Is(err, services.ErrInvalidCountryOrAreaSubregionCode):
