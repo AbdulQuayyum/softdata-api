@@ -44,3 +44,9 @@ type CountryOrArea struct {
 	IntermediateRegionCode string   `json:"intermediate_region_code,omitempty"`
 	IntermediateRegionName string   `json:"intermediate_region_name,omitempty"`
 }
+
+// TimeZone is the public record model for a canonical IANA time zone.
+type TimeZone struct {
+	ID             string   `json:"id"`
+	CountryAreaIDs []string `json:"country_area_ids"`
+}

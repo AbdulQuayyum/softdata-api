@@ -28,6 +28,16 @@ Each record uses the lowercase alpha-2 code as its public `id`, preserves the so
 
 This global package is separate from the Nigerian geography datasets, which continue to use `country_code: NG`.
 
+### `world-time-zones`
+
+The canonical IANA tzdb `zone1970.tab` manifest from release `2026c`, compiled into 312 time-zone records.
+
+- Data: `datasets/geography/time_zones.json`
+- Schema: `datasets/schemas/geography/time_zones.schema.json`
+- Metadata: `datasets/metadata/geography/time_zones.json`
+
+Each record preserves the exact IANA identifier as its public `id` and maps approved `world-countries-and-areas` IDs through `country_area_ids`. The package excludes aliases, `zone.tab`-only records, `backzone`, fixed-offset identifiers and other non-canonical entries, keeps `Asia/Taipei` with an empty `country_area_ids` array, records `bv` and `hm` as the two M49 country/area IDs with zero canonical zones, and omits static offsets, DST flags and coordinates. SoftData's independent compilation, schema and metadata are CC BY 4.0, while the IANA source files retain their own rights and are cited for reference only.
+
 ### `world-currencies`
 
 The current ISO 4217 monetary-currency snapshot compiled from the SIX List One XML.
