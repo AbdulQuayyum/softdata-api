@@ -7,6 +7,7 @@ import (
 
 	"github.com/AbdulQuayyum/softdata-api/internal/models"
 	"github.com/AbdulQuayyum/softdata-api/internal/response"
+	"github.com/AbdulQuayyum/softdata-api/internal/services"
 	"github.com/AbdulQuayyum/softdata-api/internal/validators"
 )
 
@@ -16,6 +17,8 @@ type financeService interface {
 	GetPaymentServiceProvider(context.Context, string) (models.PaymentServiceProvider, error)
 	ListInternationalMoneyTransferOperators(context.Context) ([]models.InternationalMoneyTransferOperator, error)
 	GetInternationalMoneyTransferOperator(context.Context, string) (models.InternationalMoneyTransferOperator, error)
+	ListCurrencies(context.Context, services.CurrencyListInput) ([]models.Currency, error)
+	GetCurrency(context.Context, string) (models.Currency, error)
 }
 
 // FinanceHandler serves public payment-service-provider endpoints.
@@ -128,4 +131,56 @@ func (h *FinanceHandler) GetInternationalMoneyTransferOperator(w http.ResponseWr
 	}
 
 	_ = response.Success(w, http.StatusOK, operator)
+}
+
+// ListCurrencies handles GET /v1/finance/currencies.
+func (h *FinanceHandler) ListCurrencies(w http.ResponseWriter, r *http.Request) {
+	if !allowMethod(w, r, http.MethodGet) {
+		return
+	}
+
+	requestID := requestIDFromContext(r.Context())
+	query, err := validators.ValidateCurrencyListQuery(r.URL.Query())
+	if err != nil {
+		if validationErr, ok := validationErrorsFrom(err); ok {
+			_ = response.Validation(w, requestID, validationErrorsToResponse(validationErr))
+			return
+		}
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	currencies, err := h.service.ListCurrencies(r.Context(), query)
+	if err != nil {
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	_ = response.List(w, http.StatusOK, currencies)
+}
+
+// GetCurrency handles GET /v1/finance/currencies/{currency_id}.
+func (h *FinanceHandler) GetCurrency(w http.ResponseWriter, r *http.Request) {
+	if !allowMethod(w, r, http.MethodGet) {
+		return
+	}
+
+	requestID := requestIDFromContext(r.Context())
+	currencyID, err := validators.ValidateCurrencyID(r.PathValue("currency_id"))
+	if err != nil {
+		if validationErr, ok := validationErrorsFrom(err); ok {
+			_ = response.Validation(w, requestID, validationErrorsToResponse(validationErr))
+			return
+		}
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	currency, err := h.service.GetCurrency(r.Context(), currencyID)
+	if err != nil {
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	_ = response.Success(w, http.StatusOK, currency)
 }

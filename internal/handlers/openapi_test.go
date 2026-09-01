@@ -171,6 +171,42 @@ func TestOpenAPIDocumentsInternationalMoneyTransferOperatorPaths(t *testing.T) {
 	requireContains(t, text, "InternationalMoneyTransferOperatorResponse:\n      type: object\n      additionalProperties: false\n      properties:\n        success:\n          type: boolean\n        data:\n          $ref: \"#/components/schemas/InternationalMoneyTransferOperator\"\n      required: [success, data]")
 }
 
+func TestOpenAPIDocumentsCurrencyPaths(t *testing.T) {
+	doc, err := os.ReadFile("../../docs/openapi.yaml")
+	if err != nil {
+		t.Fatalf("ReadFile() error = %v", err)
+	}
+	text := string(doc)
+
+	listBlock := pathBlock(t, text, "/v1/finance/currencies")
+	detailBlock := pathBlock(t, text, "/v1/finance/currencies/{currency_id}")
+
+	requireContains(t, text, "    CurrencyID:")
+	requireContains(t, text, "    CurrencyCountryAreaIDQuery:")
+	requireContains(t, text, "    Currency:")
+	requireContains(t, text, "    CurrencyListResponse:")
+	requireContains(t, text, "    CurrencyResponse:")
+
+	requireContains(t, listBlock, "get:")
+	requireContains(t, listBlock, "- $ref: \"#/components/parameters/CurrencyCountryAreaIDQuery\"")
+	requireContains(t, listBlock, "\"422\":")
+	requireContains(t, listBlock, "\"500\":")
+	requireNotContains(t, listBlock, "security:")
+
+	requireContains(t, detailBlock, "get:")
+	requireContains(t, detailBlock, "- $ref: \"#/components/parameters/CurrencyID\"")
+	requireContains(t, detailBlock, "\"404\":")
+	requireContains(t, detailBlock, "\"422\":")
+	requireContains(t, detailBlock, "\"500\":")
+	requireNotContains(t, detailBlock, "security:")
+
+	requireContains(t, text, "CurrencyID:\n      name: currency_id\n      in: path\n      required: true\n      description: Stable public identifier for a currency.\n      schema:\n        type: string\n        pattern: '^[a-z]{3}$'")
+	requireContains(t, text, "CurrencyCountryAreaIDQuery:\n      name: country_area_id\n      in: query\n      required: false\n      description: Optional UN M49 country or area ID used to filter currency records.\n      schema:\n        type: string\n        pattern: '^[a-z]{2}$'")
+	requireContains(t, text, "Currency:\n      type: object\n      additionalProperties: false\n      properties:\n        id:\n          type: string\n          pattern: '^[a-z]{3}$'\n        name:\n          type: string\n        alphabetic_code:\n          type: string\n          pattern: '^[A-Z]{3}$'\n        numeric_code:\n          type: string\n          pattern: '^[0-9]{3}$'\n        minor_unit:\n          type: integer\n          enum: [0, 2, 3]\n        country_area_ids:\n          type: array\n          uniqueItems: true\n          items:\n            type: string\n            pattern: '^[a-z]{2}$'\n      required: [id, name, alphabetic_code, numeric_code, minor_unit, country_area_ids]")
+	requireContains(t, text, "CurrencyListResponse:\n      type: object\n      additionalProperties: false\n      properties:\n        success:\n          type: boolean\n        data:\n          type: array\n          items:\n            $ref: \"#/components/schemas/Currency\"\n      required: [success, data]")
+	requireContains(t, text, "CurrencyResponse:\n      type: object\n      additionalProperties: false\n      properties:\n        success:\n          type: boolean\n        data:\n          $ref: \"#/components/schemas/Currency\"\n      required: [success, data]")
+}
+
 func TestOpenAPIDocumentsUniversityPaths(t *testing.T) {
 	doc, err := os.ReadFile("../../docs/openapi.yaml")
 	if err != nil {

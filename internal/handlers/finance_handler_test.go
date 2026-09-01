@@ -14,20 +14,26 @@ import (
 )
 
 type financeHandlerStub struct {
-	listAllFn    func(context.Context) ([]models.PaymentServiceProvider, error)
-	listByTypeFn func(context.Context, string) ([]models.PaymentServiceProvider, error)
-	getFn        func(context.Context, string) (models.PaymentServiceProvider, error)
-	listIMTOFn   func(context.Context) ([]models.InternationalMoneyTransferOperator, error)
-	getIMTOFn    func(context.Context, string) (models.InternationalMoneyTransferOperator, error)
+	listAllFn      func(context.Context) ([]models.PaymentServiceProvider, error)
+	listByTypeFn   func(context.Context, string) ([]models.PaymentServiceProvider, error)
+	getFn          func(context.Context, string) (models.PaymentServiceProvider, error)
+	listIMTOFn     func(context.Context) ([]models.InternationalMoneyTransferOperator, error)
+	getIMTOFn      func(context.Context, string) (models.InternationalMoneyTransferOperator, error)
+	listCurrencyFn func(context.Context, services.CurrencyListInput) ([]models.Currency, error)
+	getCurrencyFn  func(context.Context, string) (models.Currency, error)
 
-	listAllCalls    int
-	listByTypeCalls int
-	getCalls        int
-	listIMTOCalls   int
-	getIMTOCalls    int
-	lastType        string
-	lastID          string
-	lastIMTOID      string
+	listAllCalls      int
+	listByTypeCalls   int
+	getCalls          int
+	listIMTOCalls     int
+	getIMTOCalls      int
+	listCurrencyCalls int
+	getCurrencyCalls  int
+	lastType          string
+	lastID            string
+	lastIMTOID        string
+	lastCurrencyInput services.CurrencyListInput
+	lastCurrencyID    string
 }
 
 func (s *financeHandlerStub) ListPaymentServiceProviders(ctx context.Context) ([]models.PaymentServiceProvider, error) {
@@ -71,6 +77,24 @@ func (s *financeHandlerStub) GetInternationalMoneyTransferOperator(ctx context.C
 		return s.getIMTOFn(ctx, operatorID)
 	}
 	return models.InternationalMoneyTransferOperator{}, nil
+}
+
+func (s *financeHandlerStub) ListCurrencies(ctx context.Context, input services.CurrencyListInput) ([]models.Currency, error) {
+	s.listCurrencyCalls++
+	s.lastCurrencyInput = input
+	if s.listCurrencyFn != nil {
+		return s.listCurrencyFn(ctx, input)
+	}
+	return nil, nil
+}
+
+func (s *financeHandlerStub) GetCurrency(ctx context.Context, currencyID string) (models.Currency, error) {
+	s.getCurrencyCalls++
+	s.lastCurrencyID = currencyID
+	if s.getCurrencyFn != nil {
+		return s.getCurrencyFn(ctx, currencyID)
+	}
+	return models.Currency{}, nil
 }
 
 func TestNewFinanceHandlerRejectsNilService(t *testing.T) {
@@ -510,6 +534,281 @@ func TestFinanceHandlerGetInternationalMoneyTransferOperatorErrors(t *testing.T)
 		}, rr)
 		if rr.Code != http.StatusNotFound {
 			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+	})
+}
+
+func TestFinanceHandlerListCurrencies(t *testing.T) {
+	t.Run("list all", func(t *testing.T) {
+		stub := &financeHandlerStub{
+			listCurrencyFn: func(ctx context.Context, input services.CurrencyListInput) ([]models.Currency, error) {
+				if input.CountryAreaID != "" {
+					t.Fatalf("unexpected filter: %#v", input)
+				}
+				return []models.Currency{{
+					ID:             "ngn",
+					Name:           "Naira",
+					AlphabeticCode: "NGN",
+					NumericCode:    "566",
+					MinorUnit:      2,
+					CountryAreaIDs: []string{"ng"},
+				}}, nil
+			},
+		}
+		h, err := NewFinanceHandler(stub)
+		if err != nil {
+			t.Fatalf("NewFinanceHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/finance/currencies", nil)
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.ListCurrencies(w, r)
+		}, rr)
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if stub.listCurrencyCalls != 1 || stub.getCurrencyCalls != 0 {
+			t.Fatalf("unexpected call counts: list=%d get=%d", stub.listCurrencyCalls, stub.getCurrencyCalls)
+		}
+		var body map[string]any
+		if err := json.Unmarshal(rr.Body.Bytes(), &body); err != nil {
+			t.Fatalf("json.Unmarshal: %v", err)
+		}
+		data := body["data"].([]any)
+		if len(data) != 1 {
+			t.Fatalf("unexpected payload: %#v", data)
+		}
+		item := data[0].(map[string]any)
+		if len(item) != 6 {
+			t.Fatalf("unexpected field count: %#v", item)
+		}
+		if item["id"] != "ngn" || item["country_area_ids"] == nil {
+			t.Fatalf("unexpected currency payload: %#v", item)
+		}
+	})
+
+	t.Run("empty slice normalized", func(t *testing.T) {
+		stub := &financeHandlerStub{listCurrencyFn: func(context.Context, services.CurrencyListInput) ([]models.Currency, error) { return nil, nil }}
+		h, err := NewFinanceHandler(stub)
+		if err != nil {
+			t.Fatalf("NewFinanceHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/finance/currencies", nil)
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.ListCurrencies(w, r)
+		}, rr)
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		var body map[string]any
+		if err := json.Unmarshal(rr.Body.Bytes(), &body); err != nil {
+			t.Fatalf("json.Unmarshal: %v", err)
+		}
+		data := body["data"].([]any)
+		if len(data) != 0 {
+			t.Fatalf("expected empty array, got %#v", data)
+		}
+	})
+
+	t.Run("filter", func(t *testing.T) {
+		stub := &financeHandlerStub{
+			listCurrencyFn: func(ctx context.Context, input services.CurrencyListInput) ([]models.Currency, error) {
+				if input.CountryAreaID != "ng" {
+					t.Fatalf("unexpected filter: %#v", input)
+				}
+				return []models.Currency{{
+					ID:             "ngn",
+					Name:           "Naira",
+					AlphabeticCode: "NGN",
+					NumericCode:    "566",
+					MinorUnit:      2,
+					CountryAreaIDs: []string{"ng"},
+				}}, nil
+			},
+		}
+		h, err := NewFinanceHandler(stub)
+		if err != nil {
+			t.Fatalf("NewFinanceHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/finance/currencies?country_area_id=ng", nil)
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.ListCurrencies(w, r)
+		}, rr)
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if stub.listCurrencyCalls != 1 {
+			t.Fatalf("unexpected list call count: %d", stub.listCurrencyCalls)
+		}
+	})
+
+	t.Run("invalid query", func(t *testing.T) {
+		stub := &financeHandlerStub{}
+		h, err := NewFinanceHandler(stub)
+		if err != nil {
+			t.Fatalf("NewFinanceHandler() error = %v", err)
+		}
+		for _, rawQuery := range []string{"country_area_id=", "country_area_id=zz", "country_area_id=NG", "country_area_id=ng&country_area_id=bt"} {
+			t.Run(rawQuery, func(t *testing.T) {
+				rr := httptest.NewRecorder()
+				req := httptest.NewRequest(http.MethodGet, "/v1/finance/currencies?"+rawQuery, nil)
+				invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+					h.ListCurrencies(w, r)
+				}, rr)
+				if rr.Code != http.StatusUnprocessableEntity {
+					t.Fatalf("unexpected status: %d", rr.Code)
+				}
+				if stub.listCurrencyCalls != 0 {
+					t.Fatalf("service should not be called for invalid query")
+				}
+			})
+		}
+	})
+
+	t.Run("method guard", func(t *testing.T) {
+		h, err := NewFinanceHandler(&financeHandlerStub{})
+		if err != nil {
+			t.Fatalf("NewFinanceHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodPost, "/v1/finance/currencies", nil)
+		h.ListCurrencies(rr, req)
+		if rr.Code != http.StatusMethodNotAllowed {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if got := rr.Header().Get("Allow"); got != http.MethodGet {
+			t.Fatalf("unexpected allow header: %q", got)
+		}
+	})
+}
+
+func TestFinanceHandlerGetCurrency(t *testing.T) {
+	stub := &financeHandlerStub{
+		getCurrencyFn: func(ctx context.Context, currencyID string) (models.Currency, error) {
+			if currencyID != "ngn" {
+				t.Fatalf("unexpected currency id: %q", currencyID)
+			}
+			return models.Currency{
+				ID:             "ngn",
+				Name:           "Naira",
+				AlphabeticCode: "NGN",
+				NumericCode:    "566",
+				MinorUnit:      2,
+				CountryAreaIDs: []string{"ng"},
+			}, nil
+		},
+	}
+	h, err := NewFinanceHandler(stub)
+	if err != nil {
+		t.Fatalf("NewFinanceHandler() error = %v", err)
+	}
+	rr := httptest.NewRecorder()
+	req := httptest.NewRequest(http.MethodGet, "/v1/finance/currencies/ngn", nil)
+	req.SetPathValue("currency_id", " ngn ")
+	invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+		h.GetCurrency(w, r)
+	}, rr)
+	if rr.Code != http.StatusOK {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if stub.getCurrencyCalls != 1 {
+		t.Fatalf("unexpected get call count: %d", stub.getCurrencyCalls)
+	}
+	if stub.lastCurrencyID != "ngn" {
+		t.Fatalf("unexpected currency id: %q", stub.lastCurrencyID)
+	}
+	var body map[string]any
+	if err := json.Unmarshal(rr.Body.Bytes(), &body); err != nil {
+		t.Fatalf("json.Unmarshal: %v", err)
+	}
+	data := body["data"].(map[string]any)
+	if data["id"] != "ngn" || data["country_area_ids"] == nil {
+		t.Fatalf("unexpected currency response: %#v", data)
+	}
+}
+
+func TestFinanceHandlerGetCurrencyErrors(t *testing.T) {
+	t.Run("invalid id", func(t *testing.T) {
+		stub := &financeHandlerStub{}
+		h, err := NewFinanceHandler(stub)
+		if err != nil {
+			t.Fatalf("NewFinanceHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/finance/currencies/NGN", nil)
+		req.SetPathValue("currency_id", "NGN")
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.GetCurrency(w, r)
+		}, rr)
+		if rr.Code != http.StatusUnprocessableEntity {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if stub.getCurrencyCalls != 0 {
+			t.Fatalf("service should not be called for invalid currency ids")
+		}
+	})
+
+	t.Run("missing currency", func(t *testing.T) {
+		stub := &financeHandlerStub{
+			getCurrencyFn: func(context.Context, string) (models.Currency, error) {
+				return models.Currency{}, services.ErrCurrencyNotFound
+			},
+		}
+		h, err := NewFinanceHandler(stub)
+		if err != nil {
+			t.Fatalf("NewFinanceHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/finance/currencies/zzz", nil)
+		req.SetPathValue("currency_id", "zzz")
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.GetCurrency(w, r)
+		}, rr)
+		if rr.Code != http.StatusNotFound {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+	})
+
+	t.Run("unexpected error", func(t *testing.T) {
+		stub := &financeHandlerStub{
+			getCurrencyFn: func(context.Context, string) (models.Currency, error) {
+				return models.Currency{}, errors.New("database down")
+			},
+		}
+		h, err := NewFinanceHandler(stub)
+		if err != nil {
+			t.Fatalf("NewFinanceHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/finance/currencies/ngn", nil)
+		req.SetPathValue("currency_id", "ngn")
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.GetCurrency(w, r)
+		}, rr)
+		if rr.Code != http.StatusInternalServerError {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if strings.Contains(rr.Body.String(), "database down") {
+			t.Fatalf("internal error details leaked: %s", rr.Body.String())
+		}
+	})
+
+	t.Run("method guard", func(t *testing.T) {
+		h, err := NewFinanceHandler(&financeHandlerStub{})
+		if err != nil {
+			t.Fatalf("NewFinanceHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodPost, "/v1/finance/currencies/ngn", nil)
+		req.SetPathValue("currency_id", "ngn")
+		h.GetCurrency(rr, req)
+		if rr.Code != http.StatusMethodNotAllowed {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if got := rr.Header().Get("Allow"); got != http.MethodGet {
+			t.Fatalf("unexpected allow header: %q", got)
 		}
 	})
 }

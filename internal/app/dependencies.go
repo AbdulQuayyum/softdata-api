@@ -336,6 +336,8 @@ type financeService interface {
 	GetPaymentServiceProvider(context.Context, string) (models.PaymentServiceProvider, error)
 	ListInternationalMoneyTransferOperators(context.Context) ([]models.InternationalMoneyTransferOperator, error)
 	GetInternationalMoneyTransferOperator(context.Context, string) (models.InternationalMoneyTransferOperator, error)
+	ListCurrencies(context.Context, services.CurrencyListInput) ([]models.Currency, error)
+	GetCurrency(context.Context, string) (models.Currency, error)
 }
 
 func buildGeographyHandler(

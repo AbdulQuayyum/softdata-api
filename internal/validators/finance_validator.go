@@ -4,10 +4,14 @@ import (
 	"net/url"
 	"regexp"
 	"strings"
+
+	"github.com/AbdulQuayyum/softdata-api/internal/services"
 )
 
 var financePaymentServiceProviderIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)+$`)
 var financeInternationalMoneyTransferOperatorIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)*$`)
+var financeCurrencyIDPattern = regexp.MustCompile(`^[a-z]{3}$`)
+var financeCurrencyCountryAreaIDPattern = regexp.MustCompile(`^[a-z]{2}$`)
 
 var financePaymentServiceProviderTypes = map[string]struct{}{
 	"mobile_money_operator":               {},
@@ -17,6 +21,257 @@ var financePaymentServiceProviderTypes = map[string]struct{}{
 	"super_agent":                         {},
 	"payment_service_holding_company":     {},
 	"payment_terminal_service_aggregator": {},
+}
+
+var validCurrencyCountryAreaIDs = map[string]struct{}{
+	"af": {},
+	"al": {},
+	"dz": {},
+	"as": {},
+	"ad": {},
+	"ao": {},
+	"ai": {},
+	"aq": {},
+	"ag": {},
+	"ar": {},
+	"am": {},
+	"aw": {},
+	"au": {},
+	"at": {},
+	"az": {},
+	"bs": {},
+	"bh": {},
+	"bd": {},
+	"bb": {},
+	"by": {},
+	"be": {},
+	"bz": {},
+	"bj": {},
+	"bm": {},
+	"bt": {},
+	"bo": {},
+	"bq": {},
+	"ba": {},
+	"bw": {},
+	"bv": {},
+	"br": {},
+	"io": {},
+	"vg": {},
+	"bn": {},
+	"bg": {},
+	"bf": {},
+	"bi": {},
+	"cv": {},
+	"kh": {},
+	"cm": {},
+	"ca": {},
+	"ky": {},
+	"cf": {},
+	"td": {},
+	"cl": {},
+	"cn": {},
+	"hk": {},
+	"mo": {},
+	"cx": {},
+	"cc": {},
+	"co": {},
+	"km": {},
+	"cg": {},
+	"ck": {},
+	"cr": {},
+	"hr": {},
+	"cu": {},
+	"cw": {},
+	"cy": {},
+	"cz": {},
+	"ci": {},
+	"kp": {},
+	"cd": {},
+	"dk": {},
+	"dj": {},
+	"dm": {},
+	"do": {},
+	"ec": {},
+	"eg": {},
+	"sv": {},
+	"gq": {},
+	"er": {},
+	"ee": {},
+	"sz": {},
+	"et": {},
+	"fk": {},
+	"fo": {},
+	"fj": {},
+	"fi": {},
+	"fr": {},
+	"gf": {},
+	"pf": {},
+	"tf": {},
+	"ga": {},
+	"gm": {},
+	"ge": {},
+	"de": {},
+	"gh": {},
+	"gi": {},
+	"gr": {},
+	"gl": {},
+	"gd": {},
+	"gp": {},
+	"gu": {},
+	"gt": {},
+	"gg": {},
+	"gn": {},
+	"gw": {},
+	"gy": {},
+	"ht": {},
+	"hm": {},
+	"va": {},
+	"hn": {},
+	"hu": {},
+	"is": {},
+	"in": {},
+	"id": {},
+	"ir": {},
+	"iq": {},
+	"ie": {},
+	"im": {},
+	"il": {},
+	"it": {},
+	"jm": {},
+	"jp": {},
+	"je": {},
+	"jo": {},
+	"kz": {},
+	"ke": {},
+	"ki": {},
+	"kw": {},
+	"kg": {},
+	"la": {},
+	"lv": {},
+	"lb": {},
+	"ls": {},
+	"lr": {},
+	"ly": {},
+	"li": {},
+	"lt": {},
+	"lu": {},
+	"mg": {},
+	"mw": {},
+	"my": {},
+	"mv": {},
+	"ml": {},
+	"mt": {},
+	"mh": {},
+	"mq": {},
+	"mr": {},
+	"mu": {},
+	"yt": {},
+	"mx": {},
+	"fm": {},
+	"mc": {},
+	"mn": {},
+	"me": {},
+	"ms": {},
+	"ma": {},
+	"mz": {},
+	"mm": {},
+	"na": {},
+	"nr": {},
+	"np": {},
+	"nl": {},
+	"nc": {},
+	"nz": {},
+	"ni": {},
+	"ne": {},
+	"ng": {},
+	"nu": {},
+	"nf": {},
+	"mk": {},
+	"mp": {},
+	"no": {},
+	"om": {},
+	"pk": {},
+	"pw": {},
+	"pa": {},
+	"pg": {},
+	"py": {},
+	"pe": {},
+	"ph": {},
+	"pn": {},
+	"pl": {},
+	"pt": {},
+	"pr": {},
+	"qa": {},
+	"kr": {},
+	"md": {},
+	"ro": {},
+	"ru": {},
+	"rw": {},
+	"re": {},
+	"bl": {},
+	"sh": {},
+	"mf": {},
+	"pm": {},
+	"vc": {},
+	"ws": {},
+	"sm": {},
+	"st": {},
+	"sa": {},
+	"sn": {},
+	"rs": {},
+	"sc": {},
+	"sl": {},
+	"sg": {},
+	"sx": {},
+	"sk": {},
+	"si": {},
+	"sb": {},
+	"so": {},
+	"za": {},
+	"gs": {},
+	"ss": {},
+	"es": {},
+	"lk": {},
+	"kn": {},
+	"lc": {},
+	"ps": {},
+	"sd": {},
+	"sr": {},
+	"sj": {},
+	"se": {},
+	"ch": {},
+	"sy": {},
+	"tj": {},
+	"th": {},
+	"tl": {},
+	"tg": {},
+	"tk": {},
+	"to": {},
+	"tt": {},
+	"tn": {},
+	"tm": {},
+	"tc": {},
+	"tv": {},
+	"tr": {},
+	"ug": {},
+	"ua": {},
+	"ae": {},
+	"gb": {},
+	"tz": {},
+	"um": {},
+	"vi": {},
+	"us": {},
+	"uy": {},
+	"uz": {},
+	"vu": {},
+	"ve": {},
+	"vn": {},
+	"wf": {},
+	"eh": {},
+	"ye": {},
+	"zm": {},
+	"zw": {},
+	"ax": {},
 }
 
 // PaymentServiceProviderListQuery contains validated payment-service-provider list filters.
@@ -86,5 +341,61 @@ func ValidatePaymentServiceProviderListQuery(values url.Values) (PaymentServiceP
 	}
 
 	query := PaymentServiceProviderListQuery{InstitutionType: &normalized}
+	return query, nil
+}
+
+// ValidateCurrencyID validates the documented public currency identifier.
+func ValidateCurrencyID(value string) (string, error) {
+	value = strings.TrimSpace(value)
+	if value == "" {
+		return "", requiredError("currency_id", "Currency ID is required.")
+	}
+	if !financeCurrencyIDPattern.MatchString(value) || uuidLikePattern.MatchString(value) {
+		return "", invalidField("currency_id", "Currency ID must be a valid lowercase public slug.")
+	}
+	return value, nil
+}
+
+// ValidateCurrencyCountryAreaID validates the documented public currency country/area filter.
+func ValidateCurrencyCountryAreaID(value string) (string, error) {
+	value = strings.TrimSpace(value)
+	if value == "" {
+		return "", requiredError("country_area_id", "Country or area ID is required.")
+	}
+	if !financeCurrencyCountryAreaIDPattern.MatchString(value) || uuidLikePattern.MatchString(value) {
+		return "", invalidField("country_area_id", "Country or area ID must be a valid lowercase alpha-2 code.")
+	}
+	if _, ok := validCurrencyCountryAreaIDs[value]; !ok {
+		return "", invalidField("country_area_id", "Country or area ID must reference a supported public country or area.")
+	}
+	return value, nil
+}
+
+// ValidateCurrencyListQuery validates the documented currency list query.
+func ValidateCurrencyListQuery(values url.Values) (services.CurrencyListInput, error) {
+	var errs ValidationErrors
+
+	countryAreaValues := values["country_area_id"]
+	if len(countryAreaValues) > 1 {
+		errs.Add("country_area_id", codeMalformed, "Country or area ID may be provided at most once.")
+		return services.CurrencyListInput{}, errs
+	}
+	if len(countryAreaValues) == 0 {
+		return services.CurrencyListInput{}, nil
+	}
+
+	normalized, err := ValidateCurrencyCountryAreaID(countryAreaValues[0])
+	if err != nil {
+		if validationErr, ok := err.(ValidationErrors); ok {
+			errs.Fields = append(errs.Fields, validationErr.Fields...)
+		} else {
+			return services.CurrencyListInput{}, err
+		}
+	}
+	if len(errs.Fields) > 0 {
+		return services.CurrencyListInput{}, errs
+	}
+
+	query := services.CurrencyListInput{CountryAreaID: normalized}
 	return query, nil
 }

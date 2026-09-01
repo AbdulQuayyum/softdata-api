@@ -1847,9 +1847,13 @@ type routerFinanceStub struct {
 	getCalls            int
 	listIMTOCalls       int
 	getIMTOCalls        int
+	listCurrencyCalls   int
+	getCurrencyCalls    int
 	lastInstitutionType string
 	lastProviderID      string
 	lastOperatorID      string
+	lastCurrencyFilter  string
+	lastCurrencyID      string
 	lastHadAPIKey       bool
 	lastAPIKeyIdentity  services.APIKeyIdentity
 }
@@ -1925,6 +1929,36 @@ func (s *routerFinanceStub) GetInternationalMoneyTransferOperator(ctx context.Co
 		s.lastAPIKeyIdentity = identity
 	}
 	return models.InternationalMoneyTransferOperator{ID: operatorID, Name: "OLIVE MONIES EXPRESS LIMITED"}, nil
+}
+
+func (s *routerFinanceStub) ListCurrencies(ctx context.Context, input services.CurrencyListInput) ([]models.Currency, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.listCurrencyCalls++
+	s.lastCurrencyFilter = input.CountryAreaID
+	if s.rec != nil {
+		s.rec.add("finance.currency.list:" + input.CountryAreaID)
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return []models.Currency{{ID: "ngn", Name: "Naira", AlphabeticCode: "NGN", NumericCode: "566", MinorUnit: 2, CountryAreaIDs: []string{"ng"}}}, nil
+}
+
+func (s *routerFinanceStub) GetCurrency(ctx context.Context, currencyID string) (models.Currency, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.getCurrencyCalls++
+	s.lastCurrencyID = currencyID
+	if s.rec != nil {
+		s.rec.add("finance.currency.get:" + currencyID)
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return models.Currency{ID: currencyID, Name: "Naira", AlphabeticCode: "NGN", NumericCode: "566", MinorUnit: 2, CountryAreaIDs: []string{"ng"}}, nil
 }
 
 func (s *routerGeographyStub) ListStates(ctx context.Context) ([]models.State, error) {

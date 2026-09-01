@@ -18,11 +18,13 @@ import (
 )
 
 type financeServiceStub struct {
-	providers []models.PaymentServiceProvider
-	operators []models.InternationalMoneyTransferOperator
-	err       error
-	calls     int
-	imtoCalls int
+	providers  []models.PaymentServiceProvider
+	operators  []models.InternationalMoneyTransferOperator
+	currencies []models.Currency
+	err        error
+	calls      int
+	imtoCalls  int
+	currCalls  int
 }
 
 func (s *financeServiceStub) ListPaymentServiceProviders(context.Context) ([]models.PaymentServiceProvider, error) {
@@ -48,6 +50,15 @@ func (s *financeServiceStub) ListInternationalMoneyTransferOperators(context.Con
 
 func (s *financeServiceStub) GetInternationalMoneyTransferOperator(context.Context, string) (models.InternationalMoneyTransferOperator, error) {
 	return models.InternationalMoneyTransferOperator{}, nil
+}
+
+func (s *financeServiceStub) ListCurrencies(context.Context, services.CurrencyListInput) ([]models.Currency, error) {
+	s.currCalls++
+	return append([]models.Currency(nil), s.currencies...), nil
+}
+
+func (s *financeServiceStub) GetCurrency(context.Context, string) (models.Currency, error) {
+	return models.Currency{}, nil
 }
 
 type financeRepositoryStub struct{}

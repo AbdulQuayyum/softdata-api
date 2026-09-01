@@ -418,6 +418,44 @@ paths:
           $ref: "#/components/responses/ValidationFailed"
         "500":
           $ref: "#/components/responses/InternalError"
+  /v1/finance/currencies:
+    get:
+      tags: [Finance]
+      summary: List currencies
+      description: Returns the current ISO 4217 monetary currency snapshot compiled from the SIX List One XML. The optional country_area_id filter narrows the list to currencies linked to a specific UN M49 country or area.
+      parameters:
+        - $ref: "#/components/parameters/CurrencyCountryAreaIDQuery"
+      responses:
+        "200":
+          description: Currency records
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CurrencyListResponse"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/finance/currencies/{currency_id}:
+    get:
+      tags: [Finance]
+      summary: Get a currency
+      description: Returns a verified ISO 4217 monetary currency from the current SIX List One XML snapshot.
+      parameters:
+        - $ref: "#/components/parameters/CurrencyID"
+      responses:
+        "200":
+          description: Currency record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CurrencyResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
   /v1/auth/register:
     post:
       tags: [Authentication]
@@ -850,6 +888,22 @@ components:
       schema:
         type: string
         pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'
+    CurrencyID:
+      name: currency_id
+      in: path
+      required: true
+      description: Stable public identifier for a currency.
+      schema:
+        type: string
+        pattern: '^[a-z]{3}$'
+    CurrencyCountryAreaIDQuery:
+      name: country_area_id
+      in: query
+      required: false
+      description: Optional UN M49 country or area ID used to filter currency records.
+      schema:
+        type: string
+        pattern: '^[a-z]{2}$'
     Page:
       name: page
       in: query
@@ -1424,6 +1478,51 @@ components:
           type: boolean
         data:
           $ref: "#/components/schemas/InternationalMoneyTransferOperator"
+      required: [success, data]
+    Currency:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          pattern: '^[a-z]{3}$'
+        name:
+          type: string
+        alphabetic_code:
+          type: string
+          pattern: '^[A-Z]{3}$'
+        numeric_code:
+          type: string
+          pattern: '^[0-9]{3}$'
+        minor_unit:
+          type: integer
+          enum: [0, 2, 3]
+        country_area_ids:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+            pattern: '^[a-z]{2}$'
+      required: [id, name, alphabetic_code, numeric_code, minor_unit, country_area_ids]
+    CurrencyListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Currency"
+      required: [success, data]
+    CurrencyResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: "#/components/schemas/Currency"
       required: [success, data]
     GeographyListResponse:
       type: object

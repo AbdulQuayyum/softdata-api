@@ -215,3 +215,169 @@ func TestValidateInternationalMoneyTransferOperatorIDRejectsInvalidValues(t *tes
 		})
 	}
 }
+
+func TestValidateCurrencyID(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		value string
+		want  string
+	}{
+		{name: "trimmed", value: " ngn ", want: "ngn"},
+		{name: "usd", value: "usd", want: "usd"},
+		{name: "twd", value: "twd", want: "twd"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			got, err := ValidateCurrencyID(tc.value)
+			if err != nil {
+				t.Fatalf("ValidateCurrencyID() error = %v", err)
+			}
+			if got != tc.want {
+				t.Fatalf("unexpected value: %q", got)
+			}
+		})
+	}
+}
+
+func TestValidateCurrencyIDRejectsInvalidValues(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		value string
+	}{
+		{name: "empty", value: ""},
+		{name: "whitespace", value: "   "},
+		{name: "uppercase", value: "NGN"},
+		{name: "mixedcase", value: "NgN"},
+		{name: "underscore", value: "ng_n"},
+		{name: "hyphen", value: "ng-n"},
+		{name: "digit", value: "ng1"},
+		{name: "uuid", value: "550e8400-e29b-41d4-a716-446655440000"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			got, err := ValidateCurrencyID(tc.value)
+			if err == nil {
+				t.Fatalf("ValidateCurrencyID() got %q, want error", got)
+			}
+			var validationErr ValidationErrors
+			if !errors.As(err, &validationErr) {
+				t.Fatalf("ValidateCurrencyID() error = %v, want ValidationErrors", err)
+			}
+			if len(validationErr.Fields) != 1 || validationErr.Fields[0].Field != "currency_id" {
+				t.Fatalf("unexpected validation errors: %#v", validationErr.Fields)
+			}
+		})
+	}
+}
+
+func TestValidateCurrencyCountryAreaID(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		value string
+		want  string
+	}{
+		{name: "trimmed", value: " ng ", want: "ng"},
+		{name: "antarctica", value: "aq", want: "aq"},
+		{name: "palestine", value: "ps", want: "ps"},
+		{name: "south georgia", value: "gs", want: "gs"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			got, err := ValidateCurrencyCountryAreaID(tc.value)
+			if err != nil {
+				t.Fatalf("ValidateCurrencyCountryAreaID() error = %v", err)
+			}
+			if got != tc.want {
+				t.Fatalf("unexpected value: %q", got)
+			}
+		})
+	}
+}
+
+func TestValidateCurrencyCountryAreaIDRejectsInvalidValues(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		value string
+	}{
+		{name: "empty", value: ""},
+		{name: "whitespace", value: "   "},
+		{name: "uppercase", value: "NG"},
+		{name: "mixedcase", value: "nG"},
+		{name: "unknown", value: "zz"},
+		{name: "digit", value: "1g"},
+		{name: "underscore", value: "n_g"},
+		{name: "hyphen", value: "n-g"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			got, err := ValidateCurrencyCountryAreaID(tc.value)
+			if err == nil {
+				t.Fatalf("ValidateCurrencyCountryAreaID() got %q, want error", got)
+			}
+			var validationErr ValidationErrors
+			if !errors.As(err, &validationErr) {
+				t.Fatalf("ValidateCurrencyCountryAreaID() error = %v, want ValidationErrors", err)
+			}
+			if len(validationErr.Fields) != 1 || validationErr.Fields[0].Field != "country_area_id" {
+				t.Fatalf("unexpected validation errors: %#v", validationErr.Fields)
+			}
+		})
+	}
+}
+
+func TestValidateCurrencyListQuery(t *testing.T) {
+	values := url.Values{}
+	query, err := ValidateCurrencyListQuery(values)
+	if err != nil {
+		t.Fatalf("ValidateCurrencyListQuery() error = %v", err)
+	}
+	if query.CountryAreaID != "" {
+		t.Fatalf("unexpected filter: %#v", query)
+	}
+
+	values = url.Values{"country_area_id": []string{" ng "}}
+	want := values.Encode()
+	query, err = ValidateCurrencyListQuery(values)
+	if err != nil {
+		t.Fatalf("ValidateCurrencyListQuery() error = %v", err)
+	}
+	if query.CountryAreaID != "ng" {
+		t.Fatalf("unexpected filter: %#v", query)
+	}
+	if got := values.Encode(); got != want {
+		t.Fatalf("query values mutated: got %q want %q", got, want)
+	}
+}
+
+func TestValidateCurrencyListQueryRejectsInvalidValues(t *testing.T) {
+	for _, tc := range []struct {
+		name   string
+		values url.Values
+	}{
+		{name: "empty explicit", values: url.Values{"country_area_id": []string{""}}},
+		{name: "whitespace", values: url.Values{"country_area_id": []string{"   "}}},
+		{name: "uppercase", values: url.Values{"country_area_id": []string{"NG"}}},
+		{name: "unknown", values: url.Values{"country_area_id": []string{"zz"}}},
+		{name: "duplicate", values: url.Values{"country_area_id": []string{"ng", "bt"}}},
+		{name: "extra unknown parameter", values: url.Values{"country_area_id": []string{"ng"}, "page": []string{"1"}}},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			query, err := ValidateCurrencyListQuery(tc.values)
+			if tc.name == "extra unknown parameter" {
+				if err != nil {
+					t.Fatalf("ValidateCurrencyListQuery() error = %v", err)
+				}
+				if query.CountryAreaID != "ng" {
+					t.Fatalf("unexpected filter: %#v", query)
+				}
+				return
+			}
+			if err == nil {
+				t.Fatal("expected validation error")
+			}
+			var validationErr ValidationErrors
+			if !errors.As(err, &validationErr) {
+				t.Fatalf("ValidateCurrencyListQuery() error = %v, want ValidationErrors", err)
+			}
+			if len(validationErr.Fields) == 0 || validationErr.Fields[0].Field != "country_area_id" {
+				t.Fatalf("unexpected validation errors: %#v", validationErr.Fields)
+			}
+		})
+	}
+}
