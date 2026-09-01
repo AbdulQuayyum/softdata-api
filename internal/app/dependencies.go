@@ -320,6 +320,8 @@ type geographyService interface {
 	ListLocalGovernmentUnits(context.Context) ([]models.LocalGovernmentUnit, error)
 	ListLocalGovernmentUnitsByState(context.Context, string) ([]models.LocalGovernmentUnit, error)
 	GetLocalGovernmentUnit(context.Context, string) (models.LocalGovernmentUnit, error)
+	ListTimeZones(context.Context, services.TimeZoneListInput) ([]models.TimeZone, error)
+	GetTimeZone(context.Context, string) (models.TimeZone, error)
 	ListCountriesAndAreas(context.Context, services.CountryOrAreaListInput) ([]models.CountryOrArea, error)
 	GetCountryOrArea(context.Context, string) (models.CountryOrArea, error)
 }

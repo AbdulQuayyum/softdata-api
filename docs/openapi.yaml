@@ -210,6 +210,44 @@ paths:
           $ref: "#/components/responses/ValidationFailed"
         "500":
           $ref: "#/components/responses/InternalError"
+  /v1/geography/time-zones:
+    get:
+      tags: [Geography]
+      summary: List time zones
+      description: Returns the current canonical IANA time-zone manifest from tzdb 2026c, limited to zone1970.tab entries. Aliases are excluded from v1. Asia/Taipei has an empty country_area_ids array because TW has no approved SoftData M49 ID, while bv and hm are valid filters that return empty lists. The list is public and returns deterministic ordering with no pagination.
+      parameters:
+        - $ref: "#/components/parameters/TimeZoneCountryAreaID"
+      responses:
+        "200":
+          description: Time-zone records
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TimeZoneListResponse"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/geography/time-zones/{time_zone_id}:
+    get:
+      tags: [Geography]
+      summary: Get a time zone
+      description: Returns a canonical IANA time-zone identifier using an exact decoded path value. The detail route accepts percent-encoded slashes at the HTTP layer, but the public identifier remains the canonical IANA name. Aliases are excluded from v1.
+      parameters:
+        - $ref: "#/components/parameters/TimeZoneID"
+      responses:
+        "200":
+          description: Time-zone record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TimeZoneResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
   /v1/geography/countries:
     get:
       tags: [Geography]
@@ -789,6 +827,22 @@ components:
       schema:
         type: string
         pattern: '^[a-z0-9]+(?:-[a-z0-9]+)+$'
+    TimeZoneID:
+      name: time_zone_id
+      in: path
+      required: true
+      allowReserved: true
+      description: Exact canonical IANA time-zone identifier. Percent-encoded slashes are accepted by the HTTP layer and decoded before validation. Aliases are excluded from v1.
+      schema:
+        type: string
+    TimeZoneCountryAreaID:
+      name: country_area_id
+      in: query
+      required: false
+      description: Optional public country or area ID used to filter time-zone records.
+      schema:
+        type: string
+        pattern: '^[a-z]{2}$'
     CountryOrAreaID:
       name: country_id
       in: path
@@ -1156,6 +1210,39 @@ components:
           type: boolean
         data:
           $ref: "#/components/schemas/LocalGovernmentUnit"
+      required: [success, data]
+    TimeZone:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+        country_area_ids:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+            pattern: '^[a-z]{2}$'
+      required: [id, country_area_ids]
+    TimeZoneListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/TimeZone"
+      required: [success, data]
+    TimeZoneResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: "#/components/schemas/TimeZone"
       required: [success, data]
     CountryOrArea:
       type: object

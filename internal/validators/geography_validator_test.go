@@ -4,6 +4,8 @@ import (
 	"errors"
 	"net/url"
 	"testing"
+
+	"github.com/AbdulQuayyum/softdata-api/internal/services"
 )
 
 func TestValidateStateID(t *testing.T) {
@@ -224,6 +226,176 @@ func TestValidateLocalGovernmentUnitIDRejectsInvalidValues(t *testing.T) {
 				t.Fatalf("ValidateLocalGovernmentUnitID() error = %v, want ValidationErrors", err)
 			}
 			if len(validationErr.Fields) != 1 || validationErr.Fields[0].Field != "lga_id" {
+				t.Fatalf("unexpected validation errors: %#v", validationErr.Fields)
+			}
+		})
+	}
+}
+
+func TestValidateTimeZoneID(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		value string
+		want  string
+	}{
+		{name: "simple", value: "Africa/Lagos", want: "Africa/Lagos"},
+		{name: "nested", value: " America/Argentina/Buenos_Aires ", want: "America/Argentina/Buenos_Aires"},
+		{name: "preserve case", value: "Europe/Simferopol", want: "Europe/Simferopol"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			got, err := ValidateTimeZoneID(tc.value)
+			if err != nil {
+				t.Fatalf("ValidateTimeZoneID() error = %v", err)
+			}
+			if got != tc.want {
+				t.Fatalf("unexpected value: %q", got)
+			}
+		})
+	}
+}
+
+func TestValidateTimeZoneIDRejectsInvalidValues(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		value string
+		field string
+	}{
+		{name: "empty", value: "", field: "time_zone_id"},
+		{name: "whitespace", value: "   ", field: "time_zone_id"},
+		{name: "lowercase", value: "africa/lagos", field: "time_zone_id"},
+		{name: "missing slash", value: "Africa", field: "time_zone_id"},
+		{name: "leading slash", value: "/Africa/Lagos", field: "time_zone_id"},
+		{name: "trailing slash", value: "Africa/Lagos/", field: "time_zone_id"},
+		{name: "empty component", value: "Africa//Lagos", field: "time_zone_id"},
+		{name: "dot component", value: "Africa/./Lagos", field: "time_zone_id"},
+		{name: "dotdot component", value: "Africa/../Lagos", field: "time_zone_id"},
+		{name: "backslash", value: "Africa\\Lagos", field: "time_zone_id"},
+		{name: "percent", value: "Africa%2FLagos", field: "time_zone_id"},
+		{name: "query", value: "Africa/Lagos?x=1", field: "time_zone_id"},
+		{name: "fragment", value: "Africa/Lagos#fragment", field: "time_zone_id"},
+		{name: "url shaped", value: "https://example.com/Africa/Lagos", field: "time_zone_id"},
+		{name: "control char", value: "Africa/\x00Lagos", field: "time_zone_id"},
+		{name: "etc utc", value: "Etc/UTC", field: "time_zone_id"},
+		{name: "gmt", value: "Etc/GMT+1", field: "time_zone_id"},
+		{name: "factory", value: "Factory", field: "time_zone_id"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			got, err := ValidateTimeZoneID(tc.value)
+			if err == nil {
+				t.Fatalf("ValidateTimeZoneID() got %q, want error", got)
+			}
+			var validationErr ValidationErrors
+			if !errors.As(err, &validationErr) {
+				t.Fatalf("ValidateTimeZoneID() error = %v, want ValidationErrors", err)
+			}
+			if len(validationErr.Fields) != 1 || validationErr.Fields[0].Field != tc.field {
+				t.Fatalf("unexpected validation errors: %#v", validationErr.Fields)
+			}
+		})
+	}
+}
+
+func TestValidateTimeZoneCountryAreaID(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		value string
+		want  string
+	}{
+		{name: "ng", value: "ng", want: "ng"},
+		{name: "ps trimmed", value: " ps ", want: "ps"},
+		{name: "bv", value: "bv", want: "bv"},
+		{name: "hm", value: "hm", want: "hm"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			got, err := ValidateTimeZoneCountryAreaID(tc.value)
+			if err != nil {
+				t.Fatalf("ValidateTimeZoneCountryAreaID() error = %v", err)
+			}
+			if got != tc.want {
+				t.Fatalf("unexpected value: %q", got)
+			}
+		})
+	}
+}
+
+func TestValidateTimeZoneCountryAreaIDRejectsInvalidValues(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		value string
+		field string
+	}{
+		{name: "empty", value: "", field: "country_area_id"},
+		{name: "whitespace", value: "   ", field: "country_area_id"},
+		{name: "uppercase", value: "NG", field: "country_area_id"},
+		{name: "mixedcase", value: "Ng", field: "country_area_id"},
+		{name: "unknown", value: "zz", field: "country_area_id"},
+		{name: "digits", value: "1a", field: "country_area_id"},
+		{name: "underscore", value: "n_g", field: "country_area_id"},
+		{name: "hyphen", value: "n-g", field: "country_area_id"},
+		{name: "space", value: "n g", field: "country_area_id"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			got, err := ValidateTimeZoneCountryAreaID(tc.value)
+			if err == nil {
+				t.Fatalf("ValidateTimeZoneCountryAreaID() got %q, want error", got)
+			}
+			var validationErr ValidationErrors
+			if !errors.As(err, &validationErr) {
+				t.Fatalf("ValidateTimeZoneCountryAreaID() error = %v, want ValidationErrors", err)
+			}
+			if len(validationErr.Fields) != 1 || validationErr.Fields[0].Field != tc.field {
+				t.Fatalf("unexpected validation errors: %#v", validationErr.Fields)
+			}
+		})
+	}
+}
+
+func TestValidateTimeZoneListQuery(t *testing.T) {
+	values := url.Values{"country_area_id": []string{" ng "}}
+	want := values.Encode()
+
+	query, err := ValidateTimeZoneListQuery(url.Values{})
+	if err != nil {
+		t.Fatalf("ValidateTimeZoneListQuery() error = %v", err)
+	}
+	if query != (services.TimeZoneListInput{}) {
+		t.Fatalf("unexpected empty query: %#v", query)
+	}
+
+	query, err = ValidateTimeZoneListQuery(values)
+	if err != nil {
+		t.Fatalf("ValidateTimeZoneListQuery() error = %v", err)
+	}
+	if query.CountryAreaID != "ng" {
+		t.Fatalf("unexpected time-zone filter: %#v", query.CountryAreaID)
+	}
+	if got := values.Encode(); got != want {
+		t.Fatalf("query values mutated: got %q want %q", got, want)
+	}
+}
+
+func TestValidateTimeZoneListQueryRejectsInvalidValues(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		value []string
+		field string
+	}{
+		{name: "empty", value: []string{""}, field: "country_area_id"},
+		{name: "whitespace", value: []string{"   "}, field: "country_area_id"},
+		{name: "uppercase", value: []string{"NG"}, field: "country_area_id"},
+		{name: "unknown", value: []string{"zz"}, field: "country_area_id"},
+		{name: "duplicate", value: []string{"ng", "bv"}, field: "country_area_id"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			_, err := ValidateTimeZoneListQuery(url.Values{"country_area_id": tc.value})
+			if err == nil {
+				t.Fatal("expected validation error")
+			}
+			var validationErr ValidationErrors
+			if !errors.As(err, &validationErr) {
+				t.Fatalf("ValidateTimeZoneListQuery() error = %v, want ValidationErrors", err)
+			}
+			if len(validationErr.Fields) == 0 || validationErr.Fields[0].Field != tc.field {
 				t.Fatalf("unexpected validation errors: %#v", validationErr.Fields)
 			}
 		})

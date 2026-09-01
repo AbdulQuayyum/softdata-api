@@ -13,9 +13,16 @@ var stateIDPattern = regexp.MustCompile(`^[a-z]+(?:-[a-z]+)*$`)
 var geopoliticalZoneIDPattern = regexp.MustCompile(`^[a-z]+(?:-[a-z]+)*$`)
 var localGovernmentUnitIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)+$`)
 var localGovernmentUnitSlugPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)*$`)
+var timeZoneIDPattern = regexp.MustCompile(`^[A-Za-z][A-Za-z0-9._+-]*(?:/[A-Za-z0-9._+-]+)+$`)
 var countryOrAreaIDPattern = regexp.MustCompile(`^[a-z]{2}$`)
 var countryOrAreaCodePattern = regexp.MustCompile(`^[0-9]{3}$`)
 var uuidLikePattern = regexp.MustCompile(`^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$`)
+var timeZoneReservedPrefixSet = map[string]struct{}{
+	"Etc":     {},
+	"Factory": {},
+	"posix":   {},
+	"right":   {},
+}
 
 var approvedStateIDs = []string{
 	"abia",
@@ -169,6 +176,84 @@ func ValidateLocalGovernmentUnitID(value string) (string, error) {
 		return "", invalidField("lga_id", "LGA ID must be a valid state-prefixed lowercase public slug.")
 	}
 	return value, nil
+}
+
+// ValidateTimeZoneID validates the documented public IANA time-zone identifier.
+func ValidateTimeZoneID(value string) (string, error) {
+	value = strings.TrimSpace(value)
+	if value == "" {
+		return "", requiredError("time_zone_id", "Time zone ID is required.")
+	}
+	if !timeZoneIDPattern.MatchString(value) || uuidLikePattern.MatchString(value) {
+		return "", invalidField("time_zone_id", "Time zone ID must be a valid canonical IANA identifier.")
+	}
+	if strings.ContainsAny(value, " \t\n\r\f\v\\%?#") {
+		return "", invalidField("time_zone_id", "Time zone ID must be a valid canonical IANA identifier.")
+	}
+	for _, r := range value {
+		if r < 32 || r == 127 {
+			return "", invalidField("time_zone_id", "Time zone ID must be a valid canonical IANA identifier.")
+		}
+	}
+	parts := strings.Split(value, "/")
+	if len(parts) < 2 {
+		return "", invalidField("time_zone_id", "Time zone ID must be a valid canonical IANA identifier.")
+	}
+	for _, part := range parts {
+		if part == "" || part == "." || part == ".." {
+			return "", invalidField("time_zone_id", "Time zone ID must be a valid canonical IANA identifier.")
+		}
+		if part[0] < 'A' || part[0] > 'Z' {
+			return "", invalidField("time_zone_id", "Time zone ID must be a valid canonical IANA identifier.")
+		}
+	}
+	if _, reserved := timeZoneReservedPrefixSet[parts[0]]; reserved {
+		return "", invalidField("time_zone_id", "Time zone ID must be a valid canonical IANA identifier.")
+	}
+	return value, nil
+}
+
+// ValidateTimeZoneCountryAreaID validates the documented public time-zone country/area filter.
+func ValidateTimeZoneCountryAreaID(value string) (string, error) {
+	value = strings.TrimSpace(value)
+	if value == "" {
+		return "", requiredError("country_area_id", "Country or area ID is required.")
+	}
+	if !financeCurrencyCountryAreaIDPattern.MatchString(value) || uuidLikePattern.MatchString(value) {
+		return "", invalidField("country_area_id", "Country or area ID must be a valid lowercase alpha-2 code.")
+	}
+	if _, ok := validCurrencyCountryAreaIDs[value]; !ok {
+		return "", invalidField("country_area_id", "Country or area ID must reference a supported public country or area.")
+	}
+	return value, nil
+}
+
+// ValidateTimeZoneListQuery validates the documented time-zone list query.
+func ValidateTimeZoneListQuery(values url.Values) (services.TimeZoneListInput, error) {
+	var errs ValidationErrors
+
+	countryAreaValues := values["country_area_id"]
+	if len(countryAreaValues) > 1 {
+		errs.Add("country_area_id", codeMalformed, "Country or area ID may be provided at most once.")
+		return services.TimeZoneListInput{}, errs
+	}
+	if len(countryAreaValues) == 0 {
+		return services.TimeZoneListInput{}, nil
+	}
+
+	normalized, err := ValidateTimeZoneCountryAreaID(countryAreaValues[0])
+	if err != nil {
+		if validationErr, ok := err.(ValidationErrors); ok {
+			errs.Fields = append(errs.Fields, validationErr.Fields...)
+		} else {
+			return services.TimeZoneListInput{}, err
+		}
+	}
+	if len(errs.Fields) > 0 {
+		return services.TimeZoneListInput{}, errs
+	}
+
+	return services.TimeZoneListInput{CountryAreaID: normalized}, nil
 }
 
 // ValidateCountryOrAreaID validates the documented public country-or-area identifier.

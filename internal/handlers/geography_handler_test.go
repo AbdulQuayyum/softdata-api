@@ -16,31 +16,37 @@ import (
 )
 
 type geographyHandlerStub struct {
-	listFn        func(context.Context) ([]models.State, error)
-	getFn         func(context.Context, string) (models.State, error)
-	zoneListFn    func(context.Context) ([]models.GeopoliticalZone, error)
-	zoneGetFn     func(context.Context, string) (models.GeopoliticalZone, error)
-	lgaListFn     func(context.Context) ([]models.LocalGovernmentUnit, error)
-	lgaListByFn   func(context.Context, string) ([]models.LocalGovernmentUnit, error)
-	lgaGetFn      func(context.Context, string) (models.LocalGovernmentUnit, error)
-	countryListFn func(context.Context, services.CountryOrAreaListInput) ([]models.CountryOrArea, error)
-	countryGetFn  func(context.Context, string) (models.CountryOrArea, error)
+	listFn         func(context.Context) ([]models.State, error)
+	getFn          func(context.Context, string) (models.State, error)
+	zoneListFn     func(context.Context) ([]models.GeopoliticalZone, error)
+	zoneGetFn      func(context.Context, string) (models.GeopoliticalZone, error)
+	lgaListFn      func(context.Context) ([]models.LocalGovernmentUnit, error)
+	lgaListByFn    func(context.Context, string) ([]models.LocalGovernmentUnit, error)
+	lgaGetFn       func(context.Context, string) (models.LocalGovernmentUnit, error)
+	timeZoneListFn func(context.Context, services.TimeZoneListInput) ([]models.TimeZone, error)
+	timeZoneGetFn  func(context.Context, string) (models.TimeZone, error)
+	countryListFn  func(context.Context, services.CountryOrAreaListInput) ([]models.CountryOrArea, error)
+	countryGetFn   func(context.Context, string) (models.CountryOrArea, error)
 
-	listCalls        int
-	getCalls         int
-	zoneListCalls    int
-	zoneGetCalls     int
-	lgaListCalls     int
-	lgaListByCalls   int
-	lgaGetCalls      int
-	countryListCalls int
-	countryGetCalls  int
-	lastID           string
-	lastZoneID       string
-	lastLGAID        string
-	lastStateID      string
-	lastCountryID    string
-	lastCountryQuery services.CountryOrAreaListInput
+	listCalls         int
+	getCalls          int
+	zoneListCalls     int
+	zoneGetCalls      int
+	lgaListCalls      int
+	lgaListByCalls    int
+	lgaGetCalls       int
+	timeZoneListCalls int
+	timeZoneGetCalls  int
+	countryListCalls  int
+	countryGetCalls   int
+	lastID            string
+	lastZoneID        string
+	lastLGAID         string
+	lastTimeZoneID    string
+	lastTimeZoneQuery services.TimeZoneListInput
+	lastStateID       string
+	lastCountryID     string
+	lastCountryQuery  services.CountryOrAreaListInput
 }
 
 func (s *geographyHandlerStub) ListStates(ctx context.Context) ([]models.State, error) {
@@ -101,6 +107,24 @@ func (s *geographyHandlerStub) GetLocalGovernmentUnit(ctx context.Context, unitI
 		return s.lgaGetFn(ctx, unitID)
 	}
 	return models.LocalGovernmentUnit{}, nil
+}
+
+func (s *geographyHandlerStub) ListTimeZones(ctx context.Context, input services.TimeZoneListInput) ([]models.TimeZone, error) {
+	s.timeZoneListCalls++
+	s.lastTimeZoneQuery = input
+	if s.timeZoneListFn != nil {
+		return s.timeZoneListFn(ctx, input)
+	}
+	return nil, nil
+}
+
+func (s *geographyHandlerStub) GetTimeZone(ctx context.Context, timeZoneID string) (models.TimeZone, error) {
+	s.timeZoneGetCalls++
+	s.lastTimeZoneID = timeZoneID
+	if s.timeZoneGetFn != nil {
+		return s.timeZoneGetFn(ctx, timeZoneID)
+	}
+	return models.TimeZone{}, nil
 }
 
 func (s *geographyHandlerStub) ListCountriesAndAreas(ctx context.Context, input services.CountryOrAreaListInput) ([]models.CountryOrArea, error) {
@@ -1233,6 +1257,246 @@ func TestGeographyHandlerLocalGovernmentUnitErrors(t *testing.T) {
 		}
 		if strings.Contains(rr.Body.String(), "database down") {
 			t.Fatalf("internal error details leaked: %s", rr.Body.String())
+		}
+	})
+}
+
+func TestGeographyHandlerListTimeZones(t *testing.T) {
+	t.Run("list all", func(t *testing.T) {
+		stub := &geographyHandlerStub{
+			timeZoneListFn: func(ctx context.Context, input services.TimeZoneListInput) ([]models.TimeZone, error) {
+				if input != (services.TimeZoneListInput{}) {
+					t.Fatalf("unexpected input: %#v", input)
+				}
+				return []models.TimeZone{{ID: "Africa/Lagos", CountryAreaIDs: []string{"ng"}}}, nil
+			},
+		}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/time-zones", nil)
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.ListTimeZones(w, r)
+		}, rr)
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if stub.timeZoneListCalls != 1 || stub.timeZoneGetCalls != 0 {
+			t.Fatalf("unexpected call counts: list=%d get=%d", stub.timeZoneListCalls, stub.timeZoneGetCalls)
+		}
+		var body map[string]any
+		if err := json.Unmarshal(rr.Body.Bytes(), &body); err != nil {
+			t.Fatalf("json.Unmarshal: %v", err)
+		}
+		data := body["data"].([]any)
+		if len(data) != 1 {
+			t.Fatalf("unexpected payload: %#v", data)
+		}
+		item := data[0].(map[string]any)
+		if item["id"] != "Africa/Lagos" {
+			t.Fatalf("unexpected item: %#v", item)
+		}
+	})
+
+	t.Run("filter and zero results", func(t *testing.T) {
+		stub := &geographyHandlerStub{
+			timeZoneListFn: func(ctx context.Context, input services.TimeZoneListInput) ([]models.TimeZone, error) {
+				return []models.TimeZone{{ID: "Africa/Lagos", CountryAreaIDs: []string{"ng"}}}, nil
+			},
+		}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/time-zones?country_area_id=ng", nil)
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.ListTimeZones(w, r)
+		}, rr)
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if stub.timeZoneListCalls != 1 || stub.lastTimeZoneQuery.CountryAreaID != "ng" {
+			t.Fatalf("unexpected list call state: calls=%d input=%#v", stub.timeZoneListCalls, stub.lastTimeZoneQuery)
+		}
+
+		stub.timeZoneListCalls = 0
+		rr = httptest.NewRecorder()
+		req = httptest.NewRequest(http.MethodGet, "/v1/geography/time-zones?country_area_id=bv", nil)
+		stub.timeZoneListFn = func(ctx context.Context, input services.TimeZoneListInput) ([]models.TimeZone, error) {
+			if input.CountryAreaID != "bv" {
+				t.Fatalf("unexpected input: %#v", input)
+			}
+			return nil, nil
+		}
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.ListTimeZones(w, r)
+		}, rr)
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		var body map[string]any
+		if err := json.Unmarshal(rr.Body.Bytes(), &body); err != nil {
+			t.Fatalf("json.Unmarshal: %v", err)
+		}
+		data := body["data"].([]any)
+		if len(data) != 0 {
+			t.Fatalf("expected empty array, got %#v", data)
+		}
+	})
+
+	t.Run("reject invalid query", func(t *testing.T) {
+		stub := &geographyHandlerStub{}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		for _, rawQuery := range []string{"country_area_id=", "country_area_id=ZZ", "country_area_id=ng&country_area_id=bv", "country_area_id=zz"} {
+			rr := httptest.NewRecorder()
+			req := httptest.NewRequest(http.MethodGet, "/v1/geography/time-zones?"+rawQuery, nil)
+			invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+				h.ListTimeZones(w, r)
+			}, rr)
+			if rr.Code != http.StatusUnprocessableEntity {
+				t.Fatalf("unexpected status for %q: %d", rawQuery, rr.Code)
+			}
+			if stub.timeZoneListCalls != 0 {
+				t.Fatalf("service should not be called for invalid query")
+			}
+		}
+	})
+
+	t.Run("method guard", func(t *testing.T) {
+		h, err := NewGeographyHandler(&geographyHandlerStub{})
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodPost, "/v1/geography/time-zones", nil)
+		h.ListTimeZones(rr, req)
+		if rr.Code != http.StatusMethodNotAllowed {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if got := rr.Header().Get("Allow"); got != http.MethodGet {
+			t.Fatalf("unexpected allow header: %q", got)
+		}
+	})
+}
+
+func TestGeographyHandlerGetTimeZone(t *testing.T) {
+	t.Run("success", func(t *testing.T) {
+		stub := &geographyHandlerStub{
+			timeZoneGetFn: func(ctx context.Context, timeZoneID string) (models.TimeZone, error) {
+				if _, ok := middlewares.RequestIDFromContext(ctx); !ok {
+					t.Fatal("request context was not preserved")
+				}
+				if timeZoneID != "America/Argentina/Buenos_Aires" {
+					t.Fatalf("unexpected time zone id: %q", timeZoneID)
+				}
+				return models.TimeZone{ID: "America/Argentina/Buenos_Aires", CountryAreaIDs: []string{"ar"}}, nil
+			},
+		}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/time-zones/America/Argentina/Buenos_Aires", nil)
+		req.SetPathValue("time_zone_id", "America/Argentina/Buenos_Aires")
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.GetTimeZone(w, r)
+		}, rr)
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if stub.timeZoneGetCalls != 1 {
+			t.Fatalf("unexpected get call count: %d", stub.timeZoneGetCalls)
+		}
+		var body map[string]any
+		if err := json.Unmarshal(rr.Body.Bytes(), &body); err != nil {
+			t.Fatalf("json.Unmarshal: %v", err)
+		}
+		data := body["data"].(map[string]any)
+		if data["id"] != "America/Argentina/Buenos_Aires" {
+			t.Fatalf("unexpected payload: %#v", data)
+		}
+	})
+
+	t.Run("reject invalid id", func(t *testing.T) {
+		stub := &geographyHandlerStub{}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		for _, value := range []string{"", " ", "Africa", "/Africa/Lagos", "Africa/Lagos/", "Africa//Lagos", "Africa/./Lagos", "Africa/../Lagos", "Africa\\Lagos", "Africa%2FLagos", "Africa/Lagos?x=1", "Factory", "Etc/UTC"} {
+			rr := httptest.NewRecorder()
+			req := httptest.NewRequest(http.MethodGet, "/v1/geography/time-zones/invalid", nil)
+			req.SetPathValue("time_zone_id", value)
+			invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+				h.GetTimeZone(w, r)
+			}, rr)
+			if rr.Code != http.StatusUnprocessableEntity {
+				t.Fatalf("unexpected status for %q: %d", value, rr.Code)
+			}
+			if stub.timeZoneGetCalls != 0 {
+				t.Fatalf("service should not be called for invalid id")
+			}
+		}
+	})
+
+	t.Run("not found and unexpected errors", func(t *testing.T) {
+		stub := &geographyHandlerStub{
+			timeZoneGetFn: func(context.Context, string) (models.TimeZone, error) {
+				return models.TimeZone{}, services.ErrTimeZoneNotFound
+			},
+		}
+		h, err := NewGeographyHandler(stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/time-zones/Africa/Lagos", nil)
+		req.SetPathValue("time_zone_id", "Africa/Lagos")
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.GetTimeZone(w, r)
+		}, rr)
+		if rr.Code != http.StatusNotFound {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+
+		stub.timeZoneGetFn = func(context.Context, string) (models.TimeZone, error) {
+			return models.TimeZone{}, errors.New("explode")
+		}
+		rr = httptest.NewRecorder()
+		req = httptest.NewRequest(http.MethodGet, "/v1/geography/time-zones/Africa/Lagos", nil)
+		req.SetPathValue("time_zone_id", "Africa/Lagos")
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.GetTimeZone(w, r)
+		}, rr)
+		if rr.Code != http.StatusInternalServerError {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if strings.Contains(rr.Body.String(), "explode") {
+			t.Fatalf("internal error details leaked: %s", rr.Body.String())
+		}
+	})
+
+	t.Run("method guard", func(t *testing.T) {
+		h, err := NewGeographyHandler(&geographyHandlerStub{})
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodPost, "/v1/geography/time-zones/Africa/Lagos", nil)
+		req.SetPathValue("time_zone_id", "Africa/Lagos")
+		h.GetTimeZone(rr, req)
+		if rr.Code != http.StatusMethodNotAllowed {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if got := rr.Header().Get("Allow"); got != http.MethodGet {
+			t.Fatalf("unexpected allow header: %q", got)
 		}
 	})
 }

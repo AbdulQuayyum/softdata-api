@@ -19,6 +19,8 @@ type geographyService interface {
 	ListLocalGovernmentUnits(context.Context) ([]models.LocalGovernmentUnit, error)
 	ListLocalGovernmentUnitsByState(context.Context, string) ([]models.LocalGovernmentUnit, error)
 	GetLocalGovernmentUnit(context.Context, string) (models.LocalGovernmentUnit, error)
+	ListTimeZones(context.Context, services.TimeZoneListInput) ([]models.TimeZone, error)
+	GetTimeZone(context.Context, string) (models.TimeZone, error)
 	ListCountriesAndAreas(context.Context, services.CountryOrAreaListInput) ([]models.CountryOrArea, error)
 	GetCountryOrArea(context.Context, string) (models.CountryOrArea, error)
 }
@@ -167,6 +169,58 @@ func (h *GeographyHandler) GetLocalGovernmentUnit(w http.ResponseWriter, r *http
 	}
 
 	_ = response.Success(w, http.StatusOK, unit)
+}
+
+// ListTimeZones handles GET /v1/geography/time-zones.
+func (h *GeographyHandler) ListTimeZones(w http.ResponseWriter, r *http.Request) {
+	if !allowMethod(w, r, http.MethodGet) {
+		return
+	}
+
+	requestID := requestIDFromContext(r.Context())
+	query, err := validators.ValidateTimeZoneListQuery(r.URL.Query())
+	if err != nil {
+		if validationErr, ok := validationErrorsFrom(err); ok {
+			_ = response.Validation(w, requestID, validationErrorsToResponse(validationErr))
+			return
+		}
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	timeZones, err := h.service.ListTimeZones(r.Context(), query)
+	if err != nil {
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	_ = response.List(w, http.StatusOK, timeZones)
+}
+
+// GetTimeZone handles GET /v1/geography/time-zones/{time_zone_id}.
+func (h *GeographyHandler) GetTimeZone(w http.ResponseWriter, r *http.Request) {
+	if !allowMethod(w, r, http.MethodGet) {
+		return
+	}
+
+	requestID := requestIDFromContext(r.Context())
+	timeZoneID, err := validators.ValidateTimeZoneID(r.PathValue("time_zone_id"))
+	if err != nil {
+		if validationErr, ok := validationErrorsFrom(err); ok {
+			_ = response.Validation(w, requestID, validationErrorsToResponse(validationErr))
+			return
+		}
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	timeZone, err := h.service.GetTimeZone(r.Context(), timeZoneID)
+	if err != nil {
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	_ = response.Success(w, http.StatusOK, timeZone)
 }
 
 func (h *GeographyHandler) ListCountriesAndAreas(w http.ResponseWriter, r *http.Request) {

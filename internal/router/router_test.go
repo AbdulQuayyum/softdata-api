@@ -1938,11 +1938,14 @@ type routerGeographyStub struct {
 	lgaListCalls       int
 	lgaListByCalls     int
 	lgaGetCalls        int
+	timeZoneListCalls  int
+	timeZoneGetCalls   int
 	countryListCalls   int
 	countryGetCalls    int
 	lastStateID        string
 	lastZoneID         string
 	lastLGAID          string
+	lastTimeZoneID     string
 	lastLGAStateID     string
 	lastCountryID      string
 	lastHadAPIKey      bool
@@ -2171,6 +2174,35 @@ func (s *routerGeographyStub) GetLocalGovernmentUnit(ctx context.Context, unitID
 		s.lastAPIKeyIdentity = identity
 	}
 	return models.LocalGovernmentUnit{ID: unitID, Name: "Example", StateID: "lagos", CountryCode: "NG", AdministrativeType: "local_government_area"}, nil
+}
+
+func (s *routerGeographyStub) ListTimeZones(ctx context.Context, input services.TimeZoneListInput) ([]models.TimeZone, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.timeZoneListCalls++
+	if s.rec != nil {
+		s.rec.add("geography.time-zone.list")
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return []models.TimeZone{{ID: "Africa/Lagos", CountryAreaIDs: []string{"ng"}}}, nil
+}
+
+func (s *routerGeographyStub) GetTimeZone(ctx context.Context, timeZoneID string) (models.TimeZone, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.timeZoneGetCalls++
+	s.lastTimeZoneID = timeZoneID
+	if s.rec != nil {
+		s.rec.add("geography.time-zone.get:" + timeZoneID)
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return models.TimeZone{ID: timeZoneID, CountryAreaIDs: []string{"ng"}}, nil
 }
 
 func (s *routerGeographyStub) ListCountriesAndAreas(ctx context.Context, input services.CountryOrAreaListInput) ([]models.CountryOrArea, error) {
