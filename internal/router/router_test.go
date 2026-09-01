@@ -122,7 +122,7 @@ func testHandlers(t *testing.T, rec *routerRecorder) Handlers {
 	if err != nil {
 		t.Fatalf("NewDatasetHandler() error = %v", err)
 	}
-	geographyHandler, err := handlers.NewGeographyHandler(geography)
+	geographyHandler, err := handlers.NewGeographyHandler(geography, geography)
 	if err != nil {
 		t.Fatalf("NewGeographyHandler() error = %v", err)
 	}
@@ -180,7 +180,7 @@ func testHandlersWithGeography(t *testing.T, rec *routerRecorder, geography *rou
 	if err != nil {
 		t.Fatalf("NewDatasetHandler() error = %v", err)
 	}
-	geographyHandler, err := handlers.NewGeographyHandler(geography)
+	geographyHandler, err := handlers.NewGeographyHandler(geography, geography)
 	if err != nil {
 		t.Fatalf("NewGeographyHandler() error = %v", err)
 	}
@@ -1626,7 +1626,7 @@ func newGeographyPolicyRouter(t *testing.T) geographyPolicyHarness {
 	rateLimit := &routerRateLimitRepoStub{}
 	usage := &routerUsageRecorderStub{}
 	geography := &routerGeographyStub{}
-	geographyHandler, err := handlers.NewGeographyHandler(geography)
+	geographyHandler, err := handlers.NewGeographyHandler(geography, geography)
 	if err != nil {
 		t.Fatalf("NewGeographyHandler() error = %v", err)
 	}
@@ -2088,14 +2088,17 @@ type routerGeographyStub struct {
 	lastTimeZoneInput  services.TimeZoneListInput
 	countryListCalls   int
 	countryGetCalls    int
+	profileCalls       int
 	lastStateID        string
 	lastZoneID         string
 	lastLGAID          string
 	lastTimeZoneID     string
 	lastLGAStateID     string
 	lastCountryID      string
+	lastProfileID      string
 	lastHadAPIKey      bool
 	lastAPIKeyIdentity services.APIKeyIdentity
+	profileFn          func(context.Context, string) (models.CountryProfile, error)
 }
 
 type routerFinanceStub struct {
@@ -2379,6 +2382,24 @@ func (s *routerGeographyStub) GetCountryOrArea(ctx context.Context, countryID st
 		s.lastAPIKeyIdentity = identity
 	}
 	return models.CountryOrArea{ID: countryID, Name: "Nigeria", Alpha2Code: "NG", Alpha3Code: "NGA", NumericCode: "566"}, nil
+}
+
+func (s *routerGeographyStub) GetCountryProfile(ctx context.Context, countryID string) (models.CountryProfile, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.profileCalls++
+	s.lastProfileID = countryID
+	if s.rec != nil {
+		s.rec.add("geography.country.profile:" + countryID)
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	if s.profileFn != nil {
+		return s.profileFn(ctx, countryID)
+	}
+	return models.CountryProfile{ID: countryID, Name: "Nigeria", Alpha2Code: "NG", Alpha3Code: "NGA", NumericCode: "566", CurrencyIDs: []string{}, TimeZoneIDs: []string{}}, nil
 }
 
 type routerEducationStub struct {

@@ -89,6 +89,10 @@ func (s *geographyServiceStub) GetCountryOrArea(context.Context, string) (models
 	return models.CountryOrArea{}, nil
 }
 
+func (s *geographyServiceStub) GetCountryProfile(context.Context, string) (models.CountryProfile, error) {
+	return models.CountryProfile{}, nil
+}
+
 type geographyJSONRepoStub struct {
 	root     string
 	maxBytes int64

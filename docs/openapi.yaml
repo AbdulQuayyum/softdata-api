@@ -287,6 +287,26 @@ paths:
           $ref: "#/components/responses/ValidationFailed"
         "500":
           $ref: "#/components/responses/InternalError"
+  /v1/geography/countries/{country_id}/profile:
+    get:
+      tags: [Geography]
+      summary: Get a country profile
+      description: Returns a derived profile for a current UN M49 country or area, combining the country-or-area record with approved currency and time-zone relationships. Statistical designations are used for reference only and do not imply political recognition or legal status.
+      parameters:
+        - $ref: "#/components/parameters/CountryOrAreaID"
+      responses:
+        "200":
+          description: Country profile record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CountryProfileResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
   /v1/assets/flags/{country_id}.svg:
     get:
       tags: [Geography]
@@ -1334,6 +1354,97 @@ components:
           type: boolean
         data:
           $ref: "#/components/schemas/CountryOrArea"
+      required: [success, data]
+    CountryProfile:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          pattern: '^[a-z]{2}$'
+        name:
+          type: string
+        alpha_2_code:
+          type: string
+          pattern: '^[A-Z]{2}$'
+        alpha_3_code:
+          type: string
+          pattern: '^[A-Z]{3}$'
+        numeric_code:
+          type: string
+          pattern: '^[0-9]{3}$'
+        calling_codes:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: string
+            pattern: '^\+[1-9][0-9]{0,2}(?:-[0-9]{1,4})*$'
+        flag_emoji:
+          type: string
+        flag_svg_url:
+          type: string
+          pattern: '^/v1/assets/flags/[a-z]{2}\.svg$'
+        region_code:
+          type: string
+          pattern: '^[0-9]{3}$'
+        region_name:
+          type: string
+        subregion_code:
+          type: string
+          pattern: '^[0-9]{3}$'
+        subregion_name:
+          type: string
+        intermediate_region_code:
+          type: string
+          pattern: '^[0-9]{3}$'
+        intermediate_region_name:
+          type: string
+        currency_ids:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+            pattern: '^[a-z]{3}$'
+        time_zone_ids:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+      required: [id, name, alpha_2_code, alpha_3_code, numeric_code, currency_ids, time_zone_ids]
+      allOf:
+        - if:
+            required: [region_code]
+          then:
+            required: [region_name]
+        - if:
+            required: [region_name]
+          then:
+            required: [region_code]
+        - if:
+            required: [subregion_code]
+          then:
+            required: [subregion_name]
+        - if:
+            required: [subregion_name]
+          then:
+            required: [subregion_code]
+        - if:
+            required: [intermediate_region_code]
+          then:
+            required: [intermediate_region_name]
+        - if:
+            required: [intermediate_region_name]
+          then:
+            required: [intermediate_region_code]
+    CountryProfileResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: "#/components/schemas/CountryProfile"
       required: [success, data]
     UniversityOwnershipType:
       type: string

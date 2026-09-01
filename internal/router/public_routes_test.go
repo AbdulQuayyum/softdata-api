@@ -138,6 +138,24 @@ func TestPublicRoutesServeGeographyCountriesAndAreas(t *testing.T) {
 	}
 }
 
+func TestPublicRoutesServeGeographyCountryProfiles(t *testing.T) {
+	rec := &routerRecorder{}
+	router := newTestRouter(t, rec)
+
+	rr := httptest.NewRecorder()
+	req := httptest.NewRequest(http.MethodGet, "/v1/geography/countries/ng/profile?state_id=lagos", nil)
+	router.ServeHTTP(rr, req)
+	if rr.Code != http.StatusOK {
+		t.Fatalf("unexpected status: %d", rr.Code)
+	}
+	if !strings.Contains(strings.Join(rec.snapshot(), ","), "usage:/v1/geography/countries/{country_id}/profile|geography") {
+		t.Fatalf("expected country profile usage middleware to run: %v", rec.snapshot())
+	}
+	if !strings.Contains(strings.Join(rec.snapshot(), ","), "geography.country.profile:ng") {
+		t.Fatalf("expected country profile handler to run: %v", rec.snapshot())
+	}
+}
+
 func TestPublicRoutesServeCountryFlagAssets(t *testing.T) {
 	rec := &routerRecorder{}
 	router := newTestRouter(t, rec)
