@@ -522,6 +522,9 @@ func TestRouterRejectsUnknownRoutesAndUnsupportedMethods(t *testing.T) {
 		{name: "imto wrong method", method: http.MethodPost, target: "/v1/finance/international-money-transfer-operators", allow: http.MethodGet, status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_imto"},
 		{name: "imto detail wrong method", method: http.MethodDelete, target: "/v1/finance/international-money-transfer-operators/olive-monies-express-limited", allow: http.MethodGet, status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_imto_detail"},
 		{name: "imto nested route", method: http.MethodGet, target: "/v1/finance/international-money-transfer-operators/olive-monies-express-limited/extra", status: http.StatusNotFound, wantCode: "RESOURCE_NOT_FOUND", wantRequest: "req_imto_nested"},
+		{name: "currency wrong method", method: http.MethodPost, target: "/v1/finance/currencies", allow: http.MethodGet, status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_currency"},
+		{name: "currency detail wrong method", method: http.MethodDelete, target: "/v1/finance/currencies/ngn", allow: http.MethodGet, status: http.StatusMethodNotAllowed, wantCode: "INVALID_REQUEST", wantRequest: "req_currency_detail"},
+		{name: "currency nested route", method: http.MethodGet, target: "/v1/finance/currencies/ngn/extra", status: http.StatusNotFound, wantCode: "RESOURCE_NOT_FOUND", wantRequest: "req_currency_nested"},
 		{name: "ready not registered", method: http.MethodGet, target: "/ready", status: http.StatusNotFound, wantCode: "RESOURCE_NOT_FOUND", wantRequest: "req_ready"},
 	}
 
@@ -633,6 +636,8 @@ func TestRouterRejectsHeadRequestsWithJson405(t *testing.T) {
 		{name: "finance detail", target: "/v1/finance/payment-service-providers/super-agent-fairmoney", allow: http.MethodGet},
 		{name: "imto", target: "/v1/finance/international-money-transfer-operators", allow: http.MethodGet},
 		{name: "imto detail", target: "/v1/finance/international-money-transfer-operators/olive-monies-express-limited", allow: http.MethodGet},
+		{name: "currency", target: "/v1/finance/currencies", allow: http.MethodGet},
+		{name: "currency detail", target: "/v1/finance/currencies/ngn", allow: http.MethodGet},
 	}
 
 	for _, tc := range tests {
@@ -1168,6 +1173,54 @@ func TestRouterUsesFinanceMiddlewarePolicy(t *testing.T) {
 		}
 	})
 
+	t.Run("currency list", func(t *testing.T) {
+		harness = newFinancePolicyRouter(t)
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/finance/currencies", nil)
+		req.RemoteAddr = "203.0.113.10:1234"
+		req.Header.Set("X-API-Key", "sd_live_example")
+		req.URL.RawQuery = "country_area_id=ng"
+		harness.router.ServeHTTP(rr, req)
+
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if harness.rateLimit.request.SubjectKind != interfaces.RateLimitSubjectAPIKey {
+			t.Fatalf("unexpected subject kind: %#v", harness.rateLimit.request.SubjectKind)
+		}
+		if harness.rateLimit.request.Subject != "key_123" {
+			t.Fatalf("unexpected subject: %q", harness.rateLimit.request.Subject)
+		}
+		if harness.usage.input.Route != "/v1/finance/currencies" || harness.usage.input.DatasetGroup == nil || *harness.usage.input.DatasetGroup != "finance" {
+			t.Fatalf("unexpected usage record: %#v", harness.usage.input)
+		}
+		if harness.finance.lastCurrencyFilter != "ng" {
+			t.Fatalf("unexpected currency filter seen by handler: %q", harness.finance.lastCurrencyFilter)
+		}
+	})
+
+	t.Run("currency detail", func(t *testing.T) {
+		harness = newFinancePolicyRouter(t)
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/finance/currencies/ngn", nil)
+		req.RemoteAddr = "203.0.113.10:1234"
+		req.Header.Set("X-API-Key", "sd_live_example")
+		harness.router.ServeHTTP(rr, req)
+
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if harness.rateLimit.request.SubjectKind != interfaces.RateLimitSubjectAPIKey {
+			t.Fatalf("unexpected subject kind: %#v", harness.rateLimit.request.SubjectKind)
+		}
+		if harness.usage.input.Route != "/v1/finance/currencies/{currency_id}" || harness.usage.input.DatasetGroup == nil || *harness.usage.input.DatasetGroup != "finance" {
+			t.Fatalf("unexpected usage record: %#v", harness.usage.input)
+		}
+		if harness.finance.lastCurrencyID != "ngn" {
+			t.Fatalf("unexpected currency id seen by handler: %q", harness.finance.lastCurrencyID)
+		}
+	})
+
 	t.Run("invalid query reaches handler", func(t *testing.T) {
 		harness = newFinancePolicyRouter(t)
 		rr := httptest.NewRecorder()
@@ -1209,6 +1262,53 @@ func TestRouterUsesFinanceMiddlewarePolicy(t *testing.T) {
 		}
 		if harness.finance.listCalls != 0 {
 			t.Fatalf("handler should not run on rate-limited request: %d", harness.finance.listCalls)
+		}
+		if harness.usage.calls != 0 {
+			t.Fatalf("usage should not run on rate-limited request: %d", harness.usage.calls)
+		}
+	})
+
+	t.Run("currency invalid query reaches handler", func(t *testing.T) {
+		harness = newFinancePolicyRouter(t)
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/finance/currencies", nil)
+		req.RemoteAddr = "203.0.113.10:1234"
+		req.URL.RawQuery = "country_area_id=zz"
+		harness.router.ServeHTTP(rr, req)
+
+		if rr.Code != http.StatusUnprocessableEntity {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if harness.finance.listCurrencyCalls != 0 {
+			t.Fatalf("service should not be called for invalid currency query: %#v", harness.finance)
+		}
+		if harness.usage.calls != 1 {
+			t.Fatalf("usage should record the rejected handler response once: %d", harness.usage.calls)
+		}
+		if harness.usage.input.Route != "/v1/finance/currencies" || harness.usage.input.DatasetGroup == nil || *harness.usage.input.DatasetGroup != "finance" {
+			t.Fatalf("unexpected usage record: %#v", harness.usage.input)
+		}
+	})
+
+	t.Run("currency rate limited", func(t *testing.T) {
+		harness = newFinancePolicyRouter(t)
+		harness.rateLimit.result = interfaces.RateLimitResult{
+			Allowed:   false,
+			Limit:     60,
+			Remaining: 0,
+			ResetAt:   time.Now().UTC().Add(time.Minute),
+		}
+
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/finance/currencies", nil)
+		req.RemoteAddr = "203.0.113.10:1234"
+		harness.router.ServeHTTP(rr, req)
+
+		if rr.Code != http.StatusTooManyRequests {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if harness.finance.listCurrencyCalls != 0 {
+			t.Fatalf("handler should not run on rate-limited request: %d", harness.finance.listCurrencyCalls)
 		}
 		if harness.usage.calls != 0 {
 			t.Fatalf("usage should not run on rate-limited request: %d", harness.usage.calls)
@@ -1539,6 +1639,16 @@ func newFinancePolicyRouter(t *testing.T) financePolicyHarness {
 					AnonymousIdentifier: anonymous,
 				})
 			case "/v1/finance/international-money-transfer-operators/{operator_id}":
+				return middlewares.UsageTracking(usage, endpoint, datasetGroup, middlewares.UsageTrackingOptions{
+					Timeout:             time.Second,
+					AnonymousIdentifier: anonymous,
+				})
+			case "/v1/finance/currencies":
+				return middlewares.UsageTracking(usage, endpoint, datasetGroup, middlewares.UsageTrackingOptions{
+					Timeout:             time.Second,
+					AnonymousIdentifier: anonymous,
+				})
+			case "/v1/finance/currencies/{currency_id}":
 				return middlewares.UsageTracking(usage, endpoint, datasetGroup, middlewares.UsageTrackingOptions{
 					Timeout:             time.Second,
 					AnonymousIdentifier: anonymous,

@@ -552,6 +552,9 @@ func buildFinanceHandlerFromJSONRepository(
 	if err := verifyFinanceDataset(ctx, financeService); err != nil {
 		return nil, err
 	}
+	if err := verifyCurrencyDataset(ctx, financeService); err != nil {
+		return nil, err
+	}
 	financeHandler, err := newFinanceHandler(financeService)
 	if err != nil {
 		return nil, fmt.Errorf("initialize finance handler: %w", err)
@@ -921,6 +924,71 @@ func verifyFinanceDataset(ctx context.Context, service financeService) error {
 	}
 	if len(operators) != 108 {
 		return fmt.Errorf("verify finance dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+	return nil
+}
+
+func verifyCurrencyDataset(ctx context.Context, service financeService) error {
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if service == nil {
+		return fmt.Errorf("verify currency dataset: finance service is required")
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+
+	currencies, err := service.ListCurrencies(ctx, services.CurrencyListInput{})
+	if err != nil {
+		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+			return err
+		}
+		return fmt.Errorf("verify currency dataset: %w", err)
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+	if len(currencies) != 155 {
+		return fmt.Errorf("verify currency dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+
+	const expectedRelationships = 252
+	const expectedMappedCountryAreas = 245
+	zeroMapping := map[string]struct{}{
+		"aq": {},
+		"gs": {},
+		"ps": {},
+	}
+
+	relationships := 0
+	mappedCountryAreas := make(map[string]struct{}, expectedMappedCountryAreas)
+	for _, currency := range currencies {
+		if currency.ID == "" || currency.Name == "" || currency.AlphabeticCode == "" || currency.NumericCode == "" {
+			return fmt.Errorf("verify currency dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+		if len(currency.CountryAreaIDs) == 0 {
+			if currency.AlphabeticCode != "TWD" {
+				return fmt.Errorf("verify currency dataset: %w", interfaces.ErrInvalidDatasetFile)
+			}
+			continue
+		}
+		relationships += len(currency.CountryAreaIDs)
+		for _, countryAreaID := range currency.CountryAreaIDs {
+			mappedCountryAreas[countryAreaID] = struct{}{}
+		}
+	}
+
+	if relationships != expectedRelationships {
+		return fmt.Errorf("verify currency dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+	if len(mappedCountryAreas) != expectedMappedCountryAreas {
+		return fmt.Errorf("verify currency dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+	for countryAreaID := range zeroMapping {
+		if _, ok := mappedCountryAreas[countryAreaID]; ok {
+			return fmt.Errorf("verify currency dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
 	}
 	return nil
 }
