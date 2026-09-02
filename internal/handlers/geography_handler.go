@@ -25,15 +25,24 @@ type geographyService interface {
 	GetCountryOrArea(context.Context, string) (models.CountryOrArea, error)
 }
 
-type GeographyHandler struct {
-	service geographyService
+type countryProfileService interface {
+	GetCountryProfile(context.Context, string) (models.CountryProfile, error)
 }
 
-func NewGeographyHandler(service geographyService) (*GeographyHandler, error) {
+type GeographyHandler struct {
+	service        geographyService
+	profileService countryProfileService
+}
+
+func NewGeographyHandler(service geographyService, profileService ...countryProfileService) (*GeographyHandler, error) {
 	if service == nil {
 		return nil, fmt.Errorf("geography service is required")
 	}
-	return &GeographyHandler{service: service}, nil
+	var profile countryProfileService
+	if len(profileService) > 0 {
+		profile = profileService[0]
+	}
+	return &GeographyHandler{service: service, profileService: profile}, nil
 }
 
 func (h *GeographyHandler) ListStates(w http.ResponseWriter, r *http.Request) {
@@ -271,4 +280,34 @@ func (h *GeographyHandler) GetCountryOrArea(w http.ResponseWriter, r *http.Reque
 	}
 
 	_ = response.Success(w, http.StatusOK, country)
+}
+
+// GetCountryProfile handles GET /v1/geography/countries/{country_id}/profile.
+func (h *GeographyHandler) GetCountryProfile(w http.ResponseWriter, r *http.Request) {
+	if !allowMethod(w, r, http.MethodGet) {
+		return
+	}
+
+	requestID := requestIDFromContext(r.Context())
+	countryID, err := validators.ValidateCountryOrAreaID(r.PathValue("country_id"))
+	if err != nil {
+		if validationErr, ok := validationErrorsFrom(err); ok {
+			_ = response.Validation(w, requestID, validationErrorsToResponse(validationErr))
+			return
+		}
+		_ = response.Error(w, err, requestID)
+		return
+	}
+	if h.profileService == nil {
+		_ = response.Error(w, fmt.Errorf("country profile service is required"), requestID)
+		return
+	}
+
+	profile, err := h.profileService.GetCountryProfile(r.Context(), countryID)
+	if err != nil {
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	_ = response.Success(w, http.StatusOK, profile)
 }

@@ -27,6 +27,7 @@ type geographyHandlerStub struct {
 	timeZoneGetFn  func(context.Context, string) (models.TimeZone, error)
 	countryListFn  func(context.Context, services.CountryOrAreaListInput) ([]models.CountryOrArea, error)
 	countryGetFn   func(context.Context, string) (models.CountryOrArea, error)
+	profileFn      func(context.Context, string) (models.CountryProfile, error)
 
 	listCalls         int
 	getCalls          int
@@ -39,6 +40,7 @@ type geographyHandlerStub struct {
 	timeZoneGetCalls  int
 	countryListCalls  int
 	countryGetCalls   int
+	profileCalls      int
 	lastID            string
 	lastZoneID        string
 	lastLGAID         string
@@ -47,6 +49,7 @@ type geographyHandlerStub struct {
 	lastStateID       string
 	lastCountryID     string
 	lastCountryQuery  services.CountryOrAreaListInput
+	lastProfileID     string
 }
 
 func (s *geographyHandlerStub) ListStates(ctx context.Context) ([]models.State, error) {
@@ -143,6 +146,15 @@ func (s *geographyHandlerStub) GetCountryOrArea(ctx context.Context, countryID s
 		return s.countryGetFn(ctx, countryID)
 	}
 	return models.CountryOrArea{}, nil
+}
+
+func (s *geographyHandlerStub) GetCountryProfile(ctx context.Context, countryID string) (models.CountryProfile, error) {
+	s.profileCalls++
+	s.lastProfileID = countryID
+	if s.profileFn != nil {
+		return s.profileFn(ctx, countryID)
+	}
+	return models.CountryProfile{}, nil
 }
 
 func TestNewGeographyHandlerRejectsNilService(t *testing.T) {
@@ -1015,6 +1027,148 @@ func TestGeographyHandlerGetCountryOrArea(t *testing.T) {
 	if data["alpha_2_code"] != "NG" || data["alpha_3_code"] != "NGA" || data["numeric_code"] != "566" || data["flag_emoji"] != "🇳🇬" || data["flag_svg_url"] != "/v1/assets/flags/ng.svg" {
 		t.Fatalf("unexpected country response: %#v", data)
 	}
+}
+
+func TestGeographyHandlerGetCountryProfile(t *testing.T) {
+	t.Run("success", func(t *testing.T) {
+		stub := &geographyHandlerStub{
+			profileFn: func(ctx context.Context, countryID string) (models.CountryProfile, error) {
+				if _, ok := middlewares.RequestIDFromContext(ctx); !ok {
+					t.Fatal("request context was not preserved")
+				}
+				if countryID != "ng" {
+					t.Fatalf("unexpected country id: %q", countryID)
+				}
+				return models.CountryProfile{
+					ID:          "ng",
+					Name:        "Nigeria",
+					Alpha2Code:  "NG",
+					Alpha3Code:  "NGA",
+					NumericCode: "566",
+					FlagEmoji:   "🇳🇬",
+					FlagSVGURL:  "/v1/assets/flags/ng.svg",
+					CurrencyIDs: []string{},
+					TimeZoneIDs: []string{},
+				}, nil
+			},
+		}
+		h, err := NewGeographyHandler(stub, stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/countries/ng/profile", nil)
+		req.SetPathValue("country_id", " ng ")
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.GetCountryProfile(w, r)
+		}, rr)
+
+		if rr.Code != http.StatusOK {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if stub.profileCalls != 1 {
+			t.Fatalf("unexpected profile call count: %d", stub.profileCalls)
+		}
+		if stub.lastProfileID != "ng" {
+			t.Fatalf("unexpected profile id: %q", stub.lastProfileID)
+		}
+
+		var body map[string]any
+		if err := json.Unmarshal(rr.Body.Bytes(), &body); err != nil {
+			t.Fatalf("json.Unmarshal: %v", err)
+		}
+		data := body["data"].(map[string]any)
+		if len(data) != 9 {
+			t.Fatalf("unexpected profile field count: %#v", data)
+		}
+		if data["id"] != "ng" || data["name"] != "Nigeria" {
+			t.Fatalf("unexpected profile response: %#v", data)
+		}
+		if _, ok := data["currency_ids"].([]any); !ok {
+			t.Fatalf("expected currency_ids array, got %#v", data["currency_ids"])
+		}
+		if _, ok := data["time_zone_ids"].([]any); !ok {
+			t.Fatalf("expected time_zone_ids array, got %#v", data["time_zone_ids"])
+		}
+	})
+
+	t.Run("reject invalid id", func(t *testing.T) {
+		stub := &geographyHandlerStub{}
+		h, err := NewGeographyHandler(stub, stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/countries/NG/profile", nil)
+		req.SetPathValue("country_id", "NG")
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.GetCountryProfile(w, r)
+		}, rr)
+
+		if rr.Code != http.StatusUnprocessableEntity {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if stub.profileCalls != 0 {
+			t.Fatalf("service should not be called for invalid ids")
+		}
+	})
+
+	t.Run("errors", func(t *testing.T) {
+		stub := &geographyHandlerStub{
+			profileFn: func(context.Context, string) (models.CountryProfile, error) {
+				return models.CountryProfile{}, services.ErrCountryOrAreaNotFound
+			},
+		}
+		h, err := NewGeographyHandler(stub, stub)
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, "/v1/geography/countries/ng/profile", nil)
+		req.SetPathValue("country_id", "ng")
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.GetCountryProfile(w, r)
+		}, rr)
+		if rr.Code != http.StatusNotFound {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+
+		stub.profileFn = func(context.Context, string) (models.CountryProfile, error) {
+			return models.CountryProfile{}, errors.New("database down")
+		}
+		rr = httptest.NewRecorder()
+		req = httptest.NewRequest(http.MethodGet, "/v1/geography/countries/ng/profile", nil)
+		req.SetPathValue("country_id", "ng")
+		invokeWithRequestID(t, req, func(w http.ResponseWriter, r *http.Request) {
+			h.GetCountryProfile(w, r)
+		}, rr)
+		if rr.Code != http.StatusInternalServerError {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if strings.Contains(rr.Body.String(), "database down") {
+			t.Fatalf("internal error details leaked: %s", rr.Body.String())
+		}
+	})
+
+	t.Run("method guard", func(t *testing.T) {
+		h, err := NewGeographyHandler(&geographyHandlerStub{}, &geographyHandlerStub{})
+		if err != nil {
+			t.Fatalf("NewGeographyHandler() error = %v", err)
+		}
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodPost, "/v1/geography/countries/ng/profile", nil)
+		req.SetPathValue("country_id", "ng")
+		h.GetCountryProfile(rr, req)
+		if rr.Code != http.StatusMethodNotAllowed {
+			t.Fatalf("unexpected status: %d", rr.Code)
+		}
+		if got := rr.Header().Get("Allow"); got != http.MethodGet {
+			t.Fatalf("unexpected allow header: %q", got)
+		}
+	})
 }
 
 func TestGeographyHandlerGetCountryOrAreaErrors(t *testing.T) {
