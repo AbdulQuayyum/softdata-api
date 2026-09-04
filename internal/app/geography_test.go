@@ -63,16 +63,38 @@ func (s *geographyServiceStub) GetLocalGovernmentUnit(context.Context, string) (
 	return models.LocalGovernmentUnit{}, nil
 }
 
-func (s *geographyServiceStub) ListLanguages(context.Context) ([]models.Language, error) {
-	return []models.Language{}, nil
+func (s *geographyServiceStub) ListLanguages(ctx context.Context) ([]models.Language, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	data, err := os.ReadFile(filepath.Clean("../../datasets/geography/languages.json"))
+	if err != nil {
+		return nil, err
+	}
+	var languages []models.Language
+	if err := json.Unmarshal(data, &languages); err != nil {
+		return nil, err
+	}
+	return languages, nil
 }
 
 func (s *geographyServiceStub) GetLanguage(context.Context, string) (models.Language, error) {
 	return models.Language{}, nil
 }
 
-func (s *geographyServiceStub) ListCountryLanguages(context.Context, services.CountryLanguageListInput) ([]models.CountryLanguage, error) {
-	return []models.CountryLanguage{}, nil
+func (s *geographyServiceStub) ListCountryLanguages(ctx context.Context, _ services.CountryLanguageListInput) ([]models.CountryLanguage, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	data, err := os.ReadFile(filepath.Clean("../../datasets/geography/country_languages.json"))
+	if err != nil {
+		return nil, err
+	}
+	var relations []models.CountryLanguage
+	if err := json.Unmarshal(data, &relations); err != nil {
+		return nil, err
+	}
+	return relations, nil
 }
 
 func (s *geographyServiceStub) ListTimeZones(_ context.Context, input services.TimeZoneListInput) ([]models.TimeZone, error) {

@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log/slog"
 	"net/http"
+	"regexp"
 	"strings"
 	"time"
 
@@ -50,6 +51,8 @@ var approvedUniversityStateIDs = map[string]struct{}{
 	"niger": {}, "ogun": {}, "ondo": {}, "osun": {}, "oyo": {}, "plateau": {},
 	"rivers": {}, "sokoto": {}, "taraba": {}, "yobe": {}, "zamfara": {},
 }
+
+var startupLanguageIDPattern = regexp.MustCompile(`^[a-z]{2,3}$`)
 
 func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Logger) (deps appDependencies, err error) {
 	if ctx == nil {
@@ -681,6 +684,9 @@ func verifyGeographyDataset(ctx context.Context, service geographyService) error
 	if err := validateCountryOrAreasSnapshot(countries); err != nil {
 		return fmt.Errorf("verify geography dataset: %w", interfaces.ErrInvalidDatasetFile)
 	}
+	if err := verifyLanguageDatasets(ctx, service, countries); err != nil {
+		return err
+	}
 
 	timeZones, err := service.ListTimeZones(ctx, services.TimeZoneListInput{})
 	if err != nil {
@@ -694,6 +700,153 @@ func verifyGeographyDataset(ctx context.Context, service geographyService) error
 	}
 	if err := validateTimeZonesSnapshot(timeZones, countries); err != nil {
 		return fmt.Errorf("verify geography dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+	return nil
+}
+
+func verifyLanguageDatasets(ctx context.Context, service geographyService, countries []models.CountryOrArea) error {
+	languages, err := service.ListLanguages(ctx)
+	if err != nil {
+		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+			return err
+		}
+		return fmt.Errorf("verify geography language datasets: %w", interfaces.ErrInvalidDatasetFile)
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+	if err := validateLanguageStartupSnapshot(languages); err != nil {
+		return fmt.Errorf("verify geography language datasets: %w", interfaces.ErrInvalidDatasetFile)
+	}
+
+	relations, err := service.ListCountryLanguages(ctx, services.CountryLanguageListInput{})
+	if err != nil {
+		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+			return err
+		}
+		return fmt.Errorf("verify geography country-language dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+	if err := validateCountryLanguageStartupSnapshot(relations, countries, languages); err != nil {
+		return fmt.Errorf("verify geography country-language dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+	return nil
+}
+
+func validateLanguageStartupSnapshot(languages []models.Language) error {
+	if len(languages) != 633 {
+		return fmt.Errorf("invalid language count")
+	}
+	seenIDs := make(map[string]struct{}, len(languages))
+	seenNames := make(map[string]struct{}, len(languages))
+	anchors := map[string]string{"en": "English", "fr": "French", "ha": "Hausa", "ig": "Igbo", "yo": "Yoruba"}
+	var previous string
+	for i, language := range languages {
+		if language.ID == "" || language.Name == "" || !startupLanguageIDPattern.MatchString(language.ID) || strings.ContainsAny(language.ID, "-_") {
+			return fmt.Errorf("invalid language record")
+		}
+		if _, ok := seenIDs[language.ID]; ok {
+			return fmt.Errorf("duplicate language id")
+		}
+		if _, ok := seenNames[language.Name]; ok {
+			return fmt.Errorf("duplicate language name")
+		}
+		if i > 0 && previous > language.ID {
+			return fmt.Errorf("language records are not sorted")
+		}
+		if _, forbidden := map[string]struct{}{"fat": {}, "sh": {}, "tl": {}, "tw": {}}[language.ID]; forbidden {
+			return fmt.Errorf("deprecated language id")
+		}
+		seenIDs[language.ID] = struct{}{}
+		seenNames[language.Name] = struct{}{}
+		previous = language.ID
+	}
+	for id, name := range anchors {
+		for _, language := range languages {
+			if language.ID == id && language.Name == name {
+				delete(anchors, id)
+				break
+			}
+		}
+	}
+	if len(anchors) != 0 {
+		return fmt.Errorf("required language anchor missing")
+	}
+	return nil
+}
+
+func validateCountryLanguageStartupSnapshot(relations []models.CountryLanguage, countries []models.CountryOrArea, languages []models.Language) error {
+	if len(relations) != 1289 {
+		return fmt.Errorf("invalid relationship count")
+	}
+	countryIDs := make(map[string]struct{}, len(countries))
+	for _, country := range countries {
+		countryIDs[country.ID] = struct{}{}
+	}
+	languageIDs := make(map[string]struct{}, len(languages))
+	for _, language := range languages {
+		languageIDs[language.ID] = struct{}{}
+	}
+	seenCountries := make(map[string]struct{}, len(countries))
+	seenLanguages := make(map[string]struct{})
+	seenPairs := make(map[string]struct{}, len(relations))
+	statusCounts := map[string]int{"used": 0, "official": 0, "official_regional": 0, "de_facto_official": 0}
+	expected := map[string]string{"gb\x00en": "official", "hk\x00zh": "used", "in\x00hi": "official", "me\x00sr": "used", "mo\x00zh": "used", "sn\x00ff": "official_regional"}
+	nigeria := make(map[string]string)
+	var previousCountry, previousLanguage string
+	for i, relation := range relations {
+		if _, ok := countryIDs[relation.CountryAreaID]; !ok {
+			return fmt.Errorf("orphan country reference")
+		}
+		if _, ok := languageIDs[relation.LanguageID]; !ok {
+			return fmt.Errorf("orphan language reference")
+		}
+		if _, ok := statusCounts[relation.Status]; !ok {
+			return fmt.Errorf("invalid relationship status")
+		}
+		key := relation.CountryAreaID + "\x00" + relation.LanguageID
+		if _, ok := seenPairs[key]; ok {
+			return fmt.Errorf("duplicate relationship pair")
+		}
+		if i > 0 && (previousCountry > relation.CountryAreaID || (previousCountry == relation.CountryAreaID && previousLanguage > relation.LanguageID)) {
+			return fmt.Errorf("relationship records are not sorted")
+		}
+		seenPairs[key] = struct{}{}
+		seenCountries[relation.CountryAreaID] = struct{}{}
+		seenLanguages[relation.LanguageID] = struct{}{}
+		statusCounts[relation.Status]++
+		previousCountry, previousLanguage = relation.CountryAreaID, relation.LanguageID
+		if relation.CountryAreaID == "ng" {
+			nigeria[relation.LanguageID] = relation.Status
+		}
+	}
+	if len(seenCountries) != 248 || len(seenLanguages) != 523 || len(seenPairs) != 1289 {
+		return fmt.Errorf("invalid relationship coverage")
+	}
+	if statusCounts["used"] != 833 || statusCounts["official"] != 319 || statusCounts["official_regional"] != 117 || statusCounts["de_facto_official"] != 20 {
+		return fmt.Errorf("invalid relationship status counts")
+	}
+	for key, status := range expected {
+		if _, ok := seenPairs[key]; !ok {
+			return fmt.Errorf("required normalization anchor missing")
+		}
+		parts := strings.SplitN(key, "\x00", 2)
+		for _, relation := range relations {
+			if relation.CountryAreaID == parts[0] && relation.LanguageID == parts[1] && relation.Status != status {
+				return fmt.Errorf("required normalization anchor changed")
+			}
+		}
+	}
+	wantedNigeria := map[string]string{"ann": "used", "ar": "used", "bin": "used", "cch": "used", "efi": "used", "en": "official", "ff": "used", "ha": "used", "ibb": "used", "ig": "used", "kaj": "used", "kcg": "used", "pcm": "used", "tiv": "used", "yo": "official"}
+	if len(nigeria) != len(wantedNigeria) {
+		return fmt.Errorf("invalid Nigeria relationship count")
+	}
+	for id, status := range wantedNigeria {
+		if nigeria[id] != status {
+			return fmt.Errorf("invalid Nigeria relationship composition")
+		}
 	}
 	return nil
 }

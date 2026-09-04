@@ -2074,31 +2074,36 @@ func (s *routerDatasetStub) ListDatasetVersions(ctx context.Context, datasetKey 
 }
 
 type routerGeographyStub struct {
-	rec                *routerRecorder
-	mu                 sync.Mutex
-	listCalls          int
-	getCalls           int
-	zoneListCalls      int
-	zoneGetCalls       int
-	lgaListCalls       int
-	lgaListByCalls     int
-	lgaGetCalls        int
-	timeZoneListCalls  int
-	timeZoneGetCalls   int
-	lastTimeZoneInput  services.TimeZoneListInput
-	countryListCalls   int
-	countryGetCalls    int
-	profileCalls       int
-	lastStateID        string
-	lastZoneID         string
-	lastLGAID          string
-	lastTimeZoneID     string
-	lastLGAStateID     string
-	lastCountryID      string
-	lastProfileID      string
-	lastHadAPIKey      bool
-	lastAPIKeyIdentity services.APIKeyIdentity
-	profileFn          func(context.Context, string) (models.CountryProfile, error)
+	rec                      *routerRecorder
+	mu                       sync.Mutex
+	listCalls                int
+	getCalls                 int
+	zoneListCalls            int
+	zoneGetCalls             int
+	lgaListCalls             int
+	lgaListByCalls           int
+	lgaGetCalls              int
+	timeZoneListCalls        int
+	timeZoneGetCalls         int
+	lastTimeZoneInput        services.TimeZoneListInput
+	countryListCalls         int
+	countryGetCalls          int
+	languageListCalls        int
+	languageGetCalls         int
+	countryLanguageListCalls int
+	profileCalls             int
+	lastStateID              string
+	lastZoneID               string
+	lastLGAID                string
+	lastTimeZoneID           string
+	lastLGAStateID           string
+	lastCountryID            string
+	lastLanguageID           string
+	lastCountryLanguageInput services.CountryLanguageListInput
+	lastProfileID            string
+	lastHadAPIKey            bool
+	lastAPIKeyIdentity       services.APIKeyIdentity
+	profileFn                func(context.Context, string) (models.CountryProfile, error)
 }
 
 type routerFinanceStub struct {
@@ -2325,16 +2330,48 @@ func (s *routerGeographyStub) GetLocalGovernmentUnit(ctx context.Context, unitID
 	return models.LocalGovernmentUnit{ID: unitID, Name: "Example", StateID: "lagos", CountryCode: "NG", AdministrativeType: "local_government_area"}, nil
 }
 
-func (s *routerGeographyStub) ListLanguages(context.Context) ([]models.Language, error) {
-	return []models.Language{}, nil
+func (s *routerGeographyStub) ListLanguages(ctx context.Context) ([]models.Language, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.languageListCalls++
+	if s.rec != nil {
+		s.rec.add("geography.language.list")
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return []models.Language{{ID: "en", Name: "English"}}, nil
 }
 
-func (s *routerGeographyStub) GetLanguage(context.Context, string) (models.Language, error) {
-	return models.Language{}, nil
+func (s *routerGeographyStub) GetLanguage(ctx context.Context, languageID string) (models.Language, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.languageGetCalls++
+	s.lastLanguageID = languageID
+	if s.rec != nil {
+		s.rec.add("geography.language.get:" + languageID)
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return models.Language{ID: languageID, Name: "English"}, nil
 }
 
-func (s *routerGeographyStub) ListCountryLanguages(context.Context, services.CountryLanguageListInput) ([]models.CountryLanguage, error) {
-	return []models.CountryLanguage{}, nil
+func (s *routerGeographyStub) ListCountryLanguages(ctx context.Context, input services.CountryLanguageListInput) ([]models.CountryLanguage, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.countryLanguageListCalls++
+	s.lastCountryLanguageInput = input
+	if s.rec != nil {
+		s.rec.add("geography.country-language.list")
+	}
+	if identity, ok := middlewares.APIKeyIdentityFromContext(ctx); ok {
+		s.lastHadAPIKey = true
+		s.lastAPIKeyIdentity = identity
+	}
+	return []models.CountryLanguage{{CountryAreaID: "ng", LanguageID: "yo", Status: "official"}}, nil
 }
 
 func (s *routerGeographyStub) ListTimeZones(ctx context.Context, input services.TimeZoneListInput) ([]models.TimeZone, error) {
