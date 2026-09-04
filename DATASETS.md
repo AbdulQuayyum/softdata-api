@@ -202,6 +202,19 @@ The 28-record commercial-bank snapshot from the supplied CBN `Export (1).xlsx` w
 
 Each record uses a deterministic lowercase bank ID, `country_code` `NG`, an official website URL and a required local logo URL. Where verified, `cbn_code` contains the three-digit CBN institution code and `nip_code` contains the six-digit NIP receiving-institution code. These fields are optional in this snapshot; omitted values were not sufficiently verified and are not inferred. Logos are immutable vendored PNG assets pinned to the `Nigerian-Bank-Logos/ng-bank-logos` source commit recorded in the attribution files. Bank names and logos remain the property and trademarks of their respective owners; SoftData provides them for identification and directory purposes only. Rights holders may request correction, replacement or removal of an inaccurate logo without removal of the factual bank record.
 
+### Nigerian regulated-finance categories
+
+Six additional CBN category snapshots are available as dataset-only packages:
+
+- `ng-non-interest-financial-institutions` (6)
+- `ng-merchant-banks` (6)
+- `ng-payment-service-banks` (5)
+- `ng-financial-holding-companies` (7)
+- `ng-development-finance-institutions` (8)
+- `ng-primary-mortgage-institutions` (33)
+
+They are sourced from the supplied CBN exports and use required `id`, `name` and `country_code` fields, with optional `cbn_code`, `nip_code`, `official_website_url` and `logo_url`. No codes, websites or logos are inferred. The non-interest source is published under the broader financial-institutions key because its supplied CBN snapshot includes Mint Microfinance Bank. Parent holding companies remain separate from subsidiaries.
+
 ### `ng-universities`
 
 Nigeria's current National Universities Commission register of federal, state and private universities.

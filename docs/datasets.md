@@ -121,6 +121,19 @@ Nigeria's 28 CBN-listed commercial banks with official websites, vendored identi
 
 Logo assets are served from the embedded application binary at `GET /v1/assets/banks/ng/{bank_id}.{ext}`. They are preserved unchanged from the pinned upstream source. `cbn_code` and `nip_code` are optional strings with three- and six-digit patterns respectively; omitted values were not sufficiently verified for this snapshot. Bank names and logos are trademarks of their respective owners. They are provided for identification and directory purposes only; inclusion does not imply sponsorship, affiliation or endorsement.
 
+### Nigerian regulated-finance category snapshots
+
+The following dataset packages preserve the six supplied CBN category exports as independent finance datasets. They use optional CBN/NIP codes, websites and logos; no category-specific HTTP routes are introduced by these packages.
+
+- `ng-non-interest-financial-institutions`: `datasets/finance/non_interest_institutions.json` (6 records)
+- `ng-merchant-banks`: `datasets/finance/merchant_banks.json` (6 records)
+- `ng-payment-service-banks`: `datasets/finance/payment_service_banks.json` (5 records)
+- `ng-financial-holding-companies`: `datasets/finance/financial_holding_companies.json` (7 records)
+- `ng-development-finance-institutions`: `datasets/finance/development_finance_institutions.json` (8 records)
+- `ng-primary-mortgage-institutions`: `datasets/finance/primary_mortgage_institutions.json` (33 records)
+
+The source workbooks are `Export (9).xlsx`, `Export (6).xlsx`, `Export (10).xlsx`, `Export (5).xlsx`, `Export (2).xlsx` and `Export (11).xlsx`, respectively. The non-interest package uses the broader financial-institutions key because its CBN snapshot includes Mint Microfinance Bank; the source classification is preserved rather than silently dropping the row. Holding companies remain separate from their bank subsidiaries and never inherit subsidiary identifiers. Logos are not included in these packages.
+
 ### `ng-universities`
 
 Nigeria's current National Universities Commission register of federal, state and private universities.

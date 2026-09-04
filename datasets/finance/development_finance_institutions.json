@@ -1,0 +1,10 @@
+[
+  {"id":"bank-of-agriculture","name":"Bank of Agriculture (BOA)","country_code":"NG"},
+  {"id":"bank-of-industry","name":"Bank of Industry","country_code":"NG"},
+  {"id":"development-bank-of-nigeria","name":"Development Bank of Nigeria Plc","country_code":"NG"},
+  {"id":"federal-mortgage-bank-of-nigeria","name":"Federal Mortgage Bank of Nigeria","country_code":"NG"},
+  {"id":"national-credit-guarantee-company","name":"National Credit Guarantee Company Limited","country_code":"NG"},
+  {"id":"nigeria-export-import-bank","name":"Nigeria Export-Import Bank","country_code":"NG"},
+  {"id":"nigerian-consumer-credit-corporation","name":"Nigerian Consumer Credit Corporation","country_code":"NG"},
+  {"id":"the-infrastructure-bank","name":"The Infrastructure Bank","country_code":"NG"}
+]

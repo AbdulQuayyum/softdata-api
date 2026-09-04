@@ -16,6 +16,12 @@ datasets/
 │   ├── colleges_of_education.json
 │   └── universities.json
 ├── finance/
+│   ├── development_finance_institutions.json
+│   ├── financial_holding_companies.json
+│   ├── merchant_banks.json
+│   ├── non_interest_institutions.json
+│   ├── payment_service_banks.json
+│   ├── primary_mortgage_institutions.json
 │   ├── currencies.json
 │   ├── international_money_transfer_operators.json
 │   └── payment_service_providers.json
@@ -29,6 +35,12 @@ datasets/
 │   ├── education/
 │   │   └── universities.json
 │   └── finance/
+│       ├── development_finance_institutions.json
+│       ├── financial_holding_companies.json
+│       ├── merchant_banks.json
+│       ├── non_interest_institutions.json
+│       ├── payment_service_banks.json
+│       ├── primary_mortgage_institutions.json
 │       ├── currencies.json
 │       ├── international_money_transfer_operators.json
 │       └── payment_service_providers.json
@@ -42,6 +54,12 @@ datasets/
 │   ├── education/
 │   │   └── universities.schema.json
 │   └── finance/
+│       ├── development_finance_institutions.schema.json
+│       ├── financial_holding_companies.schema.json
+│       ├── merchant_banks.schema.json
+│       ├── non_interest_institutions.schema.json
+│       ├── payment_service_banks.schema.json
+│       ├── primary_mortgage_institutions.schema.json
 │       ├── currencies.schema.json
 │       ├── international_money_transfer_operators.schema.json
 │       └── payment_service_providers.schema.json
@@ -59,6 +77,7 @@ datasets/
 - `finance/international_money_transfer_operators.json` is the compiled register snapshot of current CBN-listed IMTO entries.
 - `finance/currencies.json` is the compiled snapshot of current ISO 4217 monetary currencies.
 - `finance/payment_service_providers.json` is the compiled register snapshot of payment-service-provider memberships.
+- `finance/non_interest_institutions.json`, `finance/merchant_banks.json`, `finance/payment_service_banks.json`, `finance/financial_holding_companies.json`, `finance/development_finance_institutions.json` and `finance/primary_mortgage_institutions.json` are CBN category snapshots from the supplied August 2026 exports. Codes, websites and logos are optional and omitted when not verified.
 - `schemas/geography/geopolitical_zones.schema.json` describes the zone record contract.
 - `schemas/geography/lgas.schema.json` describes the LGA and Area Council record contract.
 - `schemas/geography/states.schema.json` describes the record contract.
@@ -68,6 +87,7 @@ datasets/
 - `schemas/finance/international_money_transfer_operators.schema.json` describes the IMTO record contract.
 - `schemas/finance/currencies.schema.json` describes the currency record contract.
 - `schemas/finance/payment_service_providers.schema.json` describes the payment-service-provider record contract.
+- The six related Nigerian regulated-finance schemas use Draft 2020-12 arrays with fixed snapshot counts, `NG` country codes, deterministic IDs and optional code, website and logo fields.
 - `metadata/education/universities.json` records provenance, versioning and licensing details for the university catalogue.
 - `metadata/education/colleges_of_education.json` records provenance, versioning and licensing details for the colleges-of-education catalogue.
 - `metadata/geography/geopolitical_zones.json` records provenance, versioning and licensing details for the zone catalogue.

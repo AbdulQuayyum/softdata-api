@@ -86,6 +86,12 @@ softdata-api/
 │   │   ├── colleges_of_education.json
 │   │   └── universities.json
 │   ├── finance/
+│   │   ├── development_finance_institutions.json
+│   │   ├── financial_holding_companies.json
+│   │   ├── merchant_banks.json
+│   │   ├── non_interest_institutions.json
+│   │   ├── payment_service_banks.json
+│   │   ├── primary_mortgage_institutions.json
 │   │   ├── commercial_banks.json
 │   │   ├── currencies.json
 │   │   ├── international_money_transfer_operators.json
@@ -103,6 +109,12 @@ softdata-api/
 │   │   │   ├── colleges_of_education.json
 │   │   │   └── universities.json
 │   │   ├── finance/
+│   │   │   ├── development_finance_institutions.json
+│   │   │   ├── financial_holding_companies.json
+│   │   │   ├── merchant_banks.json
+│   │   │   ├── non_interest_institutions.json
+│   │   │   ├── payment_service_banks.json
+│   │   │   ├── primary_mortgage_institutions.json
 │   │   │   ├── commercial_banks.json
 │   │   │   ├── currencies.json
 │   │   │   ├── international_money_transfer_operators.json
@@ -120,6 +132,12 @@ softdata-api/
 │       │   ├── colleges_of_education.schema.json
 │       │   └── universities.schema.json
 │       ├── finance/
+│       │   ├── development_finance_institutions.schema.json
+│       │   ├── financial_holding_companies.schema.json
+│       │   ├── merchant_banks.schema.json
+│       │   ├── non_interest_institutions.schema.json
+│       │   ├── payment_service_banks.schema.json
+│       │   ├── primary_mortgage_institutions.schema.json
 │       │   ├── commercial_banks.schema.json
 │       │   ├── currencies.schema.json
 │       │   ├── international_money_transfer_operators.schema.json
@@ -242,6 +260,8 @@ softdata-api/
 │   │   ├── finance.go
 │   │   ├── commercial_banks.go
 │   │   ├── commercial_banks_test.go
+│   │   ├── regulated_finance.go
+│   │   ├── regulated_finance_test.go
 │   │   ├── finance_imto_test.go
 │   │   ├── finance_test.go
 │   │   ├── geography.go
