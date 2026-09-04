@@ -12,6 +12,15 @@ var financePaymentServiceProviderIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[
 var financeInternationalMoneyTransferOperatorIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)*$`)
 var financeCurrencyIDPattern = regexp.MustCompile(`^[a-z]{3}$`)
 var financeCurrencyCountryAreaIDPattern = regexp.MustCompile(`^[a-z]{2}$`)
+var financeCommercialBankIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)+$`)
+
+var approvedCommercialBankIDs = map[string]struct{}{
+	"access-bank": {}, "alpha-morgan-bank": {}, "citibank-nigeria": {}, "ecobank-nigeria": {}, "fidelity-bank": {},
+	"first-bank-of-nigeria": {}, "first-city-monument-bank": {}, "globus-bank": {}, "guaranty-trust-bank": {}, "keystone-bank": {},
+	"nova-bank": {}, "optimus-bank": {}, "parallex-bank": {}, "polaris-bank": {}, "premium-trust-bank": {}, "providus-bank": {},
+	"signature-bank": {}, "stanbic-ibtc-bank": {}, "standard-chartered-bank": {}, "sterling-bank": {}, "suntrust-bank": {}, "tatum-bank": {},
+	"titan-trust-bank": {}, "union-bank": {}, "united-bank-for-africa": {}, "unity-bank": {}, "wema-bank": {}, "zenith-bank": {},
+}
 
 var financePaymentServiceProviderTypes = map[string]struct{}{
 	"mobile_money_operator":               {},
@@ -301,6 +310,21 @@ func ValidateInternationalMoneyTransferOperatorID(value string) (string, error) 
 		return "", invalidField("operator_id", "Operator ID must be a valid lowercase public slug.")
 	}
 	return value, nil
+}
+
+// ValidateCommercialBankID validates an approved lowercase commercial-bank identifier.
+func ValidateCommercialBankID(value string) error {
+	value = strings.TrimSpace(value)
+	if value == "" {
+		return requiredError("bank_id", "Bank ID is required.")
+	}
+	if !financeCommercialBankIDPattern.MatchString(value) || uuidLikePattern.MatchString(value) {
+		return invalidField("bank_id", "Bank ID must be a valid lowercase public slug.")
+	}
+	if _, ok := approvedCommercialBankIDs[value]; !ok {
+		return invalidField("bank_id", "Bank ID must reference a supported commercial bank.")
+	}
+	return nil
 }
 
 // ValidatePaymentServiceProviderType validates the documented public institution type.

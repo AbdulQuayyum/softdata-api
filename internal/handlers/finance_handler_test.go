@@ -21,6 +21,8 @@ type financeHandlerStub struct {
 	getIMTOFn      func(context.Context, string) (models.InternationalMoneyTransferOperator, error)
 	listCurrencyFn func(context.Context, services.CurrencyListInput) ([]models.Currency, error)
 	getCurrencyFn  func(context.Context, string) (models.Currency, error)
+	listBanksFn    func(context.Context) ([]models.CommercialBank, error)
+	getBankFn      func(context.Context, string) (models.CommercialBank, error)
 
 	listAllCalls      int
 	listByTypeCalls   int
@@ -34,6 +36,9 @@ type financeHandlerStub struct {
 	lastIMTOID        string
 	lastCurrencyInput services.CurrencyListInput
 	lastCurrencyID    string
+	listBankCalls     int
+	getBankCalls      int
+	lastBankID        string
 }
 
 func (s *financeHandlerStub) ListPaymentServiceProviders(ctx context.Context) ([]models.PaymentServiceProvider, error) {
@@ -95,6 +100,26 @@ func (s *financeHandlerStub) GetCurrency(ctx context.Context, currencyID string)
 		return s.getCurrencyFn(ctx, currencyID)
 	}
 	return models.Currency{}, nil
+}
+
+func (s *financeHandlerStub) ListCommercialBanks(ctx context.Context) ([]models.CommercialBank, error) {
+	s.listBankCalls++
+	if s.listBanksFn != nil {
+		return s.listBanksFn(ctx)
+	}
+	return []models.CommercialBank{}, nil
+}
+
+func (s *financeHandlerStub) GetCommercialBank(ctx context.Context, bankID string) (models.CommercialBank, error) {
+	s.getBankCalls++
+	s.lastBankID = bankID
+	if s.getBankFn != nil {
+		return s.getBankFn(ctx, bankID)
+	}
+	if bankID == "access-bank" {
+		return models.CommercialBank{ID: bankID, Name: "Access Bank Plc", CBNCode: "044", NIPCode: "000014"}, nil
+	}
+	return models.CommercialBank{}, services.ErrCommercialBankNotFound
 }
 
 func TestNewFinanceHandlerRejectsNilService(t *testing.T) {

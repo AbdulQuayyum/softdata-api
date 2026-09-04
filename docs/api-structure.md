@@ -67,8 +67,16 @@ softdata-api/
 │   ├── LICENSE.md
 │   ├── README.md
 │   ├── assets/
+│   │   ├── banks.go
+│   │   ├── banks_test.go
 │   │   ├── flags.go
 │   │   ├── flags_test.go
+│   │   ├── banks/
+│   │   │   └── ng/
+│   │   │       ├── ATTRIBUTION.md
+│   │   │       ├── LICENSES/
+│   │   │       │   └── Nigerian-Bank-Logos-MIT.txt
+│   │   │       └── *.png                  # 28 vendored bank assets
 │   │   └── flags/
 │   │       ├── ATTRIBUTION.md
 │   │       ├── LICENSE
@@ -78,6 +86,7 @@ softdata-api/
 │   │   ├── colleges_of_education.json
 │   │   └── universities.json
 │   ├── finance/
+│   │   ├── commercial_banks.json
 │   │   ├── currencies.json
 │   │   ├── international_money_transfer_operators.json
 │   │   └── payment_service_providers.json
@@ -94,6 +103,7 @@ softdata-api/
 │   │   │   ├── colleges_of_education.json
 │   │   │   └── universities.json
 │   │   ├── finance/
+│   │   │   ├── commercial_banks.json
 │   │   │   ├── currencies.json
 │   │   │   ├── international_money_transfer_operators.json
 │   │   │   └── payment_service_providers.json
@@ -110,6 +120,7 @@ softdata-api/
 │       │   ├── colleges_of_education.schema.json
 │       │   └── universities.schema.json
 │       ├── finance/
+│       │   ├── commercial_banks.schema.json
 │       │   ├── currencies.schema.json
 │       │   ├── international_money_transfer_operators.schema.json
 │       │   └── payment_service_providers.schema.json
@@ -180,6 +191,7 @@ softdata-api/
 │   │   ├── education_handler_test.go
 │   │   ├── finance_handler.go
 │   │   ├── finance_handler_test.go
+│   │   ├── finance_commercial_banks_test.go
 │   │   ├── geography_handler.go
 │   │   ├── geography_handler_test.go
 │   │   ├── geography_languages_handler_test.go
@@ -228,6 +240,8 @@ softdata-api/
 │   │   ├── dataset_version.go
 │   │   ├── education.go
 │   │   ├── finance.go
+│   │   ├── commercial_banks.go
+│   │   ├── commercial_banks_test.go
 │   │   ├── finance_imto_test.go
 │   │   ├── finance_test.go
 │   │   ├── geography.go
@@ -250,6 +264,7 @@ softdata-api/
 │   │   │   ├── education_colleges_repository_test.go
 │   │   │   ├── education_repository.go
 │   │   │   ├── education_repository_test.go
+│   │   │   ├── finance_commercial_banks_test.go
 │   │   │   ├── finance_currency_test.go
 │   │   │   ├── finance_repository.go
 │   │   │   ├── finance_repository_test.go
@@ -263,7 +278,8 @@ softdata-api/
 │   │   │   ├── json_repository.go
 │   │   │   ├── json_repository_test.go
 │   │   │   ├── store.go
-│   │   │   └── store_test.go
+│   │   │   ├── store_test.go
+│   │   │   └── time_zones_test.go
 │   │   ├── interfaces/
 │   │   │   ├── account_repository.go
 │   │   │   ├── api_key_repository.go
@@ -298,6 +314,8 @@ softdata-api/
 │   │   ├── response.go
 │   │   └── response_test.go
 │   ├── router/
+│   │   ├── bank_assets.go
+│   │   ├── bank_assets_test.go
 │   │   ├── account_routes.go
 │   │   ├── account_routes_test.go
 │   │   ├── auth_routes.go
@@ -337,6 +355,7 @@ softdata-api/
 │   │   ├── errors.go
 │   │   ├── finance_service.go
 │   │   ├── finance_service_test.go
+│   │   ├── finance_commercial_banks_test.go
 │   │   ├── geography_country_profile.go
 │   │   ├── geography_country_profile_test.go
 │   │   ├── geography_languages.go
@@ -360,6 +379,7 @@ softdata-api/
 │       ├── education_validator_test.go
 │       ├── finance_validator.go
 │       ├── finance_validator_test.go
+│       ├── finance_commercial_banks_test.go
 │       ├── geography_languages_validator_test.go
 │       ├── geography_validator.go
 │       ├── geography_validator_test.go
@@ -418,7 +438,7 @@ Request validation and normalization helpers for authentication, accounts, API k
 
 ### `internal/router/`
 
-HTTP router construction, route registration, public and authenticated route groups, route cataloging, and embedded flag serving.
+HTTP router construction, route registration, public and authenticated route groups, route cataloging, and embedded flag and bank-logo serving.
 
 ### `internal/redis/`
 

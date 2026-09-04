@@ -133,6 +133,17 @@ func (s *financeRepositoryStub) GetCurrency(_ context.Context, currencyID string
 	return models.Currency{}, interfaces.ErrCurrencyNotFound
 }
 
+func (s *financeRepositoryStub) ListCommercialBanks(context.Context) ([]models.CommercialBank, error) {
+	return []models.CommercialBank{}, nil
+}
+
+func (s *financeRepositoryStub) GetCommercialBank(_ context.Context, bankID string) (models.CommercialBank, error) {
+	if bankID == "access-bank" {
+		return models.CommercialBank{ID: bankID, Name: "Access Bank Plc", CBNCode: "044", NIPCode: "000014"}, nil
+	}
+	return models.CommercialBank{}, interfaces.ErrCommercialBankNotFound
+}
+
 func TestFinanceServiceListAllAndTypeAndLookup(t *testing.T) {
 	t.Parallel()
 

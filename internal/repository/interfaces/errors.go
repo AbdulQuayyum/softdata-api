@@ -49,6 +49,8 @@ var (
 	ErrInternationalMoneyTransferOperatorNotFound = errors.New("repository: international money transfer operator not found")
 	// ErrCurrencyNotFound reports that a requested currency is not present in the dataset.
 	ErrCurrencyNotFound = errors.New("repository: currency not found")
+	// ErrCommercialBankNotFound reports that a requested commercial bank is not present in the dataset.
+	ErrCommercialBankNotFound = errors.New("repository: commercial bank not found")
 	// ErrInvalidCurrencyCountryAreaID reports that a currency country/area filter is invalid or unknown.
 	ErrInvalidCurrencyCountryAreaID = errors.New("repository: invalid currency country area id")
 )

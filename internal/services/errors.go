@@ -52,4 +52,6 @@ var (
 	ErrCurrencyNotFound                            = errors.New("services: currency not found")
 	ErrInvalidCurrencyID                           = errors.New("services: invalid currency id")
 	ErrInvalidCurrencyCountryAreaID                = errors.New("services: invalid currency country area id")
+	ErrCommercialBankNotFound                      = errors.New("services: commercial bank not found")
+	ErrInvalidCommercialBankID                     = errors.New("services: invalid commercial bank id")
 )

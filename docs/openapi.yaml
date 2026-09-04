@@ -567,6 +567,40 @@ paths:
           $ref: "#/components/responses/ValidationFailed"
         "500":
           $ref: "#/components/responses/InternalError"
+  /v1/finance/commercial-banks:
+    get:
+      tags: [Finance]
+      summary: List Nigerian commercial banks
+      description: Returns the 28-record CBN commercial-bank snapshot. CBN and NIP codes are optional verified identifiers; no pagination or filters are provided in v1.
+      responses:
+        "200":
+          description: Commercial bank records
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommercialBankListResponse"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/finance/commercial-banks/{bank_id}:
+    get:
+      tags: [Finance]
+      summary: Get a Nigerian commercial bank
+      description: Returns one CBN commercial-bank record. Optional code fields are omitted when unresolved in the current snapshot.
+      parameters:
+        - $ref: "#/components/parameters/CommercialBankID"
+      responses:
+        "200":
+          description: Commercial bank record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommercialBankResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
   /v1/auth/register:
     post:
       tags: [Authentication]
@@ -1227,6 +1261,14 @@ components:
         country_area_id:
           type: string
           pattern: '^[a-z]{2}$'
+    CommercialBankID:
+      name: bank_id
+      in: path
+      required: true
+      description: Stable lowercase identifier for one of the 28 CBN-listed commercial banks.
+      schema:
+        type: string
+        pattern: '^[a-z0-9]+(?:-[a-z0-9]+)+$'
         language_id:
           $ref: "#/components/schemas/LanguageID"
         status:
@@ -1871,6 +1913,57 @@ components:
           type: boolean
         data:
           $ref: "#/components/schemas/Currency"
+      required: [success, data]
+    CommercialBank:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          pattern: '^[a-z0-9]+(?:-[a-z0-9]+)+$'
+        name:
+          type: string
+        cbn_code:
+          type: string
+          pattern: '^[0-9]{3}$'
+          description: Optional three-digit CBN institution code. Leading zeros are significant; this is not a branch sort code.
+          example: '044'
+        nip_code:
+          type: string
+          pattern: '^[0-9]{6}$'
+          description: Optional six-digit NIP receiving-institution code. Leading zeros are significant.
+          example: '000014'
+        official_website_url:
+          type: string
+          format: uri
+        logo_url:
+          type: string
+          description: URL for the embedded bank-logo asset.
+        country_code:
+          type: string
+          enum: [NG]
+      required: [id, name, official_website_url, logo_url, country_code]
+    CommercialBankListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          minItems: 28
+          maxItems: 28
+          items:
+            $ref: "#/components/schemas/CommercialBank"
+      required: [success, data]
+    CommercialBankResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: "#/components/schemas/CommercialBank"
       required: [success, data]
     GeographyListResponse:
       type: object

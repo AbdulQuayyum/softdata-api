@@ -20,4 +20,6 @@ type FinanceRepository interface {
 	GetInternationalMoneyTransferOperator(ctx context.Context, operatorID string) (models.InternationalMoneyTransferOperator, error)
 	ListCurrencies(ctx context.Context, filter CurrencyFilter) ([]models.Currency, error)
 	GetCurrency(ctx context.Context, currencyID string) (models.Currency, error)
+	ListCommercialBanks(ctx context.Context) ([]models.CommercialBank, error)
+	GetCommercialBank(ctx context.Context, bankID string) (models.CommercialBank, error)
 }

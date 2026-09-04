@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log/slog"
 	"net/http"
+	"net/url"
 	"regexp"
 	"strings"
 	"time"
@@ -40,6 +41,7 @@ const (
 	educationCollegesOfEducationRelativePath               = "education/colleges_of_education.json"
 	financePaymentServiceProvidersRelativePath             = "finance/payment_service_providers.json"
 	financeInternationalMoneyTransferOperatorsRelativePath = "finance/international_money_transfer_operators.json"
+	financeCommercialBanksRelativePath                     = "finance/commercial_banks.json"
 )
 
 var approvedUniversityStateIDs = map[string]struct{}{
@@ -53,6 +55,8 @@ var approvedUniversityStateIDs = map[string]struct{}{
 }
 
 var startupLanguageIDPattern = regexp.MustCompile(`^[a-z]{2,3}$`)
+var startupCommercialBankCBNCodePattern = regexp.MustCompile(`^[0-9]{3}$`)
+var startupCommercialBankNIPCodePattern = regexp.MustCompile(`^[0-9]{6}$`)
 
 func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Logger) (deps appDependencies, err error) {
 	if ctx == nil {
@@ -356,6 +360,8 @@ type financeService interface {
 	GetInternationalMoneyTransferOperator(context.Context, string) (models.InternationalMoneyTransferOperator, error)
 	ListCurrencies(context.Context, services.CurrencyListInput) ([]models.Currency, error)
 	GetCurrency(context.Context, string) (models.Currency, error)
+	ListCommercialBanks(context.Context) ([]models.CommercialBank, error)
+	GetCommercialBank(context.Context, string) (models.CommercialBank, error)
 }
 
 func buildGeographyHandler(
@@ -590,6 +596,9 @@ func buildFinanceServiceFromJSONRepository(
 		return nil, fmt.Errorf("initialize finance service: %w", err)
 	}
 	if err := verifyFinanceDataset(ctx, financeService); err != nil {
+		return nil, err
+	}
+	if err := verifyCommercialBankDataset(ctx, financeService); err != nil {
 		return nil, err
 	}
 	if err := verifyCurrencyDataset(ctx, financeService); err != nil {
@@ -1432,6 +1441,118 @@ func verifyFinanceDataset(ctx context.Context, service financeService) error {
 	}
 	if len(operators) != 108 {
 		return fmt.Errorf("verify finance dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+	return nil
+}
+
+func verifyCommercialBankDataset(ctx context.Context, service financeService) error {
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if service == nil {
+		return fmt.Errorf("verify commercial bank dataset: finance service is required")
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+	banks, err := service.ListCommercialBanks(ctx)
+	if err != nil {
+		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+			return err
+		}
+		return fmt.Errorf("verify commercial bank dataset: %w", err)
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+	if len(banks) != 28 {
+		return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+	seenIDs := make(map[string]struct{}, len(banks))
+	seenNames := make(map[string]struct{}, len(banks))
+	seenLogos := make(map[string]struct{}, len(banks))
+	seenCBN := make(map[string]struct{}, len(banks))
+	seenNIP := make(map[string]struct{}, len(banks))
+	prevName, prevID := "", ""
+	cbnCount, nipCount, bothCount := 0, 0, 0
+	anchors := map[string][2]string{
+		"access-bank": {"044", "000014"}, "first-bank-of-nigeria": {"011", "000016"},
+		"guaranty-trust-bank": {"058", "000013"}, "tatum-bank": {"109", "000042"},
+		"titan-trust-bank": {"102", "000025"}, "union-bank": {"032", "000018"},
+		"united-bank-for-africa": {"033", "000004"}, "zenith-bank": {"057", "000015"},
+	}
+	for _, bank := range banks {
+		if err := ctx.Err(); err != nil {
+			return err
+		}
+		if bank.ID == "" || bank.Name == "" || bank.CountryCode != "NG" || bank.OfficialWebsiteURL == "" || bank.LogoURL == "" || strings.EqualFold(bank.Name, "Heritage Bank") {
+			return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+		if _, ok := seenIDs[bank.ID]; ok {
+			return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+		if _, ok := seenNames[bank.Name]; ok {
+			return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+		parsed, parseErr := url.Parse(bank.OfficialWebsiteURL)
+		if parseErr != nil || parsed.Scheme != "https" || parsed.Host == "" || bank.LogoURL != "/v1/assets/banks/ng/"+bank.ID+".png" {
+			return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+		if _, ok := seenLogos[bank.LogoURL]; ok {
+			return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+		seenLogos[bank.LogoURL] = struct{}{}
+		if prevName != "" && (strings.ToLower(prevName) > strings.ToLower(bank.Name) || (strings.EqualFold(prevName, bank.Name) && prevID > bank.ID)) {
+			return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+		if bank.CBNCode != "" {
+			if !startupCommercialBankCBNCodePattern.MatchString(bank.CBNCode) {
+				return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+			}
+			if _, ok := seenCBN[bank.CBNCode]; ok {
+				return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+			}
+			seenCBN[bank.CBNCode] = struct{}{}
+			cbnCount++
+		}
+		if bank.NIPCode != "" {
+			if !startupCommercialBankNIPCodePattern.MatchString(bank.NIPCode) {
+				return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+			}
+			if _, ok := seenNIP[bank.NIPCode]; ok {
+				return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+			}
+			seenNIP[bank.NIPCode] = struct{}{}
+			nipCount++
+		}
+		if bank.CBNCode != "" && bank.NIPCode != "" {
+			bothCount++
+		}
+		if anchor, ok := anchors[bank.ID]; ok && (bank.CBNCode != anchor[0] || bank.NIPCode != anchor[1]) {
+			return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+		seenIDs[bank.ID] = struct{}{}
+		seenNames[bank.Name] = struct{}{}
+		prevName, prevID = bank.Name, bank.ID
+	}
+	if cbnCount != 25 || nipCount != 25 || bothCount != 23 {
+		return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+	for _, bank := range banks {
+		switch bank.ID {
+		case "alpha-morgan-bank", "signature-bank":
+			if bank.CBNCode != "" {
+				return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+			}
+		case "nova-bank":
+			if bank.CBNCode != "" || bank.NIPCode != "" {
+				return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+			}
+		case "standard-chartered-bank", "suntrust-bank":
+			if bank.NIPCode != "" {
+				return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+			}
+		}
 	}
 	return nil
 }

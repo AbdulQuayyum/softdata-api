@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://softdata-api.local/schemas/finance/commercial_banks.schema.json",
+  "title": "Nigeria Commercial Banks",
+  "description": "Schema for the ng-commercial-banks dataset compiled by SoftData.",
+  "type": "array",
+  "minItems": 28,
+  "maxItems": 28,
+  "uniqueItems": true,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["id", "name", "official_website_url", "logo_url", "country_code"],
+    "properties": {
+      "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)+$"},
+      "name": {"type": "string", "minLength": 1},
+      "cbn_code": {"type": "string", "pattern": "^[0-9]{3}$"},
+      "nip_code": {"type": "string", "pattern": "^[0-9]{6}$"},
+      "official_website_url": {"type": "string", "format": "uri", "pattern": "^https://"},
+      "logo_url": {"type": "string", "pattern": "^/v1/assets/banks/ng/[a-z0-9]+(?:-[a-z0-9]+)+\\.png$"},
+      "country_code": {"type": "string", "const": "NG"}
+    }
+  }
+}

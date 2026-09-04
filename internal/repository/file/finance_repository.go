@@ -2,14 +2,17 @@ package file
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
 	"fmt"
+	"net/url"
 	"path/filepath"
 	"reflect"
 	"regexp"
 	"sort"
 	"strings"
 
+	"github.com/AbdulQuayyum/softdata-api/datasets/assets"
 	"github.com/AbdulQuayyum/softdata-api/internal/models"
 	"github.com/AbdulQuayyum/softdata-api/internal/repository/interfaces"
 )
@@ -26,6 +29,9 @@ var financeCurrencyIDPattern = regexp.MustCompile(`^[a-z]{3}$`)
 var financeCurrencyAlphabeticCodePattern = regexp.MustCompile(`^[A-Z]{3}$`)
 var financeCurrencyNumericCodePattern = regexp.MustCompile(`^[0-9]{3}$`)
 var financeCurrencyCountryAreaIDPattern = regexp.MustCompile(`^[a-z]{2}$`)
+var financeCommercialBankIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)+$`)
+var financeCommercialBankCBNCodePattern = regexp.MustCompile(`^[0-9]{3}$`)
+var financeCommercialBankNIPCodePattern = regexp.MustCompile(`^[0-9]{6}$`)
 
 var financePaymentServiceProviderTypeOrder = map[string]int{
 	"mobile_money_operator":               0,
@@ -67,7 +73,28 @@ var financeCurrencyExcludedCodes = map[string]struct{}{
 const (
 	financeCurrenciesRelativePath        = "finance/currencies.json"
 	financeCountriesAndAreasRelativePath = "geography/countries_and_areas.json"
+	financeCommercialBanksRelativePath   = "finance/commercial_banks.json"
 )
+
+var financeExpectedCommercialBankIDs = []string{
+	"access-bank", "alpha-morgan-bank", "citibank-nigeria", "ecobank-nigeria", "fidelity-bank",
+	"first-bank-of-nigeria", "first-city-monument-bank", "globus-bank", "guaranty-trust-bank", "keystone-bank",
+	"nova-bank", "optimus-bank", "parallex-bank", "polaris-bank", "premium-trust-bank", "providus-bank",
+	"signature-bank", "stanbic-ibtc-bank", "standard-chartered-bank", "sterling-bank", "suntrust-bank", "tatum-bank",
+	"titan-trust-bank", "union-bank", "united-bank-for-africa", "unity-bank", "wema-bank", "zenith-bank",
+}
+
+var financeExpectedCommercialBankNames = map[string]string{
+	"access-bank": "Access Bank Plc", "alpha-morgan-bank": "Alpha Morgan Bank Limited", "citibank-nigeria": "Citibank Nigeria Limited",
+	"ecobank-nigeria": "Ecobank Nigeria Plc", "fidelity-bank": "Fidelity Bank Plc", "first-bank-of-nigeria": "First Bank of Nigeria Limited",
+	"first-city-monument-bank": "First City Monument Bank Plc", "globus-bank": "Globus Bank Limited", "guaranty-trust-bank": "Guaranty Trust Bank Plc",
+	"keystone-bank": "Keystone Bank Limited", "nova-bank": "Nova Commercial Bank Limited", "optimus-bank": "Optimus Bank",
+	"parallex-bank": "Parallex Bank Ltd", "polaris-bank": "Polaris Bank Plc", "premium-trust-bank": "Premium Trust Bank",
+	"providus-bank": "Providus Bank", "signature-bank": "Signature Bank Limited", "stanbic-ibtc-bank": "Stanbic IBTC Bank Plc",
+	"standard-chartered-bank": "Standard Chartered Bank Nigeria Limited", "sterling-bank": "Sterling Bank Plc", "suntrust-bank": "SunTrust Bank Nigeria Limited",
+	"tatum-bank": "Tatum Bank Limited", "titan-trust-bank": "Titan Trust Bank Ltd", "union-bank": "Union Bank of Nigeria Plc",
+	"united-bank-for-africa": "United Bank for Africa Plc", "unity-bank": "Unity Bank Plc", "wema-bank": "Wema Bank Plc", "zenith-bank": "Zenith Bank Plc",
+}
 
 var financeInternationalMoneyTransferOperatorFormerNames = map[string]struct{}{
 	"FLUTTERWAVE TECHNOLOGY SOLUTIONS LTD": {},
@@ -86,6 +113,7 @@ type FinanceFileRepository struct {
 	internationalMoneyTransferOperatorsPath string
 	currenciesPath                          string
 	countriesAndAreasPath                   string
+	commercialBanksPath                     string
 }
 
 var _ interfaces.FinanceRepository = (*FinanceFileRepository)(nil)
@@ -116,8 +144,146 @@ func NewFinanceRepository(jsonRepository interfaces.JSONFileRepository, paymentS
 		internationalMoneyTransferOperatorsPath: imtoPath,
 		currenciesPath:                          financeCurrenciesRelativePath,
 		countriesAndAreasPath:                   financeCountriesAndAreasRelativePath,
+		commercialBanksPath:                     financeCommercialBanksRelativePath,
 	}, nil
 }
+
+// ListCommercialBanks returns the ordered list of CBN-listed commercial banks.
+func (r *FinanceFileRepository) ListCommercialBanks(ctx context.Context) ([]models.CommercialBank, error) {
+	banks, err := r.loadCommercialBanks(ctx)
+	if err != nil {
+		return nil, err
+	}
+	return cloneCommercialBankList(banks), nil
+}
+
+// GetCommercialBank returns one commercial bank using its exact public ID.
+func (r *FinanceFileRepository) GetCommercialBank(ctx context.Context, bankID string) (models.CommercialBank, error) {
+	bankID = strings.TrimSpace(bankID)
+	if bankID == "" || !financeCommercialBankIDPattern.MatchString(bankID) {
+		return models.CommercialBank{}, fmt.Errorf("%w", interfaces.ErrCommercialBankNotFound)
+	}
+	banks, err := r.loadCommercialBanks(ctx)
+	if err != nil {
+		return models.CommercialBank{}, err
+	}
+	for _, bank := range banks {
+		if bank.ID == bankID {
+			return bank, nil
+		}
+	}
+	return models.CommercialBank{}, fmt.Errorf("%w", interfaces.ErrCommercialBankNotFound)
+}
+
+func (r *FinanceFileRepository) loadCommercialBanks(ctx context.Context) ([]models.CommercialBank, error) {
+	if r == nil || r.jsonRepository == nil || strings.TrimSpace(r.commercialBanksPath) == "" {
+		return nil, fmt.Errorf("%w", interfaces.ErrDatasetFileUnavailable)
+	}
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+
+	var rawBanks []json.RawMessage
+	if err := r.jsonRepository.Decode(ctx, r.commercialBanksPath, &rawBanks); err != nil {
+		return nil, translateFinanceLoadError(err)
+	}
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	if len(rawBanks) != len(financeExpectedCommercialBankIDs) {
+		return nil, fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+	}
+	banks := make([]models.CommercialBank, len(rawBanks))
+	for i, raw := range rawBanks {
+		var fields map[string]json.RawMessage
+		if err := json.Unmarshal(raw, &fields); err != nil {
+			return nil, fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		for _, field := range []string{"cbn_code", "nip_code"} {
+			if value, ok := fields[field]; ok && (bytesEqual(value, []byte("null")) || bytesEqual(value, []byte(`""`))) {
+				return nil, fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+		}
+		if err := json.Unmarshal(raw, &banks[i]); err != nil {
+			return nil, fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+	}
+	if err := validateCommercialBanks(banks); err != nil {
+		return nil, err
+	}
+	return banks, nil
+}
+
+func validateCommercialBanks(banks []models.CommercialBank) error {
+	if len(banks) != 28 {
+		return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+	}
+	seenIDs := make(map[string]struct{}, len(banks))
+	seenNames := make(map[string]struct{}, len(banks))
+	seenCBN := make(map[string]struct{}, len(banks))
+	seenNIP := make(map[string]struct{}, len(banks))
+	prevName, prevID := "", ""
+	for _, bank := range banks {
+		if bank.ID == "" || bank.Name == "" || bank.CountryCode != "NG" || bank.OfficialWebsiteURL == "" || bank.LogoURL == "" {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if !financeCommercialBankIDPattern.MatchString(bank.ID) || financeExpectedCommercialBankNames[bank.ID] != bank.Name {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if _, ok := seenIDs[bank.ID]; ok {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if _, ok := seenNames[bank.Name]; ok {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		parsed, err := url.Parse(bank.OfficialWebsiteURL)
+		if err != nil || parsed.Scheme != "https" || parsed.Host == "" {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if bank.LogoURL != "/v1/assets/banks/ng/"+bank.ID+".png" {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if _, err := assets.BankLogo(bank.ID, "png"); err != nil {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if bank.CBNCode != "" {
+			if !financeCommercialBankCBNCodePattern.MatchString(bank.CBNCode) {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+			if _, ok := seenCBN[bank.CBNCode]; ok {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+			seenCBN[bank.CBNCode] = struct{}{}
+		}
+		if bank.NIPCode != "" {
+			if !financeCommercialBankNIPCodePattern.MatchString(bank.NIPCode) {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+			if _, ok := seenNIP[bank.NIPCode]; ok {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+			seenNIP[bank.NIPCode] = struct{}{}
+		}
+		if prevName != "" && (strings.ToLower(prevName) > strings.ToLower(bank.Name) || (strings.EqualFold(prevName, bank.Name) && prevID > bank.ID)) {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		seenIDs[bank.ID] = struct{}{}
+		seenNames[bank.Name] = struct{}{}
+		prevName, prevID = bank.Name, bank.ID
+	}
+	if len(seenIDs) != len(financeExpectedCommercialBankIDs) || len(seenCBN) != 25 || len(seenNIP) != 25 {
+		return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+	}
+	if banks[10].ID != "nova-bank" || banks[10].CBNCode != "" || banks[10].NIPCode != "" || banks[1].CBNCode != "" || banks[16].CBNCode != "" || banks[18].NIPCode != "" || banks[20].NIPCode != "" {
+		return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+	}
+	return nil
+}
+
+func bytesEqual(left, right []byte) bool { return string(left) == string(right) }
 
 // ListPaymentServiceProviders returns the ordered list of payment-service-provider memberships.
 func (r *FinanceFileRepository) ListPaymentServiceProviders(ctx context.Context) ([]models.PaymentServiceProvider, error) {
@@ -657,6 +823,15 @@ func clonePaymentServiceProviderList(providers []models.PaymentServiceProvider) 
 	return cloned
 }
 
+func cloneCommercialBankList(banks []models.CommercialBank) []models.CommercialBank {
+	if len(banks) == 0 {
+		return make([]models.CommercialBank, 0)
+	}
+	cloned := make([]models.CommercialBank, len(banks))
+	copy(cloned, banks)
+	return cloned
+}
+
 func clonePaymentServiceProvider(provider models.PaymentServiceProvider) models.PaymentServiceProvider {
 	return provider
 }
@@ -744,6 +919,8 @@ func translateFinanceLoadError(err error) error {
 		return err
 	case errors.Is(err, interfaces.ErrDatasetFileNotFound):
 		return fmt.Errorf("%w", interfaces.ErrDatasetFileNotFound)
+	case errors.Is(err, interfaces.ErrDatasetFileTooLarge):
+		return fmt.Errorf("%w", interfaces.ErrDatasetFileTooLarge)
 	case errors.Is(err, interfaces.ErrDatasetFileUnavailable):
 		return fmt.Errorf("%w", interfaces.ErrDatasetFileUnavailable)
 	case errors.Is(err, interfaces.ErrInvalidDatasetFile):
