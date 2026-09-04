@@ -344,7 +344,7 @@ paths:
     get:
       tags: [Geography]
       summary: Get a country profile
-      description: Returns a derived profile for a current UN M49 country or area, combining the country-or-area record with approved currency and time-zone relationships. Statistical designations are used for reference only and do not imply political recognition or legal status.
+      description: Returns a derived profile for a current UN M49 country or area, combining the country-or-area record with approved currency, time-zone, and CLDR-derived country-language relationships. The language_ids array references world-languages.id and includes every relationship status; presence does not mean every listed language is nationally official. Use /v1/geography/country-languages for status details. Statistical designations are used for reference only and do not imply political recognition or legal status.
       parameters:
         - $ref: "#/components/parameters/CountryOrAreaID"
       responses:
@@ -1554,7 +1554,14 @@ components:
           uniqueItems: true
           items:
             type: string
-      required: [id, name, alpha_2_code, alpha_3_code, numeric_code, currency_ids, time_zone_ids]
+        language_ids:
+          type: array
+          description: Sorted unique IDs from world-languages. Includes every CLDR-derived country-language relationship regardless of status; presence does not mean the language is nationally official. Use /v1/geography/country-languages for relationship status details. Empty arrays are valid.
+          uniqueItems: true
+          items:
+            type: string
+            pattern: '^[a-z]{2,3}$'
+      required: [id, name, alpha_2_code, alpha_3_code, numeric_code, currency_ids, time_zone_ids, language_ids]
       allOf:
         - if:
             required: [region_code]

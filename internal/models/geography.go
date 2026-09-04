@@ -76,6 +76,7 @@ type CountryProfile struct {
 	IntermediateRegionName string   `json:"intermediate_region_name,omitempty"`
 	CurrencyIDs            []string `json:"currency_ids"`
 	TimeZoneIDs            []string `json:"time_zone_ids"`
+	LanguageIDs            []string `json:"language_ids"`
 }
 
 // TimeZone is the public record model for a canonical IANA time zone.

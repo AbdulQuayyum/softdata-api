@@ -48,6 +48,10 @@ Pinned to Unicode CLDR JSON 48.2.0, accessed 2026-09-04. The language catalogue 
 
 The compiler applies `fat -> ak`, `sh -> sr-Latn -> sr`, `tl -> fil` and `tw -> ak`, excludes script-qualified public IDs and non-country aggregates, and applies the base-row-wins rule for collapsed relationship conflicts. `used` is a normalized relationship value, not a legal, exhaustive or census statement. SoftData's compilation, schemas and metadata are CC BY 4.0; Unicode CLDR source material retains its own licence.
 
+### Derived Country Profiles
+
+`GET /v1/geography/countries/{country_id}/profile` is a derived view, not a separate static dataset. It combines `world-countries-and-areas`, `world-currencies`, `world-time-zones`, and `world-country-languages`. Its `language_ids` field contains unique, lexicographically sorted IDs from `world-languages` for every relationship status, including `official`, `de_facto_official`, `official_regional`, and `used`; inclusion does not mean that every language is nationally official. Empty arrays are valid. Use `GET /v1/geography/country-languages?country_area_id={country_id}` when relationship status details are required.
+
 ### `world-currencies`
 
 The current ISO 4217 monetary-currency snapshot compiled from the SIX List One XML.

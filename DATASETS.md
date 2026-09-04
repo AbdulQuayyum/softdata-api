@@ -129,6 +129,10 @@ These paired geography datasets are compiled from Unicode CLDR JSON release 48.2
 
 Alias normalization applies `fat -> ak`, `sh -> sr-Latn -> sr`, `tl -> fil` and `tw -> ak`. Script-qualified rows collapse to base IDs, and an exact base-language row wins status conflicts over a script-qualified row. The package excludes regional aggregates, historic territories, Taiwan and Kosovo. SoftData's independent compilation, schema and metadata are CC BY 4.0; Unicode CLDR source material retains its own licence and attribution.
 
+### Derived Country Profiles
+
+`GET /v1/geography/countries/{country_id}/profile` is a derived view rather than a static `world-country-profiles` dataset. It combines the approved country record with relationships from `world-currencies`, `world-time-zones`, and `world-country-languages`; its `language_ids` values reference `world-languages.id`. Language IDs are unique, deterministically sorted, and include all CLDR-derived relationship statuses. Presence does not mean that every language is nationally official, and an empty array is valid. Use `GET /v1/geography/country-languages?country_area_id={country_id}` for status details.
+
 ### `world-currencies`
 
 The current ISO 4217 monetary-currency snapshot compiled from the official SIX List One XML.

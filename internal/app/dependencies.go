@@ -156,7 +156,7 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	if err != nil {
 		return appDependencies{}, err
 	}
-	profileService, err := services.NewCountryProfileService(geographyService, financeService, geographyService)
+	profileService, err := services.NewCountryProfileService(geographyService, financeService, geographyService, geographyService)
 	if err != nil {
 		return appDependencies{}, err
 	}

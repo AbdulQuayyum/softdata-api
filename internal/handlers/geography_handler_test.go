@@ -1083,6 +1083,7 @@ func TestGeographyHandlerGetCountryProfile(t *testing.T) {
 					FlagSVGURL:  "/v1/assets/flags/ng.svg",
 					CurrencyIDs: []string{},
 					TimeZoneIDs: []string{},
+					LanguageIDs: []string{"ann", "en", "ha", "yo"},
 				}, nil
 			},
 		}
@@ -1113,7 +1114,7 @@ func TestGeographyHandlerGetCountryProfile(t *testing.T) {
 			t.Fatalf("json.Unmarshal: %v", err)
 		}
 		data := body["data"].(map[string]any)
-		if len(data) != 9 {
+		if len(data) != 10 {
 			t.Fatalf("unexpected profile field count: %#v", data)
 		}
 		if data["id"] != "ng" || data["name"] != "Nigeria" {
@@ -1124,6 +1125,9 @@ func TestGeographyHandlerGetCountryProfile(t *testing.T) {
 		}
 		if _, ok := data["time_zone_ids"].([]any); !ok {
 			t.Fatalf("expected time_zone_ids array, got %#v", data["time_zone_ids"])
+		}
+		if got, ok := data["language_ids"].([]any); !ok || len(got) != 4 || got[0] != "ann" || got[3] != "yo" {
+			t.Fatalf("expected language_ids array, got %#v", data["language_ids"])
 		}
 	})
 
