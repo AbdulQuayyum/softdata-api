@@ -23,14 +23,19 @@ type countryProfileTimeZoneService interface {
 	ListTimeZones(context.Context, TimeZoneListInput) ([]models.TimeZone, error)
 }
 
+type countryProfileLanguageService interface {
+	ListCountryLanguages(context.Context, CountryLanguageListInput) ([]models.CountryLanguage, error)
+}
+
 // CountryProfileService derives country profile views from the verified geography, finance and time-zone services.
 type CountryProfileService struct {
 	countryService  countryProfileCountryService
 	currencyService countryProfileCurrencyService
 	timeZoneService countryProfileTimeZoneService
+	languageService countryProfileLanguageService
 }
 
-func NewCountryProfileService(countryService countryProfileCountryService, currencyService countryProfileCurrencyService, timeZoneService countryProfileTimeZoneService) (*CountryProfileService, error) {
+func NewCountryProfileService(countryService countryProfileCountryService, currencyService countryProfileCurrencyService, timeZoneService countryProfileTimeZoneService, languageService countryProfileLanguageService) (*CountryProfileService, error) {
 	if countryService == nil {
 		return nil, fmt.Errorf("country service is required")
 	}
@@ -40,10 +45,14 @@ func NewCountryProfileService(countryService countryProfileCountryService, curre
 	if timeZoneService == nil {
 		return nil, fmt.Errorf("time zone service is required")
 	}
+	if languageService == nil {
+		return nil, fmt.Errorf("language service is required")
+	}
 	return &CountryProfileService{
 		countryService:  countryService,
 		currencyService: currencyService,
 		timeZoneService: timeZoneService,
+		languageService: languageService,
 	}, nil
 }
 
@@ -77,8 +86,16 @@ func (s *CountryProfileService) GetCountryProfile(ctx context.Context, countryID
 	if err != nil {
 		return models.CountryProfile{}, translateCountryProfileCompositionError("list country profile time zones", err)
 	}
+	if err := ctx.Err(); err != nil {
+		return models.CountryProfile{}, err
+	}
 
-	return buildCountryProfile(country, currencies, timeZones), nil
+	languageRelations, err := s.languageService.ListCountryLanguages(ctx, CountryLanguageListInput{CountryAreaID: normalizedID})
+	if err != nil {
+		return models.CountryProfile{}, translateCountryProfileCompositionError("list country profile languages", err)
+	}
+
+	return buildCountryProfile(country, currencies, timeZones, languageRelations), nil
 }
 
 func normalizeCountryOrAreaID(value string) (string, error) {
@@ -89,7 +106,7 @@ func normalizeCountryOrAreaID(value string) (string, error) {
 	return value, nil
 }
 
-func buildCountryProfile(country models.CountryOrArea, currencies []models.Currency, timeZones []models.TimeZone) models.CountryProfile {
+func buildCountryProfile(country models.CountryOrArea, currencies []models.Currency, timeZones []models.TimeZone, languageRelations []models.CountryLanguage) models.CountryProfile {
 	profile := models.CountryProfile{
 		ID:                     country.ID,
 		Name:                   country.Name,
@@ -107,11 +124,27 @@ func buildCountryProfile(country models.CountryOrArea, currencies []models.Curre
 		IntermediateRegionName: country.IntermediateRegionName,
 		CurrencyIDs:            dedupeAndSortCurrencyIDs(currencies),
 		TimeZoneIDs:            dedupeAndSortTimeZoneIDs(timeZones),
+		LanguageIDs:            dedupeAndSortLanguageIDs(languageRelations),
 	}
 	if profile.CallingCodes == nil {
 		profile.CallingCodes = nil
 	}
 	return profile
+}
+
+func dedupeAndSortLanguageIDs(relations []models.CountryLanguage) []string {
+	ids := make(map[string]struct{}, len(relations))
+	for _, relation := range relations {
+		if relation.LanguageID != "" {
+			ids[relation.LanguageID] = struct{}{}
+		}
+	}
+	out := make([]string, 0, len(ids))
+	for id := range ids {
+		out = append(out, id)
+	}
+	sort.Strings(out)
+	return out
 }
 
 func dedupeAndSortCurrencyIDs(currencies []models.Currency) []string {
