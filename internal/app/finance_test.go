@@ -62,7 +62,15 @@ func (s *financeServiceStub) GetCurrency(context.Context, string) (models.Curren
 }
 
 func (s *financeServiceStub) ListCommercialBanks(context.Context) ([]models.CommercialBank, error) {
-	return []models.CommercialBank{}, nil
+	data, err := os.ReadFile(filepath.Clean("../../datasets/finance/commercial_banks.json"))
+	if err != nil {
+		return nil, err
+	}
+	var banks []models.CommercialBank
+	if err := json.Unmarshal(data, &banks); err != nil {
+		return nil, err
+	}
+	return banks, nil
 }
 
 func (s *financeServiceStub) GetCommercialBank(context.Context, string) (models.CommercialBank, error) {
@@ -277,6 +285,16 @@ func TestBuildFinanceHandlerValidFixturePassesStartupVerification(t *testing.T) 
 	}
 	if countriesLen := int64(len(countriesData)); countriesLen > maxBytes {
 		maxBytes = countriesLen
+	}
+	commercialBanksData, err := os.ReadFile(filepath.Clean("../../datasets/finance/commercial_banks.json"))
+	if err != nil {
+		t.Fatalf("ReadFile() error = %v", err)
+	}
+	if err := os.WriteFile(filepath.Join(root, "finance", "commercial_banks.json"), commercialBanksData, 0o600); err != nil {
+		t.Fatalf("WriteFile() error = %v", err)
+	}
+	if commercialBanksLen := int64(len(commercialBanksData)); commercialBanksLen > maxBytes {
+		maxBytes = commercialBanksLen
 	}
 
 	cfg := &config.Config{

@@ -35,6 +35,31 @@ func TestPublicRoutesServeHealthAndDiscovery(t *testing.T) {
 	}
 }
 
+func TestPublicRoutesServeCommercialBanks(t *testing.T) {
+	rec := &routerRecorder{}
+	r := newTestRouter(t, rec)
+
+	rr := httptest.NewRecorder()
+	r.ServeHTTP(rr, httptest.NewRequest(http.MethodGet, "/v1/finance/commercial-banks?ignored=true", nil))
+	if rr.Code != http.StatusOK || !strings.Contains(rr.Body.String(), `"success":true`) {
+		t.Fatalf("unexpected commercial-bank list response: %d %s", rr.Code, rr.Body.String())
+	}
+	if !strings.Contains(strings.Join(rec.snapshot(), ","), "finance.commercial-banks.list") {
+		t.Fatalf("commercial-bank list was not dispatched: %v", rec.snapshot())
+	}
+
+	rec = &routerRecorder{}
+	r = newTestRouter(t, rec)
+	rr = httptest.NewRecorder()
+	r.ServeHTTP(rr, httptest.NewRequest(http.MethodGet, "/v1/finance/commercial-banks/access-bank", nil))
+	if rr.Code != http.StatusOK || !strings.Contains(rr.Body.String(), `"cbn_code":"044"`) {
+		t.Fatalf("unexpected commercial-bank detail response: %d %s", rr.Code, rr.Body.String())
+	}
+	if !strings.Contains(strings.Join(rec.snapshot(), ","), "finance.commercial-banks.get:access-bank") {
+		t.Fatalf("commercial-bank detail was not dispatched: %v", rec.snapshot())
+	}
+}
+
 func TestPublicRoutesServeGeographyZones(t *testing.T) {
 	rec := &routerRecorder{}
 	router := newTestRouter(t, rec)
