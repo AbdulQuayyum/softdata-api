@@ -2325,6 +2325,18 @@ func (s *routerGeographyStub) GetLocalGovernmentUnit(ctx context.Context, unitID
 	return models.LocalGovernmentUnit{ID: unitID, Name: "Example", StateID: "lagos", CountryCode: "NG", AdministrativeType: "local_government_area"}, nil
 }
 
+func (s *routerGeographyStub) ListLanguages(context.Context) ([]models.Language, error) {
+	return []models.Language{}, nil
+}
+
+func (s *routerGeographyStub) GetLanguage(context.Context, string) (models.Language, error) {
+	return models.Language{}, nil
+}
+
+func (s *routerGeographyStub) ListCountryLanguages(context.Context, services.CountryLanguageListInput) ([]models.CountryLanguage, error) {
+	return []models.CountryLanguage{}, nil
+}
+
 func (s *routerGeographyStub) ListTimeZones(ctx context.Context, input services.TimeZoneListInput) ([]models.TimeZone, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()

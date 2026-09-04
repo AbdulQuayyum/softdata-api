@@ -63,6 +63,18 @@ func (s *geographyServiceStub) GetLocalGovernmentUnit(context.Context, string) (
 	return models.LocalGovernmentUnit{}, nil
 }
 
+func (s *geographyServiceStub) ListLanguages(context.Context) ([]models.Language, error) {
+	return []models.Language{}, nil
+}
+
+func (s *geographyServiceStub) GetLanguage(context.Context, string) (models.Language, error) {
+	return models.Language{}, nil
+}
+
+func (s *geographyServiceStub) ListCountryLanguages(context.Context, services.CountryLanguageListInput) ([]models.CountryLanguage, error) {
+	return []models.CountryLanguage{}, nil
+}
+
 func (s *geographyServiceStub) ListTimeZones(_ context.Context, input services.TimeZoneListInput) ([]models.TimeZone, error) {
 	s.timeZoneListCalls++
 	s.lastTimeZoneInput = input

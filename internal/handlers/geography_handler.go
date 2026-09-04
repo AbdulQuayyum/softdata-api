@@ -19,10 +19,78 @@ type geographyService interface {
 	ListLocalGovernmentUnits(context.Context) ([]models.LocalGovernmentUnit, error)
 	ListLocalGovernmentUnitsByState(context.Context, string) ([]models.LocalGovernmentUnit, error)
 	GetLocalGovernmentUnit(context.Context, string) (models.LocalGovernmentUnit, error)
+	ListLanguages(context.Context) ([]models.Language, error)
+	GetLanguage(context.Context, string) (models.Language, error)
+	ListCountryLanguages(context.Context, services.CountryLanguageListInput) ([]models.CountryLanguage, error)
 	ListTimeZones(context.Context, services.TimeZoneListInput) ([]models.TimeZone, error)
 	GetTimeZone(context.Context, string) (models.TimeZone, error)
 	ListCountriesAndAreas(context.Context, services.CountryOrAreaListInput) ([]models.CountryOrArea, error)
 	GetCountryOrArea(context.Context, string) (models.CountryOrArea, error)
+}
+
+// ListLanguages handles GET /v1/geography/languages.
+func (h *GeographyHandler) ListLanguages(w http.ResponseWriter, r *http.Request) {
+	if !allowMethod(w, r, http.MethodGet) {
+		return
+	}
+
+	requestID := requestIDFromContext(r.Context())
+	languages, err := h.service.ListLanguages(r.Context())
+	if err != nil {
+		_ = response.Error(w, err, requestID)
+		return
+	}
+	_ = response.List(w, http.StatusOK, languages)
+}
+
+// GetLanguage handles GET /v1/geography/languages/{language_id}.
+func (h *GeographyHandler) GetLanguage(w http.ResponseWriter, r *http.Request) {
+	if !allowMethod(w, r, http.MethodGet) {
+		return
+	}
+
+	requestID := requestIDFromContext(r.Context())
+	languageID, err := validators.ValidateLanguageID(r.PathValue("language_id"))
+	if err != nil {
+		if validationErr, ok := validationErrorsFrom(err); ok {
+			_ = response.Validation(w, requestID, validationErrorsToResponse(validationErr))
+			return
+		}
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	language, err := h.service.GetLanguage(r.Context(), languageID)
+	if err != nil {
+		_ = response.Error(w, err, requestID)
+		return
+	}
+	_ = response.Success(w, http.StatusOK, language)
+}
+
+// ListCountryLanguages handles GET /v1/geography/country-languages.
+func (h *GeographyHandler) ListCountryLanguages(w http.ResponseWriter, r *http.Request) {
+	if !allowMethod(w, r, http.MethodGet) {
+		return
+	}
+
+	requestID := requestIDFromContext(r.Context())
+	query, err := validators.ValidateCountryLanguageListQuery(r.URL.Query())
+	if err != nil {
+		if validationErr, ok := validationErrorsFrom(err); ok {
+			_ = response.Validation(w, requestID, validationErrorsToResponse(validationErr))
+			return
+		}
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	relations, err := h.service.ListCountryLanguages(r.Context(), query)
+	if err != nil {
+		_ = response.Error(w, err, requestID)
+		return
+	}
+	_ = response.List(w, http.StatusOK, relations)
 }
 
 type countryProfileService interface {
