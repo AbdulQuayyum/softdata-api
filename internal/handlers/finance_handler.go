@@ -19,6 +19,45 @@ type financeService interface {
 	GetInternationalMoneyTransferOperator(context.Context, string) (models.InternationalMoneyTransferOperator, error)
 	ListCurrencies(context.Context, services.CurrencyListInput) ([]models.Currency, error)
 	GetCurrency(context.Context, string) (models.Currency, error)
+	ListCommercialBanks(context.Context) ([]models.CommercialBank, error)
+	GetCommercialBank(context.Context, string) (models.CommercialBank, error)
+}
+
+// ListCommercialBanks handles GET /v1/finance/commercial-banks.
+func (h *FinanceHandler) ListCommercialBanks(w http.ResponseWriter, r *http.Request) {
+	if !allowMethod(w, r, http.MethodGet) {
+		return
+	}
+	requestID := requestIDFromContext(r.Context())
+	banks, err := h.service.ListCommercialBanks(r.Context())
+	if err != nil {
+		_ = response.Error(w, err, requestID)
+		return
+	}
+	_ = response.List(w, http.StatusOK, banks)
+}
+
+// GetCommercialBank handles GET /v1/finance/commercial-banks/{bank_id}.
+func (h *FinanceHandler) GetCommercialBank(w http.ResponseWriter, r *http.Request) {
+	if !allowMethod(w, r, http.MethodGet) {
+		return
+	}
+	requestID := requestIDFromContext(r.Context())
+	bankID := r.PathValue("bank_id")
+	if err := validators.ValidateCommercialBankID(bankID); err != nil {
+		if validationErr, ok := validationErrorsFrom(err); ok {
+			_ = response.Validation(w, requestID, validationErrorsToResponse(validationErr))
+			return
+		}
+		_ = response.Error(w, err, requestID)
+		return
+	}
+	bank, err := h.service.GetCommercialBank(r.Context(), bankID)
+	if err != nil {
+		_ = response.Error(w, err, requestID)
+		return
+	}
+	_ = response.Success(w, http.StatusOK, bank)
 }
 
 // FinanceHandler serves public payment-service-provider endpoints.

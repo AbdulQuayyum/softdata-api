@@ -2228,6 +2228,14 @@ func (s *routerFinanceStub) GetCurrency(ctx context.Context, currencyID string) 
 	return models.Currency{ID: currencyID, Name: "Naira", AlphabeticCode: "NGN", NumericCode: "566", MinorUnit: 2, CountryAreaIDs: []string{"ng"}}, nil
 }
 
+func (s *routerFinanceStub) ListCommercialBanks(context.Context) ([]models.CommercialBank, error) {
+	return []models.CommercialBank{}, nil
+}
+
+func (s *routerFinanceStub) GetCommercialBank(_ context.Context, bankID string) (models.CommercialBank, error) {
+	return models.CommercialBank{ID: bankID, Name: "Access Bank Plc", CBNCode: "044", NIPCode: "000014", CountryCode: "NG"}, nil
+}
+
 func (s *routerGeographyStub) ListStates(ctx context.Context) ([]models.State, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
