@@ -15,6 +15,7 @@ var financePaymentServiceProviderIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[
 var financeInternationalMoneyTransferOperatorIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)*$`)
 var financeCurrencyIDPattern = regexp.MustCompile(`^[a-z]{3}$`)
 var financeCurrencyCountryAreaIDPattern = regexp.MustCompile(`^[a-z]{2}$`)
+var financeCommercialBankIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)+$`)
 
 var allowedFinanceInstitutionTypes = map[string]struct{}{
 	"mobile_money_operator":               {},
@@ -152,6 +153,32 @@ func (s *FinanceService) GetCurrency(ctx context.Context, currencyID string) (mo
 	return currency, nil
 }
 
+func (s *FinanceService) ListCommercialBanks(ctx context.Context) ([]models.CommercialBank, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	banks, err := s.repository.ListCommercialBanks(ctx)
+	if err != nil {
+		return nil, translateFinanceCommercialBankServiceError("list commercial banks", err)
+	}
+	return cloneCommercialBankList(banks), nil
+}
+
+func (s *FinanceService) GetCommercialBank(ctx context.Context, bankID string) (models.CommercialBank, error) {
+	if err := ctx.Err(); err != nil {
+		return models.CommercialBank{}, err
+	}
+	normalizedID, err := normalizeFinanceCommercialBankID(bankID)
+	if err != nil {
+		return models.CommercialBank{}, err
+	}
+	bank, err := s.repository.GetCommercialBank(ctx, normalizedID)
+	if err != nil {
+		return models.CommercialBank{}, translateFinanceCommercialBankLookupError(err)
+	}
+	return bank, nil
+}
+
 func cloneInternationalMoneyTransferOperatorList(operators []models.InternationalMoneyTransferOperator) []models.InternationalMoneyTransferOperator {
 	if len(operators) == 0 {
 		return make([]models.InternationalMoneyTransferOperator, 0)
@@ -212,6 +239,14 @@ func normalizeFinanceCurrencyListInput(input CurrencyListInput) (string, error) 
 		return "", ErrInvalidCurrencyCountryAreaID
 	}
 	return countryAreaID, nil
+}
+
+func normalizeFinanceCommercialBankID(bankID string) (string, error) {
+	bankID = strings.TrimSpace(bankID)
+	if bankID == "" || !financeCommercialBankIDPattern.MatchString(bankID) {
+		return "", ErrInvalidCommercialBankID
+	}
+	return bankID, nil
 }
 
 func normalizeFinanceInstitutionType(institutionType string) (string, error) {
@@ -298,4 +333,37 @@ func translateFinanceServiceError(op string, err error) error {
 	default:
 		return fmt.Errorf("%s: repository unavailable", op)
 	}
+}
+
+func translateFinanceCommercialBankLookupError(err error) error {
+	switch {
+	case err == nil:
+		return nil
+	case errors.Is(err, context.Canceled), errors.Is(err, context.DeadlineExceeded):
+		return err
+	case errors.Is(err, interfaces.ErrCommercialBankNotFound):
+		return ErrCommercialBankNotFound
+	default:
+		return fmt.Errorf("get commercial bank: repository unavailable")
+	}
+}
+
+func translateFinanceCommercialBankServiceError(op string, err error) error {
+	switch {
+	case err == nil:
+		return nil
+	case errors.Is(err, context.Canceled), errors.Is(err, context.DeadlineExceeded):
+		return err
+	default:
+		return fmt.Errorf("%s: repository unavailable", op)
+	}
+}
+
+func cloneCommercialBankList(banks []models.CommercialBank) []models.CommercialBank {
+	if len(banks) == 0 {
+		return make([]models.CommercialBank, 0)
+	}
+	cloned := make([]models.CommercialBank, len(banks))
+	copy(cloned, banks)
+	return cloned
 }

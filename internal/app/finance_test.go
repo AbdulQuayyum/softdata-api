@@ -61,6 +61,14 @@ func (s *financeServiceStub) GetCurrency(context.Context, string) (models.Curren
 	return models.Currency{}, nil
 }
 
+func (s *financeServiceStub) ListCommercialBanks(context.Context) ([]models.CommercialBank, error) {
+	return []models.CommercialBank{}, nil
+}
+
+func (s *financeServiceStub) GetCommercialBank(context.Context, string) (models.CommercialBank, error) {
+	return models.CommercialBank{}, nil
+}
+
 type financeRepositoryStub struct{}
 
 func (s *financeRepositoryStub) ListPaymentServiceProviders(context.Context) ([]models.PaymentServiceProvider, error) {
@@ -89,6 +97,14 @@ func (s *financeRepositoryStub) ListCurrencies(context.Context, interfaces.Curre
 
 func (s *financeRepositoryStub) GetCurrency(context.Context, string) (models.Currency, error) {
 	return models.Currency{}, nil
+}
+
+func (s *financeRepositoryStub) ListCommercialBanks(context.Context) ([]models.CommercialBank, error) {
+	return []models.CommercialBank{}, nil
+}
+
+func (s *financeRepositoryStub) GetCommercialBank(context.Context, string) (models.CommercialBank, error) {
+	return models.CommercialBank{}, nil
 }
 
 type financeJSONRepoStub struct{}
