@@ -16,40 +16,48 @@ import (
 )
 
 type geographyHandlerStub struct {
-	listFn         func(context.Context) ([]models.State, error)
-	getFn          func(context.Context, string) (models.State, error)
-	zoneListFn     func(context.Context) ([]models.GeopoliticalZone, error)
-	zoneGetFn      func(context.Context, string) (models.GeopoliticalZone, error)
-	lgaListFn      func(context.Context) ([]models.LocalGovernmentUnit, error)
-	lgaListByFn    func(context.Context, string) ([]models.LocalGovernmentUnit, error)
-	lgaGetFn       func(context.Context, string) (models.LocalGovernmentUnit, error)
-	timeZoneListFn func(context.Context, services.TimeZoneListInput) ([]models.TimeZone, error)
-	timeZoneGetFn  func(context.Context, string) (models.TimeZone, error)
-	countryListFn  func(context.Context, services.CountryOrAreaListInput) ([]models.CountryOrArea, error)
-	countryGetFn   func(context.Context, string) (models.CountryOrArea, error)
-	profileFn      func(context.Context, string) (models.CountryProfile, error)
+	listFn                func(context.Context) ([]models.State, error)
+	getFn                 func(context.Context, string) (models.State, error)
+	zoneListFn            func(context.Context) ([]models.GeopoliticalZone, error)
+	zoneGetFn             func(context.Context, string) (models.GeopoliticalZone, error)
+	lgaListFn             func(context.Context) ([]models.LocalGovernmentUnit, error)
+	lgaListByFn           func(context.Context, string) ([]models.LocalGovernmentUnit, error)
+	lgaGetFn              func(context.Context, string) (models.LocalGovernmentUnit, error)
+	languageListFn        func(context.Context) ([]models.Language, error)
+	languageGetFn         func(context.Context, string) (models.Language, error)
+	countryLanguageListFn func(context.Context, services.CountryLanguageListInput) ([]models.CountryLanguage, error)
+	timeZoneListFn        func(context.Context, services.TimeZoneListInput) ([]models.TimeZone, error)
+	timeZoneGetFn         func(context.Context, string) (models.TimeZone, error)
+	countryListFn         func(context.Context, services.CountryOrAreaListInput) ([]models.CountryOrArea, error)
+	countryGetFn          func(context.Context, string) (models.CountryOrArea, error)
+	profileFn             func(context.Context, string) (models.CountryProfile, error)
 
-	listCalls         int
-	getCalls          int
-	zoneListCalls     int
-	zoneGetCalls      int
-	lgaListCalls      int
-	lgaListByCalls    int
-	lgaGetCalls       int
-	timeZoneListCalls int
-	timeZoneGetCalls  int
-	countryListCalls  int
-	countryGetCalls   int
-	profileCalls      int
-	lastID            string
-	lastZoneID        string
-	lastLGAID         string
-	lastTimeZoneID    string
-	lastTimeZoneQuery services.TimeZoneListInput
-	lastStateID       string
-	lastCountryID     string
-	lastCountryQuery  services.CountryOrAreaListInput
-	lastProfileID     string
+	listCalls                int
+	getCalls                 int
+	zoneListCalls            int
+	zoneGetCalls             int
+	lgaListCalls             int
+	lgaListByCalls           int
+	lgaGetCalls              int
+	languageListCalls        int
+	languageGetCalls         int
+	countryLanguageListCalls int
+	timeZoneListCalls        int
+	timeZoneGetCalls         int
+	countryListCalls         int
+	countryGetCalls          int
+	profileCalls             int
+	lastID                   string
+	lastZoneID               string
+	lastLGAID                string
+	lastLanguageID           string
+	lastCountryLanguageQuery services.CountryLanguageListInput
+	lastTimeZoneID           string
+	lastTimeZoneQuery        services.TimeZoneListInput
+	lastStateID              string
+	lastCountryID            string
+	lastCountryQuery         services.CountryOrAreaListInput
+	lastProfileID            string
 }
 
 func (s *geographyHandlerStub) ListStates(ctx context.Context) ([]models.State, error) {
@@ -110,6 +118,32 @@ func (s *geographyHandlerStub) GetLocalGovernmentUnit(ctx context.Context, unitI
 		return s.lgaGetFn(ctx, unitID)
 	}
 	return models.LocalGovernmentUnit{}, nil
+}
+
+func (s *geographyHandlerStub) ListLanguages(ctx context.Context) ([]models.Language, error) {
+	s.languageListCalls++
+	if s.languageListFn != nil {
+		return s.languageListFn(ctx)
+	}
+	return nil, nil
+}
+
+func (s *geographyHandlerStub) GetLanguage(ctx context.Context, languageID string) (models.Language, error) {
+	s.languageGetCalls++
+	s.lastLanguageID = languageID
+	if s.languageGetFn != nil {
+		return s.languageGetFn(ctx, languageID)
+	}
+	return models.Language{}, nil
+}
+
+func (s *geographyHandlerStub) ListCountryLanguages(ctx context.Context, input services.CountryLanguageListInput) ([]models.CountryLanguage, error) {
+	s.countryLanguageListCalls++
+	s.lastCountryLanguageQuery = input
+	if s.countryLanguageListFn != nil {
+		return s.countryLanguageListFn(ctx, input)
+	}
+	return nil, nil
 }
 
 func (s *geographyHandlerStub) ListTimeZones(ctx context.Context, input services.TimeZoneListInput) ([]models.TimeZone, error) {

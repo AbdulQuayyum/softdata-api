@@ -210,6 +210,59 @@ paths:
           $ref: "#/components/responses/ValidationFailed"
         "500":
           $ref: "#/components/responses/InternalError"
+  /v1/geography/languages:
+    get:
+      tags: [Geography]
+      summary: List CLDR-derived world languages
+      description: Returns the 633 current English CLDR base-language records. This v1 endpoint has no pagination or search and is publicly accessible.
+      responses:
+        "200":
+          description: Language records
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LanguageListResponse"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/geography/languages/{language_id}:
+    get:
+      tags: [Geography]
+      summary: Get a CLDR-derived world language
+      parameters:
+        - $ref: "#/components/parameters/LanguageID"
+      responses:
+        "200":
+          description: Language record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LanguageResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/geography/country-languages:
+    get:
+      tags: [Geography]
+      summary: List CLDR-derived country-language relationships
+      description: Returns all 1,289 relationships when filters are omitted. Filters use AND semantics, are optional, and no pagination is available in v1. The used status means CLDR supplied a relationship without officialStatus and does not independently claim legal recognition or official status.
+      parameters:
+        - $ref: "#/components/parameters/CountryLanguageCountryAreaID"
+        - $ref: "#/components/parameters/CountryLanguageIDQuery"
+        - $ref: "#/components/parameters/CountryLanguageStatusQuery"
+      responses:
+        "200":
+          description: Country-language relationship records; an empty array is valid.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CountryLanguageListResponse"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
   /v1/geography/time-zones:
     get:
       tags: [Geography]
@@ -895,6 +948,35 @@ components:
       schema:
         type: string
         pattern: '^[0-9]{3}$'
+    LanguageID:
+      name: language_id
+      in: path
+      required: true
+      description: Published lowercase CLDR base-language identifier.
+      schema:
+        $ref: "#/components/schemas/LanguageID"
+    CountryLanguageCountryAreaID:
+      name: country_area_id
+      in: query
+      required: false
+      description: Optional lowercase country or area ID used to filter relationships.
+      schema:
+        type: string
+        pattern: '^[a-z]{2}$'
+    CountryLanguageIDQuery:
+      name: language_id
+      in: query
+      required: false
+      description: Optional published lowercase CLDR base-language ID used to filter relationships.
+      schema:
+        $ref: "#/components/schemas/LanguageID"
+    CountryLanguageStatusQuery:
+      name: status
+      in: query
+      required: false
+      description: Optional relationship status filter.
+      schema:
+        $ref: "#/components/schemas/CountryLanguageStatus"
     UniversityID:
       name: university_id
       in: path
@@ -1120,6 +1202,67 @@ components:
               type: string
           required: [code, message, request_id]
       required: [success, error]
+    LanguageID:
+      type: string
+      pattern: '^[a-z]{2,3}$'
+      description: Published lowercase CLDR base-language identifier; aliases and script or region subtags are excluded.
+    CountryLanguageStatus:
+      type: string
+      enum: [official, de_facto_official, official_regional, used]
+      description: CLDR-derived relationship status. used means no officialStatus was supplied by CLDR and is not an independent legal-status claim.
+    Language:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          $ref: "#/components/schemas/LanguageID"
+        name:
+          type: string
+          minLength: 1
+      required: [id, name]
+    CountryLanguage:
+      type: object
+      additionalProperties: false
+      properties:
+        country_area_id:
+          type: string
+          pattern: '^[a-z]{2}$'
+        language_id:
+          $ref: "#/components/schemas/LanguageID"
+        status:
+          $ref: "#/components/schemas/CountryLanguageStatus"
+      required: [country_area_id, language_id, status]
+    LanguageListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Language"
+      required: [success, data]
+    LanguageResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: "#/components/schemas/Language"
+      required: [success, data]
+    CountryLanguageListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/CountryLanguage"
+      required: [success, data]
     State:
       type: object
       additionalProperties: false

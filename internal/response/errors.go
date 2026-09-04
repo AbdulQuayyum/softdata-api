@@ -117,6 +117,8 @@ func mapError(err error) mappedError {
 		return mappedError{status: http.StatusBadRequest, code: codeInvalidRequest, message: messageInvalidRequest}
 	case errors.Is(err, services.ErrInvalidGeopoliticalZoneID):
 		return mappedError{status: http.StatusBadRequest, code: codeInvalidRequest, message: messageInvalidRequest}
+	case errors.Is(err, services.ErrInvalidLanguageID), errors.Is(err, services.ErrInvalidCountryLanguageCountryAreaID), errors.Is(err, services.ErrInvalidCountryLanguageLanguageID), errors.Is(err, services.ErrInvalidCountryLanguageStatus):
+		return mappedError{status: http.StatusBadRequest, code: codeInvalidRequest, message: messageInvalidRequest}
 	case errors.Is(err, services.ErrDatasetNotFound), errors.Is(err, services.ErrAccountNotFound):
 		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}
 	case errors.Is(err, services.ErrAPIKeyNotFound):
@@ -126,6 +128,8 @@ func mapError(err error) mappedError {
 	case errors.Is(err, services.ErrAccountInactive):
 		return mappedError{status: http.StatusForbidden, code: codeInvalidRequest, message: messageOperationNotAllowed}
 	case errors.Is(err, services.ErrStateNotFound):
+		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}
+	case errors.Is(err, services.ErrLanguageNotFound):
 		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}
 	case errors.Is(err, services.ErrUniversityNotFound):
 		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}

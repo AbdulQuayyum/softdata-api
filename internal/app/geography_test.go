@@ -63,6 +63,40 @@ func (s *geographyServiceStub) GetLocalGovernmentUnit(context.Context, string) (
 	return models.LocalGovernmentUnit{}, nil
 }
 
+func (s *geographyServiceStub) ListLanguages(ctx context.Context) ([]models.Language, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	data, err := os.ReadFile(filepath.Clean("../../datasets/geography/languages.json"))
+	if err != nil {
+		return nil, err
+	}
+	var languages []models.Language
+	if err := json.Unmarshal(data, &languages); err != nil {
+		return nil, err
+	}
+	return languages, nil
+}
+
+func (s *geographyServiceStub) GetLanguage(context.Context, string) (models.Language, error) {
+	return models.Language{}, nil
+}
+
+func (s *geographyServiceStub) ListCountryLanguages(ctx context.Context, _ services.CountryLanguageListInput) ([]models.CountryLanguage, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	data, err := os.ReadFile(filepath.Clean("../../datasets/geography/country_languages.json"))
+	if err != nil {
+		return nil, err
+	}
+	var relations []models.CountryLanguage
+	if err := json.Unmarshal(data, &relations); err != nil {
+		return nil, err
+	}
+	return relations, nil
+}
+
 func (s *geographyServiceStub) ListTimeZones(_ context.Context, input services.TimeZoneListInput) ([]models.TimeZone, error) {
 	s.timeZoneListCalls++
 	s.lastTimeZoneInput = input
@@ -132,6 +166,18 @@ func (s *geographyRepoStub) GetLocalGovernmentUnit(context.Context, string) (mod
 	return models.LocalGovernmentUnit{}, nil
 }
 
+func (s *geographyRepoStub) ListLanguages(context.Context, interfaces.LanguageFilter) ([]models.Language, error) {
+	return nil, nil
+}
+
+func (s *geographyRepoStub) GetLanguage(context.Context, string) (models.Language, error) {
+	return models.Language{}, nil
+}
+
+func (s *geographyRepoStub) ListCountryLanguages(context.Context, interfaces.CountryLanguageFilter) ([]models.CountryLanguage, error) {
+	return nil, nil
+}
+
 func (s *geographyRepoStub) ListTimeZones(context.Context, interfaces.TimeZoneFilter) ([]models.TimeZone, error) {
 	return nil, nil
 }
@@ -196,7 +242,7 @@ func TestBuildGeographyHandlerPassesConfiguredDatasetArgs(t *testing.T) {
 			gotMaxBytes = maxBytes
 			return &geographyJSONRepoStub{root: root, maxBytes: maxBytes}, nil
 		},
-		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath string) (interfaces.GeographyRepository, error) {
+		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath, languagesPath, countryLanguagesPath string) (interfaces.GeographyRepository, error) {
 			gotStatesPath = statesPath
 			gotZonesPath = zonesPath
 			gotLgasPath = localGovernmentUnitsPath
@@ -294,8 +340,8 @@ func TestBuildGeographyHandlerValidFixturePassesStartupVerification(t *testing.T
 		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
 			return fileRepo.NewJSONRepository(root, maxBytes)
 		},
-		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath string) (interfaces.GeographyRepository, error) {
-			return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath)
+		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath, languagesPath, countryLanguagesPath string) (interfaces.GeographyRepository, error) {
+			return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath, "geography/languages.json", "geography/country_languages.json")
 		},
 		func(repository interfaces.GeographyRepository) (geographyService, error) {
 			return &geographyServiceStub{
@@ -363,8 +409,8 @@ func TestBuildGeographyHandlerVerifiesCountriesAndAreasSnapshot(t *testing.T) {
 		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
 			return fileRepo.NewJSONRepository(root, maxBytes)
 		},
-		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath string) (interfaces.GeographyRepository, error) {
-			return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath)
+		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath, languagesPath, countryLanguagesPath string) (interfaces.GeographyRepository, error) {
+			return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath, "geography/languages.json", "geography/country_languages.json")
 		},
 		func(repository interfaces.GeographyRepository) (geographyService, error) {
 			stub.states = validGeographyStatesFixture(t)
@@ -459,8 +505,8 @@ func TestBuildGeographyHandlerFailsSafelyForInvalidDatasets(t *testing.T) {
 				func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
 					return fileRepo.NewJSONRepository(root, maxBytes)
 				},
-				func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath string) (interfaces.GeographyRepository, error) {
-					return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath)
+				func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath, languagesPath, countryLanguagesPath string) (interfaces.GeographyRepository, error) {
+					return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath, "geography/languages.json", "geography/country_languages.json")
 				},
 				func(repository interfaces.GeographyRepository) (geographyService, error) {
 					return services.NewGeographyService(repository)
@@ -524,8 +570,8 @@ func TestBuildGeographyHandlerRejectsWrongRecordCount(t *testing.T) {
 		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
 			return fileRepo.NewJSONRepository(root, maxBytes)
 		},
-		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath string) (interfaces.GeographyRepository, error) {
-			return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath)
+		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath, languagesPath, countryLanguagesPath string) (interfaces.GeographyRepository, error) {
+			return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath, "geography/languages.json", "geography/country_languages.json")
 		},
 		func(repository interfaces.GeographyRepository) (geographyService, error) {
 			return services.NewGeographyService(repository)
@@ -590,8 +636,8 @@ func TestBuildGeographyHandlerRejectsWrongFCTComposition(t *testing.T) {
 		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
 			return fileRepo.NewJSONRepository(root, maxBytes)
 		},
-		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath string) (interfaces.GeographyRepository, error) {
-			return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath)
+		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath, languagesPath, countryLanguagesPath string) (interfaces.GeographyRepository, error) {
+			return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath, "geography/languages.json", "geography/country_languages.json")
 		},
 		func(repository interfaces.GeographyRepository) (geographyService, error) {
 			return services.NewGeographyService(repository)
@@ -639,7 +685,7 @@ func TestBuildGeographyHandlerPropagatesContextCancellation(t *testing.T) {
 		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
 			return &geographyJSONRepoStub{root: root, maxBytes: maxBytes}, nil
 		},
-		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath string) (interfaces.GeographyRepository, error) {
+		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath, languagesPath, countryLanguagesPath string) (interfaces.GeographyRepository, error) {
 			return &geographyRepoStub{}, nil
 		},
 		func(repository interfaces.GeographyRepository) (geographyService, error) {
@@ -756,8 +802,8 @@ func TestBuildGeographyHandlerRejectsInvalidCountryOrAreaFixtures(t *testing.T) 
 				func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
 					return fileRepo.NewJSONRepository(root, maxBytes)
 				},
-				func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath string) (interfaces.GeographyRepository, error) {
-					return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath)
+				func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath, languagesPath, countryLanguagesPath string) (interfaces.GeographyRepository, error) {
+					return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath, "geography/languages.json", "geography/country_languages.json")
 				},
 				func(repository interfaces.GeographyRepository) (geographyService, error) {
 					return services.NewGeographyService(repository)
@@ -816,8 +862,8 @@ func TestBuildGeographyHandlerRejectsInvalidTimeZoneFixtures(t *testing.T) {
 		func(root string, maxBytes int64) (interfaces.JSONFileRepository, error) {
 			return fileRepo.NewJSONRepository(root, maxBytes)
 		},
-		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath string) (interfaces.GeographyRepository, error) {
-			return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath)
+		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath, languagesPath, countryLanguagesPath string) (interfaces.GeographyRepository, error) {
+			return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath, "geography/languages.json", "geography/country_languages.json")
 		},
 		func(repository interfaces.GeographyRepository) (geographyService, error) {
 			return services.NewGeographyService(repository)

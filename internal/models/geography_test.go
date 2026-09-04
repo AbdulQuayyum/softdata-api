@@ -12,21 +12,29 @@ import (
 )
 
 type datasetMetadata struct {
-	DatasetKey   string          `json:"dataset_key"`
-	Title        string          `json:"title"`
-	Description  string          `json:"description"`
-	CountryCode  string          `json:"country_code"`
-	DatasetGroup string          `json:"dataset_group"`
-	Format       string          `json:"format"`
-	RelativePath string          `json:"relative_path"`
-	SchemaPath   string          `json:"schema_path"`
-	RecordCount  int             `json:"record_count"`
-	Version      string          `json:"version"`
-	LicenseID    string          `json:"license_id"`
-	LicenseURL   string          `json:"license_url"`
-	Methodology  string          `json:"methodology"`
-	Sources      []datasetSource `json:"sources"`
-	VerifiedAt   string          `json:"verified_at"`
+	DatasetKey                    string            `json:"dataset_key"`
+	Title                         string            `json:"title"`
+	Description                   string            `json:"description"`
+	CountryCode                   string            `json:"country_code"`
+	DatasetGroup                  string            `json:"dataset_group"`
+	Format                        string            `json:"format"`
+	RelativePath                  string            `json:"relative_path"`
+	SchemaPath                    string            `json:"schema_path"`
+	RecordCount                   int               `json:"record_count"`
+	CountryCount                  int               `json:"country_count"`
+	ReferencedLanguageCount       int               `json:"referenced_language_count"`
+	LanguagesWithoutRelationships int               `json:"languages_without_relationships"`
+	StatusCounts                  map[string]int    `json:"status_counts"`
+	UpdatePolicy                  string            `json:"update_policy"`
+	KnownLimitations              string            `json:"known_limitations"`
+	Version                       string            `json:"version"`
+	LicenseID                     string            `json:"license_id"`
+	LicenseURL                    string            `json:"license_url"`
+	Methodology                   string            `json:"methodology"`
+	Sources                       []datasetSource   `json:"sources"`
+	VerifiedAt                    string            `json:"verified_at"`
+	SourceHashes                  map[string]string `json:"source_file_hashes"`
+	Normalization                 json.RawMessage   `json:"normalization"`
 }
 
 type datasetSource struct {
@@ -538,4 +546,291 @@ func findStateByID(states []State, id string) *State {
 		}
 	}
 	return nil
+}
+
+func TestWorldLanguagesDatasetAndMetadata(t *testing.T) {
+	t.Parallel()
+
+	languages := loadLanguageDataset(t)
+	metadata := loadLanguageMetadata(t)
+	schema := loadLanguageSchema(t)
+
+	if len(languages) != 633 {
+		t.Fatalf("unexpected language record count: got %d want 633", len(languages))
+	}
+	if metadata.DatasetKey != "world-languages" {
+		t.Fatalf("unexpected dataset key: %q", metadata.DatasetKey)
+	}
+	if metadata.RecordCount != 633 || metadata.Version != "1.0.0" {
+		t.Fatalf("unexpected metadata counts/version: %#v", metadata)
+	}
+	if metadata.RelativePath != "geography/languages.json" || metadata.SchemaPath != "schemas/geography/languages.schema.json" {
+		t.Fatalf("unexpected metadata paths: %#v", metadata)
+	}
+	if metadata.VerifiedAt != "2026-09-04" {
+		t.Fatalf("unexpected verified_at: %q", metadata.VerifiedAt)
+	}
+	if !strings.Contains(metadata.Methodology, "fat -> ak") || !strings.Contains(metadata.Methodology, "sh -> sr-Latn -> sr") || !strings.Contains(metadata.Methodology, "tl -> fil") || !strings.Contains(metadata.Methodology, "tw -> ak") {
+		t.Fatalf("language methodology does not document the approved alias remaps: %q", metadata.Methodology)
+	}
+	if schema.Type != "array" || schema.MinItems != 633 || schema.MaxItems != 633 || !schema.UniqueItems {
+		t.Fatalf("unexpected schema constraints: %#v", schema)
+	}
+	if !strings.Contains(schema.Description, "world-languages") {
+		t.Fatalf("unexpected schema description: %q", schema.Description)
+	}
+
+	seenIDs := make(map[string]struct{}, len(languages))
+	seenNames := make(map[string]struct{}, len(languages))
+	for i, language := range languages {
+		if language.ID == "" || language.Name == "" {
+			t.Fatalf("language record %d has empty required field: %#v", i, language)
+		}
+		if !regexp.MustCompile(`^[a-z]{2,3}$`).MatchString(language.ID) {
+			t.Fatalf("language record %d has invalid id %q", i, language.ID)
+		}
+		if strings.Contains(language.ID, "-") || strings.Contains(language.ID, "_") {
+			t.Fatalf("language record %d contains a non-base identifier: %#v", i, language)
+		}
+		if _, ok := seenIDs[language.ID]; ok {
+			t.Fatalf("duplicate language id found: %q", language.ID)
+		}
+		if _, ok := seenNames[language.Name]; ok {
+			t.Fatalf("duplicate language name found: %q", language.Name)
+		}
+		if i > 0 && strings.Compare(languages[i-1].ID, language.ID) > 0 {
+			t.Fatalf("language records are not sorted by id: %q before %q", languages[i-1].ID, language.ID)
+		}
+		seenIDs[language.ID] = struct{}{}
+		seenNames[language.Name] = struct{}{}
+	}
+
+	for _, id := range []string{"ak", "fil", "sr"} {
+		if _, ok := seenIDs[id]; !ok {
+			t.Fatalf("expected published language id %q to be present", id)
+		}
+	}
+	for _, id := range []string{"fat", "sh", "tl", "tw", "sr-Latn"} {
+		if _, ok := seenIDs[id]; ok {
+			t.Fatalf("prohibited alias-only identifier %q was published", id)
+		}
+	}
+}
+
+func TestWorldCountryLanguagesDatasetAndMetadata(t *testing.T) {
+	t.Parallel()
+
+	relationships := loadCountryLanguageDataset(t)
+	countries := loadCountryFixture(t)
+	languages := loadLanguageDataset(t)
+	metadata := loadCountryLanguageMetadata(t)
+	schema := loadCountryLanguageSchema(t)
+
+	if len(relationships) != 1289 {
+		t.Fatalf("unexpected relationship count: got %d want 1289", len(relationships))
+	}
+	if metadata.DatasetKey != "world-country-languages" {
+		t.Fatalf("unexpected dataset key: %q", metadata.DatasetKey)
+	}
+	if metadata.RecordCount != 1289 || metadata.Version != "1.0.0" {
+		t.Fatalf("unexpected metadata counts/version: %#v", metadata)
+	}
+	if metadata.RelativePath != "geography/country_languages.json" || metadata.SchemaPath != "schemas/geography/country_languages.schema.json" {
+		t.Fatalf("unexpected metadata paths: %#v", metadata)
+	}
+	if metadata.VerifiedAt != "2026-09-04" {
+		t.Fatalf("unexpected verified_at: %q", metadata.VerifiedAt)
+	}
+	if !strings.Contains(metadata.Methodology, "base-row-wins") || !strings.Contains(metadata.Methodology, "fat -> ak") || !strings.Contains(metadata.Methodology, "sh -> sr-Latn -> sr") || !strings.Contains(metadata.Methodology, "tl -> fil") || !strings.Contains(metadata.Methodology, "tw -> ak") {
+		t.Fatalf("country-language methodology does not document the normalization rules: %q", metadata.Methodology)
+	}
+	for _, want := range []string{"gb / en -> official", "hk / zh -> used", "in / hi -> official", "me / sr -> used", "mo / zh -> used", "sn / ff -> official_regional"} {
+		if !strings.Contains(metadata.Methodology, want) {
+			t.Fatalf("country-language methodology missing conflict outcome %q: %q", want, metadata.Methodology)
+		}
+	}
+	if schema.Type != "array" || schema.MinItems != 1289 || schema.MaxItems != 1289 || !schema.UniqueItems {
+		t.Fatalf("unexpected schema constraints: %#v", schema)
+	}
+	if !strings.Contains(schema.Description, "world-country-languages") {
+		t.Fatalf("unexpected schema description: %q", schema.Description)
+	}
+
+	countryIDs := make(map[string]struct{}, len(countries))
+	for _, country := range countries {
+		countryIDs[country.ID] = struct{}{}
+	}
+	languageIDs := make(map[string]struct{}, len(languages))
+	for _, language := range languages {
+		languageIDs[language.ID] = struct{}{}
+	}
+
+	seenPairs := make(map[string]struct{}, len(relationships))
+	countryCounts := make(map[string]int, len(countries))
+	statusCounts := map[string]int{
+		"used":              0,
+		"official":          0,
+		"official_regional": 0,
+		"de_facto_official": 0,
+	}
+
+	var prevCountry string
+	var prevLanguage string
+	for i, relation := range relationships {
+		if relation.CountryAreaID == "" || relation.LanguageID == "" || relation.Status == "" {
+			t.Fatalf("relationship %d has empty required field: %#v", i, relation)
+		}
+		if _, ok := countryIDs[relation.CountryAreaID]; !ok {
+			t.Fatalf("relationship %d references unknown country id %q", i, relation.CountryAreaID)
+		}
+		if _, ok := languageIDs[relation.LanguageID]; !ok {
+			t.Fatalf("relationship %d references unknown language id %q", i, relation.LanguageID)
+		}
+		if _, ok := statusCounts[relation.Status]; !ok {
+			t.Fatalf("relationship %d has invalid status %q", i, relation.Status)
+		}
+		pairKey := relation.CountryAreaID + "\x00" + relation.LanguageID
+		if _, ok := seenPairs[pairKey]; ok {
+			t.Fatalf("duplicate relationship pair found: %#v", relation)
+		}
+		if i > 0 && (strings.Compare(prevCountry, relation.CountryAreaID) > 0 || (prevCountry == relation.CountryAreaID && strings.Compare(prevLanguage, relation.LanguageID) > 0)) {
+			t.Fatalf("relationships are not sorted by country_area_id then language_id: %#v before %#v", relationships[i-1], relation)
+		}
+		seenPairs[pairKey] = struct{}{}
+		countryCounts[relation.CountryAreaID]++
+		statusCounts[relation.Status]++
+		prevCountry = relation.CountryAreaID
+		prevLanguage = relation.LanguageID
+	}
+
+	if len(countryCounts) != len(countryIDs) {
+		t.Fatalf("unexpected country coverage: got %d want %d", len(countryCounts), len(countryIDs))
+	}
+	for countryID := range countryIDs {
+		if countryCounts[countryID] == 0 {
+			t.Fatalf("country id %q was not referenced by any language relationship", countryID)
+		}
+	}
+	wantStatusCounts := map[string]int{
+		"used":              833,
+		"official":          319,
+		"official_regional": 117,
+		"de_facto_official": 20,
+	}
+	if !reflect.DeepEqual(statusCounts, wantStatusCounts) {
+		t.Fatalf("unexpected status counts: got %#v want %#v", statusCounts, wantStatusCounts)
+	}
+
+	for _, want := range []CountryLanguage{
+		{CountryAreaID: "gb", LanguageID: "en", Status: "official"},
+		{CountryAreaID: "hk", LanguageID: "zh", Status: "used"},
+		{CountryAreaID: "in", LanguageID: "hi", Status: "official"},
+		{CountryAreaID: "me", LanguageID: "sr", Status: "used"},
+		{CountryAreaID: "mo", LanguageID: "zh", Status: "used"},
+		{CountryAreaID: "sn", LanguageID: "ff", Status: "official_regional"},
+	} {
+		found := false
+		for _, relation := range relationships {
+			if relation == want {
+				found = true
+				break
+			}
+		}
+		if !found {
+			t.Fatalf("expected relationship not found: %#v", want)
+		}
+	}
+}
+
+func loadLanguageDataset(t *testing.T) []Language {
+	t.Helper()
+
+	var languages []Language
+	dec := json.NewDecoder(bytes.NewReader(readTextBytes(t, datasetPath("geography/languages.json"))))
+	dec.DisallowUnknownFields()
+	if err := dec.Decode(&languages); err != nil {
+		t.Fatalf("decode languages dataset: %v", err)
+	}
+	if err := dec.Decode(new(any)); err == nil {
+		t.Fatal("languages dataset contains trailing JSON")
+	}
+	return languages
+}
+
+func loadCountryLanguageDataset(t *testing.T) []CountryLanguage {
+	t.Helper()
+
+	var relations []CountryLanguage
+	dec := json.NewDecoder(bytes.NewReader(readTextBytes(t, datasetPath("geography/country_languages.json"))))
+	dec.DisallowUnknownFields()
+	if err := dec.Decode(&relations); err != nil {
+		t.Fatalf("decode country languages dataset: %v", err)
+	}
+	if err := dec.Decode(new(any)); err == nil {
+		t.Fatal("country languages dataset contains trailing JSON")
+	}
+	return relations
+}
+
+func loadCountryFixture(t *testing.T) []CountryOrArea {
+	t.Helper()
+
+	var countries []CountryOrArea
+	dec := json.NewDecoder(bytes.NewReader(readTextBytes(t, datasetPath("geography/countries_and_areas.json"))))
+	dec.DisallowUnknownFields()
+	if err := dec.Decode(&countries); err != nil {
+		t.Fatalf("decode countries dataset: %v", err)
+	}
+	if err := dec.Decode(new(any)); err == nil {
+		t.Fatal("countries dataset contains trailing JSON")
+	}
+	return countries
+}
+
+func loadLanguageMetadata(t *testing.T) datasetMetadata {
+	t.Helper()
+
+	var metadata datasetMetadata
+	dec := json.NewDecoder(bytes.NewReader(readTextBytes(t, datasetPath("metadata/geography/languages.json"))))
+	dec.DisallowUnknownFields()
+	if err := dec.Decode(&metadata); err != nil {
+		t.Fatalf("decode languages metadata: %v", err)
+	}
+	return metadata
+}
+
+func loadCountryLanguageMetadata(t *testing.T) datasetMetadata {
+	t.Helper()
+
+	var metadata datasetMetadata
+	dec := json.NewDecoder(bytes.NewReader(readTextBytes(t, datasetPath("metadata/geography/country_languages.json"))))
+	dec.DisallowUnknownFields()
+	if err := dec.Decode(&metadata); err != nil {
+		t.Fatalf("decode country languages metadata: %v", err)
+	}
+	return metadata
+}
+
+func loadLanguageSchema(t *testing.T) stateSchema {
+	t.Helper()
+
+	var schema stateSchema
+	dec := json.NewDecoder(bytes.NewReader(readTextBytes(t, datasetPath("schemas/geography/languages.schema.json"))))
+	dec.DisallowUnknownFields()
+	if err := dec.Decode(&schema); err != nil {
+		t.Fatalf("decode languages schema: %v", err)
+	}
+	return schema
+}
+
+func loadCountryLanguageSchema(t *testing.T) stateSchema {
+	t.Helper()
+
+	var schema stateSchema
+	dec := json.NewDecoder(bytes.NewReader(readTextBytes(t, datasetPath("schemas/geography/country_languages.schema.json"))))
+	dec.DisallowUnknownFields()
+	if err := dec.Decode(&schema); err != nil {
+		t.Fatalf("decode country languages schema: %v", err)
+	}
+	return schema
 }

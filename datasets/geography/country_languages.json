@@ -1,0 +1,6447 @@
+[
+  {
+    "country_area_id": "ad",
+    "language_id": "ca",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ad",
+    "language_id": "es",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ad",
+    "language_id": "fr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ae",
+    "language_id": "ar",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ae",
+    "language_id": "bal",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ae",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ae",
+    "language_id": "fa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ae",
+    "language_id": "ml",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ae",
+    "language_id": "ps",
+    "status": "used"
+  },
+  {
+    "country_area_id": "af",
+    "language_id": "bgn",
+    "status": "used"
+  },
+  {
+    "country_area_id": "af",
+    "language_id": "fa",
+    "status": "official"
+  },
+  {
+    "country_area_id": "af",
+    "language_id": "kaa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "af",
+    "language_id": "kk",
+    "status": "used"
+  },
+  {
+    "country_area_id": "af",
+    "language_id": "ps",
+    "status": "official"
+  },
+  {
+    "country_area_id": "af",
+    "language_id": "tk",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "af",
+    "language_id": "ug",
+    "status": "used"
+  },
+  {
+    "country_area_id": "af",
+    "language_id": "uz",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ag",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ag",
+    "language_id": "pt",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ai",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "al",
+    "language_id": "el",
+    "status": "used"
+  },
+  {
+    "country_area_id": "al",
+    "language_id": "mk",
+    "status": "used"
+  },
+  {
+    "country_area_id": "al",
+    "language_id": "sq",
+    "status": "official"
+  },
+  {
+    "country_area_id": "am",
+    "language_id": "az",
+    "status": "used"
+  },
+  {
+    "country_area_id": "am",
+    "language_id": "hy",
+    "status": "official"
+  },
+  {
+    "country_area_id": "am",
+    "language_id": "ku",
+    "status": "used"
+  },
+  {
+    "country_area_id": "am",
+    "language_id": "ru",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ao",
+    "language_id": "kmb",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ao",
+    "language_id": "ln",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ao",
+    "language_id": "pt",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ao",
+    "language_id": "umb",
+    "status": "used"
+  },
+  {
+    "country_area_id": "aq",
+    "language_id": "und",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ar",
+    "language_id": "cy",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ar",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ar",
+    "language_id": "es",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ar",
+    "language_id": "gn",
+    "status": "used"
+  },
+  {
+    "country_area_id": "as",
+    "language_id": "en",
+    "status": "de_facto_official"
+  },
+  {
+    "country_area_id": "as",
+    "language_id": "sm",
+    "status": "official"
+  },
+  {
+    "country_area_id": "at",
+    "language_id": "bar",
+    "status": "used"
+  },
+  {
+    "country_area_id": "at",
+    "language_id": "de",
+    "status": "official"
+  },
+  {
+    "country_area_id": "at",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "at",
+    "language_id": "fr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "at",
+    "language_id": "hr",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "at",
+    "language_id": "hu",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "at",
+    "language_id": "it",
+    "status": "used"
+  },
+  {
+    "country_area_id": "at",
+    "language_id": "sl",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "au",
+    "language_id": "en",
+    "status": "de_facto_official"
+  },
+  {
+    "country_area_id": "au",
+    "language_id": "hnj",
+    "status": "used"
+  },
+  {
+    "country_area_id": "au",
+    "language_id": "it",
+    "status": "used"
+  },
+  {
+    "country_area_id": "au",
+    "language_id": "wbp",
+    "status": "used"
+  },
+  {
+    "country_area_id": "au",
+    "language_id": "zh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "aw",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "aw",
+    "language_id": "nl",
+    "status": "official"
+  },
+  {
+    "country_area_id": "aw",
+    "language_id": "pap",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ax",
+    "language_id": "sv",
+    "status": "official"
+  },
+  {
+    "country_area_id": "az",
+    "language_id": "az",
+    "status": "official"
+  },
+  {
+    "country_area_id": "az",
+    "language_id": "ku",
+    "status": "used"
+  },
+  {
+    "country_area_id": "az",
+    "language_id": "tkr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "az",
+    "language_id": "tly",
+    "status": "used"
+  },
+  {
+    "country_area_id": "az",
+    "language_id": "ttt",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ba",
+    "language_id": "bs",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ba",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ba",
+    "language_id": "hr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ba",
+    "language_id": "sr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "bb",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "bd",
+    "language_id": "bn",
+    "status": "official"
+  },
+  {
+    "country_area_id": "bd",
+    "language_id": "ccp",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bd",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bd",
+    "language_id": "mni",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bd",
+    "language_id": "my",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bd",
+    "language_id": "rhg",
+    "status": "used"
+  },
+  {
+    "country_area_id": "be",
+    "language_id": "de",
+    "status": "official"
+  },
+  {
+    "country_area_id": "be",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "be",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "be",
+    "language_id": "nl",
+    "status": "official"
+  },
+  {
+    "country_area_id": "be",
+    "language_id": "vls",
+    "status": "used"
+  },
+  {
+    "country_area_id": "be",
+    "language_id": "wa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bf",
+    "language_id": "dyu",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bf",
+    "language_id": "ff",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bf",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "bf",
+    "language_id": "mos",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bg",
+    "language_id": "bg",
+    "status": "official"
+  },
+  {
+    "country_area_id": "bg",
+    "language_id": "de",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bg",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bg",
+    "language_id": "ru",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bg",
+    "language_id": "tr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bh",
+    "language_id": "ar",
+    "status": "official"
+  },
+  {
+    "country_area_id": "bh",
+    "language_id": "ml",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bi",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "bi",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "bi",
+    "language_id": "rn",
+    "status": "official"
+  },
+  {
+    "country_area_id": "bi",
+    "language_id": "sw",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bj",
+    "language_id": "blo",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bj",
+    "language_id": "fon",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bj",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "bj",
+    "language_id": "yo",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bl",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "bm",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "bn",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bn",
+    "language_id": "ms",
+    "status": "official"
+  },
+  {
+    "country_area_id": "bn",
+    "language_id": "zh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bo",
+    "language_id": "aro",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bo",
+    "language_id": "ay",
+    "status": "official"
+  },
+  {
+    "country_area_id": "bo",
+    "language_id": "es",
+    "status": "official"
+  },
+  {
+    "country_area_id": "bo",
+    "language_id": "gn",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bo",
+    "language_id": "qu",
+    "status": "official"
+  },
+  {
+    "country_area_id": "bq",
+    "language_id": "nl",
+    "status": "official"
+  },
+  {
+    "country_area_id": "bq",
+    "language_id": "pap",
+    "status": "used"
+  },
+  {
+    "country_area_id": "br",
+    "language_id": "de",
+    "status": "used"
+  },
+  {
+    "country_area_id": "br",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "br",
+    "language_id": "es",
+    "status": "used"
+  },
+  {
+    "country_area_id": "br",
+    "language_id": "it",
+    "status": "used"
+  },
+  {
+    "country_area_id": "br",
+    "language_id": "ja",
+    "status": "used"
+  },
+  {
+    "country_area_id": "br",
+    "language_id": "kgp",
+    "status": "used"
+  },
+  {
+    "country_area_id": "br",
+    "language_id": "ko",
+    "status": "used"
+  },
+  {
+    "country_area_id": "br",
+    "language_id": "pt",
+    "status": "official"
+  },
+  {
+    "country_area_id": "br",
+    "language_id": "vec",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "br",
+    "language_id": "yrl",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bs",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "bt",
+    "language_id": "dz",
+    "status": "official"
+  },
+  {
+    "country_area_id": "bt",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bt",
+    "language_id": "ne",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bv",
+    "language_id": "no",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bw",
+    "language_id": "af",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bw",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "bw",
+    "language_id": "tn",
+    "status": "official"
+  },
+  {
+    "country_area_id": "by",
+    "language_id": "be",
+    "status": "official"
+  },
+  {
+    "country_area_id": "by",
+    "language_id": "ru",
+    "status": "official"
+  },
+  {
+    "country_area_id": "bz",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "bz",
+    "language_id": "es",
+    "status": "used"
+  },
+  {
+    "country_area_id": "bz",
+    "language_id": "kek",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "ar",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "atj",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "bla",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "bn",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "chp",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "clc",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "cr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "crg",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "crk",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "crl",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "csw",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "dak",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "de",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "den",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "dgr",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "el",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "es",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "fa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "fil",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "gu",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "gwi",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "hi",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "hr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "hu",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "hur",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "it",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "iu",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "ja",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "ko",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "kwk",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "lil",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "mic",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "moe",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "moh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "nl",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "oj",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "ojs",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "ojw",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "oka",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "pa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "pdt",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "pl",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "pqm",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "pt",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "ro",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "ru",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "so",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "sr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "ta",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "tr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "uk",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "ur",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "vi",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "war",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "yue",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ca",
+    "language_id": "zh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cc",
+    "language_id": "en",
+    "status": "de_facto_official"
+  },
+  {
+    "country_area_id": "cc",
+    "language_id": "ms",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cd",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "cd",
+    "language_id": "kg",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "cd",
+    "language_id": "ln",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "cd",
+    "language_id": "lol",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cd",
+    "language_id": "lu",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cd",
+    "language_id": "lua",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "cd",
+    "language_id": "rw",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cd",
+    "language_id": "sw",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "cf",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "cf",
+    "language_id": "ln",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cf",
+    "language_id": "sg",
+    "status": "official"
+  },
+  {
+    "country_area_id": "cg",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "cg",
+    "language_id": "ln",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ch",
+    "language_id": "de",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ch",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ch",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ch",
+    "language_id": "gsw",
+    "status": "de_facto_official"
+  },
+  {
+    "country_area_id": "ch",
+    "language_id": "it",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ch",
+    "language_id": "lmo",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ch",
+    "language_id": "pt",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ch",
+    "language_id": "rm",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ch",
+    "language_id": "wae",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ci",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ci",
+    "language_id": "kfo",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ck",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "cl",
+    "language_id": "arn",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cl",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cl",
+    "language_id": "es",
+    "status": "official"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "agq",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "ar",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "bas",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "bax",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "bbj",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "bfd",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "bkm",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "bss",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "bum",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "byv",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "dua",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "ewo",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "ff",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "ha",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "jgo",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "ken",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "kkj",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "ksf",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "maf",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "mgo",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "mua",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "nmg",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "nnh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "yav",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cm",
+    "language_id": "ybb",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cn",
+    "language_id": "bo",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "cn",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cn",
+    "language_id": "gan",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cn",
+    "language_id": "hak",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cn",
+    "language_id": "hnj",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cn",
+    "language_id": "hsn",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cn",
+    "language_id": "ii",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cn",
+    "language_id": "kk",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cn",
+    "language_id": "ko",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "cn",
+    "language_id": "ky",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cn",
+    "language_id": "lzh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cn",
+    "language_id": "mn",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "cn",
+    "language_id": "nan",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cn",
+    "language_id": "ru",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cn",
+    "language_id": "ug",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "cn",
+    "language_id": "uz",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cn",
+    "language_id": "vi",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cn",
+    "language_id": "wuu",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cn",
+    "language_id": "yue",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cn",
+    "language_id": "za",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "cn",
+    "language_id": "zh",
+    "status": "official"
+  },
+  {
+    "country_area_id": "co",
+    "language_id": "es",
+    "status": "official"
+  },
+  {
+    "country_area_id": "co",
+    "language_id": "guc",
+    "status": "used"
+  },
+  {
+    "country_area_id": "co",
+    "language_id": "yrl",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cr",
+    "language_id": "es",
+    "status": "official"
+  },
+  {
+    "country_area_id": "cu",
+    "language_id": "es",
+    "status": "official"
+  },
+  {
+    "country_area_id": "cv",
+    "language_id": "kea",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cv",
+    "language_id": "pt",
+    "status": "official"
+  },
+  {
+    "country_area_id": "cw",
+    "language_id": "es",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cw",
+    "language_id": "nl",
+    "status": "official"
+  },
+  {
+    "country_area_id": "cw",
+    "language_id": "pap",
+    "status": "de_facto_official"
+  },
+  {
+    "country_area_id": "cx",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "cy",
+    "language_id": "ar",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cy",
+    "language_id": "el",
+    "status": "official"
+  },
+  {
+    "country_area_id": "cy",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cy",
+    "language_id": "fr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cy",
+    "language_id": "hy",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cy",
+    "language_id": "tr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "cz",
+    "language_id": "cs",
+    "status": "official"
+  },
+  {
+    "country_area_id": "cz",
+    "language_id": "de",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cz",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cz",
+    "language_id": "pl",
+    "status": "used"
+  },
+  {
+    "country_area_id": "cz",
+    "language_id": "sk",
+    "status": "used"
+  },
+  {
+    "country_area_id": "de",
+    "language_id": "bar",
+    "status": "used"
+  },
+  {
+    "country_area_id": "de",
+    "language_id": "da",
+    "status": "used"
+  },
+  {
+    "country_area_id": "de",
+    "language_id": "de",
+    "status": "official"
+  },
+  {
+    "country_area_id": "de",
+    "language_id": "dsb",
+    "status": "used"
+  },
+  {
+    "country_area_id": "de",
+    "language_id": "el",
+    "status": "used"
+  },
+  {
+    "country_area_id": "de",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "de",
+    "language_id": "es",
+    "status": "used"
+  },
+  {
+    "country_area_id": "de",
+    "language_id": "fr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "de",
+    "language_id": "frr",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "de",
+    "language_id": "frs",
+    "status": "used"
+  },
+  {
+    "country_area_id": "de",
+    "language_id": "gsw",
+    "status": "used"
+  },
+  {
+    "country_area_id": "de",
+    "language_id": "hr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "de",
+    "language_id": "hsb",
+    "status": "used"
+  },
+  {
+    "country_area_id": "de",
+    "language_id": "it",
+    "status": "used"
+  },
+  {
+    "country_area_id": "de",
+    "language_id": "ksh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "de",
+    "language_id": "ku",
+    "status": "used"
+  },
+  {
+    "country_area_id": "de",
+    "language_id": "nds",
+    "status": "used"
+  },
+  {
+    "country_area_id": "de",
+    "language_id": "nl",
+    "status": "used"
+  },
+  {
+    "country_area_id": "de",
+    "language_id": "pfl",
+    "status": "used"
+  },
+  {
+    "country_area_id": "de",
+    "language_id": "pl",
+    "status": "used"
+  },
+  {
+    "country_area_id": "de",
+    "language_id": "ru",
+    "status": "used"
+  },
+  {
+    "country_area_id": "de",
+    "language_id": "stq",
+    "status": "used"
+  },
+  {
+    "country_area_id": "de",
+    "language_id": "tr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "de",
+    "language_id": "vmf",
+    "status": "used"
+  },
+  {
+    "country_area_id": "dj",
+    "language_id": "aa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "dj",
+    "language_id": "ar",
+    "status": "official"
+  },
+  {
+    "country_area_id": "dj",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "dj",
+    "language_id": "so",
+    "status": "used"
+  },
+  {
+    "country_area_id": "dk",
+    "language_id": "da",
+    "status": "official"
+  },
+  {
+    "country_area_id": "dk",
+    "language_id": "de",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "dk",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "dk",
+    "language_id": "fo",
+    "status": "used"
+  },
+  {
+    "country_area_id": "dk",
+    "language_id": "jut",
+    "status": "used"
+  },
+  {
+    "country_area_id": "dk",
+    "language_id": "kl",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "dk",
+    "language_id": "sv",
+    "status": "used"
+  },
+  {
+    "country_area_id": "dm",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "do",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "do",
+    "language_id": "es",
+    "status": "official"
+  },
+  {
+    "country_area_id": "dz",
+    "language_id": "ar",
+    "status": "official"
+  },
+  {
+    "country_area_id": "dz",
+    "language_id": "arq",
+    "status": "used"
+  },
+  {
+    "country_area_id": "dz",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "dz",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "dz",
+    "language_id": "kab",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ec",
+    "language_id": "es",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ec",
+    "language_id": "qu",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ec",
+    "language_id": "qug",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ee",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ee",
+    "language_id": "et",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ee",
+    "language_id": "fi",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ee",
+    "language_id": "ie",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ee",
+    "language_id": "ru",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ee",
+    "language_id": "vro",
+    "status": "used"
+  },
+  {
+    "country_area_id": "eg",
+    "language_id": "ar",
+    "status": "official"
+  },
+  {
+    "country_area_id": "eg",
+    "language_id": "arz",
+    "status": "used"
+  },
+  {
+    "country_area_id": "eg",
+    "language_id": "cop",
+    "status": "used"
+  },
+  {
+    "country_area_id": "eg",
+    "language_id": "el",
+    "status": "used"
+  },
+  {
+    "country_area_id": "eg",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "eh",
+    "language_id": "ar",
+    "status": "official"
+  },
+  {
+    "country_area_id": "er",
+    "language_id": "aa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "er",
+    "language_id": "ar",
+    "status": "official"
+  },
+  {
+    "country_area_id": "er",
+    "language_id": "byn",
+    "status": "used"
+  },
+  {
+    "country_area_id": "er",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "er",
+    "language_id": "ssy",
+    "status": "used"
+  },
+  {
+    "country_area_id": "er",
+    "language_id": "ti",
+    "status": "de_facto_official"
+  },
+  {
+    "country_area_id": "er",
+    "language_id": "tig",
+    "status": "used"
+  },
+  {
+    "country_area_id": "es",
+    "language_id": "an",
+    "status": "used"
+  },
+  {
+    "country_area_id": "es",
+    "language_id": "ast",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "es",
+    "language_id": "ca",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "es",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "es",
+    "language_id": "es",
+    "status": "official"
+  },
+  {
+    "country_area_id": "es",
+    "language_id": "eu",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "es",
+    "language_id": "ext",
+    "status": "used"
+  },
+  {
+    "country_area_id": "es",
+    "language_id": "gl",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "es",
+    "language_id": "oc",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "et",
+    "language_id": "aa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "et",
+    "language_id": "am",
+    "status": "official"
+  },
+  {
+    "country_area_id": "et",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "et",
+    "language_id": "gez",
+    "status": "used"
+  },
+  {
+    "country_area_id": "et",
+    "language_id": "om",
+    "status": "used"
+  },
+  {
+    "country_area_id": "et",
+    "language_id": "sid",
+    "status": "used"
+  },
+  {
+    "country_area_id": "et",
+    "language_id": "so",
+    "status": "used"
+  },
+  {
+    "country_area_id": "et",
+    "language_id": "ti",
+    "status": "used"
+  },
+  {
+    "country_area_id": "et",
+    "language_id": "wal",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fi",
+    "language_id": "de",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fi",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fi",
+    "language_id": "et",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fi",
+    "language_id": "fi",
+    "status": "official"
+  },
+  {
+    "country_area_id": "fi",
+    "language_id": "ru",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fi",
+    "language_id": "se",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fi",
+    "language_id": "smn",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fi",
+    "language_id": "sms",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "fi",
+    "language_id": "sv",
+    "status": "official"
+  },
+  {
+    "country_area_id": "fj",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "fj",
+    "language_id": "fj",
+    "status": "official"
+  },
+  {
+    "country_area_id": "fj",
+    "language_id": "hi",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fj",
+    "language_id": "hif",
+    "status": "official"
+  },
+  {
+    "country_area_id": "fj",
+    "language_id": "rtm",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fk",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "fm",
+    "language_id": "chk",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fm",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "fm",
+    "language_id": "kos",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fm",
+    "language_id": "pon",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fm",
+    "language_id": "yap",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fo",
+    "language_id": "fo",
+    "status": "official"
+  },
+  {
+    "country_area_id": "fr",
+    "language_id": "br",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fr",
+    "language_id": "ca",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fr",
+    "language_id": "co",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fr",
+    "language_id": "de",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fr",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fr",
+    "language_id": "es",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fr",
+    "language_id": "eu",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fr",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "fr",
+    "language_id": "frp",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fr",
+    "language_id": "gsw",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fr",
+    "language_id": "hnj",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fr",
+    "language_id": "ia",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fr",
+    "language_id": "it",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fr",
+    "language_id": "nl",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fr",
+    "language_id": "oc",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fr",
+    "language_id": "pcd",
+    "status": "used"
+  },
+  {
+    "country_area_id": "fr",
+    "language_id": "pt",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ga",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "gb",
+    "language_id": "ar",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gb",
+    "language_id": "bn",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gb",
+    "language_id": "cy",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "gb",
+    "language_id": "de",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gb",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "gb",
+    "language_id": "es",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gb",
+    "language_id": "fr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gb",
+    "language_id": "ga",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "gb",
+    "language_id": "gd",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "gb",
+    "language_id": "gu",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gb",
+    "language_id": "it",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gb",
+    "language_id": "kw",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gb",
+    "language_id": "lt",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gb",
+    "language_id": "pa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gb",
+    "language_id": "pi",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gb",
+    "language_id": "pl",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gb",
+    "language_id": "pt",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gb",
+    "language_id": "ro",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gb",
+    "language_id": "sco",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gb",
+    "language_id": "so",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gb",
+    "language_id": "ta",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gb",
+    "language_id": "tr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gb",
+    "language_id": "ur",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gb",
+    "language_id": "zh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gd",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ge",
+    "language_id": "ab",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ge",
+    "language_id": "hy",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ge",
+    "language_id": "ka",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ge",
+    "language_id": "ku",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ge",
+    "language_id": "lzz",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ge",
+    "language_id": "os",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ge",
+    "language_id": "ru",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ge",
+    "language_id": "xmf",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gf",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "gf",
+    "language_id": "hnj",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gf",
+    "language_id": "zh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gg",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "gh",
+    "language_id": "ada",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gh",
+    "language_id": "ak",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "gh",
+    "language_id": "ee",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "gh",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "gh",
+    "language_id": "ff",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gh",
+    "language_id": "gaa",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "gh",
+    "language_id": "gur",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gh",
+    "language_id": "ha",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gh",
+    "language_id": "nzi",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gi",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "gi",
+    "language_id": "es",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gl",
+    "language_id": "da",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gl",
+    "language_id": "kl",
+    "status": "official"
+  },
+  {
+    "country_area_id": "gm",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "gm",
+    "language_id": "ff",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gm",
+    "language_id": "man",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gn",
+    "language_id": "ff",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gn",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "gn",
+    "language_id": "kpe",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gn",
+    "language_id": "man",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gn",
+    "language_id": "nqo",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gn",
+    "language_id": "sus",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gp",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "gq",
+    "language_id": "es",
+    "status": "official"
+  },
+  {
+    "country_area_id": "gq",
+    "language_id": "fan",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gq",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "gq",
+    "language_id": "pt",
+    "status": "official"
+  },
+  {
+    "country_area_id": "gr",
+    "language_id": "bg",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gr",
+    "language_id": "de",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gr",
+    "language_id": "el",
+    "status": "official"
+  },
+  {
+    "country_area_id": "gr",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gr",
+    "language_id": "fr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gr",
+    "language_id": "grc",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gr",
+    "language_id": "mk",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gr",
+    "language_id": "pnt",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gr",
+    "language_id": "sq",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gr",
+    "language_id": "tr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gr",
+    "language_id": "tsd",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gs",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "gt",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gt",
+    "language_id": "es",
+    "status": "official"
+  },
+  {
+    "country_area_id": "gt",
+    "language_id": "kek",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gt",
+    "language_id": "quc",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "gu",
+    "language_id": "ch",
+    "status": "official"
+  },
+  {
+    "country_area_id": "gu",
+    "language_id": "en",
+    "status": "de_facto_official"
+  },
+  {
+    "country_area_id": "gw",
+    "language_id": "ff",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gw",
+    "language_id": "fr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "gw",
+    "language_id": "pt",
+    "status": "official"
+  },
+  {
+    "country_area_id": "gy",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "hk",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "hk",
+    "language_id": "yue",
+    "status": "used"
+  },
+  {
+    "country_area_id": "hk",
+    "language_id": "zh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "hm",
+    "language_id": "und",
+    "status": "used"
+  },
+  {
+    "country_area_id": "hn",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "hn",
+    "language_id": "es",
+    "status": "official"
+  },
+  {
+    "country_area_id": "hr",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "hr",
+    "language_id": "hr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "hr",
+    "language_id": "it",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "hr",
+    "language_id": "vec",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ht",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ht",
+    "language_id": "ht",
+    "status": "official"
+  },
+  {
+    "country_area_id": "hu",
+    "language_id": "de",
+    "status": "used"
+  },
+  {
+    "country_area_id": "hu",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "hu",
+    "language_id": "fr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "hu",
+    "language_id": "hr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "hu",
+    "language_id": "hu",
+    "status": "official"
+  },
+  {
+    "country_area_id": "hu",
+    "language_id": "ro",
+    "status": "used"
+  },
+  {
+    "country_area_id": "hu",
+    "language_id": "sk",
+    "status": "used"
+  },
+  {
+    "country_area_id": "hu",
+    "language_id": "sl",
+    "status": "used"
+  },
+  {
+    "country_area_id": "id",
+    "language_id": "ace",
+    "status": "used"
+  },
+  {
+    "country_area_id": "id",
+    "language_id": "ban",
+    "status": "used"
+  },
+  {
+    "country_area_id": "id",
+    "language_id": "bbc",
+    "status": "used"
+  },
+  {
+    "country_area_id": "id",
+    "language_id": "bew",
+    "status": "used"
+  },
+  {
+    "country_area_id": "id",
+    "language_id": "bjn",
+    "status": "used"
+  },
+  {
+    "country_area_id": "id",
+    "language_id": "bug",
+    "status": "used"
+  },
+  {
+    "country_area_id": "id",
+    "language_id": "gay",
+    "status": "used"
+  },
+  {
+    "country_area_id": "id",
+    "language_id": "gor",
+    "status": "used"
+  },
+  {
+    "country_area_id": "id",
+    "language_id": "id",
+    "status": "official"
+  },
+  {
+    "country_area_id": "id",
+    "language_id": "jv",
+    "status": "used"
+  },
+  {
+    "country_area_id": "id",
+    "language_id": "kaw",
+    "status": "used"
+  },
+  {
+    "country_area_id": "id",
+    "language_id": "mad",
+    "status": "used"
+  },
+  {
+    "country_area_id": "id",
+    "language_id": "mak",
+    "status": "used"
+  },
+  {
+    "country_area_id": "id",
+    "language_id": "mdr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "id",
+    "language_id": "min",
+    "status": "used"
+  },
+  {
+    "country_area_id": "id",
+    "language_id": "ms",
+    "status": "used"
+  },
+  {
+    "country_area_id": "id",
+    "language_id": "mwv",
+    "status": "used"
+  },
+  {
+    "country_area_id": "id",
+    "language_id": "sas",
+    "status": "used"
+  },
+  {
+    "country_area_id": "id",
+    "language_id": "sly",
+    "status": "used"
+  },
+  {
+    "country_area_id": "id",
+    "language_id": "su",
+    "status": "used"
+  },
+  {
+    "country_area_id": "id",
+    "language_id": "zh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ie",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ie",
+    "language_id": "fr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ie",
+    "language_id": "ga",
+    "status": "official"
+  },
+  {
+    "country_area_id": "il",
+    "language_id": "am",
+    "status": "used"
+  },
+  {
+    "country_area_id": "il",
+    "language_id": "ar",
+    "status": "official"
+  },
+  {
+    "country_area_id": "il",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "il",
+    "language_id": "he",
+    "status": "official"
+  },
+  {
+    "country_area_id": "il",
+    "language_id": "hu",
+    "status": "used"
+  },
+  {
+    "country_area_id": "il",
+    "language_id": "lad",
+    "status": "used"
+  },
+  {
+    "country_area_id": "il",
+    "language_id": "ml",
+    "status": "used"
+  },
+  {
+    "country_area_id": "il",
+    "language_id": "pl",
+    "status": "used"
+  },
+  {
+    "country_area_id": "il",
+    "language_id": "ro",
+    "status": "used"
+  },
+  {
+    "country_area_id": "il",
+    "language_id": "ru",
+    "status": "used"
+  },
+  {
+    "country_area_id": "il",
+    "language_id": "ti",
+    "status": "used"
+  },
+  {
+    "country_area_id": "il",
+    "language_id": "yi",
+    "status": "used"
+  },
+  {
+    "country_area_id": "im",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "im",
+    "language_id": "gv",
+    "status": "official"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "as",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "awa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "bfq",
+    "status": "used"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "bgc",
+    "status": "used"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "bho",
+    "status": "used"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "bn",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "bo",
+    "status": "used"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "bpy",
+    "status": "used"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "bra",
+    "status": "used"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "brx",
+    "status": "used"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "ccp",
+    "status": "used"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "doi",
+    "status": "used"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "dv",
+    "status": "used"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "dz",
+    "status": "used"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "gon",
+    "status": "used"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "gu",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "hi",
+    "status": "official"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "kha",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "kn",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "kok",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "kru",
+    "status": "used"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "ks",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "kxv",
+    "status": "used"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "lah",
+    "status": "used"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "mag",
+    "status": "used"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "mai",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "ml",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "mni",
+    "status": "used"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "mr",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "mwr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "ne",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "njo",
+    "status": "used"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "or",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "pa",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "pi",
+    "status": "used"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "raj",
+    "status": "used"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "sa",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "sat",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "saz",
+    "status": "used"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "sd",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "ta",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "tcy",
+    "status": "used"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "te",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "ur",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "in",
+    "language_id": "xnr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "io",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "iq",
+    "language_id": "ar",
+    "status": "official"
+  },
+  {
+    "country_area_id": "iq",
+    "language_id": "az",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "iq",
+    "language_id": "ckb",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "iq",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "iq",
+    "language_id": "fa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "iq",
+    "language_id": "ku",
+    "status": "used"
+  },
+  {
+    "country_area_id": "iq",
+    "language_id": "lrc",
+    "status": "used"
+  },
+  {
+    "country_area_id": "iq",
+    "language_id": "syr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ir",
+    "language_id": "ar",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ir",
+    "language_id": "az",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ir",
+    "language_id": "bal",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ir",
+    "language_id": "bgn",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ir",
+    "language_id": "bqi",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ir",
+    "language_id": "ckb",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ir",
+    "language_id": "fa",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ir",
+    "language_id": "gbz",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ir",
+    "language_id": "glk",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ir",
+    "language_id": "hy",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ir",
+    "language_id": "ka",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ir",
+    "language_id": "kaa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ir",
+    "language_id": "kk",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ir",
+    "language_id": "ku",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ir",
+    "language_id": "lrc",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ir",
+    "language_id": "mzn",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ir",
+    "language_id": "ps",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ir",
+    "language_id": "sdh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ir",
+    "language_id": "tk",
+    "status": "used"
+  },
+  {
+    "country_area_id": "is",
+    "language_id": "da",
+    "status": "used"
+  },
+  {
+    "country_area_id": "is",
+    "language_id": "is",
+    "status": "official"
+  },
+  {
+    "country_area_id": "it",
+    "language_id": "ca",
+    "status": "used"
+  },
+  {
+    "country_area_id": "it",
+    "language_id": "de",
+    "status": "used"
+  },
+  {
+    "country_area_id": "it",
+    "language_id": "egl",
+    "status": "used"
+  },
+  {
+    "country_area_id": "it",
+    "language_id": "el",
+    "status": "used"
+  },
+  {
+    "country_area_id": "it",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "it",
+    "language_id": "fr",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "it",
+    "language_id": "fur",
+    "status": "used"
+  },
+  {
+    "country_area_id": "it",
+    "language_id": "hr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "it",
+    "language_id": "it",
+    "status": "official"
+  },
+  {
+    "country_area_id": "it",
+    "language_id": "lij",
+    "status": "used"
+  },
+  {
+    "country_area_id": "it",
+    "language_id": "lmo",
+    "status": "used"
+  },
+  {
+    "country_area_id": "it",
+    "language_id": "nap",
+    "status": "used"
+  },
+  {
+    "country_area_id": "it",
+    "language_id": "pms",
+    "status": "used"
+  },
+  {
+    "country_area_id": "it",
+    "language_id": "rgn",
+    "status": "used"
+  },
+  {
+    "country_area_id": "it",
+    "language_id": "sc",
+    "status": "used"
+  },
+  {
+    "country_area_id": "it",
+    "language_id": "scn",
+    "status": "used"
+  },
+  {
+    "country_area_id": "it",
+    "language_id": "sdc",
+    "status": "used"
+  },
+  {
+    "country_area_id": "it",
+    "language_id": "sl",
+    "status": "used"
+  },
+  {
+    "country_area_id": "it",
+    "language_id": "vec",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "je",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "jm",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "jm",
+    "language_id": "jam",
+    "status": "used"
+  },
+  {
+    "country_area_id": "jo",
+    "language_id": "ar",
+    "status": "official"
+  },
+  {
+    "country_area_id": "jo",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "jp",
+    "language_id": "ja",
+    "status": "official"
+  },
+  {
+    "country_area_id": "jp",
+    "language_id": "ko",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ke",
+    "language_id": "ar",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ke",
+    "language_id": "dav",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ke",
+    "language_id": "ebu",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ke",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ke",
+    "language_id": "gu",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ke",
+    "language_id": "guz",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ke",
+    "language_id": "kam",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ke",
+    "language_id": "ki",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ke",
+    "language_id": "kln",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ke",
+    "language_id": "luo",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ke",
+    "language_id": "luy",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ke",
+    "language_id": "mas",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ke",
+    "language_id": "mer",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ke",
+    "language_id": "om",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ke",
+    "language_id": "pa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ke",
+    "language_id": "saq",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ke",
+    "language_id": "so",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ke",
+    "language_id": "sw",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ke",
+    "language_id": "teo",
+    "status": "used"
+  },
+  {
+    "country_area_id": "kg",
+    "language_id": "kaa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "kg",
+    "language_id": "ky",
+    "status": "official"
+  },
+  {
+    "country_area_id": "kg",
+    "language_id": "ru",
+    "status": "official"
+  },
+  {
+    "country_area_id": "kh",
+    "language_id": "km",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ki",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ki",
+    "language_id": "gil",
+    "status": "official"
+  },
+  {
+    "country_area_id": "km",
+    "language_id": "ar",
+    "status": "official"
+  },
+  {
+    "country_area_id": "km",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "kn",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "kp",
+    "language_id": "ko",
+    "status": "official"
+  },
+  {
+    "country_area_id": "kr",
+    "language_id": "ko",
+    "status": "official"
+  },
+  {
+    "country_area_id": "kw",
+    "language_id": "ar",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ky",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "kz",
+    "language_id": "de",
+    "status": "used"
+  },
+  {
+    "country_area_id": "kz",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "kz",
+    "language_id": "kaa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "kz",
+    "language_id": "kk",
+    "status": "official"
+  },
+  {
+    "country_area_id": "kz",
+    "language_id": "ru",
+    "status": "official"
+  },
+  {
+    "country_area_id": "kz",
+    "language_id": "ug",
+    "status": "used"
+  },
+  {
+    "country_area_id": "la",
+    "language_id": "hnj",
+    "status": "used"
+  },
+  {
+    "country_area_id": "la",
+    "language_id": "lo",
+    "status": "official"
+  },
+  {
+    "country_area_id": "lb",
+    "language_id": "ar",
+    "status": "official"
+  },
+  {
+    "country_area_id": "lb",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "lb",
+    "language_id": "fr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "lb",
+    "language_id": "hy",
+    "status": "used"
+  },
+  {
+    "country_area_id": "lb",
+    "language_id": "ku",
+    "status": "used"
+  },
+  {
+    "country_area_id": "lc",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "li",
+    "language_id": "de",
+    "status": "official"
+  },
+  {
+    "country_area_id": "li",
+    "language_id": "gsw",
+    "status": "de_facto_official"
+  },
+  {
+    "country_area_id": "li",
+    "language_id": "wae",
+    "status": "used"
+  },
+  {
+    "country_area_id": "lk",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "lk",
+    "language_id": "pi",
+    "status": "used"
+  },
+  {
+    "country_area_id": "lk",
+    "language_id": "si",
+    "status": "official"
+  },
+  {
+    "country_area_id": "lk",
+    "language_id": "ta",
+    "status": "official"
+  },
+  {
+    "country_area_id": "lr",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "lr",
+    "language_id": "ff",
+    "status": "used"
+  },
+  {
+    "country_area_id": "lr",
+    "language_id": "grb",
+    "status": "used"
+  },
+  {
+    "country_area_id": "lr",
+    "language_id": "kpe",
+    "status": "used"
+  },
+  {
+    "country_area_id": "lr",
+    "language_id": "men",
+    "status": "used"
+  },
+  {
+    "country_area_id": "lr",
+    "language_id": "vai",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ls",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ls",
+    "language_id": "ss",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ls",
+    "language_id": "st",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ls",
+    "language_id": "xh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ls",
+    "language_id": "zu",
+    "status": "used"
+  },
+  {
+    "country_area_id": "lt",
+    "language_id": "de",
+    "status": "used"
+  },
+  {
+    "country_area_id": "lt",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "lt",
+    "language_id": "lt",
+    "status": "official"
+  },
+  {
+    "country_area_id": "lt",
+    "language_id": "ru",
+    "status": "used"
+  },
+  {
+    "country_area_id": "lt",
+    "language_id": "sgs",
+    "status": "used"
+  },
+  {
+    "country_area_id": "lu",
+    "language_id": "de",
+    "status": "official"
+  },
+  {
+    "country_area_id": "lu",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "lu",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "lu",
+    "language_id": "lb",
+    "status": "official"
+  },
+  {
+    "country_area_id": "lu",
+    "language_id": "pt",
+    "status": "used"
+  },
+  {
+    "country_area_id": "lv",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "lv",
+    "language_id": "ltg",
+    "status": "used"
+  },
+  {
+    "country_area_id": "lv",
+    "language_id": "lv",
+    "status": "official"
+  },
+  {
+    "country_area_id": "lv",
+    "language_id": "ru",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ly",
+    "language_id": "ar",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ma",
+    "language_id": "ar",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ma",
+    "language_id": "ary",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ma",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ma",
+    "language_id": "es",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ma",
+    "language_id": "fr",
+    "status": "de_facto_official"
+  },
+  {
+    "country_area_id": "ma",
+    "language_id": "rif",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ma",
+    "language_id": "shi",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ma",
+    "language_id": "tzm",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ma",
+    "language_id": "zgh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mc",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "md",
+    "language_id": "bg",
+    "status": "used"
+  },
+  {
+    "country_area_id": "md",
+    "language_id": "gag",
+    "status": "used"
+  },
+  {
+    "country_area_id": "md",
+    "language_id": "ro",
+    "status": "official"
+  },
+  {
+    "country_area_id": "md",
+    "language_id": "ru",
+    "status": "used"
+  },
+  {
+    "country_area_id": "md",
+    "language_id": "uk",
+    "status": "used"
+  },
+  {
+    "country_area_id": "me",
+    "language_id": "sq",
+    "status": "used"
+  },
+  {
+    "country_area_id": "me",
+    "language_id": "sr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mf",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "mg",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "mg",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "mg",
+    "language_id": "mg",
+    "status": "official"
+  },
+  {
+    "country_area_id": "mh",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "mh",
+    "language_id": "mh",
+    "status": "official"
+  },
+  {
+    "country_area_id": "mk",
+    "language_id": "mk",
+    "status": "official"
+  },
+  {
+    "country_area_id": "mk",
+    "language_id": "sq",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "mk",
+    "language_id": "tr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ml",
+    "language_id": "ar",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ml",
+    "language_id": "bm",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ml",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ml",
+    "language_id": "khq",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ml",
+    "language_id": "ses",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ml",
+    "language_id": "snk",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ml",
+    "language_id": "tmh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mm",
+    "language_id": "hnj",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mm",
+    "language_id": "kac",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mm",
+    "language_id": "my",
+    "status": "official"
+  },
+  {
+    "country_area_id": "mm",
+    "language_id": "pi",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mm",
+    "language_id": "rhg",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mm",
+    "language_id": "shn",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mn",
+    "language_id": "kk",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mn",
+    "language_id": "mn",
+    "status": "official"
+  },
+  {
+    "country_area_id": "mn",
+    "language_id": "ru",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mn",
+    "language_id": "ug",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mn",
+    "language_id": "zh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mo",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mo",
+    "language_id": "fil",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mo",
+    "language_id": "nan",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mo",
+    "language_id": "pt",
+    "status": "official"
+  },
+  {
+    "country_area_id": "mo",
+    "language_id": "yue",
+    "status": "de_facto_official"
+  },
+  {
+    "country_area_id": "mo",
+    "language_id": "zh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mp",
+    "language_id": "ch",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mp",
+    "language_id": "en",
+    "status": "de_facto_official"
+  },
+  {
+    "country_area_id": "mq",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "mr",
+    "language_id": "ar",
+    "status": "official"
+  },
+  {
+    "country_area_id": "mr",
+    "language_id": "ff",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mr",
+    "language_id": "fr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mr",
+    "language_id": "wo",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ms",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "mt",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "mt",
+    "language_id": "fr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mt",
+    "language_id": "it",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mt",
+    "language_id": "mt",
+    "status": "official"
+  },
+  {
+    "country_area_id": "mu",
+    "language_id": "bho",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mu",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "mu",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "mu",
+    "language_id": "mfe",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mu",
+    "language_id": "ta",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mu",
+    "language_id": "ur",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mv",
+    "language_id": "dv",
+    "status": "official"
+  },
+  {
+    "country_area_id": "mv",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mw",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "mw",
+    "language_id": "ny",
+    "status": "official"
+  },
+  {
+    "country_area_id": "mw",
+    "language_id": "tog",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mw",
+    "language_id": "tum",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mw",
+    "language_id": "zu",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mx",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mx",
+    "language_id": "es",
+    "status": "de_facto_official"
+  },
+  {
+    "country_area_id": "mx",
+    "language_id": "sei",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mx",
+    "language_id": "vec",
+    "status": "used"
+  },
+  {
+    "country_area_id": "my",
+    "language_id": "bjn",
+    "status": "used"
+  },
+  {
+    "country_area_id": "my",
+    "language_id": "bug",
+    "status": "used"
+  },
+  {
+    "country_area_id": "my",
+    "language_id": "dtp",
+    "status": "used"
+  },
+  {
+    "country_area_id": "my",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "my",
+    "language_id": "iba",
+    "status": "used"
+  },
+  {
+    "country_area_id": "my",
+    "language_id": "jv",
+    "status": "used"
+  },
+  {
+    "country_area_id": "my",
+    "language_id": "ml",
+    "status": "used"
+  },
+  {
+    "country_area_id": "my",
+    "language_id": "ms",
+    "status": "official"
+  },
+  {
+    "country_area_id": "my",
+    "language_id": "ta",
+    "status": "used"
+  },
+  {
+    "country_area_id": "my",
+    "language_id": "zh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mz",
+    "language_id": "mgh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mz",
+    "language_id": "ny",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mz",
+    "language_id": "pt",
+    "status": "official"
+  },
+  {
+    "country_area_id": "mz",
+    "language_id": "seh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mz",
+    "language_id": "sw",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mz",
+    "language_id": "ts",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mz",
+    "language_id": "vmw",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mz",
+    "language_id": "yao",
+    "status": "used"
+  },
+  {
+    "country_area_id": "mz",
+    "language_id": "zu",
+    "status": "used"
+  },
+  {
+    "country_area_id": "na",
+    "language_id": "af",
+    "status": "used"
+  },
+  {
+    "country_area_id": "na",
+    "language_id": "de",
+    "status": "used"
+  },
+  {
+    "country_area_id": "na",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "na",
+    "language_id": "hz",
+    "status": "used"
+  },
+  {
+    "country_area_id": "na",
+    "language_id": "kj",
+    "status": "used"
+  },
+  {
+    "country_area_id": "na",
+    "language_id": "naq",
+    "status": "used"
+  },
+  {
+    "country_area_id": "na",
+    "language_id": "ng",
+    "status": "used"
+  },
+  {
+    "country_area_id": "na",
+    "language_id": "tn",
+    "status": "used"
+  },
+  {
+    "country_area_id": "nc",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ne",
+    "language_id": "ar",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ne",
+    "language_id": "dje",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ne",
+    "language_id": "ff",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ne",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ne",
+    "language_id": "ha",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ne",
+    "language_id": "tmh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ne",
+    "language_id": "twq",
+    "status": "used"
+  },
+  {
+    "country_area_id": "nf",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ng",
+    "language_id": "ann",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ng",
+    "language_id": "ar",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ng",
+    "language_id": "bin",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ng",
+    "language_id": "cch",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ng",
+    "language_id": "efi",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ng",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ng",
+    "language_id": "ff",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ng",
+    "language_id": "ha",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ng",
+    "language_id": "ibb",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ng",
+    "language_id": "ig",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ng",
+    "language_id": "kaj",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ng",
+    "language_id": "kcg",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ng",
+    "language_id": "pcm",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ng",
+    "language_id": "tiv",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ng",
+    "language_id": "yo",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ni",
+    "language_id": "es",
+    "status": "official"
+  },
+  {
+    "country_area_id": "nl",
+    "language_id": "de",
+    "status": "used"
+  },
+  {
+    "country_area_id": "nl",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "nl",
+    "language_id": "fr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "nl",
+    "language_id": "fy",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "nl",
+    "language_id": "id",
+    "status": "used"
+  },
+  {
+    "country_area_id": "nl",
+    "language_id": "li",
+    "status": "used"
+  },
+  {
+    "country_area_id": "nl",
+    "language_id": "nds",
+    "status": "used"
+  },
+  {
+    "country_area_id": "nl",
+    "language_id": "nl",
+    "status": "official"
+  },
+  {
+    "country_area_id": "nl",
+    "language_id": "rif",
+    "status": "used"
+  },
+  {
+    "country_area_id": "nl",
+    "language_id": "tr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "nl",
+    "language_id": "zea",
+    "status": "used"
+  },
+  {
+    "country_area_id": "no",
+    "language_id": "nb",
+    "status": "official"
+  },
+  {
+    "country_area_id": "no",
+    "language_id": "nn",
+    "status": "official"
+  },
+  {
+    "country_area_id": "no",
+    "language_id": "no",
+    "status": "official"
+  },
+  {
+    "country_area_id": "no",
+    "language_id": "se",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "np",
+    "language_id": "awa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "np",
+    "language_id": "bho",
+    "status": "used"
+  },
+  {
+    "country_area_id": "np",
+    "language_id": "bn",
+    "status": "used"
+  },
+  {
+    "country_area_id": "np",
+    "language_id": "bo",
+    "status": "used"
+  },
+  {
+    "country_area_id": "np",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "np",
+    "language_id": "hi",
+    "status": "used"
+  },
+  {
+    "country_area_id": "np",
+    "language_id": "mai",
+    "status": "used"
+  },
+  {
+    "country_area_id": "np",
+    "language_id": "ne",
+    "status": "official"
+  },
+  {
+    "country_area_id": "np",
+    "language_id": "new",
+    "status": "used"
+  },
+  {
+    "country_area_id": "nr",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "nr",
+    "language_id": "na",
+    "status": "official"
+  },
+  {
+    "country_area_id": "nu",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "nu",
+    "language_id": "niu",
+    "status": "official"
+  },
+  {
+    "country_area_id": "nz",
+    "language_id": "en",
+    "status": "de_facto_official"
+  },
+  {
+    "country_area_id": "nz",
+    "language_id": "mi",
+    "status": "official"
+  },
+  {
+    "country_area_id": "om",
+    "language_id": "ar",
+    "status": "official"
+  },
+  {
+    "country_area_id": "om",
+    "language_id": "bal",
+    "status": "used"
+  },
+  {
+    "country_area_id": "om",
+    "language_id": "fa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pa",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pa",
+    "language_id": "es",
+    "status": "official"
+  },
+  {
+    "country_area_id": "pa",
+    "language_id": "zh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pe",
+    "language_id": "ay",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pe",
+    "language_id": "es",
+    "status": "official"
+  },
+  {
+    "country_area_id": "pe",
+    "language_id": "qu",
+    "status": "official"
+  },
+  {
+    "country_area_id": "pf",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "pf",
+    "language_id": "ty",
+    "status": "official"
+  },
+  {
+    "country_area_id": "pf",
+    "language_id": "zh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pg",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "pg",
+    "language_id": "ho",
+    "status": "official"
+  },
+  {
+    "country_area_id": "pg",
+    "language_id": "tpi",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ph",
+    "language_id": "bik",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ph",
+    "language_id": "ceb",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ph",
+    "language_id": "cps",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ph",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ph",
+    "language_id": "es",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ph",
+    "language_id": "fil",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ph",
+    "language_id": "hil",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ph",
+    "language_id": "ilo",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ph",
+    "language_id": "krj",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ph",
+    "language_id": "pag",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ph",
+    "language_id": "pam",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ph",
+    "language_id": "war",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ph",
+    "language_id": "zh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pk",
+    "language_id": "bal",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pk",
+    "language_id": "bgn",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pk",
+    "language_id": "brh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pk",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "pk",
+    "language_id": "fa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pk",
+    "language_id": "khw",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pk",
+    "language_id": "ks",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pk",
+    "language_id": "lah",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pk",
+    "language_id": "pa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pk",
+    "language_id": "ps",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pk",
+    "language_id": "sd",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pk",
+    "language_id": "tg",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pk",
+    "language_id": "trw",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pk",
+    "language_id": "ur",
+    "status": "official"
+  },
+  {
+    "country_area_id": "pl",
+    "language_id": "be",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pl",
+    "language_id": "csb",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "pl",
+    "language_id": "de",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "pl",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pl",
+    "language_id": "lt",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "pl",
+    "language_id": "pl",
+    "status": "official"
+  },
+  {
+    "country_area_id": "pl",
+    "language_id": "prg",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pl",
+    "language_id": "ru",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pl",
+    "language_id": "sli",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pl",
+    "language_id": "szl",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pl",
+    "language_id": "uk",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pm",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pm",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "pn",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "pr",
+    "language_id": "en",
+    "status": "de_facto_official"
+  },
+  {
+    "country_area_id": "pr",
+    "language_id": "es",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ps",
+    "language_id": "ar",
+    "status": "official"
+  },
+  {
+    "country_area_id": "pt",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pt",
+    "language_id": "es",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pt",
+    "language_id": "fr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pt",
+    "language_id": "gl",
+    "status": "used"
+  },
+  {
+    "country_area_id": "pt",
+    "language_id": "pt",
+    "status": "official"
+  },
+  {
+    "country_area_id": "pw",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "pw",
+    "language_id": "pau",
+    "status": "official"
+  },
+  {
+    "country_area_id": "py",
+    "language_id": "de",
+    "status": "used"
+  },
+  {
+    "country_area_id": "py",
+    "language_id": "es",
+    "status": "official"
+  },
+  {
+    "country_area_id": "py",
+    "language_id": "gn",
+    "status": "official"
+  },
+  {
+    "country_area_id": "qa",
+    "language_id": "ar",
+    "status": "official"
+  },
+  {
+    "country_area_id": "qa",
+    "language_id": "fa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "qa",
+    "language_id": "ml",
+    "status": "used"
+  },
+  {
+    "country_area_id": "re",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "re",
+    "language_id": "ta",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ro",
+    "language_id": "bg",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ro",
+    "language_id": "de",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ro",
+    "language_id": "el",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ro",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ro",
+    "language_id": "es",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ro",
+    "language_id": "fr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ro",
+    "language_id": "hu",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ro",
+    "language_id": "pl",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ro",
+    "language_id": "ro",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ro",
+    "language_id": "sr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ro",
+    "language_id": "tr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "rs",
+    "language_id": "hr",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "rs",
+    "language_id": "hu",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "rs",
+    "language_id": "ro",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "rs",
+    "language_id": "sk",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "rs",
+    "language_id": "sq",
+    "status": "used"
+  },
+  {
+    "country_area_id": "rs",
+    "language_id": "sr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "rs",
+    "language_id": "uk",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "ady",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "alt",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "av",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "az",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "ba",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "bua",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "ce",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "chm",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "cu",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "cv",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "dar",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "fi",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "hy",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "inh",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "izh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "kaa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "kbd",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "koi",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "krc",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "krl",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "kum",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "kv",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "lez",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "mdf",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "mn",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "mrj",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "myv",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "os",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "pnt",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "ru",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "sah",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "sr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "tt",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "tyv",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "udm",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "vep",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ru",
+    "language_id": "vot",
+    "status": "used"
+  },
+  {
+    "country_area_id": "rw",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "rw",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "rw",
+    "language_id": "rw",
+    "status": "official"
+  },
+  {
+    "country_area_id": "sa",
+    "language_id": "ar",
+    "status": "official"
+  },
+  {
+    "country_area_id": "sa",
+    "language_id": "ars",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sb",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "sb",
+    "language_id": "pis",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sb",
+    "language_id": "rug",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sc",
+    "language_id": "crs",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sc",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "sc",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "sd",
+    "language_id": "ar",
+    "status": "official"
+  },
+  {
+    "country_area_id": "sd",
+    "language_id": "bej",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sd",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "sd",
+    "language_id": "ha",
+    "status": "used"
+  },
+  {
+    "country_area_id": "se",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "se",
+    "language_id": "fi",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "se",
+    "language_id": "fit",
+    "status": "used"
+  },
+  {
+    "country_area_id": "se",
+    "language_id": "ia",
+    "status": "used"
+  },
+  {
+    "country_area_id": "se",
+    "language_id": "se",
+    "status": "used"
+  },
+  {
+    "country_area_id": "se",
+    "language_id": "sma",
+    "status": "used"
+  },
+  {
+    "country_area_id": "se",
+    "language_id": "smj",
+    "status": "used"
+  },
+  {
+    "country_area_id": "se",
+    "language_id": "sv",
+    "status": "official"
+  },
+  {
+    "country_area_id": "se",
+    "language_id": "yi",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sg",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "sg",
+    "language_id": "ml",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sg",
+    "language_id": "ms",
+    "status": "official"
+  },
+  {
+    "country_area_id": "sg",
+    "language_id": "pa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sg",
+    "language_id": "ta",
+    "status": "official"
+  },
+  {
+    "country_area_id": "sg",
+    "language_id": "zh",
+    "status": "official"
+  },
+  {
+    "country_area_id": "sh",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "si",
+    "language_id": "de",
+    "status": "used"
+  },
+  {
+    "country_area_id": "si",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "si",
+    "language_id": "hr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "si",
+    "language_id": "hu",
+    "status": "used"
+  },
+  {
+    "country_area_id": "si",
+    "language_id": "it",
+    "status": "used"
+  },
+  {
+    "country_area_id": "si",
+    "language_id": "sl",
+    "status": "official"
+  },
+  {
+    "country_area_id": "si",
+    "language_id": "vec",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "sj",
+    "language_id": "nb",
+    "status": "official"
+  },
+  {
+    "country_area_id": "sj",
+    "language_id": "ru",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sk",
+    "language_id": "cs",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sk",
+    "language_id": "de",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sk",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sk",
+    "language_id": "hu",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sk",
+    "language_id": "pl",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sk",
+    "language_id": "sk",
+    "status": "official"
+  },
+  {
+    "country_area_id": "sk",
+    "language_id": "uk",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sl",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "sl",
+    "language_id": "ff",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sl",
+    "language_id": "kri",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sl",
+    "language_id": "men",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sl",
+    "language_id": "tem",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sm",
+    "language_id": "eo",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sm",
+    "language_id": "it",
+    "status": "official"
+  },
+  {
+    "country_area_id": "sn",
+    "language_id": "dyo",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "sn",
+    "language_id": "ff",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "sn",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "sn",
+    "language_id": "srr",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "sn",
+    "language_id": "wo",
+    "status": "de_facto_official"
+  },
+  {
+    "country_area_id": "so",
+    "language_id": "ar",
+    "status": "official"
+  },
+  {
+    "country_area_id": "so",
+    "language_id": "om",
+    "status": "used"
+  },
+  {
+    "country_area_id": "so",
+    "language_id": "so",
+    "status": "official"
+  },
+  {
+    "country_area_id": "so",
+    "language_id": "sw",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sr",
+    "language_id": "hnj",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sr",
+    "language_id": "nl",
+    "status": "official"
+  },
+  {
+    "country_area_id": "sr",
+    "language_id": "srn",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sr",
+    "language_id": "zh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ss",
+    "language_id": "ar",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ss",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ss",
+    "language_id": "nus",
+    "status": "used"
+  },
+  {
+    "country_area_id": "st",
+    "language_id": "fr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "st",
+    "language_id": "pt",
+    "status": "official"
+  },
+  {
+    "country_area_id": "sv",
+    "language_id": "es",
+    "status": "official"
+  },
+  {
+    "country_area_id": "sx",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "sx",
+    "language_id": "es",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sx",
+    "language_id": "nl",
+    "status": "official"
+  },
+  {
+    "country_area_id": "sy",
+    "language_id": "ar",
+    "status": "official"
+  },
+  {
+    "country_area_id": "sy",
+    "language_id": "fr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sy",
+    "language_id": "hy",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sy",
+    "language_id": "ku",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sy",
+    "language_id": "syr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sz",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "sz",
+    "language_id": "ss",
+    "status": "official"
+  },
+  {
+    "country_area_id": "sz",
+    "language_id": "ts",
+    "status": "used"
+  },
+  {
+    "country_area_id": "sz",
+    "language_id": "zu",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tc",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "td",
+    "language_id": "ar",
+    "status": "official"
+  },
+  {
+    "country_area_id": "td",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "tf",
+    "language_id": "fr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tg",
+    "language_id": "blo",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tg",
+    "language_id": "ee",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tg",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "th",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "th",
+    "language_id": "hnj",
+    "status": "used"
+  },
+  {
+    "country_area_id": "th",
+    "language_id": "pi",
+    "status": "used"
+  },
+  {
+    "country_area_id": "th",
+    "language_id": "shn",
+    "status": "used"
+  },
+  {
+    "country_area_id": "th",
+    "language_id": "th",
+    "status": "official"
+  },
+  {
+    "country_area_id": "th",
+    "language_id": "zh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tj",
+    "language_id": "ar",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tj",
+    "language_id": "fa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tj",
+    "language_id": "ru",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tj",
+    "language_id": "tg",
+    "status": "official"
+  },
+  {
+    "country_area_id": "tk",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "tk",
+    "language_id": "sm",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tk",
+    "language_id": "tkl",
+    "status": "official"
+  },
+  {
+    "country_area_id": "tl",
+    "language_id": "pt",
+    "status": "official"
+  },
+  {
+    "country_area_id": "tl",
+    "language_id": "tet",
+    "status": "official"
+  },
+  {
+    "country_area_id": "tm",
+    "language_id": "kaa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tm",
+    "language_id": "ku",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tm",
+    "language_id": "ru",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tm",
+    "language_id": "tk",
+    "status": "official"
+  },
+  {
+    "country_area_id": "tm",
+    "language_id": "uz",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tn",
+    "language_id": "aeb",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tn",
+    "language_id": "ar",
+    "status": "official"
+  },
+  {
+    "country_area_id": "tn",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "to",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "to",
+    "language_id": "to",
+    "status": "official"
+  },
+  {
+    "country_area_id": "tr",
+    "language_id": "ab",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tr",
+    "language_id": "ady",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tr",
+    "language_id": "ar",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tr",
+    "language_id": "az",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tr",
+    "language_id": "bg",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tr",
+    "language_id": "el",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tr",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tr",
+    "language_id": "hy",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tr",
+    "language_id": "ka",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tr",
+    "language_id": "kaa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tr",
+    "language_id": "kbd",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tr",
+    "language_id": "kiu",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tr",
+    "language_id": "kk",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tr",
+    "language_id": "ku",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tr",
+    "language_id": "ky",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tr",
+    "language_id": "lzz",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tr",
+    "language_id": "pnt",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tr",
+    "language_id": "sq",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tr",
+    "language_id": "sr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tr",
+    "language_id": "tr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "tr",
+    "language_id": "tru",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tr",
+    "language_id": "uz",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tr",
+    "language_id": "zza",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tt",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "tt",
+    "language_id": "es",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tv",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "tv",
+    "language_id": "tvl",
+    "status": "official"
+  },
+  {
+    "country_area_id": "tz",
+    "language_id": "asa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tz",
+    "language_id": "bez",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tz",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "tz",
+    "language_id": "jmc",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tz",
+    "language_id": "kde",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tz",
+    "language_id": "ksb",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tz",
+    "language_id": "lag",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tz",
+    "language_id": "mas",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tz",
+    "language_id": "nym",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tz",
+    "language_id": "rof",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tz",
+    "language_id": "rwk",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tz",
+    "language_id": "sbp",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tz",
+    "language_id": "suk",
+    "status": "used"
+  },
+  {
+    "country_area_id": "tz",
+    "language_id": "sw",
+    "status": "official"
+  },
+  {
+    "country_area_id": "tz",
+    "language_id": "vun",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ua",
+    "language_id": "be",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ua",
+    "language_id": "bg",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ua",
+    "language_id": "crh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ua",
+    "language_id": "el",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ua",
+    "language_id": "hu",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ua",
+    "language_id": "pl",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ua",
+    "language_id": "ro",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ua",
+    "language_id": "ru",
+    "status": "de_facto_official"
+  },
+  {
+    "country_area_id": "ua",
+    "language_id": "rue",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ua",
+    "language_id": "tr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ua",
+    "language_id": "uk",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ua",
+    "language_id": "yi",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ug",
+    "language_id": "ach",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ug",
+    "language_id": "cgg",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ug",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ug",
+    "language_id": "hi",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ug",
+    "language_id": "lg",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ug",
+    "language_id": "nyn",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ug",
+    "language_id": "rw",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ug",
+    "language_id": "sw",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ug",
+    "language_id": "teo",
+    "status": "used"
+  },
+  {
+    "country_area_id": "ug",
+    "language_id": "xog",
+    "status": "used"
+  },
+  {
+    "country_area_id": "um",
+    "language_id": "en",
+    "status": "de_facto_official"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "cad",
+    "status": "used"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "cho",
+    "status": "used"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "chr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "cic",
+    "status": "used"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "dak",
+    "status": "used"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "de",
+    "status": "used"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "en",
+    "status": "de_facto_official"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "es",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "esu",
+    "status": "used"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "fil",
+    "status": "used"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "fr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "frc",
+    "status": "used"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "haw",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "hnj",
+    "status": "used"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "ik",
+    "status": "used"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "io",
+    "status": "used"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "it",
+    "status": "used"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "jbo",
+    "status": "used"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "ko",
+    "status": "used"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "lkt",
+    "status": "used"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "mus",
+    "status": "used"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "nv",
+    "status": "used"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "oka",
+    "status": "used"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "osa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "pdc",
+    "status": "used"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "ru",
+    "status": "used"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "vi",
+    "status": "used"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "yi",
+    "status": "used"
+  },
+  {
+    "country_area_id": "us",
+    "language_id": "zh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "uy",
+    "language_id": "es",
+    "status": "official"
+  },
+  {
+    "country_area_id": "uz",
+    "language_id": "kaa",
+    "status": "used"
+  },
+  {
+    "country_area_id": "uz",
+    "language_id": "ru",
+    "status": "used"
+  },
+  {
+    "country_area_id": "uz",
+    "language_id": "tr",
+    "status": "used"
+  },
+  {
+    "country_area_id": "uz",
+    "language_id": "uz",
+    "status": "official"
+  },
+  {
+    "country_area_id": "va",
+    "language_id": "it",
+    "status": "de_facto_official"
+  },
+  {
+    "country_area_id": "va",
+    "language_id": "la",
+    "status": "used"
+  },
+  {
+    "country_area_id": "vc",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ve",
+    "language_id": "es",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ve",
+    "language_id": "yrl",
+    "status": "used"
+  },
+  {
+    "country_area_id": "vg",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "vi",
+    "language_id": "en",
+    "status": "de_facto_official"
+  },
+  {
+    "country_area_id": "vn",
+    "language_id": "blt",
+    "status": "used"
+  },
+  {
+    "country_area_id": "vn",
+    "language_id": "hnj",
+    "status": "used"
+  },
+  {
+    "country_area_id": "vn",
+    "language_id": "vi",
+    "status": "official"
+  },
+  {
+    "country_area_id": "vn",
+    "language_id": "zh",
+    "status": "used"
+  },
+  {
+    "country_area_id": "vu",
+    "language_id": "bi",
+    "status": "official"
+  },
+  {
+    "country_area_id": "vu",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "vu",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "wf",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ws",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ws",
+    "language_id": "sm",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ye",
+    "language_id": "ar",
+    "status": "official"
+  },
+  {
+    "country_area_id": "ye",
+    "language_id": "en",
+    "status": "used"
+  },
+  {
+    "country_area_id": "yt",
+    "language_id": "fr",
+    "status": "official"
+  },
+  {
+    "country_area_id": "yt",
+    "language_id": "sw",
+    "status": "used"
+  },
+  {
+    "country_area_id": "yt",
+    "language_id": "swb",
+    "status": "used"
+  },
+  {
+    "country_area_id": "za",
+    "language_id": "af",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "za",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "za",
+    "language_id": "hi",
+    "status": "used"
+  },
+  {
+    "country_area_id": "za",
+    "language_id": "nr",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "za",
+    "language_id": "nso",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "za",
+    "language_id": "ss",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "za",
+    "language_id": "st",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "za",
+    "language_id": "sw",
+    "status": "used"
+  },
+  {
+    "country_area_id": "za",
+    "language_id": "tn",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "za",
+    "language_id": "ts",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "za",
+    "language_id": "ve",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "za",
+    "language_id": "xh",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "za",
+    "language_id": "zu",
+    "status": "official_regional"
+  },
+  {
+    "country_area_id": "zm",
+    "language_id": "bem",
+    "status": "used"
+  },
+  {
+    "country_area_id": "zm",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "zm",
+    "language_id": "loz",
+    "status": "used"
+  },
+  {
+    "country_area_id": "zm",
+    "language_id": "lun",
+    "status": "used"
+  },
+  {
+    "country_area_id": "zm",
+    "language_id": "ny",
+    "status": "used"
+  },
+  {
+    "country_area_id": "zm",
+    "language_id": "tum",
+    "status": "used"
+  },
+  {
+    "country_area_id": "zw",
+    "language_id": "en",
+    "status": "official"
+  },
+  {
+    "country_area_id": "zw",
+    "language_id": "nd",
+    "status": "official"
+  },
+  {
+    "country_area_id": "zw",
+    "language_id": "ny",
+    "status": "used"
+  },
+  {
+    "country_area_id": "zw",
+    "language_id": "sn",
+    "status": "official"
+  },
+  {
+    "country_area_id": "zw",
+    "language_id": "tn",
+    "status": "used"
+  },
+  {
+    "country_area_id": "zw",
+    "language_id": "ve",
+    "status": "used"
+  }
+]

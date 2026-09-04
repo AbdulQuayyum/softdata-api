@@ -80,6 +80,45 @@ func registerPublicRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers,
 		return err
 	}
 
+	geographyLanguagesList, err := buildRouteMiddlewares(mw, "/v1/geography/languages", "geography", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build geography languages middleware: %w", err)
+	}
+	mux.Handle("GET /v1/geography/languages", compose(http.HandlerFunc(h.Geography.ListLanguages), geographyLanguagesList...))
+	if err := catalog.add("GET /v1/geography/languages"); err != nil {
+		return err
+	}
+
+	geographyLanguageDetail, err := buildRouteMiddlewares(mw, "/v1/geography/languages/{language_id}", "geography", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build geography language detail middleware: %w", err)
+	}
+	mux.Handle("GET /v1/geography/languages/{language_id}", compose(http.HandlerFunc(h.Geography.GetLanguage), geographyLanguageDetail...))
+	if err := catalog.add("GET /v1/geography/languages/{language_id}"); err != nil {
+		return err
+	}
+
+	geographyCountryLanguages, err := buildRouteMiddlewares(mw, "/v1/geography/country-languages", "geography", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build geography country-languages middleware: %w", err)
+	}
+	mux.Handle("GET /v1/geography/country-languages", compose(http.HandlerFunc(h.Geography.ListCountryLanguages), geographyCountryLanguages...))
+	if err := catalog.add("GET /v1/geography/country-languages"); err != nil {
+		return err
+	}
+
 	geographyCountriesList, err := buildRouteMiddlewares(mw, "/v1/geography/countries", "geography", routeOptions{
 		useOptionalAPIKey: true,
 		useRateLimit:      true,

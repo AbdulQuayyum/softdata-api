@@ -13,6 +13,7 @@ import (
 
 var geographyStateIDPattern = regexp.MustCompile(`^[a-z]+(?:-[a-z]+)*$`)
 var geographyLocalGovernmentUnitIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)+$`)
+var geographyLanguageIDPattern = regexp.MustCompile(`^[a-z]{2,3}$`)
 var geographyCountryOrAreaIDPattern = regexp.MustCompile(`^[a-z]{2}$`)
 var geographyThreeDigitCodePattern = regexp.MustCompile(`^[0-9]{3}$`)
 

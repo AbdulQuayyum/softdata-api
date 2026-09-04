@@ -1,6 +1,7 @@
 package validators
 
 import (
+	"fmt"
 	"net/url"
 	"regexp"
 	"sort"
@@ -15,6 +16,7 @@ var localGovernmentUnitIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)+
 var localGovernmentUnitSlugPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)*$`)
 var timeZoneIDPattern = regexp.MustCompile(`^[A-Za-z][A-Za-z0-9._+-]*(?:/[A-Za-z0-9._+-]+)+$`)
 var countryOrAreaIDPattern = regexp.MustCompile(`^[a-z]{2}$`)
+var languageIDPattern = regexp.MustCompile(`^[a-z]{2,3}$`)
 var countryOrAreaCodePattern = regexp.MustCompile(`^[0-9]{3}$`)
 var uuidLikePattern = regexp.MustCompile(`^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$`)
 var timeZoneReservedPrefixSet = map[string]struct{}{
@@ -89,6 +91,82 @@ var validGeopoliticalZoneIDs = map[string]struct{}{
 	"south-east":    {},
 	"south-south":   {},
 	"south-west":    {},
+}
+
+var deprecatedLanguageIDs = map[string]struct{}{
+	"fat": {},
+	"sh":  {},
+	"tl":  {},
+	"tw":  {},
+}
+
+var countryLanguageStatuses = map[string]struct{}{
+	"official":          {},
+	"de_facto_official": {},
+	"official_regional": {},
+	"used":              {},
+}
+
+// ValidateLanguageID validates a published base-language identifier.
+func ValidateLanguageID(value string) (string, error) {
+	value = strings.TrimSpace(value)
+	if value == "" {
+		return "", requiredError("language_id", "Language ID is required.")
+	}
+	if !languageIDPattern.MatchString(value) {
+		return "", invalidField("language_id", "Language ID must be a valid lowercase base-language identifier.")
+	}
+	if _, deprecated := deprecatedLanguageIDs[value]; deprecated {
+		return "", invalidField("language_id", "Language ID must reference a published base-language identifier.")
+	}
+	return value, nil
+}
+
+// ValidateCountryLanguageStatus validates the public relationship status enum.
+func ValidateCountryLanguageStatus(value string) (string, error) {
+	value = strings.TrimSpace(value)
+	if value == "" {
+		return "", requiredError("status", "Status is required.")
+	}
+	if _, ok := countryLanguageStatuses[value]; !ok {
+		return "", invalidField("status", "Status must be one of official, de_facto_official, official_regional or used.")
+	}
+	return value, nil
+}
+
+// ValidateCountryLanguageListQuery validates the optional relationship filters.
+func ValidateCountryLanguageListQuery(values url.Values) (services.CountryLanguageListInput, error) {
+	var errs ValidationErrors
+	var input services.CountryLanguageListInput
+
+	validateSingle := func(name string, validator func(string) (string, error), target *string) {
+		fieldValues := values[name]
+		if len(fieldValues) > 1 {
+			errs.Add(name, codeMalformed, fmt.Sprintf("%s may be provided at most once.", name))
+			return
+		}
+		if len(fieldValues) == 0 {
+			return
+		}
+		normalized, err := validator(fieldValues[0])
+		if err != nil {
+			if validationErr, ok := err.(ValidationErrors); ok {
+				errs.Fields = append(errs.Fields, validationErr.Fields...)
+			} else {
+				errs.Add(name, codeInvalid, fmt.Sprintf("%s is invalid.", name))
+			}
+			return
+		}
+		*target = normalized
+	}
+
+	validateSingle("country_area_id", ValidateCountryOrAreaID, &input.CountryAreaID)
+	validateSingle("language_id", ValidateLanguageID, &input.LanguageID)
+	validateSingle("status", ValidateCountryLanguageStatus, &input.Status)
+	if len(errs.Fields) > 0 {
+		return services.CountryLanguageListInput{}, errs
+	}
+	return input, nil
 }
 
 // ValidateStateID validates the documented public state identifier.

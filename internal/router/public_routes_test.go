@@ -63,6 +63,43 @@ func TestPublicRoutesServeGeographyZones(t *testing.T) {
 	}
 }
 
+func TestPublicRoutesServeGeographyLanguages(t *testing.T) {
+	rec := &routerRecorder{}
+	geography := &routerGeographyStub{rec: rec}
+	router, err := New(testHandlersWithGeography(t, rec, geography), testMiddleware(rec))
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	for _, tc := range []struct {
+		path string
+		want string
+	}{
+		{path: "/v1/geography/languages", want: "geography.language.list"},
+		{path: "/v1/geography/languages/en", want: "geography.language.get:en"},
+		{path: "/v1/geography/country-languages?country_area_id=ng&language_id=yo&status=official", want: "geography.country-language.list"},
+	} {
+		rr := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, tc.path, nil)
+		if tc.want == "geography.language.get:en" {
+			req.SetPathValue("language_id", "en")
+		}
+		router.ServeHTTP(rr, req)
+		if rr.Code != http.StatusOK {
+			t.Fatalf("%s status = %d, body=%s", tc.path, rr.Code, rr.Body.String())
+		}
+		if !strings.Contains(strings.Join(rec.snapshot(), ","), tc.want) {
+			t.Fatalf("expected %q in route calls: %v", tc.want, rec.snapshot())
+		}
+	}
+	if got := geography.lastCountryLanguageInput; got.CountryAreaID != "ng" || got.LanguageID != "yo" || got.Status != "official" {
+		t.Fatalf("unexpected country-language filter: %#v", got)
+	}
+	if !geography.lastHadAPIKey {
+		t.Fatal("expected optional API-key identification middleware")
+	}
+}
+
 func TestPublicRoutesServeGeographyLGAs(t *testing.T) {
 	rec := &routerRecorder{}
 	router := newTestRouter(t, rec)

@@ -1,0 +1,81 @@
+{
+  "dataset_key": "world-country-languages",
+  "title": "World Country Languages",
+  "description": "Independently compiled factual reference data for the current CLDR country-language relationship manifest. Each record represents one approved country or area and language relationship after alias normalization and base-row collapse.",
+  "country_code": "001",
+  "dataset_group": "geography",
+  "format": "json",
+  "relative_path": "geography/country_languages.json",
+  "schema_path": "schemas/geography/country_languages.schema.json",
+  "record_count": 1289,
+  "referenced_language_count": 523,
+  "country_count": 248,
+  "languages_without_relationships": 110,
+  "version": "1.0.0",
+  "license_id": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "verified_at": "2026-09-04",
+  "methodology": "SoftData compiled the current CLDR country-language relationship manifest from Unicode CLDR JSON release 48.2.0. Territory rows were mapped to approved world-countries-and-areas identifiers, aliases were normalized, script-qualified rows were collapsed to their approved base-language identifiers, and only relationships whose final language id exists in world-languages were published. The mandatory base-row-wins rule was applied when choosing relationship status: an exact base-language row for a country and language pair overrides script-qualified rows, while a script-qualified row may supply the status only when no base-language row exists. The approved remaps were fat -> ak, sh -> sr-Latn -> sr, tl -> fil and tw -> ak. Required conflict outcomes are gb / en -> official, hk / zh -> used, in / hi -> official, me / sr -> used, mo / zh -> used and sn / ff -> official_regional. The resulting dataset contains 1,289 unique country/language pairs, covers all 248 approved country or area ids, has zero orphaned country ids and zero orphaned language ids, and is sorted by country_area_id then language_id.",
+  "status_counts": {
+    "used": 833,
+    "official": 319,
+    "official_regional": 117,
+    "de_facto_official": 20
+  },
+  "update_policy": "Review against a deliberately selected CLDR release; do not silently upgrade the pinned source release.",
+  "known_limitations": "This is a CLDR-derived territory-language relationship set, not a complete census of languages spoken in each country or area. The used status is not a legal-recognition claim.",
+  "source_file_hashes": {
+    "territoryInfo.json": "b50369a0e1f5434c942dfe45064b39f488604ca0cedac5117e993248c19f2c0a",
+    "languageData.json": "249e39c6bc9dff82cdd36348039b23e0f4ba9df0f3cea9a5857f00ed4253f6af",
+    "languages.json": "a5960d2371bc7d982da7fcfd9a0e237429d3467a5cc76f680bc3af5bcef9fb4e",
+    "aliases.json": "b7011c866f27502ed6f160ca83f2a83fa42bce9fdc2176e60e2c6630961d877c"
+  },
+  "normalization": {
+    "alias_remaps": [
+      "fat -> ak",
+      "sh -> sr-Latn -> sr",
+      "tl -> fil",
+      "tw -> ak"
+    ],
+    "base_row_wins_rule": "When a base-language row and a script-qualified row collapse to the same country/language pair, the exact base-language row supplies the status. A script-qualified row can supply the status only when no base-language row exists.",
+    "conflict_outcomes": [
+      "gb / en -> official",
+      "hk / zh -> used",
+      "in / hi -> official",
+      "me / sr -> used",
+      "mo / zh -> used",
+      "sn / ff -> official_regional"
+    ],
+    "sorting": "country_area_id, then language_id"
+  },
+  "sources": [
+    {
+      "organization": "Unicode Consortium",
+      "title": "CLDR JSON release 48.2.0: territoryInfo.json",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr-json/48.2.0/cldr-json/cldr-core/supplemental/territoryInfo.json",
+      "purpose": "Identify territory-language relationships used to compile the approved country-language manifest.",
+      "accessed_at": "2026-09-04T14:05:20Z"
+    },
+    {
+      "organization": "Unicode Consortium",
+      "title": "CLDR JSON release 48.2.0: languageData.json",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr-json/48.2.0/cldr-json/cldr-core/supplemental/languageData.json",
+      "purpose": "Provide supplementary territory-language relationship data for relationship normalization.",
+      "accessed_at": "2026-09-04T14:05:27Z"
+    },
+    {
+      "organization": "Unicode Consortium",
+      "title": "CLDR JSON release 48.2.0: languages.json",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr-json/48.2.0/cldr-json/cldr-localenames-full/main/en/languages.json",
+      "purpose": "Confirm that each published relationship language id exists in the approved world-languages manifest.",
+      "accessed_at": "2026-09-04T14:05:34Z"
+    },
+    {
+      "organization": "Unicode Consortium",
+      "title": "CLDR JSON release 48.2.0: aliases.json",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr-json/48.2.0/cldr-json/cldr-core/supplemental/aliases.json",
+      "purpose": "Normalize approved CLDR alias-only identifiers during relationship collapse.",
+      "accessed_at": "2026-09-04T14:05:34Z"
+    }
+  ]
+}

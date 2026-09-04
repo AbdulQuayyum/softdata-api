@@ -27,6 +27,19 @@ type LocalGovernmentUnit struct {
 	AdministrativeType string `json:"administrative_type"`
 }
 
+// Language is the public record model for a current CLDR base language identifier.
+type Language struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
+// CountryLanguage is the public record model for one country/area and language relationship.
+type CountryLanguage struct {
+	CountryAreaID string `json:"country_area_id"`
+	LanguageID    string `json:"language_id"`
+	Status        string `json:"status"`
+}
+
 // CountryOrArea is the public record model for a UN M49 country or area.
 type CountryOrArea struct {
 	ID                     string   `json:"id"`

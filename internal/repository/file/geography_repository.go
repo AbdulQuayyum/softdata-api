@@ -77,12 +77,14 @@ type GeographyFileRepository struct {
 	localGovernmentUnitsPath string
 	timeZonesPath            string
 	countriesAndAreasPath    string
+	languagesPath            string
+	countryLanguagesPath     string
 }
 
 var _ interfaces.GeographyRepository = (*GeographyFileRepository)(nil)
 
 // NewGeographyRepository constructs a file-backed geography repository.
-func NewGeographyRepository(jsonRepository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath string) (*GeographyFileRepository, error) {
+func NewGeographyRepository(jsonRepository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath, languagesPath, countryLanguagesPath string) (*GeographyFileRepository, error) {
 	if jsonRepository == nil {
 		return nil, fmt.Errorf("json repository is required")
 	}
@@ -106,6 +108,14 @@ func NewGeographyRepository(jsonRepository interfaces.JSONFileRepository, states
 	if err != nil {
 		return nil, err
 	}
+	cleanedLanguagesPath, err := validateGeographyDatasetPath("languages", languagesPath)
+	if err != nil {
+		return nil, err
+	}
+	cleanedCountryLanguagesPath, err := validateGeographyDatasetPath("country languages", countryLanguagesPath)
+	if err != nil {
+		return nil, err
+	}
 
 	return &GeographyFileRepository{
 		jsonRepository:           jsonRepository,
@@ -114,6 +124,8 @@ func NewGeographyRepository(jsonRepository interfaces.JSONFileRepository, states
 		localGovernmentUnitsPath: cleanedLocalGovernmentUnitsPath,
 		timeZonesPath:            cleanedTimeZonesPath,
 		countriesAndAreasPath:    cleanedCountriesAndAreasPath,
+		languagesPath:            cleanedLanguagesPath,
+		countryLanguagesPath:     cleanedCountryLanguagesPath,
 	}, nil
 }
 

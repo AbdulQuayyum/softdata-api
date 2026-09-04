@@ -1,0 +1,72 @@
+{
+  "dataset_key": "world-languages",
+  "title": "World Languages",
+  "description": "Independently compiled factual reference data for the current English CLDR base-language manifest. Each record represents one published base-language identifier and its English CLDR display name.",
+  "country_code": "001",
+  "dataset_group": "geography",
+  "format": "json",
+  "relative_path": "geography/languages.json",
+  "schema_path": "schemas/geography/languages.schema.json",
+  "record_count": 633,
+  "languages_without_relationships": 110,
+  "version": "1.0.0",
+  "license_id": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "verified_at": "2026-09-04",
+  "methodology": "SoftData compiled the current English CLDR base-language manifest from Unicode CLDR JSON release 48.2.0. The approved source files were verified by hash, the published alias set was normalized before publication, and only base-language identifiers were retained. The approved remaps were fat -> ak, sh -> sr-Latn -> sr, tl -> fil and tw -> ak. Regional locale variants, script-qualified identifiers, private-use identifiers and alias-only identifiers were excluded from the v1 public manifest. The resulting dataset contains 633 unique identifiers and 633 unique names, sorted bytewise by id.",
+  "status_counts": {},
+  "update_policy": "Review against a deliberately selected CLDR release; do not silently upgrade the pinned source release.",
+  "known_limitations": "The catalog is a CLDR-derived base-language manifest, not a census of all languages spoken in any country or area.",
+  "source_file_hashes": {
+    "territoryInfo.json": "b50369a0e1f5434c942dfe45064b39f488604ca0cedac5117e993248c19f2c0a",
+    "languageData.json": "249e39c6bc9dff82cdd36348039b23e0f4ba9df0f3cea9a5857f00ed4253f6af",
+    "languages.json": "a5960d2371bc7d982da7fcfd9a0e237429d3467a5cc76f680bc3af5bcef9fb4e",
+    "aliases.json": "b7011c866f27502ed6f160ca83f2a83fa42bce9fdc2176e60e2c6630961d877c"
+  },
+  "normalization": {
+    "alias_remaps": [
+      "fat -> ak",
+      "sh -> sr-Latn -> sr",
+      "tl -> fil",
+      "tw -> ak"
+    ],
+    "excluded_ids": [
+      "fat",
+      "sh",
+      "tl",
+      "tw",
+      "sr-Latn"
+    ],
+    "sorting": "bytewise by id"
+  },
+  "sources": [
+    {
+      "organization": "Unicode Consortium",
+      "title": "CLDR JSON release 48.2.0: languages.json",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr-json/48.2.0/cldr-json/cldr-localenames-full/main/en/languages.json",
+      "purpose": "Provide the English display names for the current CLDR base-language manifest.",
+      "accessed_at": "2026-09-04T14:05:34Z"
+    },
+    {
+      "organization": "Unicode Consortium",
+      "title": "CLDR JSON release 48.2.0: languageData.json",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr-json/48.2.0/cldr-json/cldr-core/supplemental/languageData.json",
+      "purpose": "Identify the approved language rows used to derive the base-language publication set.",
+      "accessed_at": "2026-09-04T14:05:27Z"
+    },
+    {
+      "organization": "Unicode Consortium",
+      "title": "CLDR JSON release 48.2.0: aliases.json",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr-json/48.2.0/cldr-json/cldr-core/supplemental/aliases.json",
+      "purpose": "Normalize approved CLDR alias-only identifiers into their published base-language identifiers.",
+      "accessed_at": "2026-09-04T14:05:34Z"
+    },
+    {
+      "organization": "Unicode Consortium",
+      "title": "CLDR JSON release 48.2.0: territoryInfo.json",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr-json/48.2.0/cldr-json/cldr-core/supplemental/territoryInfo.json",
+      "purpose": "Cross-check territory-language relationships when collapsing the language manifest.",
+      "accessed_at": "2026-09-04T14:05:20Z"
+    }
+  ]
+}
