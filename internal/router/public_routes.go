@@ -197,6 +197,19 @@ func registerPublicRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers,
 		return err
 	}
 
+	commercialBankLogos, err := buildRouteMiddlewares(mw, "/v1/assets/banks/ng/{bank_asset}", "finance", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build finance commercial-bank logo middleware: %w", err)
+	}
+	mux.Handle("GET /v1/assets/banks/ng/{bank_asset}", compose(http.HandlerFunc(serveCommercialBankLogo), commercialBankLogos...))
+	if err := catalog.add("GET /v1/assets/banks/ng/{bank_asset}"); err != nil {
+		return err
+	}
+
 	geographyLGAsList, err := buildRouteMiddlewares(mw, "/v1/geography/lgas", "geography", routeOptions{
 		useOptionalAPIKey: true,
 		useRateLimit:      true,

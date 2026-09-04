@@ -74,10 +74,18 @@ softdata-api/
 │   │       ├── LICENSE
 │   │       └── 4x3/
 │   │           └── *.svg                  # 248 vendored flag assets
+│   ├── banks.go
+│   └── banks/
+│       └── ng/
+│           ├── ATTRIBUTION.md
+│           ├── LICENSES/
+│           │   └── Nigerian-Bank-Logos-MIT.txt
+│           └── *.png                      # 28 vendored bank assets
 │   ├── education/
 │   │   ├── colleges_of_education.json
 │   │   └── universities.json
 │   ├── finance/
+│   │   ├── commercial_banks.json
 │   │   ├── currencies.json
 │   │   ├── international_money_transfer_operators.json
 │   │   └── payment_service_providers.json
@@ -94,6 +102,7 @@ softdata-api/
 │   │   │   ├── colleges_of_education.json
 │   │   │   └── universities.json
 │   │   ├── finance/
+│   │   │   ├── commercial_banks.json
 │   │   │   ├── currencies.json
 │   │   │   ├── international_money_transfer_operators.json
 │   │   │   └── payment_service_providers.json
@@ -110,6 +119,7 @@ softdata-api/
 │       │   ├── colleges_of_education.schema.json
 │       │   └── universities.schema.json
 │       ├── finance/
+│       │   ├── commercial_banks.schema.json
 │       │   ├── currencies.schema.json
 │       │   ├── international_money_transfer_operators.schema.json
 │       │   └── payment_service_providers.schema.json
@@ -298,6 +308,8 @@ softdata-api/
 │   │   ├── response.go
 │   │   └── response_test.go
 │   ├── router/
+│   │   ├── bank_assets.go
+│   │   ├── bank_assets_test.go
 │   │   ├── account_routes.go
 │   │   ├── account_routes_test.go
 │   │   ├── auth_routes.go
@@ -418,7 +430,7 @@ Request validation and normalization helpers for authentication, accounts, API k
 
 ### `internal/router/`
 
-HTTP router construction, route registration, public and authenticated route groups, route cataloging, and embedded flag serving.
+HTTP router construction, route registration, public and authenticated route groups, route cataloging, and embedded flag and bank-logo serving.
 
 ### `internal/redis/`
 

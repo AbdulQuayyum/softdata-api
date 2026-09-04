@@ -191,6 +191,17 @@ Nigeria's current Central Bank of Nigeria IMTO register snapshot.
 
 The package contains 108 CBN-listed IMTO entries. Each record represents one current register listing, with the source-side concatenation defect at SN 63 normalized transparently in metadata. The package is names-only, does not record addresses or inferred country data, and IMTOs remain separate from the payment-service-provider register. No API routes are introduced by this dataset package.
 
+### `ng-commercial-banks`
+
+The 28-record commercial-bank snapshot from the supplied CBN `Export (1).xlsx` workbook.
+
+- Data: `datasets/finance/commercial_banks.json`
+- Schema: `datasets/schemas/finance/commercial_banks.schema.json`
+- Metadata: `datasets/metadata/finance/commercial_banks.json`
+- Logos: `datasets/assets/banks/ng/`
+
+Each record uses a deterministic lowercase bank ID, `country_code` `NG`, an official website URL and a required local logo URL. Where verified, `cbn_code` contains the three-digit CBN institution code and `nip_code` contains the six-digit NIP receiving-institution code. These fields are optional in this snapshot; omitted values were not sufficiently verified and are not inferred. Logos are immutable vendored PNG assets pinned to the `Nigerian-Bank-Logos/ng-bank-logos` source commit recorded in the attribution files. Bank names and logos remain the property and trademarks of their respective owners; SoftData provides them for identification and directory purposes only. Rights holders may request correction, replacement or removal of an inaccurate logo without removal of the factual bank record.
+
 ### `ng-universities`
 
 Nigeria's current National Universities Commission register of federal, state and private universities.
