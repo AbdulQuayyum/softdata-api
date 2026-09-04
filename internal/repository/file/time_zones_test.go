@@ -17,10 +17,10 @@ import (
 func TestGeographyRepositoryTimeZonesConstructorAndReadIsolation(t *testing.T) {
 	t.Parallel()
 
-	if _, err := NewGeographyRepository(nil, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", "geography/countries_and_areas.json"); err == nil {
+	if _, err := NewGeographyRepository(nil, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", "geography/countries_and_areas.json", "geography/languages.json", "geography/country_languages.json"); err == nil {
 		t.Fatal("expected nil json repository to be rejected")
 	}
-	if _, err := NewGeographyRepository(&geographyJSONRepoStub{}, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "   ", "geography/countries_and_areas.json"); err == nil {
+	if _, err := NewGeographyRepository(&geographyJSONRepoStub{}, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "   ", "geography/countries_and_areas.json", "geography/languages.json", "geography/country_languages.json"); err == nil {
 		t.Fatal("expected whitespace time zone path to be rejected")
 	}
 
@@ -28,7 +28,7 @@ func TestGeographyRepositoryTimeZonesConstructorAndReadIsolation(t *testing.T) {
 		t.Fatal("constructor should not decode data")
 		return nil
 	}}
-	repo, err := NewGeographyRepository(stub, " geography/states.json ", " geography/geopolitical_zones.json ", " geography/lgas.json ", " geography/time_zones.json ", " geography/countries_and_areas.json ")
+	repo, err := NewGeographyRepository(stub, " geography/states.json ", " geography/geopolitical_zones.json ", " geography/lgas.json ", " geography/time_zones.json ", " geography/countries_and_areas.json ", " geography/languages.json ", " geography/country_languages.json ")
 	if err != nil {
 		t.Fatalf("NewGeographyRepository() error = %v", err)
 	}
@@ -51,7 +51,7 @@ func TestGeographyRepositoryTimeZonesListGetAndFiltering(t *testing.T) {
 		countries: countries,
 		pathCalls: map[string]int{},
 	}
-	repo, err := NewGeographyRepository(jsonRepo, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", "geography/countries_and_areas.json")
+	repo, err := NewGeographyRepository(jsonRepo, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", "geography/countries_and_areas.json", "geography/languages.json", "geography/country_languages.json")
 	if err != nil {
 		t.Fatalf("NewGeographyRepository() error = %v", err)
 	}
@@ -131,7 +131,7 @@ func TestGeographyRepositoryTimeZonesContextAndValidationErrors(t *testing.T) {
 
 	ctx, cancel := context.WithCancel(context.Background())
 	cancel()
-	repo, err := NewGeographyRepository(&geographyJSONRepoStub{states: states, zones: zones, timeZones: timeZones, countries: countries}, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", "geography/countries_and_areas.json")
+	repo, err := NewGeographyRepository(&geographyJSONRepoStub{states: states, zones: zones, timeZones: timeZones, countries: countries}, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", "geography/countries_and_areas.json", "geography/languages.json", "geography/country_languages.json")
 	if err != nil {
 		t.Fatalf("NewGeographyRepository() error = %v", err)
 	}
@@ -152,7 +152,7 @@ func TestGeographyRepositoryTimeZonesContextAndValidationErrors(t *testing.T) {
 	}
 
 	badRepo := &geographyJSONRepoStub{decodeFn: func(context.Context, string, any) error { return interfaces.ErrDatasetFileUnavailable }}
-	repo, err = NewGeographyRepository(badRepo, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", "geography/countries_and_areas.json")
+	repo, err = NewGeographyRepository(badRepo, "geography/states.json", "geography/geopolitical_zones.json", "geography/lgas.json", "geography/time_zones.json", "geography/countries_and_areas.json", "geography/languages.json", "geography/country_languages.json")
 	if err != nil {
 		t.Fatalf("NewGeographyRepository() error = %v", err)
 	}

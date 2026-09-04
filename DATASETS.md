@@ -119,6 +119,16 @@ The canonical IANA tzdb `zone1970.tab` manifest from release `2026c`, compiled i
 
 Each record preserves the exact IANA identifier as its public `id` and maps approved `world-countries-and-areas` IDs through `country_area_ids`. The package excludes aliases, `zone.tab`-only records, `backzone`, fixed-offset identifiers and other non-canonical entries, keeps `Asia/Taipei` with an empty `country_area_ids` array, records `bv` and `hm` as the two M49 country/area IDs with zero canonical zones, and omits static offsets, DST flags and coordinates. SoftData's independent compilation, schema and metadata are CC BY 4.0, while the IANA source files retain their own rights and are cited for reference only.
 
+### `world-languages` and `world-country-languages`
+
+These paired geography datasets are compiled from Unicode CLDR JSON release 48.2.0, accessed 2026-09-04. `world-languages` contains 633 current English CLDR base-language identifiers and names. `world-country-languages` contains 1,289 CLDR-derived country/area relationships covering all 248 approved country-area IDs, with 523 referenced language IDs and 110 catalog languages intentionally having no approved relationship. Relationship statuses are `official`, `de_facto_official`, `official_regional` and SoftData's normalized `used` value for rows without an `officialStatus`; this is not a legal or exhaustive census claim.
+
+- Data: `datasets/geography/languages.json`, `datasets/geography/country_languages.json`
+- Schema: `datasets/schemas/geography/languages.schema.json`, `datasets/schemas/geography/country_languages.schema.json`
+- Metadata: `datasets/metadata/geography/languages.json`, `datasets/metadata/geography/country_languages.json`
+
+Alias normalization applies `fat -> ak`, `sh -> sr-Latn -> sr`, `tl -> fil` and `tw -> ak`. Script-qualified rows collapse to base IDs, and an exact base-language row wins status conflicts over a script-qualified row. The package excludes regional aggregates, historic territories, Taiwan and Kosovo. SoftData's independent compilation, schema and metadata are CC BY 4.0; Unicode CLDR source material retains its own licence and attribution.
+
 ### `world-currencies`
 
 The current ISO 4217 monetary-currency snapshot compiled from the official SIX List One XML.

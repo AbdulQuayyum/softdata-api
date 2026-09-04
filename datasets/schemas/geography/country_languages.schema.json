@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://softdata-api.local/schemas/geography/country_languages.schema.json",
+  "title": "World Country Languages",
+  "description": "Schema for the world-country-languages dataset compiled from Unicode CLDR 48.2.0 territoryInfo and languageData manifests after alias normalization and base-row-wins collapse.",
+  "type": "array",
+  "minItems": 1289,
+  "maxItems": 1289,
+  "uniqueItems": true,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "country_area_id",
+      "language_id",
+      "status"
+    ],
+    "properties": {
+      "country_area_id": {
+        "type": "string",
+        "pattern": "^[a-z]{2}$"
+      },
+      "language_id": {
+        "type": "string",
+        "pattern": "^[a-z]{2,3}$"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "official",
+          "official_regional",
+          "de_facto_official",
+          "used"
+        ]
+      }
+    }
+  }
+}

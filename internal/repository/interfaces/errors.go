@@ -27,6 +27,14 @@ var (
 	ErrGeopoliticalZoneNotFound = errors.New("repository: geopolitical zone not found")
 	// ErrLocalGovernmentUnitNotFound reports that a requested local-government unit is not present in the dataset.
 	ErrLocalGovernmentUnitNotFound = errors.New("repository: local government unit not found")
+	// ErrLanguageNotFound reports that a requested language is not present in the dataset.
+	ErrLanguageNotFound = errors.New("repository: language not found")
+	// ErrInvalidCountryLanguageCountryAreaID reports an invalid country/area filter.
+	ErrInvalidCountryLanguageCountryAreaID = errors.New("repository: invalid country language country area id")
+	// ErrInvalidCountryLanguageLanguageID reports an invalid language filter.
+	ErrInvalidCountryLanguageLanguageID = errors.New("repository: invalid country language language id")
+	// ErrInvalidCountryLanguageStatus reports an invalid relationship status filter.
+	ErrInvalidCountryLanguageStatus = errors.New("repository: invalid country language status")
 	// ErrTimeZoneNotFound reports that a requested time zone is not present in the dataset.
 	ErrTimeZoneNotFound = errors.New("repository: time zone not found")
 	// ErrCountryOrAreaNotFound reports that a requested country or area is not present in the dataset.

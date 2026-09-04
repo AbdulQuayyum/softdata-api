@@ -38,6 +38,16 @@ The canonical IANA tzdb `zone1970.tab` manifest from release `2026c`, compiled i
 
 Each record preserves the exact IANA identifier as its public `id` and maps approved `world-countries-and-areas` IDs through `country_area_ids`. The package excludes aliases, `zone.tab`-only records, `backzone`, fixed-offset identifiers and other non-canonical entries, keeps `Asia/Taipei` with an empty `country_area_ids` array, records `bv` and `hm` as the two M49 country/area IDs with zero canonical zones, and omits static offsets, DST flags and coordinates. SoftData's independent compilation, schema and metadata are CC BY 4.0, while the IANA source files retain their own rights and are cited for reference only.
 
+### `world-languages` and `world-country-languages`
+
+Pinned to Unicode CLDR JSON 48.2.0, accessed 2026-09-04. The language catalogue has 633 current English base-language records. The relationship catalogue has 1,289 unique country-language pairs, covers all 248 approved country-area IDs, references 523 language IDs, and leaves 110 catalog languages without approved relationships by design. Status counts are `used`: 833, `official`: 319, `official_regional`: 117 and `de_facto_official`: 20.
+
+- Data: `datasets/geography/languages.json`, `datasets/geography/country_languages.json`
+- Schema: `datasets/schemas/geography/languages.schema.json`, `datasets/schemas/geography/country_languages.schema.json`
+- Metadata: `datasets/metadata/geography/languages.json`, `datasets/metadata/geography/country_languages.json`
+
+The compiler applies `fat -> ak`, `sh -> sr-Latn -> sr`, `tl -> fil` and `tw -> ak`, excludes script-qualified public IDs and non-country aggregates, and applies the base-row-wins rule for collapsed relationship conflicts. `used` is a normalized relationship value, not a legal, exhaustive or census statement. SoftData's compilation, schemas and metadata are CC BY 4.0; Unicode CLDR source material retains its own licence.
+
 ### `world-currencies`
 
 The current ISO 4217 monetary-currency snapshot compiled from the SIX List One XML.

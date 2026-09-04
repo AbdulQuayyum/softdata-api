@@ -15,10 +15,23 @@ type GeographyRepository interface {
 	ListLocalGovernmentUnits(ctx context.Context) ([]models.LocalGovernmentUnit, error)
 	ListLocalGovernmentUnitsByStateID(ctx context.Context, stateID string) ([]models.LocalGovernmentUnit, error)
 	GetLocalGovernmentUnit(ctx context.Context, unitID string) (models.LocalGovernmentUnit, error)
+	ListLanguages(ctx context.Context, filter LanguageFilter) ([]models.Language, error)
+	GetLanguage(ctx context.Context, languageID string) (models.Language, error)
+	ListCountryLanguages(ctx context.Context, filter CountryLanguageFilter) ([]models.CountryLanguage, error)
 	ListTimeZones(ctx context.Context, filter TimeZoneFilter) ([]models.TimeZone, error)
 	GetTimeZone(ctx context.Context, timeZoneID string) (models.TimeZone, error)
 	ListCountriesAndAreas(ctx context.Context, filter CountryOrAreaFilter) ([]models.CountryOrArea, error)
 	GetCountryOrArea(ctx context.Context, countryOrAreaID string) (models.CountryOrArea, error)
+}
+
+// LanguageFilter narrows the languages dataset.
+type LanguageFilter struct{}
+
+// CountryLanguageFilter narrows the country-language relationships dataset.
+type CountryLanguageFilter struct {
+	CountryAreaID string
+	LanguageID    string
+	Status        string
 }
 
 // TimeZoneFilter narrows the time-zones dataset by country or area ID.

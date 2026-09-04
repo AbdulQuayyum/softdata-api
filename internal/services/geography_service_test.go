@@ -14,39 +14,48 @@ import (
 )
 
 type geographyRepoStub struct {
-	states            []models.State
-	zones             []models.GeopoliticalZone
-	units             []models.LocalGovernmentUnit
-	timeZones         []models.TimeZone
-	countries         []models.CountryOrArea
-	listErr           error
-	getErr            error
-	zoneListErr       error
-	zoneGetErr        error
-	unitListErr       error
-	unitGetErr        error
-	unitByStateErr    error
-	timeZoneListErr   error
-	timeZoneGetErr    error
-	countryListErr    error
-	countryGetErr     error
-	listCalls         int
-	getCalls          int
-	zoneListCalls     int
-	zoneGetCalls      int
-	unitListCalls     int
-	unitGetCalls      int
-	unitByStateCalls  int
-	timeZoneListCalls int
-	timeZoneGetCalls  int
-	countryListCalls  int
-	countryGetCalls   int
-	lastID            string
-	lastZoneID        string
-	lastStateID       string
-	lastUnitID        string
-	lastCountryID     string
-	lastTimeZoneID    string
+	states                    []models.State
+	zones                     []models.GeopoliticalZone
+	units                     []models.LocalGovernmentUnit
+	languages                 []models.Language
+	relations                 []models.CountryLanguage
+	timeZones                 []models.TimeZone
+	countries                 []models.CountryOrArea
+	listErr                   error
+	getErr                    error
+	zoneListErr               error
+	zoneGetErr                error
+	unitListErr               error
+	unitGetErr                error
+	unitByStateErr            error
+	languageListErr           error
+	languageGetErr            error
+	relationListErr           error
+	timeZoneListErr           error
+	timeZoneGetErr            error
+	countryListErr            error
+	countryGetErr             error
+	listCalls                 int
+	getCalls                  int
+	zoneListCalls             int
+	zoneGetCalls              int
+	unitListCalls             int
+	unitGetCalls              int
+	unitByStateCalls          int
+	languageListCalls         int
+	languageGetCalls          int
+	relationListCalls         int
+	timeZoneListCalls         int
+	timeZoneGetCalls          int
+	countryListCalls          int
+	countryGetCalls           int
+	lastID                    string
+	lastZoneID                string
+	lastStateID               string
+	lastUnitID                string
+	lastCountryID             string
+	lastTimeZoneID            string
+	lastCountryLanguageFilter interfaces.CountryLanguageFilter
 }
 
 func (s *geographyRepoStub) ListStates(context.Context) ([]models.State, error) {
@@ -136,6 +145,37 @@ func (s *geographyRepoStub) GetLocalGovernmentUnit(_ context.Context, unitID str
 	return models.LocalGovernmentUnit{}, interfaces.ErrLocalGovernmentUnitNotFound
 }
 
+func (s *geographyRepoStub) ListLanguages(context.Context, interfaces.LanguageFilter) ([]models.Language, error) {
+	s.languageListCalls++
+	if s.languageListErr != nil {
+		return nil, s.languageListErr
+	}
+	return cloneServiceLanguages(s.languages), nil
+}
+
+func (s *geographyRepoStub) GetLanguage(_ context.Context, languageID string) (models.Language, error) {
+	s.languageGetCalls++
+	s.lastID = languageID
+	if s.languageGetErr != nil {
+		return models.Language{}, s.languageGetErr
+	}
+	for _, language := range s.languages {
+		if language.ID == languageID {
+			return language, nil
+		}
+	}
+	return models.Language{}, interfaces.ErrLanguageNotFound
+}
+
+func (s *geographyRepoStub) ListCountryLanguages(_ context.Context, filter interfaces.CountryLanguageFilter) ([]models.CountryLanguage, error) {
+	s.relationListCalls++
+	s.lastCountryLanguageFilter = filter
+	if s.relationListErr != nil {
+		return nil, s.relationListErr
+	}
+	return cloneServiceCountryLanguages(s.relations), nil
+}
+
 func (s *geographyRepoStub) ListTimeZones(_ context.Context, filter interfaces.TimeZoneFilter) ([]models.TimeZone, error) {
 	s.timeZoneListCalls++
 	if s.timeZoneListErr != nil {
@@ -205,6 +245,24 @@ func containsString(values []string, candidate string) bool {
 func cloneServiceTimeZone(timeZone models.TimeZone) models.TimeZone {
 	cloned := timeZone
 	cloned.CountryAreaIDs = append([]string(nil), timeZone.CountryAreaIDs...)
+	return cloned
+}
+
+func cloneServiceLanguages(languages []models.Language) []models.Language {
+	if len(languages) == 0 {
+		return make([]models.Language, 0)
+	}
+	cloned := make([]models.Language, len(languages))
+	copy(cloned, languages)
+	return cloned
+}
+
+func cloneServiceCountryLanguages(relations []models.CountryLanguage) []models.CountryLanguage {
+	if len(relations) == 0 {
+		return make([]models.CountryLanguage, 0)
+	}
+	cloned := make([]models.CountryLanguage, len(relations))
+	copy(cloned, relations)
 	return cloned
 }
 
@@ -728,6 +786,78 @@ func TestGeographyServiceContextCancellationAndDeadline(t *testing.T) {
 	}
 }
 
+func TestGeographyServiceLanguagesAndCountryLanguages(t *testing.T) {
+	t.Parallel()
+
+	stub := &geographyRepoStub{
+		languages: loadServiceLanguageFixture(t),
+		relations: loadServiceCountryLanguageFixture(t),
+	}
+	svc, err := NewGeographyService(stub)
+	if err != nil {
+		t.Fatalf("NewGeographyService() error = %v", err)
+	}
+
+	languages, err := svc.ListLanguages(context.Background())
+	if err != nil {
+		t.Fatalf("ListLanguages() error = %v", err)
+	}
+	if stub.languageListCalls != 1 {
+		t.Fatalf("unexpected language list call count: %d", stub.languageListCalls)
+	}
+	if len(languages) != 633 {
+		t.Fatalf("unexpected language count: %d", len(languages))
+	}
+	languages[0].Name = "Changed"
+	againLanguages, err := svc.ListLanguages(context.Background())
+	if err != nil {
+		t.Fatalf("ListLanguages() second call error = %v", err)
+	}
+	if againLanguages[0].Name == "Changed" {
+		t.Fatal("ListLanguages() exposed shared mutable slice state")
+	}
+
+	language, err := svc.GetLanguage(context.Background(), "  ak  ")
+	if err != nil {
+		t.Fatalf("GetLanguage() error = %v", err)
+	}
+	if stub.languageGetCalls != 1 {
+		t.Fatalf("unexpected language get call count: %d", stub.languageGetCalls)
+	}
+	if stub.lastID != "ak" {
+		t.Fatalf("unexpected language lookup id: %q", stub.lastID)
+	}
+	if language.ID != "ak" || language.Name != "Akan" {
+		t.Fatalf("unexpected language response: %#v", language)
+	}
+
+	relations, err := svc.ListCountryLanguages(context.Background(), CountryLanguageListInput{})
+	if err != nil {
+		t.Fatalf("ListCountryLanguages() error = %v", err)
+	}
+	if stub.relationListCalls != 1 {
+		t.Fatalf("unexpected relationship list call count: %d", stub.relationListCalls)
+	}
+	if len(relations) != 1289 {
+		t.Fatalf("unexpected relationship count: %d", len(relations))
+	}
+	_, err = svc.ListCountryLanguages(context.Background(), CountryLanguageListInput{CountryAreaID: " ng ", LanguageID: " en ", Status: " official "})
+	if err != nil {
+		t.Fatalf("ListCountryLanguages(filtered) error = %v", err)
+	}
+	if stub.lastCountryLanguageFilter != (interfaces.CountryLanguageFilter{CountryAreaID: "ng", LanguageID: "en", Status: "official"}) {
+		t.Fatalf("unexpected relationship filter: %#v", stub.lastCountryLanguageFilter)
+	}
+	relations[0].Status = "changed"
+	againRelations, err := svc.ListCountryLanguages(context.Background(), CountryLanguageListInput{})
+	if err != nil {
+		t.Fatalf("ListCountryLanguages() second call error = %v", err)
+	}
+	if againRelations[0].Status == "changed" {
+		t.Fatal("ListCountryLanguages() exposed shared mutable slice state")
+	}
+}
+
 func cloneServiceStates(states []models.State) []models.State {
 	if len(states) == 0 {
 		return make([]models.State, 0)
@@ -840,4 +970,46 @@ func loadServiceCountryFixture(t *testing.T) []models.CountryOrArea {
 		t.Fatal("countries and areas fixture contains trailing json")
 	}
 	return countries
+}
+
+func loadServiceLanguageFixture(t *testing.T) []models.Language {
+	t.Helper()
+
+	data, err := os.ReadFile("../../datasets/geography/languages.json")
+	if err != nil {
+		t.Fatalf("read languages fixture: %v", err)
+	}
+
+	dec := json.NewDecoder(strings.NewReader(string(data)))
+	dec.DisallowUnknownFields()
+
+	var languages []models.Language
+	if err := dec.Decode(&languages); err != nil {
+		t.Fatalf("decode languages fixture: %v", err)
+	}
+	if err := dec.Decode(new(any)); err == nil {
+		t.Fatal("languages fixture contains trailing json")
+	}
+	return languages
+}
+
+func loadServiceCountryLanguageFixture(t *testing.T) []models.CountryLanguage {
+	t.Helper()
+
+	data, err := os.ReadFile("../../datasets/geography/country_languages.json")
+	if err != nil {
+		t.Fatalf("read country languages fixture: %v", err)
+	}
+
+	dec := json.NewDecoder(strings.NewReader(string(data)))
+	dec.DisallowUnknownFields()
+
+	var relations []models.CountryLanguage
+	if err := dec.Decode(&relations); err != nil {
+		t.Fatalf("decode country languages fixture: %v", err)
+	}
+	if err := dec.Decode(new(any)); err == nil {
+		t.Fatal("country languages fixture contains trailing json")
+	}
+	return relations
 }

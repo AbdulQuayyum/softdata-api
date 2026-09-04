@@ -6,7 +6,7 @@ SoftData API uses a layered Go layout that keeps entry points, configuration, da
 
 - `cmd/` holds executable entry points.
 - `internal/` contains the core application logic, including configuration, database access, repositories, security helpers, request validators, response helpers, and domain/API models.
-- `datasets/` contains versioned geography, education, finance, and UN M49 countries-and-areas datasets, schemas, metadata, licensing notes, and embedded flag assets, including states, geopolitical zones, local government areas, time zones, universities, colleges of education, payment service providers, international money transfer operators, currencies, world countries or areas, and derived country-profile inputs.
+- `datasets/` contains versioned geography, education, finance, and UN M49 countries-and-areas datasets, schemas, metadata, licensing notes, and embedded flag assets, including states, geopolitical zones, local government areas, time zones, languages, country-language relationships, universities, colleges of education, payment service providers, international money transfer operators, currencies, world countries or areas, and derived country-profile inputs.
 - `database/` contains PostgreSQL migrations and handwritten SQL queries.
 - `docs/` holds API and project documentation.
 - `tmp/` contains local scratch outputs used during development and verification.
