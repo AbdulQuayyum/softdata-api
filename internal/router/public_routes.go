@@ -392,5 +392,9 @@ func registerPublicRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers,
 		return err
 	}
 
+	if err := registerRegulatedFinanceRoutes(mux, catalog, h, mw); err != nil {
+		return err
+	}
+
 	return nil
 }

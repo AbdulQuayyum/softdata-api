@@ -151,6 +151,10 @@ func mapError(err error) mappedError {
 		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}
 	case errors.Is(err, services.ErrInvalidCommercialBankID):
 		return mappedError{status: http.StatusBadRequest, code: codeInvalidRequest, message: messageInvalidRequest}
+	case errors.Is(err, services.ErrNonInterestFinancialInstitutionNotFound), errors.Is(err, services.ErrMerchantBankNotFound), errors.Is(err, services.ErrPaymentServiceBankNotFound), errors.Is(err, services.ErrFinancialHoldingCompanyNotFound), errors.Is(err, services.ErrDevelopmentFinanceInstitutionNotFound), errors.Is(err, services.ErrPrimaryMortgageInstitutionNotFound):
+		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}
+	case errors.Is(err, services.ErrInvalidNonInterestFinancialInstitutionID), errors.Is(err, services.ErrInvalidMerchantBankID), errors.Is(err, services.ErrInvalidPaymentServiceBankID), errors.Is(err, services.ErrInvalidFinancialHoldingCompanyID), errors.Is(err, services.ErrInvalidDevelopmentFinanceInstitutionID), errors.Is(err, services.ErrInvalidPrimaryMortgageInstitutionID):
+		return mappedError{status: http.StatusBadRequest, code: codeInvalidRequest, message: messageInvalidRequest}
 	case errors.Is(err, services.ErrCurrencyNotFound):
 		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}
 	case errors.Is(err, services.ErrInvalidCurrencyID), errors.Is(err, services.ErrInvalidCurrencyCountryAreaID):

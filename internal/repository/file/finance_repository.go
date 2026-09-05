@@ -11,6 +11,7 @@ import (
 	"regexp"
 	"sort"
 	"strings"
+	"sync"
 
 	"github.com/AbdulQuayyum/softdata-api/datasets/assets"
 	"github.com/AbdulQuayyum/softdata-api/internal/models"
@@ -114,12 +115,20 @@ type FinanceFileRepository struct {
 	currenciesPath                          string
 	countriesAndAreasPath                   string
 	commercialBanksPath                     string
+	nonInterestFinancialInstitutionsPath    string
+	merchantBanksPath                       string
+	paymentServiceBanksPath                 string
+	financialHoldingCompaniesPath           string
+	developmentFinanceInstitutionsPath      string
+	primaryMortgageInstitutionsPath         string
+	regulatedMu                             sync.RWMutex
+	regulatedCache                          map[string]any
 }
 
 var _ interfaces.FinanceRepository = (*FinanceFileRepository)(nil)
 
 // NewFinanceRepository constructs a file-backed finance repository.
-func NewFinanceRepository(jsonRepository interfaces.JSONFileRepository, paymentServiceProvidersPath string, internationalMoneyTransferOperatorsPath ...string) (*FinanceFileRepository, error) {
+func NewFinanceRepository(jsonRepository interfaces.JSONFileRepository, paymentServiceProvidersPath string, datasetPaths ...string) (*FinanceFileRepository, error) {
 	if jsonRepository == nil {
 		return nil, fmt.Errorf("json repository is required")
 	}
@@ -128,11 +137,18 @@ func NewFinanceRepository(jsonRepository interfaces.JSONFileRepository, paymentS
 		return nil, err
 	}
 	imtoPath := ""
-	if len(internationalMoneyTransferOperatorsPath) > 1 {
-		return nil, fmt.Errorf("international money transfer operators path accepts at most one value")
+	if len(datasetPaths) > 7 {
+		return nil, fmt.Errorf("finance dataset paths accept at most seven values")
 	}
-	if len(internationalMoneyTransferOperatorsPath) == 1 {
-		imtoPath, err = validateFinanceDatasetPath(internationalMoneyTransferOperatorsPath[0])
+	if len(datasetPaths) > 0 {
+		imtoPath, err = validateFinanceDatasetPath(datasetPaths[0])
+		if err != nil {
+			return nil, err
+		}
+	}
+	paths := make([]string, 6)
+	for i := 1; i < len(datasetPaths); i++ {
+		paths[i-1], err = validateFinanceDatasetPath(datasetPaths[i])
 		if err != nil {
 			return nil, err
 		}
@@ -145,6 +161,13 @@ func NewFinanceRepository(jsonRepository interfaces.JSONFileRepository, paymentS
 		currenciesPath:                          financeCurrenciesRelativePath,
 		countriesAndAreasPath:                   financeCountriesAndAreasRelativePath,
 		commercialBanksPath:                     financeCommercialBanksRelativePath,
+		nonInterestFinancialInstitutionsPath:    paths[0],
+		merchantBanksPath:                       paths[1],
+		paymentServiceBanksPath:                 paths[2],
+		financialHoldingCompaniesPath:           paths[3],
+		developmentFinanceInstitutionsPath:      paths[4],
+		primaryMortgageInstitutionsPath:         paths[5],
+		regulatedCache:                          make(map[string]any),
 	}, nil
 }
 

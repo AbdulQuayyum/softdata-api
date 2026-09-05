@@ -1,8 +1,8 @@
 [
-  {"id":"alternative-bank","name":"Alternative Bank Limited","country_code":"NG"},
-  {"id":"jaiz-bank","name":"Jaiz Bank Plc","country_code":"NG"},
-  {"id":"lotus-bank","name":"Lotus Bank Ltd","country_code":"NG"},
-  {"id":"mint-microfinance-bank","name":"Mint Microfinance Bank Limited","country_code":"NG"},
-  {"id":"summit-bank","name":"Summit Bank Limited","country_code":"NG"},
-  {"id":"taj-bank","name":"TAJ Bank Limited","country_code":"NG"}
+  {"id":"alternative-bank","name":"Alternative Bank Limited","website_url":"https://altbank.ng/","logo_url":"/v1/assets/financial-institutions/ng/non-interest/alternative-bank.png","country_code":"NG"},
+  {"id":"jaiz-bank","name":"Jaiz Bank Plc","website_url":"https://jaizbankplc.com/","logo_url":"/v1/assets/financial-institutions/ng/non-interest/jaiz-bank.png","country_code":"NG"},
+  {"id":"lotus-bank","name":"Lotus Bank Ltd","website_url":"https://www.lotusbank.com/","logo_url":"/v1/assets/financial-institutions/ng/non-interest/lotus-bank.png","country_code":"NG"},
+  {"id":"mint-microfinance-bank","name":"Mint Microfinance Bank Limited","website_url":"https://mintng.com/","logo_url":"/v1/assets/financial-institutions/ng/non-interest/mint-microfinance-bank.png","country_code":"NG"},
+  {"id":"summit-bank","name":"Summit Bank Limited","website_url":"https://summitbankng.com/","logo_url":"/v1/assets/financial-institutions/ng/non-interest/summit-bank.png","country_code":"NG"},
+  {"id":"taj-bank","name":"TAJBank Limited","website_url":"https://www.tajbank.com/","logo_url":"/v1/assets/financial-institutions/ng/non-interest/taj-bank.png","country_code":"NG"}
 ]

@@ -1,7 +1,7 @@
 [
-  {"id":"9-psb","name":"9 PSB Ltd","country_code":"NG"},
-  {"id":"hope-psb","name":"Hope PSB Ltd","country_code":"NG"},
-  {"id":"momo-payment-service-bank","name":"MoMo Payment Service Bank","country_code":"NG"},
-  {"id":"moneymaster-psb","name":"MoneyMaster PSB Ltd","country_code":"NG"},
-  {"id":"smartcash-psb","name":"SmartCash PSB Limited","country_code":"NG"}
+  {"id":"9-psb","name":"9 PSB Ltd","website_url":"https://9psb.com.ng/","logo_url":"/v1/assets/financial-institutions/ng/payment-service-banks/9-psb.png","country_code":"NG"},
+  {"id":"hope-psb","name":"Hope PSB Ltd","website_url":"https://hopepsbank.com/","logo_url":"/v1/assets/financial-institutions/ng/payment-service-banks/hope-psb.png","country_code":"NG"},
+  {"id":"momo-payment-service-bank","name":"MoMo Payment Service Bank","website_url":"https://www.momo.ng/","logo_url":"/v1/assets/financial-institutions/ng/payment-service-banks/momo-payment-service-bank.png","country_code":"NG"},
+  {"id":"moneymaster-psb","name":"MoneyMaster PSB Ltd","website_url":"https://moneymasterpsb.com/","logo_url":"/v1/assets/financial-institutions/ng/payment-service-banks/moneymaster-psb.png","country_code":"NG"},
+  {"id":"smartcash-psb","name":"SmartCash PSB Limited","website_url":"https://smartcashpsb.ng/","logo_url":"/v1/assets/financial-institutions/ng/payment-service-banks/smartcash-psb.png","country_code":"NG"}
 ]

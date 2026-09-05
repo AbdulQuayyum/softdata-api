@@ -21,6 +21,112 @@ type financeService interface {
 	GetCurrency(context.Context, string) (models.Currency, error)
 	ListCommercialBanks(context.Context) ([]models.CommercialBank, error)
 	GetCommercialBank(context.Context, string) (models.CommercialBank, error)
+	ListNonInterestFinancialInstitutions(context.Context) ([]models.NonInterestInstitution, error)
+	GetNonInterestFinancialInstitution(context.Context, string) (models.NonInterestInstitution, error)
+	ListMerchantBanks(context.Context) ([]models.MerchantBank, error)
+	GetMerchantBank(context.Context, string) (models.MerchantBank, error)
+	ListPaymentServiceBanks(context.Context) ([]models.PaymentServiceBank, error)
+	GetPaymentServiceBank(context.Context, string) (models.PaymentServiceBank, error)
+	ListFinancialHoldingCompanies(context.Context) ([]models.FinancialHoldingCompany, error)
+	GetFinancialHoldingCompany(context.Context, string) (models.FinancialHoldingCompany, error)
+	ListDevelopmentFinanceInstitutions(context.Context) ([]models.DevelopmentFinanceInstitution, error)
+	GetDevelopmentFinanceInstitution(context.Context, string) (models.DevelopmentFinanceInstitution, error)
+	ListPrimaryMortgageInstitutions(context.Context) ([]models.PrimaryMortgageInstitution, error)
+	GetPrimaryMortgageInstitution(context.Context, string) (models.PrimaryMortgageInstitution, error)
+}
+
+func writeFinanceList[T any](h *FinanceHandler, w http.ResponseWriter, r *http.Request, list func(context.Context) ([]T, error)) {
+	if !allowMethod(w, r, http.MethodGet) {
+		return
+	}
+	rows, err := list(r.Context())
+	if err != nil {
+		_ = response.Error(w, err, requestIDFromContext(r.Context()))
+		return
+	}
+	_ = response.List(w, http.StatusOK, rows)
+}
+
+func writeFinanceDetail[T any](h *FinanceHandler, w http.ResponseWriter, r *http.Request, field string, validate func(string) error, get func(context.Context, string) (T, error)) {
+	if !allowMethod(w, r, http.MethodGet) {
+		return
+	}
+	requestID := requestIDFromContext(r.Context())
+	id := r.PathValue(field)
+	if err := validate(id); err != nil {
+		if validationErr, ok := validationErrorsFrom(err); ok {
+			_ = response.Validation(w, requestID, validationErrorsToResponse(validationErr))
+			return
+		}
+		_ = response.Error(w, err, requestID)
+		return
+	}
+	row, err := get(r.Context(), id)
+	if err != nil {
+		_ = response.Error(w, err, requestID)
+		return
+	}
+	_ = response.Success(w, http.StatusOK, row)
+}
+
+// ListNonInterestFinancialInstitutions handles GET /v1/finance/non-interest-financial-institutions.
+func (h *FinanceHandler) ListNonInterestFinancialInstitutions(w http.ResponseWriter, r *http.Request) {
+	writeFinanceList(h, w, r, h.service.ListNonInterestFinancialInstitutions)
+}
+
+// GetNonInterestFinancialInstitution handles GET /v1/finance/non-interest-financial-institutions/{institution_id}.
+func (h *FinanceHandler) GetNonInterestFinancialInstitution(w http.ResponseWriter, r *http.Request) {
+	writeFinanceDetail(h, w, r, "institution_id", validators.ValidateNonInterestFinancialInstitutionID, h.service.GetNonInterestFinancialInstitution)
+}
+
+// ListMerchantBanks handles GET /v1/finance/merchant-banks.
+func (h *FinanceHandler) ListMerchantBanks(w http.ResponseWriter, r *http.Request) {
+	writeFinanceList(h, w, r, h.service.ListMerchantBanks)
+}
+
+// GetMerchantBank handles GET /v1/finance/merchant-banks/{bank_id}.
+func (h *FinanceHandler) GetMerchantBank(w http.ResponseWriter, r *http.Request) {
+	writeFinanceDetail(h, w, r, "bank_id", validators.ValidateMerchantBankID, h.service.GetMerchantBank)
+}
+
+// ListPaymentServiceBanks handles GET /v1/finance/payment-service-banks.
+func (h *FinanceHandler) ListPaymentServiceBanks(w http.ResponseWriter, r *http.Request) {
+	writeFinanceList(h, w, r, h.service.ListPaymentServiceBanks)
+}
+
+// GetPaymentServiceBank handles GET /v1/finance/payment-service-banks/{bank_id}.
+func (h *FinanceHandler) GetPaymentServiceBank(w http.ResponseWriter, r *http.Request) {
+	writeFinanceDetail(h, w, r, "bank_id", validators.ValidatePaymentServiceBankID, h.service.GetPaymentServiceBank)
+}
+
+// ListFinancialHoldingCompanies handles GET /v1/finance/financial-holding-companies.
+func (h *FinanceHandler) ListFinancialHoldingCompanies(w http.ResponseWriter, r *http.Request) {
+	writeFinanceList(h, w, r, h.service.ListFinancialHoldingCompanies)
+}
+
+// GetFinancialHoldingCompany handles GET /v1/finance/financial-holding-companies/{company_id}.
+func (h *FinanceHandler) GetFinancialHoldingCompany(w http.ResponseWriter, r *http.Request) {
+	writeFinanceDetail(h, w, r, "company_id", validators.ValidateFinancialHoldingCompanyID, h.service.GetFinancialHoldingCompany)
+}
+
+// ListDevelopmentFinanceInstitutions handles GET /v1/finance/development-finance-institutions.
+func (h *FinanceHandler) ListDevelopmentFinanceInstitutions(w http.ResponseWriter, r *http.Request) {
+	writeFinanceList(h, w, r, h.service.ListDevelopmentFinanceInstitutions)
+}
+
+// GetDevelopmentFinanceInstitution handles GET /v1/finance/development-finance-institutions/{institution_id}.
+func (h *FinanceHandler) GetDevelopmentFinanceInstitution(w http.ResponseWriter, r *http.Request) {
+	writeFinanceDetail(h, w, r, "institution_id", validators.ValidateDevelopmentFinanceInstitutionID, h.service.GetDevelopmentFinanceInstitution)
+}
+
+// ListPrimaryMortgageInstitutions handles GET /v1/finance/primary-mortgage-institutions.
+func (h *FinanceHandler) ListPrimaryMortgageInstitutions(w http.ResponseWriter, r *http.Request) {
+	writeFinanceList(h, w, r, h.service.ListPrimaryMortgageInstitutions)
+}
+
+// GetPrimaryMortgageInstitution handles GET /v1/finance/primary-mortgage-institutions/{institution_id}.
+func (h *FinanceHandler) GetPrimaryMortgageInstitution(w http.ResponseWriter, r *http.Request) {
+	writeFinanceDetail(h, w, r, "institution_id", validators.ValidatePrimaryMortgageInstitutionID, h.service.GetPrimaryMortgageInstitution)
 }
 
 // ListCommercialBanks handles GET /v1/finance/commercial-banks.

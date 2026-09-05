@@ -14,6 +14,27 @@ var financeCurrencyIDPattern = regexp.MustCompile(`^[a-z]{3}$`)
 var financeCurrencyCountryAreaIDPattern = regexp.MustCompile(`^[a-z]{2}$`)
 var financeCommercialBankIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)+$`)
 
+var approvedRegulatedFinanceIDs = map[string]map[string]struct{}{
+	"non_interest": {
+		"alternative-bank": {}, "jaiz-bank": {}, "lotus-bank": {}, "mint-microfinance-bank": {}, "summit-bank": {}, "taj-bank": {},
+	},
+	"merchant": {
+		"coronation-merchant-bank": {}, "fsdh-merchant-bank": {}, "greenwich-merchant-bank": {}, "quest-merchant-bank": {}, "rand-merchant-bank": {}, "stable-microfinance-bank": {},
+	},
+	"payment_service": {
+		"9-psb": {}, "hope-psb": {}, "momo-payment-service-bank": {}, "moneymaster-psb": {}, "smartcash-psb": {},
+	},
+	"holding": {
+		"access-holdings": {}, "fcmb-group": {}, "first-holdco": {}, "fsdh-holding-company": {}, "guaranty-trust-holding-company": {}, "stanbic-ibtc-holdings": {}, "sterling-financial-holdings": {},
+	},
+	"development_finance": {
+		"bank-of-agriculture": {}, "bank-of-industry": {}, "development-bank-of-nigeria": {}, "federal-mortgage-bank-of-nigeria": {}, "national-credit-guarantee-company": {}, "nigeria-export-import-bank": {}, "nigerian-consumer-credit-corporation": {}, "the-infrastructure-bank": {},
+	},
+	"primary_mortgage": {
+		"abbey-mortgage-bank": {}, "adamawa-mortgage-bank": {}, "ag-homes": {}, "akwa-savings": {}, "brent-skyfield-savings": {}, "centage-savings-loans": {}, "city-code": {}, "coop-mortgage-bank": {}, "delta-trust-mortgage-finance": {}, "fha-homes": {}, "first-generation-homes": {}, "firsttrust-mortgage-bank": {}, "gateway-savings": {}, "global-trust": {}, "haggai-mortgage-bank": {}, "home-base-mortgage": {}, "imperial-homes": {}, "infinity-trust": {}, "jigawa-savings-loans": {}, "jubilee-life-mortgage-bank": {}, "kebbi-state-homes": {}, "lagos-building-investment": {}, "living-trust-mortgage-bank": {}, "mayfresh-mortgage-bank": {}, "mgsl-mortgage-bank": {}, "mutual-alliance": {}, "nigeria-police-mortgage-bank": {}, "platinum-mortgage-bank": {}, "prudential-mortgage-bank": {}, "refuge-mortgage-bank": {}, "stb-mortgage-bank": {},
+	},
+}
+
 var approvedCommercialBankIDs = map[string]struct{}{
 	"access-bank": {}, "alpha-morgan-bank": {}, "citibank-nigeria": {}, "ecobank-nigeria": {}, "fidelity-bank": {},
 	"first-bank-of-nigeria": {}, "first-city-monument-bank": {}, "globus-bank": {}, "guaranty-trust-bank": {}, "keystone-bank": {},
@@ -325,6 +346,50 @@ func ValidateCommercialBankID(value string) error {
 		return invalidField("bank_id", "Bank ID must reference a supported commercial bank.")
 	}
 	return nil
+}
+
+func validateApprovedRegulatedFinanceID(value, resource, field, label string) error {
+	value = strings.TrimSpace(value)
+	if value == "" {
+		return requiredError(field, label+" is required.")
+	}
+	if !financeCommercialBankIDPattern.MatchString(value) || uuidLikePattern.MatchString(value) {
+		return invalidField(field, label+" must be a valid lowercase public slug.")
+	}
+	if _, ok := approvedRegulatedFinanceIDs[resource][value]; !ok {
+		return invalidField(field, label+" must reference a supported public record.")
+	}
+	return nil
+}
+
+// ValidateNonInterestFinancialInstitutionID validates an approved non-interest institution ID.
+func ValidateNonInterestFinancialInstitutionID(value string) error {
+	return validateApprovedRegulatedFinanceID(value, "non_interest", "institution_id", "Non-interest financial institution ID")
+}
+
+// ValidateMerchantBankID validates an approved merchant-bank ID.
+func ValidateMerchantBankID(value string) error {
+	return validateApprovedRegulatedFinanceID(value, "merchant", "bank_id", "Merchant bank ID")
+}
+
+// ValidatePaymentServiceBankID validates an approved payment-service-bank ID.
+func ValidatePaymentServiceBankID(value string) error {
+	return validateApprovedRegulatedFinanceID(value, "payment_service", "bank_id", "Payment service bank ID")
+}
+
+// ValidateFinancialHoldingCompanyID validates an approved financial holding-company ID.
+func ValidateFinancialHoldingCompanyID(value string) error {
+	return validateApprovedRegulatedFinanceID(value, "holding", "company_id", "Financial holding company ID")
+}
+
+// ValidateDevelopmentFinanceInstitutionID validates an approved development-finance institution ID.
+func ValidateDevelopmentFinanceInstitutionID(value string) error {
+	return validateApprovedRegulatedFinanceID(value, "development_finance", "institution_id", "Development finance institution ID")
+}
+
+// ValidatePrimaryMortgageInstitutionID validates an approved primary-mortgage institution ID.
+func ValidatePrimaryMortgageInstitutionID(value string) error {
+	return validateApprovedRegulatedFinanceID(value, "primary_mortgage", "institution_id", "Primary mortgage institution ID")
 }
 
 // ValidatePaymentServiceProviderType validates the documented public institution type.

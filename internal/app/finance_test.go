@@ -77,6 +77,43 @@ func (s *financeServiceStub) GetCommercialBank(context.Context, string) (models.
 	return models.CommercialBank{}, nil
 }
 
+func (s *financeServiceStub) ListNonInterestFinancialInstitutions(context.Context) ([]models.NonInterestInstitution, error) {
+	return []models.NonInterestInstitution{}, nil
+}
+func (s *financeServiceStub) GetNonInterestFinancialInstitution(context.Context, string) (models.NonInterestInstitution, error) {
+	return models.NonInterestInstitution{}, nil
+}
+func (s *financeServiceStub) ListMerchantBanks(context.Context) ([]models.MerchantBank, error) {
+	return []models.MerchantBank{}, nil
+}
+func (s *financeServiceStub) GetMerchantBank(context.Context, string) (models.MerchantBank, error) {
+	return models.MerchantBank{}, nil
+}
+func (s *financeServiceStub) ListPaymentServiceBanks(context.Context) ([]models.PaymentServiceBank, error) {
+	return []models.PaymentServiceBank{}, nil
+}
+func (s *financeServiceStub) GetPaymentServiceBank(context.Context, string) (models.PaymentServiceBank, error) {
+	return models.PaymentServiceBank{}, nil
+}
+func (s *financeServiceStub) ListFinancialHoldingCompanies(context.Context) ([]models.FinancialHoldingCompany, error) {
+	return []models.FinancialHoldingCompany{}, nil
+}
+func (s *financeServiceStub) GetFinancialHoldingCompany(context.Context, string) (models.FinancialHoldingCompany, error) {
+	return models.FinancialHoldingCompany{}, nil
+}
+func (s *financeServiceStub) ListDevelopmentFinanceInstitutions(context.Context) ([]models.DevelopmentFinanceInstitution, error) {
+	return []models.DevelopmentFinanceInstitution{}, nil
+}
+func (s *financeServiceStub) GetDevelopmentFinanceInstitution(context.Context, string) (models.DevelopmentFinanceInstitution, error) {
+	return models.DevelopmentFinanceInstitution{}, nil
+}
+func (s *financeServiceStub) ListPrimaryMortgageInstitutions(context.Context) ([]models.PrimaryMortgageInstitution, error) {
+	return []models.PrimaryMortgageInstitution{}, nil
+}
+func (s *financeServiceStub) GetPrimaryMortgageInstitution(context.Context, string) (models.PrimaryMortgageInstitution, error) {
+	return models.PrimaryMortgageInstitution{}, nil
+}
+
 type financeRepositoryStub struct{}
 
 func (s *financeRepositoryStub) ListPaymentServiceProviders(context.Context) ([]models.PaymentServiceProvider, error) {
@@ -113,6 +150,43 @@ func (s *financeRepositoryStub) ListCommercialBanks(context.Context) ([]models.C
 
 func (s *financeRepositoryStub) GetCommercialBank(context.Context, string) (models.CommercialBank, error) {
 	return models.CommercialBank{}, nil
+}
+
+func (s *financeRepositoryStub) ListNonInterestFinancialInstitutions(context.Context) ([]models.NonInterestInstitution, error) {
+	return []models.NonInterestInstitution{}, nil
+}
+func (s *financeRepositoryStub) GetNonInterestFinancialInstitution(context.Context, string) (models.NonInterestInstitution, error) {
+	return models.NonInterestInstitution{}, nil
+}
+func (s *financeRepositoryStub) ListMerchantBanks(context.Context) ([]models.MerchantBank, error) {
+	return []models.MerchantBank{}, nil
+}
+func (s *financeRepositoryStub) GetMerchantBank(context.Context, string) (models.MerchantBank, error) {
+	return models.MerchantBank{}, nil
+}
+func (s *financeRepositoryStub) ListPaymentServiceBanks(context.Context) ([]models.PaymentServiceBank, error) {
+	return []models.PaymentServiceBank{}, nil
+}
+func (s *financeRepositoryStub) GetPaymentServiceBank(context.Context, string) (models.PaymentServiceBank, error) {
+	return models.PaymentServiceBank{}, nil
+}
+func (s *financeRepositoryStub) ListFinancialHoldingCompanies(context.Context) ([]models.FinancialHoldingCompany, error) {
+	return []models.FinancialHoldingCompany{}, nil
+}
+func (s *financeRepositoryStub) GetFinancialHoldingCompany(context.Context, string) (models.FinancialHoldingCompany, error) {
+	return models.FinancialHoldingCompany{}, nil
+}
+func (s *financeRepositoryStub) ListDevelopmentFinanceInstitutions(context.Context) ([]models.DevelopmentFinanceInstitution, error) {
+	return []models.DevelopmentFinanceInstitution{}, nil
+}
+func (s *financeRepositoryStub) GetDevelopmentFinanceInstitution(context.Context, string) (models.DevelopmentFinanceInstitution, error) {
+	return models.DevelopmentFinanceInstitution{}, nil
+}
+func (s *financeRepositoryStub) ListPrimaryMortgageInstitutions(context.Context) ([]models.PrimaryMortgageInstitution, error) {
+	return []models.PrimaryMortgageInstitution{}, nil
+}
+func (s *financeRepositoryStub) GetPrimaryMortgageInstitution(context.Context, string) (models.PrimaryMortgageInstitution, error) {
+	return models.PrimaryMortgageInstitution{}, nil
 }
 
 type financeJSONRepoStub struct{}

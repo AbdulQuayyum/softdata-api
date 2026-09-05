@@ -66,6 +66,8 @@ datasets/
 └── LICENSE.md
 ```
 
+Regulated-finance logo assets are embedded under `assets/financial-institutions/ng/` by dataset category. Baseline PNGs are pinned to the Nigerian-Bank-Logos repository commit and official-source PNGs are separately identified in `assets/financial-institutions/ng/ATTRIBUTION.md`; missing or unapproved logos remain omitted.
+
 ## What Each File Is For
 
 - `geography/geopolitical_zones.json` is the six-zone catalogue.

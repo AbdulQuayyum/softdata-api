@@ -144,6 +144,43 @@ func (s *financeRepositoryStub) GetCommercialBank(_ context.Context, bankID stri
 	return models.CommercialBank{}, interfaces.ErrCommercialBankNotFound
 }
 
+func (s *financeRepositoryStub) ListNonInterestFinancialInstitutions(context.Context) ([]models.NonInterestInstitution, error) {
+	return []models.NonInterestInstitution{}, nil
+}
+func (s *financeRepositoryStub) GetNonInterestFinancialInstitution(context.Context, string) (models.NonInterestInstitution, error) {
+	return models.NonInterestInstitution{}, nil
+}
+func (s *financeRepositoryStub) ListMerchantBanks(context.Context) ([]models.MerchantBank, error) {
+	return []models.MerchantBank{}, nil
+}
+func (s *financeRepositoryStub) GetMerchantBank(context.Context, string) (models.MerchantBank, error) {
+	return models.MerchantBank{}, nil
+}
+func (s *financeRepositoryStub) ListPaymentServiceBanks(context.Context) ([]models.PaymentServiceBank, error) {
+	return []models.PaymentServiceBank{}, nil
+}
+func (s *financeRepositoryStub) GetPaymentServiceBank(context.Context, string) (models.PaymentServiceBank, error) {
+	return models.PaymentServiceBank{}, nil
+}
+func (s *financeRepositoryStub) ListFinancialHoldingCompanies(context.Context) ([]models.FinancialHoldingCompany, error) {
+	return []models.FinancialHoldingCompany{}, nil
+}
+func (s *financeRepositoryStub) GetFinancialHoldingCompany(context.Context, string) (models.FinancialHoldingCompany, error) {
+	return models.FinancialHoldingCompany{}, nil
+}
+func (s *financeRepositoryStub) ListDevelopmentFinanceInstitutions(context.Context) ([]models.DevelopmentFinanceInstitution, error) {
+	return []models.DevelopmentFinanceInstitution{}, nil
+}
+func (s *financeRepositoryStub) GetDevelopmentFinanceInstitution(context.Context, string) (models.DevelopmentFinanceInstitution, error) {
+	return models.DevelopmentFinanceInstitution{}, nil
+}
+func (s *financeRepositoryStub) ListPrimaryMortgageInstitutions(context.Context) ([]models.PrimaryMortgageInstitution, error) {
+	return []models.PrimaryMortgageInstitution{}, nil
+}
+func (s *financeRepositoryStub) GetPrimaryMortgageInstitution(context.Context, string) (models.PrimaryMortgageInstitution, error) {
+	return models.PrimaryMortgageInstitution{}, nil
+}
+
 func TestFinanceServiceListAllAndTypeAndLookup(t *testing.T) {
 	t.Parallel()
 

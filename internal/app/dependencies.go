@@ -7,10 +7,12 @@ import (
 	"log/slog"
 	"net/http"
 	"net/url"
+	"reflect"
 	"regexp"
 	"strings"
 	"time"
 
+	"github.com/AbdulQuayyum/softdata-api/datasets/assets"
 	"github.com/AbdulQuayyum/softdata-api/internal/config"
 	"github.com/AbdulQuayyum/softdata-api/internal/database"
 	"github.com/AbdulQuayyum/softdata-api/internal/handlers"
@@ -42,6 +44,12 @@ const (
 	financePaymentServiceProvidersRelativePath             = "finance/payment_service_providers.json"
 	financeInternationalMoneyTransferOperatorsRelativePath = "finance/international_money_transfer_operators.json"
 	financeCommercialBanksRelativePath                     = "finance/commercial_banks.json"
+	financeNonInterestFinancialInstitutionsRelativePath    = "finance/non_interest_institutions.json"
+	financeMerchantBanksRelativePath                       = "finance/merchant_banks.json"
+	financePaymentServiceBanksRelativePath                 = "finance/payment_service_banks.json"
+	financeFinancialHoldingCompaniesRelativePath           = "finance/financial_holding_companies.json"
+	financeDevelopmentFinanceInstitutionsRelativePath      = "finance/development_finance_institutions.json"
+	financePrimaryMortgageInstitutionsRelativePath         = "finance/primary_mortgage_institutions.json"
 )
 
 var approvedUniversityStateIDs = map[string]struct{}{
@@ -149,9 +157,9 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	if err != nil {
 		return appDependencies{}, err
 	}
-	financeService, err := buildFinanceServiceFromJSONRepository(ctx, jsonRepository,
-		func(repository interfaces.JSONFileRepository, paymentServiceProvidersPath string) (interfaces.FinanceRepository, error) {
-			return fileRepo.NewFinanceRepository(repository, paymentServiceProvidersPath, financeInternationalMoneyTransferOperatorsRelativePath)
+	financeService, err := buildFinanceServiceFromJSONRepositoryWithRegulatedDatasets(ctx, jsonRepository,
+		func(repository interfaces.JSONFileRepository, paymentServiceProvidersPath string, datasetPaths ...string) (interfaces.FinanceRepository, error) {
+			return fileRepo.NewFinanceRepository(repository, paymentServiceProvidersPath, datasetPaths...)
 		},
 		func(repository interfaces.FinanceRepository) (financeService, error) {
 			return services.NewFinanceService(repository)
@@ -362,6 +370,18 @@ type financeService interface {
 	GetCurrency(context.Context, string) (models.Currency, error)
 	ListCommercialBanks(context.Context) ([]models.CommercialBank, error)
 	GetCommercialBank(context.Context, string) (models.CommercialBank, error)
+	ListNonInterestFinancialInstitutions(context.Context) ([]models.NonInterestInstitution, error)
+	GetNonInterestFinancialInstitution(context.Context, string) (models.NonInterestInstitution, error)
+	ListMerchantBanks(context.Context) ([]models.MerchantBank, error)
+	GetMerchantBank(context.Context, string) (models.MerchantBank, error)
+	ListPaymentServiceBanks(context.Context) ([]models.PaymentServiceBank, error)
+	GetPaymentServiceBank(context.Context, string) (models.PaymentServiceBank, error)
+	ListFinancialHoldingCompanies(context.Context) ([]models.FinancialHoldingCompany, error)
+	GetFinancialHoldingCompany(context.Context, string) (models.FinancialHoldingCompany, error)
+	ListDevelopmentFinanceInstitutions(context.Context) ([]models.DevelopmentFinanceInstitution, error)
+	GetDevelopmentFinanceInstitution(context.Context, string) (models.DevelopmentFinanceInstitution, error)
+	ListPrimaryMortgageInstitutions(context.Context) ([]models.PrimaryMortgageInstitution, error)
+	GetPrimaryMortgageInstitution(context.Context, string) (models.PrimaryMortgageInstitution, error)
 }
 
 func buildGeographyHandler(
@@ -602,6 +622,49 @@ func buildFinanceServiceFromJSONRepository(
 		return nil, err
 	}
 	if err := verifyCurrencyDataset(ctx, financeService); err != nil {
+		return nil, err
+	}
+	return financeService, nil
+}
+
+func buildFinanceServiceFromJSONRepositoryWithRegulatedDatasets(
+	ctx context.Context,
+	jsonRepository interfaces.JSONFileRepository,
+	newFinanceRepository func(interfaces.JSONFileRepository, string, ...string) (interfaces.FinanceRepository, error),
+	newFinanceService func(interfaces.FinanceRepository) (financeService, error),
+) (financeService, error) {
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if jsonRepository == nil {
+		return nil, fmt.Errorf("json repository is required")
+	}
+	if newFinanceRepository == nil {
+		return nil, fmt.Errorf("finance repository factory is required")
+	}
+	if newFinanceService == nil {
+		return nil, fmt.Errorf("finance service factory is required")
+	}
+	financeRepository, err := newFinanceRepository(jsonRepository, financePaymentServiceProvidersRelativePath, financeInternationalMoneyTransferOperatorsRelativePath,
+		financeNonInterestFinancialInstitutionsRelativePath, financeMerchantBanksRelativePath, financePaymentServiceBanksRelativePath,
+		financeFinancialHoldingCompaniesRelativePath, financeDevelopmentFinanceInstitutionsRelativePath, financePrimaryMortgageInstitutionsRelativePath)
+	if err != nil {
+		return nil, fmt.Errorf("initialize finance repository: %w", err)
+	}
+	financeService, err := newFinanceService(financeRepository)
+	if err != nil {
+		return nil, fmt.Errorf("initialize finance service: %w", err)
+	}
+	if err := verifyFinanceDataset(ctx, financeService); err != nil {
+		return nil, err
+	}
+	if err := verifyCommercialBankDataset(ctx, financeService); err != nil {
+		return nil, err
+	}
+	if err := verifyCurrencyDataset(ctx, financeService); err != nil {
+		return nil, err
+	}
+	if err := verifyRegulatedFinanceDatasets(ctx, financeService); err != nil {
 		return nil, err
 	}
 	return financeService, nil
@@ -1552,6 +1615,115 @@ func verifyCommercialBankDataset(ctx context.Context, service financeService) er
 			if bank.NIPCode != "" {
 				return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
 			}
+		}
+	}
+	return nil
+}
+
+func verifyRegulatedFinanceDatasets(ctx context.Context, service financeService) error {
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if service == nil {
+		return fmt.Errorf("verify regulated finance datasets: finance service is required")
+	}
+	datasets := []struct {
+		name     string
+		category string
+		want     int
+		list     func(context.Context) (any, error)
+		required []string
+		excluded map[string]struct{}
+	}{
+		{"non-interest financial institutions", "non-interest", 6, func(ctx context.Context) (any, error) { return service.ListNonInterestFinancialInstitutions(ctx) }, []string{"alternative-bank", "jaiz-bank", "lotus-bank"}, nil},
+		{"merchant banks", "merchant-banks", 6, func(ctx context.Context) (any, error) { return service.ListMerchantBanks(ctx) }, []string{"coronation-merchant-bank", "quest-merchant-bank"}, nil},
+		{"payment service banks", "payment-service-banks", 5, func(ctx context.Context) (any, error) { return service.ListPaymentServiceBanks(ctx) }, []string{"9-psb", "hope-psb", "smartcash-psb"}, nil},
+		{"financial holding companies", "holding-companies", 7, func(ctx context.Context) (any, error) { return service.ListFinancialHoldingCompanies(ctx) }, []string{"access-holdings", "fcmb-group", "first-holdco"}, nil},
+		{"development finance institutions", "development-finance", 8, func(ctx context.Context) (any, error) { return service.ListDevelopmentFinanceInstitutions(ctx) }, []string{"bank-of-industry", "development-bank-of-nigeria", "federal-mortgage-bank-of-nigeria"}, nil},
+		{"primary mortgage institutions", "primary-mortgage", 31, func(ctx context.Context) (any, error) { return service.ListPrimaryMortgageInstitutions(ctx) }, []string{"akwa-savings", "firsttrust-mortgage-bank", "living-trust-mortgage-bank"}, map[string]struct{}{"aso-savings-loans": {}, "trustbond-mortgage-bank": {}}},
+	}
+	total := 0
+	for _, dataset := range datasets {
+		if err := ctx.Err(); err != nil {
+			return err
+		}
+		rows, err := dataset.list(ctx)
+		if err != nil {
+			if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+				return err
+			}
+			return fmt.Errorf("verify %s dataset: %w", dataset.name, err)
+		}
+		if err := verifyRegulatedFinanceRows(ctx, dataset.name, dataset.category, rows, dataset.want, dataset.required, dataset.excluded); err != nil {
+			return err
+		}
+		total += dataset.want
+	}
+	if total != 63 {
+		return fmt.Errorf("verify regulated finance datasets: %w", interfaces.ErrInvalidDatasetFile)
+	}
+	return nil
+}
+
+func verifyRegulatedFinanceRows(ctx context.Context, name, category string, rows any, want int, required []string, excluded map[string]struct{}) error {
+	v := reflect.ValueOf(rows)
+	if !v.IsValid() || v.Kind() != reflect.Slice || v.Len() != want {
+		return fmt.Errorf("verify %s dataset: %w", name, interfaces.ErrInvalidDatasetFile)
+	}
+	seen := make(map[string]struct{}, v.Len())
+	for i := 0; i < v.Len(); i++ {
+		if err := ctx.Err(); err != nil {
+			return err
+		}
+		row := v.Index(i)
+		id := row.FieldByName("ID").String()
+		institutionName := row.FieldByName("Name").String()
+		country := row.FieldByName("CountryCode").String()
+		if id == "" || institutionName == "" || country != "NG" {
+			return fmt.Errorf("verify %s dataset: %w", name, interfaces.ErrInvalidDatasetFile)
+		}
+		if _, ok := seen[id]; ok {
+			return fmt.Errorf("verify %s dataset: %w", name, interfaces.ErrInvalidDatasetFile)
+		}
+		if _, ok := excluded[id]; ok {
+			return fmt.Errorf("verify %s dataset: %w", name, interfaces.ErrInvalidDatasetFile)
+		}
+		if i > 0 {
+			previous := v.Index(i - 1)
+			previousName := previous.FieldByName("Name").String()
+			previousID := previous.FieldByName("ID").String()
+			if strings.ToLower(previousName) > strings.ToLower(institutionName) || (strings.EqualFold(previousName, institutionName) && previousID > id) {
+				return fmt.Errorf("verify %s dataset: %w", name, interfaces.ErrInvalidDatasetFile)
+			}
+		}
+		website := row.FieldByName("WebsiteURL").String()
+		if website != "" {
+			parsed, err := url.Parse(website)
+			if err != nil || parsed.Scheme != "https" || parsed.Host == "" || parsed.RawQuery != "" || parsed.Fragment != "" {
+				return fmt.Errorf("verify %s dataset: %w", name, interfaces.ErrInvalidDatasetFile)
+			}
+		}
+		logo := row.FieldByName("LogoURL").String()
+		if logo != "" {
+			expected := "/v1/assets/financial-institutions/ng/" + category + "/" + id + ".png"
+			if logo != expected {
+				return fmt.Errorf("verify %s dataset: %w", name, interfaces.ErrInvalidDatasetFile)
+			}
+			if _, err := assets.FinancialInstitutionLogo(category, id, "png"); err != nil {
+				return fmt.Errorf("verify %s dataset: %w", name, interfaces.ErrInvalidDatasetFile)
+			}
+		}
+		if field := row.FieldByName("CBNCode"); field.IsValid() && field.String() != "" && !startupCommercialBankCBNCodePattern.MatchString(field.String()) {
+			return fmt.Errorf("verify %s dataset: %w", name, interfaces.ErrInvalidDatasetFile)
+		}
+		if field := row.FieldByName("NIPCode"); field.IsValid() && field.String() != "" && !startupCommercialBankNIPCodePattern.MatchString(field.String()) {
+			return fmt.Errorf("verify %s dataset: %w", name, interfaces.ErrInvalidDatasetFile)
+		}
+		seen[id] = struct{}{}
+	}
+	for _, id := range required {
+		if _, ok := seen[id]; !ok {
+			return fmt.Errorf("verify %s dataset: %w", name, interfaces.ErrInvalidDatasetFile)
 		}
 	}
 	return nil

@@ -130,9 +130,13 @@ The following dataset packages preserve the six supplied CBN category exports as
 - `ng-payment-service-banks`: `datasets/finance/payment_service_banks.json` (5 records)
 - `ng-financial-holding-companies`: `datasets/finance/financial_holding_companies.json` (7 records)
 - `ng-development-finance-institutions`: `datasets/finance/development_finance_institutions.json` (8 records)
-- `ng-primary-mortgage-institutions`: `datasets/finance/primary_mortgage_institutions.json` (33 records)
+- `ng-primary-mortgage-institutions`: `datasets/finance/primary_mortgage_institutions.json` (31 records)
 
-The source workbooks are `Export (9).xlsx`, `Export (6).xlsx`, `Export (10).xlsx`, `Export (5).xlsx`, `Export (2).xlsx` and `Export (11).xlsx`, respectively. The non-interest package uses the broader financial-institutions key because its CBN snapshot includes Mint Microfinance Bank; the source classification is preserved rather than silently dropping the row. Holding companies remain separate from their bank subsidiaries and never inherit subsidiary identifiers. Logos are not included in these packages.
+The source workbooks are `Export (9).xlsx`, `Export (6).xlsx`, `Export (10).xlsx`, `Export (5).xlsx`, `Export (2).xlsx` and `Export (11).xlsx`, respectively. The non-interest package uses the broader financial-institutions key because its CBN snapshot includes Mint Microfinance Bank; the source classification is preserved rather than silently dropping the row. The PMI snapshot excludes ASO Savings and Loans after liquidation and reconciles documented successor names. Holding companies remain separate from their bank subsidiaries and never inherit subsidiary identifiers.
+
+Verified PNG logos are embedded under `datasets/assets/financial-institutions/ng/` where exact institution identity and source hashes are recorded. Baseline assets use the pinned upstream MIT source; official-source marks are separately documented and are not claimed under SoftData CC BY 4.0. Current coverage is 6/6 non-interest, 6/6 merchant, 5/5 payment-service, 5/7 holding-company, 8/8 DFI and 29/31 primary-mortgage records. Missing or unapproved logos, websites and identifiers remain omitted rather than inferred.
+
+Across the six datasets, the current decoded coverage is 63/63 websites and 63/63 logos. This comprises 62 independently sourced institution marks and one disclosed Federal Housing Authority parent-brand representative mark for the wholly owned FHA Homes subsidiary. Akwa Savings was reconciled to current Ibom Mortgage Bank while retaining the stable dataset ID; TrustBond Mortgage Bank was removed after the FirstTrust merger was confirmed.
 
 ### `ng-universities`
 

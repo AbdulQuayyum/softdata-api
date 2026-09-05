@@ -77,6 +77,16 @@ softdata-api/
 │   │   │       ├── LICENSES/
 │   │   │       │   └── Nigerian-Bank-Logos-MIT.txt
 │   │   │       └── *.png                  # 28 vendored bank assets
+│   │   ├── financial_institution_logos.go
+│   │   ├── financial_institutions_test.go
+│   │   └── financial-institutions/
+│   │       ├── LICENSE
+│   │       └── ng/
+│   │           ├── ATTRIBUTION.md
+│   │           ├── merchant-banks/*.png
+│   │           ├── non-interest/*.png
+│   │           ├── payment-service-banks/*.png
+│   │           └── primary-mortgage/*.png
 │   │   └── flags/
 │   │       ├── ATTRIBUTION.md
 │   │       ├── LICENSE
