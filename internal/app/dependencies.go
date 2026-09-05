@@ -172,7 +172,7 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	if err != nil {
 		return appDependencies{}, err
 	}
-	geographyHandler, err := handlers.NewGeographyHandler(geographyService, profileService)
+	geographyHandler, err := handlers.NewGeographyHandlerWithPublicAPIURL(geographyService, cfg.PublicAPIURL, profileService)
 	if err != nil {
 		return appDependencies{}, err
 	}
@@ -190,7 +190,7 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	if err != nil {
 		return appDependencies{}, err
 	}
-	financeHandler, err := handlers.NewFinanceHandler(financeService)
+	financeHandler, err := handlers.NewFinanceHandlerWithPublicAPIURL(financeService, cfg.PublicAPIURL)
 	if err != nil {
 		return appDependencies{}, err
 	}

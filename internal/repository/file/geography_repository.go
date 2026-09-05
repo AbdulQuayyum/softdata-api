@@ -832,6 +832,9 @@ func validateCountryOrAreas(countries []models.CountryOrArea) error {
 		if country.FlagSVGURL != "/v1/assets/flags/"+country.ID+".svg" {
 			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
 		}
+		if country.FlagURL != country.FlagSVGURL {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
 		if country.ID == "aq" {
 			if country.CallingCodes != nil {
 				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)

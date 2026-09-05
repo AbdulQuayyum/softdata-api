@@ -50,6 +50,7 @@ type CountryOrArea struct {
 	CallingCodes           []string `json:"calling_codes,omitempty"`
 	FlagEmoji              string   `json:"flag_emoji"`
 	FlagSVGURL             string   `json:"flag_svg_url"`
+	FlagURL                string   `json:"flag_url,omitempty"`
 	RegionCode             string   `json:"region_code,omitempty"`
 	RegionName             string   `json:"region_name,omitempty"`
 	SubregionCode          string   `json:"subregion_code,omitempty"`
@@ -68,6 +69,7 @@ type CountryProfile struct {
 	CallingCodes           []string `json:"calling_codes,omitempty"`
 	FlagEmoji              string   `json:"flag_emoji"`
 	FlagSVGURL             string   `json:"flag_svg_url"`
+	FlagURL                string   `json:"flag_url,omitempty"`
 	RegionCode             string   `json:"region_code,omitempty"`
 	RegionName             string   `json:"region_name,omitempty"`
 	SubregionCode          string   `json:"subregion_code,omitempty"`

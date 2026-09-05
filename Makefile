@@ -4,7 +4,7 @@ SQLC_VERSION ?= v1.31.1
 MIGRATE_VERSION ?= v4.17.1
 
 SQLC := go run github.com/sqlc-dev/sqlc/cmd/sqlc@$(SQLC_VERSION)
-MIGRATE := go run github.com/golang-migrate/migrate/v4/cmd/migrate@$(MIGRATE_VERSION)
+MIGRATE := go run -tags 'postgres' github.com/golang-migrate/migrate/v4/cmd/migrate@$(MIGRATE_VERSION)
 
 migrate-up:
 	@if [ -z "$(DATABASE_URL)" ]; then echo "DATABASE_URL is required"; exit 1; fi

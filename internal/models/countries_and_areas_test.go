@@ -102,6 +102,7 @@ func TestWorldCountriesAndAreasDatasetMatchesApprovedManifest(t *testing.T) {
 		"calling_codes":            {},
 		"flag_emoji":               {},
 		"flag_svg_url":             {},
+		"flag_url":                 {},
 		"region_code":              {},
 		"region_name":              {},
 		"subregion_code":           {},
@@ -149,6 +150,9 @@ func TestWorldCountriesAndAreasDatasetMatchesApprovedManifest(t *testing.T) {
 		}
 		if row.FlagSVGURL != "/v1/assets/flags/"+row.ID+".svg" {
 			t.Fatalf("record %d has invalid flag svg url %q", i, row.FlagSVGURL)
+		}
+		if row.FlagURL != row.FlagSVGURL {
+			t.Fatalf("record %d has invalid flag url %q", i, row.FlagURL)
 		}
 		if row.ID == "aq" {
 			if row.CallingCodes != nil {
@@ -239,6 +243,9 @@ func TestWorldCountriesAndAreasDatasetMatchesApprovedManifest(t *testing.T) {
 		}
 		if _, ok := raw["flag_svg_url"]; !ok {
 			t.Fatalf("record %d should include flag_svg_url in public JSON", i)
+		}
+		if _, ok := raw["flag_url"]; !ok {
+			t.Fatalf("record %d should include flag_url in public JSON", i)
 		}
 	}
 
@@ -352,6 +359,7 @@ func TestWorldCountriesAndAreasMetadataSchemaAndNotice(t *testing.T) {
 		"251 calling code values",
 		"flag_emoji",
 		"flag_svg_url",
+		"flag_url",
 		"MIT-licensed flag-icons v7.5.0",
 		"statistical reference only",
 		"political recognition",
@@ -378,7 +386,7 @@ func TestWorldCountriesAndAreasMetadataSchemaAndNotice(t *testing.T) {
 		t.Fatal("schema should forbid additional properties")
 	}
 
-	wantRequired := []string{"id", "name", "alpha_2_code", "alpha_3_code", "numeric_code"}
+	wantRequired := []string{"id", "name", "alpha_2_code", "alpha_3_code", "numeric_code", "flag_url"}
 	sort.Strings(wantRequired)
 	if !reflect.DeepEqual(sortedStrings(schema.Items.Required), wantRequired) {
 		t.Fatalf("unexpected required fields: got %v want %v", sortedStrings(schema.Items.Required), wantRequired)
@@ -390,7 +398,7 @@ func TestWorldCountriesAndAreasMetadataSchemaAndNotice(t *testing.T) {
 		}
 	}
 
-	for _, field := range []string{"calling_codes", "flag_emoji", "flag_svg_url", "region_code", "region_name", "subregion_code", "subregion_name", "intermediate_region_code", "intermediate_region_name"} {
+	for _, field := range []string{"calling_codes", "flag_emoji", "flag_svg_url", "flag_url", "region_code", "region_name", "subregion_code", "subregion_name", "intermediate_region_code", "intermediate_region_name"} {
 		prop, ok := schema.Items.Properties[field]
 		if !ok {
 			t.Fatalf("schema missing optional property %q", field)
@@ -400,7 +408,7 @@ func TestWorldCountriesAndAreasMetadataSchemaAndNotice(t *testing.T) {
 			if prop.Type != "array" || !prop.UniqueItems || prop.MinItems != 1 || prop.Items == nil || prop.Items.Type != "string" || prop.Items.Pattern == "" {
 				t.Fatalf("schema optional property %q has unexpected shape: %#v", field, prop)
 			}
-		case "flag_emoji", "flag_svg_url", "region_code", "region_name", "subregion_code", "subregion_name", "intermediate_region_code", "intermediate_region_name":
+		case "flag_emoji", "flag_svg_url", "flag_url", "region_code", "region_name", "subregion_code", "subregion_name", "intermediate_region_code", "intermediate_region_name":
 			if prop.Type != "string" {
 				t.Fatalf("schema optional property %q has unexpected type %q", field, prop.Type)
 			}
