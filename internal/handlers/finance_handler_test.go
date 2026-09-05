@@ -122,6 +122,43 @@ func (s *financeHandlerStub) GetCommercialBank(ctx context.Context, bankID strin
 	return models.CommercialBank{}, services.ErrCommercialBankNotFound
 }
 
+func (s *financeHandlerStub) ListNonInterestFinancialInstitutions(context.Context) ([]models.NonInterestInstitution, error) {
+	return nil, nil
+}
+func (s *financeHandlerStub) GetNonInterestFinancialInstitution(context.Context, string) (models.NonInterestInstitution, error) {
+	return models.NonInterestInstitution{}, services.ErrNonInterestFinancialInstitutionNotFound
+}
+func (s *financeHandlerStub) ListMerchantBanks(context.Context) ([]models.MerchantBank, error) {
+	return nil, nil
+}
+func (s *financeHandlerStub) GetMerchantBank(context.Context, string) (models.MerchantBank, error) {
+	return models.MerchantBank{}, services.ErrMerchantBankNotFound
+}
+func (s *financeHandlerStub) ListPaymentServiceBanks(context.Context) ([]models.PaymentServiceBank, error) {
+	return nil, nil
+}
+func (s *financeHandlerStub) GetPaymentServiceBank(context.Context, string) (models.PaymentServiceBank, error) {
+	return models.PaymentServiceBank{}, services.ErrPaymentServiceBankNotFound
+}
+func (s *financeHandlerStub) ListFinancialHoldingCompanies(context.Context) ([]models.FinancialHoldingCompany, error) {
+	return nil, nil
+}
+func (s *financeHandlerStub) GetFinancialHoldingCompany(context.Context, string) (models.FinancialHoldingCompany, error) {
+	return models.FinancialHoldingCompany{}, services.ErrFinancialHoldingCompanyNotFound
+}
+func (s *financeHandlerStub) ListDevelopmentFinanceInstitutions(context.Context) ([]models.DevelopmentFinanceInstitution, error) {
+	return nil, nil
+}
+func (s *financeHandlerStub) GetDevelopmentFinanceInstitution(context.Context, string) (models.DevelopmentFinanceInstitution, error) {
+	return models.DevelopmentFinanceInstitution{}, services.ErrDevelopmentFinanceInstitutionNotFound
+}
+func (s *financeHandlerStub) ListPrimaryMortgageInstitutions(context.Context) ([]models.PrimaryMortgageInstitution, error) {
+	return nil, nil
+}
+func (s *financeHandlerStub) GetPrimaryMortgageInstitution(context.Context, string) (models.PrimaryMortgageInstitution, error) {
+	return models.PrimaryMortgageInstitution{}, services.ErrPrimaryMortgageInstitutionNotFound
+}
+
 func TestNewFinanceHandlerRejectsNilService(t *testing.T) {
 	if _, err := NewFinanceHandler(nil); err == nil {
 		t.Fatal("NewFinanceHandler(nil) error = nil, want error")

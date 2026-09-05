@@ -179,6 +179,156 @@ func (s *FinanceService) GetCommercialBank(ctx context.Context, bankID string) (
 	return bank, nil
 }
 
+func (s *FinanceService) ListNonInterestFinancialInstitutions(ctx context.Context) ([]models.NonInterestInstitution, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	rows, err := s.repository.ListNonInterestFinancialInstitutions(ctx)
+	if err != nil {
+		return nil, translateFinanceRegulatedServiceError("list non-interest financial institutions", err)
+	}
+	return cloneNonInterestFinancialInstitutionList(rows), nil
+}
+func (s *FinanceService) GetNonInterestFinancialInstitution(ctx context.Context, id string) (models.NonInterestInstitution, error) {
+	if err := ctx.Err(); err != nil {
+		return models.NonInterestInstitution{}, err
+	}
+	id, err := normalizeFinanceRegulatedID(id, ErrInvalidNonInterestFinancialInstitutionID)
+	if err != nil {
+		return models.NonInterestInstitution{}, err
+	}
+	row, err := s.repository.GetNonInterestFinancialInstitution(ctx, id)
+	if err != nil {
+		return models.NonInterestInstitution{}, translateFinanceRegulatedLookupError("get non-interest financial institution", err, interfaces.ErrNonInterestFinancialInstitutionNotFound, ErrNonInterestFinancialInstitutionNotFound)
+	}
+	return row, nil
+}
+
+func (s *FinanceService) ListMerchantBanks(ctx context.Context) ([]models.MerchantBank, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	rows, err := s.repository.ListMerchantBanks(ctx)
+	if err != nil {
+		return nil, translateFinanceRegulatedServiceError("list merchant banks", err)
+	}
+	return cloneMerchantBankList(rows), nil
+}
+func (s *FinanceService) GetMerchantBank(ctx context.Context, id string) (models.MerchantBank, error) {
+	if err := ctx.Err(); err != nil {
+		return models.MerchantBank{}, err
+	}
+	id, err := normalizeFinanceRegulatedID(id, ErrInvalidMerchantBankID)
+	if err != nil {
+		return models.MerchantBank{}, err
+	}
+	row, err := s.repository.GetMerchantBank(ctx, id)
+	if err != nil {
+		return models.MerchantBank{}, translateFinanceRegulatedLookupError("get merchant bank", err, interfaces.ErrMerchantBankNotFound, ErrMerchantBankNotFound)
+	}
+	return row, nil
+}
+
+func (s *FinanceService) ListPaymentServiceBanks(ctx context.Context) ([]models.PaymentServiceBank, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	rows, err := s.repository.ListPaymentServiceBanks(ctx)
+	if err != nil {
+		return nil, translateFinanceRegulatedServiceError("list payment service banks", err)
+	}
+	return clonePaymentServiceBankList(rows), nil
+}
+func (s *FinanceService) GetPaymentServiceBank(ctx context.Context, id string) (models.PaymentServiceBank, error) {
+	if err := ctx.Err(); err != nil {
+		return models.PaymentServiceBank{}, err
+	}
+	id, err := normalizeFinanceRegulatedID(id, ErrInvalidPaymentServiceBankID)
+	if err != nil {
+		return models.PaymentServiceBank{}, err
+	}
+	row, err := s.repository.GetPaymentServiceBank(ctx, id)
+	if err != nil {
+		return models.PaymentServiceBank{}, translateFinanceRegulatedLookupError("get payment service bank", err, interfaces.ErrPaymentServiceBankNotFound, ErrPaymentServiceBankNotFound)
+	}
+	return row, nil
+}
+
+func (s *FinanceService) ListFinancialHoldingCompanies(ctx context.Context) ([]models.FinancialHoldingCompany, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	rows, err := s.repository.ListFinancialHoldingCompanies(ctx)
+	if err != nil {
+		return nil, translateFinanceRegulatedServiceError("list financial holding companies", err)
+	}
+	return cloneFinancialHoldingCompanyList(rows), nil
+}
+func (s *FinanceService) GetFinancialHoldingCompany(ctx context.Context, id string) (models.FinancialHoldingCompany, error) {
+	if err := ctx.Err(); err != nil {
+		return models.FinancialHoldingCompany{}, err
+	}
+	id, err := normalizeFinanceRegulatedID(id, ErrInvalidFinancialHoldingCompanyID)
+	if err != nil {
+		return models.FinancialHoldingCompany{}, err
+	}
+	row, err := s.repository.GetFinancialHoldingCompany(ctx, id)
+	if err != nil {
+		return models.FinancialHoldingCompany{}, translateFinanceRegulatedLookupError("get financial holding company", err, interfaces.ErrFinancialHoldingCompanyNotFound, ErrFinancialHoldingCompanyNotFound)
+	}
+	return row, nil
+}
+
+func (s *FinanceService) ListDevelopmentFinanceInstitutions(ctx context.Context) ([]models.DevelopmentFinanceInstitution, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	rows, err := s.repository.ListDevelopmentFinanceInstitutions(ctx)
+	if err != nil {
+		return nil, translateFinanceRegulatedServiceError("list development finance institutions", err)
+	}
+	return cloneDevelopmentFinanceInstitutionList(rows), nil
+}
+func (s *FinanceService) GetDevelopmentFinanceInstitution(ctx context.Context, id string) (models.DevelopmentFinanceInstitution, error) {
+	if err := ctx.Err(); err != nil {
+		return models.DevelopmentFinanceInstitution{}, err
+	}
+	id, err := normalizeFinanceRegulatedID(id, ErrInvalidDevelopmentFinanceInstitutionID)
+	if err != nil {
+		return models.DevelopmentFinanceInstitution{}, err
+	}
+	row, err := s.repository.GetDevelopmentFinanceInstitution(ctx, id)
+	if err != nil {
+		return models.DevelopmentFinanceInstitution{}, translateFinanceRegulatedLookupError("get development finance institution", err, interfaces.ErrDevelopmentFinanceInstitutionNotFound, ErrDevelopmentFinanceInstitutionNotFound)
+	}
+	return row, nil
+}
+
+func (s *FinanceService) ListPrimaryMortgageInstitutions(ctx context.Context) ([]models.PrimaryMortgageInstitution, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	rows, err := s.repository.ListPrimaryMortgageInstitutions(ctx)
+	if err != nil {
+		return nil, translateFinanceRegulatedServiceError("list primary mortgage institutions", err)
+	}
+	return clonePrimaryMortgageInstitutionList(rows), nil
+}
+func (s *FinanceService) GetPrimaryMortgageInstitution(ctx context.Context, id string) (models.PrimaryMortgageInstitution, error) {
+	if err := ctx.Err(); err != nil {
+		return models.PrimaryMortgageInstitution{}, err
+	}
+	id, err := normalizeFinanceRegulatedID(id, ErrInvalidPrimaryMortgageInstitutionID)
+	if err != nil {
+		return models.PrimaryMortgageInstitution{}, err
+	}
+	row, err := s.repository.GetPrimaryMortgageInstitution(ctx, id)
+	if err != nil {
+		return models.PrimaryMortgageInstitution{}, translateFinanceRegulatedLookupError("get primary mortgage institution", err, interfaces.ErrPrimaryMortgageInstitutionNotFound, ErrPrimaryMortgageInstitutionNotFound)
+	}
+	return row, nil
+}
+
 func cloneInternationalMoneyTransferOperatorList(operators []models.InternationalMoneyTransferOperator) []models.InternationalMoneyTransferOperator {
 	if len(operators) == 0 {
 		return make([]models.InternationalMoneyTransferOperator, 0)
@@ -366,4 +516,51 @@ func cloneCommercialBankList(banks []models.CommercialBank) []models.CommercialB
 	cloned := make([]models.CommercialBank, len(banks))
 	copy(cloned, banks)
 	return cloned
+}
+
+func normalizeFinanceRegulatedID(id string, invalid error) (string, error) {
+	id = strings.TrimSpace(id)
+	if id == "" || !financeCommercialBankIDPattern.MatchString(id) {
+		return "", invalid
+	}
+	return id, nil
+}
+
+func translateFinanceRegulatedLookupError(op string, err, repositoryNotFound, serviceNotFound error) error {
+	switch {
+	case err == nil:
+		return nil
+	case errors.Is(err, context.Canceled), errors.Is(err, context.DeadlineExceeded):
+		return err
+	case errors.Is(err, repositoryNotFound):
+		return serviceNotFound
+	default:
+		return fmt.Errorf("%s: repository unavailable", op)
+	}
+}
+
+func translateFinanceRegulatedServiceError(op string, err error) error {
+	if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+		return err
+	}
+	return fmt.Errorf("%s: repository unavailable", op)
+}
+
+func cloneNonInterestFinancialInstitutionList(rows []models.NonInterestInstitution) []models.NonInterestInstitution {
+	return append([]models.NonInterestInstitution{}, rows...)
+}
+func cloneMerchantBankList(rows []models.MerchantBank) []models.MerchantBank {
+	return append([]models.MerchantBank{}, rows...)
+}
+func clonePaymentServiceBankList(rows []models.PaymentServiceBank) []models.PaymentServiceBank {
+	return append([]models.PaymentServiceBank{}, rows...)
+}
+func cloneFinancialHoldingCompanyList(rows []models.FinancialHoldingCompany) []models.FinancialHoldingCompany {
+	return append([]models.FinancialHoldingCompany{}, rows...)
+}
+func cloneDevelopmentFinanceInstitutionList(rows []models.DevelopmentFinanceInstitution) []models.DevelopmentFinanceInstitution {
+	return append([]models.DevelopmentFinanceInstitution{}, rows...)
+}
+func clonePrimaryMortgageInstitutionList(rows []models.PrimaryMortgageInstitution) []models.PrimaryMortgageInstitution {
+	return append([]models.PrimaryMortgageInstitution{}, rows...)
 }

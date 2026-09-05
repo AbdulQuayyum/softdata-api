@@ -1,0 +1,9 @@
+[
+  {"id":"access-holdings","name":"Access Holdings Plc","website_url":"https://theaccesscorporation.com/","logo_url":"/v1/assets/financial-institutions/ng/holding-companies/access-holdings.png","country_code":"NG"},
+  {"id":"fcmb-group","name":"FCMB Group Plc","website_url":"https://fcmbgroup.com/","logo_url":"/v1/assets/financial-institutions/ng/holding-companies/fcmb-group.png","country_code":"NG"},
+  {"id":"first-holdco","name":"First HoldCo Plc","website_url":"https://first-holdco.com/","logo_url":"/v1/assets/financial-institutions/ng/holding-companies/first-holdco.png","country_code":"NG"},
+  {"id":"fsdh-holding-company","name":"FSDH Holding Company Limited","website_url":"https://www.fsdhgroup.com/","logo_url":"/v1/assets/financial-institutions/ng/holding-companies/fsdh-holding-company.png","country_code":"NG"},
+  {"id":"guaranty-trust-holding-company","name":"Guaranty Trust Holding Company Plc","website_url":"https://www.gtcoplc.com/","logo_url":"/v1/assets/financial-institutions/ng/holding-companies/guaranty-trust-holding-company.png","country_code":"NG"},
+  {"id":"stanbic-ibtc-holdings","name":"Stanbic IBTC Holdings Plc","website_url":"https://www.stanbicibtc.com/nigeriaholdings/Stanbic-IBTC-Holdings","logo_url":"/v1/assets/financial-institutions/ng/holding-companies/stanbic-ibtc-holdings.png","country_code":"NG"},
+  {"id":"sterling-financial-holdings","name":"Sterling Financial Holdings Company Plc","website_url":"https://sterlingholdco.ng/","logo_url":"/v1/assets/financial-institutions/ng/holding-companies/sterling-financial-holdings.png","country_code":"NG"}
+]

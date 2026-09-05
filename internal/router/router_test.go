@@ -2254,6 +2254,43 @@ func (s *routerFinanceStub) GetCommercialBank(ctx context.Context, bankID string
 	return models.CommercialBank{ID: bankID, Name: "Access Bank Plc", CBNCode: "044", NIPCode: "000014", CountryCode: "NG"}, nil
 }
 
+func (s *routerFinanceStub) ListNonInterestFinancialInstitutions(context.Context) ([]models.NonInterestInstitution, error) {
+	return []models.NonInterestInstitution{}, nil
+}
+func (s *routerFinanceStub) GetNonInterestFinancialInstitution(context.Context, string) (models.NonInterestInstitution, error) {
+	return models.NonInterestInstitution{}, nil
+}
+func (s *routerFinanceStub) ListMerchantBanks(context.Context) ([]models.MerchantBank, error) {
+	return []models.MerchantBank{}, nil
+}
+func (s *routerFinanceStub) GetMerchantBank(context.Context, string) (models.MerchantBank, error) {
+	return models.MerchantBank{}, nil
+}
+func (s *routerFinanceStub) ListPaymentServiceBanks(context.Context) ([]models.PaymentServiceBank, error) {
+	return []models.PaymentServiceBank{}, nil
+}
+func (s *routerFinanceStub) GetPaymentServiceBank(context.Context, string) (models.PaymentServiceBank, error) {
+	return models.PaymentServiceBank{}, nil
+}
+func (s *routerFinanceStub) ListFinancialHoldingCompanies(context.Context) ([]models.FinancialHoldingCompany, error) {
+	return []models.FinancialHoldingCompany{}, nil
+}
+func (s *routerFinanceStub) GetFinancialHoldingCompany(context.Context, string) (models.FinancialHoldingCompany, error) {
+	return models.FinancialHoldingCompany{}, nil
+}
+func (s *routerFinanceStub) ListDevelopmentFinanceInstitutions(context.Context) ([]models.DevelopmentFinanceInstitution, error) {
+	return []models.DevelopmentFinanceInstitution{}, nil
+}
+func (s *routerFinanceStub) GetDevelopmentFinanceInstitution(context.Context, string) (models.DevelopmentFinanceInstitution, error) {
+	return models.DevelopmentFinanceInstitution{}, nil
+}
+func (s *routerFinanceStub) ListPrimaryMortgageInstitutions(context.Context) ([]models.PrimaryMortgageInstitution, error) {
+	return []models.PrimaryMortgageInstitution{}, nil
+}
+func (s *routerFinanceStub) GetPrimaryMortgageInstitution(context.Context, string) (models.PrimaryMortgageInstitution, error) {
+	return models.PrimaryMortgageInstitution{}, nil
+}
+
 func (s *routerGeographyStub) ListStates(ctx context.Context) ([]models.State, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()

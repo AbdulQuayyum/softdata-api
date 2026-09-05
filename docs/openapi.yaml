@@ -601,6 +601,277 @@ paths:
           $ref: "#/components/responses/ValidationFailed"
         "500":
           $ref: "#/components/responses/InternalError"
+  /v1/finance/non-interest-financial-institutions:
+    get:
+      tags: [Finance]
+      operationId: listNonInterestFinancialInstitutions
+      summary: List Nigerian non-interest financial institutions
+      description: Returns the six-record CBN non-interest financial institution snapshot. No pagination, search, or filters are provided in v1.
+      responses:
+        "200":
+          description: Non-interest financial institution records
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NonInterestFinancialInstitutionListResponse"
+        "405":
+          description: Method not allowed
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/finance/non-interest-financial-institutions/{institution_id}:
+    get:
+      tags: [Finance]
+      operationId: getNonInterestFinancialInstitution
+      summary: Get a Nigerian non-interest financial institution
+      parameters:
+        - $ref: "#/components/parameters/NonInterestFinancialInstitutionID"
+      responses:
+        "200":
+          description: Non-interest financial institution record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NonInterestFinancialInstitutionResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "405":
+          description: Method not allowed
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/finance/merchant-banks:
+    get:
+      tags: [Finance]
+      operationId: listMerchantBanks
+      summary: List Nigerian merchant banks
+      description: Returns the six-record CBN merchant-bank snapshot. No pagination, search, or filters are provided in v1.
+      responses:
+        "200":
+          description: Merchant bank records
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MerchantBankListResponse"
+        "405":
+          description: Method not allowed
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/finance/merchant-banks/{bank_id}:
+    get:
+      tags: [Finance]
+      operationId: getMerchantBank
+      summary: Get a Nigerian merchant bank
+      parameters:
+        - $ref: "#/components/parameters/MerchantBankID"
+      responses:
+        "200":
+          description: Merchant bank record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MerchantBankResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "405":
+          description: Method not allowed
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/finance/payment-service-banks:
+    get:
+      tags: [Finance]
+      operationId: listPaymentServiceBanks
+      summary: List Nigerian payment service banks
+      description: Returns the five-record CBN payment service bank snapshot. No pagination, search, or filters are provided in v1.
+      responses:
+        "200":
+          description: Payment service bank records
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaymentServiceBankListResponse"
+        "405":
+          description: Method not allowed
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/finance/payment-service-banks/{bank_id}:
+    get:
+      tags: [Finance]
+      operationId: getPaymentServiceBank
+      summary: Get a Nigerian payment service bank
+      parameters:
+        - $ref: "#/components/parameters/PaymentServiceBankID"
+      responses:
+        "200":
+          description: Payment service bank record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaymentServiceBankResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "405":
+          description: Method not allowed
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/finance/financial-holding-companies:
+    get:
+      tags: [Finance]
+      operationId: listFinancialHoldingCompanies
+      summary: List Nigerian financial holding companies
+      description: Returns the seven-record CBN financial holding company snapshot. No pagination, search, or filters are provided in v1.
+      responses:
+        "200":
+          description: Financial holding company records
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FinancialHoldingCompanyListResponse"
+        "405":
+          description: Method not allowed
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/finance/financial-holding-companies/{company_id}:
+    get:
+      tags: [Finance]
+      operationId: getFinancialHoldingCompany
+      summary: Get a Nigerian financial holding company
+      parameters:
+        - $ref: "#/components/parameters/FinancialHoldingCompanyID"
+      responses:
+        "200":
+          description: Financial holding company record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FinancialHoldingCompanyResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "405":
+          description: Method not allowed
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/finance/development-finance-institutions:
+    get:
+      tags: [Finance]
+      operationId: listDevelopmentFinanceInstitutions
+      summary: List Nigerian development finance institutions
+      description: Returns the eight-record CBN development finance institution snapshot. No pagination, search, or filters are provided in v1.
+      responses:
+        "200":
+          description: Development finance institution records
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DevelopmentFinanceInstitutionListResponse"
+        "405":
+          description: Method not allowed
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/finance/development-finance-institutions/{institution_id}:
+    get:
+      tags: [Finance]
+      operationId: getDevelopmentFinanceInstitution
+      summary: Get a Nigerian development finance institution
+      parameters:
+        - $ref: "#/components/parameters/DevelopmentFinanceInstitutionID"
+      responses:
+        "200":
+          description: Development finance institution record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DevelopmentFinanceInstitutionResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "405":
+          description: Method not allowed
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/finance/primary-mortgage-institutions:
+    get:
+      tags: [Finance]
+      operationId: listPrimaryMortgageInstitutions
+      summary: List Nigerian primary mortgage institutions
+      description: Returns the current 31-record CBN primary mortgage institution snapshot. No pagination, search, or filters are provided in v1.
+      responses:
+        "200":
+          description: Primary mortgage institution records
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PrimaryMortgageInstitutionListResponse"
+        "405":
+          description: Method not allowed
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/finance/primary-mortgage-institutions/{institution_id}:
+    get:
+      tags: [Finance]
+      operationId: getPrimaryMortgageInstitution
+      summary: Get a Nigerian primary mortgage institution
+      parameters:
+        - $ref: "#/components/parameters/PrimaryMortgageInstitutionID"
+      responses:
+        "200":
+          description: Primary mortgage institution record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PrimaryMortgageInstitutionResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "405":
+          description: Method not allowed
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/assets/financial-institutions/ng/{category}/{institution_asset}:
+    get:
+      tags: [Finance]
+      operationId: getFinancialInstitutionLogo
+      summary: Get an embedded regulated-finance institution logo
+      description: Returns an approved embedded PNG logo for a regulated Nigerian financial institution. Permission-pending records do not expose an asset.
+      parameters:
+        - name: category
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'
+          example: payment-service-banks
+        - name: institution_asset
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*\.png$'
+          example: hope-psb.png
+      responses:
+        "200":
+          description: Embedded PNG logo
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "405":
+          description: Method not allowed
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
   /v1/auth/register:
     post:
       tags: [Authentication]
@@ -1269,11 +1540,60 @@ components:
       schema:
         type: string
         pattern: '^[a-z0-9]+(?:-[a-z0-9]+)+$'
-        language_id:
-          $ref: "#/components/schemas/LanguageID"
-        status:
-          $ref: "#/components/schemas/CountryLanguageStatus"
-      required: [country_area_id, language_id, status]
+    NonInterestFinancialInstitutionID:
+      name: institution_id
+      in: path
+      required: true
+      description: Stable lowercase identifier for one of the six CBN-listed non-interest financial institutions.
+      schema:
+        type: string
+        pattern: '^[a-z0-9]+(?:-[a-z0-9]+)+$'
+        example: jaiz-bank
+    MerchantBankID:
+      name: bank_id
+      in: path
+      required: true
+      description: Stable lowercase identifier for one of the six CBN-listed merchant banks.
+      schema:
+        type: string
+        pattern: '^[a-z0-9]+(?:-[a-z0-9]+)+$'
+        example: quest-merchant-bank
+    PaymentServiceBankID:
+      name: bank_id
+      in: path
+      required: true
+      description: Stable lowercase identifier for one of the five CBN-listed payment service banks.
+      schema:
+        type: string
+        pattern: '^[a-z0-9]+(?:-[a-z0-9]+)+$'
+        example: hope-psb
+    FinancialHoldingCompanyID:
+      name: company_id
+      in: path
+      required: true
+      description: Stable lowercase identifier for one of the seven CBN-listed financial holding companies.
+      schema:
+        type: string
+        pattern: '^[a-z0-9]+(?:-[a-z0-9]+)+$'
+        example: access-holdings
+    DevelopmentFinanceInstitutionID:
+      name: institution_id
+      in: path
+      required: true
+      description: Stable lowercase identifier for one of the eight CBN-listed development finance institutions.
+      schema:
+        type: string
+        pattern: '^[a-z0-9]+(?:-[a-z0-9]+)+$'
+        example: bank-of-industry
+    PrimaryMortgageInstitutionID:
+      name: institution_id
+      in: path
+      required: true
+      description: Stable lowercase identifier for one of the current 31 CBN-listed primary mortgage institutions.
+      schema:
+        type: string
+        pattern: '^[a-z0-9]+(?:-[a-z0-9]+)+$'
+        example: firsttrust-mortgage-bank
     LanguageListResponse:
       type: object
       additionalProperties: false
@@ -1964,6 +2284,102 @@ components:
           type: boolean
         data:
           $ref: "#/components/schemas/CommercialBank"
+      required: [success, data]
+    NonInterestFinancialInstitution:
+      type: object
+      additionalProperties: false
+      properties:
+        id: {type: string, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)+$'}
+        name: {type: string}
+        cbn_code: {type: string, pattern: '^[0-9]{3}$'}
+        nip_code: {type: string, pattern: '^[0-9]{6}$'}
+        website_url: {type: string, format: uri}
+        logo_url: {type: string}
+        country_code: {type: string, enum: [NG]}
+      required: [id, name, country_code]
+    MerchantBank:
+      $ref: "#/components/schemas/NonInterestFinancialInstitution"
+    PaymentServiceBank:
+      $ref: "#/components/schemas/NonInterestFinancialInstitution"
+    DevelopmentFinanceInstitution:
+      $ref: "#/components/schemas/NonInterestFinancialInstitution"
+    FinancialHoldingCompany:
+      type: object
+      additionalProperties: false
+      properties:
+        id: {type: string, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)+$'}
+        name: {type: string}
+        website_url: {type: string, format: uri}
+        logo_url: {type: string}
+        country_code: {type: string, enum: [NG]}
+      required: [id, name, country_code]
+    PrimaryMortgageInstitution:
+      $ref: "#/components/schemas/NonInterestFinancialInstitution"
+    NonInterestFinancialInstitutionListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success: {type: boolean}
+        data:
+          type: array
+          minItems: 6
+          maxItems: 6
+          items: {$ref: "#/components/schemas/NonInterestFinancialInstitution"}
+      required: [success, data]
+    NonInterestFinancialInstitutionResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success: {type: boolean}
+        data: {$ref: "#/components/schemas/NonInterestFinancialInstitution"}
+      required: [success, data]
+    MerchantBankListResponse:
+      $ref: "#/components/schemas/NonInterestFinancialInstitutionListResponse"
+    MerchantBankResponse:
+      $ref: "#/components/schemas/NonInterestFinancialInstitutionResponse"
+    PaymentServiceBankListResponse:
+      $ref: "#/components/schemas/NonInterestFinancialInstitutionListResponse"
+    PaymentServiceBankResponse:
+      $ref: "#/components/schemas/NonInterestFinancialInstitutionResponse"
+    DevelopmentFinanceInstitutionListResponse:
+      $ref: "#/components/schemas/NonInterestFinancialInstitutionListResponse"
+    DevelopmentFinanceInstitutionResponse:
+      $ref: "#/components/schemas/NonInterestFinancialInstitutionResponse"
+    PrimaryMortgageInstitutionListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success: {type: boolean}
+        data:
+          type: array
+          minItems: 31
+          maxItems: 31
+          items: {$ref: "#/components/schemas/PrimaryMortgageInstitution"}
+      required: [success, data]
+    PrimaryMortgageInstitutionResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success: {type: boolean}
+        data: {$ref: "#/components/schemas/PrimaryMortgageInstitution"}
+      required: [success, data]
+    FinancialHoldingCompanyListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success: {type: boolean}
+        data:
+          type: array
+          minItems: 7
+          maxItems: 7
+          items: {$ref: "#/components/schemas/FinancialHoldingCompany"}
+      required: [success, data]
+    FinancialHoldingCompanyResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success: {type: boolean}
+        data: {$ref: "#/components/schemas/FinancialHoldingCompany"}
       required: [success, data]
     GeographyListResponse:
       type: object

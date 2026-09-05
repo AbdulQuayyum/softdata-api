@@ -1,0 +1,10 @@
+[
+  {"id":"bank-of-agriculture","name":"Bank of Agriculture (BOA)","website_url":"https://boanig.com/","logo_url":"/v1/assets/financial-institutions/ng/development-finance/bank-of-agriculture.png","country_code":"NG"},
+  {"id":"bank-of-industry","name":"Bank of Industry","website_url":"https://www.boi.ng/","logo_url":"/v1/assets/financial-institutions/ng/development-finance/bank-of-industry.png","country_code":"NG"},
+  {"id":"development-bank-of-nigeria","name":"Development Bank of Nigeria Plc","website_url":"https://www.devbankng.com/","logo_url":"/v1/assets/financial-institutions/ng/development-finance/development-bank-of-nigeria.png","country_code":"NG"},
+  {"id":"federal-mortgage-bank-of-nigeria","name":"Federal Mortgage Bank of Nigeria","website_url":"https://fmbn.gov.ng/","logo_url":"/v1/assets/financial-institutions/ng/development-finance/federal-mortgage-bank-of-nigeria.png","country_code":"NG"},
+  {"id":"national-credit-guarantee-company","name":"National Credit Guarantee Company Limited","website_url":"https://ncgc.ng/","logo_url":"/v1/assets/financial-institutions/ng/development-finance/national-credit-guarantee-company.png","country_code":"NG"},
+  {"id":"nigeria-export-import-bank","name":"Nigeria Export-Import Bank","website_url":"https://neximbank.com.ng/","logo_url":"/v1/assets/financial-institutions/ng/development-finance/nigeria-export-import-bank.png","country_code":"NG"},
+  {"id":"nigerian-consumer-credit-corporation","name":"Nigerian Consumer Credit Corporation","website_url":"https://www.credicorp.ng/","logo_url":"/v1/assets/financial-institutions/ng/development-finance/nigerian-consumer-credit-corporation.png","country_code":"NG"},
+  {"id":"the-infrastructure-bank","name":"The Infrastructure Bank","website_url":"https://theinfrastructurebank.com/","logo_url":"/v1/assets/financial-institutions/ng/development-finance/the-infrastructure-bank.png","country_code":"NG"}
+]
