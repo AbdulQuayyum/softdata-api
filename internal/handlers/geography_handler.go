@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 	"net/http"
+	"reflect"
+	"strings"
 
 	"github.com/AbdulQuayyum/softdata-api/internal/models"
 	"github.com/AbdulQuayyum/softdata-api/internal/response"
@@ -100,9 +102,15 @@ type countryProfileService interface {
 type GeographyHandler struct {
 	service        geographyService
 	profileService countryProfileService
+	publicAPIURL   string
 }
 
 func NewGeographyHandler(service geographyService, profileService ...countryProfileService) (*GeographyHandler, error) {
+	return NewGeographyHandlerWithPublicAPIURL(service, "", profileService...)
+}
+
+// NewGeographyHandlerWithPublicAPIURL configures absolute flag URLs for public responses.
+func NewGeographyHandlerWithPublicAPIURL(service geographyService, publicAPIURL string, profileService ...countryProfileService) (*GeographyHandler, error) {
 	if service == nil {
 		return nil, fmt.Errorf("geography service is required")
 	}
@@ -110,7 +118,7 @@ func NewGeographyHandler(service geographyService, profileService ...countryProf
 	if len(profileService) > 0 {
 		profile = profileService[0]
 	}
-	return &GeographyHandler{service: service, profileService: profile}, nil
+	return &GeographyHandler{service: service, profileService: profile, publicAPIURL: strings.TrimRight(strings.TrimSpace(publicAPIURL), "/")}, nil
 }
 
 func (h *GeographyHandler) ListStates(w http.ResponseWriter, r *http.Request) {
@@ -322,7 +330,7 @@ func (h *GeographyHandler) ListCountriesAndAreas(w http.ResponseWriter, r *http.
 		return
 	}
 
-	_ = response.List(w, http.StatusOK, countries)
+	_ = response.List(w, http.StatusOK, qualifyFlagURLs(h, countries))
 }
 
 func (h *GeographyHandler) GetCountryOrArea(w http.ResponseWriter, r *http.Request) {
@@ -347,7 +355,31 @@ func (h *GeographyHandler) GetCountryOrArea(w http.ResponseWriter, r *http.Reque
 		return
 	}
 
-	_ = response.Success(w, http.StatusOK, country)
+	_ = response.Success(w, http.StatusOK, qualifyFlagURL(h, country))
+}
+
+func qualifyFlagURLs[T any](h *GeographyHandler, rows []T) []T {
+	for i := range rows {
+		rows[i] = qualifyFlagURL(h, rows[i])
+	}
+	return rows
+}
+
+func qualifyFlagURL[T any](h *GeographyHandler, row T) T {
+	if h == nil || h.publicAPIURL == "" {
+		return row
+	}
+	value := reflect.ValueOf(&row).Elem()
+	if value.Kind() != reflect.Struct {
+		return row
+	}
+	for _, fieldName := range []string{"FlagURL", "FlagSVGURL"} {
+		field := value.FieldByName(fieldName)
+		if field.IsValid() && field.CanSet() && field.Kind() == reflect.String && strings.HasPrefix(field.String(), "/") {
+			field.SetString(h.publicAPIURL + field.String())
+		}
+	}
+	return row
 }
 
 // GetCountryProfile handles GET /v1/geography/countries/{country_id}/profile.
@@ -377,5 +409,5 @@ func (h *GeographyHandler) GetCountryProfile(w http.ResponseWriter, r *http.Requ
 		return
 	}
 
-	_ = response.Success(w, http.StatusOK, profile)
+	_ = response.Success(w, http.StatusOK, qualifyFlagURL(h, profile))
 }

@@ -15,7 +15,8 @@
       "name",
       "alpha_2_code",
       "alpha_3_code",
-      "numeric_code"
+      "numeric_code",
+      "flag_url"
     ],
     "properties": {
       "id": {
@@ -52,6 +53,10 @@
         "minLength": 1
       },
       "flag_svg_url": {
+        "type": "string",
+        "pattern": "^/v1/assets/flags/[a-z]{2}\\.svg$"
+      },
+      "flag_url": {
         "type": "string",
         "pattern": "^/v1/assets/flags/[a-z]{2}\\.svg$"
       },

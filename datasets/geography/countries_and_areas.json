@@ -13,7 +13,8 @@
       "+93"
     ],
     "flag_emoji": "🇦🇫",
-    "flag_svg_url": "/v1/assets/flags/af.svg"
+    "flag_svg_url": "/v1/assets/flags/af.svg",
+    "flag_url": "/v1/assets/flags/af.svg"
   },
   {
     "id": "al",
@@ -29,7 +30,8 @@
       "+355"
     ],
     "flag_emoji": "🇦🇱",
-    "flag_svg_url": "/v1/assets/flags/al.svg"
+    "flag_svg_url": "/v1/assets/flags/al.svg",
+    "flag_url": "/v1/assets/flags/al.svg"
   },
   {
     "id": "dz",
@@ -45,7 +47,8 @@
       "+213"
     ],
     "flag_emoji": "🇩🇿",
-    "flag_svg_url": "/v1/assets/flags/dz.svg"
+    "flag_svg_url": "/v1/assets/flags/dz.svg",
+    "flag_url": "/v1/assets/flags/dz.svg"
   },
   {
     "id": "as",
@@ -61,7 +64,8 @@
       "+1-684"
     ],
     "flag_emoji": "🇦🇸",
-    "flag_svg_url": "/v1/assets/flags/as.svg"
+    "flag_svg_url": "/v1/assets/flags/as.svg",
+    "flag_url": "/v1/assets/flags/as.svg"
   },
   {
     "id": "ad",
@@ -77,7 +81,8 @@
       "+376"
     ],
     "flag_emoji": "🇦🇩",
-    "flag_svg_url": "/v1/assets/flags/ad.svg"
+    "flag_svg_url": "/v1/assets/flags/ad.svg",
+    "flag_url": "/v1/assets/flags/ad.svg"
   },
   {
     "id": "ao",
@@ -95,7 +100,8 @@
       "+244"
     ],
     "flag_emoji": "🇦🇴",
-    "flag_svg_url": "/v1/assets/flags/ao.svg"
+    "flag_svg_url": "/v1/assets/flags/ao.svg",
+    "flag_url": "/v1/assets/flags/ao.svg"
   },
   {
     "id": "ai",
@@ -113,7 +119,8 @@
       "+1-264"
     ],
     "flag_emoji": "🇦🇮",
-    "flag_svg_url": "/v1/assets/flags/ai.svg"
+    "flag_svg_url": "/v1/assets/flags/ai.svg",
+    "flag_url": "/v1/assets/flags/ai.svg"
   },
   {
     "id": "aq",
@@ -122,7 +129,8 @@
     "alpha_3_code": "ATA",
     "numeric_code": "010",
     "flag_emoji": "🇦🇶",
-    "flag_svg_url": "/v1/assets/flags/aq.svg"
+    "flag_svg_url": "/v1/assets/flags/aq.svg",
+    "flag_url": "/v1/assets/flags/aq.svg"
   },
   {
     "id": "ag",
@@ -140,7 +148,8 @@
       "+1-268"
     ],
     "flag_emoji": "🇦🇬",
-    "flag_svg_url": "/v1/assets/flags/ag.svg"
+    "flag_svg_url": "/v1/assets/flags/ag.svg",
+    "flag_url": "/v1/assets/flags/ag.svg"
   },
   {
     "id": "ar",
@@ -158,7 +167,8 @@
       "+54"
     ],
     "flag_emoji": "🇦🇷",
-    "flag_svg_url": "/v1/assets/flags/ar.svg"
+    "flag_svg_url": "/v1/assets/flags/ar.svg",
+    "flag_url": "/v1/assets/flags/ar.svg"
   },
   {
     "id": "am",
@@ -174,7 +184,8 @@
       "+374"
     ],
     "flag_emoji": "🇦🇲",
-    "flag_svg_url": "/v1/assets/flags/am.svg"
+    "flag_svg_url": "/v1/assets/flags/am.svg",
+    "flag_url": "/v1/assets/flags/am.svg"
   },
   {
     "id": "aw",
@@ -192,7 +203,8 @@
       "+297"
     ],
     "flag_emoji": "🇦🇼",
-    "flag_svg_url": "/v1/assets/flags/aw.svg"
+    "flag_svg_url": "/v1/assets/flags/aw.svg",
+    "flag_url": "/v1/assets/flags/aw.svg"
   },
   {
     "id": "au",
@@ -208,7 +220,8 @@
       "+61"
     ],
     "flag_emoji": "🇦🇺",
-    "flag_svg_url": "/v1/assets/flags/au.svg"
+    "flag_svg_url": "/v1/assets/flags/au.svg",
+    "flag_url": "/v1/assets/flags/au.svg"
   },
   {
     "id": "at",
@@ -224,7 +237,8 @@
       "+43"
     ],
     "flag_emoji": "🇦🇹",
-    "flag_svg_url": "/v1/assets/flags/at.svg"
+    "flag_svg_url": "/v1/assets/flags/at.svg",
+    "flag_url": "/v1/assets/flags/at.svg"
   },
   {
     "id": "az",
@@ -240,7 +254,8 @@
       "+994"
     ],
     "flag_emoji": "🇦🇿",
-    "flag_svg_url": "/v1/assets/flags/az.svg"
+    "flag_svg_url": "/v1/assets/flags/az.svg",
+    "flag_url": "/v1/assets/flags/az.svg"
   },
   {
     "id": "bs",
@@ -258,7 +273,8 @@
       "+1-242"
     ],
     "flag_emoji": "🇧🇸",
-    "flag_svg_url": "/v1/assets/flags/bs.svg"
+    "flag_svg_url": "/v1/assets/flags/bs.svg",
+    "flag_url": "/v1/assets/flags/bs.svg"
   },
   {
     "id": "bh",
@@ -274,7 +290,8 @@
       "+973"
     ],
     "flag_emoji": "🇧🇭",
-    "flag_svg_url": "/v1/assets/flags/bh.svg"
+    "flag_svg_url": "/v1/assets/flags/bh.svg",
+    "flag_url": "/v1/assets/flags/bh.svg"
   },
   {
     "id": "bd",
@@ -290,7 +307,8 @@
       "+880"
     ],
     "flag_emoji": "🇧🇩",
-    "flag_svg_url": "/v1/assets/flags/bd.svg"
+    "flag_svg_url": "/v1/assets/flags/bd.svg",
+    "flag_url": "/v1/assets/flags/bd.svg"
   },
   {
     "id": "bb",
@@ -308,7 +326,8 @@
       "+1-246"
     ],
     "flag_emoji": "🇧🇧",
-    "flag_svg_url": "/v1/assets/flags/bb.svg"
+    "flag_svg_url": "/v1/assets/flags/bb.svg",
+    "flag_url": "/v1/assets/flags/bb.svg"
   },
   {
     "id": "by",
@@ -324,7 +343,8 @@
       "+375"
     ],
     "flag_emoji": "🇧🇾",
-    "flag_svg_url": "/v1/assets/flags/by.svg"
+    "flag_svg_url": "/v1/assets/flags/by.svg",
+    "flag_url": "/v1/assets/flags/by.svg"
   },
   {
     "id": "be",
@@ -340,7 +360,8 @@
       "+32"
     ],
     "flag_emoji": "🇧🇪",
-    "flag_svg_url": "/v1/assets/flags/be.svg"
+    "flag_svg_url": "/v1/assets/flags/be.svg",
+    "flag_url": "/v1/assets/flags/be.svg"
   },
   {
     "id": "bz",
@@ -358,7 +379,8 @@
       "+501"
     ],
     "flag_emoji": "🇧🇿",
-    "flag_svg_url": "/v1/assets/flags/bz.svg"
+    "flag_svg_url": "/v1/assets/flags/bz.svg",
+    "flag_url": "/v1/assets/flags/bz.svg"
   },
   {
     "id": "bj",
@@ -376,7 +398,8 @@
       "+229"
     ],
     "flag_emoji": "🇧🇯",
-    "flag_svg_url": "/v1/assets/flags/bj.svg"
+    "flag_svg_url": "/v1/assets/flags/bj.svg",
+    "flag_url": "/v1/assets/flags/bj.svg"
   },
   {
     "id": "bm",
@@ -392,7 +415,8 @@
       "+1-441"
     ],
     "flag_emoji": "🇧🇲",
-    "flag_svg_url": "/v1/assets/flags/bm.svg"
+    "flag_svg_url": "/v1/assets/flags/bm.svg",
+    "flag_url": "/v1/assets/flags/bm.svg"
   },
   {
     "id": "bt",
@@ -408,7 +432,8 @@
       "+975"
     ],
     "flag_emoji": "🇧🇹",
-    "flag_svg_url": "/v1/assets/flags/bt.svg"
+    "flag_svg_url": "/v1/assets/flags/bt.svg",
+    "flag_url": "/v1/assets/flags/bt.svg"
   },
   {
     "id": "bo",
@@ -426,7 +451,8 @@
       "+591"
     ],
     "flag_emoji": "🇧🇴",
-    "flag_svg_url": "/v1/assets/flags/bo.svg"
+    "flag_svg_url": "/v1/assets/flags/bo.svg",
+    "flag_url": "/v1/assets/flags/bo.svg"
   },
   {
     "id": "bq",
@@ -444,7 +470,8 @@
       "+599"
     ],
     "flag_emoji": "🇧🇶",
-    "flag_svg_url": "/v1/assets/flags/bq.svg"
+    "flag_svg_url": "/v1/assets/flags/bq.svg",
+    "flag_url": "/v1/assets/flags/bq.svg"
   },
   {
     "id": "ba",
@@ -460,7 +487,8 @@
       "+387"
     ],
     "flag_emoji": "🇧🇦",
-    "flag_svg_url": "/v1/assets/flags/ba.svg"
+    "flag_svg_url": "/v1/assets/flags/ba.svg",
+    "flag_url": "/v1/assets/flags/ba.svg"
   },
   {
     "id": "bw",
@@ -478,7 +506,8 @@
       "+267"
     ],
     "flag_emoji": "🇧🇼",
-    "flag_svg_url": "/v1/assets/flags/bw.svg"
+    "flag_svg_url": "/v1/assets/flags/bw.svg",
+    "flag_url": "/v1/assets/flags/bw.svg"
   },
   {
     "id": "bv",
@@ -496,7 +525,8 @@
       "+47"
     ],
     "flag_emoji": "🇧🇻",
-    "flag_svg_url": "/v1/assets/flags/bv.svg"
+    "flag_svg_url": "/v1/assets/flags/bv.svg",
+    "flag_url": "/v1/assets/flags/bv.svg"
   },
   {
     "id": "br",
@@ -514,7 +544,8 @@
       "+55"
     ],
     "flag_emoji": "🇧🇷",
-    "flag_svg_url": "/v1/assets/flags/br.svg"
+    "flag_svg_url": "/v1/assets/flags/br.svg",
+    "flag_url": "/v1/assets/flags/br.svg"
   },
   {
     "id": "io",
@@ -532,7 +563,8 @@
       "+246"
     ],
     "flag_emoji": "🇮🇴",
-    "flag_svg_url": "/v1/assets/flags/io.svg"
+    "flag_svg_url": "/v1/assets/flags/io.svg",
+    "flag_url": "/v1/assets/flags/io.svg"
   },
   {
     "id": "vg",
@@ -550,7 +582,8 @@
       "+1-284"
     ],
     "flag_emoji": "🇻🇬",
-    "flag_svg_url": "/v1/assets/flags/vg.svg"
+    "flag_svg_url": "/v1/assets/flags/vg.svg",
+    "flag_url": "/v1/assets/flags/vg.svg"
   },
   {
     "id": "bn",
@@ -566,7 +599,8 @@
       "+673"
     ],
     "flag_emoji": "🇧🇳",
-    "flag_svg_url": "/v1/assets/flags/bn.svg"
+    "flag_svg_url": "/v1/assets/flags/bn.svg",
+    "flag_url": "/v1/assets/flags/bn.svg"
   },
   {
     "id": "bg",
@@ -582,7 +616,8 @@
       "+359"
     ],
     "flag_emoji": "🇧🇬",
-    "flag_svg_url": "/v1/assets/flags/bg.svg"
+    "flag_svg_url": "/v1/assets/flags/bg.svg",
+    "flag_url": "/v1/assets/flags/bg.svg"
   },
   {
     "id": "bf",
@@ -600,7 +635,8 @@
       "+226"
     ],
     "flag_emoji": "🇧🇫",
-    "flag_svg_url": "/v1/assets/flags/bf.svg"
+    "flag_svg_url": "/v1/assets/flags/bf.svg",
+    "flag_url": "/v1/assets/flags/bf.svg"
   },
   {
     "id": "bi",
@@ -618,7 +654,8 @@
       "+257"
     ],
     "flag_emoji": "🇧🇮",
-    "flag_svg_url": "/v1/assets/flags/bi.svg"
+    "flag_svg_url": "/v1/assets/flags/bi.svg",
+    "flag_url": "/v1/assets/flags/bi.svg"
   },
   {
     "id": "cv",
@@ -636,7 +673,8 @@
       "+238"
     ],
     "flag_emoji": "🇨🇻",
-    "flag_svg_url": "/v1/assets/flags/cv.svg"
+    "flag_svg_url": "/v1/assets/flags/cv.svg",
+    "flag_url": "/v1/assets/flags/cv.svg"
   },
   {
     "id": "kh",
@@ -652,7 +690,8 @@
       "+855"
     ],
     "flag_emoji": "🇰🇭",
-    "flag_svg_url": "/v1/assets/flags/kh.svg"
+    "flag_svg_url": "/v1/assets/flags/kh.svg",
+    "flag_url": "/v1/assets/flags/kh.svg"
   },
   {
     "id": "cm",
@@ -670,7 +709,8 @@
       "+237"
     ],
     "flag_emoji": "🇨🇲",
-    "flag_svg_url": "/v1/assets/flags/cm.svg"
+    "flag_svg_url": "/v1/assets/flags/cm.svg",
+    "flag_url": "/v1/assets/flags/cm.svg"
   },
   {
     "id": "ca",
@@ -686,7 +726,8 @@
       "+1"
     ],
     "flag_emoji": "🇨🇦",
-    "flag_svg_url": "/v1/assets/flags/ca.svg"
+    "flag_svg_url": "/v1/assets/flags/ca.svg",
+    "flag_url": "/v1/assets/flags/ca.svg"
   },
   {
     "id": "ky",
@@ -704,7 +745,8 @@
       "+1-345"
     ],
     "flag_emoji": "🇰🇾",
-    "flag_svg_url": "/v1/assets/flags/ky.svg"
+    "flag_svg_url": "/v1/assets/flags/ky.svg",
+    "flag_url": "/v1/assets/flags/ky.svg"
   },
   {
     "id": "cf",
@@ -722,7 +764,8 @@
       "+236"
     ],
     "flag_emoji": "🇨🇫",
-    "flag_svg_url": "/v1/assets/flags/cf.svg"
+    "flag_svg_url": "/v1/assets/flags/cf.svg",
+    "flag_url": "/v1/assets/flags/cf.svg"
   },
   {
     "id": "td",
@@ -740,7 +783,8 @@
       "+235"
     ],
     "flag_emoji": "🇹🇩",
-    "flag_svg_url": "/v1/assets/flags/td.svg"
+    "flag_svg_url": "/v1/assets/flags/td.svg",
+    "flag_url": "/v1/assets/flags/td.svg"
   },
   {
     "id": "cl",
@@ -758,7 +802,8 @@
       "+56"
     ],
     "flag_emoji": "🇨🇱",
-    "flag_svg_url": "/v1/assets/flags/cl.svg"
+    "flag_svg_url": "/v1/assets/flags/cl.svg",
+    "flag_url": "/v1/assets/flags/cl.svg"
   },
   {
     "id": "cn",
@@ -774,7 +819,8 @@
       "+86"
     ],
     "flag_emoji": "🇨🇳",
-    "flag_svg_url": "/v1/assets/flags/cn.svg"
+    "flag_svg_url": "/v1/assets/flags/cn.svg",
+    "flag_url": "/v1/assets/flags/cn.svg"
   },
   {
     "id": "hk",
@@ -790,7 +836,8 @@
       "+852"
     ],
     "flag_emoji": "🇭🇰",
-    "flag_svg_url": "/v1/assets/flags/hk.svg"
+    "flag_svg_url": "/v1/assets/flags/hk.svg",
+    "flag_url": "/v1/assets/flags/hk.svg"
   },
   {
     "id": "mo",
@@ -806,7 +853,8 @@
       "+853"
     ],
     "flag_emoji": "🇲🇴",
-    "flag_svg_url": "/v1/assets/flags/mo.svg"
+    "flag_svg_url": "/v1/assets/flags/mo.svg",
+    "flag_url": "/v1/assets/flags/mo.svg"
   },
   {
     "id": "cx",
@@ -822,7 +870,8 @@
       "+61-8"
     ],
     "flag_emoji": "🇨🇽",
-    "flag_svg_url": "/v1/assets/flags/cx.svg"
+    "flag_svg_url": "/v1/assets/flags/cx.svg",
+    "flag_url": "/v1/assets/flags/cx.svg"
   },
   {
     "id": "cc",
@@ -838,7 +887,8 @@
       "+61-8"
     ],
     "flag_emoji": "🇨🇨",
-    "flag_svg_url": "/v1/assets/flags/cc.svg"
+    "flag_svg_url": "/v1/assets/flags/cc.svg",
+    "flag_url": "/v1/assets/flags/cc.svg"
   },
   {
     "id": "co",
@@ -856,7 +906,8 @@
       "+57"
     ],
     "flag_emoji": "🇨🇴",
-    "flag_svg_url": "/v1/assets/flags/co.svg"
+    "flag_svg_url": "/v1/assets/flags/co.svg",
+    "flag_url": "/v1/assets/flags/co.svg"
   },
   {
     "id": "km",
@@ -874,7 +925,8 @@
       "+269"
     ],
     "flag_emoji": "🇰🇲",
-    "flag_svg_url": "/v1/assets/flags/km.svg"
+    "flag_svg_url": "/v1/assets/flags/km.svg",
+    "flag_url": "/v1/assets/flags/km.svg"
   },
   {
     "id": "cg",
@@ -892,7 +944,8 @@
       "+242"
     ],
     "flag_emoji": "🇨🇬",
-    "flag_svg_url": "/v1/assets/flags/cg.svg"
+    "flag_svg_url": "/v1/assets/flags/cg.svg",
+    "flag_url": "/v1/assets/flags/cg.svg"
   },
   {
     "id": "ck",
@@ -908,7 +961,8 @@
       "+682"
     ],
     "flag_emoji": "🇨🇰",
-    "flag_svg_url": "/v1/assets/flags/ck.svg"
+    "flag_svg_url": "/v1/assets/flags/ck.svg",
+    "flag_url": "/v1/assets/flags/ck.svg"
   },
   {
     "id": "cr",
@@ -926,7 +980,8 @@
       "+506"
     ],
     "flag_emoji": "🇨🇷",
-    "flag_svg_url": "/v1/assets/flags/cr.svg"
+    "flag_svg_url": "/v1/assets/flags/cr.svg",
+    "flag_url": "/v1/assets/flags/cr.svg"
   },
   {
     "id": "hr",
@@ -942,7 +997,8 @@
       "+385"
     ],
     "flag_emoji": "🇭🇷",
-    "flag_svg_url": "/v1/assets/flags/hr.svg"
+    "flag_svg_url": "/v1/assets/flags/hr.svg",
+    "flag_url": "/v1/assets/flags/hr.svg"
   },
   {
     "id": "cu",
@@ -960,7 +1016,8 @@
       "+53"
     ],
     "flag_emoji": "🇨🇺",
-    "flag_svg_url": "/v1/assets/flags/cu.svg"
+    "flag_svg_url": "/v1/assets/flags/cu.svg",
+    "flag_url": "/v1/assets/flags/cu.svg"
   },
   {
     "id": "cw",
@@ -978,7 +1035,8 @@
       "+599"
     ],
     "flag_emoji": "🇨🇼",
-    "flag_svg_url": "/v1/assets/flags/cw.svg"
+    "flag_svg_url": "/v1/assets/flags/cw.svg",
+    "flag_url": "/v1/assets/flags/cw.svg"
   },
   {
     "id": "cy",
@@ -994,7 +1052,8 @@
       "+357"
     ],
     "flag_emoji": "🇨🇾",
-    "flag_svg_url": "/v1/assets/flags/cy.svg"
+    "flag_svg_url": "/v1/assets/flags/cy.svg",
+    "flag_url": "/v1/assets/flags/cy.svg"
   },
   {
     "id": "cz",
@@ -1010,7 +1069,8 @@
       "+420"
     ],
     "flag_emoji": "🇨🇿",
-    "flag_svg_url": "/v1/assets/flags/cz.svg"
+    "flag_svg_url": "/v1/assets/flags/cz.svg",
+    "flag_url": "/v1/assets/flags/cz.svg"
   },
   {
     "id": "ci",
@@ -1028,7 +1088,8 @@
       "+225"
     ],
     "flag_emoji": "🇨🇮",
-    "flag_svg_url": "/v1/assets/flags/ci.svg"
+    "flag_svg_url": "/v1/assets/flags/ci.svg",
+    "flag_url": "/v1/assets/flags/ci.svg"
   },
   {
     "id": "kp",
@@ -1044,7 +1105,8 @@
       "+850"
     ],
     "flag_emoji": "🇰🇵",
-    "flag_svg_url": "/v1/assets/flags/kp.svg"
+    "flag_svg_url": "/v1/assets/flags/kp.svg",
+    "flag_url": "/v1/assets/flags/kp.svg"
   },
   {
     "id": "cd",
@@ -1062,7 +1124,8 @@
       "+243"
     ],
     "flag_emoji": "🇨🇩",
-    "flag_svg_url": "/v1/assets/flags/cd.svg"
+    "flag_svg_url": "/v1/assets/flags/cd.svg",
+    "flag_url": "/v1/assets/flags/cd.svg"
   },
   {
     "id": "dk",
@@ -1078,7 +1141,8 @@
       "+45"
     ],
     "flag_emoji": "🇩🇰",
-    "flag_svg_url": "/v1/assets/flags/dk.svg"
+    "flag_svg_url": "/v1/assets/flags/dk.svg",
+    "flag_url": "/v1/assets/flags/dk.svg"
   },
   {
     "id": "dj",
@@ -1096,7 +1160,8 @@
       "+253"
     ],
     "flag_emoji": "🇩🇯",
-    "flag_svg_url": "/v1/assets/flags/dj.svg"
+    "flag_svg_url": "/v1/assets/flags/dj.svg",
+    "flag_url": "/v1/assets/flags/dj.svg"
   },
   {
     "id": "dm",
@@ -1114,7 +1179,8 @@
       "+1-767"
     ],
     "flag_emoji": "🇩🇲",
-    "flag_svg_url": "/v1/assets/flags/dm.svg"
+    "flag_svg_url": "/v1/assets/flags/dm.svg",
+    "flag_url": "/v1/assets/flags/dm.svg"
   },
   {
     "id": "do",
@@ -1134,7 +1200,8 @@
       "+1-849"
     ],
     "flag_emoji": "🇩🇴",
-    "flag_svg_url": "/v1/assets/flags/do.svg"
+    "flag_svg_url": "/v1/assets/flags/do.svg",
+    "flag_url": "/v1/assets/flags/do.svg"
   },
   {
     "id": "ec",
@@ -1152,7 +1219,8 @@
       "+593"
     ],
     "flag_emoji": "🇪🇨",
-    "flag_svg_url": "/v1/assets/flags/ec.svg"
+    "flag_svg_url": "/v1/assets/flags/ec.svg",
+    "flag_url": "/v1/assets/flags/ec.svg"
   },
   {
     "id": "eg",
@@ -1168,7 +1236,8 @@
       "+20"
     ],
     "flag_emoji": "🇪🇬",
-    "flag_svg_url": "/v1/assets/flags/eg.svg"
+    "flag_svg_url": "/v1/assets/flags/eg.svg",
+    "flag_url": "/v1/assets/flags/eg.svg"
   },
   {
     "id": "sv",
@@ -1186,7 +1255,8 @@
       "+503"
     ],
     "flag_emoji": "🇸🇻",
-    "flag_svg_url": "/v1/assets/flags/sv.svg"
+    "flag_svg_url": "/v1/assets/flags/sv.svg",
+    "flag_url": "/v1/assets/flags/sv.svg"
   },
   {
     "id": "gq",
@@ -1204,7 +1274,8 @@
       "+240"
     ],
     "flag_emoji": "🇬🇶",
-    "flag_svg_url": "/v1/assets/flags/gq.svg"
+    "flag_svg_url": "/v1/assets/flags/gq.svg",
+    "flag_url": "/v1/assets/flags/gq.svg"
   },
   {
     "id": "er",
@@ -1222,7 +1293,8 @@
       "+291"
     ],
     "flag_emoji": "🇪🇷",
-    "flag_svg_url": "/v1/assets/flags/er.svg"
+    "flag_svg_url": "/v1/assets/flags/er.svg",
+    "flag_url": "/v1/assets/flags/er.svg"
   },
   {
     "id": "ee",
@@ -1238,7 +1310,8 @@
       "+372"
     ],
     "flag_emoji": "🇪🇪",
-    "flag_svg_url": "/v1/assets/flags/ee.svg"
+    "flag_svg_url": "/v1/assets/flags/ee.svg",
+    "flag_url": "/v1/assets/flags/ee.svg"
   },
   {
     "id": "sz",
@@ -1256,7 +1329,8 @@
       "+268"
     ],
     "flag_emoji": "🇸🇿",
-    "flag_svg_url": "/v1/assets/flags/sz.svg"
+    "flag_svg_url": "/v1/assets/flags/sz.svg",
+    "flag_url": "/v1/assets/flags/sz.svg"
   },
   {
     "id": "et",
@@ -1274,7 +1348,8 @@
       "+251"
     ],
     "flag_emoji": "🇪🇹",
-    "flag_svg_url": "/v1/assets/flags/et.svg"
+    "flag_svg_url": "/v1/assets/flags/et.svg",
+    "flag_url": "/v1/assets/flags/et.svg"
   },
   {
     "id": "fk",
@@ -1292,7 +1367,8 @@
       "+500"
     ],
     "flag_emoji": "🇫🇰",
-    "flag_svg_url": "/v1/assets/flags/fk.svg"
+    "flag_svg_url": "/v1/assets/flags/fk.svg",
+    "flag_url": "/v1/assets/flags/fk.svg"
   },
   {
     "id": "fo",
@@ -1308,7 +1384,8 @@
       "+298"
     ],
     "flag_emoji": "🇫🇴",
-    "flag_svg_url": "/v1/assets/flags/fo.svg"
+    "flag_svg_url": "/v1/assets/flags/fo.svg",
+    "flag_url": "/v1/assets/flags/fo.svg"
   },
   {
     "id": "fj",
@@ -1324,7 +1401,8 @@
       "+679"
     ],
     "flag_emoji": "🇫🇯",
-    "flag_svg_url": "/v1/assets/flags/fj.svg"
+    "flag_svg_url": "/v1/assets/flags/fj.svg",
+    "flag_url": "/v1/assets/flags/fj.svg"
   },
   {
     "id": "fi",
@@ -1340,7 +1418,8 @@
       "+358"
     ],
     "flag_emoji": "🇫🇮",
-    "flag_svg_url": "/v1/assets/flags/fi.svg"
+    "flag_svg_url": "/v1/assets/flags/fi.svg",
+    "flag_url": "/v1/assets/flags/fi.svg"
   },
   {
     "id": "fr",
@@ -1356,7 +1435,8 @@
       "+33"
     ],
     "flag_emoji": "🇫🇷",
-    "flag_svg_url": "/v1/assets/flags/fr.svg"
+    "flag_svg_url": "/v1/assets/flags/fr.svg",
+    "flag_url": "/v1/assets/flags/fr.svg"
   },
   {
     "id": "gf",
@@ -1374,7 +1454,8 @@
       "+594"
     ],
     "flag_emoji": "🇬🇫",
-    "flag_svg_url": "/v1/assets/flags/gf.svg"
+    "flag_svg_url": "/v1/assets/flags/gf.svg",
+    "flag_url": "/v1/assets/flags/gf.svg"
   },
   {
     "id": "pf",
@@ -1390,7 +1471,8 @@
       "+689"
     ],
     "flag_emoji": "🇵🇫",
-    "flag_svg_url": "/v1/assets/flags/pf.svg"
+    "flag_svg_url": "/v1/assets/flags/pf.svg",
+    "flag_url": "/v1/assets/flags/pf.svg"
   },
   {
     "id": "tf",
@@ -1408,7 +1490,8 @@
       "+262"
     ],
     "flag_emoji": "🇹🇫",
-    "flag_svg_url": "/v1/assets/flags/tf.svg"
+    "flag_svg_url": "/v1/assets/flags/tf.svg",
+    "flag_url": "/v1/assets/flags/tf.svg"
   },
   {
     "id": "ga",
@@ -1426,7 +1509,8 @@
       "+241"
     ],
     "flag_emoji": "🇬🇦",
-    "flag_svg_url": "/v1/assets/flags/ga.svg"
+    "flag_svg_url": "/v1/assets/flags/ga.svg",
+    "flag_url": "/v1/assets/flags/ga.svg"
   },
   {
     "id": "gm",
@@ -1444,7 +1528,8 @@
       "+220"
     ],
     "flag_emoji": "🇬🇲",
-    "flag_svg_url": "/v1/assets/flags/gm.svg"
+    "flag_svg_url": "/v1/assets/flags/gm.svg",
+    "flag_url": "/v1/assets/flags/gm.svg"
   },
   {
     "id": "ge",
@@ -1460,7 +1545,8 @@
       "+995"
     ],
     "flag_emoji": "🇬🇪",
-    "flag_svg_url": "/v1/assets/flags/ge.svg"
+    "flag_svg_url": "/v1/assets/flags/ge.svg",
+    "flag_url": "/v1/assets/flags/ge.svg"
   },
   {
     "id": "de",
@@ -1476,7 +1562,8 @@
       "+49"
     ],
     "flag_emoji": "🇩🇪",
-    "flag_svg_url": "/v1/assets/flags/de.svg"
+    "flag_svg_url": "/v1/assets/flags/de.svg",
+    "flag_url": "/v1/assets/flags/de.svg"
   },
   {
     "id": "gh",
@@ -1494,7 +1581,8 @@
       "+233"
     ],
     "flag_emoji": "🇬🇭",
-    "flag_svg_url": "/v1/assets/flags/gh.svg"
+    "flag_svg_url": "/v1/assets/flags/gh.svg",
+    "flag_url": "/v1/assets/flags/gh.svg"
   },
   {
     "id": "gi",
@@ -1510,7 +1598,8 @@
       "+350"
     ],
     "flag_emoji": "🇬🇮",
-    "flag_svg_url": "/v1/assets/flags/gi.svg"
+    "flag_svg_url": "/v1/assets/flags/gi.svg",
+    "flag_url": "/v1/assets/flags/gi.svg"
   },
   {
     "id": "gr",
@@ -1526,7 +1615,8 @@
       "+30"
     ],
     "flag_emoji": "🇬🇷",
-    "flag_svg_url": "/v1/assets/flags/gr.svg"
+    "flag_svg_url": "/v1/assets/flags/gr.svg",
+    "flag_url": "/v1/assets/flags/gr.svg"
   },
   {
     "id": "gl",
@@ -1542,7 +1632,8 @@
       "+299"
     ],
     "flag_emoji": "🇬🇱",
-    "flag_svg_url": "/v1/assets/flags/gl.svg"
+    "flag_svg_url": "/v1/assets/flags/gl.svg",
+    "flag_url": "/v1/assets/flags/gl.svg"
   },
   {
     "id": "gd",
@@ -1560,7 +1651,8 @@
       "+1-473"
     ],
     "flag_emoji": "🇬🇩",
-    "flag_svg_url": "/v1/assets/flags/gd.svg"
+    "flag_svg_url": "/v1/assets/flags/gd.svg",
+    "flag_url": "/v1/assets/flags/gd.svg"
   },
   {
     "id": "gp",
@@ -1578,7 +1670,8 @@
       "+590"
     ],
     "flag_emoji": "🇬🇵",
-    "flag_svg_url": "/v1/assets/flags/gp.svg"
+    "flag_svg_url": "/v1/assets/flags/gp.svg",
+    "flag_url": "/v1/assets/flags/gp.svg"
   },
   {
     "id": "gu",
@@ -1594,7 +1687,8 @@
       "+1-671"
     ],
     "flag_emoji": "🇬🇺",
-    "flag_svg_url": "/v1/assets/flags/gu.svg"
+    "flag_svg_url": "/v1/assets/flags/gu.svg",
+    "flag_url": "/v1/assets/flags/gu.svg"
   },
   {
     "id": "gt",
@@ -1612,7 +1706,8 @@
       "+502"
     ],
     "flag_emoji": "🇬🇹",
-    "flag_svg_url": "/v1/assets/flags/gt.svg"
+    "flag_svg_url": "/v1/assets/flags/gt.svg",
+    "flag_url": "/v1/assets/flags/gt.svg"
   },
   {
     "id": "gg",
@@ -1628,7 +1723,8 @@
       "+44"
     ],
     "flag_emoji": "🇬🇬",
-    "flag_svg_url": "/v1/assets/flags/gg.svg"
+    "flag_svg_url": "/v1/assets/flags/gg.svg",
+    "flag_url": "/v1/assets/flags/gg.svg"
   },
   {
     "id": "gn",
@@ -1646,7 +1742,8 @@
       "+224"
     ],
     "flag_emoji": "🇬🇳",
-    "flag_svg_url": "/v1/assets/flags/gn.svg"
+    "flag_svg_url": "/v1/assets/flags/gn.svg",
+    "flag_url": "/v1/assets/flags/gn.svg"
   },
   {
     "id": "gw",
@@ -1664,7 +1761,8 @@
       "+245"
     ],
     "flag_emoji": "🇬🇼",
-    "flag_svg_url": "/v1/assets/flags/gw.svg"
+    "flag_svg_url": "/v1/assets/flags/gw.svg",
+    "flag_url": "/v1/assets/flags/gw.svg"
   },
   {
     "id": "gy",
@@ -1682,7 +1780,8 @@
       "+592"
     ],
     "flag_emoji": "🇬🇾",
-    "flag_svg_url": "/v1/assets/flags/gy.svg"
+    "flag_svg_url": "/v1/assets/flags/gy.svg",
+    "flag_url": "/v1/assets/flags/gy.svg"
   },
   {
     "id": "ht",
@@ -1700,7 +1799,8 @@
       "+509"
     ],
     "flag_emoji": "🇭🇹",
-    "flag_svg_url": "/v1/assets/flags/ht.svg"
+    "flag_svg_url": "/v1/assets/flags/ht.svg",
+    "flag_url": "/v1/assets/flags/ht.svg"
   },
   {
     "id": "hm",
@@ -1716,7 +1816,8 @@
       "+672-1"
     ],
     "flag_emoji": "🇭🇲",
-    "flag_svg_url": "/v1/assets/flags/hm.svg"
+    "flag_svg_url": "/v1/assets/flags/hm.svg",
+    "flag_url": "/v1/assets/flags/hm.svg"
   },
   {
     "id": "va",
@@ -1732,7 +1833,8 @@
       "+39-06"
     ],
     "flag_emoji": "🇻🇦",
-    "flag_svg_url": "/v1/assets/flags/va.svg"
+    "flag_svg_url": "/v1/assets/flags/va.svg",
+    "flag_url": "/v1/assets/flags/va.svg"
   },
   {
     "id": "hn",
@@ -1750,7 +1852,8 @@
       "+504"
     ],
     "flag_emoji": "🇭🇳",
-    "flag_svg_url": "/v1/assets/flags/hn.svg"
+    "flag_svg_url": "/v1/assets/flags/hn.svg",
+    "flag_url": "/v1/assets/flags/hn.svg"
   },
   {
     "id": "hu",
@@ -1766,7 +1869,8 @@
       "+36"
     ],
     "flag_emoji": "🇭🇺",
-    "flag_svg_url": "/v1/assets/flags/hu.svg"
+    "flag_svg_url": "/v1/assets/flags/hu.svg",
+    "flag_url": "/v1/assets/flags/hu.svg"
   },
   {
     "id": "is",
@@ -1782,7 +1886,8 @@
       "+354"
     ],
     "flag_emoji": "🇮🇸",
-    "flag_svg_url": "/v1/assets/flags/is.svg"
+    "flag_svg_url": "/v1/assets/flags/is.svg",
+    "flag_url": "/v1/assets/flags/is.svg"
   },
   {
     "id": "in",
@@ -1798,7 +1903,8 @@
       "+91"
     ],
     "flag_emoji": "🇮🇳",
-    "flag_svg_url": "/v1/assets/flags/in.svg"
+    "flag_svg_url": "/v1/assets/flags/in.svg",
+    "flag_url": "/v1/assets/flags/in.svg"
   },
   {
     "id": "id",
@@ -1814,7 +1920,8 @@
       "+62"
     ],
     "flag_emoji": "🇮🇩",
-    "flag_svg_url": "/v1/assets/flags/id.svg"
+    "flag_svg_url": "/v1/assets/flags/id.svg",
+    "flag_url": "/v1/assets/flags/id.svg"
   },
   {
     "id": "ir",
@@ -1830,7 +1937,8 @@
       "+98"
     ],
     "flag_emoji": "🇮🇷",
-    "flag_svg_url": "/v1/assets/flags/ir.svg"
+    "flag_svg_url": "/v1/assets/flags/ir.svg",
+    "flag_url": "/v1/assets/flags/ir.svg"
   },
   {
     "id": "iq",
@@ -1846,7 +1954,8 @@
       "+964"
     ],
     "flag_emoji": "🇮🇶",
-    "flag_svg_url": "/v1/assets/flags/iq.svg"
+    "flag_svg_url": "/v1/assets/flags/iq.svg",
+    "flag_url": "/v1/assets/flags/iq.svg"
   },
   {
     "id": "ie",
@@ -1862,7 +1971,8 @@
       "+353"
     ],
     "flag_emoji": "🇮🇪",
-    "flag_svg_url": "/v1/assets/flags/ie.svg"
+    "flag_svg_url": "/v1/assets/flags/ie.svg",
+    "flag_url": "/v1/assets/flags/ie.svg"
   },
   {
     "id": "im",
@@ -1878,7 +1988,8 @@
       "+44"
     ],
     "flag_emoji": "🇮🇲",
-    "flag_svg_url": "/v1/assets/flags/im.svg"
+    "flag_svg_url": "/v1/assets/flags/im.svg",
+    "flag_url": "/v1/assets/flags/im.svg"
   },
   {
     "id": "il",
@@ -1894,7 +2005,8 @@
       "+972"
     ],
     "flag_emoji": "🇮🇱",
-    "flag_svg_url": "/v1/assets/flags/il.svg"
+    "flag_svg_url": "/v1/assets/flags/il.svg",
+    "flag_url": "/v1/assets/flags/il.svg"
   },
   {
     "id": "it",
@@ -1910,7 +2022,8 @@
       "+39"
     ],
     "flag_emoji": "🇮🇹",
-    "flag_svg_url": "/v1/assets/flags/it.svg"
+    "flag_svg_url": "/v1/assets/flags/it.svg",
+    "flag_url": "/v1/assets/flags/it.svg"
   },
   {
     "id": "jm",
@@ -1929,7 +2042,8 @@
       "+1-876"
     ],
     "flag_emoji": "🇯🇲",
-    "flag_svg_url": "/v1/assets/flags/jm.svg"
+    "flag_svg_url": "/v1/assets/flags/jm.svg",
+    "flag_url": "/v1/assets/flags/jm.svg"
   },
   {
     "id": "jp",
@@ -1945,7 +2059,8 @@
       "+81"
     ],
     "flag_emoji": "🇯🇵",
-    "flag_svg_url": "/v1/assets/flags/jp.svg"
+    "flag_svg_url": "/v1/assets/flags/jp.svg",
+    "flag_url": "/v1/assets/flags/jp.svg"
   },
   {
     "id": "je",
@@ -1961,7 +2076,8 @@
       "+44"
     ],
     "flag_emoji": "🇯🇪",
-    "flag_svg_url": "/v1/assets/flags/je.svg"
+    "flag_svg_url": "/v1/assets/flags/je.svg",
+    "flag_url": "/v1/assets/flags/je.svg"
   },
   {
     "id": "jo",
@@ -1977,7 +2093,8 @@
       "+962"
     ],
     "flag_emoji": "🇯🇴",
-    "flag_svg_url": "/v1/assets/flags/jo.svg"
+    "flag_svg_url": "/v1/assets/flags/jo.svg",
+    "flag_url": "/v1/assets/flags/jo.svg"
   },
   {
     "id": "kz",
@@ -1993,7 +2110,8 @@
       "+7"
     ],
     "flag_emoji": "🇰🇿",
-    "flag_svg_url": "/v1/assets/flags/kz.svg"
+    "flag_svg_url": "/v1/assets/flags/kz.svg",
+    "flag_url": "/v1/assets/flags/kz.svg"
   },
   {
     "id": "ke",
@@ -2011,7 +2129,8 @@
       "+254"
     ],
     "flag_emoji": "🇰🇪",
-    "flag_svg_url": "/v1/assets/flags/ke.svg"
+    "flag_svg_url": "/v1/assets/flags/ke.svg",
+    "flag_url": "/v1/assets/flags/ke.svg"
   },
   {
     "id": "ki",
@@ -2027,7 +2146,8 @@
       "+686"
     ],
     "flag_emoji": "🇰🇮",
-    "flag_svg_url": "/v1/assets/flags/ki.svg"
+    "flag_svg_url": "/v1/assets/flags/ki.svg",
+    "flag_url": "/v1/assets/flags/ki.svg"
   },
   {
     "id": "kw",
@@ -2043,7 +2163,8 @@
       "+965"
     ],
     "flag_emoji": "🇰🇼",
-    "flag_svg_url": "/v1/assets/flags/kw.svg"
+    "flag_svg_url": "/v1/assets/flags/kw.svg",
+    "flag_url": "/v1/assets/flags/kw.svg"
   },
   {
     "id": "kg",
@@ -2059,7 +2180,8 @@
       "+996"
     ],
     "flag_emoji": "🇰🇬",
-    "flag_svg_url": "/v1/assets/flags/kg.svg"
+    "flag_svg_url": "/v1/assets/flags/kg.svg",
+    "flag_url": "/v1/assets/flags/kg.svg"
   },
   {
     "id": "la",
@@ -2075,7 +2197,8 @@
       "+856"
     ],
     "flag_emoji": "🇱🇦",
-    "flag_svg_url": "/v1/assets/flags/la.svg"
+    "flag_svg_url": "/v1/assets/flags/la.svg",
+    "flag_url": "/v1/assets/flags/la.svg"
   },
   {
     "id": "lv",
@@ -2091,7 +2214,8 @@
       "+371"
     ],
     "flag_emoji": "🇱🇻",
-    "flag_svg_url": "/v1/assets/flags/lv.svg"
+    "flag_svg_url": "/v1/assets/flags/lv.svg",
+    "flag_url": "/v1/assets/flags/lv.svg"
   },
   {
     "id": "lb",
@@ -2107,7 +2231,8 @@
       "+961"
     ],
     "flag_emoji": "🇱🇧",
-    "flag_svg_url": "/v1/assets/flags/lb.svg"
+    "flag_svg_url": "/v1/assets/flags/lb.svg",
+    "flag_url": "/v1/assets/flags/lb.svg"
   },
   {
     "id": "ls",
@@ -2125,7 +2250,8 @@
       "+266"
     ],
     "flag_emoji": "🇱🇸",
-    "flag_svg_url": "/v1/assets/flags/ls.svg"
+    "flag_svg_url": "/v1/assets/flags/ls.svg",
+    "flag_url": "/v1/assets/flags/ls.svg"
   },
   {
     "id": "lr",
@@ -2143,7 +2269,8 @@
       "+231"
     ],
     "flag_emoji": "🇱🇷",
-    "flag_svg_url": "/v1/assets/flags/lr.svg"
+    "flag_svg_url": "/v1/assets/flags/lr.svg",
+    "flag_url": "/v1/assets/flags/lr.svg"
   },
   {
     "id": "ly",
@@ -2159,7 +2286,8 @@
       "+218"
     ],
     "flag_emoji": "🇱🇾",
-    "flag_svg_url": "/v1/assets/flags/ly.svg"
+    "flag_svg_url": "/v1/assets/flags/ly.svg",
+    "flag_url": "/v1/assets/flags/ly.svg"
   },
   {
     "id": "li",
@@ -2175,7 +2303,8 @@
       "+423"
     ],
     "flag_emoji": "🇱🇮",
-    "flag_svg_url": "/v1/assets/flags/li.svg"
+    "flag_svg_url": "/v1/assets/flags/li.svg",
+    "flag_url": "/v1/assets/flags/li.svg"
   },
   {
     "id": "lt",
@@ -2191,7 +2320,8 @@
       "+370"
     ],
     "flag_emoji": "🇱🇹",
-    "flag_svg_url": "/v1/assets/flags/lt.svg"
+    "flag_svg_url": "/v1/assets/flags/lt.svg",
+    "flag_url": "/v1/assets/flags/lt.svg"
   },
   {
     "id": "lu",
@@ -2207,7 +2337,8 @@
       "+352"
     ],
     "flag_emoji": "🇱🇺",
-    "flag_svg_url": "/v1/assets/flags/lu.svg"
+    "flag_svg_url": "/v1/assets/flags/lu.svg",
+    "flag_url": "/v1/assets/flags/lu.svg"
   },
   {
     "id": "mg",
@@ -2225,7 +2356,8 @@
       "+261"
     ],
     "flag_emoji": "🇲🇬",
-    "flag_svg_url": "/v1/assets/flags/mg.svg"
+    "flag_svg_url": "/v1/assets/flags/mg.svg",
+    "flag_url": "/v1/assets/flags/mg.svg"
   },
   {
     "id": "mw",
@@ -2243,7 +2375,8 @@
       "+265"
     ],
     "flag_emoji": "🇲🇼",
-    "flag_svg_url": "/v1/assets/flags/mw.svg"
+    "flag_svg_url": "/v1/assets/flags/mw.svg",
+    "flag_url": "/v1/assets/flags/mw.svg"
   },
   {
     "id": "my",
@@ -2259,7 +2392,8 @@
       "+60"
     ],
     "flag_emoji": "🇲🇾",
-    "flag_svg_url": "/v1/assets/flags/my.svg"
+    "flag_svg_url": "/v1/assets/flags/my.svg",
+    "flag_url": "/v1/assets/flags/my.svg"
   },
   {
     "id": "mv",
@@ -2275,7 +2409,8 @@
       "+960"
     ],
     "flag_emoji": "🇲🇻",
-    "flag_svg_url": "/v1/assets/flags/mv.svg"
+    "flag_svg_url": "/v1/assets/flags/mv.svg",
+    "flag_url": "/v1/assets/flags/mv.svg"
   },
   {
     "id": "ml",
@@ -2293,7 +2428,8 @@
       "+223"
     ],
     "flag_emoji": "🇲🇱",
-    "flag_svg_url": "/v1/assets/flags/ml.svg"
+    "flag_svg_url": "/v1/assets/flags/ml.svg",
+    "flag_url": "/v1/assets/flags/ml.svg"
   },
   {
     "id": "mt",
@@ -2309,7 +2445,8 @@
       "+356"
     ],
     "flag_emoji": "🇲🇹",
-    "flag_svg_url": "/v1/assets/flags/mt.svg"
+    "flag_svg_url": "/v1/assets/flags/mt.svg",
+    "flag_url": "/v1/assets/flags/mt.svg"
   },
   {
     "id": "mh",
@@ -2325,7 +2462,8 @@
       "+692"
     ],
     "flag_emoji": "🇲🇭",
-    "flag_svg_url": "/v1/assets/flags/mh.svg"
+    "flag_svg_url": "/v1/assets/flags/mh.svg",
+    "flag_url": "/v1/assets/flags/mh.svg"
   },
   {
     "id": "mq",
@@ -2343,7 +2481,8 @@
       "+596"
     ],
     "flag_emoji": "🇲🇶",
-    "flag_svg_url": "/v1/assets/flags/mq.svg"
+    "flag_svg_url": "/v1/assets/flags/mq.svg",
+    "flag_url": "/v1/assets/flags/mq.svg"
   },
   {
     "id": "mr",
@@ -2361,7 +2500,8 @@
       "+222"
     ],
     "flag_emoji": "🇲🇷",
-    "flag_svg_url": "/v1/assets/flags/mr.svg"
+    "flag_svg_url": "/v1/assets/flags/mr.svg",
+    "flag_url": "/v1/assets/flags/mr.svg"
   },
   {
     "id": "mu",
@@ -2379,7 +2519,8 @@
       "+230"
     ],
     "flag_emoji": "🇲🇺",
-    "flag_svg_url": "/v1/assets/flags/mu.svg"
+    "flag_svg_url": "/v1/assets/flags/mu.svg",
+    "flag_url": "/v1/assets/flags/mu.svg"
   },
   {
     "id": "yt",
@@ -2397,7 +2538,8 @@
       "+262"
     ],
     "flag_emoji": "🇾🇹",
-    "flag_svg_url": "/v1/assets/flags/yt.svg"
+    "flag_svg_url": "/v1/assets/flags/yt.svg",
+    "flag_url": "/v1/assets/flags/yt.svg"
   },
   {
     "id": "mx",
@@ -2415,7 +2557,8 @@
       "+52"
     ],
     "flag_emoji": "🇲🇽",
-    "flag_svg_url": "/v1/assets/flags/mx.svg"
+    "flag_svg_url": "/v1/assets/flags/mx.svg",
+    "flag_url": "/v1/assets/flags/mx.svg"
   },
   {
     "id": "fm",
@@ -2431,7 +2574,8 @@
       "+691"
     ],
     "flag_emoji": "🇫🇲",
-    "flag_svg_url": "/v1/assets/flags/fm.svg"
+    "flag_svg_url": "/v1/assets/flags/fm.svg",
+    "flag_url": "/v1/assets/flags/fm.svg"
   },
   {
     "id": "mc",
@@ -2447,7 +2591,8 @@
       "+377"
     ],
     "flag_emoji": "🇲🇨",
-    "flag_svg_url": "/v1/assets/flags/mc.svg"
+    "flag_svg_url": "/v1/assets/flags/mc.svg",
+    "flag_url": "/v1/assets/flags/mc.svg"
   },
   {
     "id": "mn",
@@ -2463,7 +2608,8 @@
       "+976"
     ],
     "flag_emoji": "🇲🇳",
-    "flag_svg_url": "/v1/assets/flags/mn.svg"
+    "flag_svg_url": "/v1/assets/flags/mn.svg",
+    "flag_url": "/v1/assets/flags/mn.svg"
   },
   {
     "id": "me",
@@ -2479,7 +2625,8 @@
       "+382"
     ],
     "flag_emoji": "🇲🇪",
-    "flag_svg_url": "/v1/assets/flags/me.svg"
+    "flag_svg_url": "/v1/assets/flags/me.svg",
+    "flag_url": "/v1/assets/flags/me.svg"
   },
   {
     "id": "ms",
@@ -2497,7 +2644,8 @@
       "+1-664"
     ],
     "flag_emoji": "🇲🇸",
-    "flag_svg_url": "/v1/assets/flags/ms.svg"
+    "flag_svg_url": "/v1/assets/flags/ms.svg",
+    "flag_url": "/v1/assets/flags/ms.svg"
   },
   {
     "id": "ma",
@@ -2513,7 +2661,8 @@
       "+212"
     ],
     "flag_emoji": "🇲🇦",
-    "flag_svg_url": "/v1/assets/flags/ma.svg"
+    "flag_svg_url": "/v1/assets/flags/ma.svg",
+    "flag_url": "/v1/assets/flags/ma.svg"
   },
   {
     "id": "mz",
@@ -2531,7 +2680,8 @@
       "+258"
     ],
     "flag_emoji": "🇲🇿",
-    "flag_svg_url": "/v1/assets/flags/mz.svg"
+    "flag_svg_url": "/v1/assets/flags/mz.svg",
+    "flag_url": "/v1/assets/flags/mz.svg"
   },
   {
     "id": "mm",
@@ -2547,7 +2697,8 @@
       "+95"
     ],
     "flag_emoji": "🇲🇲",
-    "flag_svg_url": "/v1/assets/flags/mm.svg"
+    "flag_svg_url": "/v1/assets/flags/mm.svg",
+    "flag_url": "/v1/assets/flags/mm.svg"
   },
   {
     "id": "na",
@@ -2565,7 +2716,8 @@
       "+264"
     ],
     "flag_emoji": "🇳🇦",
-    "flag_svg_url": "/v1/assets/flags/na.svg"
+    "flag_svg_url": "/v1/assets/flags/na.svg",
+    "flag_url": "/v1/assets/flags/na.svg"
   },
   {
     "id": "nr",
@@ -2581,7 +2733,8 @@
       "+674"
     ],
     "flag_emoji": "🇳🇷",
-    "flag_svg_url": "/v1/assets/flags/nr.svg"
+    "flag_svg_url": "/v1/assets/flags/nr.svg",
+    "flag_url": "/v1/assets/flags/nr.svg"
   },
   {
     "id": "np",
@@ -2597,7 +2750,8 @@
       "+977"
     ],
     "flag_emoji": "🇳🇵",
-    "flag_svg_url": "/v1/assets/flags/np.svg"
+    "flag_svg_url": "/v1/assets/flags/np.svg",
+    "flag_url": "/v1/assets/flags/np.svg"
   },
   {
     "id": "nl",
@@ -2613,7 +2767,8 @@
       "+31"
     ],
     "flag_emoji": "🇳🇱",
-    "flag_svg_url": "/v1/assets/flags/nl.svg"
+    "flag_svg_url": "/v1/assets/flags/nl.svg",
+    "flag_url": "/v1/assets/flags/nl.svg"
   },
   {
     "id": "nc",
@@ -2629,7 +2784,8 @@
       "+687"
     ],
     "flag_emoji": "🇳🇨",
-    "flag_svg_url": "/v1/assets/flags/nc.svg"
+    "flag_svg_url": "/v1/assets/flags/nc.svg",
+    "flag_url": "/v1/assets/flags/nc.svg"
   },
   {
     "id": "nz",
@@ -2645,7 +2801,8 @@
       "+64"
     ],
     "flag_emoji": "🇳🇿",
-    "flag_svg_url": "/v1/assets/flags/nz.svg"
+    "flag_svg_url": "/v1/assets/flags/nz.svg",
+    "flag_url": "/v1/assets/flags/nz.svg"
   },
   {
     "id": "ni",
@@ -2663,7 +2820,8 @@
       "+505"
     ],
     "flag_emoji": "🇳🇮",
-    "flag_svg_url": "/v1/assets/flags/ni.svg"
+    "flag_svg_url": "/v1/assets/flags/ni.svg",
+    "flag_url": "/v1/assets/flags/ni.svg"
   },
   {
     "id": "ne",
@@ -2681,7 +2839,8 @@
       "+227"
     ],
     "flag_emoji": "🇳🇪",
-    "flag_svg_url": "/v1/assets/flags/ne.svg"
+    "flag_svg_url": "/v1/assets/flags/ne.svg",
+    "flag_url": "/v1/assets/flags/ne.svg"
   },
   {
     "id": "ng",
@@ -2699,7 +2858,8 @@
       "+234"
     ],
     "flag_emoji": "🇳🇬",
-    "flag_svg_url": "/v1/assets/flags/ng.svg"
+    "flag_svg_url": "/v1/assets/flags/ng.svg",
+    "flag_url": "/v1/assets/flags/ng.svg"
   },
   {
     "id": "nu",
@@ -2715,7 +2875,8 @@
       "+683"
     ],
     "flag_emoji": "🇳🇺",
-    "flag_svg_url": "/v1/assets/flags/nu.svg"
+    "flag_svg_url": "/v1/assets/flags/nu.svg",
+    "flag_url": "/v1/assets/flags/nu.svg"
   },
   {
     "id": "nf",
@@ -2731,7 +2892,8 @@
       "+672"
     ],
     "flag_emoji": "🇳🇫",
-    "flag_svg_url": "/v1/assets/flags/nf.svg"
+    "flag_svg_url": "/v1/assets/flags/nf.svg",
+    "flag_url": "/v1/assets/flags/nf.svg"
   },
   {
     "id": "mk",
@@ -2747,7 +2909,8 @@
       "+389"
     ],
     "flag_emoji": "🇲🇰",
-    "flag_svg_url": "/v1/assets/flags/mk.svg"
+    "flag_svg_url": "/v1/assets/flags/mk.svg",
+    "flag_url": "/v1/assets/flags/mk.svg"
   },
   {
     "id": "mp",
@@ -2763,7 +2926,8 @@
       "+1-670"
     ],
     "flag_emoji": "🇲🇵",
-    "flag_svg_url": "/v1/assets/flags/mp.svg"
+    "flag_svg_url": "/v1/assets/flags/mp.svg",
+    "flag_url": "/v1/assets/flags/mp.svg"
   },
   {
     "id": "no",
@@ -2779,7 +2943,8 @@
       "+47"
     ],
     "flag_emoji": "🇳🇴",
-    "flag_svg_url": "/v1/assets/flags/no.svg"
+    "flag_svg_url": "/v1/assets/flags/no.svg",
+    "flag_url": "/v1/assets/flags/no.svg"
   },
   {
     "id": "om",
@@ -2795,7 +2960,8 @@
       "+968"
     ],
     "flag_emoji": "🇴🇲",
-    "flag_svg_url": "/v1/assets/flags/om.svg"
+    "flag_svg_url": "/v1/assets/flags/om.svg",
+    "flag_url": "/v1/assets/flags/om.svg"
   },
   {
     "id": "pk",
@@ -2811,7 +2977,8 @@
       "+92"
     ],
     "flag_emoji": "🇵🇰",
-    "flag_svg_url": "/v1/assets/flags/pk.svg"
+    "flag_svg_url": "/v1/assets/flags/pk.svg",
+    "flag_url": "/v1/assets/flags/pk.svg"
   },
   {
     "id": "pw",
@@ -2827,7 +2994,8 @@
       "+680"
     ],
     "flag_emoji": "🇵🇼",
-    "flag_svg_url": "/v1/assets/flags/pw.svg"
+    "flag_svg_url": "/v1/assets/flags/pw.svg",
+    "flag_url": "/v1/assets/flags/pw.svg"
   },
   {
     "id": "pa",
@@ -2845,7 +3013,8 @@
       "+507"
     ],
     "flag_emoji": "🇵🇦",
-    "flag_svg_url": "/v1/assets/flags/pa.svg"
+    "flag_svg_url": "/v1/assets/flags/pa.svg",
+    "flag_url": "/v1/assets/flags/pa.svg"
   },
   {
     "id": "pg",
@@ -2861,7 +3030,8 @@
       "+675"
     ],
     "flag_emoji": "🇵🇬",
-    "flag_svg_url": "/v1/assets/flags/pg.svg"
+    "flag_svg_url": "/v1/assets/flags/pg.svg",
+    "flag_url": "/v1/assets/flags/pg.svg"
   },
   {
     "id": "py",
@@ -2879,7 +3049,8 @@
       "+595"
     ],
     "flag_emoji": "🇵🇾",
-    "flag_svg_url": "/v1/assets/flags/py.svg"
+    "flag_svg_url": "/v1/assets/flags/py.svg",
+    "flag_url": "/v1/assets/flags/py.svg"
   },
   {
     "id": "pe",
@@ -2897,7 +3068,8 @@
       "+51"
     ],
     "flag_emoji": "🇵🇪",
-    "flag_svg_url": "/v1/assets/flags/pe.svg"
+    "flag_svg_url": "/v1/assets/flags/pe.svg",
+    "flag_url": "/v1/assets/flags/pe.svg"
   },
   {
     "id": "ph",
@@ -2913,7 +3085,8 @@
       "+63"
     ],
     "flag_emoji": "🇵🇭",
-    "flag_svg_url": "/v1/assets/flags/ph.svg"
+    "flag_svg_url": "/v1/assets/flags/ph.svg",
+    "flag_url": "/v1/assets/flags/ph.svg"
   },
   {
     "id": "pn",
@@ -2929,7 +3102,8 @@
       "+64"
     ],
     "flag_emoji": "🇵🇳",
-    "flag_svg_url": "/v1/assets/flags/pn.svg"
+    "flag_svg_url": "/v1/assets/flags/pn.svg",
+    "flag_url": "/v1/assets/flags/pn.svg"
   },
   {
     "id": "pl",
@@ -2945,7 +3119,8 @@
       "+48"
     ],
     "flag_emoji": "🇵🇱",
-    "flag_svg_url": "/v1/assets/flags/pl.svg"
+    "flag_svg_url": "/v1/assets/flags/pl.svg",
+    "flag_url": "/v1/assets/flags/pl.svg"
   },
   {
     "id": "pt",
@@ -2961,7 +3136,8 @@
       "+351"
     ],
     "flag_emoji": "🇵🇹",
-    "flag_svg_url": "/v1/assets/flags/pt.svg"
+    "flag_svg_url": "/v1/assets/flags/pt.svg",
+    "flag_url": "/v1/assets/flags/pt.svg"
   },
   {
     "id": "pr",
@@ -2980,7 +3156,8 @@
       "+1-939"
     ],
     "flag_emoji": "🇵🇷",
-    "flag_svg_url": "/v1/assets/flags/pr.svg"
+    "flag_svg_url": "/v1/assets/flags/pr.svg",
+    "flag_url": "/v1/assets/flags/pr.svg"
   },
   {
     "id": "qa",
@@ -2996,7 +3173,8 @@
       "+974"
     ],
     "flag_emoji": "🇶🇦",
-    "flag_svg_url": "/v1/assets/flags/qa.svg"
+    "flag_svg_url": "/v1/assets/flags/qa.svg",
+    "flag_url": "/v1/assets/flags/qa.svg"
   },
   {
     "id": "kr",
@@ -3012,7 +3190,8 @@
       "+82"
     ],
     "flag_emoji": "🇰🇷",
-    "flag_svg_url": "/v1/assets/flags/kr.svg"
+    "flag_svg_url": "/v1/assets/flags/kr.svg",
+    "flag_url": "/v1/assets/flags/kr.svg"
   },
   {
     "id": "md",
@@ -3028,7 +3207,8 @@
       "+373"
     ],
     "flag_emoji": "🇲🇩",
-    "flag_svg_url": "/v1/assets/flags/md.svg"
+    "flag_svg_url": "/v1/assets/flags/md.svg",
+    "flag_url": "/v1/assets/flags/md.svg"
   },
   {
     "id": "ro",
@@ -3044,7 +3224,8 @@
       "+40"
     ],
     "flag_emoji": "🇷🇴",
-    "flag_svg_url": "/v1/assets/flags/ro.svg"
+    "flag_svg_url": "/v1/assets/flags/ro.svg",
+    "flag_url": "/v1/assets/flags/ro.svg"
   },
   {
     "id": "ru",
@@ -3060,7 +3241,8 @@
       "+7"
     ],
     "flag_emoji": "🇷🇺",
-    "flag_svg_url": "/v1/assets/flags/ru.svg"
+    "flag_svg_url": "/v1/assets/flags/ru.svg",
+    "flag_url": "/v1/assets/flags/ru.svg"
   },
   {
     "id": "rw",
@@ -3078,7 +3260,8 @@
       "+250"
     ],
     "flag_emoji": "🇷🇼",
-    "flag_svg_url": "/v1/assets/flags/rw.svg"
+    "flag_svg_url": "/v1/assets/flags/rw.svg",
+    "flag_url": "/v1/assets/flags/rw.svg"
   },
   {
     "id": "re",
@@ -3096,7 +3279,8 @@
       "+262"
     ],
     "flag_emoji": "🇷🇪",
-    "flag_svg_url": "/v1/assets/flags/re.svg"
+    "flag_svg_url": "/v1/assets/flags/re.svg",
+    "flag_url": "/v1/assets/flags/re.svg"
   },
   {
     "id": "bl",
@@ -3114,7 +3298,8 @@
       "+590"
     ],
     "flag_emoji": "🇧🇱",
-    "flag_svg_url": "/v1/assets/flags/bl.svg"
+    "flag_svg_url": "/v1/assets/flags/bl.svg",
+    "flag_url": "/v1/assets/flags/bl.svg"
   },
   {
     "id": "sh",
@@ -3132,7 +3317,8 @@
       "+290"
     ],
     "flag_emoji": "🇸🇭",
-    "flag_svg_url": "/v1/assets/flags/sh.svg"
+    "flag_svg_url": "/v1/assets/flags/sh.svg",
+    "flag_url": "/v1/assets/flags/sh.svg"
   },
   {
     "id": "mf",
@@ -3150,7 +3336,8 @@
       "+590"
     ],
     "flag_emoji": "🇲🇫",
-    "flag_svg_url": "/v1/assets/flags/mf.svg"
+    "flag_svg_url": "/v1/assets/flags/mf.svg",
+    "flag_url": "/v1/assets/flags/mf.svg"
   },
   {
     "id": "pm",
@@ -3166,7 +3353,8 @@
       "+508"
     ],
     "flag_emoji": "🇵🇲",
-    "flag_svg_url": "/v1/assets/flags/pm.svg"
+    "flag_svg_url": "/v1/assets/flags/pm.svg",
+    "flag_url": "/v1/assets/flags/pm.svg"
   },
   {
     "id": "vc",
@@ -3184,7 +3372,8 @@
       "+1-784"
     ],
     "flag_emoji": "🇻🇨",
-    "flag_svg_url": "/v1/assets/flags/vc.svg"
+    "flag_svg_url": "/v1/assets/flags/vc.svg",
+    "flag_url": "/v1/assets/flags/vc.svg"
   },
   {
     "id": "ws",
@@ -3200,7 +3389,8 @@
       "+685"
     ],
     "flag_emoji": "🇼🇸",
-    "flag_svg_url": "/v1/assets/flags/ws.svg"
+    "flag_svg_url": "/v1/assets/flags/ws.svg",
+    "flag_url": "/v1/assets/flags/ws.svg"
   },
   {
     "id": "sm",
@@ -3216,7 +3406,8 @@
       "+378"
     ],
     "flag_emoji": "🇸🇲",
-    "flag_svg_url": "/v1/assets/flags/sm.svg"
+    "flag_svg_url": "/v1/assets/flags/sm.svg",
+    "flag_url": "/v1/assets/flags/sm.svg"
   },
   {
     "id": "st",
@@ -3234,7 +3425,8 @@
       "+239"
     ],
     "flag_emoji": "🇸🇹",
-    "flag_svg_url": "/v1/assets/flags/st.svg"
+    "flag_svg_url": "/v1/assets/flags/st.svg",
+    "flag_url": "/v1/assets/flags/st.svg"
   },
   {
     "id": "sa",
@@ -3250,7 +3442,8 @@
       "+966"
     ],
     "flag_emoji": "🇸🇦",
-    "flag_svg_url": "/v1/assets/flags/sa.svg"
+    "flag_svg_url": "/v1/assets/flags/sa.svg",
+    "flag_url": "/v1/assets/flags/sa.svg"
   },
   {
     "id": "sn",
@@ -3268,7 +3461,8 @@
       "+221"
     ],
     "flag_emoji": "🇸🇳",
-    "flag_svg_url": "/v1/assets/flags/sn.svg"
+    "flag_svg_url": "/v1/assets/flags/sn.svg",
+    "flag_url": "/v1/assets/flags/sn.svg"
   },
   {
     "id": "rs",
@@ -3284,7 +3478,8 @@
       "+381"
     ],
     "flag_emoji": "🇷🇸",
-    "flag_svg_url": "/v1/assets/flags/rs.svg"
+    "flag_svg_url": "/v1/assets/flags/rs.svg",
+    "flag_url": "/v1/assets/flags/rs.svg"
   },
   {
     "id": "sc",
@@ -3302,7 +3497,8 @@
       "+248"
     ],
     "flag_emoji": "🇸🇨",
-    "flag_svg_url": "/v1/assets/flags/sc.svg"
+    "flag_svg_url": "/v1/assets/flags/sc.svg",
+    "flag_url": "/v1/assets/flags/sc.svg"
   },
   {
     "id": "sl",
@@ -3320,7 +3516,8 @@
       "+232"
     ],
     "flag_emoji": "🇸🇱",
-    "flag_svg_url": "/v1/assets/flags/sl.svg"
+    "flag_svg_url": "/v1/assets/flags/sl.svg",
+    "flag_url": "/v1/assets/flags/sl.svg"
   },
   {
     "id": "sg",
@@ -3336,7 +3533,8 @@
       "+65"
     ],
     "flag_emoji": "🇸🇬",
-    "flag_svg_url": "/v1/assets/flags/sg.svg"
+    "flag_svg_url": "/v1/assets/flags/sg.svg",
+    "flag_url": "/v1/assets/flags/sg.svg"
   },
   {
     "id": "sx",
@@ -3354,7 +3552,8 @@
       "+1-721"
     ],
     "flag_emoji": "🇸🇽",
-    "flag_svg_url": "/v1/assets/flags/sx.svg"
+    "flag_svg_url": "/v1/assets/flags/sx.svg",
+    "flag_url": "/v1/assets/flags/sx.svg"
   },
   {
     "id": "sk",
@@ -3370,7 +3569,8 @@
       "+421"
     ],
     "flag_emoji": "🇸🇰",
-    "flag_svg_url": "/v1/assets/flags/sk.svg"
+    "flag_svg_url": "/v1/assets/flags/sk.svg",
+    "flag_url": "/v1/assets/flags/sk.svg"
   },
   {
     "id": "si",
@@ -3386,7 +3586,8 @@
       "+386"
     ],
     "flag_emoji": "🇸🇮",
-    "flag_svg_url": "/v1/assets/flags/si.svg"
+    "flag_svg_url": "/v1/assets/flags/si.svg",
+    "flag_url": "/v1/assets/flags/si.svg"
   },
   {
     "id": "sb",
@@ -3402,7 +3603,8 @@
       "+677"
     ],
     "flag_emoji": "🇸🇧",
-    "flag_svg_url": "/v1/assets/flags/sb.svg"
+    "flag_svg_url": "/v1/assets/flags/sb.svg",
+    "flag_url": "/v1/assets/flags/sb.svg"
   },
   {
     "id": "so",
@@ -3420,7 +3622,8 @@
       "+252"
     ],
     "flag_emoji": "🇸🇴",
-    "flag_svg_url": "/v1/assets/flags/so.svg"
+    "flag_svg_url": "/v1/assets/flags/so.svg",
+    "flag_url": "/v1/assets/flags/so.svg"
   },
   {
     "id": "za",
@@ -3438,7 +3641,8 @@
       "+27"
     ],
     "flag_emoji": "🇿🇦",
-    "flag_svg_url": "/v1/assets/flags/za.svg"
+    "flag_svg_url": "/v1/assets/flags/za.svg",
+    "flag_url": "/v1/assets/flags/za.svg"
   },
   {
     "id": "gs",
@@ -3456,7 +3660,8 @@
       "+500"
     ],
     "flag_emoji": "🇬🇸",
-    "flag_svg_url": "/v1/assets/flags/gs.svg"
+    "flag_svg_url": "/v1/assets/flags/gs.svg",
+    "flag_url": "/v1/assets/flags/gs.svg"
   },
   {
     "id": "ss",
@@ -3474,7 +3679,8 @@
       "+211"
     ],
     "flag_emoji": "🇸🇸",
-    "flag_svg_url": "/v1/assets/flags/ss.svg"
+    "flag_svg_url": "/v1/assets/flags/ss.svg",
+    "flag_url": "/v1/assets/flags/ss.svg"
   },
   {
     "id": "es",
@@ -3490,7 +3696,8 @@
       "+34"
     ],
     "flag_emoji": "🇪🇸",
-    "flag_svg_url": "/v1/assets/flags/es.svg"
+    "flag_svg_url": "/v1/assets/flags/es.svg",
+    "flag_url": "/v1/assets/flags/es.svg"
   },
   {
     "id": "lk",
@@ -3506,7 +3713,8 @@
       "+94"
     ],
     "flag_emoji": "🇱🇰",
-    "flag_svg_url": "/v1/assets/flags/lk.svg"
+    "flag_svg_url": "/v1/assets/flags/lk.svg",
+    "flag_url": "/v1/assets/flags/lk.svg"
   },
   {
     "id": "kn",
@@ -3524,7 +3732,8 @@
       "+1-869"
     ],
     "flag_emoji": "🇰🇳",
-    "flag_svg_url": "/v1/assets/flags/kn.svg"
+    "flag_svg_url": "/v1/assets/flags/kn.svg",
+    "flag_url": "/v1/assets/flags/kn.svg"
   },
   {
     "id": "lc",
@@ -3542,7 +3751,8 @@
       "+1-758"
     ],
     "flag_emoji": "🇱🇨",
-    "flag_svg_url": "/v1/assets/flags/lc.svg"
+    "flag_svg_url": "/v1/assets/flags/lc.svg",
+    "flag_url": "/v1/assets/flags/lc.svg"
   },
   {
     "id": "ps",
@@ -3558,7 +3768,8 @@
       "+970"
     ],
     "flag_emoji": "🇵🇸",
-    "flag_svg_url": "/v1/assets/flags/ps.svg"
+    "flag_svg_url": "/v1/assets/flags/ps.svg",
+    "flag_url": "/v1/assets/flags/ps.svg"
   },
   {
     "id": "sd",
@@ -3574,7 +3785,8 @@
       "+249"
     ],
     "flag_emoji": "🇸🇩",
-    "flag_svg_url": "/v1/assets/flags/sd.svg"
+    "flag_svg_url": "/v1/assets/flags/sd.svg",
+    "flag_url": "/v1/assets/flags/sd.svg"
   },
   {
     "id": "sr",
@@ -3592,7 +3804,8 @@
       "+597"
     ],
     "flag_emoji": "🇸🇷",
-    "flag_svg_url": "/v1/assets/flags/sr.svg"
+    "flag_svg_url": "/v1/assets/flags/sr.svg",
+    "flag_url": "/v1/assets/flags/sr.svg"
   },
   {
     "id": "sj",
@@ -3608,7 +3821,8 @@
       "+47"
     ],
     "flag_emoji": "🇸🇯",
-    "flag_svg_url": "/v1/assets/flags/sj.svg"
+    "flag_svg_url": "/v1/assets/flags/sj.svg",
+    "flag_url": "/v1/assets/flags/sj.svg"
   },
   {
     "id": "se",
@@ -3624,7 +3838,8 @@
       "+46"
     ],
     "flag_emoji": "🇸🇪",
-    "flag_svg_url": "/v1/assets/flags/se.svg"
+    "flag_svg_url": "/v1/assets/flags/se.svg",
+    "flag_url": "/v1/assets/flags/se.svg"
   },
   {
     "id": "ch",
@@ -3640,7 +3855,8 @@
       "+41"
     ],
     "flag_emoji": "🇨🇭",
-    "flag_svg_url": "/v1/assets/flags/ch.svg"
+    "flag_svg_url": "/v1/assets/flags/ch.svg",
+    "flag_url": "/v1/assets/flags/ch.svg"
   },
   {
     "id": "sy",
@@ -3656,7 +3872,8 @@
       "+963"
     ],
     "flag_emoji": "🇸🇾",
-    "flag_svg_url": "/v1/assets/flags/sy.svg"
+    "flag_svg_url": "/v1/assets/flags/sy.svg",
+    "flag_url": "/v1/assets/flags/sy.svg"
   },
   {
     "id": "tj",
@@ -3672,7 +3889,8 @@
       "+992"
     ],
     "flag_emoji": "🇹🇯",
-    "flag_svg_url": "/v1/assets/flags/tj.svg"
+    "flag_svg_url": "/v1/assets/flags/tj.svg",
+    "flag_url": "/v1/assets/flags/tj.svg"
   },
   {
     "id": "th",
@@ -3688,7 +3906,8 @@
       "+66"
     ],
     "flag_emoji": "🇹🇭",
-    "flag_svg_url": "/v1/assets/flags/th.svg"
+    "flag_svg_url": "/v1/assets/flags/th.svg",
+    "flag_url": "/v1/assets/flags/th.svg"
   },
   {
     "id": "tl",
@@ -3704,7 +3923,8 @@
       "+670"
     ],
     "flag_emoji": "🇹🇱",
-    "flag_svg_url": "/v1/assets/flags/tl.svg"
+    "flag_svg_url": "/v1/assets/flags/tl.svg",
+    "flag_url": "/v1/assets/flags/tl.svg"
   },
   {
     "id": "tg",
@@ -3722,7 +3942,8 @@
       "+228"
     ],
     "flag_emoji": "🇹🇬",
-    "flag_svg_url": "/v1/assets/flags/tg.svg"
+    "flag_svg_url": "/v1/assets/flags/tg.svg",
+    "flag_url": "/v1/assets/flags/tg.svg"
   },
   {
     "id": "tk",
@@ -3738,7 +3959,8 @@
       "+690"
     ],
     "flag_emoji": "🇹🇰",
-    "flag_svg_url": "/v1/assets/flags/tk.svg"
+    "flag_svg_url": "/v1/assets/flags/tk.svg",
+    "flag_url": "/v1/assets/flags/tk.svg"
   },
   {
     "id": "to",
@@ -3754,7 +3976,8 @@
       "+676"
     ],
     "flag_emoji": "🇹🇴",
-    "flag_svg_url": "/v1/assets/flags/to.svg"
+    "flag_svg_url": "/v1/assets/flags/to.svg",
+    "flag_url": "/v1/assets/flags/to.svg"
   },
   {
     "id": "tt",
@@ -3772,7 +3995,8 @@
       "+1-868"
     ],
     "flag_emoji": "🇹🇹",
-    "flag_svg_url": "/v1/assets/flags/tt.svg"
+    "flag_svg_url": "/v1/assets/flags/tt.svg",
+    "flag_url": "/v1/assets/flags/tt.svg"
   },
   {
     "id": "tn",
@@ -3788,7 +4012,8 @@
       "+216"
     ],
     "flag_emoji": "🇹🇳",
-    "flag_svg_url": "/v1/assets/flags/tn.svg"
+    "flag_svg_url": "/v1/assets/flags/tn.svg",
+    "flag_url": "/v1/assets/flags/tn.svg"
   },
   {
     "id": "tm",
@@ -3804,7 +4029,8 @@
       "+993"
     ],
     "flag_emoji": "🇹🇲",
-    "flag_svg_url": "/v1/assets/flags/tm.svg"
+    "flag_svg_url": "/v1/assets/flags/tm.svg",
+    "flag_url": "/v1/assets/flags/tm.svg"
   },
   {
     "id": "tc",
@@ -3822,7 +4048,8 @@
       "+1-649"
     ],
     "flag_emoji": "🇹🇨",
-    "flag_svg_url": "/v1/assets/flags/tc.svg"
+    "flag_svg_url": "/v1/assets/flags/tc.svg",
+    "flag_url": "/v1/assets/flags/tc.svg"
   },
   {
     "id": "tv",
@@ -3838,7 +4065,8 @@
       "+688"
     ],
     "flag_emoji": "🇹🇻",
-    "flag_svg_url": "/v1/assets/flags/tv.svg"
+    "flag_svg_url": "/v1/assets/flags/tv.svg",
+    "flag_url": "/v1/assets/flags/tv.svg"
   },
   {
     "id": "tr",
@@ -3854,7 +4082,8 @@
       "+90"
     ],
     "flag_emoji": "🇹🇷",
-    "flag_svg_url": "/v1/assets/flags/tr.svg"
+    "flag_svg_url": "/v1/assets/flags/tr.svg",
+    "flag_url": "/v1/assets/flags/tr.svg"
   },
   {
     "id": "ug",
@@ -3872,7 +4101,8 @@
       "+256"
     ],
     "flag_emoji": "🇺🇬",
-    "flag_svg_url": "/v1/assets/flags/ug.svg"
+    "flag_svg_url": "/v1/assets/flags/ug.svg",
+    "flag_url": "/v1/assets/flags/ug.svg"
   },
   {
     "id": "ua",
@@ -3888,7 +4118,8 @@
       "+380"
     ],
     "flag_emoji": "🇺🇦",
-    "flag_svg_url": "/v1/assets/flags/ua.svg"
+    "flag_svg_url": "/v1/assets/flags/ua.svg",
+    "flag_url": "/v1/assets/flags/ua.svg"
   },
   {
     "id": "ae",
@@ -3904,7 +4135,8 @@
       "+971"
     ],
     "flag_emoji": "🇦🇪",
-    "flag_svg_url": "/v1/assets/flags/ae.svg"
+    "flag_svg_url": "/v1/assets/flags/ae.svg",
+    "flag_url": "/v1/assets/flags/ae.svg"
   },
   {
     "id": "gb",
@@ -3920,7 +4152,8 @@
       "+44"
     ],
     "flag_emoji": "🇬🇧",
-    "flag_svg_url": "/v1/assets/flags/gb.svg"
+    "flag_svg_url": "/v1/assets/flags/gb.svg",
+    "flag_url": "/v1/assets/flags/gb.svg"
   },
   {
     "id": "tz",
@@ -3938,7 +4171,8 @@
       "+255"
     ],
     "flag_emoji": "🇹🇿",
-    "flag_svg_url": "/v1/assets/flags/tz.svg"
+    "flag_svg_url": "/v1/assets/flags/tz.svg",
+    "flag_url": "/v1/assets/flags/tz.svg"
   },
   {
     "id": "um",
@@ -3954,7 +4188,8 @@
       "+1"
     ],
     "flag_emoji": "🇺🇲",
-    "flag_svg_url": "/v1/assets/flags/um.svg"
+    "flag_svg_url": "/v1/assets/flags/um.svg",
+    "flag_url": "/v1/assets/flags/um.svg"
   },
   {
     "id": "vi",
@@ -3972,7 +4207,8 @@
       "+1-340"
     ],
     "flag_emoji": "🇻🇮",
-    "flag_svg_url": "/v1/assets/flags/vi.svg"
+    "flag_svg_url": "/v1/assets/flags/vi.svg",
+    "flag_url": "/v1/assets/flags/vi.svg"
   },
   {
     "id": "us",
@@ -3988,7 +4224,8 @@
       "+1"
     ],
     "flag_emoji": "🇺🇸",
-    "flag_svg_url": "/v1/assets/flags/us.svg"
+    "flag_svg_url": "/v1/assets/flags/us.svg",
+    "flag_url": "/v1/assets/flags/us.svg"
   },
   {
     "id": "uy",
@@ -4006,7 +4243,8 @@
       "+598"
     ],
     "flag_emoji": "🇺🇾",
-    "flag_svg_url": "/v1/assets/flags/uy.svg"
+    "flag_svg_url": "/v1/assets/flags/uy.svg",
+    "flag_url": "/v1/assets/flags/uy.svg"
   },
   {
     "id": "uz",
@@ -4022,7 +4260,8 @@
       "+998"
     ],
     "flag_emoji": "🇺🇿",
-    "flag_svg_url": "/v1/assets/flags/uz.svg"
+    "flag_svg_url": "/v1/assets/flags/uz.svg",
+    "flag_url": "/v1/assets/flags/uz.svg"
   },
   {
     "id": "vu",
@@ -4038,7 +4277,8 @@
       "+678"
     ],
     "flag_emoji": "🇻🇺",
-    "flag_svg_url": "/v1/assets/flags/vu.svg"
+    "flag_svg_url": "/v1/assets/flags/vu.svg",
+    "flag_url": "/v1/assets/flags/vu.svg"
   },
   {
     "id": "ve",
@@ -4056,7 +4296,8 @@
       "+58"
     ],
     "flag_emoji": "🇻🇪",
-    "flag_svg_url": "/v1/assets/flags/ve.svg"
+    "flag_svg_url": "/v1/assets/flags/ve.svg",
+    "flag_url": "/v1/assets/flags/ve.svg"
   },
   {
     "id": "vn",
@@ -4072,7 +4313,8 @@
       "+84"
     ],
     "flag_emoji": "🇻🇳",
-    "flag_svg_url": "/v1/assets/flags/vn.svg"
+    "flag_svg_url": "/v1/assets/flags/vn.svg",
+    "flag_url": "/v1/assets/flags/vn.svg"
   },
   {
     "id": "wf",
@@ -4088,7 +4330,8 @@
       "+681"
     ],
     "flag_emoji": "🇼🇫",
-    "flag_svg_url": "/v1/assets/flags/wf.svg"
+    "flag_svg_url": "/v1/assets/flags/wf.svg",
+    "flag_url": "/v1/assets/flags/wf.svg"
   },
   {
     "id": "eh",
@@ -4104,7 +4347,8 @@
       "+212"
     ],
     "flag_emoji": "🇪🇭",
-    "flag_svg_url": "/v1/assets/flags/eh.svg"
+    "flag_svg_url": "/v1/assets/flags/eh.svg",
+    "flag_url": "/v1/assets/flags/eh.svg"
   },
   {
     "id": "ye",
@@ -4120,7 +4364,8 @@
       "+967"
     ],
     "flag_emoji": "🇾🇪",
-    "flag_svg_url": "/v1/assets/flags/ye.svg"
+    "flag_svg_url": "/v1/assets/flags/ye.svg",
+    "flag_url": "/v1/assets/flags/ye.svg"
   },
   {
     "id": "zm",
@@ -4138,7 +4383,8 @@
       "+260"
     ],
     "flag_emoji": "🇿🇲",
-    "flag_svg_url": "/v1/assets/flags/zm.svg"
+    "flag_svg_url": "/v1/assets/flags/zm.svg",
+    "flag_url": "/v1/assets/flags/zm.svg"
   },
   {
     "id": "zw",
@@ -4156,7 +4402,8 @@
       "+263"
     ],
     "flag_emoji": "🇿🇼",
-    "flag_svg_url": "/v1/assets/flags/zw.svg"
+    "flag_svg_url": "/v1/assets/flags/zw.svg",
+    "flag_url": "/v1/assets/flags/zw.svg"
   },
   {
     "id": "ax",
@@ -4172,6 +4419,7 @@
       "+358"
     ],
     "flag_emoji": "🇦🇽",
-    "flag_svg_url": "/v1/assets/flags/ax.svg"
+    "flag_svg_url": "/v1/assets/flags/ax.svg",
+    "flag_url": "/v1/assets/flags/ax.svg"
   }
 ]

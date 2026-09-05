@@ -116,6 +116,7 @@ func buildCountryProfile(country models.CountryOrArea, currencies []models.Curre
 		CallingCodes:           cloneStringSlice(country.CallingCodes),
 		FlagEmoji:              country.FlagEmoji,
 		FlagSVGURL:             country.FlagSVGURL,
+		FlagURL:                country.FlagURL,
 		RegionCode:             country.RegionCode,
 		RegionName:             country.RegionName,
 		SubregionCode:          country.SubregionCode,

@@ -172,7 +172,7 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	if err != nil {
 		return appDependencies{}, err
 	}
-	geographyHandler, err := handlers.NewGeographyHandler(geographyService, profileService)
+	geographyHandler, err := handlers.NewGeographyHandlerWithPublicAPIURL(geographyService, cfg.PublicAPIURL, profileService)
 	if err != nil {
 		return appDependencies{}, err
 	}
