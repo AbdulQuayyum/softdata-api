@@ -6,7 +6,7 @@ SoftData API uses a layered Go layout that keeps entry points, configuration, pe
 
 - `cmd/` contains executable entry points.
 - `internal/` contains application configuration, infrastructure, domain models, repositories, services, HTTP handlers, middleware, routing, validation, security, and response helpers.
-- `datasets/` contains versioned source data, schemas, provenance metadata, licensing notes, and embedded flag assets.
+- `datasets/` contains versioned source data, schemas, provenance metadata, licensing notes, and embedded flag and regulated-finance logo assets.
 - `database/` contains PostgreSQL migrations and handwritten SQL queries.
 - `docs/` contains API and project documentation, including the OpenAPI contract.
 - Root files provide development configuration, build metadata, contribution guidance, and project licensing.
@@ -79,14 +79,18 @@ softdata-api/
 │   │   │       └── *.png                  # 28 vendored bank assets
 │   │   ├── financial_institution_logos.go
 │   │   ├── financial_institutions_test.go
-│   │   └── financial-institutions/
-│   │       ├── LICENSE
-│   │       └── ng/
-│   │           ├── ATTRIBUTION.md
-│   │           ├── merchant-banks/*.png
-│   │           ├── non-interest/*.png
-│   │           ├── payment-service-banks/*.png
-│   │           └── primary-mortgage/*.png
+│   │   ├── financial-institutions/
+│   │   │   ├── LICENSE
+│   │   │   └── ng/
+│   │   │       ├── ACQUISITION_AUDIT.md
+│   │   │       ├── ATTRIBUTION.md
+│   │   │       ├── LOGO_PERMISSION_REQUESTS.md
+│   │   │       ├── development-finance/*.png
+│   │   │       ├── holding-companies/*.png
+│   │   │       ├── merchant-banks/*.png
+│   │   │       ├── non-interest/*.png
+│   │   │       ├── payment-service-banks/*.png
+│   │   │       └── primary-mortgage/*.png  # 63 embedded PNG assets total
 │   │   └── flags/
 │   │       ├── ATTRIBUTION.md
 │   │       ├── LICENSE
@@ -296,6 +300,8 @@ softdata-api/
 │   │   │   ├── education_repository_test.go
 │   │   │   ├── finance_commercial_banks_test.go
 │   │   │   ├── finance_currency_test.go
+│   │   │   ├── finance_regulated.go
+│   │   │   ├── finance_regulated_test.go
 │   │   │   ├── finance_repository.go
 │   │   │   ├── finance_repository_test.go
 │   │   │   ├── geography_languages.go
@@ -358,6 +364,9 @@ softdata-api/
 │   │   ├── http_router_test.go
 │   │   ├── public_routes.go
 │   │   ├── public_routes_test.go
+│   │   ├── regulated_finance_assets.go
+│   │   ├── regulated_finance_routes.go
+│   │   ├── regulated_finance_routes_test.go
 │   │   ├── route_catalog.go
 │   │   ├── router.go
 │   │   └── router_test.go
@@ -436,7 +445,7 @@ Environment-driven application configuration for the server, database, security,
 
 ### `datasets/`
 
-Versioned geography, education, and finance datasets, schemas, provenance metadata, licensing notes, and embedded flag assets.
+Versioned geography, education, and finance datasets, schemas, provenance metadata, licensing notes, embedded flag assets, and 63 regulated-finance PNG assets. Regulated-finance logo provenance is recorded in `datasets/assets/financial-institutions/ng/ATTRIBUTION.md`; the FHA Homes asset is explicitly a Federal Housing Authority parent-brand representative mark.
 
 ### `internal/database/`
 
@@ -456,7 +465,7 @@ Domain and API-facing models kept separate from sqlc-generated persistence struc
 
 ### `internal/repository/`
 
-Repository interfaces plus PostgreSQL, Redis, and file-backed implementations.
+Repository interfaces plus PostgreSQL, Redis, and file-backed implementations. The file repository includes dedicated validation and loading for the six regulated-finance datasets.
 
 ### `internal/services/`
 
@@ -468,7 +477,7 @@ Request validation and normalization helpers for authentication, accounts, API k
 
 ### `internal/router/`
 
-HTTP router construction, route registration, public and authenticated route groups, route cataloging, and embedded flag and bank-logo serving.
+HTTP router construction, route registration, public and authenticated route groups, route cataloging, and embedded flag, commercial-bank, and regulated-finance logo serving.
 
 ### `internal/redis/`
 
