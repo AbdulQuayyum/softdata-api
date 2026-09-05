@@ -2,6 +2,7 @@ package config
 
 import (
 	"fmt"
+	"net/url"
 	"os"
 	"strconv"
 	"strings"
@@ -20,14 +21,15 @@ const (
 )
 
 type Config struct {
-	Environment string
-	Server      ServerConfig
-	Database    DatabaseConfig
-	Redis       RedisConfig
-	Security    SecurityConfig
-	RateLimit   RateLimitConfig
-	Usage       UsageConfig
-	Datasets    DatasetConfig
+	Environment  string
+	PublicAPIURL string
+	Server       ServerConfig
+	Database     DatabaseConfig
+	Redis        RedisConfig
+	Security     SecurityConfig
+	RateLimit    RateLimitConfig
+	Usage        UsageConfig
+	Datasets     DatasetConfig
 }
 
 // Load reads configuration from the process environment.
@@ -45,6 +47,11 @@ func load(lookup LookupEnv) (Config, error) {
 	}
 
 	env, err := loadEnvironment(lookup)
+	if err != nil {
+		return Config{}, err
+	}
+
+	publicAPIURL, err := loadPublicAPIURL(lookup)
 	if err != nil {
 		return Config{}, err
 	}
@@ -85,15 +92,29 @@ func load(lookup LookupEnv) (Config, error) {
 	}
 
 	return Config{
-		Environment: string(env),
-		Server:      server,
-		Database:    database,
-		Redis:       redisConfig,
-		Security:    security,
-		RateLimit:   rateLimit,
-		Usage:       usage,
-		Datasets:    datasets,
+		Environment:  string(env),
+		PublicAPIURL: publicAPIURL,
+		Server:       server,
+		Database:     database,
+		Redis:        redisConfig,
+		Security:     security,
+		RateLimit:    rateLimit,
+		Usage:        usage,
+		Datasets:     datasets,
 	}, nil
+}
+
+func loadPublicAPIURL(lookup LookupEnv) (string, error) {
+	raw := lookupString(lookup, "PUBLIC_API_URL")
+	if raw == "" {
+		return "", nil
+	}
+
+	parsed, err := url.Parse(raw)
+	if err != nil || (parsed.Scheme != "http" && parsed.Scheme != "https") || parsed.Host == "" || parsed.User != nil || parsed.RawQuery != "" || parsed.Fragment != "" || (parsed.Path != "" && parsed.Path != "/") {
+		return "", fmt.Errorf("invalid PUBLIC_API_URL")
+	}
+	return strings.TrimRight(parsed.Scheme+"://"+parsed.Host, "/"), nil
 }
 
 func loadEnvironment(lookup LookupEnv) (AppEnvironment, error) {

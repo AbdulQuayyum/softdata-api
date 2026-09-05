@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 	"net/http"
+	"reflect"
+	"strings"
 
 	"github.com/AbdulQuayyum/softdata-api/internal/models"
 	"github.com/AbdulQuayyum/softdata-api/internal/response"
@@ -44,7 +46,7 @@ func writeFinanceList[T any](h *FinanceHandler, w http.ResponseWriter, r *http.R
 		_ = response.Error(w, err, requestIDFromContext(r.Context()))
 		return
 	}
-	_ = response.List(w, http.StatusOK, rows)
+	_ = response.List(w, http.StatusOK, qualifyLogoURLs(h, rows))
 }
 
 func writeFinanceDetail[T any](h *FinanceHandler, w http.ResponseWriter, r *http.Request, field string, validate func(string) error, get func(context.Context, string) (T, error)) {
@@ -66,7 +68,7 @@ func writeFinanceDetail[T any](h *FinanceHandler, w http.ResponseWriter, r *http
 		_ = response.Error(w, err, requestID)
 		return
 	}
-	_ = response.Success(w, http.StatusOK, row)
+	_ = response.Success(w, http.StatusOK, qualifyLogoURL(h, row))
 }
 
 // ListNonInterestFinancialInstitutions handles GET /v1/finance/non-interest-financial-institutions.
@@ -140,7 +142,7 @@ func (h *FinanceHandler) ListCommercialBanks(w http.ResponseWriter, r *http.Requ
 		_ = response.Error(w, err, requestID)
 		return
 	}
-	_ = response.List(w, http.StatusOK, banks)
+	_ = response.List(w, http.StatusOK, qualifyLogoURLs(h, banks))
 }
 
 // GetCommercialBank handles GET /v1/finance/commercial-banks/{bank_id}.
@@ -163,20 +165,52 @@ func (h *FinanceHandler) GetCommercialBank(w http.ResponseWriter, r *http.Reques
 		_ = response.Error(w, err, requestID)
 		return
 	}
-	_ = response.Success(w, http.StatusOK, bank)
+	_ = response.Success(w, http.StatusOK, qualifyLogoURL(h, bank))
 }
 
 // FinanceHandler serves public payment-service-provider endpoints.
 type FinanceHandler struct {
-	service financeService
+	service      financeService
+	publicAPIURL string
 }
 
 // NewFinanceHandler constructs a finance handler with its narrow service dependency.
 func NewFinanceHandler(service financeService) (*FinanceHandler, error) {
+	return NewFinanceHandlerWithPublicAPIURL(service, "")
+}
+
+// NewFinanceHandlerWithPublicAPIURL configures absolute asset URLs for public responses.
+func NewFinanceHandlerWithPublicAPIURL(service financeService, publicAPIURL string) (*FinanceHandler, error) {
 	if service == nil {
 		return nil, fmt.Errorf("finance service is required")
 	}
-	return &FinanceHandler{service: service}, nil
+	return &FinanceHandler{service: service, publicAPIURL: strings.TrimRight(strings.TrimSpace(publicAPIURL), "/")}, nil
+}
+
+func qualifyLogoURLs[T any](h *FinanceHandler, rows []T) []T {
+	for i := range rows {
+		rows[i] = qualifyLogoURL(h, rows[i])
+	}
+	return rows
+}
+
+func qualifyLogoURL[T any](h *FinanceHandler, row T) T {
+	if h == nil || h.publicAPIURL == "" {
+		return row
+	}
+	value := reflect.ValueOf(&row).Elem()
+	if value.Kind() != reflect.Struct {
+		return row
+	}
+	logo := value.FieldByName("LogoURL")
+	if !logo.IsValid() || !logo.CanSet() || logo.Kind() != reflect.String {
+		return row
+	}
+	path := logo.String()
+	if strings.HasPrefix(path, "/") {
+		logo.SetString(h.publicAPIURL + path)
+	}
+	return row
 }
 
 // ListPaymentServiceProviders handles GET /v1/finance/payment-service-providers.

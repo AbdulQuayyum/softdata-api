@@ -190,7 +190,7 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	if err != nil {
 		return appDependencies{}, err
 	}
-	financeHandler, err := handlers.NewFinanceHandler(financeService)
+	financeHandler, err := handlers.NewFinanceHandlerWithPublicAPIURL(financeService, cfg.PublicAPIURL)
 	if err != nil {
 		return appDependencies{}, err
 	}
