@@ -7,11 +7,13 @@ import (
 	"log/slog"
 	"net/http"
 	"net/url"
+	"os"
 	"reflect"
 	"regexp"
 	"strings"
 	"time"
 
+	"github.com/AbdulQuayyum/softdata-api/datasets"
 	"github.com/AbdulQuayyum/softdata-api/datasets/assets"
 	"github.com/AbdulQuayyum/softdata-api/internal/config"
 	"github.com/AbdulQuayyum/softdata-api/internal/database"
@@ -143,6 +145,9 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 		return appDependencies{}, err
 	}
 	jsonRepository, err := fileRepo.NewJSONRepository(cfg.Datasets.Path, cfg.Datasets.JSONMaxBytes)
+	if err != nil && (os.Getenv("VERCEL") == "1" || strings.EqualFold(cfg.Environment, string(config.AppEnvironmentProduction))) {
+		jsonRepository, err = fileRepo.NewEmbeddedJSONRepository(datasets.Files(), cfg.Datasets.JSONMaxBytes)
+	}
 	if err != nil {
 		return appDependencies{}, fmt.Errorf("initialize json repository: %w", err)
 	}
