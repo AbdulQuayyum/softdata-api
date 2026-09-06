@@ -130,7 +130,7 @@ Nigeria's roster-only v1 of 790 active microfinance banks from the reconciled CB
 - Metadata: `datasets/metadata/finance/microfinance_banks.json`
 - Reconciliation: `datasets/metadata/finance/microfinance_banks_reconciliation.json`
 
-The public contract contains only `id`, `name` and `country_code`. The 829-row CBN snapshot is reduced by 39 evidence-backed exclusions: four duplicate/stale rows, 33 matched revocations, the AKPO predecessor and Verdant-Capital. Websites, logos, categories, states, CBN codes and NIP codes are deferred. No API routes are introduced by this dataset package.
+The public contract contains only `id`, `name` and `country_code`. The 829-row CBN snapshot is reduced by 39 evidence-backed exclusions: four duplicate/stale rows, 33 matched revocations, the AKPO predecessor and Verdant-Capital. Websites, logos, categories, states, CBN codes and NIP codes are deferred. The public API exposes list and detail routes at `/v1/finance/microfinance-banks` and `/v1/finance/microfinance-banks/{bank_id}` without pagination or filters.
 
 ### Nigerian regulated-finance category snapshots
 
