@@ -6,11 +6,11 @@ SoftData API uses a layered Go layout that keeps entry points, configuration, pe
 
 - `cmd/` contains executable entry points.
 - `internal/` contains application configuration, infrastructure, domain models, repositories, services, HTTP handlers, middleware, routing, validation, security, and response helpers.
-- `datasets/` contains versioned source data, schemas, provenance metadata, licensing notes, and embedded flag and regulated-finance logo assets.
+- `datasets/` contains versioned source data, schemas, provenance metadata, licensing notes, and embedded dataset, flag, and regulated-finance logo assets.
 - `database/` contains PostgreSQL migrations and handwritten SQL queries.
 - `docs/` contains API and project documentation, including the OpenAPI contract.
 - Root files provide development configuration, build metadata, contribution guidance, and project licensing.
-- `api` and `tmp/` are generated or local development artifacts and are not application source files.
+- `api`, `build/`, `dist/`, and `tmp/` are generated or local development artifacts and are not application source files. `.env` is a local ignored configuration file; `.env.example` is the shareable configuration template.
 
 ## Project Tree
 
@@ -66,6 +66,7 @@ softdata-api/
 ├── datasets/
 │   ├── LICENSE.md
 │   ├── README.md
+│   ├── embedded.go                         # embeds runtime JSON datasets for deployments without a local volume
 │   ├── assets/
 │   │   ├── banks.go
 │   │   ├── banks_test.go
@@ -76,7 +77,7 @@ softdata-api/
 │   │   │       ├── ATTRIBUTION.md
 │   │   │       ├── LICENSES/
 │   │   │       │   └── Nigerian-Bank-Logos-MIT.txt
-│   │   │       └── *.png                  # 28 vendored bank assets
+│   │   │       └── *.png                  # 28 vendored commercial-bank assets
 │   │   ├── financial_institution_logos.go
 │   │   ├── financial_institutions_test.go
 │   │   ├── financial-institutions/
@@ -91,7 +92,7 @@ softdata-api/
 │   │   │       ├── microfinance-banks/*.png
 │   │   │       ├── non-interest/*.png
 │   │   │       ├── payment-service-banks/*.png
-│   │   │       └── primary-mortgage/*.png  # 63 embedded PNG assets total
+│   │   │       └── primary-mortgage/*.png  # 393 embedded regulated-finance PNG assets total
 │   │   └── flags/
 │   │       ├── ATTRIBUTION.md
 │   │       ├── LICENSE
@@ -460,7 +461,7 @@ Environment-driven application configuration for the server, database, security,
 
 ### `datasets/`
 
-Versioned geography, education, and finance datasets, schemas, provenance metadata, licensing notes, embedded flag assets, and 63 regulated-finance PNG assets. Regulated-finance logo provenance is recorded in `datasets/assets/financial-institutions/ng/ATTRIBUTION.md`; the FHA Homes asset is explicitly a Federal Housing Authority parent-brand representative mark.
+Versioned geography, education, and finance datasets, schemas, provenance metadata, licensing notes, and embedded runtime assets. `embedded.go` embeds the JSON dataset directories used when a deployment cannot provide the configured filesystem dataset path. Regulated-finance logo provenance is recorded in `datasets/assets/financial-institutions/ng/ATTRIBUTION.md`; the FHA Homes asset is explicitly a Federal Housing Authority parent-brand representative mark.
 
 ### `internal/database/`
 
@@ -481,6 +482,13 @@ Domain and API-facing models kept separate from sqlc-generated persistence struc
 ### `internal/repository/`
 
 Repository interfaces plus PostgreSQL, Redis, and file-backed implementations. The file repository includes dedicated validation and loading for the regulated-finance datasets.
+
+### Runtime/Data Loading
+
+- Local development reads JSON files from `DATASETS_PATH` (normally `datasets/`).
+- Production/serverless startup can fall back to the embedded JSON filesystem exposed by `datasets.Files()` when the configured path is unavailable.
+- Flag assets and regulated-finance logo assets are embedded by `datasets/assets`; public asset handlers read them through category- and identifier-scoped helpers and expose only the supported public formats.
+- The source tree includes `248` flag SVGs, `28` commercial-bank PNGs, and `393` regulated-finance PNGs. The wildcard entries in the tree represent those complete inventories.
 
 ### `internal/services/`
 

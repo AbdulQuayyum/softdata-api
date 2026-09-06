@@ -9,7 +9,9 @@ import (
 	"reflect"
 	"strings"
 	"testing"
+	"testing/fstest"
 
+	"github.com/AbdulQuayyum/softdata-api/datasets"
 	"github.com/AbdulQuayyum/softdata-api/internal/repository/interfaces"
 )
 
@@ -97,6 +99,42 @@ func TestConstructorsValidateRootsAndSize(t *testing.T) {
 				t.Fatalf("constructor error = %v, want ErrInvalidDatasetFile", err)
 			}
 		})
+	}
+}
+
+func TestEmbeddedStoreReadsOnlyValidDatasetPaths(t *testing.T) {
+	t.Parallel()
+
+	files := fstest.MapFS{
+		"finance/example.json": &fstest.MapFile{Data: []byte(`{"ok":true}`)},
+	}
+	repo, err := NewEmbeddedJSONRepository(files, 1024)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var got map[string]bool
+	if err := repo.Decode(context.Background(), "finance/example.json", &got); err != nil {
+		t.Fatal(err)
+	}
+	if !got["ok"] {
+		t.Fatalf("decoded embedded data = %#v", got)
+	}
+	if err := repo.Decode(context.Background(), "../finance/example.json", &got); !errors.Is(err, interfaces.ErrInvalidDatasetPath) {
+		t.Fatalf("path traversal error = %v", err)
+	}
+}
+
+func TestEmbeddedDatasetFSContainsRuntimeDocuments(t *testing.T) {
+	repo, err := NewEmbeddedJSONRepository(datasets.Files(), 16<<20)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var records []map[string]any
+	if err := repo.Decode(context.Background(), "finance/commercial_banks.json", &records); err != nil {
+		t.Fatal(err)
+	}
+	if len(records) != 28 {
+		t.Fatalf("embedded commercial-bank records = %d, want 28", len(records))
 	}
 }
 

@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"io/fs"
 
 	"github.com/AbdulQuayyum/softdata-api/internal/repository/interfaces"
 )
@@ -13,6 +14,17 @@ import (
 // JSONRepository decodes JSON documents from files beneath a dataset root.
 type JSONRepository struct {
 	store *safeStore
+}
+
+// NewEmbeddedJSONRepository constructs a JSON repository backed by an fs.FS.
+// It is used by serverless deployments where sibling dataset files are not
+// guaranteed to be copied beside the compiled function.
+func NewEmbeddedJSONRepository(files fs.FS, maxBytes int64) (*JSONRepository, error) {
+	store, err := newEmbeddedStore(files, maxBytes)
+	if err != nil {
+		return nil, err
+	}
+	return &JSONRepository{store: store}, nil
 }
 
 // NewJSONRepository constructs a JSON repository rooted at the supplied path.

@@ -16,7 +16,18 @@ import (
 
 type safeStore struct {
 	rootReal string
+	embedded fs.FS
 	maxBytes int64
+}
+
+func newEmbeddedStore(files fs.FS, maxBytes int64) (*safeStore, error) {
+	if files == nil {
+		return nil, fmt.Errorf("%w", interfaces.ErrInvalidDatasetPath)
+	}
+	if maxBytes <= 0 {
+		return nil, fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+	}
+	return &safeStore{embedded: files, maxBytes: maxBytes}, nil
 }
 
 func newSafeStore(root string, maxBytes int64) (*safeStore, error) {
@@ -90,12 +101,41 @@ func (s *safeStore) resolve(relativePath string) (string, error) {
 	return resolved, nil
 }
 
+func (s *safeStore) resolveEmbedded(relativePath string) (string, error) {
+	if s == nil || s.embedded == nil {
+		return "", fmt.Errorf("%w", interfaces.ErrDatasetFileUnavailable)
+	}
+	if relativePath == "" || strings.ContainsRune(relativePath, 0) || strings.ContainsAny(relativePath, "\\") {
+		return "", fmt.Errorf("%w", interfaces.ErrInvalidDatasetPath)
+	}
+	cleaned := filepath.ToSlash(filepath.Clean(relativePath))
+	if cleaned == "." || !fs.ValidPath(cleaned) {
+		return "", fmt.Errorf("%w", interfaces.ErrInvalidDatasetPath)
+	}
+	return cleaned, nil
+}
+
 func (s *safeStore) readBytes(ctx context.Context, relativePath string) ([]byte, error) {
 	if ctx == nil {
 		ctx = context.Background()
 	}
 	if err := ctx.Err(); err != nil {
 		return nil, err
+	}
+
+	if s.embedded != nil {
+		resolved, err := s.resolveEmbedded(relativePath)
+		if err != nil {
+			return nil, err
+		}
+		data, err := fs.ReadFile(s.embedded, resolved)
+		if err != nil {
+			return nil, classifyPathError(err)
+		}
+		if int64(len(data)) > s.maxBytes {
+			return nil, fmt.Errorf("%w", interfaces.ErrDatasetFileTooLarge)
+		}
+		return append([]byte(nil), data...), nil
 	}
 
 	resolved, err := s.resolve(relativePath)
