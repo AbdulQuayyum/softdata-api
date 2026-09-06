@@ -24,6 +24,15 @@
         "type": "string",
         "minLength": 1
       },
+      "website_url": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^https://"
+      },
+      "logo_url": {
+        "type": "string",
+        "pattern": "^/v1/assets/financial-institutions/ng/microfinance-banks/[a-z0-9]+(?:-[a-z0-9]+)*\\.png$"
+      },
       "country_code": {
         "type": "string",
         "const": "NG"

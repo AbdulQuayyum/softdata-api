@@ -83,7 +83,7 @@ func (r *FinanceFileRepository) loadMicrofinanceBanks(ctx context.Context) ([]mo
 			return nil, fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
 		}
 		for field := range fields {
-			if field != "id" && field != "name" && field != "country_code" {
+			if field != "id" && field != "name" && field != "website_url" && field != "logo_url" && field != "country_code" {
 				return nil, fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
 			}
 		}

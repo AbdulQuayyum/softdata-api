@@ -88,6 +88,7 @@ softdata-api/
 │   │   │       ├── development-finance/*.png
 │   │   │       ├── holding-companies/*.png
 │   │   │       ├── merchant-banks/*.png
+│   │   │       ├── microfinance-banks/*.png
 │   │   │       ├── non-interest/*.png
 │   │   │       ├── payment-service-banks/*.png
 │   │   │       └── primary-mortgage/*.png  # 63 embedded PNG assets total
@@ -127,6 +128,7 @@ softdata-api/
 │   │   │   ├── development_finance_institutions.json
 │   │   │   ├── financial_holding_companies.json
 │   │   │   ├── microfinance_banks.json
+│   │   │   ├── microfinance_banks_enrichment.json
 │   │   │   ├── merchant_banks.json
 │   │   │   ├── non_interest_institutions.json
 │   │   │   ├── payment_service_banks.json

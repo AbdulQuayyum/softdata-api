@@ -211,7 +211,7 @@ The roster-only 790-record active Nigerian microfinance-bank dataset from the re
 - Metadata: `datasets/metadata/finance/microfinance_banks.json`
 - Reconciliation manifest: `datasets/metadata/finance/microfinance_banks_reconciliation.json`
 
-Records contain only `id`, `name` and `country_code`. The 829-row CBN snapshot is reduced by 39 evidence-backed exclusions: four duplicate/stale rows, 33 matched revoked institutions, the AKPO predecessor and Verdant-Capital. Websites, logos, categories, states, CBN codes and NIP codes are deferred.
+Records require `id`, `name` and `country_code`; `website_url` and `logo_url` are optional enrichment fields. The 829-row CBN snapshot is reduced by 39 evidence-backed exclusions: four duplicate/stale rows, 33 matched revoked institutions, the AKPO predecessor and Verdant-Capital. Categories, states, CBN codes and NIP codes remain deferred. Website/logo evidence is tracked in `datasets/metadata/finance/microfinance_banks_enrichment.json` and the category asset attribution files. Logo acceptance requires exact identity and byte validation; explicit redistribution permission is not a prerequisite, and logo/trademark rights remain with the respective institutions. Current enrichment coverage is 330 logos for 790 records.
 
 ### Nigerian regulated-finance categories
 

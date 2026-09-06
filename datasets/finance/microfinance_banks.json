@@ -7,31 +7,43 @@
   {
     "id": "5tt-microfinance-bank-limited",
     "name": "5TT Microfinance Bank Limited",
+    "website_url": "https://5ttbank.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/5tt-microfinance-bank-limited.png",
     "country_code": "NG"
   },
   {
     "id": "aacb-microfinance-bank-limited",
     "name": "AACB Microfinance Bank Limited",
+    "website_url": "https://aacbmfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/aacb-microfinance-bank-limited.png",
     "country_code": "NG"
   },
   {
     "id": "ab-microfinance-bank-limited",
     "name": "AB Microfinance Bank Limited",
-    "country_code": "NG"
+    "website_url": "https://www.ab-mfbnigeria.com/",
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ab-microfinance-bank-limited.png"
   },
   {
     "id": "abia-state-university-microfinance-bank-limited",
     "name": "Abia State University Microfinance Bank Limited",
+    "website_url": "https://absumfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/abia-state-university-microfinance-bank-limited.png",
     "country_code": "NG"
   },
   {
     "id": "abigi-microfinance-bank-limited",
     "name": "Abigi Microfinance Bank Limited",
+    "website_url": "https://abigimicrofinancebank.com.ng/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/abigi-microfinance-bank-limited.png",
     "country_code": "NG"
   },
   {
     "id": "above-only-microfinance-bank",
     "name": "Above Only Microfinance Bank",
+    "website_url": "https://www.aboveonlymfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/above-only-microfinance-bank.png",
     "country_code": "NG"
   },
   {
@@ -47,12 +59,14 @@
   {
     "id": "abulesoro-microfinance-bank",
     "name": "Abulesoro Microfinance Bank",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/abulesoro-microfinance-bank.png"
   },
   {
     "id": "accion-microfinance-bank-limited",
     "name": "Accion Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/accion-microfinance-bank-limited.png"
   },
   {
     "id": "ace-microfinance-bank-limited",
@@ -67,7 +81,8 @@
   {
     "id": "ada-microfinance-bank-limited",
     "name": "ADA Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ada-microfinance-bank-limited.png"
   },
   {
     "id": "adazi-enu-microfinance-bank-limited",
@@ -82,12 +97,14 @@
   {
     "id": "addosser-microfinance-bank-limited",
     "name": "Addosser Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/addosser-microfinance-bank-limited.png"
   },
   {
     "id": "adeyemi-college-staff-microfinance-bank",
     "name": "Adeyemi College Staff Microfinance Bank",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/adeyemi-college-staff-microfinance-bank.png"
   },
   {
     "id": "adike-microfinance-bank-limited",
@@ -97,7 +114,8 @@
   {
     "id": "advancly-microfinance-bank-limited",
     "name": "Advancly Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/advancly-microfinance-bank-limited.png"
   },
   {
     "id": "afekhafe-microfinance-bank",
@@ -112,7 +130,8 @@
   {
     "id": "afole-microfinance-bank-limited",
     "name": "Afole Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/afole-microfinance-bank-limited.png"
   },
   {
     "id": "agosasa-microfinance-bank-limited",
@@ -122,17 +141,21 @@
   {
     "id": "ahmadu-bello-university-microfinance-bank-limited",
     "name": "Ahmadu Bello University Microfinance Bank Limited",
+    "website_url": "https://www.abumfbank.com.ng/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ahmadu-bello-university-microfinance-bank-limited.png",
     "country_code": "NG"
   },
   {
     "id": "aibio-microfinance-bank",
     "name": "Aibio Microfinance Bank",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://aibiomfbank.com/"
   },
   {
     "id": "ajewole-microfinance-bank-limited",
     "name": "Ajewole Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://ajewolemfbank.com/contact/"
   },
   {
     "id": "ajose-microfinance-bank-limited",
@@ -147,7 +170,9 @@
   {
     "id": "akalabo-microfinance-bank-limited",
     "name": "Akalabo Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://www.akalabomfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/akalabo-microfinance-bank-limited.png"
   },
   {
     "id": "akata-microfinance-bank-limited",
@@ -167,7 +192,8 @@
   {
     "id": "akuchukwu-microfinance-bank-limited",
     "name": "Akuchukwu Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/akuchukwu-microfinance-bank-limited.png"
   },
   {
     "id": "al-hikma-microfinance-bank-limited",
@@ -177,12 +203,15 @@
   {
     "id": "al-barakah-microfinance-bank-limited",
     "name": "Al-Barakah Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://albarakahmfb.com/about-us/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/al-barakah-microfinance-bank-limited.png"
   },
   {
     "id": "al-hayat-microfinance-bank",
     "name": "Al-Hayat Microfinance Bank",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/al-hayat-microfinance-bank.png"
   },
   {
     "id": "albasu-microfinance-bank-limited",
@@ -192,12 +221,15 @@
   {
     "id": "alekun-microfinance-bank-limited",
     "name": "Alekun Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/alekun-microfinance-bank-limited.png"
   },
   {
     "id": "alert-microfinance-bank",
     "name": "Alert Microfinance Bank",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://alertgroup.com.ng/alert-microfinance/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/alert-microfinance-bank.png"
   },
   {
     "id": "algreb-microfinance-bank",
@@ -212,7 +244,9 @@
   {
     "id": "all-workers-microfinance-bank-limited",
     "name": "All Workers Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://allworkersmfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/all-workers-microfinance-bank-limited.png"
   },
   {
     "id": "alor-microfinance-bank-limited",
@@ -222,17 +256,22 @@
   {
     "id": "alpha-kapital-microfinance-bank",
     "name": "Alpha Kapital Microfinance Bank",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://alphamfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/alpha-kapital-microfinance-bank.png"
   },
   {
     "id": "alvana-microfinance-bank-limited",
     "name": "Alvana Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://alvanamfbank.com/"
   },
   {
     "id": "amac-microfinance-bank",
     "name": "AMAC Microfinance Bank",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://amacmfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/amac-microfinance-bank.png"
   },
   {
     "id": "amazu-microfinance-bank-limited",
@@ -247,7 +286,9 @@
   {
     "id": "amju-unique-microfinance-bank-limited",
     "name": "AMJU-Unique Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://www.amjuuniquemfbng.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/amju-unique-microfinance-bank-limited.png"
   },
   {
     "id": "amml-microfinance-bank-limited-abuja-markets-management-ltd",
@@ -262,7 +303,8 @@
   {
     "id": "ample-microfinance-bank-limited",
     "name": "Ample Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ample-microfinance-bank-limited.png"
   },
   {
     "id": "amucha-microfinance-bank-limited",
@@ -272,7 +314,8 @@
   {
     "id": "anchorage-microfinance-bank-limited",
     "name": "Anchorage Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://anchoragemfb.com/"
   },
   {
     "id": "aniocha-microfinance-bank-limited",
@@ -297,12 +340,15 @@
   {
     "id": "apex-trust-microfinance-bank-limited",
     "name": "Apex Trust Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/apex-trust-microfinance-bank-limited.png"
   },
   {
     "id": "aramoko-microfinance-bank-limited",
     "name": "Aramoko Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://aramokomicrofinancebank.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/aramoko-microfinance-bank-limited.png"
   },
   {
     "id": "aris-microfinance-bank",
@@ -312,42 +358,53 @@
   {
     "id": "asha-microfinance-bank-limited",
     "name": "Asha Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://nigeria.asa-international.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/asha-microfinance-bank-limited.png"
   },
   {
     "id": "aspire-microfinance-bank-limited",
     "name": "Aspire Microfinance Bank LImited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://aspiremfb.org/"
   },
   {
     "id": "asset-matrix-microfinance-bank-limited",
     "name": "Asset Matrix Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/asset-matrix-microfinance-bank-limited.png"
   },
   {
     "id": "assets-microfinance-bank-limited",
     "name": "Assets Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://assetsmfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/assets-microfinance-bank-limited.png"
   },
   {
     "id": "astra-polaris-microfinance-bank-limited",
     "name": "Astra Polaris Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://www.astrapolaris.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/astra-polaris-microfinance-bank-limited.png"
   },
   {
     "id": "auchi-microfinance-bank-limited",
     "name": "Auchi Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/auchi-microfinance-bank-limited.png"
   },
   {
     "id": "auchi-polytechnic-microfinance-bank-limited",
     "name": "Auchi Polytechnic Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://auchipolymfb.com/"
   },
   {
     "id": "ave-maria-mfb",
     "name": "AVE MARIA MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://avemariamfb.com/"
   },
   {
     "id": "avest-microfinance-bank-limited",
@@ -357,22 +414,27 @@
   {
     "id": "avunegbe-microfinance-bank-limited",
     "name": "Avunegbe Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/avunegbe-microfinance-bank-limited.png"
   },
   {
     "id": "avvic-microfinance-bank-limited",
     "name": "AVVIC MICROFINANCE BANK LIMITED",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://avvicmfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/avvic-microfinance-bank-limited.png"
   },
   {
     "id": "awe-microfinance-bank-limited",
     "name": "Awe Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://awemfb.com/"
   },
   {
     "id": "awesome-mfb",
     "name": "AWESOME MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/awesome-mfb.png"
   },
   {
     "id": "awka-etiti-microfinance-bank-limited",
@@ -392,7 +454,9 @@
   {
     "id": "b-c-kash-microfinance-bank",
     "name": "B C Kash Microfinance Bank",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://bckashmfb.com.ng/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/b-c-kash-microfinance-bank.png"
   },
   {
     "id": "babba-microfinance-bank-limited",
@@ -402,7 +466,9 @@
   {
     "id": "babcock-microfinance-bank-limited",
     "name": "Babcock Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://babcockmfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/babcock-microfinance-bank-limited.png"
   },
   {
     "id": "babura-microfinance-bank-limited",
@@ -412,32 +478,44 @@
   {
     "id": "baige-microfinance-bank-limited",
     "name": "BAIGE MICROFINANCE BANK LIMITED",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://baigewallet.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/baige-microfinance-bank-limited.png"
   },
   {
     "id": "baines-credit-microfinance-bank",
     "name": "Baines Credit Microfinance bank",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://www.bainescredit.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/baines-credit-microfinance-bank.png"
   },
   {
     "id": "balera-microfinance-bank-limited",
     "name": "Balera Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://baleramfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/balera-microfinance-bank-limited.png"
   },
   {
     "id": "balogun-fulani-microfinance-bank-limited",
     "name": "Balogun Fulani Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://www.balogunfulanimfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/balogun-fulani-microfinance-bank-limited.png"
   },
   {
     "id": "balogun-gambari-microfinance-bank-limited",
     "name": "Balogun Gambari Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://www.balogungambarimfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/balogun-gambari-microfinance-bank-limited.png"
   },
   {
     "id": "bam-microfinance-bank-limited",
     "name": "Bam Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://bmfbank.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/bam-microfinance-bank-limited.png"
   },
   {
     "id": "banex-microfinance-bank-limited",
@@ -447,17 +525,23 @@
   {
     "id": "bankeasy-microfinance-bank-limited",
     "name": "Bankeasy Microfinance bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://bankeasymfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/bankeasy-microfinance-bank-limited.png"
   },
   {
     "id": "baobab-microfinance-bank",
     "name": "Baobab Microfinance Bank",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://baobab.com/ng/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/baobab-microfinance-bank.png"
   },
   {
     "id": "barnawa-microfinance-bank-limited",
     "name": "Barnawa Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://barnawamfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/barnawa-microfinance-bank-limited.png"
   },
   {
     "id": "batagwara-mfb",
@@ -507,22 +591,27 @@
   {
     "id": "benysta-microfinance-bank",
     "name": "Benysta Microfinance Bank",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/benysta-microfinance-bank.png"
   },
   {
     "id": "berachah-microfinance-bank-limited",
     "name": "Berachah Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://www.berachahmfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/berachah-microfinance-bank-limited.png"
   },
   {
     "id": "best-star-microfinance-bank-limited",
     "name": "Best Star Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/best-star-microfinance-bank-limited.png"
   },
   {
     "id": "bethel-microfinance-bank-limited",
     "name": "Bethel Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/bethel-microfinance-bank-limited.png"
   },
   {
     "id": "better-life-microfinace-bank",
@@ -542,17 +631,20 @@
   {
     "id": "bkd-new-microfinance-bank-limited",
     "name": "BKD NEW Microfinance bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/bkd-new-microfinance-bank-limited.png"
   },
   {
     "id": "bloc-microfinance-bank-limited",
     "name": "Bloc Microfinance bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/bloc-microfinance-bank-limited.png"
   },
   {
     "id": "blooms-microfinance-bank",
     "name": "Blooms Microfinance Bank",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/blooms-microfinance-bank.png"
   },
   {
     "id": "blucon-mfb",
@@ -562,7 +654,8 @@
   {
     "id": "blue-ridge-mfb",
     "name": "BLUE RIDGE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://www.blueridgemfb.com/"
   },
   {
     "id": "blueprint-investments-mfb",
@@ -572,12 +665,14 @@
   {
     "id": "boctrust-mfb",
     "name": "BOCTRUST MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/boctrust-mfb.png"
   },
   {
     "id": "boi-mfb",
     "name": "BOI MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://www.boi.ng/subsidiary/boi-micro-finance-bank/"
   },
   {
     "id": "boji-boji-mfb-ltd",
@@ -587,27 +682,34 @@
   {
     "id": "bokkos-mfb",
     "name": "BOKKOS MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/bokkos-mfb.png"
   },
   {
     "id": "bold-microfinance-bank-limited",
     "name": "Bold Microfinance bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/bold-microfinance-bank-limited.png"
   },
   {
     "id": "bonghe-mfb",
     "name": "BONGHE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://www.bonghemfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/bonghe-mfb.png"
   },
   {
     "id": "boost-microfinance-bank-limited",
     "name": "Boost Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/boost-microfinance-bank-limited.png"
   },
   {
     "id": "borgu-mfb",
     "name": "BORGU MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://www.bmfb.com.ng/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/borgu-mfb.png"
   },
   {
     "id": "borno-renaissance-mfb-ltd",
@@ -617,37 +719,49 @@
   {
     "id": "boromu-mfb",
     "name": "BOROMU MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/boromu-mfb.png"
   },
   {
     "id": "borstal-mfb",
     "name": "BORSTAL MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/borstal-mfb.png"
   },
   {
     "id": "bosak-mfb",
     "name": "BOSAK MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://www.bosakmfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/bosak-mfb.png"
   },
   {
     "id": "bowen-mfb",
     "name": "BOWEN MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://www.bowenmfb.org/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/bowen-mfb.png"
   },
   {
     "id": "bowman-mfb",
     "name": "BOWMAN MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://www.bowmanmfb.com.ng/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/bowman-mfb.png"
   },
   {
     "id": "brethren-mfb",
-    "name": "BRETHREN  MFB",
-    "country_code": "NG"
+    "name": "BRETHREN \u00a0MFB",
+    "country_code": "NG",
+    "website_url": "https://brethrenmfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/brethren-mfb.png"
   },
   {
     "id": "brightway-mfb-ltd",
     "name": "BRIGHTWAY MFB LTD",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://brightwaymfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/brightway-mfb-ltd.png"
   },
   {
     "id": "broadview-mfb",
@@ -667,7 +781,8 @@
   {
     "id": "bundi-mfb",
     "name": "BUNDI MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/bundi-mfb.png"
   },
   {
     "id": "bungudu-mfb",
@@ -682,32 +797,39 @@
   {
     "id": "bunkure-mfb",
     "name": "BUNKURE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/bunkure-mfb.png"
   },
   {
     "id": "bway-microfinance-bank-limited",
     "name": "BWAY Microfinance bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://www.bway.ng/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/bway-microfinance-bank-limited.png"
   },
   {
     "id": "canaan-mfb",
     "name": "CANAAN MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/canaan-mfb.png"
   },
   {
     "id": "capitalmetriq-swift-mfb",
     "name": "CAPITALMETRIQ SWIFT MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/capitalmetriq-swift-mfb.png"
   },
   {
     "id": "capstone-mfb",
     "name": "CAPSTONE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/capstone-mfb.png"
   },
   {
     "id": "carbon-mfb",
     "name": "CARBON MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://www.getcarbon.co/"
   },
   {
     "id": "caretaker-mfb",
@@ -717,22 +839,28 @@
   {
     "id": "casa-microfinance-bank-limited",
     "name": "Casa Microfinance bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://www.mycasabank.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/casa-microfinance-bank-limited.png"
   },
   {
     "id": "cash-rite-mfb",
     "name": "CASH RITE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/cash-rite-mfb.png"
   },
   {
     "id": "cashconnect-mfb",
     "name": "CASHCONNECT MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://cashconnectng.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/cashconnect-mfb.png"
   },
   {
     "id": "cashwise-microfinance-bank-limited",
     "name": "CASHWISE MICROFINANCE BANK LIMITED",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://www.cashwise.finance/"
   },
   {
     "id": "castle-mfb",
@@ -747,17 +875,21 @@
   {
     "id": "cedar-mfb",
     "name": "CEDAR MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://cedarmfbank.com.ng/"
   },
   {
     "id": "cedrus-microfinance-bank-limited",
     "name": "Cedrus Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://cedrusmfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/cedrus-microfinance-bank-limited.png"
   },
   {
     "id": "challenge-mfb",
     "name": "CHALLENGE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://www.challengemfb.com/"
   },
   {
     "id": "changan-rts-mfb",
@@ -767,12 +899,15 @@
   {
     "id": "charis-microfinance-bank-limited",
     "name": "Charis Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://charismfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/charis-microfinance-bank-limited.png"
   },
   {
     "id": "chase-mfb-ltd",
     "name": "CHASE MFB LTD",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/chase-mfb-ltd.png"
   },
   {
     "id": "chevron-employee-co-operative-mfb-cemcs",
@@ -787,7 +922,8 @@
   {
     "id": "chikum-mfb",
     "name": "CHIKUM MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/chikum-mfb.png"
   },
   {
     "id": "chrisore-mfb",
@@ -812,11 +948,12 @@
   {
     "id": "cit-mfb",
     "name": "CIT MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/cit-mfb.png"
   },
   {
     "id": "citizen-trust-mfb",
-    "name": "CITIZEN TRUST MFB",
+    "name": "CITIZEN TRUST\u00a0MFB",
     "country_code": "NG"
   },
   {
@@ -857,32 +994,39 @@
   {
     "id": "consistent-trust-mfb",
     "name": "CONSISTENT TRUST MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/consistent-trust-mfb.png"
   },
   {
     "id": "consumer-mfb",
     "name": "CONSUMER MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/consumer-mfb.png"
   },
   {
     "id": "cool-microfinance-bank-limited",
     "name": "Cool Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/cool-microfinance-bank-limited.png"
   },
   {
     "id": "corestep-mfb",
     "name": "CORESTEP MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/corestep-mfb.png"
   },
   {
     "id": "covenant-mfb",
     "name": "COVENANT MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://www.covenantmfb.com.ng/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/covenant-mfb.png"
   },
   {
     "id": "crescent-mfb",
     "name": "CRESCENT MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/crescent-mfb.png"
   },
   {
     "id": "crest-mfb",
@@ -892,12 +1036,14 @@
   {
     "id": "crossriver-mfb",
     "name": "CROSSRIVER MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://crmfbank.com/"
   },
   {
     "id": "crutech-mfb",
     "name": "CRUTECH MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/crutech-mfb.png"
   },
   {
     "id": "csd-mfb",
@@ -912,17 +1058,20 @@
   {
     "id": "dabtikir-microfinance-bank-limited",
     "name": "Dabtikir Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/dabtikir-microfinance-bank-limited.png"
   },
   {
     "id": "daily-trust-mfb",
     "name": "DAILY-TRUST MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/daily-trust-mfb.png"
   },
   {
     "id": "dal-mfb",
     "name": "DAL MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/dal-mfb.png"
   },
   {
     "id": "dambatta-makoda-mfb",
@@ -932,12 +1081,14 @@
   {
     "id": "dash-microfinance-bank-limited",
     "name": "Dash Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/dash-microfinance-bank-limited.png"
   },
   {
     "id": "davenport-microfinance-bank-limited",
     "name": "Davenport Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/davenport-microfinance-bank-limited.png"
   },
   {
     "id": "davodani-mfb",
@@ -957,7 +1108,9 @@
   {
     "id": "daylight-mfb-ltd",
     "name": "DAYLIGHT MFB LTD",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://www.daylightmfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/daylight-mfb-ltd.png"
   },
   {
     "id": "dec-enugu-mfb",
@@ -967,7 +1120,8 @@
   {
     "id": "destiny-mfb",
     "name": "DESTINY MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/destiny-mfb.png"
   },
   {
     "id": "diobu-mfb",
@@ -992,7 +1146,8 @@
   {
     "id": "dsc-microfinance-bank-limited",
     "name": "DSC Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/dsc-microfinance-bank-limited.png"
   },
   {
     "id": "dutse-mfb",
@@ -1007,22 +1162,29 @@
   {
     "id": "duxbank-microfinance-bank-limited",
     "name": "Duxbank Microfinance Bank Limited",
-    "country_code": "NG"
+    "website_url": "https://duxbankmfb.ng/",
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/duxbank-microfinance-bank-limited.png"
   },
   {
     "id": "e-barcs-mfb",
     "name": "e-BARCS MFB",
-    "country_code": "NG"
+    "website_url": "https://www.e-barcsmfb.com/",
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/e-barcs-mfb.png"
   },
   {
     "id": "eagle-flight-mfb",
     "name": "EAGLE FLIGHT MFB",
-    "country_code": "NG"
+    "website_url": "https://eagleflightmfb.ng/",
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/eagle-flight-mfb.png"
   },
   {
     "id": "earnwell-mfb",
     "name": "EARNWELL MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/earnwell-mfb.png"
   },
   {
     "id": "east-gate-mfb",
@@ -1032,11 +1194,14 @@
   {
     "id": "eastman-mfb",
     "name": "EASTMAN MFB",
-    "country_code": "NG"
+    "website_url": "https://www.eastmanmfb.com/",
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/eastman-mfb.png"
   },
   {
     "id": "easy-access-mfb-ltd",
     "name": "EASY ACCESS MFB LTD",
+    "website_url": "https://easyaccessmfb.com/",
     "country_code": "NG"
   },
   {
@@ -1047,12 +1212,15 @@
   {
     "id": "ebonyi-state-university-mfb-ebsu",
     "name": "EBONYI STATE UNIVERSITY MFB (EBSU)",
+    "website_url": "https://ebsu.edu.ng/",
     "country_code": "NG"
   },
   {
     "id": "edfin-mfb",
     "name": "EDFIN MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://edfinmfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/edfin-mfb.png"
   },
   {
     "id": "edo-mfb",
@@ -1087,7 +1255,8 @@
   {
     "id": "ejindu-mfb",
     "name": "EJINDU MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ejindu-mfb.png"
   },
   {
     "id": "ek-reliable-mfb",
@@ -1097,22 +1266,26 @@
   {
     "id": "ekimogun-mfb",
     "name": "EKIMOGUN MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ekimogun-mfb.png"
   },
   {
     "id": "ekondo-mfb",
     "name": "EKONDO MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ekondo-mfb.png"
   },
   {
     "id": "ekwulobia-mfb",
     "name": "EKWULOBIA MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ekwulobia-mfb.png"
   },
   {
     "id": "ellington-microfinance-bank-limited",
     "name": "Ellington Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ellington-microfinance-bank-limited.png"
   },
   {
     "id": "elo-emede-mfb",
@@ -1127,7 +1300,8 @@
   {
     "id": "empire-trust-mfb",
     "name": "EMPIRE TRUST MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/empire-trust-mfb.png"
   },
   {
     "id": "endwell-mfb",
@@ -1152,7 +1326,8 @@
   {
     "id": "equator-mfb",
     "name": "EQUATOR MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/equator-mfb.png"
   },
   {
     "id": "equinox-mfb",
@@ -1162,12 +1337,14 @@
   {
     "id": "eso-e-mfb",
     "name": "ESO-E MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/eso-e-mfb.png"
   },
   {
     "id": "evergreen-mfb",
     "name": "EVERGREEN MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/evergreen-mfb.png"
   },
   {
     "id": "ewt-mfb",
@@ -1192,22 +1369,26 @@
   {
     "id": "fairmoney-mfb-ltd",
     "name": "FAIRMONEY MFB LTD",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/fairmoney-mfb-ltd.png"
   },
   {
     "id": "fame-mfb",
     "name": "FAME MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/fame-mfb.png"
   },
   {
     "id": "fast-mfb",
     "name": "FAST MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/fast-mfb.png"
   },
   {
     "id": "fcmb-mfb-ltd",
     "name": "FCMB MFB LTD.",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/fcmb-mfb-ltd.png"
   },
   {
     "id": "fecetu-mfb",
@@ -1217,7 +1398,8 @@
   {
     "id": "federal-polytechnic-nekede-mfb-ltd",
     "name": "FEDERAL POLYTECHNIC, NEKEDE MFB LTD",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/federal-polytechnic-nekede-mfb-ltd.png"
   },
   {
     "id": "fedeth-co-op-mfb",
@@ -1232,12 +1414,14 @@
   {
     "id": "ffs-mfb",
     "name": "FFS MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ffs-mfb.png"
   },
   {
     "id": "fidfund-mfb",
     "name": "FIDFUND MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/fidfund-mfb.png"
   },
   {
     "id": "fims-mfb",
@@ -1247,7 +1431,8 @@
   {
     "id": "finatrust-mfb",
     "name": "FINATRUST MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/finatrust-mfb.png"
   },
   {
     "id": "finca-mfb",
@@ -1262,7 +1447,8 @@
   {
     "id": "firmus-mfb",
     "name": "FIRMUS MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/firmus-mfb.png"
   },
   {
     "id": "first-access-mfb-ltd",
@@ -1287,17 +1473,20 @@
   {
     "id": "first-option-mfb",
     "name": "FIRST OPTION MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/first-option-mfb.png"
   },
   {
     "id": "first-royal-mfb",
     "name": "FIRST ROYAL MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/first-royal-mfb.png"
   },
   {
     "id": "flexi-microfinance-bank",
     "name": "Flexi Microfinance Bank",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/flexi-microfinance-bank.png"
   },
   {
     "id": "flourish-mfb",
@@ -1312,7 +1501,8 @@
   {
     "id": "fortress-mfb",
     "name": "FORTRESS MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/fortress-mfb.png"
   },
   {
     "id": "forward-mfb",
@@ -1332,7 +1522,8 @@
   {
     "id": "fullrange-microfinance-bank-ltd",
     "name": "Fullrange Microfinance Bank Ltd",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/fullrange-microfinance-bank-ltd.png"
   },
   {
     "id": "fut-minna",
@@ -1342,7 +1533,8 @@
   {
     "id": "futo-mfb",
     "name": "FUTO MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/futo-mfb.png"
   },
   {
     "id": "gaa-akanbi-mfb",
@@ -1377,7 +1569,8 @@
   {
     "id": "gashua-mfb",
     "name": "GASHUA MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/gashua-mfb.png"
   },
   {
     "id": "gaya-mfb",
@@ -1397,7 +1590,8 @@
   {
     "id": "giant-stride-mfb-ltd",
     "name": "GIANT STRIDE MFB LTD",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/giant-stride-mfb-ltd.png"
   },
   {
     "id": "gidauniya-alheri-mfb",
@@ -1427,7 +1621,8 @@
   {
     "id": "glory-mfb",
     "name": "GLORY MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/glory-mfb.png"
   },
   {
     "id": "gmb-mfb",
@@ -1447,12 +1642,15 @@
   {
     "id": "goldman-mfb",
     "name": "GOLDMAN MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://www.goldmanmfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/goldman-mfb.png"
   },
   {
     "id": "gombe-mfb",
     "name": "GOMBE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/gombe-mfb.png"
   },
   {
     "id": "good-neighbours-mfb",
@@ -1467,27 +1665,32 @@
   {
     "id": "good-shepherd-mfb",
     "name": "GOOD SHEPHERD MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/good-shepherd-mfb.png"
   },
   {
     "id": "gowans-mfb",
     "name": "GOWANS MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/gowans-mfb.png"
   },
   {
     "id": "grants-mfb",
     "name": "GRANTS MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/grants-mfb.png"
   },
   {
     "id": "granule-microfinance-bank",
     "name": "GRANULE MICROFINANCE BANK",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/granule-microfinance-bank.png"
   },
   {
     "id": "green-acres-mfb",
     "name": "GREEN ACRES MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/green-acres-mfb.png"
   },
   {
     "id": "green-energy-mfb",
@@ -1502,17 +1705,21 @@
   {
     "id": "greenville-mfb",
     "name": "GREENVILLE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/greenville-mfb.png"
   },
   {
     "id": "grooming-mfb",
     "name": "GROOMING MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/grooming-mfb.png"
   },
   {
     "id": "gti-mfb",
     "name": "GTI MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://microfinance.gti.com.ng/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/gti-mfb.png"
   },
   {
     "id": "gudusisa-mfb",
@@ -1527,7 +1734,8 @@
   {
     "id": "gwong-mfb",
     "name": "GWONG MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/gwong-mfb.png"
   },
   {
     "id": "hadeija-mfb",
@@ -1557,7 +1765,8 @@
   {
     "id": "hasal-mfb",
     "name": "HASAL MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/hasal-mfb.png"
   },
   {
     "id": "headway-mfb-ltd",
@@ -1602,7 +1811,8 @@
   {
     "id": "ibile-mfb",
     "name": "IBILE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ibile-mfb.png"
   },
   {
     "id": "ibolo-mfb",
@@ -1616,7 +1826,7 @@
   },
   {
     "id": "ibrahim-badamasi-babangida-university-mfb",
-    "name": "IBRAHIM BADAMASI BABANGIDA UNIVERSITY  MFB",
+    "name": "IBRAHIM BADAMASI BABANGIDA UNIVERSITY \u00a0MFB",
     "country_code": "NG"
   },
   {
@@ -1652,7 +1862,8 @@
   {
     "id": "igbo-ukwu-mfb",
     "name": "IGBO-UKWU MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/igbo-ukwu-mfb.png"
   },
   {
     "id": "igboora-mfb",
@@ -1662,12 +1873,14 @@
   {
     "id": "ihiala-mfb",
     "name": "IHIALA MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ihiala-mfb.png"
   },
   {
     "id": "ijare-mfb",
     "name": "IJARE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ijare-mfb.png"
   },
   {
     "id": "ijebu-ife-mfb",
@@ -1677,32 +1890,38 @@
   {
     "id": "ikenne-mfb",
     "name": "IKENNE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ikenne-mfb.png"
   },
   {
     "id": "ikere-microfinance-bank-limited",
     "name": "Ikere Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ikere-microfinance-bank-limited.png"
   },
   {
     "id": "ikire-mfb",
     "name": "IKIRE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ikire-mfb.png"
   },
   {
     "id": "ikorodu-division-mfb",
     "name": "IKORODU DIVISION MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ikorodu-division-mfb.png"
   },
   {
     "id": "ikoyi-ile-mfb",
     "name": "IKOYI-ILE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ikoyi-ile-mfb.png"
   },
   {
     "id": "ikoyi-osun-mfb",
     "name": "IKOYI-OSUN MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ikoyi-osun-mfb.png"
   },
   {
     "id": "ilaro-polytechnic-mfb",
@@ -1712,7 +1931,8 @@
   {
     "id": "ile-oluji-mfb",
     "name": "ILE-OLUJI MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ile-oluji-mfb.png"
   },
   {
     "id": "ilisan-mfb",
@@ -1732,7 +1952,8 @@
   {
     "id": "ilora-mfb",
     "name": "ILORA MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ilora-mfb.png"
   },
   {
     "id": "ilorin-mfb",
@@ -1752,7 +1973,8 @@
   {
     "id": "imo-state-microfinance-bank",
     "name": "IMO STATE MICROFINANCE BANK",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/imo-state-microfinance-bank.png"
   },
   {
     "id": "imodi-imosan-mfb",
@@ -1767,12 +1989,14 @@
   {
     "id": "imowo-mfb",
     "name": "IMOWO MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/imowo-mfb.png"
   },
   {
     "id": "imsu-mfb",
     "name": "IMSU MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/imsu-mfb.png"
   },
   {
     "id": "imt-mfb",
@@ -1782,17 +2006,20 @@
   {
     "id": "indulge-microfinance-bank-limited",
     "name": "Indulge Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/indulge-microfinance-bank-limited.png"
   },
   {
     "id": "infinity-mfb",
     "name": "INFINITY MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/infinity-mfb.png"
   },
   {
     "id": "insight-mfb",
     "name": "INSIGHT MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/insight-mfb.png"
   },
   {
     "id": "ipapo-mfb",
@@ -1807,7 +2034,8 @@
   {
     "id": "irl-mfb",
     "name": "IRL MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/irl-mfb.png"
   },
   {
     "id": "isale-oyo-mfb",
@@ -1832,7 +2060,8 @@
   {
     "id": "isi-uzo-mfb",
     "name": "ISI-UZO MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/isi-uzo-mfb.png"
   },
   {
     "id": "island-mfb",
@@ -1847,7 +2076,8 @@
   {
     "id": "isuofia-mfb",
     "name": "ISUOFIA MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/isuofia-mfb.png"
   },
   {
     "id": "iwa-mfb",
@@ -1912,17 +2142,20 @@
   {
     "id": "kadpoly-mfb",
     "name": "KADPOLY MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/kadpoly-mfb.png"
   },
   {
     "id": "kadupe-mfb",
     "name": "KADUPE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/kadupe-mfb.png"
   },
   {
     "id": "kaizen-microfinance-bank-limited",
     "name": "Kaizen Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/kaizen-microfinance-bank-limited.png"
   },
   {
     "id": "kankara-mfb",
@@ -1937,7 +2170,8 @@
   {
     "id": "kano-poly-mfb",
     "name": "KANO POLY MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/kano-poly-mfb.png"
   },
   {
     "id": "kano-west-mfb",
@@ -1947,32 +2181,38 @@
   {
     "id": "katagum-mfb",
     "name": "KATAGUM MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/katagum-mfb.png"
   },
   {
     "id": "katsu-microfinance-bank-limited",
     "name": "Katsu Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/katsu-microfinance-bank-limited.png"
   },
   {
     "id": "kayvee-mfb",
     "name": "KAYVEE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/kayvee-mfb.png"
   },
   {
     "id": "kc-mfb",
     "name": "KC MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/kc-mfb.png"
   },
   {
     "id": "kcmb-mfb",
     "name": "KCMB MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/kcmb-mfb.png"
   },
   {
     "id": "kenechukwu-mfb",
     "name": "KENECHUKWU MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/kenechukwu-mfb.png"
   },
   {
     "id": "khb-mfb",
@@ -1992,7 +2232,8 @@
   {
     "id": "kku-microfinance",
     "name": "KKU Microfinance",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://turbofinance.africa/"
   },
   {
     "id": "kmc-mfb",
@@ -2002,22 +2243,29 @@
   {
     "id": "koboweb-microfinance-bank-limited",
     "name": "Koboweb Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://www.kobowebmfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/koboweb-microfinance-bank-limited.png"
   },
   {
     "id": "koins-microfinance-bank-limited",
     "name": "Koins Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://www.koinsbank.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/koins-microfinance-bank-limited.png"
   },
   {
     "id": "kolisa-microfinance-bank-limited",
     "name": "Kolisa Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://www.kolisamfb.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/kolisa-microfinance-bank-limited.png"
   },
   {
     "id": "kontagora-mfb",
     "name": "KONTAGORA MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/kontagora-mfb.png"
   },
   {
     "id": "kopo-kope-mfb",
@@ -2032,7 +2280,8 @@
   {
     "id": "kuda-mfb",
     "name": "KUDA MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/kuda-mfb.png"
   },
   {
     "id": "kumbotso-mfb",
@@ -2082,7 +2331,8 @@
   {
     "id": "la-fayette-mfb",
     "name": "LA FAYETTE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/la-fayette-mfb.png"
   },
   {
     "id": "ladder-microfinance-bank",
@@ -2097,17 +2347,20 @@
   {
     "id": "lapo-mfb",
     "name": "LAPO MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/lapo-mfb.png"
   },
   {
     "id": "lavender",
     "name": "LAVENDER",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/lavender.png"
   },
   {
     "id": "lawyers-mfb",
     "name": "LAWYERS MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/lawyers-mfb.png"
   },
   {
     "id": "layelu-mfb",
@@ -2117,7 +2370,8 @@
   {
     "id": "leadcity-mfb",
     "name": "LEADCITY MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/leadcity-mfb.png"
   },
   {
     "id": "legacy-mfb",
@@ -2132,17 +2386,20 @@
   {
     "id": "letshego-mfb",
     "name": "LETSHEGO MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/letshego-mfb.png"
   },
   {
     "id": "levite-mfb",
     "name": "LEVITE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/levite-mfb.png"
   },
   {
     "id": "lifegate-mfb",
     "name": "LIFEGATE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/lifegate-mfb.png"
   },
   {
     "id": "light-mfb",
@@ -2152,12 +2409,14 @@
   {
     "id": "lightway-microfinance-bank-limited",
     "name": "Lightway Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/lightway-microfinance-bank-limited.png"
   },
   {
     "id": "links-mfb",
     "name": "LINKS MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/links-mfb.png"
   },
   {
     "id": "living-spring-mfb",
@@ -2172,7 +2431,8 @@
   {
     "id": "lovonus-mfb",
     "name": "LOVONUS MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/lovonus-mfb.png"
   },
   {
     "id": "m-m-mfb",
@@ -2197,7 +2457,8 @@
   {
     "id": "madobi-mfb",
     "name": "MADOBI MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/madobi-mfb.png"
   },
   {
     "id": "magajin-giri-mfb",
@@ -2222,17 +2483,20 @@
   {
     "id": "mainland-mfb",
     "name": "MAINLAND MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/mainland-mfb.png"
   },
   {
     "id": "mainstreet-mfb",
     "name": "MAINSTREET MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/mainstreet-mfb.png"
   },
   {
     "id": "malachy-mfb",
     "name": "MALACHY MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/malachy-mfb.png"
   },
   {
     "id": "mapoly-mfb",
@@ -2252,12 +2516,14 @@
   {
     "id": "maxitrust-mfb",
     "name": "MAXITRUST MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/maxitrust-mfb.png"
   },
   {
     "id": "mayden-microfinance-bank",
     "name": "MAYDEN MICROFINANCE BANK",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/mayden-microfinance-bank.png"
   },
   {
     "id": "mbaitoli-mfb",
@@ -2272,7 +2538,8 @@
   {
     "id": "mega-mfb",
     "name": "MEGA MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/mega-mfb.png"
   },
   {
     "id": "megapraise-mfb",
@@ -2302,7 +2569,8 @@
   {
     "id": "mia-microfinance-bank-limited",
     "name": "Mia Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/mia-microfinance-bank-limited.png"
   },
   {
     "id": "micheal-okpara-university-mfb",
@@ -2322,7 +2590,8 @@
   {
     "id": "mkobo-mfb-ltd",
     "name": "MKOBO MFB LTD",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/mkobo-mfb-ltd.png"
   },
   {
     "id": "moddibo-adama-university-microfinance-bank-limited",
@@ -2332,7 +2601,8 @@
   {
     "id": "model-mfb",
     "name": "MODEL MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/model-mfb.png"
   },
   {
     "id": "modiya-yekokpe-mfb",
@@ -2387,7 +2657,8 @@
   {
     "id": "mutual-benefit-mfb",
     "name": "MUTUAL BENEFIT MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/mutual-benefit-mfb.png"
   },
   {
     "id": "mutual-trust-mfb",
@@ -2417,7 +2688,8 @@
   {
     "id": "nasarawa-mfb",
     "name": "NASARAWA MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/nasarawa-mfb.png"
   },
   {
     "id": "ndiolu-mfb",
@@ -2437,12 +2709,14 @@
   {
     "id": "neptune-mfb",
     "name": "NEPTUNE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/neptune-mfb.png"
   },
   {
     "id": "new-dawn-mfb",
     "name": "NEW DAWN MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/new-dawn-mfb.png"
   },
   {
     "id": "new-era-mfb",
@@ -2462,7 +2736,8 @@
   {
     "id": "nexton-microfinance-bank-limited",
     "name": "Nexton Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/nexton-microfinance-bank-limited.png"
   },
   {
     "id": "ngbo-mfb-ltd",
@@ -2477,12 +2752,14 @@
   {
     "id": "nigerian-navy-mfb-ltd",
     "name": "NIGERIAN NAVY MFB LTD",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/nigerian-navy-mfb-ltd.png"
   },
   {
     "id": "nigerian-prisons-mfb",
     "name": "NIGERIAN PRISONS MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/nigerian-prisons-mfb.png"
   },
   {
     "id": "ningi-mfb",
@@ -2492,7 +2769,8 @@
   {
     "id": "nirsal-mfb",
     "name": "NIRSAL MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/nirsal-mfb.png"
   },
   {
     "id": "nkpa-mfb",
@@ -2522,27 +2800,32 @@
   {
     "id": "nomase-microfinance-bank-ltd",
     "name": "NOMASE MICROFINANCE BANK LTD",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/nomase-microfinance-bank-ltd.png"
   },
   {
     "id": "noun-mfb",
     "name": "NOUN MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/noun-mfb.png"
   },
   {
     "id": "novel-mfb",
     "name": "NOVEL MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/novel-mfb.png"
   },
   {
     "id": "novus-microfinance-bank-limited",
     "name": "Novus Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/novus-microfinance-bank-limited.png"
   },
   {
     "id": "npf-mfb",
     "name": "NPF MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/npf-mfb.png"
   },
   {
     "id": "nri-mfb",
@@ -2557,7 +2840,8 @@
   {
     "id": "nsuk-mfb",
     "name": "NSUK MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/nsuk-mfb.png"
   },
   {
     "id": "nsukka-township-mfb",
@@ -2567,7 +2851,8 @@
   {
     "id": "nuggets-mfb",
     "name": "NUGGETS MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/nuggets-mfb.png"
   },
   {
     "id": "numo-mfb",
@@ -2587,7 +2872,8 @@
   {
     "id": "nwannegadi-mfb",
     "name": "NWANNEGADI MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/nwannegadi-mfb.png"
   },
   {
     "id": "oakland-mfb",
@@ -2597,7 +2883,8 @@
   {
     "id": "oba-mfb",
     "name": "OBA MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/oba-mfb.png"
   },
   {
     "id": "obafemi-awolowo-university-mfb",
@@ -2622,12 +2909,14 @@
   {
     "id": "obollo-mfb",
     "name": "OBOLLO MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/obollo-mfb.png"
   },
   {
     "id": "oche-mfb",
     "name": "OCHE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/oche-mfb.png"
   },
   {
     "id": "ocon-success-mfb",
@@ -2637,12 +2926,14 @@
   {
     "id": "octopus-mfb",
     "name": "OCTOPUS MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/octopus-mfb.png"
   },
   {
     "id": "odoakpu-mfb",
     "name": "ODOAKPU MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/odoakpu-mfb.png"
   },
   {
     "id": "odu-mfb",
@@ -2672,7 +2963,8 @@
   {
     "id": "ogige-mfb",
     "name": "OGIGE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ogige-mfb.png"
   },
   {
     "id": "ogiyan-mfb",
@@ -2687,7 +2979,8 @@
   {
     "id": "ohha-mfb",
     "name": "OHHA MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ohha-mfb.png"
   },
   {
     "id": "ojokoro-mfb",
@@ -2717,12 +3010,14 @@
   {
     "id": "oko-mfb",
     "name": "OKO MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/oko-mfb.png"
   },
   {
     "id": "okpe-mfb",
     "name": "OKPE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/okpe-mfb.png"
   },
   {
     "id": "okpofe-mfb",
@@ -2747,22 +3042,26 @@
   {
     "id": "okwo-oha-mfb",
     "name": "OKWO-OHA MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/okwo-oha-mfb.png"
   },
   {
     "id": "olabisi-onabanjo-university-mfb",
     "name": "OLABISI ONABANJO UNIVERSITY MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/olabisi-onabanjo-university-mfb.png"
   },
   {
     "id": "olive-mfb",
     "name": "OLIVE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/olive-mfb.png"
   },
   {
     "id": "olomu-aperan-microfinance-bank-limited",
     "name": "Olomu Aperan Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/olomu-aperan-microfinance-bank-limited.png"
   },
   {
     "id": "olowolagba-mfb",
@@ -2777,12 +3076,14 @@
   {
     "id": "oluchukwu-mfb",
     "name": "OLUCHUKWU MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/oluchukwu-mfb.png"
   },
   {
     "id": "omak-mfb",
     "name": "OMAK MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/omak-mfb.png"
   },
   {
     "id": "omiye-mfb",
@@ -2797,7 +3098,8 @@
   {
     "id": "onewallet-microfinance-bank-limited",
     "name": "Onewallet Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/onewallet-microfinance-bank-limited.png"
   },
   {
     "id": "onibu-ore-mfb",
@@ -2812,7 +3114,8 @@
   {
     "id": "oraukwu-mfb",
     "name": "ORAUKWU MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/oraukwu-mfb.png"
   },
   {
     "id": "orilonise-mfb",
@@ -2877,7 +3180,8 @@
   {
     "id": "ours-mfb",
     "name": "OURS MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ours-mfb.png"
   },
   {
     "id": "owotutu-mfb",
@@ -2892,12 +3196,14 @@
   {
     "id": "oye-versity-microfinance-bank-limited",
     "name": "OYE VERSITY MICROFINANCE BANK LIMITED",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/oye-versity-microfinance-bank-limited.png"
   },
   {
     "id": "pact-microfinance-bank",
     "name": "PACT MICROFINANCE BANK",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/pact-microfinance-bank.png"
   },
   {
     "id": "palmcoast-mfb",
@@ -2927,27 +3233,32 @@
   {
     "id": "pathfinder-mfb",
     "name": "PATHFINDER MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/pathfinder-mfb.png"
   },
   {
     "id": "patrickgold-mfb",
     "name": "PATRICKGOLD MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/patrickgold-mfb.png"
   },
   {
     "id": "payrep-microfinance-bank-limited",
     "name": "Payrep Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/payrep-microfinance-bank-limited.png"
   },
   {
     "id": "peace-mfb",
     "name": "PEACE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/peace-mfb.png"
   },
   {
     "id": "pecan-trust-mfb",
     "name": "PECAN TRUST MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/pecan-trust-mfb.png"
   },
   {
     "id": "peninsula-mfb-ltd",
@@ -2957,7 +3268,8 @@
   {
     "id": "pennywise-mfb",
     "name": "PENNYWISE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/pennywise-mfb.png"
   },
   {
     "id": "pentecost-mfb-ltd",
@@ -2967,7 +3279,8 @@
   {
     "id": "personal-trust-mfb",
     "name": "PERSONAL TRUST MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/personal-trust-mfb.png"
   },
   {
     "id": "petra-mfb",
@@ -2992,7 +3305,8 @@
   {
     "id": "platinum-microfinance-bank-limited",
     "name": "Platinum Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/platinum-microfinance-bank-limited.png"
   },
   {
     "id": "plusone-microfinance-bank-limited",
@@ -3002,17 +3316,21 @@
   {
     "id": "pointone-microfinance-bank",
     "name": "Pointone Microfinance Bank",
-    "country_code": "NG"
+    "country_code": "NG",
+    "website_url": "https://www.pointonemfb.com.ng/",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/pointone-microfinance-bank.png"
   },
   {
     "id": "polybadan-mfb",
     "name": "POLYBADAN MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/polybadan-mfb.png"
   },
   {
     "id": "polyunwanna-mfb",
     "name": "POLYUNWANNA MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/polyunwanna-mfb.png"
   },
   {
     "id": "preeminent-mfb",
@@ -3027,7 +3345,8 @@
   {
     "id": "prestige-mfb",
     "name": "PRESTIGE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/prestige-mfb.png"
   },
   {
     "id": "prisco-mfb",
@@ -3037,7 +3356,8 @@
   {
     "id": "pristine-divitis-mfb",
     "name": "PRISTINE DIVITIS MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/pristine-divitis-mfb.png"
   },
   {
     "id": "projects-mfb",
@@ -3057,22 +3377,26 @@
   {
     "id": "prudent-mfb",
     "name": "PRUDENT MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/prudent-mfb.png"
   },
   {
     "id": "pyramid-mfb",
     "name": "PYRAMID MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/pyramid-mfb.png"
   },
   {
     "id": "qube-mfb",
     "name": "QUBE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/qube-mfb.png"
   },
   {
     "id": "quickfund-mfb",
     "name": "QUICKFUND MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/quickfund-mfb.png"
   },
   {
     "id": "rahama-mfb",
@@ -3112,27 +3436,32 @@
   {
     "id": "rehoboth-mfb",
     "name": "REHOBOTH MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/rehoboth-mfb.png"
   },
   {
     "id": "reliance-mfb",
     "name": "RELIANCE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/reliance-mfb.png"
   },
   {
     "id": "renmoney-mfb",
     "name": "RENMONEY MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/renmoney-mfb.png"
   },
   {
     "id": "rephidim-mfb",
     "name": "REPHIDIM MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/rephidim-mfb.png"
   },
   {
     "id": "ric-mfb",
     "name": "RIC MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ric-mfb.png"
   },
   {
     "id": "richway-mfb-ltd",
@@ -3147,12 +3476,14 @@
   {
     "id": "rigo-mfb",
     "name": "RIGO MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/rigo-mfb.png"
   },
   {
     "id": "rima-growth-pathway-mfb-ltd",
     "name": "RIMA GROWTH PATHWAY MFB LTD",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/rima-growth-pathway-mfb-ltd.png"
   },
   {
     "id": "rima-mfb",
@@ -3167,7 +3498,8 @@
   {
     "id": "rockshield-mfb",
     "name": "ROCKSHIELD MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/rockshield-mfb.png"
   },
   {
     "id": "rolez-mfb",
@@ -3177,7 +3509,8 @@
   {
     "id": "royal-blue-mfb",
     "name": "ROYAL BLUE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/royal-blue-mfb.png"
   },
   {
     "id": "royal-excellent-microfinance-bank-limited",
@@ -3187,7 +3520,8 @@
   {
     "id": "royal-exchange-mfb",
     "name": "ROYAL EXCHANGE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/royal-exchange-mfb.png"
   },
   {
     "id": "royal-life-key-mfb",
@@ -3202,17 +3536,20 @@
   {
     "id": "rubies-mfb",
     "name": "RUBIES MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/rubies-mfb.png"
   },
   {
     "id": "run-microfinance-bank-limited",
     "name": "Run Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/run-microfinance-bank-limited.png"
   },
   {
     "id": "sabi-mfb",
     "name": "SABI MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/sabi-mfb.png"
   },
   {
     "id": "sabon-yelwa-mfb",
@@ -3232,17 +3569,20 @@
   {
     "id": "safe-haven-mfb",
     "name": "SAFE HAVEN MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/safe-haven-mfb.png"
   },
   {
     "id": "safeline-mfb",
     "name": "SAFELINE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/safeline-mfb.png"
   },
   {
     "id": "sagamu-mfb",
     "name": "SAGAMU MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/sagamu-mfb.png"
   },
   {
     "id": "sandamu-mfb",
@@ -3277,7 +3617,8 @@
   {
     "id": "seedvest-mfb",
     "name": "SEEDVEST MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/seedvest-mfb.png"
   },
   {
     "id": "senchi-mfb",
@@ -3287,22 +3628,26 @@
   {
     "id": "shalom-mfb",
     "name": "Shalom MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/shalom-mfb.png"
   },
   {
     "id": "shepherd-trust-mfb",
     "name": "SHEPHERD TRUST MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/shepherd-trust-mfb.png"
   },
   {
     "id": "shield-mfb",
     "name": "SHIELD MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/shield-mfb.png"
   },
   {
     "id": "shine-microfinance-bank-limited",
     "name": "Shine Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/shine-microfinance-bank-limited.png"
   },
   {
     "id": "shongom-mfb",
@@ -3317,7 +3662,8 @@
   {
     "id": "sincere-mfb",
     "name": "SINCERE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/sincere-mfb.png"
   },
   {
     "id": "sls-mfb",
@@ -3337,12 +3683,14 @@
   {
     "id": "solid-allianz-mfb",
     "name": "SOLID ALLIANZ MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/solid-allianz-mfb.png"
   },
   {
     "id": "solid-rock-mfb",
     "name": "SOLID ROCK MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/solid-rock-mfb.png"
   },
   {
     "id": "solid-trust-mfb",
@@ -3352,37 +3700,44 @@
   {
     "id": "soroman-mfb",
     "name": "SOROMAN MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/soroman-mfb.png"
   },
   {
     "id": "sosa-microfinance-bank-limited",
     "name": "Sosa Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/sosa-microfinance-bank-limited.png"
   },
   {
     "id": "source-microfinance-bank-limited",
     "name": "SOURCE MICROFINANCE BANK LIMITED",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/source-microfinance-bank-limited.png"
   },
   {
     "id": "sparkle-mfb",
     "name": "SPARKLE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/sparkle-mfb.png"
   },
   {
     "id": "spectrum-mfb",
     "name": "SPECTRUM MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/spectrum-mfb.png"
   },
   {
     "id": "springfield-microfinance-bank-limited",
     "name": "Springfield Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/springfield-microfinance-bank-limited.png"
   },
   {
     "id": "springville-microfinance-bank-limited",
     "name": "Springville Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/springville-microfinance-bank-limited.png"
   },
   {
     "id": "standard-mfb",
@@ -3392,12 +3747,14 @@
   {
     "id": "stateside-mfb",
     "name": "STATESIDE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/stateside-mfb.png"
   },
   {
     "id": "stellas-mfb",
     "name": "STELLAS MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/stellas-mfb.png"
   },
   {
     "id": "step-by-step-mfb",
@@ -3417,12 +3774,14 @@
   {
     "id": "strait-sahara-microfinance-bank-limited",
     "name": "Strait Sahara Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/strait-sahara-microfinance-bank-limited.png"
   },
   {
     "id": "sulspap-mfb",
     "name": "SULSPAP MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/sulspap-mfb.png"
   },
   {
     "id": "sunbeam-mfb",
@@ -3432,22 +3791,26 @@
   {
     "id": "suntop-microfinance-bank",
     "name": "Suntop Microfinance Bank",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/suntop-microfinance-bank.png"
   },
   {
     "id": "support-mfb",
     "name": "SUPPORT MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/support-mfb.png"
   },
   {
     "id": "sure-anchor-mfb",
     "name": "SURE ANCHOR MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/sure-anchor-mfb.png"
   },
   {
     "id": "swifttrust-microfinance-bank-limited",
     "name": "Swifttrust Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/swifttrust-microfinance-bank-limited.png"
   },
   {
     "id": "tanadi-mfb",
@@ -3477,17 +3840,20 @@
   {
     "id": "teerus-microfinance-bank-limited",
     "name": "Teerus Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/teerus-microfinance-bank-limited.png"
   },
   {
     "id": "tellerone-fi-microfinance-bank-limited",
     "name": "Tellerone FI Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/tellerone-fi-microfinance-bank-limited.png"
   },
   {
     "id": "tenn-microfinance-bank-limited",
     "name": "Tenn Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/tenn-microfinance-bank-limited.png"
   },
   {
     "id": "tf-mfb",
@@ -3497,12 +3863,14 @@
   {
     "id": "the-millennium-mfb",
     "name": "The Millennium MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/the-millennium-mfb.png"
   },
   {
     "id": "top-rate-mfb",
     "name": "TOP RATE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/top-rate-mfb.png"
   },
   {
     "id": "topclass-mfb",
@@ -3527,12 +3895,14 @@
   {
     "id": "transpay-microfinance-bank-limited",
     "name": "Transpay Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/transpay-microfinance-bank-limited.png"
   },
   {
     "id": "treasures-mfb",
     "name": "TREASURES MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/treasures-mfb.png"
   },
   {
     "id": "trident-mfb",
@@ -3557,7 +3927,8 @@
   {
     "id": "trustbanc-j6",
     "name": "TRUSTBANC J6",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/trustbanc-j6.png"
   },
   {
     "id": "trustfund-mfb",
@@ -3577,12 +3948,14 @@
   {
     "id": "u-c-mfb",
     "name": "U & C MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/u-c-mfb.png"
   },
   {
     "id": "ubj-microfinance-bank-limited",
     "name": "UBJ Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ubj-microfinance-bank-limited.png"
   },
   {
     "id": "ucb-mfb",
@@ -3592,7 +3965,8 @@
   {
     "id": "uda-mfb",
     "name": "UDA MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/uda-mfb.png"
   },
   {
     "id": "udoka-mfb",
@@ -3602,12 +3976,14 @@
   {
     "id": "uforo-microfinance-bank-limited",
     "name": "Uforo Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/uforo-microfinance-bank-limited.png"
   },
   {
     "id": "uga-mfb",
     "name": "UGA MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/uga-mfb.png"
   },
   {
     "id": "ugborimili-mfb",
@@ -3617,7 +3993,8 @@
   {
     "id": "uhuru-mfb",
     "name": "UHURU MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/uhuru-mfb.png"
   },
   {
     "id": "ukpor-mfb",
@@ -3632,12 +4009,14 @@
   {
     "id": "ultimate-mfb",
     "name": "ULTIMATE MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ultimate-mfb.png"
   },
   {
     "id": "ultraviolet-microfinance-bank-limited",
     "name": "Ultraviolet Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/ultraviolet-microfinance-bank-limited.png"
   },
   {
     "id": "ummah-mfb",
@@ -3652,27 +4031,32 @@
   {
     "id": "umuchinemere-procredit-mfb",
     "name": "UMUCHINEMERE PROCREDIT MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/umuchinemere-procredit-mfb.png"
   },
   {
     "id": "umuchukwu-mfb",
     "name": "UMUCHUKWU MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/umuchukwu-mfb.png"
   },
   {
     "id": "umunnachi-mfb",
     "name": "UMUNNACHI MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/umunnachi-mfb.png"
   },
   {
     "id": "umunri-microfinance-bank-limited",
     "name": "Umunri Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/umunri-microfinance-bank-limited.png"
   },
   {
     "id": "umuoji-mfb",
     "name": "UMUOJI MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/umuoji-mfb.png"
   },
   {
     "id": "umyu-microfinance-bank-limited",
@@ -3682,7 +4066,8 @@
   {
     "id": "unaab-mfb",
     "name": "UNAAB MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/unaab-mfb.png"
   },
   {
     "id": "ungogo-mfb",
@@ -3697,7 +4082,8 @@
   {
     "id": "unical-mfb",
     "name": "UNICAL MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/unical-mfb.png"
   },
   {
     "id": "unicorn-microfinance-bank-limited",
@@ -3712,7 +4098,8 @@
   {
     "id": "unilag-mfb-ltd",
     "name": "UNILAG MFB LTD",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/unilag-mfb-ltd.png"
   },
   {
     "id": "unilorin-mfb",
@@ -3722,7 +4109,8 @@
   {
     "id": "unimaid-mfb",
     "name": "UNIMAID MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/unimaid-mfb.png"
   },
   {
     "id": "united-capital-mfb",
@@ -3732,7 +4120,8 @@
   {
     "id": "uniuyo-mfb",
     "name": "UNIUYO MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/uniuyo-mfb.png"
   },
   {
     "id": "university-of-benin-mfb",
@@ -3747,7 +4136,8 @@
   {
     "id": "unubi-mfb",
     "name": "UNUBI MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/unubi-mfb.png"
   },
   {
     "id": "urban-mfb",
@@ -3782,7 +4172,8 @@
   {
     "id": "uzondu-mfb",
     "name": "UZONDU MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/uzondu-mfb.png"
   },
   {
     "id": "vangel-microfinance-bank-limited",
@@ -3797,12 +4188,14 @@
   {
     "id": "vfd-mfb-ltd",
     "name": "VFD MFB LTD",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/vfd-mfb-ltd.png"
   },
   {
     "id": "victory-mfb",
     "name": "VICTORY MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/victory-mfb.png"
   },
   {
     "id": "visa-mfb",
@@ -3817,27 +4210,32 @@
   {
     "id": "vista-microfinance-bank-limited",
     "name": "Vista Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/vista-microfinance-bank-limited.png"
   },
   {
     "id": "waila-mfb",
     "name": "WAILA MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/waila-mfb.png"
   },
   {
     "id": "wallet-microfinance-bank",
     "name": "Wallet Microfinance Bank",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/wallet-microfinance-bank.png"
   },
   {
     "id": "waya-mfb",
     "name": "WAYA MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/waya-mfb.png"
   },
   {
     "id": "we-microfinance-bank-limited",
     "name": "WE MICROFINANCE BANK LIMITED",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/we-microfinance-bank-limited.png"
   },
   {
     "id": "welfare-mfb",
@@ -3847,7 +4245,8 @@
   {
     "id": "weston-charis-microfinance-bank-limited",
     "name": "Weston-Charis Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/weston-charis-microfinance-bank-limited.png"
   },
   {
     "id": "wetland-mfb",
@@ -3877,7 +4276,8 @@
   {
     "id": "wudil-mfb",
     "name": "WUDIL MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/wudil-mfb.png"
   },
   {
     "id": "xslnce-mfb",
@@ -3887,7 +4287,8 @@
   {
     "id": "yabo-mfb",
     "name": "YABO MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/yabo-mfb.png"
   },
   {
     "id": "yankari-mfb",
@@ -3907,7 +4308,8 @@
   {
     "id": "yes-mfb",
     "name": "YES MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/yes-mfb.png"
   },
   {
     "id": "yobe-state-mfb",
@@ -3922,7 +4324,8 @@
   {
     "id": "zefa-mfb",
     "name": "ZEFA MFB",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/zefa-mfb.png"
   },
   {
     "id": "zikora-mfb",
@@ -3942,7 +4345,8 @@
   {
     "id": "zitra-microfinance-bank-limited",
     "name": "Zitra Microfinance Bank Limited",
-    "country_code": "NG"
+    "country_code": "NG",
+    "logo_url": "/v1/assets/financial-institutions/ng/microfinance-banks/zitra-microfinance-bank-limited.png"
   },
   {
     "id": "zurmi-mfb",

@@ -71,9 +71,17 @@ func TestMicrofinanceBanksDatasetContract(t *testing.T) {
 		}
 	}
 
-	for _, field := range []string{"institution_type", "category", "state", "cbn_code", "nip_code", "website", "website_url", "logo", "logo_url"} {
+	for _, field := range []string{"institution_type", "category", "state", "cbn_code", "nip_code", "website", "logo"} {
 		if strings.Contains(string(readTextBytes(t, datasetPath("finance/microfinance_banks.json"))), `"`+field+`"`) {
 			t.Errorf("deferred field %q leaked into public dataset", field)
+		}
+	}
+	for _, record := range records {
+		if record.WebsiteURL != "" && !strings.HasPrefix(record.WebsiteURL, "https://") {
+			t.Fatalf("record %q has a non-HTTPS website: %q", record.ID, record.WebsiteURL)
+		}
+		if record.LogoURL != "" && !strings.HasPrefix(record.LogoURL, "/v1/assets/financial-institutions/ng/microfinance-banks/") {
+			t.Fatalf("record %q has an invalid logo URL: %q", record.ID, record.LogoURL)
 		}
 	}
 }

@@ -39,6 +39,7 @@ datasets/
 │       ├── development_finance_institutions.json
 │       ├── financial_holding_companies.json
 │       ├── microfinance_banks.json
+│       ├── microfinance_banks_enrichment.json
 │       ├── merchant_banks.json
 │       ├── non_interest_institutions.json
 │       ├── payment_service_banks.json
@@ -69,7 +70,7 @@ datasets/
 └── LICENSE.md
 ```
 
-Regulated-finance logo assets are embedded under `assets/financial-institutions/ng/` by dataset category. Baseline PNGs are pinned to the Nigerian-Bank-Logos repository commit and official-source PNGs are separately identified in `assets/financial-institutions/ng/ATTRIBUTION.md`; missing or unapproved logos remain omitted.
+Regulated-finance logo assets are embedded under `assets/financial-institutions/ng/` by dataset category. Microfinance marks may come from identity-verified first-party, archived first-party, official-social or curated repository sources; source URLs, retrieval timestamps, hashes and provenance are recorded in the category attribution and reconciliation files. Missing or identity-ambiguous logos remain omitted. Microfinance enrichment progress is recorded per deterministic batch in `metadata/finance/microfinance_banks_enrichment.json`.
 
 ## What Each File Is For
 
@@ -82,7 +83,9 @@ Regulated-finance logo assets are embedded under `assets/financial-institutions/
 - `finance/international_money_transfer_operators.json` is the compiled register snapshot of current CBN-listed IMTO entries.
 - `finance/currencies.json` is the compiled snapshot of current ISO 4217 monetary currencies.
 - `finance/payment_service_providers.json` is the compiled register snapshot of payment-service-provider memberships.
-- `finance/microfinance_banks.json` is the roster-only 790-record snapshot of active Nigerian microfinance banks after the reconciled CBN/NDIC exclusions. Websites, logos, categories, states and banking identifiers are deferred.
+- `finance/microfinance_banks.json` is the 790-record snapshot of active Nigerian microfinance banks after the reconciled CBN/NDIC exclusions. `website_url` and `logo_url` are optional and are added only after exact identity and asset-byte verification; explicit redistribution permission is not required by project policy. Categories, states and banking identifiers remain deferred. Batch evidence is in `metadata/finance/microfinance_banks_enrichment.json`.
+- The microfinance enrichment currently contains 330 embedded PNG logos for 790 records; 316 are curated-repository imports and 14 source entries from the corrected unused-source review matched active records, with the existing first-party `b-c-kash-microfinance-bank` asset preserved.
+- The 138 unused source filenames from the import bundle remain manual-review cases because their PNG bytes and source metadata were not included; see `metadata/finance/microfinance_banks_unused_source_reconciliation.json`.
 - `finance/non_interest_institutions.json`, `finance/merchant_banks.json`, `finance/payment_service_banks.json`, `finance/financial_holding_companies.json`, `finance/development_finance_institutions.json` and `finance/primary_mortgage_institutions.json` are CBN category snapshots from the supplied August 2026 exports. Codes, websites and logos are optional and omitted when not verified.
 - `schemas/geography/geopolitical_zones.schema.json` describes the zone record contract.
 - `schemas/geography/lgas.schema.json` describes the LGA and Area Council record contract.
