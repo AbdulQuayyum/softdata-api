@@ -50,6 +50,7 @@ const (
 	financeFinancialHoldingCompaniesRelativePath           = "finance/financial_holding_companies.json"
 	financeDevelopmentFinanceInstitutionsRelativePath      = "finance/development_finance_institutions.json"
 	financePrimaryMortgageInstitutionsRelativePath         = "finance/primary_mortgage_institutions.json"
+	financeMicrofinanceBanksRelativePath                   = "finance/microfinance_banks.json"
 )
 
 var approvedUniversityStateIDs = map[string]struct{}{
@@ -647,7 +648,8 @@ func buildFinanceServiceFromJSONRepositoryWithRegulatedDatasets(
 	}
 	financeRepository, err := newFinanceRepository(jsonRepository, financePaymentServiceProvidersRelativePath, financeInternationalMoneyTransferOperatorsRelativePath,
 		financeNonInterestFinancialInstitutionsRelativePath, financeMerchantBanksRelativePath, financePaymentServiceBanksRelativePath,
-		financeFinancialHoldingCompaniesRelativePath, financeDevelopmentFinanceInstitutionsRelativePath, financePrimaryMortgageInstitutionsRelativePath)
+		financeFinancialHoldingCompaniesRelativePath, financeDevelopmentFinanceInstitutionsRelativePath, financePrimaryMortgageInstitutionsRelativePath,
+		financeMicrofinanceBanksRelativePath)
 	if err != nil {
 		return nil, fmt.Errorf("initialize finance repository: %w", err)
 	}

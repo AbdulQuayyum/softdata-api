@@ -51,6 +51,7 @@ var (
 	ErrCurrencyNotFound = errors.New("repository: currency not found")
 	// ErrCommercialBankNotFound reports that a requested commercial bank is not present in the dataset.
 	ErrCommercialBankNotFound                  = errors.New("repository: commercial bank not found")
+	ErrMicrofinanceBankNotFound                = errors.New("repository: microfinance bank not found")
 	ErrNonInterestFinancialInstitutionNotFound = errors.New("repository: non-interest financial institution not found")
 	ErrMerchantBankNotFound                    = errors.New("repository: merchant bank not found")
 	ErrPaymentServiceBankNotFound              = errors.New("repository: payment service bank not found")

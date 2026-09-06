@@ -54,6 +54,8 @@ var (
 	ErrInvalidCurrencyCountryAreaID                = errors.New("services: invalid currency country area id")
 	ErrCommercialBankNotFound                      = errors.New("services: commercial bank not found")
 	ErrInvalidCommercialBankID                     = errors.New("services: invalid commercial bank id")
+	ErrMicrofinanceBankNotFound                    = errors.New("services: microfinance bank not found")
+	ErrInvalidMicrofinanceBankID                   = errors.New("services: invalid microfinance bank id")
 	ErrNonInterestFinancialInstitutionNotFound     = errors.New("services: non-interest financial institution not found")
 	ErrInvalidNonInterestFinancialInstitutionID    = errors.New("services: invalid non-interest financial institution id")
 	ErrMerchantBankNotFound                        = errors.New("services: merchant bank not found")

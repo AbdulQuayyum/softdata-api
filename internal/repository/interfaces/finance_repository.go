@@ -22,6 +22,8 @@ type FinanceRepository interface {
 	GetCurrency(ctx context.Context, currencyID string) (models.Currency, error)
 	ListCommercialBanks(ctx context.Context) ([]models.CommercialBank, error)
 	GetCommercialBank(ctx context.Context, bankID string) (models.CommercialBank, error)
+	ListMicrofinanceBanks(ctx context.Context) ([]models.MicrofinanceBank, error)
+	GetMicrofinanceBank(ctx context.Context, id string) (models.MicrofinanceBank, error)
 	ListNonInterestFinancialInstitutions(ctx context.Context) ([]models.NonInterestInstitution, error)
 	GetNonInterestFinancialInstitution(ctx context.Context, id string) (models.NonInterestInstitution, error)
 	ListMerchantBanks(ctx context.Context) ([]models.MerchantBank, error)

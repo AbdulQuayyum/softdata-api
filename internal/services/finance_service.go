@@ -16,6 +16,7 @@ var financeInternationalMoneyTransferOperatorIDPattern = regexp.MustCompile(`^[a
 var financeCurrencyIDPattern = regexp.MustCompile(`^[a-z]{3}$`)
 var financeCurrencyCountryAreaIDPattern = regexp.MustCompile(`^[a-z]{2}$`)
 var financeCommercialBankIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)+$`)
+var financeMicrofinanceBankIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)*$`)
 
 var allowedFinanceInstitutionTypes = map[string]struct{}{
 	"mobile_money_operator":               {},
@@ -175,6 +176,34 @@ func (s *FinanceService) GetCommercialBank(ctx context.Context, bankID string) (
 	bank, err := s.repository.GetCommercialBank(ctx, normalizedID)
 	if err != nil {
 		return models.CommercialBank{}, translateFinanceCommercialBankLookupError(err)
+	}
+	return bank, nil
+}
+
+// ListMicrofinanceBanks returns the ordered roster-only Nigerian MFB list.
+func (s *FinanceService) ListMicrofinanceBanks(ctx context.Context) ([]models.MicrofinanceBank, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	banks, err := s.repository.ListMicrofinanceBanks(ctx)
+	if err != nil {
+		return nil, translateFinanceMicrofinanceBankServiceError("list microfinance banks", err)
+	}
+	return cloneMicrofinanceBankList(banks), nil
+}
+
+// GetMicrofinanceBank returns one MFB using its normalized public ID.
+func (s *FinanceService) GetMicrofinanceBank(ctx context.Context, id string) (models.MicrofinanceBank, error) {
+	if err := ctx.Err(); err != nil {
+		return models.MicrofinanceBank{}, err
+	}
+	normalizedID := strings.TrimSpace(id)
+	if normalizedID == "" || !financeMicrofinanceBankIDPattern.MatchString(normalizedID) || strings.ContainsAny(normalizedID, "/?#%") {
+		return models.MicrofinanceBank{}, ErrInvalidMicrofinanceBankID
+	}
+	bank, err := s.repository.GetMicrofinanceBank(ctx, normalizedID)
+	if err != nil {
+		return models.MicrofinanceBank{}, translateFinanceMicrofinanceBankLookupError(err)
 	}
 	return bank, nil
 }
@@ -399,6 +428,30 @@ func normalizeFinanceCommercialBankID(bankID string) (string, error) {
 	return bankID, nil
 }
 
+func translateFinanceMicrofinanceBankLookupError(err error) error {
+	switch {
+	case err == nil:
+		return nil
+	case errors.Is(err, context.Canceled), errors.Is(err, context.DeadlineExceeded):
+		return err
+	case errors.Is(err, interfaces.ErrMicrofinanceBankNotFound):
+		return ErrMicrofinanceBankNotFound
+	default:
+		return fmt.Errorf("get microfinance bank: repository unavailable")
+	}
+}
+
+func translateFinanceMicrofinanceBankServiceError(op string, err error) error {
+	switch {
+	case err == nil:
+		return nil
+	case errors.Is(err, context.Canceled), errors.Is(err, context.DeadlineExceeded):
+		return err
+	default:
+		return fmt.Errorf("%s: repository unavailable", op)
+	}
+}
+
 func normalizeFinanceInstitutionType(institutionType string) (string, error) {
 	institutionType = strings.TrimSpace(institutionType)
 	if institutionType == "" {
@@ -514,6 +567,15 @@ func cloneCommercialBankList(banks []models.CommercialBank) []models.CommercialB
 		return make([]models.CommercialBank, 0)
 	}
 	cloned := make([]models.CommercialBank, len(banks))
+	copy(cloned, banks)
+	return cloned
+}
+
+func cloneMicrofinanceBankList(banks []models.MicrofinanceBank) []models.MicrofinanceBank {
+	if len(banks) == 0 {
+		return make([]models.MicrofinanceBank, 0)
+	}
+	cloned := make([]models.MicrofinanceBank, len(banks))
 	copy(cloned, banks)
 	return cloned
 }

@@ -152,6 +152,14 @@ func (s *financeRepositoryStub) GetCommercialBank(context.Context, string) (mode
 	return models.CommercialBank{}, nil
 }
 
+func (s *financeRepositoryStub) ListMicrofinanceBanks(context.Context) ([]models.MicrofinanceBank, error) {
+	return []models.MicrofinanceBank{}, nil
+}
+
+func (s *financeRepositoryStub) GetMicrofinanceBank(context.Context, string) (models.MicrofinanceBank, error) {
+	return models.MicrofinanceBank{}, nil
+}
+
 func (s *financeRepositoryStub) ListNonInterestFinancialInstitutions(context.Context) ([]models.NonInterestInstitution, error) {
 	return []models.NonInterestInstitution{}, nil
 }

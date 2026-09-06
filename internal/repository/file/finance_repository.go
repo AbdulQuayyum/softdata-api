@@ -75,6 +75,7 @@ const (
 	financeCurrenciesRelativePath        = "finance/currencies.json"
 	financeCountriesAndAreasRelativePath = "geography/countries_and_areas.json"
 	financeCommercialBanksRelativePath   = "finance/commercial_banks.json"
+	financeMicrofinanceBanksRelativePath = "finance/microfinance_banks.json"
 )
 
 var financeExpectedCommercialBankIDs = []string{
@@ -121,6 +122,7 @@ type FinanceFileRepository struct {
 	financialHoldingCompaniesPath           string
 	developmentFinanceInstitutionsPath      string
 	primaryMortgageInstitutionsPath         string
+	microfinanceBanksPath                   string
 	regulatedMu                             sync.RWMutex
 	regulatedCache                          map[string]any
 }
@@ -137,8 +139,8 @@ func NewFinanceRepository(jsonRepository interfaces.JSONFileRepository, paymentS
 		return nil, err
 	}
 	imtoPath := ""
-	if len(datasetPaths) > 7 {
-		return nil, fmt.Errorf("finance dataset paths accept at most seven values")
+	if len(datasetPaths) > 8 {
+		return nil, fmt.Errorf("finance dataset paths accept at most eight values")
 	}
 	if len(datasetPaths) > 0 {
 		imtoPath, err = validateFinanceDatasetPath(datasetPaths[0])
@@ -146,7 +148,7 @@ func NewFinanceRepository(jsonRepository interfaces.JSONFileRepository, paymentS
 			return nil, err
 		}
 	}
-	paths := make([]string, 6)
+	paths := make([]string, 7)
 	for i := 1; i < len(datasetPaths); i++ {
 		paths[i-1], err = validateFinanceDatasetPath(datasetPaths[i])
 		if err != nil {
@@ -167,6 +169,7 @@ func NewFinanceRepository(jsonRepository interfaces.JSONFileRepository, paymentS
 		financialHoldingCompaniesPath:           paths[3],
 		developmentFinanceInstitutionsPath:      paths[4],
 		primaryMortgageInstitutionsPath:         paths[5],
+		microfinanceBanksPath:                   paths[6],
 		regulatedCache:                          make(map[string]any),
 	}, nil
 }
