@@ -60,6 +60,48 @@ func TestPublicRoutesServeCommercialBanks(t *testing.T) {
 	}
 }
 
+func TestPublicRoutesServeMicrofinanceBanks(t *testing.T) {
+	rec := &routerRecorder{}
+	r := newTestRouter(t, rec)
+
+	rr := httptest.NewRecorder()
+	r.ServeHTTP(rr, httptest.NewRequest(http.MethodGet, "/v1/finance/microfinance-banks?ignored=true", nil))
+	if rr.Code != http.StatusOK || !strings.Contains(rr.Body.String(), `"success":true`) {
+		t.Fatalf("unexpected microfinance-bank list response: %d %s", rr.Code, rr.Body.String())
+	}
+	joined := strings.Join(rec.snapshot(), ",")
+	if !strings.Contains(joined, "finance.microfinance-banks.list") ||
+		!strings.Contains(joined, "usage:/v1/finance/microfinance-banks|finance") {
+		t.Fatalf("microfinance-bank list dispatch/usage missing: %v", rec.snapshot())
+	}
+
+	rec = &routerRecorder{}
+	r = newTestRouter(t, rec)
+	rr = httptest.NewRecorder()
+	req := httptest.NewRequest(http.MethodGet, "/v1/finance/microfinance-banks/bway-microfinance-bank-limited", nil)
+	r.ServeHTTP(rr, req)
+	if rr.Code != http.StatusOK || !strings.Contains(rr.Body.String(), `"country_code":"NG"`) {
+		t.Fatalf("unexpected microfinance-bank detail response: %d %s", rr.Code, rr.Body.String())
+	}
+	joined = strings.Join(rec.snapshot(), ",")
+	if !strings.Contains(joined, "finance.microfinance-banks.get:bway-microfinance-bank-limited") ||
+		!strings.Contains(joined, "usage:/v1/finance/microfinance-banks/{bank_id}|finance") {
+		t.Fatalf("microfinance-bank detail dispatch/usage missing: %v", rec.snapshot())
+	}
+
+	rr = httptest.NewRecorder()
+	r.ServeHTTP(rr, httptest.NewRequest(http.MethodPost, "/v1/finance/microfinance-banks", nil))
+	if rr.Code != http.StatusMethodNotAllowed || rr.Header().Get("Allow") != http.MethodGet {
+		t.Fatalf("unexpected method response: %d allow=%q", rr.Code, rr.Header().Get("Allow"))
+	}
+
+	rr = httptest.NewRecorder()
+	r.ServeHTTP(rr, httptest.NewRequest(http.MethodGet, "/v1/finance/microfinance-banks/bway-microfinance-bank-limited/extra", nil))
+	if rr.Code != http.StatusNotFound {
+		t.Fatalf("nested microfinance-bank route status = %d, want 404", rr.Code)
+	}
+}
+
 func TestPublicRoutesServeGeographyZones(t *testing.T) {
 	rec := &routerRecorder{}
 	router := newTestRouter(t, rec)

@@ -340,6 +340,32 @@ func registerPublicRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers,
 		return err
 	}
 
+	financeMicrofinanceBanksList, err := buildRouteMiddlewares(mw, "/v1/finance/microfinance-banks", "finance", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build finance microfinance-banks middleware: %w", err)
+	}
+	mux.Handle("GET /v1/finance/microfinance-banks", compose(http.HandlerFunc(h.Finance.ListMicrofinanceBanks), financeMicrofinanceBanksList...))
+	if err := catalog.add("GET /v1/finance/microfinance-banks"); err != nil {
+		return err
+	}
+
+	financeMicrofinanceBanksDetail, err := buildRouteMiddlewares(mw, "/v1/finance/microfinance-banks/{bank_id}", "finance", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build finance microfinance-banks detail middleware: %w", err)
+	}
+	mux.Handle("GET /v1/finance/microfinance-banks/{bank_id}", compose(http.HandlerFunc(h.Finance.GetMicrofinanceBank), financeMicrofinanceBanksDetail...))
+	if err := catalog.add("GET /v1/finance/microfinance-banks/{bank_id}"); err != nil {
+		return err
+	}
+
 	financeIMTOsList, err := buildRouteMiddlewares(mw, "/v1/finance/international-money-transfer-operators", "finance", routeOptions{
 		useOptionalAPIKey: true,
 		useRateLimit:      true,
