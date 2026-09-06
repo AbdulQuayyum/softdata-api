@@ -371,6 +371,8 @@ type financeService interface {
 	GetCurrency(context.Context, string) (models.Currency, error)
 	ListCommercialBanks(context.Context) ([]models.CommercialBank, error)
 	GetCommercialBank(context.Context, string) (models.CommercialBank, error)
+	ListMicrofinanceBanks(context.Context) ([]models.MicrofinanceBank, error)
+	GetMicrofinanceBank(context.Context, string) (models.MicrofinanceBank, error)
 	ListNonInterestFinancialInstitutions(context.Context) ([]models.NonInterestInstitution, error)
 	GetNonInterestFinancialInstitution(context.Context, string) (models.NonInterestInstitution, error)
 	ListMerchantBanks(context.Context) ([]models.MerchantBank, error)

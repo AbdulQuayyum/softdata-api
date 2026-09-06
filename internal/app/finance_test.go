@@ -77,6 +77,14 @@ func (s *financeServiceStub) GetCommercialBank(context.Context, string) (models.
 	return models.CommercialBank{}, nil
 }
 
+func (s *financeServiceStub) ListMicrofinanceBanks(context.Context) ([]models.MicrofinanceBank, error) {
+	return []models.MicrofinanceBank{}, nil
+}
+
+func (s *financeServiceStub) GetMicrofinanceBank(context.Context, string) (models.MicrofinanceBank, error) {
+	return models.MicrofinanceBank{}, nil
+}
+
 func (s *financeServiceStub) ListNonInterestFinancialInstitutions(context.Context) ([]models.NonInterestInstitution, error) {
 	return []models.NonInterestInstitution{}, nil
 }

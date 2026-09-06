@@ -13,6 +13,9 @@ var financeInternationalMoneyTransferOperatorIDPattern = regexp.MustCompile(`^[a
 var financeCurrencyIDPattern = regexp.MustCompile(`^[a-z]{3}$`)
 var financeCurrencyCountryAreaIDPattern = regexp.MustCompile(`^[a-z]{2}$`)
 var financeCommercialBankIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)+$`)
+var financeMicrofinanceBankIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)*$`)
+
+const financeMicrofinanceBankIDMaxLength = 128
 
 var approvedRegulatedFinanceIDs = map[string]map[string]struct{}{
 	"non_interest": {
@@ -344,6 +347,18 @@ func ValidateCommercialBankID(value string) error {
 	}
 	if _, ok := approvedCommercialBankIDs[value]; !ok {
 		return invalidField("bank_id", "Bank ID must reference a supported commercial bank.")
+	}
+	return nil
+}
+
+// ValidateMicrofinanceBankID validates the syntax of a public microfinance-bank identifier.
+// The roster remains data-driven; this validator deliberately does not maintain an ID allowlist.
+func ValidateMicrofinanceBankID(value string) error {
+	if strings.TrimSpace(value) == "" {
+		return requiredError("bank_id", "Bank ID is required.")
+	}
+	if len(value) > financeMicrofinanceBankIDMaxLength || !financeMicrofinanceBankIDPattern.MatchString(value) || uuidLikePattern.MatchString(value) {
+		return invalidField("bank_id", "Bank ID must be a valid lowercase public slug.")
 	}
 	return nil
 }
