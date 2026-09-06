@@ -1,8 +1,8 @@
 [
-  {"id":"coronation-merchant-bank","name":"Coronation Merchant Bank","website_url":"https://www.coronationmb.com/","logo_url":"/v1/assets/financial-institutions/ng/merchant-banks/coronation-merchant-bank.png","country_code":"NG"},
-  {"id":"fsdh-merchant-bank","name":"FSDH Merchant Bank","website_url":"https://fsdhmerchantbank.com/","logo_url":"/v1/assets/financial-institutions/ng/merchant-banks/fsdh-merchant-bank.png","country_code":"NG"},
-  {"id":"greenwich-merchant-bank","name":"Greenwich Merchant Bank","website_url":"https://www.greenwichbankgroup.com/","logo_url":"/v1/assets/financial-institutions/ng/merchant-banks/greenwich-merchant-bank.png","country_code":"NG"},
+  {"id":"coronation-merchant-bank","name":"Coronation Merchant Bank","website_url":"https://www.coronationmb.com/","logo_url":"/v1/assets/financial-institutions/ng/merchant-banks/coronation-merchant-bank.png","country_code":"NG","cbn_code":"559","nip_code":"060001"},
+  {"id":"fsdh-merchant-bank","name":"FSDH Merchant Bank","website_url":"https://fsdhmerchantbank.com/","logo_url":"/v1/assets/financial-institutions/ng/merchant-banks/fsdh-merchant-bank.png","country_code":"NG","cbn_code":"601","nip_code":"400001"},
+  {"id":"greenwich-merchant-bank","name":"Greenwich Merchant Bank","website_url":"https://www.greenwichbankgroup.com/","logo_url":"/v1/assets/financial-institutions/ng/merchant-banks/greenwich-merchant-bank.png","country_code":"NG","cbn_code":"562","nip_code":"060004"},
   {"id":"quest-merchant-bank","name":"Quest Merchant Bank","website_url":"https://questmb.com/","logo_url":"/v1/assets/financial-institutions/ng/merchant-banks/quest-merchant-bank.png","country_code":"NG"},
-  {"id":"rand-merchant-bank","name":"Rand Merchant Bank","website_url":"https://www.rmb.com.ng/","logo_url":"/v1/assets/financial-institutions/ng/merchant-banks/rand-merchant-bank.png","country_code":"NG"},
+  {"id":"rand-merchant-bank","name":"Rand Merchant Bank","website_url":"https://www.rmb.com.ng/","logo_url":"/v1/assets/financial-institutions/ng/merchant-banks/rand-merchant-bank.png","country_code":"NG","cbn_code":"502","nip_code":"000024"},
   {"id":"stable-microfinance-bank","name":"Stable Microfinance Bank Limited","website_url":"https://stablemfb.com/","logo_url":"/v1/assets/financial-institutions/ng/merchant-banks/stable-microfinance-bank.png","country_code":"NG"}
 ]

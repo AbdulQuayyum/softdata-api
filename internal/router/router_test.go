@@ -2254,6 +2254,24 @@ func (s *routerFinanceStub) GetCommercialBank(ctx context.Context, bankID string
 	return models.CommercialBank{ID: bankID, Name: "Access Bank Plc", CBNCode: "044", NIPCode: "000014", CountryCode: "NG"}, nil
 }
 
+func (s *routerFinanceStub) ListMicrofinanceBanks(ctx context.Context) ([]models.MicrofinanceBank, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	if s.rec != nil {
+		s.rec.add("finance.microfinance-banks.list")
+	}
+	return []models.MicrofinanceBank{}, nil
+}
+
+func (s *routerFinanceStub) GetMicrofinanceBank(ctx context.Context, bankID string) (models.MicrofinanceBank, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	if s.rec != nil {
+		s.rec.add("finance.microfinance-banks.get:" + bankID)
+	}
+	return models.MicrofinanceBank{ID: bankID, Name: "Example Microfinance Bank", CountryCode: "NG"}, nil
+}
+
 func (s *routerFinanceStub) ListNonInterestFinancialInstitutions(context.Context) ([]models.NonInterestInstitution, error) {
 	return []models.NonInterestInstitution{}, nil
 }

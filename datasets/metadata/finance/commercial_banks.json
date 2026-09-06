@@ -1,14 +1,14 @@
 {
   "dataset_key": "ng-commercial-banks",
   "title": "Nigeria Commercial Banks",
-  "description": "The 28 commercial banks in the CBN Export (1).xlsx snapshot, with independently compiled official websites, vendored identification logos, and partially verified CBN/NIP identifiers.",
+  "description": "The 28 commercial banks in the CBN Export (1).xlsx snapshot, with independently compiled official websites, vendored identification logos, and identifiers reconciled from the pinned source catalogue.",
   "country_code": "NG",
   "dataset_group": "finance",
   "format": "json",
   "relative_path": "finance/commercial_banks.json",
   "schema_path": "schemas/finance/commercial_banks.schema.json",
   "record_count": 28,
-  "version": "1.1.0",
+  "version": "1.2.0",
   "license_id": "CC-BY-4.0",
   "license_url": "https://creativecommons.org/licenses/by/4.0/",
   "methodology": "Roster anchored to the supplied CBN commercial-bank workbook Export (1).xlsx (SHA-256 de320defa84c2b3370de56e85888cd52da37a43fa5238b1f7d5612c9ee64d2fd; 28 records; modified 2026-08-31). Names were normalized without mechanically title-casing legal suffixes. CBN/NIP identifiers were copied only from explicit Interswitch cbnCode/nipCode fields or corroborating operational sources; Interswitch internal code values were excluded. Unverified or conflicting values are omitted rather than inferred, truncated, or represented as null or empty strings. Logos were preserved as PNG files from the pinned Nigerian-Bank-Logos/ng-bank-logos commit a56f7857b1ccca69784cd86a8080531fd3c7e6a8 and are separately covered by the upstream license and attribution files.",
@@ -47,31 +47,35 @@
       "url": "https://docs.crisscross.money/payout-nigeria-bank-codes",
       "purpose": "Corroboration for operational NIP receiving-bank values.",
       "accessed_at": "2026-09-04"
+    },
+    {
+      "organization": "Nigerian-Bank-Logos",
+      "title": "ng-bank-logos data/bank.json",
+      "url": "https://github.com/Nigerian-Bank-Logos/ng-bank-logos/blob/a56f7857b1ccca69784cd86a8080531fd3c7e6a8/data/bank.json",
+      "purpose": "Source catalogue for bankCode and scCode semantics; provider-internal codes excluded.",
+      "accessed_at": "2026-09-06",
+      "sha256": "42194b6e7e42e46a269a17c6e76088d43da164a97739fdbefe3bac5b9354284a"
     }
   ],
   "identifier_fields": {
     "cbn_code": {
       "description": "Three-digit CBN institution code.",
       "pattern": "^[0-9]{3}$",
-      "coverage": 25
+      "coverage": 28
     },
     "nip_code": {
       "description": "Six-digit NIP receiving-institution code.",
       "pattern": "^[0-9]{6}$",
-      "coverage": 25
+      "coverage": 28
     }
   },
-  "identifier_policy": "Both identifier fields are optional for this snapshot. Omission means the identifier was not sufficiently verified at retrieval time; it does not mean the institution has no assigned identifier. Values are strings so leading zeros are preserved. CBN and NIP codes are never derived from one another, and provider-internal codes are never published.",
-  "missing_identifiers": {
-    "cbn_code": ["alpha-morgan-bank", "nova-bank", "signature-bank"],
-    "nip_code": ["nova-bank", "standard-chartered-bank", "suntrust-bank"]
-  },
+  "identifier_policy": "Optional values are accepted only when the pinned community catalogue exposes a matching three-digit scCode or six-digit bankCode. cbn_code represents the legacy CBN/sort-code field represented by scCode; nip_code represents the six-digit NIP institution-code field represented by bankCode. Most values come from the pinned community catalogue, while Paystack data was supporting evidence only. Values remain strings; unresolved values are omitted rather than inferred. Community-sourced mappings require future confirmation against a current CBN/NIBSS register.",
   "known_conflicts": [
-    "Alpha Morgan has cbnCode 582 in Interswitch; a separate mixed-code bank-hosted table reports 108. The conflicting value is omitted.",
-    "NOVA Commercial Bank is not assigned the former NOVA Merchant Bank identifiers. Current transition evidence is insufficient, so both fields are omitted.",
-    "Signature Bank has conflicting third-party CBN candidates 061 and 106; the NIP value 000034 is retained.",
-    "Standard Chartered has a verified CBN code but no sufficiently verified NIP value in the reviewed primary source.",
-    "SunTrust NIP candidates 000020 and 000022 conflict; the NIP value is omitted."
+    "Alpha Morgan publishes cbn_code 108 from the pinned catalogue scCode; conflicting operational evidence reports 582.",
+    "NOVA Commercial Bank publishes cbn_code 561 and nip_code 060003 from the pinned catalogue; commercial/merchant transition uncertainty remains documented and former merchant identifiers are not transferred.",
+    "Signature Bank publishes cbn_code 106 from the pinned catalogue scCode; conflicting historical/provider evidence reports 061.",
+    "Providus Bank publishes nip_code 000023; older evidence reports 000021, while Standard Chartered publishes 000021.",
+    "SunTrust publishes nip_code 000022 and Tatum publishes cbn_code 109 / nip_code 000042."
   ],
   "update_policy": "When an omitted identifier is confirmed by a current authoritative or clearly corroborated source, add it in a subsequent dataset version with the source URL, retrieval date, and conflict resolution recorded here.",
   "verified_at": "2026-09-04"

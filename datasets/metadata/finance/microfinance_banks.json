@@ -1,0 +1,291 @@
+{
+  "dataset_key": "ng-microfinance-banks",
+  "title": "Nigeria Microfinance Banks",
+  "description": "Version 1.0.0 of 790 active institutions from the reconciled CBN microfinance-bank register, with incremental identity-verified website and logo enrichment.",
+  "country_code": "NG",
+  "dataset_group": "finance",
+  "format": "json",
+  "relative_path": "finance/microfinance_banks.json",
+  "schema_path": "schemas/finance/microfinance_banks.schema.json",
+  "record_count": 790,
+  "version": "1.0.0",
+  "license_id": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "verified_at": "2026-09-06",
+  "enrichment": {
+    "manifest_path": "metadata/finance/microfinance_banks_enrichment.json",
+    "completed_batches": 32,
+    "batch_size": 25,
+    "processed_records": 790,
+    "website_count": 74,
+    "logo_count": 330,
+    "logo_policy": {
+      "explicit_redistribution_permission_required": false,
+      "identity_verification_required": true,
+      "original_bytes_required": true,
+      "accepted_provenance": [
+        "first_party",
+        "archived_first_party",
+        "official_social_source",
+        "curated_repository",
+        "code_mapped_repository"
+      ],
+      "attribution_statement": "Logo and trademark rights remain with the respective institution. The asset is reproduced for institutional identification."
+    },
+    "curated_repository_reconciliation": {
+      "repository_url": "https://github.com/Nigerian-Bank-Logos/ng-bank-logos",
+      "pinned_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "manifest_entries": 310,
+      "source_png_files": 448,
+      "imported_matches": 316,
+      "preserved_existing_matches": 7,
+      "unmatched_source_files": 124,
+      "provenance": "curated_repository",
+      "second_stage_reviewed_source_files": 138,
+      "second_stage_accepted_matches": 14,
+      "second_stage_new_imports": 13,
+      "second_stage_preserved_existing_matches": 1
+    },
+    "automated_discovery": {
+      "processed_records": 790,
+      "checkpoint_interval": 25,
+      "candidate_records": 0,
+      "promoted_websites": 0,
+      "promoted_logos": 0,
+      "negative_results_provisional": true,
+      "transport_status": "search host DNS unavailable from the research runtime"
+    },
+    "website_classifications": {
+      "verified_first_party": 69,
+      "verified_parent_profile": 5,
+      "identity_conflict": 3,
+      "no_current_site_found": 713
+    },
+    "logo_classifications": {
+      "first_party": 14,
+      "curated_repository": 316,
+      "no_logo_found": 460
+    },
+    "resume_position": 791,
+    "policy": "Institution-hosted marks remain the institutions' trademarks and are not claimed as CC BY 4.0 content.",
+    "reprocessed_from": 207,
+    "reprocessed_through": 400,
+    "reprocessing_complete": true,
+    "reprocessing_checkpoints": [
+      231,
+      256,
+      281,
+      306,
+      331,
+      356,
+      381,
+      400
+    ],
+    "forward_checkpoints": [
+      425,
+      450,
+      475,
+      500,
+      525,
+      550,
+      575,
+      600,
+      625,
+      650,
+      675,
+      700,
+      725,
+      750,
+      775,
+      790
+    ],
+    "final_quality_audit_sample": [
+      1,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      201,
+      205,
+      206,
+      209,
+      212,
+      213,
+      214,
+      215,
+      216,
+      217,
+      404,
+      405,
+      406,
+      407,
+      408,
+      409,
+      410,
+      411,
+      412,
+      413,
+      602,
+      603,
+      604,
+      605,
+      606,
+      607,
+      608,
+      609,
+      610,
+      611
+    ],
+    "final_quality_audit_complete": true
+  },
+  "source_boundary": "Reconciled CBN MFB register; active means present in the pinned CBN roster and not excluded by reconciled CBN/NDIC status evidence.",
+  "primary_source": {
+    "organization": "Central Bank of Nigeria",
+    "url": "https://www.cbn.gov.ng/api/GetMFBs",
+    "retrieved_at": "2026-09-05",
+    "bytes": 268182,
+    "records": 829,
+    "unique_published_names": 826,
+    "sha256": "89d9791403589a98d82e4c9c2cd3457d26e226d194dd9fb8e5d83db2940b4725",
+    "identical_retrievals": 3,
+    "etag": null,
+    "last_modified": null
+  },
+  "source_workbook": {
+    "file": "Export (7).xlsx",
+    "worksheet": "Sheet1",
+    "data_rows": 829,
+    "sha256": "0538f98457ca0144e70f9d8a6ea408a07b0fc93d51f3287082b7e8cdbaa12d7a",
+    "hidden_sheets_or_rows": false
+  },
+  "status_sources": [
+    {
+      "organization": "NDIC",
+      "url": "https://ndic.gov.ng/revocation-of-the-operating-licenses-of-46-microfinance-banks-by-the-central-bank-of-nigeria/"
+    },
+    {
+      "organization": "NDIC",
+      "url": "https://ndic.gov.ng/update-on-the-revocation-of-the-operating-licenses-of-46-microfinance-banks-by-the-central-bank-of-nigeria/",
+      "retrieved_at": "2026-09-06",
+      "bytes": 183460,
+      "sha256": "9c16d670d66a3422c44caeacabf4ce1842ea3da915254fc070a9b28e380fdf57"
+    },
+    {
+      "organization": "NDIC",
+      "url": "https://ndic.gov.ng/failure-resolution/closed-microfinance-banks/"
+    },
+    {
+      "organization": "NDIC",
+      "url": "https://ndic.gov.ng/resolution-of-failed-banks-ndic-commences-process-to-conclude-the-liquidation-of-89-mfbs-pmb/"
+    },
+    {
+      "organization": "NDIC",
+      "url": "https://ndic.gov.ng/list-of-insured-institutions/list-of-microfinance-banks/"
+    }
+  ],
+  "exclusion_arithmetic": [
+    "829 raw CBN rows",
+    "- 3 approved BWAY/Katsu/Paragon duplicate or stale rows",
+    "- 1 Teerus duplicate",
+    "- 33 matched revoked institutions",
+    "- 1 confirmed AKPO predecessor",
+    "- 1 Verdant-Capital revoked/replaced record",
+    "= 790 active records"
+  ],
+  "raw_row_exclusions": 39,
+  "duplicate_decisions": [
+    {
+      "id": 10030,
+      "name": "BWAY Microfinance bank Limited",
+      "reason": "exact duplicate; retain CBN ID 10029",
+      "retained": "10029"
+    },
+    {
+      "id": 10009,
+      "name": "Katsu Microfinance Bank Limited",
+      "reason": "stale/incomplete duplicate; retain CBN ID 10048",
+      "retained": "10048"
+    },
+    {
+      "id": 10012,
+      "name": "Paragon Microfinance Bank Limited",
+      "reason": "exact duplicate; retain CBN ID 10011",
+      "retained": "10011"
+    },
+    {
+      "id": 9908,
+      "name": "TEERUS MICROFINANCE BANK LIMITED",
+      "reason": "duplicate detail record; retain renamed CBN ID 10081",
+      "retained": "10081"
+    }
+  ],
+  "successor_decisions": [
+    {
+      "former_name": "Bridgeway Microfinance Bank Limited",
+      "successor_name": "BWAY Microfinance Bank Limited",
+      "retained_id": 10029,
+      "excluded_id": 10030
+    },
+    {
+      "former_name": "Zigate Microfinance Bank Limited",
+      "successor_name": "Katsu Microfinance Bank Limited",
+      "retained_id": 10048,
+      "excluded_id": 10009
+    },
+    {
+      "former_name": "AKPO MICROFINANCE BANK LIMITED",
+      "successor_name": "OGANIRU MICROFINANCE BANK LIMITED",
+      "retained_id": 10061,
+      "excluded_id": 3222
+    },
+    {
+      "former_name": "Verdant Microfinance Bank Limited",
+      "successor_name": "Verdant-Capital Microfinance Bank Limited",
+      "excluded_id": 10091,
+      "note": "Updated NDIC notice identifies Verdant-Capital as revoked; insured-list former name is stale."
+    }
+  ],
+  "deferred_fields": [
+    "category",
+    "state",
+    "website",
+    "logo"
+  ],
+  "methodology": "Normalize only surrounding and repeated whitespace in public names. Generate lowercase kebab-case IDs from canonical current CBN names, sort by name then ID, and apply the preserved 39-row reconciliation exclusion manifest. Do not expose internal CBN source IDs.",
+  "update_policy": "Reconcile against a fresh CBN MFB snapshot and new CBN/NDIC revocation, closure, liquidation and successor publications before updating the roster.",
+  "licensing_boundary": "SoftData licenses its independently normalized compilation, schema and metadata under CC BY 4.0. CBN and NDIC source materials retain their respective rights and are cited, not relicensed. Institutional logos are reproduced for institutional identification; logo and trademark rights remain with the respective institution and are not claimed by SoftData.",
+  "identifier_coverage": {
+    "cbn_code": 13,
+    "nip_code": 323
+  },
+  "identifier_source": {
+    "repository": "Nigerian-Bank-Logos/ng-bank-logos",
+    "path": "data/bank.json",
+    "commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+    "sha256": "42194b6e7e42e46a269a17c6e76088d43da164a97739fdbefe3bac5b9354284a",
+    "retrieved_at": "2026-09-06",
+    "semantics": {
+      "bankCode": "six-digit NIP institution code",
+      "scCode": "three-digit legacy CBN/sort code"
+    }
+  },
+  "identifier_fields": {
+    "cbn_code": {
+      "description": "Optional three-digit legacy CBN institution code.",
+      "pattern": "^[0-9]{3}$",
+      "coverage": 13
+    },
+    "nip_code": {
+      "description": "Optional six-digit NIP receiving-institution code.",
+      "pattern": "^[0-9]{6}$",
+      "coverage": 323
+    }
+  },
+  "identifier_policy": "Codes are optional because the source catalogue has partial coverage. bankCode values are accepted only when exactly six decimal digits; scCode values are accepted only when exactly three decimal digits. Values remain strings with leading zeros preserved. Paystack provider-specific codes are not published.",
+  "code_reconciliation_manifest": "metadata/finance/financial_institution_codes_reconciliation.json"
+}

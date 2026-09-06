@@ -18,13 +18,16 @@ import (
 )
 
 type financeServiceStub struct {
-	providers  []models.PaymentServiceProvider
-	operators  []models.InternationalMoneyTransferOperator
-	currencies []models.Currency
-	err        error
-	calls      int
-	imtoCalls  int
-	currCalls  int
+	providers         []models.PaymentServiceProvider
+	operators         []models.InternationalMoneyTransferOperator
+	currencies        []models.Currency
+	err               error
+	calls             int
+	imtoCalls         int
+	currCalls         int
+	microfinanceBanks []models.MicrofinanceBank
+	microfinanceCalls int
+	microfinanceErr   error
 }
 
 func (s *financeServiceStub) ListPaymentServiceProviders(context.Context) ([]models.PaymentServiceProvider, error) {
@@ -75,6 +78,29 @@ func (s *financeServiceStub) ListCommercialBanks(context.Context) ([]models.Comm
 
 func (s *financeServiceStub) GetCommercialBank(context.Context, string) (models.CommercialBank, error) {
 	return models.CommercialBank{}, nil
+}
+
+func (s *financeServiceStub) ListMicrofinanceBanks(context.Context) ([]models.MicrofinanceBank, error) {
+	s.microfinanceCalls++
+	if s.microfinanceErr != nil {
+		return nil, s.microfinanceErr
+	}
+	if s.microfinanceBanks != nil {
+		return append([]models.MicrofinanceBank(nil), s.microfinanceBanks...), nil
+	}
+	data, err := os.ReadFile(filepath.Clean("../../datasets/finance/microfinance_banks.json"))
+	if err != nil {
+		return nil, err
+	}
+	var banks []models.MicrofinanceBank
+	if err := json.Unmarshal(data, &banks); err != nil {
+		return nil, err
+	}
+	return banks, nil
+}
+
+func (s *financeServiceStub) GetMicrofinanceBank(context.Context, string) (models.MicrofinanceBank, error) {
+	return models.MicrofinanceBank{}, nil
 }
 
 func (s *financeServiceStub) ListNonInterestFinancialInstitutions(context.Context) ([]models.NonInterestInstitution, error) {
@@ -150,6 +176,14 @@ func (s *financeRepositoryStub) ListCommercialBanks(context.Context) ([]models.C
 
 func (s *financeRepositoryStub) GetCommercialBank(context.Context, string) (models.CommercialBank, error) {
 	return models.CommercialBank{}, nil
+}
+
+func (s *financeRepositoryStub) ListMicrofinanceBanks(context.Context) ([]models.MicrofinanceBank, error) {
+	return []models.MicrofinanceBank{}, nil
+}
+
+func (s *financeRepositoryStub) GetMicrofinanceBank(context.Context, string) (models.MicrofinanceBank, error) {
+	return models.MicrofinanceBank{}, nil
 }
 
 func (s *financeRepositoryStub) ListNonInterestFinancialInstitutions(context.Context) ([]models.NonInterestInstitution, error) {

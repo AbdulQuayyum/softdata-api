@@ -1,0 +1,2399 @@
+{
+  "dataset_key": "ng-microfinance-banks",
+  "source_repository": "https://github.com/Nigerian-Bank-Logos/ng-bank-logos",
+  "pinned_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+  "reviewed_at": "2026-09-06",
+  "source_file_count": 138,
+  "source_bytes_present": true,
+  "source_catalogue": "source-bank.json",
+  "accepted_matches": 14,
+  "new_imports": 13,
+  "preserved_existing_matches": 1,
+  "records": [
+    {
+      "source_file": "9jaPay Microfinance Bank.png",
+      "source_name": "9jaPay Microfinance Bank",
+      "source_aliases": [
+        "9jaPay MFB"
+      ],
+      "source_bank_code": "090629",
+      "source_sc_code": null,
+      "sha256": "c3f1b2c070bbd47ec8c95f7371da0207263e79bb12ab3c93130c2e6d9a7816b7",
+      "bytes": 10404,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "ABSU MFB.png",
+      "source_name": "ABSU MFB",
+      "source_aliases": [
+        "ABSU MFB"
+      ],
+      "source_bank_code": "090640",
+      "source_sc_code": null,
+      "sha256": "d7597b93fafb8729581b1b89a8f2fde51768bed42b14a0a1b49897d833f3f70b",
+      "bytes": 124643,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "AKSU MFB.png",
+      "source_name": "AKSU MFB",
+      "source_aliases": [
+        "AKSU MFB"
+      ],
+      "source_bank_code": "090756",
+      "source_sc_code": null,
+      "sha256": "34b0af7f3e9b1ec26dce991bb60c34a5d33e2f24d3627a12c4a17d578ce7b467",
+      "bytes": 48561,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "AKU Microfinance Bank.png",
+      "source_name": "AKU Microfinance Bank",
+      "source_aliases": [
+        "AKU Microfinance Bank"
+      ],
+      "source_bank_code": "090531",
+      "source_sc_code": "51336",
+      "sha256": "1cd30cb31ce1c20cea499295be1badcabf9dea1194e39f114835a59f8a59b396",
+      "bytes": 8134,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "AMML MFB.png",
+      "source_name": "AMML MFB",
+      "source_aliases": [
+        "AMML Microfinance Bank"
+      ],
+      "source_bank_code": "914",
+      "source_sc_code": "914",
+      "sha256": "2c2c1ca09e0b2428d2eba2a324d6a1181b17a669349af6c271454e700f39c002",
+      "bytes": 7268,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "ARM MFB.png",
+      "source_name": "ARM MFB",
+      "source_aliases": [
+        "ARM MFB"
+      ],
+      "source_bank_code": "090816",
+      "source_sc_code": null,
+      "sha256": "5576ede556492631c49106d890d9dbf14189de5e7be93c9362af702167111e34",
+      "bytes": 7839,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "AVUENEGBE MICROFINANCE BANK.png",
+      "source_name": "AVUENEGBE MICROFINANCE BANK",
+      "source_aliases": [
+        "AVUENEGBE MICROFINANCE BANK"
+      ],
+      "source_bank_code": "090478",
+      "source_sc_code": null,
+      "sha256": "7d44dedf9772e0bc73d373054ed4f1a46e19ab8c1ed6b7585554d00e105ef032",
+      "bytes": 36816,
+      "dimensions": "400x400",
+      "roster_id": "avunegbe-microfinance-bank-limited",
+      "roster_name": "Avunegbe Microfinance Bank Limited",
+      "classification": "accepted_verified_spelling_variant",
+      "decision": "preserved_existing",
+      "reason": "Source catalogue name/code and visible mark reconcile to the current roster by documented abbreviation/spelling variant; existing first-party asset preserved."
+    },
+    {
+      "source_file": "AWACASH MICROFINANCE BANK.png",
+      "source_name": "AWACASH MICROFINANCE BANK",
+      "source_aliases": [
+        "AWACASH MICROFINANCE BANK"
+      ],
+      "source_bank_code": "090633",
+      "source_sc_code": "51351",
+      "sha256": "2a13a06cd426bf50607d63e78e3e1e4717968cab0df98bd67ba3bbdfc3494a5e",
+      "bytes": 8634,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "AZTEC MICROFINANCE BANK LIMITED.png",
+      "source_name": "AZTEC MICROFINANCE BANK LIMITED",
+      "source_aliases": [
+        "AZTEC MICROFINANCE BANK LIMITED"
+      ],
+      "source_bank_code": "090540",
+      "source_sc_code": "51337",
+      "sha256": "eeafbbec43c2ccc919c7332888b1794e8cd7eb1e94872ff0df2fe7cb8e0b0fad",
+      "bytes": 8080,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Aella MFB.png",
+      "source_name": "Aella MFB",
+      "source_aliases": [
+        "Aella MFB"
+      ],
+      "source_bank_code": "090614",
+      "source_sc_code": "50315",
+      "sha256": "9f495f1e2f33cd4671c7d6991c420f7e92efcaa369e691a7475a1c6ca1590560",
+      "bytes": 8239,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Allworkers MFB.png",
+      "source_name": "Allworkers MFB",
+      "source_aliases": [
+        "Allworkers Microfinance Bank"
+      ],
+      "source_bank_code": "090131",
+      "source_sc_code": null,
+      "sha256": "cf650861a5bf5e7305fa8e3a75adda2d7f545747081d3620ae91cbac5871695c",
+      "bytes": 10208,
+      "dimensions": "400x400",
+      "roster_id": "all-workers-microfinance-bank-limited",
+      "roster_name": "All Workers Microfinance Bank Limited",
+      "classification": "accepted_verified_abbreviation",
+      "decision": "preserved_existing",
+      "reason": "Source catalogue name/code and visible mark reconcile to the current roster by documented abbreviation/spelling variant; existing first-party asset preserved."
+    },
+    {
+      "source_file": "Anioma MFB.png",
+      "source_name": "Anioma MFB",
+      "source_aliases": [
+        "ANIOMA MFB"
+      ],
+      "source_bank_code": "090751",
+      "source_sc_code": null,
+      "sha256": "026abc137f89603017dc48e47361f5ea7de8dd68d14eec3d5a7db872d14e746f",
+      "bytes": 71050,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "ArcPay MFB.png",
+      "source_name": "ArcPay MFB",
+      "source_aliases": [
+        "ArcPay MFB"
+      ],
+      "source_bank_code": "090689",
+      "source_sc_code": null,
+      "sha256": "7a7dca42060d3ee41ef875dceada5b0fd4d85e2fe266ee80dddb75b01b3fe5e5",
+      "bytes": 9784,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Arise Microfinance Bank.png",
+      "source_name": "Arise Microfinance Bank",
+      "source_aliases": [
+        "Arise Microfinance Bank"
+      ],
+      "source_bank_code": "090282",
+      "source_sc_code": null,
+      "sha256": "0bf5ad6605cea9c6ab6d89c3d540916133201db29a81b1d70bcce06a89cda3cf",
+      "bytes": 46865,
+      "dimensions": "400x400",
+      "roster_id": "aris-microfinance-bank",
+      "roster_name": "Aris Microfinance Bank",
+      "classification": "rejected_distinct_identity",
+      "decision": "not_imported",
+      "reason": "CBN lists Aris Microfinance Bank Limited at 29 Zik Avenue, Uwani, Enugu and Arise Microfinance Bank Ltd at 99 Ogudu Road, Ojota, Lagos as separate institutions. The supplied Arise mark cannot be assigned to Aris.",
+      "evidence_urls": [
+        "https://www.cbn.gov.ng/Out/2019/FPRD/LIST%20OF%20LICENSED%20MICROFINANCE%20BANKS%20AS%20AT%20FEBRUARY%2013%2C%202019.pdf"
+      ],
+      "visible_mark_text": "Arise Microfinance Bank"
+    },
+    {
+      "source_file": "Auchi Poly MFB.png",
+      "source_name": "Auchi Poly MFB",
+      "source_aliases": [
+        "Auchi Poly Microfinance Bank"
+      ],
+      "source_bank_code": "090817",
+      "source_sc_code": null,
+      "sha256": "5c481bf6f18b971048429f825d3476d4e8cd02eef524a9b8580b75fef0a80c5d",
+      "bytes": 72189,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "BANKIT MICROFINANCE BANK LTD.png",
+      "source_name": "BANKIT MICROFINANCE BANK LTD",
+      "source_aliases": [
+        "BANKIT MICROFINANCE BANK LTD"
+      ],
+      "source_bank_code": "090275",
+      "source_sc_code": "50572",
+      "sha256": "ea923992a71f73147d154a3647e5eb77c6a7de120f8fcf93c971dca5a0c3a20e",
+      "bytes": 10111,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "BANKLY MFB.png",
+      "source_name": "BANKLY MFB",
+      "source_aliases": [
+        "BANKLY MFB"
+      ],
+      "source_bank_code": "090529",
+      "source_sc_code": "51341",
+      "sha256": "5f1bbeedaea1ff057821103183608d9f3a737e50453057e5bf1265dd86de2962",
+      "bytes": 7985,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "BC Kash Microfinance Bank.png",
+      "source_name": "BC Kash Microfinance Bank",
+      "source_aliases": [
+        "BC Kash Microfinance Bank"
+      ],
+      "source_bank_code": "090127",
+      "source_sc_code": null,
+      "sha256": "4903f40c4d90f4775dd4d94f58e0c5ded6055b6a614d4bd07dab25f097f4629b",
+      "bytes": 3519,
+      "dimensions": "400x400",
+      "roster_id": "b-c-kash-microfinance-bank",
+      "roster_name": "B C Kash Microfinance Bank",
+      "classification": "accepted_verified_spelling_variant",
+      "decision": "preserved_existing",
+      "reason": "Source catalogue name/code and visible mark reconcile to the current roster by documented abbreviation/spelling variant; existing first-party asset preserved."
+    },
+    {
+      "source_file": "BIPC Microfinance Bank.png",
+      "source_name": "BIPC Microfinance Bank",
+      "source_aliases": [
+        "BIPC Microfinance Bank"
+      ],
+      "source_bank_code": "090336",
+      "source_sc_code": null,
+      "sha256": "2f6c8b277109e3a219ba0d9153315c38438191332d65090f6bbe473fae769d4b",
+      "bytes": 9792,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Banc Corp Microfinance Bank.png",
+      "source_name": "Banc Corp Microfinance Bank",
+      "source_aliases": [
+        "Banc Corp Microfinance Bank"
+      ],
+      "source_bank_code": "090581",
+      "source_sc_code": "50117",
+      "sha256": "83cc49f26eff2377b085d4d946e2ba96555b4f1c364300d9679ef19e3315823d",
+      "bytes": 19102,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Bank of Agriculture.png",
+      "source_name": "Bank of Agriculture",
+      "source_aliases": [
+        "Bank of Agriculture"
+      ],
+      "source_bank_code": "090367",
+      "source_sc_code": null,
+      "sha256": "81304d79626827ad094fb27130c600f4eed0ed471e2cdb20a9b7ef07543139da",
+      "bytes": 19850,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Bank78 Microfinance Bank.png",
+      "source_name": "Bank78 Microfinance Bank",
+      "source_aliases": [
+        "Bank78 Microfinance Bank"
+      ],
+      "source_bank_code": "090866",
+      "source_sc_code": "11072",
+      "sha256": "81202653d293dd3a4eb9e8a6d6b5b82d9c694835b9dc667e282b63b8cd1151db",
+      "bytes": 12228,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Bayero Microfinance Bank.png",
+      "source_name": "Bayero Microfinance Bank",
+      "source_aliases": [
+        "Bayero Microfinance Bank"
+      ],
+      "source_bank_code": "090316",
+      "source_sc_code": null,
+      "sha256": "f636dc75454e375cad5d51215aa4524695a38a0da8cd08e991270f06d598068c",
+      "bytes": 30116,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Beamer MFB.png",
+      "source_name": "Beamer MFB",
+      "source_aliases": [
+        "Beamer MFB"
+      ],
+      "source_bank_code": "090591",
+      "source_sc_code": null,
+      "sha256": "5d09a34a0b5ba344e60485ec7c6bc34389725b082128ffc5ba00cdd9302272ef",
+      "bytes": 7780,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "BellBank Microfinance Bank.png",
+      "source_name": "BellBank Microfinance Bank",
+      "source_aliases": [
+        "BellBank Microfinance Bank"
+      ],
+      "source_bank_code": "090672",
+      "source_sc_code": "51100",
+      "sha256": "65e8875f89da3c997d9f85f813448c2899381a89a83a444dd05066c51a82aa0d",
+      "bytes": 8999,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Beststar Microfinance Bank.png",
+      "source_name": "Beststar Microfinance Bank",
+      "source_aliases": [
+        "Beststar Microfinance Bank"
+      ],
+      "source_bank_code": "090615",
+      "source_sc_code": "50123",
+      "sha256": "cc934ab7f0b44eb25934e01263ca4608fe861cb2df43749c78e8d3978ebd1edf",
+      "bytes": 16354,
+      "dimensions": "400x400",
+      "roster_id": "best-star-microfinance-bank-limited",
+      "roster_name": "Best Star Microfinance Bank Limited",
+      "classification": "accepted_verified_spelling_variant",
+      "decision": "preserved_existing",
+      "reason": "Source catalogue name/code and visible mark reconcile to the current roster by documented abbreviation/spelling variant; existing first-party asset preserved."
+    },
+    {
+      "source_file": "Bobble MFB.png",
+      "source_name": "Bobble MFB",
+      "source_aliases": [
+        "Bobble MFB"
+      ],
+      "source_bank_code": "090617",
+      "source_sc_code": null,
+      "sha256": "77586f86ee5236e9e5e58a16d820abda021144db474adee3cd64d5081a44566b",
+      "bytes": 9420,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Build MFB.png",
+      "source_name": "Build MFB",
+      "source_aliases": [
+        "Build Microfinance Bank"
+      ],
+      "source_bank_code": "090613",
+      "source_sc_code": null,
+      "sha256": "efadb61fadff52b855f50aad3594f7fe1af0349a73ccbd7b4cdd60f743c77034",
+      "bytes": 8860,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "BuyPower MFB.png",
+      "source_name": "BuyPower MFB",
+      "source_aliases": [
+        "BuyPower MFB"
+      ],
+      "source_bank_code": "090682",
+      "source_sc_code": "50645",
+      "sha256": "ed483cc53612ecf8ec82971f3a7102c3943414b694d868224062e38936dbd26b",
+      "bytes": 7813,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "CEMCS Microfinance Bank.png",
+      "source_name": "CEMCS Microfinance Bank",
+      "source_aliases": [
+        "CEMCS Microfinance Bank"
+      ],
+      "source_bank_code": "090154",
+      "source_sc_code": "50823",
+      "sha256": "0d0f36f33605dcc060328739b01d668124d4fb9b82bd3748cdd13246b4f44993",
+      "bytes": 5779,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "COOPFUND MFB.png",
+      "source_name": "COOPFUND MFB",
+      "source_aliases": [
+        "COOPFUND MFB"
+      ],
+      "source_bank_code": "090717",
+      "source_sc_code": null,
+      "sha256": "4f8236a584c62ff178d276c0264922afab3a210557f3eece6acde4ad5eaf4966",
+      "bytes": 19664,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "CashRite MFB.png",
+      "source_name": "CashRite MFB",
+      "source_aliases": [
+        "CashRite MFB"
+      ],
+      "source_bank_code": "090649",
+      "source_sc_code": null,
+      "sha256": "eca7d535eff247265fac7f03b946df02c0cb65b564025a70d1a1452933d5ea58",
+      "bytes": 7227,
+      "dimensions": "400x400",
+      "roster_id": "cash-rite-mfb",
+      "roster_name": "CASH RITE MFB",
+      "classification": "accepted_verified_spelling_variant",
+      "decision": "preserved_existing",
+      "reason": "Source catalogue name/code and visible mark reconcile to the current roster by documented abbreviation/spelling variant; existing first-party asset preserved."
+    },
+    {
+      "source_file": "Casha MFB.png",
+      "source_name": "Casha MFB",
+      "source_aliases": [
+        "Casha MFB"
+      ],
+      "source_bank_code": "090848",
+      "source_sc_code": null,
+      "sha256": "11a43051d8ce0cafb9e7a40cff514875c10bc1db7135ecdf31232483984251ca",
+      "bytes": 13114,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Cashbridge Microfinance Bank Limited.png",
+      "source_name": "Cashbridge Microfinance Bank Limited",
+      "source_aliases": [
+        "Cashbridge Microfinance Bank Limited"
+      ],
+      "source_bank_code": "090634",
+      "source_sc_code": "51353",
+      "sha256": "b8d4e94b7f0bb4c1e37102509355c4d5e3c8037ca9d30537551b5ea11eb4edda",
+      "bytes": 7290,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Chanelle Microfinance Bank Limited.png",
+      "source_name": "Chanelle Microfinance Bank Limited",
+      "source_aliases": [
+        "Chanelle Microfinance Bank Limited"
+      ],
+      "source_bank_code": "090397",
+      "source_sc_code": "50171",
+      "sha256": "870a1144c3607323fc5753273a07058ebcdbd78385dd7453d89c5c74bbd4e75a",
+      "bytes": 6881,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Clearpay MFB.png",
+      "source_name": "Clearpay MFB",
+      "source_aliases": [
+        "Clearpay MFB"
+      ],
+      "source_bank_code": "090482",
+      "source_sc_code": null,
+      "sha256": "89accdadda08a69a369124ebfb052bedbd4c468c88c5b4a8d6136a7ba1fe9a15",
+      "bytes": 4710,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Credit Afrique Microfinance Bank.png",
+      "source_name": "Credit Afrique Microfinance Bank",
+      "source_aliases": [
+        "Credit Afrique Microfinance Bank"
+      ],
+      "source_bank_code": "090159",
+      "source_sc_code": null,
+      "sha256": "e09b995adae6731ebbb6d2fc85675b121d8f884931fa05631fec4a6ef3ae1e71",
+      "bytes": 56249,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Creditville MFB.png",
+      "source_name": "Creditville MFB",
+      "source_aliases": [
+        "Creditville Microfinance Bank"
+      ],
+      "source_bank_code": "090611",
+      "source_sc_code": null,
+      "sha256": "832ac07772fcadbaa71ff384b809ca37c378ae77afb9c03a4a53f9581359569a",
+      "bytes": 14484,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Crust Microfinance Bank.png",
+      "source_name": "Crust Microfinance Bank",
+      "source_aliases": [
+        "Crust MFB"
+      ],
+      "source_bank_code": "090560",
+      "source_sc_code": null,
+      "sha256": "461b644e443511f2508ede85f3181d84914c6978fa3fd6445ad0db57c5749ed6",
+      "bytes": 6638,
+      "dimensions": "400x400",
+      "roster_id": "crest-mfb",
+      "roster_name": "CREST MFB",
+      "classification": "rejected_distinct_identity",
+      "decision": "not_imported",
+      "reason": "CBN and NDIC identify CREST MFB/Crest Microfinance Bank Limited at 43 Obafemi Awolowo Way, Oke-Bola, Ibadan, Oyo. The source name is Crust and no evidence equates it with Crest.",
+      "evidence_urls": [
+        "https://www.cbn.gov.ng/Out/2020/FPRD/MFB311219.pdf",
+        "https://ndic.gov.ng/list-of-insured-institutions/list-of-microfinance-banks/"
+      ],
+      "visible_mark_text": "Crust Microfinance Bank"
+    },
+    {
+      "source_file": "DW MFB.png",
+      "source_name": "DW MFB",
+      "source_aliases": [
+        "DW MFB"
+      ],
+      "source_bank_code": "090721",
+      "source_sc_code": null,
+      "sha256": "645012848403ba8ebe925f518c0d9f25d102db566d2b6f76cf1d7f036d82da0a",
+      "bytes": 6731,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Dayspring MFB.png",
+      "source_name": "Dayspring MFB",
+      "source_aliases": [
+        "Dayspring MFB"
+      ],
+      "source_bank_code": "090873",
+      "source_sc_code": null,
+      "sha256": "fa9e0b95310819c504381388736246fe5cb4df1d8fa7cf4fb217cfa3b42a910c",
+      "bytes": 13062,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Digitvant MFB.png",
+      "source_name": "Digitvant MFB",
+      "source_aliases": [
+        "Digitvant MFB"
+      ],
+      "source_bank_code": "090745",
+      "source_sc_code": null,
+      "sha256": "87c1c92ab207bf7a30004eaf6327d8c82986cfc90b2ad780eb2a2764a708ece5",
+      "bytes": 7457,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Dillon Microfinance Bank.png",
+      "source_name": "Dillon Microfinance Bank",
+      "source_aliases": [
+        "Dillon Microfinance Bank"
+      ],
+      "source_bank_code": "090828",
+      "source_sc_code": "51450",
+      "sha256": "00afad8769a99bc40d0f8ac49c11eea3ed97c47c65dcef621e98d3587d3aa7bf",
+      "bytes": 102356,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Doje MFB.png",
+      "source_name": "Doje MFB",
+      "source_aliases": [
+        "Doje MFB"
+      ],
+      "source_bank_code": "090404",
+      "source_sc_code": null,
+      "sha256": "b7baf82c63a5b469345c0578463688e08d64a369147598b99676efebc64eaa78",
+      "bytes": 8084,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Dot Microfinance Bank.png",
+      "source_name": "Dot Microfinance Bank",
+      "source_aliases": [
+        "Dot Microfinance Bank"
+      ],
+      "source_bank_code": "090470",
+      "source_sc_code": "50162",
+      "sha256": "d19f83841c4f1d9676fbadfd405a4588b696492c90a0685dda25b52ad7150614",
+      "bytes": 8575,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "EBSU Microfinance Bank.png",
+      "source_name": "EBSU Microfinance Bank",
+      "source_aliases": [
+        "EBSU Microfinance Bank"
+      ],
+      "source_bank_code": "50922",
+      "source_sc_code": "50922",
+      "sha256": "258213223e6c5562c0ff82f6d843e391fd3bc7875891fd915751b7e128a08a6e",
+      "bytes": 63562,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "EXCEL FINANCE BANK.png",
+      "source_name": "EXCEL FINANCE BANK",
+      "source_aliases": [
+        "EXCEL FINANCE BANK"
+      ],
+      "source_bank_code": "090678",
+      "source_sc_code": null,
+      "sha256": "b5e9f79e3844aec634eba3a103bd6b62c108f5a297c3edd4fdd2c3abcb25206b",
+      "bytes": 48834,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Emaar MFB.png",
+      "source_name": "Emaar MFB",
+      "source_aliases": [
+        "Emaar MFB"
+      ],
+      "source_bank_code": "090712",
+      "source_sc_code": null,
+      "sha256": "6266b382a06b9505cc42ecf93cec72935617ae1b382dbba31fa4f760e693fda8",
+      "bytes": 16357,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Emeralds Microfinance Bank.png",
+      "source_name": "Emeralds Microfinance Bank",
+      "source_aliases": [
+        "Emeralds Microfinance Bank"
+      ],
+      "source_bank_code": "090273",
+      "source_sc_code": null,
+      "sha256": "320af4e15e6d8498bbba2e8002aa5277762e6b76f29f082046566e015fff264d",
+      "bytes": 5728,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Eminence MFB.png",
+      "source_name": "Eminence MFB",
+      "source_aliases": [
+        "Eminence MFB"
+      ],
+      "source_bank_code": "091002",
+      "source_sc_code": null,
+      "sha256": "4a8e3af4194d0a46f980e5e2c3326118970d5b4b3dc076ec4ebdda79755bf76d",
+      "bytes": 8045,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Entity MFB.png",
+      "source_name": "Entity MFB",
+      "source_aliases": [
+        "Entity MFB"
+      ],
+      "source_bank_code": "090656",
+      "source_sc_code": null,
+      "sha256": "6fef5f755708af041df824b71d9cf6da1811a1000fba203f2277b0561e33bac3",
+      "bytes": 11152,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Esan Microfinance Bank.png",
+      "source_name": "Esan Microfinance Bank",
+      "source_aliases": [
+        "Esan Microfinance Bank"
+      ],
+      "source_bank_code": "090189",
+      "source_sc_code": null,
+      "sha256": "8b562f4a303ab3fc8b1cba052b5f784dca8043dd3ccfe1e454dd9e5331d687d5",
+      "bytes": 18878,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Ethica MFB.png",
+      "source_name": "Ethica MFB",
+      "source_aliases": [
+        "Ethica MFB"
+      ],
+      "source_bank_code": "090982",
+      "source_sc_code": null,
+      "sha256": "a349616f0c3e76286fd9b8f49d436ced903795648c921790d948962676464233",
+      "bytes": 9002,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Evangel Microfinance Bank.png",
+      "source_name": "Evangel Microfinance Bank",
+      "source_aliases": [
+        "Evangel Microfinance Bank"
+      ],
+      "source_bank_code": "090304",
+      "source_sc_code": null,
+      "sha256": "04cd30f8570f206d740f1befe47832a790d3b05c67d28f36b58c578b1c3d75b7",
+      "bytes": 3717,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Excellent MFB.png",
+      "source_name": "Excellent MFB",
+      "source_aliases": [
+        "Excellent MFB"
+      ],
+      "source_bank_code": "090541",
+      "source_sc_code": null,
+      "sha256": "d8a3b791232b4679669a37b48ff5e53ad0647c565b588f5f10a611fb5c6ad61c",
+      "bytes": 6866,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "FETS.png",
+      "source_name": "FETS",
+      "source_aliases": [
+        "FETS"
+      ],
+      "source_bank_code": "100001",
+      "source_sc_code": "915",
+      "sha256": "1136b7b513ab0cd8d1b8fbc07f60856730d74d595bd82668f69e7215d538d69f",
+      "bytes": 9148,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "FIRSTMIDAS MFB.png",
+      "source_name": "FIRSTMIDAS MFB",
+      "source_aliases": [
+        "FIRSTMIDAS MFB"
+      ],
+      "source_bank_code": "51333",
+      "source_sc_code": "51333",
+      "sha256": "4162c06e40d54badaa658c9d5b71c27f1758a2101f9b628eec0b159e5c1329a1",
+      "bytes": 9211,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "FOCUS MFB.png",
+      "source_name": "FOCUS MFB",
+      "source_aliases": [
+        "FOCUS MFB"
+      ],
+      "source_bank_code": "090709",
+      "source_sc_code": null,
+      "sha256": "4d988369b3d1ba42a8b6e6069f052ee9adf24f1e99a484c2d653250358296794",
+      "bytes": 6642,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Federal University Dutse MFB.png",
+      "source_name": "Federal University Dutse MFB",
+      "source_aliases": [
+        "Federal University Dutse MFB"
+      ],
+      "source_bank_code": "090318",
+      "source_sc_code": null,
+      "sha256": "420d6ca6468439268d8171fd52c7e11caf0aafa171146b751959dc62535eaac1",
+      "bytes": 5099,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Fedeth MFB.png",
+      "source_name": "Fedeth MFB",
+      "source_aliases": [
+        "Fedeth MFB"
+      ],
+      "source_bank_code": "50298",
+      "source_sc_code": "50298",
+      "sha256": "eb0db791a6da591e0afe1e3e08720de8fd3936c1474851533b4d50f4fabd4628",
+      "bytes": 4684,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "First Ally MFB.png",
+      "source_name": "First Ally MFB",
+      "source_aliases": [
+        "First Ally MFB"
+      ],
+      "source_bank_code": "090135",
+      "source_sc_code": null,
+      "sha256": "3ca014f747601f4260722a4e8562988b2f8f08a126d11542cdf41f2ed825223a",
+      "bytes": 18389,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "First Multiple Microfinance Bank.png",
+      "source_name": "First Multiple Microfinance Bank",
+      "source_aliases": [
+        "First Multiple Microfinance Bank"
+      ],
+      "source_bank_code": "090163",
+      "source_sc_code": null,
+      "sha256": "f66a809baa235d70228f92bddbaa9619ddad739b415509ffe21c9d91abbda748",
+      "bytes": 4894,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Fit MFB.png",
+      "source_name": "Fit MFB",
+      "source_aliases": [
+        "Fit MFB"
+      ],
+      "source_bank_code": "090856",
+      "source_sc_code": null,
+      "sha256": "ceeef8664a44d2e129e4a2cb909634736824a65140a5ea8d29eeef22e987baf6",
+      "bytes": 48995,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Flutterwave MFB.png",
+      "source_name": "Flutterwave MFB",
+      "source_aliases": [
+        "Flutterwave Microfinance Bank"
+      ],
+      "source_bank_code": "090567",
+      "source_sc_code": null,
+      "sha256": "7566c6a71d56746e9a1d7ef99d7d04a2f6f1a36b74c93739bec3178a634d6672",
+      "bytes": 15168,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Fortis Microfinance Bank.png",
+      "source_name": "Fortis Microfinance Bank",
+      "source_aliases": [
+        "Fortis Microfinance Bank"
+      ],
+      "source_bank_code": "948",
+      "source_sc_code": "948",
+      "sha256": "e357e6391b872e4219d620e320ddd02b02e6723999cbf9ba7839b41139052697",
+      "bytes": 29340,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Gosifechukwu MFB.png",
+      "source_name": "Gosifechukwu MFB",
+      "source_aliases": [
+        "Gosifechukwu MFB"
+      ],
+      "source_bank_code": "090687",
+      "source_sc_code": null,
+      "sha256": "96453daf0041d6a3134778e6fe238bc7392ad7085b2dba1f39531e55ca6ac591",
+      "bytes": 21826,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "GreenBank Microfinance Bank.png",
+      "source_name": "GreenBank Microfinance Bank",
+      "source_aliases": [
+        "GreenBank Microfinance Bank"
+      ],
+      "source_bank_code": "090178",
+      "source_sc_code": null,
+      "sha256": "62f49eb96bd50969b30465c140203b6d38763d9c2a86ee013406c3cd22c7223a",
+      "bytes": 11191,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Greenacres MFB.png",
+      "source_name": "Greenacres MFB",
+      "source_aliases": [
+        "Greenacres MFB"
+      ],
+      "source_bank_code": "090599",
+      "source_sc_code": null,
+      "sha256": "f993053b13e3163437dd01da09200a7aab655a0b0539cd828b53d903dcd2ec27",
+      "bytes": 8072,
+      "dimensions": "400x400",
+      "roster_id": "green-acres-mfb",
+      "roster_name": "GREEN ACRES MFB",
+      "classification": "accepted_verified_spelling_variant",
+      "decision": "preserved_existing",
+      "reason": "Source catalogue name/code and visible mark reconcile to the current roster by documented abbreviation/spelling variant; existing first-party asset preserved."
+    },
+    {
+      "source_file": "Hackman Microfinance Bank.png",
+      "source_name": "Hackman Microfinance Bank",
+      "source_aliases": [
+        "Hackman Microfinance Bank"
+      ],
+      "source_bank_code": "090147",
+      "source_sc_code": "51251",
+      "sha256": "b8df422dd0029480a9876914b6f57abb35f509e5895ed31fdbf9d5a4a3819437",
+      "bytes": 66458,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Halo MFB.png",
+      "source_name": "Halo MFB",
+      "source_aliases": [
+        "Halo MFB"
+      ],
+      "source_bank_code": "090539",
+      "source_sc_code": null,
+      "sha256": "ca9ae66a446c03298efceda881421682801c5e392f9d48fce465fce859a56c8f",
+      "bytes": 9569,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Hayat Trust MFB.png",
+      "source_name": "Hayat Trust MFB",
+      "source_aliases": [
+        "Hayat Trust MFB"
+      ],
+      "source_bank_code": "090777",
+      "source_sc_code": "51364",
+      "sha256": "3c65746c12a110fb3edea3631a87c39644981530ebc626812f2733b79b980b8b",
+      "bytes": 13925,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Hillpost MFB.png",
+      "source_name": "Hillpost MFB",
+      "source_aliases": [
+        "HILLPOST MFB"
+      ],
+      "source_bank_code": "090761",
+      "source_sc_code": null,
+      "sha256": "16472b8c5c76ace08193ab35d7eef21e69e6fe17674791a823530db9e04bcbfb",
+      "bytes": 27072,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "IBBU MFB.png",
+      "source_name": "IBBU MFB",
+      "source_aliases": [
+        "IBBU MFB"
+      ],
+      "source_bank_code": "090697",
+      "source_sc_code": "51279",
+      "sha256": "add18be99ac33668b83a559a09774468e8f693c801410e6f0da32483e7a40b45",
+      "bytes": 74088,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "ILUTITUN-OSORO MFB.png",
+      "source_name": "ILUTITUN-OSORO MFB",
+      "source_aliases": [
+        "ILUTITUN-OSORO MFB"
+      ],
+      "source_bank_code": "090834",
+      "source_sc_code": null,
+      "sha256": "88c4e0563910434c698ea454cb295393130a4c1c1325a96af7bced7fc124aa2b",
+      "bytes": 23969,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "INEBA GOGO MFB.png",
+      "source_name": "INEBA GOGO MFB",
+      "source_aliases": [
+        "INEBA GOGO MFB"
+      ],
+      "source_bank_code": "090838",
+      "source_sc_code": "51462",
+      "sha256": "21012aa7445ea316f7b47df8a640f3f2cfd3cda217d13bc0bd557c3d8446f16d",
+      "bytes": 70889,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Ilaro Poly Microfinance Bank.png",
+      "source_name": "Ilaro Poly Microfinance Bank",
+      "source_aliases": [
+        "Ilaro Poly Microfinance Bank"
+      ],
+      "source_bank_code": "50442",
+      "source_sc_code": "50442",
+      "sha256": "9ea64bfd7c4d4fa30b2e1b94de42e950282be337b06c59e112e80c2111ded7e8",
+      "bytes": 31770,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Innovative MFB.png",
+      "source_name": "Innovative MFB",
+      "source_aliases": [
+        "IBANK Microfinance Bank"
+      ],
+      "source_bank_code": "090115",
+      "source_sc_code": "51211",
+      "sha256": "22ccb1bd8786e97b700b14ff0a7ff1071388279d7039d6d55b7aaadd57c51643",
+      "bytes": 38023,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Investin MFB.png",
+      "source_name": "Investin MFB",
+      "source_aliases": [
+        "Investin MFB"
+      ],
+      "source_bank_code": "090998",
+      "source_sc_code": null,
+      "sha256": "4c11db175d778507271dc40c8be65a72ab26b12d9bb6844dc98d449af0251318",
+      "bytes": 8007,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "KANOPOLY MFB.png",
+      "source_name": "KANOPOLY MFB",
+      "source_aliases": [
+        "KANOPOLY MFB"
+      ],
+      "source_bank_code": "51308",
+      "source_sc_code": "51308",
+      "sha256": "4adce625776fa91e53ccd195e5fd45f2254f6628ab437ff99f73192657924142",
+      "bytes": 64409,
+      "dimensions": "400x400",
+      "roster_id": "kano-poly-mfb",
+      "roster_name": "KANO POLY MFB",
+      "classification": "accepted_verified_abbreviation",
+      "decision": "preserved_existing",
+      "reason": "Source catalogue name/code and visible mark reconcile to the current roster by documented abbreviation/spelling variant; existing first-party asset preserved."
+    },
+    {
+      "source_file": "Kayi MFB.png",
+      "source_name": "Kayi MFB",
+      "source_aliases": [
+        "Kayi MFB"
+      ],
+      "source_bank_code": "090667",
+      "source_sc_code": null,
+      "sha256": "90f3f6fb6e95baea033bfc834977716d544b3a7fe136ed66080c4064dced9dad",
+      "bytes": 7775,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Kolomoni MFB.png",
+      "source_name": "Kolomoni MFB",
+      "source_aliases": [
+        "Kolomoni MFB"
+      ],
+      "source_bank_code": "090480",
+      "source_sc_code": "899",
+      "sha256": "e30315d1a57d5620a0665bf45193aa0298953379a0fa2fb04ae006cca45d35a3",
+      "bytes": 8157,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Kredi Money MFB LTD.png",
+      "source_name": "Kredi Money MFB LTD",
+      "source_aliases": [
+        "Kredi Money MFB LTD"
+      ],
+      "source_bank_code": "090380",
+      "source_sc_code": "50200",
+      "sha256": "5ea8a8a615e5688f18c2fd975b068b425097d866ca3044f0db0052cc00c308b5",
+      "bytes": 6886,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Liquidcrest MFB.png",
+      "source_name": "Liquidcrest MFB",
+      "source_aliases": [
+        "Liquidcrest MFB"
+      ],
+      "source_bank_code": "090780",
+      "source_sc_code": null,
+      "sha256": "ec04af7af5068911cb2fca0d553e1ca663afb1de6d5852a9d44716379f54a1d0",
+      "bytes": 10004,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Loma Bank.png",
+      "source_name": "Loma Bank",
+      "source_aliases": [
+        "Loma Bank"
+      ],
+      "source_bank_code": "090620",
+      "source_sc_code": "50491",
+      "sha256": "c3405a83b60e48614220a381a6bc278b97f3f05f13edd185f84fc546cd26131f",
+      "bytes": 9654,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "MAHFUZ MFB.png",
+      "source_name": "MAHFUZ MFB",
+      "source_aliases": [
+        "MAHFUZ MFB"
+      ],
+      "source_bank_code": "090825",
+      "source_sc_code": null,
+      "sha256": "07c097982579f19785ed6bbf19eeaa919dd19a245aeeef705ff1dab5541cd04f",
+      "bytes": 9078,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "MICHAEL OKPARA UNIAGRIC MFB.png",
+      "source_name": "MICHAEL OKPARA UNIAGRIC MFB",
+      "source_aliases": [
+        "MOUA MFB"
+      ],
+      "source_bank_code": "090659",
+      "source_sc_code": null,
+      "sha256": "784fe4a6920a00453514b48cc7944712de912f1468143d5bf003bc5e213b1368",
+      "bytes": 46832,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "MUTUAL BENEFITS MICROFINANCE BANK.png",
+      "source_name": "MUTUAL BENEFITS MICROFINANCE BANK",
+      "source_aliases": [
+        "MUTUAL BENEFITS MICROFINANCE BANK"
+      ],
+      "source_bank_code": "090190",
+      "source_sc_code": null,
+      "sha256": "33c0a1816ca40f5efe147019daccd37ea6e27871ac9c7da991b4508c3144a6d8",
+      "bytes": 36964,
+      "dimensions": "400x400",
+      "roster_id": "mutual-benefit-mfb",
+      "roster_name": "MUTUAL BENEFIT MFB",
+      "classification": "accepted_verified_spelling_variant",
+      "decision": "preserved_existing",
+      "reason": "Source catalogue name/code and visible mark reconcile to the current roster by documented abbreviation/spelling variant; existing first-party asset preserved."
+    },
+    {
+      "source_file": "Maal MFB.png",
+      "source_name": "Maal MFB",
+      "source_aliases": [
+        "Maal MFB"
+      ],
+      "source_bank_code": "090764",
+      "source_sc_code": "51444",
+      "sha256": "5074f11fd602f6e3d2a10e0567b1ae6241daf9370254400a63f02002813c94b4",
+      "bytes": 13137,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Manny Microfinance Bank.png",
+      "source_name": "Manny Microfinance Bank",
+      "source_aliases": [
+        "Manny Microfinance Bank"
+      ],
+      "source_bank_code": "090383",
+      "source_sc_code": "51313",
+      "sha256": "557800bf39c09bbd3c23b6dc69686865214fbbbf861f26372d2f66340576777e",
+      "bytes": 11402,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Mautech Microfinance Bank.png",
+      "source_name": "Mautech Microfinance Bank",
+      "source_aliases": [
+        "Mautech Microfinance Bank"
+      ],
+      "source_bank_code": "090423",
+      "source_sc_code": null,
+      "sha256": "37293f1bc616766145da271f0e805a5fd56a9327aba240fb25851104abcb9da8",
+      "bytes": 85419,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Mayfair Microfinance Bank.png",
+      "source_name": "Mayfair Microfinance Bank",
+      "source_aliases": [
+        "Mayfair Microfinance Bank"
+      ],
+      "source_bank_code": "090321",
+      "source_sc_code": "50563",
+      "sha256": "9c77ad2c2e5bc2728fdaed6053ec49dc9e9b3b0485e404182fb17005b732d5ac",
+      "bytes": 20229,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Mercury MFB.png",
+      "source_name": "Mercury MFB",
+      "source_aliases": [
+        "Mercury MFB"
+      ],
+      "source_bank_code": "090589",
+      "source_sc_code": null,
+      "sha256": "cdc2577169402ee36668cbdddab3a573f82035e58bcfcb86c0d9fe5fbe4d850d",
+      "bytes": 7287,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Microbiz MFB.png",
+      "source_name": "Microbiz MFB",
+      "source_aliases": [
+        "Microbiz MFB"
+      ],
+      "source_bank_code": "090587",
+      "source_sc_code": null,
+      "sha256": "faee160969b766f3a0a68ea941493f74a9403f9f30b0bc2362bc1eced5349904",
+      "bytes": 8972,
+      "dimensions": "400x400",
+      "roster_id": "microvis-mfb",
+      "roster_name": "MICROVIS MFB",
+      "classification": "rejected_distinct_identity",
+      "decision": "not_imported",
+      "reason": "The source catalogue identifies Microbiz MFB by bank code 090587; the current Microvis first-party page identifies Microvis Microfinance Bank Limited, headquartered in Kaduna, as a separate institution. No rename or successor evidence links Microbiz to Microvis.",
+      "evidence_urls": [
+        "https://nip.microbizmfb.com/",
+        "https://microvismfbank.com/about/",
+        "https://cabinet.dpay.africa/docapi_/api_extra_fields_ngn_bank_list"
+      ],
+      "visible_mark_text": "Microbiz MFB"
+    },
+    {
+      "source_file": "Mint MFB.png",
+      "source_name": "Mint MFB",
+      "source_aliases": [
+        "MINT-FINEX MFB",
+        "Mint Microfinance Bank"
+      ],
+      "source_bank_code": "090763",
+      "source_sc_code": "50304",
+      "sha256": "0f8f4a9e48d580b0c32da906e1147bea6906a05491d83d9363d66b2f2c686190",
+      "bytes": 11563,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Moneytronics MFB.png",
+      "source_name": "Moneytronics MFB",
+      "source_aliases": [
+        "Moneytronics MFB"
+      ],
+      "source_bank_code": "090692",
+      "source_sc_code": null,
+      "sha256": "9830f84b2460796d956c2866fac65a8f79957626ed0ee2b6ec1df0992e1ae410",
+      "bytes": 16027,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Monieking MFB.png",
+      "source_name": "Monieking MFB",
+      "source_aliases": [
+        "Monieking MFB"
+      ],
+      "source_bank_code": "090416",
+      "source_sc_code": "000",
+      "sha256": "4eea4dd30b2bfb2a8c5c672af9d35bf721ac78d18519930ce29629a2dac19242",
+      "bytes": 8496,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Moniepoint.png",
+      "source_name": "Moniepoint",
+      "source_aliases": [
+        "TeamApt"
+      ],
+      "source_bank_code": "090405",
+      "source_sc_code": "50515",
+      "sha256": "3f72969cb13abb72aa108beecfb675b4cc93067ce2f8f1337a5b98d5098ca01f",
+      "bytes": 9639,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Moremonee MFB.png",
+      "source_name": "Moremonee MFB",
+      "source_aliases": [
+        "Moremonee MFB"
+      ],
+      "source_bank_code": "090685",
+      "source_sc_code": null,
+      "sha256": "9a4278c7267a1ca5b476726d6b4f0553c2955042d6429f83c040156588fddf22",
+      "bytes": 22987,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "NAF MFB.png",
+      "source_name": "NAF MFB",
+      "source_aliases": [
+        "NAF MFB"
+      ],
+      "source_bank_code": "090740",
+      "source_sc_code": null,
+      "sha256": "891295254313bd8c778936158a1d37281b5da9b15b3315dc35d2b07d8e8a4a68",
+      "bytes": 35827,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "NDDC MICROFINANCE BANK.png",
+      "source_name": "NDDC MICROFINANCE BANK",
+      "source_aliases": [
+        "NDDC MFB",
+        "NDCC MICROFINANCE BANK"
+      ],
+      "source_bank_code": "090679",
+      "source_sc_code": null,
+      "sha256": "5777c71470e5e14faa4668e3eeb23f139fdf61ed82067c98260f938d6c59baf5",
+      "bytes": 11968,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "NET MICROFINANCE BANK.png",
+      "source_name": "NET MICROFINANCE BANK",
+      "source_aliases": [
+        "NET MICROFINANCE BANK"
+      ],
+      "source_bank_code": "090675",
+      "source_sc_code": "51361",
+      "sha256": "b62115759ee4a48bc6e46dacd83bad2b062c0880b704b3739fdf4a34594493b5",
+      "bytes": 5911,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Nombank MFB.png",
+      "source_name": "Nombank MFB",
+      "source_aliases": [
+        "Nombank MFB"
+      ],
+      "source_bank_code": "090645",
+      "source_sc_code": "50072",
+      "sha256": "4a050594ca884c9fae9fd13765af177a3dca13e7f734486774dde525bab7e79d",
+      "bytes": 8511,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Nsukka MFB.png",
+      "source_name": "Nsukka MFB",
+      "source_aliases": [
+        "Nsukka MFB"
+      ],
+      "source_bank_code": "090356",
+      "source_sc_code": null,
+      "sha256": "314120a9cf388ef90ce22af8c62f6ca58469c796d69a7470639ddefa925e68fe",
+      "bytes": 31056,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Old Shoreham MFB.png",
+      "source_name": "Old Shoreham MFB",
+      "source_aliases": [
+        "Old Shoreham MFB"
+      ],
+      "source_bank_code": "090410",
+      "source_sc_code": null,
+      "sha256": "0b36b01b7da1d5828a930cb87e45dafb1a124124b814be746217eaa05a1aaae7",
+      "bytes": 14412,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Oscotech MFB.png",
+      "source_name": "Oscotech MFB",
+      "source_aliases": [
+        "Oscotech MFB"
+      ],
+      "source_bank_code": "090396",
+      "source_sc_code": null,
+      "sha256": "c9622fed9bdb85835561877979499a07038a4337d077025928b5ff092c72652c",
+      "bytes": 30776,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Otech MFB.png",
+      "source_name": "Otech MFB",
+      "source_aliases": [
+        "Otech MFB"
+      ],
+      "source_bank_code": "090580",
+      "source_sc_code": null,
+      "sha256": "8a83a07f1a01d8c6c989c7d0453051befaeb3734b72eacea47ca3362c9842837",
+      "bytes": 10841,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Ourpass MFB.png",
+      "source_name": "Ourpass MFB",
+      "source_aliases": [
+        "Ourpass MFB"
+      ],
+      "source_bank_code": "090767",
+      "source_sc_code": null,
+      "sha256": "b0c789e138b9e3588f8b98d30a4ac06f6671e19c97eacb0f522429c7c0976937",
+      "bytes": 8376,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "P-UP MFB.png",
+      "source_name": "P-UP MFB",
+      "source_aliases": [
+        "P-UP MFB"
+      ],
+      "source_bank_code": "090992",
+      "source_sc_code": null,
+      "sha256": "278b837416c6e97470a3c1361c6ba4361a48fb49efa7b4712d868b52d0ba6b98",
+      "bytes": 6018,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "PECANTRUST MICROFINANCE BANK LIMITED.png",
+      "source_name": "PECANTRUST MICROFINANCE BANK LIMITED",
+      "source_aliases": [
+        "PECANTRUST MICROFINANCE BANK LIMITED"
+      ],
+      "source_bank_code": "090137",
+      "source_sc_code": "51226",
+      "sha256": "6a7d08e0713525da7411b31406409c95fb84884195085ad1acb7e42914830c80",
+      "bytes": 7304,
+      "dimensions": "400x400",
+      "roster_id": "pecan-trust-mfb",
+      "roster_name": "PECAN TRUST MFB",
+      "classification": "accepted_verified_spelling_variant",
+      "decision": "preserved_existing",
+      "reason": "Source catalogue name/code and visible mark reconcile to the current roster by documented abbreviation/spelling variant; existing first-party asset preserved."
+    },
+    {
+      "source_file": "Paystack MFB.png",
+      "source_name": "Paystack MFB",
+      "source_aliases": [
+        "Paystack MFB"
+      ],
+      "source_bank_code": "090986",
+      "source_sc_code": "51457",
+      "sha256": "2ad595beb61e8bc34e1e7ec8c1d23ce539b014a06456406372f4d0b90cee88cf",
+      "bytes": 6609,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Petra Mircofinance Bank Plc.png",
+      "source_name": "Petra Mircofinance Bank Plc",
+      "source_aliases": [
+        "Petra Mircofinance Bank Plc"
+      ],
+      "source_bank_code": "50746",
+      "source_sc_code": "50746",
+      "sha256": "da903bde588a6d916e4a27e93a72b7b00ff5779d78547163880ce0acd029c34a",
+      "bytes": 28535,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Pettysave MFB.png",
+      "source_name": "Pettysave MFB",
+      "source_aliases": [
+        "Pettysave MFB"
+      ],
+      "source_bank_code": "090768",
+      "source_sc_code": "MFB51452",
+      "sha256": "247089bb8af3fe3c43a10572d35c0766d1bb155d3449a5aacb8de9d7713b9b5a",
+      "bytes": 8591,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Plug MFB.png",
+      "source_name": "Plug MFB",
+      "source_aliases": [
+        "Plug MFB"
+      ],
+      "source_bank_code": "090858",
+      "source_sc_code": null,
+      "sha256": "5ed89c170beffd4596d00dad7712d0eceb6c9df6d7d2901d0da140a3dbeb94e0",
+      "bytes": 12076,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Polyibadan MFB.png",
+      "source_name": "Polyibadan MFB",
+      "source_aliases": [
+        "Polyibadan MFB"
+      ],
+      "source_bank_code": "090534",
+      "source_sc_code": null,
+      "sha256": "d46d579d65c220e985ecde67015441828817ff42fccb27b01c7a6dd09159356a",
+      "bytes": 37746,
+      "dimensions": "400x400",
+      "roster_id": "polybadan-mfb",
+      "roster_name": "POLYBADAN MFB",
+      "classification": "accepted_verified_abbreviation",
+      "decision": "preserved_existing",
+      "reason": "Source catalogue name/code and visible mark reconcile to the current roster by documented abbreviation/spelling variant; existing first-party asset preserved."
+    },
+    {
+      "source_file": "Polyunwana MFB.png",
+      "source_name": "Polyunwana MFB",
+      "source_aliases": [
+        "Polyunwana MFB"
+      ],
+      "source_bank_code": "50864",
+      "source_sc_code": "50864",
+      "sha256": "fa32e441a12477f93cdccd0b540b7940843716690db441a064afa00ea120a960",
+      "bytes": 50062,
+      "dimensions": "400x400",
+      "roster_id": "polyunwanna-mfb",
+      "roster_name": "POLYUNWANNA MFB",
+      "classification": "accepted_verified_spelling_variant",
+      "decision": "preserved_existing",
+      "reason": "Source catalogue name/code and visible mark reconcile to the current roster by documented abbreviation/spelling variant; existing first-party asset preserved."
+    },
+    {
+      "source_file": "Prodigy MFB.png",
+      "source_name": "Prodigy MFB",
+      "source_aliases": [
+        "Prodigy MFB"
+      ],
+      "source_bank_code": "090784",
+      "source_sc_code": null,
+      "sha256": "ffa801b95060b4bd9bbcacee536e25ccb3645cc919a21d15c2c3a0026c49526d",
+      "bytes": 6478,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Prospa Capital Microfinance Bank.png",
+      "source_name": "Prospa Capital Microfinance Bank",
+      "source_aliases": [
+        "Prospa Capital Microfinance Bank"
+      ],
+      "source_bank_code": "090495",
+      "source_sc_code": null,
+      "sha256": "9b64a9743257529d46cfc813b0009d7610e2e7b3302fb9100322502e5ba97ffa",
+      "bytes": 31559,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "RSU MFB.png",
+      "source_name": "RSU MFB",
+      "source_aliases": [
+        "RSU MFB"
+      ],
+      "source_bank_code": "090535",
+      "source_sc_code": null,
+      "sha256": "31c9ced01d5952680d1c6d8640bfc80679a6b00e477a1885828fa7275d1f2023",
+      "bytes": 9626,
+      "dimensions": "400x400",
+      "roster_id": "orsu-mfb",
+      "roster_name": "ORSU MFB",
+      "classification": "rejected_distinct_identity",
+      "decision": "not_imported",
+      "reason": "The source catalogue identifies RSU MFB by bank code 090535, while CBN records identify ORSU MFB at Orsuihiteukwa, Orsu, Imo State. The source name and acronym do not establish that RSU is an alias of ORSU.",
+      "evidence_urls": [
+        "https://www.cbn.gov.ng/out/2020/fprd/mfb311219.pdf"
+      ],
+      "visible_mark_text": "RSU MFB"
+    },
+    {
+      "source_file": "Rank MFB.png",
+      "source_name": "Rank MFB",
+      "source_aliases": [
+        "Rank MFB"
+      ],
+      "source_bank_code": "090860",
+      "source_sc_code": null,
+      "sha256": "1636af8bf43ebab3c71838b79a9bc5bc9a2152f821481cdc1ed98de5ee4a4bd4",
+      "bytes": 9854,
+      "dimensions": "400x400",
+      "roster_id": "rano-mfb",
+      "roster_name": "RANO MFB",
+      "classification": "rejected_distinct_identity",
+      "decision": "not_imported",
+      "reason": "NDIC lists Rank Microfinance Bank Limited at Ibeju Lekki-Epe, Lagos and Rano Microfinance Bank Limited in Rano Town, Kano as separate institutions.",
+      "evidence_urls": [
+        "https://ndic.gov.ng/list-of-insured-institutions/list-of-microfinance-banks/"
+      ],
+      "visible_mark_text": "Rank MFB"
+    },
+    {
+      "source_file": "Rayyan MFB.png",
+      "source_name": "Rayyan MFB",
+      "source_aliases": [
+        "Rayyan MFB"
+      ],
+      "source_bank_code": "090616",
+      "source_sc_code": null,
+      "sha256": "527355f8e1ffe71e0f40cee9a40aeda893c3bcfcb87f2a6015a9e3ab63dca4af",
+      "bytes": 13245,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Retrust Mfb.png",
+      "source_name": "Retrust Mfb",
+      "source_aliases": [
+        "Retrust Mfb"
+      ],
+      "source_bank_code": "090766",
+      "source_sc_code": "51375",
+      "sha256": "3c9a28d63e5eaead0773e8170b5f74d50b8fafb1a05555c40f082e9382c582dc",
+      "bytes": 6201,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Revelation MFB.png",
+      "source_name": "Revelation MFB",
+      "source_aliases": [
+        "Revelation MFB"
+      ],
+      "source_bank_code": "090666",
+      "source_sc_code": null,
+      "sha256": "14bafb218439479d2fd0f0738af4e1721caeea2befe9a15e0d2be2845290306e",
+      "bytes": 23885,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Rex MFB.png",
+      "source_name": "Rex MFB",
+      "source_aliases": [
+        "Rex MFB"
+      ],
+      "source_bank_code": "090449",
+      "source_sc_code": null,
+      "sha256": "2126660019894f5a8b2a2c2349033c0c7e819cce392a1d1945d32b61b8462817",
+      "bytes": 9396,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "STANFORD MFB.png",
+      "source_name": "STANFORD MFB",
+      "source_aliases": [
+        "STANFORD MICROFINANCE BANK"
+      ],
+      "source_bank_code": "090162",
+      "source_sc_code": null,
+      "sha256": "cd0e45eb675a6bc338c60a1377a0667f8914915137060bb08d510095ccc1fb4f",
+      "bytes": 9721,
+      "dimensions": "400x400",
+      "roster_id": "standard-mfb",
+      "roster_name": "STANDARD MFB",
+      "classification": "rejected_distinct_identity",
+      "decision": "not_imported",
+      "reason": "CBN lists STANDARD MFB at Bornoma House, Jimeta-Yola, Adamawa and STANFORD MFB at 142 Abak Road, Uyo, Akwa Ibom as separate institutions.",
+      "evidence_urls": [
+        "https://www.cbn.gov.ng/Out/2021/FPRD/MICROFINANCE%20BANKS%20300921.pdf"
+      ],
+      "visible_mark_text": "STANFORD MFB"
+    },
+    {
+      "source_file": "SWIFT TRUST MFB.png",
+      "source_name": "SWIFT TRUST MFB",
+      "source_aliases": [
+        "SWIFT TRUST Microfinance Bank"
+      ],
+      "source_bank_code": "090757",
+      "source_sc_code": null,
+      "sha256": "94ae0829445fce6e1e60c66ff2b1fde94071ce578fc82baf42975055e6d971cf",
+      "bytes": 11221,
+      "dimensions": "400x400",
+      "roster_id": "swifttrust-microfinance-bank-limited",
+      "roster_name": "Swifttrust Microfinance Bank Limited",
+      "classification": "accepted_verified_abbreviation",
+      "decision": "preserved_existing",
+      "reason": "Source catalogue name/code and visible mark reconcile to the current roster by documented abbreviation/spelling variant; existing first-party asset preserved."
+    },
+    {
+      "source_file": "Shanono MFB.png",
+      "source_name": "Shanono MFB",
+      "source_aliases": [
+        "Shanono MFB"
+      ],
+      "source_bank_code": "090748",
+      "source_sc_code": null,
+      "sha256": "f8a8e78fe09c3e10e82594bc0232a53a787cd6e93ffba562b3e866c2e05c5093",
+      "bytes": 10351,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Sofritrust MFB.png",
+      "source_name": "Sofritrust MFB",
+      "source_aliases": [
+        "Sofritrust MFB"
+      ],
+      "source_bank_code": "090435",
+      "source_sc_code": null,
+      "sha256": "c317d5550a324245bfb97422c9017ea03d317cee4ae7a6356e49867077be3c90",
+      "bytes": 8712,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Solid Allianze MFB.png",
+      "source_name": "Solid Allianze MFB",
+      "source_aliases": [
+        "Solid Allianze MFB"
+      ],
+      "source_bank_code": "090506",
+      "source_sc_code": "51062",
+      "sha256": "abf43bd72da6e06875eae496a38eee462ddbe54a8455beffe61d9a504e4d0b9a",
+      "bytes": 40609,
+      "dimensions": "400x400",
+      "roster_id": "solid-allianz-mfb",
+      "roster_name": "SOLID ALLIANZ MFB",
+      "classification": "accepted_verified_spelling_variant",
+      "decision": "preserved_existing",
+      "reason": "Source catalogue name/code and visible mark reconcile to the current roster by documented abbreviation/spelling variant; existing first-party asset preserved."
+    },
+    {
+      "source_file": "Stable MFB.png",
+      "source_name": "Stable MFB",
+      "source_aliases": [
+        "Stable MFB"
+      ],
+      "source_bank_code": "090833",
+      "source_sc_code": null,
+      "sha256": "fd25b3980cf81f9d7188cc3969b3c89facccff937ef51c31d0c2563e42529a43",
+      "bytes": 6166,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Supreme MFB.png",
+      "source_name": "Supreme MFB",
+      "source_aliases": [
+        "Supreme Microfinance Bank"
+      ],
+      "source_bank_code": "090564",
+      "source_sc_code": "50968",
+      "sha256": "da2c0ea4e177da172f7965640c698d4865cd1f7fe729ba6b6bb67103c952eb05",
+      "bytes": 11646,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Sycamore MFB.png",
+      "source_name": "Sycamore MFB",
+      "source_aliases": [
+        "Sycamore Microfinance Bank"
+      ],
+      "source_bank_code": "090827",
+      "source_sc_code": "51056",
+      "sha256": "8b955d2a282e4f82f9614fdf28a893657b3599e653e0ad4c8d66c3f18b722492",
+      "bytes": 8117,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "TAJ Pinspay.png",
+      "source_name": "TAJ Pinspay",
+      "source_aliases": [
+        "TAJ Pinspay"
+      ],
+      "source_bank_code": "080002",
+      "source_sc_code": null,
+      "sha256": "08bb3479b8303d1474499b0a7b4f53ecec34b1644b322249f14a6d80f7e7e418",
+      "bytes": 13062,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "TOFA MFB.png",
+      "source_name": "TOFA MFB",
+      "source_aliases": [
+        "TOFA MFB"
+      ],
+      "source_bank_code": "090714",
+      "source_sc_code": null,
+      "sha256": "40837fdcfd93e46c33f31900c50bcfb0c7968423d8fb4186af166525b79c04f6",
+      "bytes": 6734,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Think Finance MFB.png",
+      "source_name": "Think Finance MFB",
+      "source_aliases": [
+        "Think Finance Microfinance Bank"
+      ],
+      "source_bank_code": "677",
+      "source_sc_code": "677",
+      "sha256": "c58bacdb14a547b46132a2e7b06fdbf0db9891fe2165918ec7cf5ff03646e297",
+      "bytes": 8490,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Toprate MFB.png",
+      "source_name": "Toprate MFB",
+      "source_aliases": [
+        "Toprate MFB"
+      ],
+      "source_bank_code": "090801",
+      "source_sc_code": null,
+      "sha256": "7cfab5739aa91bcf8280ca66cbc5d16688e4b3f500921c9b0a95273602e54826",
+      "bytes": 9539,
+      "dimensions": "400x400",
+      "roster_id": "top-rate-mfb",
+      "roster_name": "TOP RATE MFB",
+      "classification": "accepted_verified_spelling_variant",
+      "decision": "preserved_existing",
+      "reason": "Source catalogue name/code and visible mark reconcile to the current roster by documented abbreviation/spelling variant; existing first-party asset preserved."
+    },
+    {
+      "source_file": "UNIABUJA MFB.png",
+      "source_name": "UNIABUJA MFB",
+      "source_aliases": [
+        "UNIABUJA MFB"
+      ],
+      "source_bank_code": "090778",
+      "source_sc_code": "51447",
+      "sha256": "64aa491ad69294c4a7e503d0d56f2691341add6dd560c896e6fa471cd4ae844b",
+      "bytes": 12545,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Zain MFB.png",
+      "source_name": "Zain MFB",
+      "source_aliases": [
+        "Zain MFB"
+      ],
+      "source_bank_code": "090976",
+      "source_sc_code": null,
+      "sha256": "cb7af63bf7afed35544a03a56a7918628e280f4b9fde2b60f4feb5cfd6c5bb08",
+      "bytes": 6023,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    },
+    {
+      "source_file": "Zeus MFB.png",
+      "source_name": "Zeus MFB",
+      "source_aliases": [
+        "Zeus Microfinance Bank",
+        "Maestro MFB",
+        "Maestro Microfinance Bank"
+      ],
+      "source_bank_code": "090746",
+      "source_sc_code": null,
+      "sha256": "df684a7f7296ae52c0049c71d893fdbf12cd5754bc9eb0793e97066effddc35e",
+      "bytes": 6684,
+      "dimensions": "400x400",
+      "roster_id": null,
+      "roster_name": null,
+      "classification": "rejected_no_roster_match",
+      "decision": "not_imported",
+      "reason": "The source name, aliases, and visible mark do not establish identity with any current active roster record; ranked fuzzy candidates were not accepted."
+    }
+  ],
+  "ambiguous_matches_resolved": 6,
+  "remaining_ambiguous_matches": 0,
+  "final_classification_counts": {
+    "rejected_no_roster_match": 118,
+    "accepted_verified_spelling_variant": 10,
+    "accepted_verified_abbreviation": 4,
+    "rejected_distinct_identity": 6
+  }
+}

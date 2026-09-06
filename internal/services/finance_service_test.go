@@ -21,6 +21,12 @@ type financeRepositoryStub struct {
 	getIMTOResult      map[string]models.InternationalMoneyTransferOperator
 	listCurrencyResult []models.Currency
 	getCurrencyResult  map[string]models.Currency
+	microResult        []models.MicrofinanceBank
+	microByID          map[string]models.MicrofinanceBank
+	microListErr       error
+	microGetErr        error
+	microListCalls     int
+	microGetCalls      int
 	listAllErr         error
 	listByTypeErr      error
 	getErr             error
@@ -142,6 +148,25 @@ func (s *financeRepositoryStub) GetCommercialBank(_ context.Context, bankID stri
 		return models.CommercialBank{ID: bankID, Name: "Access Bank Plc", CBNCode: "044", NIPCode: "000014"}, nil
 	}
 	return models.CommercialBank{}, interfaces.ErrCommercialBankNotFound
+}
+
+func (s *financeRepositoryStub) ListMicrofinanceBanks(context.Context) ([]models.MicrofinanceBank, error) {
+	s.microListCalls++
+	if s.microListErr != nil {
+		return nil, s.microListErr
+	}
+	return cloneMicrofinanceBankList(s.microResult), nil
+}
+
+func (s *financeRepositoryStub) GetMicrofinanceBank(_ context.Context, id string) (models.MicrofinanceBank, error) {
+	s.microGetCalls++
+	if s.microGetErr != nil {
+		return models.MicrofinanceBank{}, s.microGetErr
+	}
+	if bank, ok := s.microByID[id]; ok {
+		return bank, nil
+	}
+	return models.MicrofinanceBank{}, interfaces.ErrMicrofinanceBankNotFound
 }
 
 func (s *financeRepositoryStub) ListNonInterestFinancialInstitutions(context.Context) ([]models.NonInterestInstitution, error) {

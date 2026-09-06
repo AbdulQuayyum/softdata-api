@@ -200,7 +200,19 @@ The 28-record commercial-bank snapshot from the supplied CBN `Export (1).xlsx` w
 - Metadata: `datasets/metadata/finance/commercial_banks.json`
 - Logos: `datasets/assets/banks/ng/`
 
-Each record uses a deterministic lowercase bank ID, `country_code` `NG`, an official website URL and a required local logo URL. Where verified, `cbn_code` contains the three-digit CBN institution code and `nip_code` contains the six-digit NIP receiving-institution code. These fields are optional in this snapshot; omitted values were not sufficiently verified and are not inferred. Logos are immutable vendored PNG assets with source URLs, hashes and provenance recorded in the attribution files. Bank names and logos remain the property and trademarks of their respective owners; SoftData provides them for identification and directory purposes only. Rights holders may request correction, replacement or removal of an inaccurate logo without removal of the factual bank record.
+Each record uses a deterministic lowercase bank ID, `country_code` `NG`, an official website URL and a required local logo URL. `cbn_code` is the three-digit legacy CBN/sort-code field represented by source `scCode`; `nip_code` is the six-digit NIP institution-code field represented by source `bankCode`. Most enrichment values come from the pinned community catalogue, with Paystack used only as supporting evidence; community mappings may require future confirmation against a current CBN/NIBSS register. These fields are optional in this snapshot; omitted values were not sufficiently verified and are not inferred. Logos are immutable vendored PNG assets with source URLs, hashes and provenance recorded in the attribution files. Bank names and logos remain the property and trademarks of their respective owners; SoftData provides them for identification and directory purposes only. Rights holders may request correction, replacement or removal of an inaccurate logo without removal of the factual bank record.
+
+### `ng-microfinance-banks`
+
+The roster-only 790-record active Nigerian microfinance-bank dataset from the reconciled CBN/NDIC status snapshot.
+
+- Data: `datasets/finance/microfinance_banks.json`
+- Schema: `datasets/schemas/finance/microfinance_banks.schema.json`
+- Metadata: `datasets/metadata/finance/microfinance_banks.json`
+- Reconciliation manifest: `datasets/metadata/finance/microfinance_banks_reconciliation.json`
+- Identifier reconciliation: `datasets/metadata/finance/financial_institution_codes_reconciliation.json`
+
+Records require `id`, `name` and `country_code`; `cbn_code`, `nip_code`, `website_url` and `logo_url` are optional fields. CBN/NIP values are sourced from the pinned catalogue and accepted only when they match the required three- or six-digit semantics; Paystack provider codes are never published. The 829-row CBN snapshot is reduced by 39 evidence-backed exclusions: four duplicate/stale rows, 33 matched revoked institutions, the AKPO predecessor and Verdant-Capital. Website/logo evidence is tracked in `datasets/metadata/finance/microfinance_banks_enrichment.json` and the category asset attribution files. Logo acceptance requires exact identity and byte validation; explicit redistribution permission is not a prerequisite, and logo/trademark rights remain with the respective institutions. Current enrichment coverage is 330 logos for 790 records.
 
 ### Nigerian regulated-finance categories
 
@@ -213,7 +225,7 @@ Six additional CBN category snapshots are available as dataset-only packages:
 - `ng-development-finance-institutions` (8)
 - `ng-primary-mortgage-institutions` (31)
 
-They are sourced from the supplied CBN exports and use required `id`, `name` and `country_code` fields, with optional `cbn_code`, `nip_code`, `website_url` and `logo_url`. No codes, websites or logos are inferred. The non-interest source is published under the broader financial-institutions key because its supplied CBN snapshot includes Mint Microfinance Bank. Parent holding companies remain separate from subsidiaries.
+They are sourced from the supplied CBN exports. Category packages use required `id`, `name` and `country_code` fields; CBN/NIP fields are optional only for categories whose public contract includes them, while holding-company and DFI contracts intentionally exclude bank identifiers. Websites and logos are optional and are not inferred. The non-interest source is published under the broader financial-institutions key because its supplied CBN snapshot includes Mint Microfinance Bank. Parent holding companies remain separate from subsidiaries.
 
 Verified PNG assets from official institutional sources and the pinned baseline are embedded under `datasets/assets/financial-institutions/ng/` with per-asset hashes in `ATTRIBUTION.md`. Official-source marks are third-party assets and are not claimed under SoftData CC BY 4.0; the FHA Homes asset is explicitly a Federal Housing Authority parent-brand representative mark. Coverage is complete: non-interest 6/6, merchant 6/6, payment-service 5/5, holding companies 7/7, DFIs 8/8 and primary mortgage 31/31.
 The combined decoded coverage is 63/63 websites and 63/63 logos. This comprises 62 independently sourced institution marks and one disclosed Federal Housing Authority parent-brand representative mark for the wholly owned FHA Homes subsidiary. Akwa Savings was reconciled to current Ibom Mortgage Bank while retaining the stable dataset ID; TrustBond Mortgage Bank was removed after the FirstTrust merger was confirmed.

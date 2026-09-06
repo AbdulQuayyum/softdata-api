@@ -56,6 +56,29 @@ func TestErrorMapsPaymentServiceProviderServiceErrors(t *testing.T) {
 	}
 }
 
+func TestErrorMapsMicrofinanceBankServiceErrors(t *testing.T) {
+	for _, tc := range []struct {
+		name   string
+		err    error
+		status int
+	}{
+		{name: "not found", err: services.ErrMicrofinanceBankNotFound, status: http.StatusNotFound},
+		{name: "wrapped not found", err: fmt.Errorf("wrap: %w", services.ErrMicrofinanceBankNotFound), status: http.StatusNotFound},
+		{name: "invalid id", err: services.ErrInvalidMicrofinanceBankID, status: http.StatusBadRequest},
+		{name: "wrapped invalid id", err: fmt.Errorf("wrap: %w", services.ErrInvalidMicrofinanceBankID), status: http.StatusBadRequest},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			rr := httptest.NewRecorder()
+			if err := Error(rr, tc.err, "req-mfb"); err != nil {
+				t.Fatalf("Error() error = %v", err)
+			}
+			if rr.Code != tc.status {
+				t.Fatalf("status = %d, want %d", rr.Code, tc.status)
+			}
+		})
+	}
+}
+
 func TestErrorMapsCurrencyServiceErrors(t *testing.T) {
 	requestID := "req-currency"
 	cases := []struct {

@@ -50,6 +50,7 @@ const (
 	financeFinancialHoldingCompaniesRelativePath           = "finance/financial_holding_companies.json"
 	financeDevelopmentFinanceInstitutionsRelativePath      = "finance/development_finance_institutions.json"
 	financePrimaryMortgageInstitutionsRelativePath         = "finance/primary_mortgage_institutions.json"
+	financeMicrofinanceBanksRelativePath                   = "finance/microfinance_banks.json"
 )
 
 var approvedUniversityStateIDs = map[string]struct{}{
@@ -370,6 +371,8 @@ type financeService interface {
 	GetCurrency(context.Context, string) (models.Currency, error)
 	ListCommercialBanks(context.Context) ([]models.CommercialBank, error)
 	GetCommercialBank(context.Context, string) (models.CommercialBank, error)
+	ListMicrofinanceBanks(context.Context) ([]models.MicrofinanceBank, error)
+	GetMicrofinanceBank(context.Context, string) (models.MicrofinanceBank, error)
 	ListNonInterestFinancialInstitutions(context.Context) ([]models.NonInterestInstitution, error)
 	GetNonInterestFinancialInstitution(context.Context, string) (models.NonInterestInstitution, error)
 	ListMerchantBanks(context.Context) ([]models.MerchantBank, error)
@@ -647,7 +650,8 @@ func buildFinanceServiceFromJSONRepositoryWithRegulatedDatasets(
 	}
 	financeRepository, err := newFinanceRepository(jsonRepository, financePaymentServiceProvidersRelativePath, financeInternationalMoneyTransferOperatorsRelativePath,
 		financeNonInterestFinancialInstitutionsRelativePath, financeMerchantBanksRelativePath, financePaymentServiceBanksRelativePath,
-		financeFinancialHoldingCompaniesRelativePath, financeDevelopmentFinanceInstitutionsRelativePath, financePrimaryMortgageInstitutionsRelativePath)
+		financeFinancialHoldingCompaniesRelativePath, financeDevelopmentFinanceInstitutionsRelativePath, financePrimaryMortgageInstitutionsRelativePath,
+		financeMicrofinanceBanksRelativePath)
 	if err != nil {
 		return nil, fmt.Errorf("initialize finance repository: %w", err)
 	}
@@ -665,6 +669,9 @@ func buildFinanceServiceFromJSONRepositoryWithRegulatedDatasets(
 		return nil, err
 	}
 	if err := verifyRegulatedFinanceDatasets(ctx, financeService); err != nil {
+		return nil, err
+	}
+	if err := verifyMicrofinanceBankDataset(ctx, financeService); err != nil {
 		return nil, err
 	}
 	return financeService, nil
@@ -1533,9 +1540,9 @@ func verifyCommercialBankDataset(ctx context.Context, service financeService) er
 	}
 	seenIDs := make(map[string]struct{}, len(banks))
 	seenNames := make(map[string]struct{}, len(banks))
-	seenLogos := make(map[string]struct{}, len(banks))
 	seenCBN := make(map[string]struct{}, len(banks))
 	seenNIP := make(map[string]struct{}, len(banks))
+	seenLogos := make(map[string]struct{}, len(banks))
 	prevName, prevID := "", ""
 	cbnCount, nipCount, bothCount := 0, 0, 0
 	anchors := map[string][2]string{
@@ -1594,28 +1601,10 @@ func verifyCommercialBankDataset(ctx context.Context, service financeService) er
 		if anchor, ok := anchors[bank.ID]; ok && (bank.CBNCode != anchor[0] || bank.NIPCode != anchor[1]) {
 			return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
 		}
-		seenIDs[bank.ID] = struct{}{}
-		seenNames[bank.Name] = struct{}{}
 		prevName, prevID = bank.Name, bank.ID
 	}
-	if cbnCount != 25 || nipCount != 25 || bothCount != 23 {
+	if cbnCount != 28 || nipCount != 28 || bothCount != 28 {
 		return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
-	}
-	for _, bank := range banks {
-		switch bank.ID {
-		case "alpha-morgan-bank", "signature-bank":
-			if bank.CBNCode != "" {
-				return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
-			}
-		case "nova-bank":
-			if bank.CBNCode != "" || bank.NIPCode != "" {
-				return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
-			}
-		case "standard-chartered-bank", "suntrust-bank":
-			if bank.NIPCode != "" {
-				return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
-			}
-		}
 	}
 	return nil
 }
@@ -1663,6 +1652,116 @@ func verifyRegulatedFinanceDatasets(ctx context.Context, service financeService)
 		return fmt.Errorf("verify regulated finance datasets: %w", interfaces.ErrInvalidDatasetFile)
 	}
 	return nil
+}
+
+func verifyMicrofinanceBankDataset(ctx context.Context, service financeService) error {
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if service == nil {
+		return fmt.Errorf("verify microfinance bank dataset: finance service is required")
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+
+	banks, err := service.ListMicrofinanceBanks(ctx)
+	if err != nil {
+		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+			return err
+		}
+		return fmt.Errorf("verify microfinance bank dataset: %w", err)
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+	if len(banks) != 790 {
+		return fmt.Errorf("verify microfinance bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+
+	required := map[string]string{
+		"bway-microfinance-bank-limited":    "BWAY Microfinance bank Limited",
+		"katsu-microfinance-bank-limited":   "Katsu Microfinance Bank Limited",
+		"oganiru-microfinance-bank-limited": "Oganiru Microfinance Bank Limited",
+		"paragon-microfinance-bank-limited": "Paragon Microfinance Bank Limited",
+		"teerus-microfinance-bank-limited":  "Teerus Microfinance Bank Limited",
+	}
+	prohibited := map[string]struct{}{
+		"bridgeway-microfinance-bank-limited": {},
+		"bridgeway":                           {},
+		"zigate-microfinance-bank-limited":    {},
+		"zigate":                              {},
+		"akpo-microfinance-bank-limited":      {},
+		"akpo":                                {},
+		"verdant-capital-microfinance-bank-limited": {},
+		"verdant-capital":                 {},
+		"abia-sme-microfinance-bank":      {},
+		"apple-microfinance-bank-limited": {},
+	}
+	seenIDs := make(map[string]struct{}, len(banks))
+	seenNames := make(map[string]struct{}, len(banks))
+	seenCBN := make(map[string]struct{}, len(banks))
+	seenNIP := make(map[string]struct{}, len(banks))
+	previousName, previousID := "", ""
+	for _, bank := range banks {
+		if err := ctx.Err(); err != nil {
+			return err
+		}
+		if bank.ID == "" || bank.Name == "" || bank.CountryCode != "NG" {
+			return fmt.Errorf("verify microfinance bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+		if err := validators.ValidateMicrofinanceBankID(bank.ID); err != nil {
+			return fmt.Errorf("verify microfinance bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+		if _, ok := seenIDs[bank.ID]; ok {
+			return fmt.Errorf("verify microfinance bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+		if _, ok := seenNames[bank.Name]; ok {
+			return fmt.Errorf("verify microfinance bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+		if _, ok := prohibited[bank.ID]; ok || strings.EqualFold(bank.Name, "Bridgeway Microfinance Bank Limited") || strings.EqualFold(bank.Name, "Zigate Microfinance Bank Limited") || strings.EqualFold(bank.Name, "AKPO MICROFINANCE BANK LIMITED") || strings.EqualFold(bank.Name, "Verdant-Capital Microfinance Bank Limited") {
+			return fmt.Errorf("verify microfinance bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+		if previousName != "" && (strings.ToLower(previousName) > strings.ToLower(bank.Name) || (strings.EqualFold(previousName, bank.Name) && previousID > bank.ID)) {
+			return fmt.Errorf("verify microfinance bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+		seenIDs[bank.ID] = struct{}{}
+		seenNames[bank.Name] = struct{}{}
+		if bank.CBNCode != "" {
+			if !startupCommercialBankCBNCodePattern.MatchString(bank.CBNCode) {
+				return fmt.Errorf("verify microfinance bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+			}
+			if _, ok := seenCBN[bank.CBNCode]; ok {
+				return fmt.Errorf("verify microfinance bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+			}
+			seenCBN[bank.CBNCode] = struct{}{}
+		}
+		if bank.NIPCode != "" {
+			if !startupCommercialBankNIPCodePattern.MatchString(bank.NIPCode) {
+				return fmt.Errorf("verify microfinance bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+			}
+			if _, ok := seenNIP[bank.NIPCode]; ok {
+				return fmt.Errorf("verify microfinance bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+			}
+			seenNIP[bank.NIPCode] = struct{}{}
+		}
+		previousName, previousID = bank.Name, bank.ID
+	}
+	for id, name := range required {
+		if banksHaveMicrofinanceAnchor(banks, id, name) == false {
+			return fmt.Errorf("verify microfinance bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+		}
+	}
+	return nil
+}
+
+func banksHaveMicrofinanceAnchor(banks []models.MicrofinanceBank, id, name string) bool {
+	for _, bank := range banks {
+		if bank.ID == id && bank.Name == name && bank.CountryCode == "NG" {
+			return true
+		}
+	}
+	return false
 }
 
 func verifyRegulatedFinanceRows(ctx context.Context, name, category string, rows any, want int, required []string, excluded map[string]struct{}) error {

@@ -17,17 +17,17 @@ func TestCommercialBanksIdentifierContract(t *testing.T) {
 	}
 
 	expected := map[string][2]string{
-		"access-bank": {"044", "000014"}, "alpha-morgan-bank": {"", "000041"},
+		"access-bank": {"044", "000014"}, "alpha-morgan-bank": {"108", "000041"},
 		"citibank-nigeria": {"023", "000009"}, "ecobank-nigeria": {"050", "000010"},
 		"fidelity-bank": {"070", "000007"}, "first-bank-of-nigeria": {"011", "000016"},
 		"first-city-monument-bank": {"214", "000003"}, "globus-bank": {"103", "000027"},
 		"guaranty-trust-bank": {"058", "000013"}, "keystone-bank": {"082", "000002"},
-		"nova-bank": {"", ""}, "optimus-bank": {"107", "000036"},
+		"nova-bank": {"561", "060003"}, "optimus-bank": {"107", "000036"},
 		"parallex-bank": {"104", "000030"}, "polaris-bank": {"076", "000008"},
-		"premium-trust-bank": {"105", "000031"}, "providus-bank": {"101", "000021"},
-		"signature-bank": {"", "000034"}, "stanbic-ibtc-bank": {"221", "000012"},
-		"standard-chartered-bank": {"068", ""}, "sterling-bank": {"232", "000001"},
-		"suntrust-bank": {"100", ""}, "tatum-bank": {"109", "000042"},
+		"premium-trust-bank": {"105", "000031"}, "providus-bank": {"101", "000023"},
+		"signature-bank": {"106", "000034"}, "stanbic-ibtc-bank": {"221", "000012"},
+		"standard-chartered-bank": {"068", "000021"}, "sterling-bank": {"232", "000001"},
+		"suntrust-bank": {"100", "000022"}, "tatum-bank": {"109", "000042"},
 		"titan-trust-bank": {"102", "000025"}, "union-bank": {"032", "000018"},
 		"united-bank-for-africa": {"033", "000004"}, "unity-bank": {"215", "000011"},
 		"wema-bank": {"035", "000017"}, "zenith-bank": {"057", "000015"},
@@ -69,8 +69,8 @@ func TestCommercialBanksIdentifierContract(t *testing.T) {
 	if len(expected) != len(banks) {
 		t.Fatalf("expected mapping count = %d, dataset count = %d", len(expected), len(banks))
 	}
-	if len(cbnSeen) != 25 || len(nipSeen) != 25 {
-		t.Fatalf("identifier coverage = cbn %d, nip %d; want 25 and 25", len(cbnSeen), len(nipSeen))
+	if len(cbnSeen) != 28 || len(nipSeen) != 28 {
+		t.Fatalf("identifier coverage = cbn %d, nip %d; want 28 and 28", len(cbnSeen), len(nipSeen))
 	}
 }
 

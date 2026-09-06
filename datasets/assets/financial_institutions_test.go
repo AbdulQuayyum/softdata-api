@@ -45,8 +45,31 @@ func TestFinancialInstitutionLogosAreEmbeddedAndAttributed(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if count != 63 {
-		t.Fatalf("embedded logo count = %d, want 63", count)
+	if count != 393 {
+		t.Fatalf("embedded logo count = %d, want 393", count)
+	}
+}
+
+func TestMicrofinanceBankLogoURLsResolve(t *testing.T) {
+	data, err := os.ReadFile("../finance/microfinance_banks.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var records []struct {
+		ID      string `json:"id"`
+		LogoURL string `json:"logo_url"`
+	}
+	if err := json.Unmarshal(data, &records); err != nil {
+		t.Fatal(err)
+	}
+	for _, record := range records {
+		if record.LogoURL == "" {
+			continue
+		}
+		logo, err := FinancialInstitutionLogo("microfinance-banks", record.ID, "png")
+		if err != nil || len(logo) == 0 {
+			t.Errorf("%s logo unavailable: %v", record.ID, err)
+		}
 	}
 }
 

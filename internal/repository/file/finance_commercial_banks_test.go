@@ -44,8 +44,8 @@ func TestFinanceRepositoryCommercialBanksListLookupAndOwnership(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if nova.CBNCode != "" || nova.NIPCode != "" {
-		t.Fatalf("NOVA identifiers = (%q, %q), want omitted", nova.CBNCode, nova.NIPCode)
+	if nova.CBNCode != "561" || nova.NIPCode != "060003" {
+		t.Fatalf("NOVA identifiers = (%q, %q), want 561/060003", nova.CBNCode, nova.NIPCode)
 	}
 	got[0].Name = "changed"
 	again, err := repo.ListCommercialBanks(context.Background())

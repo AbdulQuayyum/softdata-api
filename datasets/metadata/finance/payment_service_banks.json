@@ -20,8 +20,8 @@
   "excluded_records": [],
   "category_notes": "PSBs remain separate from MMOs, commercial banks, MFBs, and general PSP licence categories.",
   "identifier_coverage": {
-    "cbn_code": 0,
-    "nip_code": 0
+    "cbn_code": 1,
+    "nip_code": 5
   },
   "website_coverage": 5,
   "logo_coverage": 5,
@@ -31,5 +31,16 @@
     "license": "MIT"
   },
   "update_policy": "Reconcile active status and canonical legal names against a fresh CBN snapshot.",
-  "licensing_boundary": "SoftData licenses its independent compilation, schema, and metadata; CBN source material and institutional marks remain separately owned."
+  "licensing_boundary": "SoftData licenses its independent compilation, schema, and metadata; CBN source material and institutional marks remain separately owned.",
+  "identifier_source": {
+    "repository": "Nigerian-Bank-Logos/ng-bank-logos",
+    "path": "data/bank.json",
+    "commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+    "sha256": "42194b6e7e42e46a269a17c6e76088d43da164a97739fdbefe3bac5b9354284a",
+    "retrieved_at": "2026-09-06",
+    "semantics": {
+      "bankCode": "six-digit NIP institution code",
+      "scCode": "three-digit legacy CBN/sort code"
+    }
+  }
 }

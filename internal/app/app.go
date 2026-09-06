@@ -83,3 +83,12 @@ func (a *App) Run() error {
 	}
 	return err
 }
+
+// Handler returns the configured HTTP handler for runtimes that manage the
+// listener themselves, such as serverless platforms.
+func (a *App) Handler() http.Handler {
+	if a == nil || a.server == nil {
+		return nil
+	}
+	return a.server.Handler
+}

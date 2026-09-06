@@ -24,21 +24,26 @@ type financeHandlerStub struct {
 	listBanksFn    func(context.Context) ([]models.CommercialBank, error)
 	getBankFn      func(context.Context, string) (models.CommercialBank, error)
 
-	listAllCalls      int
-	listByTypeCalls   int
-	getCalls          int
-	listIMTOCalls     int
-	getIMTOCalls      int
-	listCurrencyCalls int
-	getCurrencyCalls  int
-	lastType          string
-	lastID            string
-	lastIMTOID        string
-	lastCurrencyInput services.CurrencyListInput
-	lastCurrencyID    string
-	listBankCalls     int
-	getBankCalls      int
-	lastBankID        string
+	listAllCalls            int
+	listByTypeCalls         int
+	getCalls                int
+	listIMTOCalls           int
+	getIMTOCalls            int
+	listCurrencyCalls       int
+	getCurrencyCalls        int
+	lastType                string
+	lastID                  string
+	lastIMTOID              string
+	lastCurrencyInput       services.CurrencyListInput
+	lastCurrencyID          string
+	listBankCalls           int
+	getBankCalls            int
+	lastBankID              string
+	listMicrofinanceBanksFn func(context.Context) ([]models.MicrofinanceBank, error)
+	getMicrofinanceBankFn   func(context.Context, string) (models.MicrofinanceBank, error)
+	listMicrofinanceCalls   int
+	getMicrofinanceCalls    int
+	lastMicrofinanceBankID  string
 }
 
 func (s *financeHandlerStub) ListPaymentServiceProviders(ctx context.Context) ([]models.PaymentServiceProvider, error) {
@@ -120,6 +125,23 @@ func (s *financeHandlerStub) GetCommercialBank(ctx context.Context, bankID strin
 		return models.CommercialBank{ID: bankID, Name: "Access Bank Plc", CBNCode: "044", NIPCode: "000014"}, nil
 	}
 	return models.CommercialBank{}, services.ErrCommercialBankNotFound
+}
+
+func (s *financeHandlerStub) ListMicrofinanceBanks(ctx context.Context) ([]models.MicrofinanceBank, error) {
+	s.listMicrofinanceCalls++
+	if s.listMicrofinanceBanksFn != nil {
+		return s.listMicrofinanceBanksFn(ctx)
+	}
+	return nil, nil
+}
+
+func (s *financeHandlerStub) GetMicrofinanceBank(ctx context.Context, bankID string) (models.MicrofinanceBank, error) {
+	s.getMicrofinanceCalls++
+	s.lastMicrofinanceBankID = bankID
+	if s.getMicrofinanceBankFn != nil {
+		return s.getMicrofinanceBankFn(ctx, bankID)
+	}
+	return models.MicrofinanceBank{}, services.ErrMicrofinanceBankNotFound
 }
 
 func (s *financeHandlerStub) ListNonInterestFinancialInstitutions(context.Context) ([]models.NonInterestInstitution, error) {

@@ -18,6 +18,7 @@ datasets/
 ├── finance/
 │   ├── development_finance_institutions.json
 │   ├── financial_holding_companies.json
+│   ├── microfinance_banks.json
 │   ├── merchant_banks.json
 │   ├── non_interest_institutions.json
 │   ├── payment_service_banks.json
@@ -37,6 +38,8 @@ datasets/
 │   └── finance/
 │       ├── development_finance_institutions.json
 │       ├── financial_holding_companies.json
+│       ├── microfinance_banks.json
+│       ├── microfinance_banks_enrichment.json
 │       ├── merchant_banks.json
 │       ├── non_interest_institutions.json
 │       ├── payment_service_banks.json
@@ -56,6 +59,7 @@ datasets/
 │   └── finance/
 │       ├── development_finance_institutions.schema.json
 │       ├── financial_holding_companies.schema.json
+│       ├── microfinance_banks.schema.json
 │       ├── merchant_banks.schema.json
 │       ├── non_interest_institutions.schema.json
 │       ├── payment_service_banks.schema.json
@@ -66,7 +70,7 @@ datasets/
 └── LICENSE.md
 ```
 
-Regulated-finance logo assets are embedded under `assets/financial-institutions/ng/` by dataset category. Baseline PNGs are pinned to the Nigerian-Bank-Logos repository commit and official-source PNGs are separately identified in `assets/financial-institutions/ng/ATTRIBUTION.md`; missing or unapproved logos remain omitted.
+Regulated-finance logo assets are embedded under `assets/financial-institutions/ng/` by dataset category. Microfinance marks may come from identity-verified first-party, archived first-party, official-social or curated repository sources; source URLs, retrieval timestamps, hashes and provenance are recorded in the category attribution and reconciliation files. Missing or identity-ambiguous logos remain omitted. Microfinance enrichment progress is recorded per deterministic batch in `metadata/finance/microfinance_banks_enrichment.json`.
 
 ## What Each File Is For
 
@@ -79,7 +83,10 @@ Regulated-finance logo assets are embedded under `assets/financial-institutions/
 - `finance/international_money_transfer_operators.json` is the compiled register snapshot of current CBN-listed IMTO entries.
 - `finance/currencies.json` is the compiled snapshot of current ISO 4217 monetary currencies.
 - `finance/payment_service_providers.json` is the compiled register snapshot of payment-service-provider memberships.
-- `finance/non_interest_institutions.json`, `finance/merchant_banks.json`, `finance/payment_service_banks.json`, `finance/financial_holding_companies.json`, `finance/development_finance_institutions.json` and `finance/primary_mortgage_institutions.json` are CBN category snapshots from the supplied August 2026 exports. Codes, websites and logos are optional and omitted when not verified.
+- `finance/microfinance_banks.json` is the 790-record snapshot of active Nigerian microfinance banks after the reconciled CBN/NDIC exclusions. `cbn_code`, `nip_code`, `website_url` and `logo_url` are optional and are added only after identity and value/asset verification. `bankCode` values are accepted only as six-digit NIP institution codes and `scCode` values only as three-digit legacy CBN/sort-code fields; most values come from the pinned community catalogue, Paystack is supporting evidence only, and future CBN/NIBSS confirmation may be required. Batch evidence is in `metadata/finance/microfinance_banks_enrichment.json`.
+- The microfinance enrichment currently contains 330 embedded PNG logos for 790 records; 316 are curated-repository imports and 14 source entries from the corrected unused-source review matched active records, with the existing first-party `b-c-kash-microfinance-bank` asset preserved.
+- The 138 unused source filenames from the import bundle remain manual-review cases because their PNG bytes and source metadata were not included; see `metadata/finance/microfinance_banks_unused_source_reconciliation.json`.
+- `finance/non_interest_institutions.json`, `finance/merchant_banks.json`, `finance/payment_service_banks.json`, `finance/financial_holding_companies.json`, `finance/development_finance_institutions.json` and `finance/primary_mortgage_institutions.json` are CBN category snapshots from the supplied August 2026 exports. CBN/NIP fields are optional only in the categories that expose them; holding-company and DFI contracts intentionally exclude bank identifiers. Websites and logos are optional and omitted when not verified.
 - `schemas/geography/geopolitical_zones.schema.json` describes the zone record contract.
 - `schemas/geography/lgas.schema.json` describes the LGA and Area Council record contract.
 - `schemas/geography/states.schema.json` describes the record contract.
@@ -99,6 +106,8 @@ Regulated-finance logo assets are embedded under `assets/financial-institutions/
 - `metadata/finance/international_money_transfer_operators.json` records provenance, versioning and licensing details for the IMTO catalogue.
 - `metadata/finance/currencies.json` records provenance, versioning and licensing details for the currency catalogue.
 - `metadata/finance/payment_service_providers.json` records provenance, versioning and licensing details for the payment-service-provider catalogue.
+- `metadata/finance/microfinance_banks.json` records the pinned CBN snapshot, NDIC status sources, exclusion arithmetic, optional identifier coverage, deferred fields and licensing boundary for the microfinance-bank roster. Cross-dataset identifier evidence is in `metadata/finance/financial_institution_codes_reconciliation.json`.
+- `metadata/finance/microfinance_banks_reconciliation.json` preserves the 39-row source-ID exclusion manifest used to reproduce the public 790-record result.
 - `LICENSE.md` explains the dataset-content licence.
 
 The world countries-and-areas catalogue is compiled from the current English UN M49 overview table, uses the lowercase alpha-2 code as its public `id`, and preserves the source names, ISO alpha codes, numeric codes, calling codes, flag emoji, flag SVG URLs and available region hierarchy fields. Its current boundary is 248 countries or areas, and SoftData's independent compilation, schema and metadata are CC BY 4.0 while the UN source material retains its own rights and is used for statistical reference only. Flag SVG assets are vendored separately from MIT-licensed flag-icons v7.5.0.

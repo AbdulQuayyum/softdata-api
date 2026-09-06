@@ -23,6 +23,8 @@ type financeService interface {
 	GetCurrency(context.Context, string) (models.Currency, error)
 	ListCommercialBanks(context.Context) ([]models.CommercialBank, error)
 	GetCommercialBank(context.Context, string) (models.CommercialBank, error)
+	ListMicrofinanceBanks(context.Context) ([]models.MicrofinanceBank, error)
+	GetMicrofinanceBank(context.Context, string) (models.MicrofinanceBank, error)
 	ListNonInterestFinancialInstitutions(context.Context) ([]models.NonInterestInstitution, error)
 	GetNonInterestFinancialInstitution(context.Context, string) (models.NonInterestInstitution, error)
 	ListMerchantBanks(context.Context) ([]models.MerchantBank, error)
@@ -166,6 +168,16 @@ func (h *FinanceHandler) GetCommercialBank(w http.ResponseWriter, r *http.Reques
 		return
 	}
 	_ = response.Success(w, http.StatusOK, qualifyLogoURL(h, bank))
+}
+
+// ListMicrofinanceBanks handles GET /v1/finance/microfinance-banks.
+func (h *FinanceHandler) ListMicrofinanceBanks(w http.ResponseWriter, r *http.Request) {
+	writeFinanceList(h, w, r, h.service.ListMicrofinanceBanks)
+}
+
+// GetMicrofinanceBank handles GET /v1/finance/microfinance-banks/{bank_id}.
+func (h *FinanceHandler) GetMicrofinanceBank(w http.ResponseWriter, r *http.Request) {
+	writeFinanceDetail(h, w, r, "bank_id", validators.ValidateMicrofinanceBankID, h.service.GetMicrofinanceBank)
 }
 
 // FinanceHandler serves public payment-service-provider endpoints.

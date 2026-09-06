@@ -88,6 +88,7 @@ softdata-api/
 │   │   │       ├── development-finance/*.png
 │   │   │       ├── holding-companies/*.png
 │   │   │       ├── merchant-banks/*.png
+│   │   │       ├── microfinance-banks/*.png
 │   │   │       ├── non-interest/*.png
 │   │   │       ├── payment-service-banks/*.png
 │   │   │       └── primary-mortgage/*.png  # 63 embedded PNG assets total
@@ -102,6 +103,7 @@ softdata-api/
 │   ├── finance/
 │   │   ├── development_finance_institutions.json
 │   │   ├── financial_holding_companies.json
+│   │   ├── microfinance_banks.json
 │   │   ├── merchant_banks.json
 │   │   ├── non_interest_institutions.json
 │   │   ├── payment_service_banks.json
@@ -125,6 +127,9 @@ softdata-api/
 │   │   ├── finance/
 │   │   │   ├── development_finance_institutions.json
 │   │   │   ├── financial_holding_companies.json
+│   │   │   ├── microfinance_banks.json
+│   │   │   ├── microfinance_banks_enrichment.json
+│   │   │   ├── financial_institution_codes_reconciliation.json
 │   │   │   ├── merchant_banks.json
 │   │   │   ├── non_interest_institutions.json
 │   │   │   ├── payment_service_banks.json
@@ -148,6 +153,7 @@ softdata-api/
 │       ├── finance/
 │       │   ├── development_finance_institutions.schema.json
 │       │   ├── financial_holding_companies.schema.json
+│       │   ├── microfinance_banks.schema.json
 │       │   ├── merchant_banks.schema.json
 │       │   ├── non_interest_institutions.schema.json
 │       │   ├── payment_service_banks.schema.json
@@ -181,6 +187,7 @@ softdata-api/
 │   │   ├── dependencies.go
 │   │   ├── education_test.go
 │   │   ├── finance_test.go
+│   │   ├── microfinance_bootstrap_test.go
 │   │   ├── geography_test.go
 │   │   └── shutdown.go
 │   ├── config/
@@ -224,6 +231,8 @@ softdata-api/
 │   │   ├── finance_handler.go
 │   │   ├── finance_handler_test.go
 │   │   ├── finance_commercial_banks_test.go
+│   │   ├── finance_microfinance_banks_test.go
+│   │   ├── finance_microfinance_banks_openapi_test.go
 │   │   ├── geography_handler.go
 │   │   ├── geography_handler_test.go
 │   │   ├── geography_languages_handler_test.go
@@ -272,6 +281,8 @@ softdata-api/
 │   │   ├── dataset_version.go
 │   │   ├── education.go
 │   │   ├── finance.go
+│   │   ├── microfinance_banks.go
+│   │   ├── microfinance_banks_test.go
 │   │   ├── commercial_banks.go
 │   │   ├── commercial_banks_test.go
 │   │   ├── regulated_finance.go
@@ -300,6 +311,8 @@ softdata-api/
 │   │   │   ├── education_repository_test.go
 │   │   │   ├── finance_commercial_banks_test.go
 │   │   │   ├── finance_currency_test.go
+│   │   │   ├── finance_microfinance_banks.go
+│   │   │   ├── finance_microfinance_banks_test.go
 │   │   │   ├── finance_regulated.go
 │   │   │   ├── finance_regulated_test.go
 │   │   │   ├── finance_repository.go
@@ -395,6 +408,7 @@ softdata-api/
 │   │   ├── finance_service.go
 │   │   ├── finance_service_test.go
 │   │   ├── finance_commercial_banks_test.go
+│   │   ├── finance_microfinance_banks_test.go
 │   │   ├── geography_country_profile.go
 │   │   ├── geography_country_profile_test.go
 │   │   ├── geography_languages.go
@@ -419,6 +433,7 @@ softdata-api/
 │       ├── finance_validator.go
 │       ├── finance_validator_test.go
 │       ├── finance_commercial_banks_test.go
+│       ├── microfinance_bank_validator_test.go
 │       ├── geography_languages_validator_test.go
 │       ├── geography_validator.go
 │       ├── geography_validator_test.go
@@ -465,7 +480,7 @@ Domain and API-facing models kept separate from sqlc-generated persistence struc
 
 ### `internal/repository/`
 
-Repository interfaces plus PostgreSQL, Redis, and file-backed implementations. The file repository includes dedicated validation and loading for the six regulated-finance datasets.
+Repository interfaces plus PostgreSQL, Redis, and file-backed implementations. The file repository includes dedicated validation and loading for the regulated-finance datasets.
 
 ### `internal/services/`
 

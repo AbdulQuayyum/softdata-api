@@ -601,6 +601,46 @@ paths:
           $ref: "#/components/responses/ValidationFailed"
         "500":
           $ref: "#/components/responses/InternalError"
+  /v1/finance/microfinance-banks:
+    get:
+      tags: [Finance]
+      operationId: listMicrofinanceBanks
+      summary: List Nigerian microfinance banks
+      description: Returns the 790-record roster-only CBN/NDIC-reconciled Nigerian microfinance-bank dataset in deterministic name and ID order. No pagination, search, filters, authentication, or deferred enrichment fields are provided in v1.
+      responses:
+        "200":
+          description: Microfinance bank records
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MicrofinanceBankListResponse"
+        "405":
+          description: Method not allowed
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/finance/microfinance-banks/{bank_id}:
+    get:
+      tags: [Finance]
+      operationId: getMicrofinanceBank
+      summary: Get a Nigerian microfinance bank
+      description: Returns one roster-only Nigerian microfinance-bank record identified by its stable lowercase public ID.
+      parameters:
+        - $ref: "#/components/parameters/MicrofinanceBankID"
+      responses:
+        "200":
+          description: Microfinance bank record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MicrofinanceBankResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "405":
+          description: Method not allowed
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
   /v1/finance/non-interest-financial-institutions:
     get:
       tags: [Finance]
@@ -1540,6 +1580,16 @@ components:
       schema:
         type: string
         pattern: '^[a-z0-9]+(?:-[a-z0-9]+)+$'
+    MicrofinanceBankID:
+      name: bank_id
+      in: path
+      required: true
+      description: Stable lowercase identifier for a Nigerian microfinance bank in the reconciled roster.
+      schema:
+        type: string
+        maxLength: 128
+        pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'
+        example: bway-microfinance-bank-limited
     NonInterestFinancialInstitutionID:
       name: institution_id
       in: path
@@ -1675,6 +1725,14 @@ components:
           type: string
         name:
           type: string
+        cbn_code:
+          type: string
+          pattern: '^[0-9]{3}$'
+          description: Optional three-digit CBN institution code. Leading zeros are significant.
+        nip_code:
+          type: string
+          pattern: '^[0-9]{6}$'
+          description: Optional six-digit NIP receiving-institution code. Leading zeros are significant.
         country_code:
           type: string
           enum: [NG]
@@ -2276,6 +2334,50 @@ components:
           items:
             $ref: "#/components/schemas/CommercialBank"
       required: [success, data]
+    MicrofinanceBank:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          maxLength: 128
+          pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'
+        name:
+          type: string
+        cbn_code:
+          type: string
+          pattern: '^[0-9]{3}$'
+          description: Optional three-digit CBN institution code. Leading zeros are significant.
+        nip_code:
+          type: string
+          pattern: '^[0-9]{6}$'
+          description: Optional six-digit NIP receiving-institution code. Leading zeros are significant.
+        country_code:
+          type: string
+          enum: [NG]
+      required: [id, name, country_code]
+    MicrofinanceBankListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          minItems: 790
+          maxItems: 790
+          items:
+            $ref: "#/components/schemas/MicrofinanceBank"
+      required: [success, data]
+    MicrofinanceBankResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: "#/components/schemas/MicrofinanceBank"
+      required: [success, data]
     CommercialBankResponse:
       type: object
       additionalProperties: false
@@ -2302,7 +2404,15 @@ components:
     PaymentServiceBank:
       $ref: "#/components/schemas/NonInterestFinancialInstitution"
     DevelopmentFinanceInstitution:
-      $ref: "#/components/schemas/NonInterestFinancialInstitution"
+      type: object
+      additionalProperties: false
+      properties:
+        id: {type: string, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)+$'}
+        name: {type: string}
+        website_url: {type: string, format: uri}
+        logo_url: {type: string}
+        country_code: {type: string, enum: [NG]}
+      required: [id, name, country_code]
     FinancialHoldingCompany:
       type: object
       additionalProperties: false

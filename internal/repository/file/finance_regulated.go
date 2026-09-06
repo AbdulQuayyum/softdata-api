@@ -68,7 +68,7 @@ func (r *FinanceFileRepository) GetFinancialHoldingCompany(ctx context.Context, 
 }
 
 func (r *FinanceFileRepository) ListDevelopmentFinanceInstitutions(ctx context.Context) ([]models.DevelopmentFinanceInstitution, error) {
-	rows, err := r.loadRegulated(ctx, r.developmentFinanceInstitutionsPath, "development-finance", 8, true, interfaces.ErrDevelopmentFinanceInstitutionNotFound, []models.DevelopmentFinanceInstitution{})
+	rows, err := r.loadRegulated(ctx, r.developmentFinanceInstitutionsPath, "development-finance", 8, false, interfaces.ErrDevelopmentFinanceInstitutionNotFound, []models.DevelopmentFinanceInstitution{})
 	if err != nil {
 		return nil, err
 	}
