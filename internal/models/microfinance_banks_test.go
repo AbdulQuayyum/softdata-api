@@ -20,6 +20,10 @@ func TestMicrofinanceBanksDatasetContract(t *testing.T) {
 	idPattern := regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)*$`)
 	seenNames := make(map[string]struct{}, len(records))
 	seenIDs := make(map[string]struct{}, len(records))
+	seenCBN := make(map[string]struct{}, len(records))
+	seenNIP := make(map[string]struct{}, len(records))
+	cbnPattern := regexp.MustCompile(`^[0-9]{3}$`)
+	nipPattern := regexp.MustCompile(`^[0-9]{6}$`)
 	for i, record := range records {
 		if record.ID == "" || record.Name == "" {
 			t.Fatalf("record %d has an empty ID or name: %#v", i, record)
@@ -38,6 +42,24 @@ func TestMicrofinanceBanksDatasetContract(t *testing.T) {
 		}
 		seenNames[record.Name] = struct{}{}
 		seenIDs[record.ID] = struct{}{}
+		if record.CBNCode != "" {
+			if !cbnPattern.MatchString(record.CBNCode) {
+				t.Fatalf("record %q has invalid cbn_code %q", record.ID, record.CBNCode)
+			}
+			if _, exists := seenCBN[record.CBNCode]; exists {
+				t.Fatalf("duplicate cbn_code %q", record.CBNCode)
+			}
+			seenCBN[record.CBNCode] = struct{}{}
+		}
+		if record.NIPCode != "" {
+			if !nipPattern.MatchString(record.NIPCode) {
+				t.Fatalf("record %q has invalid nip_code %q", record.ID, record.NIPCode)
+			}
+			if _, exists := seenNIP[record.NIPCode]; exists {
+				t.Fatalf("duplicate nip_code %q", record.NIPCode)
+			}
+			seenNIP[record.NIPCode] = struct{}{}
+		}
 		if strings.TrimSpace(record.Name) != record.Name {
 			t.Fatalf("record %d has surrounding whitespace: %q", i, record.Name)
 		}
@@ -71,7 +93,7 @@ func TestMicrofinanceBanksDatasetContract(t *testing.T) {
 		}
 	}
 
-	for _, field := range []string{"institution_type", "category", "state", "cbn_code", "nip_code", "website", "logo"} {
+	for _, field := range []string{"institution_type", "category", "state", "website", "logo"} {
 		if strings.Contains(string(readTextBytes(t, datasetPath("finance/microfinance_banks.json"))), `"`+field+`"`) {
 			t.Errorf("deferred field %q leaked into public dataset", field)
 		}

@@ -171,6 +171,20 @@ func TestFinancialHoldingCompanyDoesNotExposeBankCodes(t *testing.T) {
 	}
 }
 
+func TestDevelopmentFinanceInstitutionDoesNotExposeBankCodes(t *testing.T) {
+	var institution DevelopmentFinanceInstitution
+	if err := json.Unmarshal([]byte(`{"id":"dfi","name":"DFI","country_code":"NG","cbn_code":"123","nip_code":"123456"}`), &institution); err != nil {
+		t.Fatal(err)
+	}
+	raw, err := json.Marshal(institution)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if bytes.Contains(raw, []byte("cbn_code")) || bytes.Contains(raw, []byte("nip_code")) {
+		t.Fatalf("development finance institution exposed bank codes: %s", raw)
+	}
+}
+
 func TestAkwaSavingsStableIDUsesCurrentIbomIdentity(t *testing.T) {
 	var records []regulatedFinancialInstitutionRecord
 	if err := json.Unmarshal(readTextBytes(t, datasetPath("finance/primary_mortgage_institutions.json")), &records); err != nil {

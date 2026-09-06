@@ -253,12 +253,39 @@
   "deferred_fields": [
     "category",
     "state",
-    "CBN code",
-    "NIP code",
     "website",
     "logo"
   ],
   "methodology": "Normalize only surrounding and repeated whitespace in public names. Generate lowercase kebab-case IDs from canonical current CBN names, sort by name then ID, and apply the preserved 39-row reconciliation exclusion manifest. Do not expose internal CBN source IDs.",
   "update_policy": "Reconcile against a fresh CBN MFB snapshot and new CBN/NDIC revocation, closure, liquidation and successor publications before updating the roster.",
-  "licensing_boundary": "SoftData licenses its independently normalized compilation, schema and metadata under CC BY 4.0. CBN and NDIC source materials retain their respective rights and are cited, not relicensed. Institutional logos are reproduced for institutional identification; logo and trademark rights remain with the respective institution and are not claimed by SoftData."
+  "licensing_boundary": "SoftData licenses its independently normalized compilation, schema and metadata under CC BY 4.0. CBN and NDIC source materials retain their respective rights and are cited, not relicensed. Institutional logos are reproduced for institutional identification; logo and trademark rights remain with the respective institution and are not claimed by SoftData.",
+  "identifier_coverage": {
+    "cbn_code": 13,
+    "nip_code": 323
+  },
+  "identifier_source": {
+    "repository": "Nigerian-Bank-Logos/ng-bank-logos",
+    "path": "data/bank.json",
+    "commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+    "sha256": "42194b6e7e42e46a269a17c6e76088d43da164a97739fdbefe3bac5b9354284a",
+    "retrieved_at": "2026-09-06",
+    "semantics": {
+      "bankCode": "six-digit NIP institution code",
+      "scCode": "three-digit legacy CBN/sort code"
+    }
+  },
+  "identifier_fields": {
+    "cbn_code": {
+      "description": "Optional three-digit legacy CBN institution code.",
+      "pattern": "^[0-9]{3}$",
+      "coverage": 13
+    },
+    "nip_code": {
+      "description": "Optional six-digit NIP receiving-institution code.",
+      "pattern": "^[0-9]{6}$",
+      "coverage": 323
+    }
+  },
+  "identifier_policy": "Codes are optional because the source catalogue has partial coverage. bankCode values are accepted only when exactly six decimal digits; scCode values are accepted only when exactly three decimal digits. Values remain strings with leading zeros preserved. Paystack provider-specific codes are not published.",
+  "code_reconciliation_manifest": "metadata/finance/financial_institution_codes_reconciliation.json"
 }

@@ -12,6 +12,8 @@ import (
 )
 
 var financeMicrofinanceBankIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)*$`)
+var financeMicrofinanceBankCBNPattern = regexp.MustCompile(`^[0-9]{3}$`)
+var financeMicrofinanceBankNIPPattern = regexp.MustCompile(`^[0-9]{6}$`)
 
 var financeMicrofinanceBankRequiredNames = map[string]struct{}{
 	"BWAY Microfinance bank Limited":    {},
@@ -83,7 +85,7 @@ func (r *FinanceFileRepository) loadMicrofinanceBanks(ctx context.Context) ([]mo
 			return nil, fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
 		}
 		for field := range fields {
-			if field != "id" && field != "name" && field != "website_url" && field != "logo_url" && field != "country_code" {
+			if field != "id" && field != "name" && field != "cbn_code" && field != "nip_code" && field != "website_url" && field != "logo_url" && field != "country_code" {
 				return nil, fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
 			}
 		}
@@ -111,6 +113,8 @@ func validateMicrofinanceBanks(banks []models.MicrofinanceBank) error {
 	}
 	seenIDs := make(map[string]struct{}, len(banks))
 	seenNames := make(map[string]struct{}, len(banks))
+	seenCBN := make(map[string]struct{}, len(banks))
+	seenNIP := make(map[string]struct{}, len(banks))
 	previousName, previousID := "", ""
 	for _, bank := range banks {
 		if bank.ID == "" || bank.Name == "" || strings.TrimSpace(bank.Name) != bank.Name || bank.CountryCode != "NG" || !financeMicrofinanceBankIDPattern.MatchString(bank.ID) {
@@ -127,6 +131,24 @@ func validateMicrofinanceBanks(banks []models.MicrofinanceBank) error {
 		}
 		seenIDs[bank.ID] = struct{}{}
 		seenNames[bank.Name] = struct{}{}
+		if bank.CBNCode != "" {
+			if !financeMicrofinanceBankCBNPattern.MatchString(bank.CBNCode) {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+			if _, exists := seenCBN[bank.CBNCode]; exists {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+			seenCBN[bank.CBNCode] = struct{}{}
+		}
+		if bank.NIPCode != "" {
+			if !financeMicrofinanceBankNIPPattern.MatchString(bank.NIPCode) {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+			if _, exists := seenNIP[bank.NIPCode]; exists {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+			seenNIP[bank.NIPCode] = struct{}{}
+		}
 		previousName, previousID = bank.Name, bank.ID
 	}
 	for name := range financeMicrofinanceBankRequiredNames {

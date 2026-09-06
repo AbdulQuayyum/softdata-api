@@ -24,6 +24,14 @@
         "type": "string",
         "minLength": 1
       },
+      "cbn_code": {
+        "type": "string",
+        "pattern": "^[0-9]{3}$"
+      },
+      "nip_code": {
+        "type": "string",
+        "pattern": "^[0-9]{6}$"
+      },
       "website_url": {
         "type": "string",
         "format": "uri",

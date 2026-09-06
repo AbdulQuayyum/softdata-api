@@ -27,7 +27,14 @@ type FinancialHoldingCompany struct {
 }
 
 // DevelopmentFinanceInstitution represents one CBN development finance institution.
-type DevelopmentFinanceInstitution NonInterestInstitution
+// Development-finance records intentionally do not expose bank identifiers.
+type DevelopmentFinanceInstitution struct {
+	ID          string `json:"id"`
+	Name        string `json:"name"`
+	WebsiteURL  string `json:"website_url,omitempty"`
+	LogoURL     string `json:"logo_url,omitempty"`
+	CountryCode string `json:"country_code"`
+}
 
 // PrimaryMortgageInstitution represents one CBN primary mortgage institution.
 type PrimaryMortgageInstitution NonInterestInstitution

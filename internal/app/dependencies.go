@@ -1540,9 +1540,9 @@ func verifyCommercialBankDataset(ctx context.Context, service financeService) er
 	}
 	seenIDs := make(map[string]struct{}, len(banks))
 	seenNames := make(map[string]struct{}, len(banks))
-	seenLogos := make(map[string]struct{}, len(banks))
 	seenCBN := make(map[string]struct{}, len(banks))
 	seenNIP := make(map[string]struct{}, len(banks))
+	seenLogos := make(map[string]struct{}, len(banks))
 	prevName, prevID := "", ""
 	cbnCount, nipCount, bothCount := 0, 0, 0
 	anchors := map[string][2]string{
@@ -1601,28 +1601,10 @@ func verifyCommercialBankDataset(ctx context.Context, service financeService) er
 		if anchor, ok := anchors[bank.ID]; ok && (bank.CBNCode != anchor[0] || bank.NIPCode != anchor[1]) {
 			return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
 		}
-		seenIDs[bank.ID] = struct{}{}
-		seenNames[bank.Name] = struct{}{}
 		prevName, prevID = bank.Name, bank.ID
 	}
-	if cbnCount != 25 || nipCount != 25 || bothCount != 23 {
+	if cbnCount != 28 || nipCount != 28 || bothCount != 28 {
 		return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
-	}
-	for _, bank := range banks {
-		switch bank.ID {
-		case "alpha-morgan-bank", "signature-bank":
-			if bank.CBNCode != "" {
-				return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
-			}
-		case "nova-bank":
-			if bank.CBNCode != "" || bank.NIPCode != "" {
-				return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
-			}
-		case "standard-chartered-bank", "suntrust-bank":
-			if bank.NIPCode != "" {
-				return fmt.Errorf("verify commercial bank dataset: %w", interfaces.ErrInvalidDatasetFile)
-			}
-		}
 	}
 	return nil
 }
@@ -1718,6 +1700,8 @@ func verifyMicrofinanceBankDataset(ctx context.Context, service financeService) 
 	}
 	seenIDs := make(map[string]struct{}, len(banks))
 	seenNames := make(map[string]struct{}, len(banks))
+	seenCBN := make(map[string]struct{}, len(banks))
+	seenNIP := make(map[string]struct{}, len(banks))
 	previousName, previousID := "", ""
 	for _, bank := range banks {
 		if err := ctx.Err(); err != nil {
@@ -1743,6 +1727,24 @@ func verifyMicrofinanceBankDataset(ctx context.Context, service financeService) 
 		}
 		seenIDs[bank.ID] = struct{}{}
 		seenNames[bank.Name] = struct{}{}
+		if bank.CBNCode != "" {
+			if !startupCommercialBankCBNCodePattern.MatchString(bank.CBNCode) {
+				return fmt.Errorf("verify microfinance bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+			}
+			if _, ok := seenCBN[bank.CBNCode]; ok {
+				return fmt.Errorf("verify microfinance bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+			}
+			seenCBN[bank.CBNCode] = struct{}{}
+		}
+		if bank.NIPCode != "" {
+			if !startupCommercialBankNIPCodePattern.MatchString(bank.NIPCode) {
+				return fmt.Errorf("verify microfinance bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+			}
+			if _, ok := seenNIP[bank.NIPCode]; ok {
+				return fmt.Errorf("verify microfinance bank dataset: %w", interfaces.ErrInvalidDatasetFile)
+			}
+			seenNIP[bank.NIPCode] = struct{}{}
+		}
 		previousName, previousID = bank.Name, bank.ID
 	}
 	for id, name := range required {

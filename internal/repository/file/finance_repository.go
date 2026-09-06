@@ -300,10 +300,7 @@ func validateCommercialBanks(banks []models.CommercialBank) error {
 		seenNames[bank.Name] = struct{}{}
 		prevName, prevID = bank.Name, bank.ID
 	}
-	if len(seenIDs) != len(financeExpectedCommercialBankIDs) || len(seenCBN) != 25 || len(seenNIP) != 25 {
-		return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
-	}
-	if banks[10].ID != "nova-bank" || banks[10].CBNCode != "" || banks[10].NIPCode != "" || banks[1].CBNCode != "" || banks[16].CBNCode != "" || banks[18].NIPCode != "" || banks[20].NIPCode != "" {
+	if len(seenIDs) != len(financeExpectedCommercialBankIDs) || len(seenCBN) != 28 || len(seenNIP) != 28 {
 		return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
 	}
 	return nil
