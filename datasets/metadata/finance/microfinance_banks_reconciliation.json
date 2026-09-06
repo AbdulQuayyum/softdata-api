@@ -1,0 +1,301 @@
+{
+  "dataset_key": "ng-microfinance-banks",
+  "source_snapshot_sha256": "89d9791403589a98d82e4c9c2cd3457d26e226d194dd9fb8e5d83db2940b4725",
+  "excluded_records": [
+    {
+      "cbn_id": 3191,
+      "cbn_name": "Abia SME Microfinance Bank",
+      "ndic_notice_name": "Abia SME MFB",
+      "ndic_category": "Tier 1",
+      "ndic_state": "Abia",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 3222,
+      "cbn_name": "AKPO MICROFINANCE BANK LIMITED",
+      "reason": "predecessor replaced by OGANIRU; retain CBN ID 10061"
+    },
+    {
+      "cbn_id": 3255,
+      "cbn_name": "Apple Microfinance Bank Limited",
+      "ndic_notice_name": "Apple MFB",
+      "ndic_category": "Tier 2",
+      "ndic_state": "Ogun",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 3296,
+      "cbn_name": "Bejin-Doko Microfinance Bank Limited",
+      "ndic_notice_name": "Bejin-Doko MFB",
+      "ndic_category": "Tier 2",
+      "ndic_state": "Niger",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 3321,
+      "cbn_name": "BOMPAI MFB",
+      "ndic_notice_name": "Bompai MFB",
+      "ndic_category": "Tier 1",
+      "ndic_state": "Kano",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 3344,
+      "cbn_name": "BUSU MFB",
+      "ndic_notice_name": "Busu MFB",
+      "ndic_category": "Tier 2",
+      "ndic_state": "Niger",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 3357,
+      "cbn_name": "CHANELLE MFB",
+      "ndic_notice_name": "Chanelle MFB",
+      "ndic_category": "State",
+      "ndic_state": "Lagos",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 3386,
+      "cbn_name": "CREEKLINE MFB",
+      "ndic_notice_name": "Creekline MFB",
+      "ndic_category": "Delta",
+      "ndic_state": "Tier 2",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 3393,
+      "cbn_name": "CRYSTABEL MFB",
+      "ndic_notice_name": "Crystabel Microfinance Bank",
+      "ndic_category": "Tier 1",
+      "ndic_state": "Bayelsa",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 3493,
+      "cbn_name": "FRONTLINE MFB",
+      "ndic_notice_name": "Frontline MFB",
+      "ndic_category": "Tier 2",
+      "ndic_state": "Anambra",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 3517,
+      "cbn_name": "GOLD MFB",
+      "ndic_notice_name": "Gold MFB",
+      "ndic_category": "Tier 1",
+      "ndic_state": "Lagos",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 3613,
+      "cbn_name": "IWADE MFB",
+      "ndic_notice_name": "Iwade MFB",
+      "ndic_category": "Tier 2",
+      "ndic_state": "Ogun",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 3622,
+      "cbn_name": "JANMAA MFB",
+      "ndic_notice_name": "Janmaa MFB",
+      "ndic_category": "Tier 1",
+      "ndic_state": "Kwara",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 3633,
+      "cbn_name": "KAMBA MFB",
+      "ndic_notice_name": "Kamba MFB",
+      "ndic_category": "Tier 2",
+      "ndic_state": "Kebbi",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 3707,
+      "cbn_name": "MERCHANT MFB",
+      "ndic_notice_name": "Merchant MFB",
+      "ndic_category": "Tier 2",
+      "ndic_state": "Abia",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 3716,
+      "cbn_name": "MINJIBIR MFB",
+      "ndic_notice_name": "Minjibir MFB",
+      "ndic_category": "Tier 1",
+      "ndic_state": "Kano",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 3717,
+      "cbn_name": "MINJI-SE CHURCHILL MFB",
+      "ndic_notice_name": "Minji-Se Churchill MFB",
+      "ndic_category": "Tier 1",
+      "ndic_state": "Rivers",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 3735,
+      "cbn_name": "MWAGHAVUL MFB",
+      "ndic_notice_name": "Mwaghavul MFB",
+      "ndic_category": "State",
+      "ndic_state": "Plateau",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 3913,
+      "cbn_name": "RIMIN GADO MFB",
+      "ndic_notice_name": "Rimin Gado MFB",
+      "ndic_category": "Tier 2",
+      "ndic_state": "Kano",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 3927,
+      "cbn_name": "SAFEGATE MFB",
+      "ndic_notice_name": "Safegate MFB",
+      "ndic_category": "Tier 1",
+      "ndic_state": "Lagos",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 3940,
+      "cbn_name": "SHANONO MFB",
+      "ndic_notice_name": "Shanono MFB",
+      "ndic_category": "Tier 2",
+      "ndic_state": "Kano",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 3956,
+      "cbn_name": "STANFORD MFB",
+      "ndic_notice_name": "Stanford MFB",
+      "ndic_category": "State",
+      "ndic_state": "Uyo",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 3966,
+      "cbn_name": "SUMAILA MFB",
+      "ndic_notice_name": "Sumaila MFB",
+      "ndic_category": "Tier 2",
+      "ndic_state": "Kano",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 3970,
+      "cbn_name": "SUPREME MFB",
+      "ndic_notice_name": "Supreme MFB",
+      "ndic_category": "Tier 1",
+      "ndic_state": "Lagos",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 3982,
+      "cbn_name": "TOFA MFB",
+      "ndic_notice_name": "TOFA MFB",
+      "ndic_category": "Tier 2",
+      "ndic_state": "Kano",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 4059,
+      "cbn_name": "YENENG MFB",
+      "ndic_notice_name": "Yeneng MFB",
+      "ndic_category": "Tier 2",
+      "ndic_state": "Plateau",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 4062,
+      "cbn_name": "ZAFEC MFB LTD",
+      "ndic_notice_name": "Zafec MFB",
+      "ndic_category": "Tier 2",
+      "ndic_state": "Kaduna",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 4072,
+      "cbn_name": "ZURU MFB",
+      "ndic_notice_name": "Zuru MFB",
+      "ndic_category": "Tier 2",
+      "ndic_state": "Kebbi",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 9904,
+      "cbn_name": "CASHA MICROFINANCE BANK",
+      "ndic_notice_name": "CASHA MFB",
+      "ndic_category": "Tier 2",
+      "ndic_state": "Abuja",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 9908,
+      "cbn_name": "TEERUS MICROFINANCE BANK LIMITED",
+      "reason": "duplicate detail record; retain renamed CBN ID 10081"
+    },
+    {
+      "cbn_id": 10009,
+      "cbn_name": "Katsu Microfinance Bank Limited",
+      "reason": "stale/incomplete duplicate; retain CBN ID 10048"
+    },
+    {
+      "cbn_id": 10012,
+      "cbn_name": "Paragon Microfinance Bank Limited",
+      "reason": "exact duplicate; retain CBN ID 10011"
+    },
+    {
+      "cbn_id": 10022,
+      "cbn_name": "Avantus Microfinance bank Limited",
+      "ndic_notice_name": "AVANTUS MFB",
+      "ndic_category": "Tier 2",
+      "ndic_state": "Osun",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 10025,
+      "cbn_name": "Basawa Microfinance bank Limited",
+      "ndic_notice_name": "BASAWA MFB",
+      "ndic_category": "Tier 2",
+      "ndic_state": "Kaduna",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 10030,
+      "cbn_name": "BWAY Microfinance bank Limited",
+      "reason": "exact duplicate; retain CBN ID 10029"
+    },
+    {
+      "cbn_id": 10043,
+      "cbn_name": "Esteem Microfinance Bank Limited",
+      "ndic_notice_name": "ESTEEM MFB",
+      "ndic_category": "Tier 2",
+      "ndic_state": "Kano",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 10053,
+      "cbn_name": "MBAG Microfinance Bank Limited",
+      "ndic_notice_name": "MBAG MFB",
+      "ndic_category": "Tier 1",
+      "ndic_state": "Lagos",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 10065,
+      "cbn_name": "Ourpass Microfinance Bank Limited",
+      "ndic_notice_name": "OURPASS MFB",
+      "ndic_category": "Tier 2",
+      "ndic_state": "Ondo",
+      "reason": "matched NDIC revocation notice"
+    },
+    {
+      "cbn_id": 10091,
+      "cbn_name": "Verdant-Capital Microfinance Bank Limited",
+      "reason": "revoked/replaced identity; named by updated NDIC 2026-07-09 notice"
+    }
+  ],
+  "excluded_record_count": 39
+}

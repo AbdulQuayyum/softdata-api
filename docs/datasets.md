@@ -121,6 +121,17 @@ Nigeria's 28 CBN-listed commercial banks with official websites, vendored identi
 
 Logo assets are served from the embedded application binary at `GET /v1/assets/banks/ng/{bank_id}.{ext}`. They are preserved unchanged from the pinned upstream source. `cbn_code` and `nip_code` are optional strings with three- and six-digit patterns respectively; omitted values were not sufficiently verified for this snapshot. Bank names and logos are trademarks of their respective owners. They are provided for identification and directory purposes only; inclusion does not imply sponsorship, affiliation or endorsement.
 
+### `ng-microfinance-banks`
+
+Nigeria's roster-only v1 of 790 active microfinance banks from the reconciled CBN MFB register.
+
+- Data: `datasets/finance/microfinance_banks.json`
+- Schema: `datasets/schemas/finance/microfinance_banks.schema.json`
+- Metadata: `datasets/metadata/finance/microfinance_banks.json`
+- Reconciliation: `datasets/metadata/finance/microfinance_banks_reconciliation.json`
+
+The public contract contains only `id`, `name` and `country_code`. The 829-row CBN snapshot is reduced by 39 evidence-backed exclusions: four duplicate/stale rows, 33 matched revocations, the AKPO predecessor and Verdant-Capital. Websites, logos, categories, states, CBN codes and NIP codes are deferred. No API routes are introduced by this dataset package.
+
 ### Nigerian regulated-finance category snapshots
 
 The following dataset packages preserve the six supplied CBN category exports as independent finance datasets. They use optional CBN/NIP codes, websites and logos; no category-specific HTTP routes are introduced by these packages.

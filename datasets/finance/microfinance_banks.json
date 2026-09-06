@@ -1,0 +1,3952 @@
+[
+  {
+    "id": "1trust-microfinance-bank-limited",
+    "name": "1Trust Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "5tt-microfinance-bank-limited",
+    "name": "5TT Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "aacb-microfinance-bank-limited",
+    "name": "AACB Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "ab-microfinance-bank-limited",
+    "name": "AB Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "abia-state-university-microfinance-bank-limited",
+    "name": "Abia State University Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "abigi-microfinance-bank-limited",
+    "name": "Abigi Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "above-only-microfinance-bank",
+    "name": "Above Only Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "abubakar-tafawa-balewa-university-atbu-microfinance-bank",
+    "name": "Abubakar Tafawa Balewa University (ATBU) Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "abucoop-microfinance-bank-limited",
+    "name": "Abucoop Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "abulesoro-microfinance-bank",
+    "name": "Abulesoro Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "accion-microfinance-bank-limited",
+    "name": "Accion Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "ace-microfinance-bank-limited",
+    "name": "ACE Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "achina-microfinance-bank-limited",
+    "name": "Achina Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "ada-microfinance-bank-limited",
+    "name": "ADA Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "adazi-enu-microfinance-bank-limited",
+    "name": "Adazi-Enu Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "adazi-nnukwu-microfinance-bank-limited",
+    "name": "Adazi-Nnukwu Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "addosser-microfinance-bank-limited",
+    "name": "Addosser Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "adeyemi-college-staff-microfinance-bank",
+    "name": "Adeyemi College Staff Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "adike-microfinance-bank-limited",
+    "name": "Adike Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "advancly-microfinance-bank-limited",
+    "name": "Advancly Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "afekhafe-microfinance-bank",
+    "name": "Afekhafe Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "afemai-microfinance-bank-limited",
+    "name": "Afemai Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "afole-microfinance-bank-limited",
+    "name": "Afole Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "agosasa-microfinance-bank-limited",
+    "name": "Agosasa Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "ahmadu-bello-university-microfinance-bank-limited",
+    "name": "Ahmadu Bello University Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "aibio-microfinance-bank",
+    "name": "Aibio Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "ajewole-microfinance-bank-limited",
+    "name": "Ajewole Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "ajose-microfinance-bank-limited",
+    "name": "Ajose Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "ajuta-microfinance-bank-limited",
+    "name": "Ajuta Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "akalabo-microfinance-bank-limited",
+    "name": "Akalabo Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "akata-microfinance-bank-limited",
+    "name": "Akata Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "akokwa-microfinance-bank-limited",
+    "name": "Akokwa Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "aku-diewa-microfinance-bank-limited",
+    "name": "Aku Diewa Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "akuchukwu-microfinance-bank-limited",
+    "name": "Akuchukwu Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "al-hikma-microfinance-bank-limited",
+    "name": "Al'Hikma Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "al-barakah-microfinance-bank-limited",
+    "name": "Al-Barakah Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "al-hayat-microfinance-bank",
+    "name": "Al-Hayat Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "albasu-microfinance-bank-limited",
+    "name": "Albasu Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "alekun-microfinance-bank-limited",
+    "name": "Alekun Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "alert-microfinance-bank",
+    "name": "Alert Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "algreb-microfinance-bank",
+    "name": "Algreb Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "aliero-microfinance-bank-limited",
+    "name": "Aliero Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "all-workers-microfinance-bank-limited",
+    "name": "All Workers Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "alor-microfinance-bank-limited",
+    "name": "Alor Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "alpha-kapital-microfinance-bank",
+    "name": "Alpha Kapital Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "alvana-microfinance-bank-limited",
+    "name": "Alvana Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "amac-microfinance-bank",
+    "name": "AMAC Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "amazu-microfinance-bank-limited",
+    "name": "Amazu Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "amegy-microfinance-bank-limited",
+    "name": "Amegy Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "amju-unique-microfinance-bank-limited",
+    "name": "AMJU-Unique Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "amml-microfinance-bank-limited-abuja-markets-management-ltd",
+    "name": "AMML Microfinance Bank Limited (Abuja Markets Management Ltd)",
+    "country_code": "NG"
+  },
+  {
+    "id": "ampersand-microfinance-bank",
+    "name": "Ampersand Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "ample-microfinance-bank-limited",
+    "name": "Ample Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "amucha-microfinance-bank-limited",
+    "name": "Amucha Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "anchorage-microfinance-bank-limited",
+    "name": "Anchorage Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "aniocha-microfinance-bank-limited",
+    "name": "Aniocha Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "annointed-microfinance-bank-limited",
+    "name": "Annointed Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "aogo-microfinance-bank-limited",
+    "name": "Aogo Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "apa-microfinance-bank-limited",
+    "name": "Apa Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "apex-trust-microfinance-bank-limited",
+    "name": "Apex Trust Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "aramoko-microfinance-bank-limited",
+    "name": "Aramoko Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "aris-microfinance-bank",
+    "name": "Aris Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "asha-microfinance-bank-limited",
+    "name": "Asha Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "aspire-microfinance-bank-limited",
+    "name": "Aspire Microfinance Bank LImited",
+    "country_code": "NG"
+  },
+  {
+    "id": "asset-matrix-microfinance-bank-limited",
+    "name": "Asset Matrix Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "assets-microfinance-bank-limited",
+    "name": "Assets Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "astra-polaris-microfinance-bank-limited",
+    "name": "Astra Polaris Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "auchi-microfinance-bank-limited",
+    "name": "Auchi Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "auchi-polytechnic-microfinance-bank-limited",
+    "name": "Auchi Polytechnic Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "ave-maria-mfb",
+    "name": "AVE MARIA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "avest-microfinance-bank-limited",
+    "name": "Avest Microfinance bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "avunegbe-microfinance-bank-limited",
+    "name": "Avunegbe Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "avvic-microfinance-bank-limited",
+    "name": "AVVIC MICROFINANCE BANK LIMITED",
+    "country_code": "NG"
+  },
+  {
+    "id": "awe-microfinance-bank-limited",
+    "name": "Awe Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "awesome-mfb",
+    "name": "AWESOME MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "awka-etiti-microfinance-bank-limited",
+    "name": "Awka-Etiti Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "awkuzu-microfinance-bank-limited",
+    "name": "Awkuzu Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "azsa-microfinance-bank-limited",
+    "name": "AZSA Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "b-c-kash-microfinance-bank",
+    "name": "B C Kash Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "babba-microfinance-bank-limited",
+    "name": "Babba Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "babcock-microfinance-bank-limited",
+    "name": "Babcock Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "babura-microfinance-bank-limited",
+    "name": "Babura Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "baige-microfinance-bank-limited",
+    "name": "BAIGE MICROFINANCE BANK LIMITED",
+    "country_code": "NG"
+  },
+  {
+    "id": "baines-credit-microfinance-bank",
+    "name": "Baines Credit Microfinance bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "balera-microfinance-bank-limited",
+    "name": "Balera Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "balogun-fulani-microfinance-bank-limited",
+    "name": "Balogun Fulani Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "balogun-gambari-microfinance-bank-limited",
+    "name": "Balogun Gambari Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "bam-microfinance-bank-limited",
+    "name": "Bam Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "banex-microfinance-bank-limited",
+    "name": "Banex Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "bankeasy-microfinance-bank-limited",
+    "name": "Bankeasy Microfinance bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "baobab-microfinance-bank",
+    "name": "Baobab Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "barnawa-microfinance-bank-limited",
+    "name": "Barnawa Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "batagwara-mfb",
+    "name": "BATAGWARA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "bauchi-cfa-mirofinance-bank-limited",
+    "name": "Bauchi CFA Mirofinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "bauchi-investment-corporation-mfb-limited-bic",
+    "name": "Bauchi Investment Corporation MFB Limited (BIC)",
+    "country_code": "NG"
+  },
+  {
+    "id": "baure-mfb",
+    "name": "BAURE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "bawyi-microfinance-bank-limited",
+    "name": "Bawyi Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "bayajidda-microfinance-bank-limited",
+    "name": "Bayajidda Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "bayero-university-microfinance-bank",
+    "name": "Bayero University Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "bayetin-microfinance-bank-limited",
+    "name": "Bayetin Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "benue-microfinance-bank",
+    "name": "Benue Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "benysta-microfinance-bank",
+    "name": "Benysta Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "berachah-microfinance-bank-limited",
+    "name": "Berachah Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "best-star-microfinance-bank-limited",
+    "name": "Best Star Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "bethel-microfinance-bank-limited",
+    "name": "Bethel Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "better-life-microfinace-bank",
+    "name": "Better Life Microfinace Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "bichi-microfinance-bank-limited",
+    "name": "Bichi Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "bida-polytechnic-microfinance-bank",
+    "name": "Bida Polytechnic Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "bkd-new-microfinance-bank-limited",
+    "name": "BKD NEW Microfinance bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "bloc-microfinance-bank-limited",
+    "name": "Bloc Microfinance bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "blooms-microfinance-bank",
+    "name": "Blooms Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "blucon-mfb",
+    "name": "BLUCON MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "blue-ridge-mfb",
+    "name": "BLUE RIDGE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "blueprint-investments-mfb",
+    "name": "BLUEPRINT INVESTMENTS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "boctrust-mfb",
+    "name": "BOCTRUST MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "boi-mfb",
+    "name": "BOI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "boji-boji-mfb-ltd",
+    "name": "BOJI BOJI MFB LTD.",
+    "country_code": "NG"
+  },
+  {
+    "id": "bokkos-mfb",
+    "name": "BOKKOS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "bold-microfinance-bank-limited",
+    "name": "Bold Microfinance bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "bonghe-mfb",
+    "name": "BONGHE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "boost-microfinance-bank-limited",
+    "name": "Boost Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "borgu-mfb",
+    "name": "BORGU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "borno-renaissance-mfb-ltd",
+    "name": "BORNO RENAISSANCE MFB LTD.",
+    "country_code": "NG"
+  },
+  {
+    "id": "boromu-mfb",
+    "name": "BOROMU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "borstal-mfb",
+    "name": "BORSTAL MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "bosak-mfb",
+    "name": "BOSAK MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "bowen-mfb",
+    "name": "BOWEN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "bowman-mfb",
+    "name": "BOWMAN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "brethren-mfb",
+    "name": "BRETHREN  MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "brightway-mfb-ltd",
+    "name": "BRIGHTWAY MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "broadview-mfb",
+    "name": "BROADVIEW MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "brooks-mfb",
+    "name": "BROOKS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "bubayero-mfb-ltd",
+    "name": "BUBAYERO MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "bundi-mfb",
+    "name": "BUNDI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "bungudu-mfb",
+    "name": "BUNGUDU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "bunkasa-mfb",
+    "name": "BUNKASA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "bunkure-mfb",
+    "name": "BUNKURE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "bway-microfinance-bank-limited",
+    "name": "BWAY Microfinance bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "canaan-mfb",
+    "name": "CANAAN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "capitalmetriq-swift-mfb",
+    "name": "CAPITALMETRIQ SWIFT MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "capstone-mfb",
+    "name": "CAPSTONE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "carbon-mfb",
+    "name": "CARBON MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "caretaker-mfb",
+    "name": "CARETAKER MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "casa-microfinance-bank-limited",
+    "name": "Casa Microfinance bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "cash-rite-mfb",
+    "name": "CASH RITE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "cashconnect-mfb",
+    "name": "CASHCONNECT MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "cashwise-microfinance-bank-limited",
+    "name": "CASHWISE MICROFINANCE BANK LIMITED",
+    "country_code": "NG"
+  },
+  {
+    "id": "castle-mfb",
+    "name": "CASTLE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "catland-mfb",
+    "name": "CATLAND MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "cedar-mfb",
+    "name": "CEDAR MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "cedrus-microfinance-bank-limited",
+    "name": "Cedrus Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "challenge-mfb",
+    "name": "CHALLENGE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "changan-rts-mfb",
+    "name": "CHANGAN RTS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "charis-microfinance-bank-limited",
+    "name": "Charis Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "chase-mfb-ltd",
+    "name": "CHASE MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "chevron-employee-co-operative-mfb-cemcs",
+    "name": "CHEVRON EMPLOYEE CO-OPERATIVE MFB (CEMCS)",
+    "country_code": "NG"
+  },
+  {
+    "id": "chibueze-mfb",
+    "name": "CHIBUEZE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "chikum-mfb",
+    "name": "CHIKUM MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "chrisore-mfb",
+    "name": "CHRISORE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "chronicles-mfb",
+    "name": "CHRONICLES MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "chukwunenye-mfb",
+    "name": "CHUKWUNENYE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "cintrust-mfb",
+    "name": "CINTRUST MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "cit-mfb",
+    "name": "CIT MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "citizen-trust-mfb",
+    "name": "CITIZEN TRUST MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "city-mission-methodist-mfb",
+    "name": "CITY MISSION METHODIST MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "civic-mfb",
+    "name": "CIVIC MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "cloverleaf-mfb",
+    "name": "CLOVERLEAF MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "coal-camp-mfb",
+    "name": "COAL CAMP MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "coastline-mfb",
+    "name": "COASTLINE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "coeminna-mfb",
+    "name": "COEMINNA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "confidence-mfb",
+    "name": "CONFIDENCE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "consistent-trust-mfb",
+    "name": "CONSISTENT TRUST MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "consumer-mfb",
+    "name": "CONSUMER MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "cool-microfinance-bank-limited",
+    "name": "Cool Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "corestep-mfb",
+    "name": "CORESTEP MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "covenant-mfb",
+    "name": "COVENANT MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "crescent-mfb",
+    "name": "CRESCENT MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "crest-mfb",
+    "name": "CREST MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "crossriver-mfb",
+    "name": "CROSSRIVER MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "crutech-mfb",
+    "name": "CRUTECH MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "csd-mfb",
+    "name": "CSD MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "custodian-mfb",
+    "name": "CUSTODIAN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "dabtikir-microfinance-bank-limited",
+    "name": "Dabtikir Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "daily-trust-mfb",
+    "name": "DAILY-TRUST MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "dal-mfb",
+    "name": "DAL MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "dambatta-makoda-mfb",
+    "name": "DAMBATTA- MAKODA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "dash-microfinance-bank-limited",
+    "name": "Dash Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "davenport-microfinance-bank-limited",
+    "name": "Davenport Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "davodani-mfb",
+    "name": "DAVODANI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "dawakin-kudu-mfb",
+    "name": "DAWAKIN KUDU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "dawakin-tofa-mfb",
+    "name": "DAWAKIN TOFA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "daylight-mfb-ltd",
+    "name": "DAYLIGHT MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "dec-enugu-mfb",
+    "name": "DEC-ENUGU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "destiny-mfb",
+    "name": "DESTINY MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "diobu-mfb",
+    "name": "DIOBU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "doguwa-mfb",
+    "name": "DOGUWA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "dolphin-mfb",
+    "name": "DOLPHIN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "dorben-mfb",
+    "name": "DORBEN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "dsc-microfinance-bank-limited",
+    "name": "DSC Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "dutse-mfb",
+    "name": "DUTSE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "dutsin-ma-mfb",
+    "name": "DUTSIN-MA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "duxbank-microfinance-bank-limited",
+    "name": "Duxbank Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "e-barcs-mfb",
+    "name": "e-BARCS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "eagle-flight-mfb",
+    "name": "EAGLE FLIGHT MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "earnwell-mfb",
+    "name": "EARNWELL MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "east-gate-mfb",
+    "name": "EAST GATE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "eastman-mfb",
+    "name": "EASTMAN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "easy-access-mfb-ltd",
+    "name": "EASY ACCESS MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "ebedi-mfb",
+    "name": "EBEDI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ebonyi-state-university-mfb-ebsu",
+    "name": "EBONYI STATE UNIVERSITY MFB (EBSU)",
+    "country_code": "NG"
+  },
+  {
+    "id": "edfin-mfb",
+    "name": "EDFIN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "edo-mfb",
+    "name": "EDO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "edusoko-microfinance-bank-limited",
+    "name": "Edusoko Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "egbe-mfb",
+    "name": "EGBE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "egbemoha-mfb",
+    "name": "EGBEMOHA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "egwafin-mfb",
+    "name": "EGWAFIN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ehinoma-microfinance-bank-limited",
+    "name": "Ehinoma Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "ejindu-mfb",
+    "name": "EJINDU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ek-reliable-mfb",
+    "name": "EK-RELIABLE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ekimogun-mfb",
+    "name": "EKIMOGUN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ekondo-mfb",
+    "name": "EKONDO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ekwulobia-mfb",
+    "name": "EKWULOBIA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ellington-microfinance-bank-limited",
+    "name": "Ellington Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "elo-emede-mfb",
+    "name": "ELO-EMEDE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "emerald-mfb",
+    "name": "EMERALD MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "empire-trust-mfb",
+    "name": "EMPIRE TRUST MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "endwell-mfb",
+    "name": "ENDWELL MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "enede-mfb-ltd",
+    "name": "ENEDE MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "enrich-mfb",
+    "name": "ENRICH MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "entrepreneur-microfinance-bank-limited",
+    "name": "Entrepreneur Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "equator-mfb",
+    "name": "EQUATOR MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "equinox-mfb",
+    "name": "EQUINOX MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "eso-e-mfb",
+    "name": "ESO-E MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "evergreen-mfb",
+    "name": "EVERGREEN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ewt-mfb",
+    "name": "EWT MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "excel-mfb",
+    "name": "EXCEL MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ezebo-mfb",
+    "name": "EZEBO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "faida-mfb-ltd",
+    "name": "FAIDA MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "fairmoney-mfb-ltd",
+    "name": "FAIRMONEY MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "fame-mfb",
+    "name": "FAME MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "fast-mfb",
+    "name": "FAST MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "fcmb-mfb-ltd",
+    "name": "FCMB MFB LTD.",
+    "country_code": "NG"
+  },
+  {
+    "id": "fecetu-mfb",
+    "name": "FECETU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-nekede-mfb-ltd",
+    "name": "FEDERAL POLYTECHNIC, NEKEDE MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "fedeth-co-op-mfb",
+    "name": "FEDETH CO-OP MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "fedpoly-nasarawa-mfb",
+    "name": "FEDPOLY NASARAWA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ffs-mfb",
+    "name": "FFS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "fidfund-mfb",
+    "name": "FIDFUND MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "fims-mfb",
+    "name": "FIMS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "finatrust-mfb",
+    "name": "FINATRUST MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "finca-mfb",
+    "name": "FINCA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "finex-mfb",
+    "name": "FINEX MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "firmus-mfb",
+    "name": "FIRMUS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "first-access-mfb-ltd",
+    "name": "FIRST ACCESS MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "first-heritage-mfb",
+    "name": "FIRST HERITAGE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "first-low-land-mfb",
+    "name": "FIRST LOW-LAND MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "first-mutual-mfb",
+    "name": "FIRST MUTUAL MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "first-option-mfb",
+    "name": "FIRST OPTION MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "first-royal-mfb",
+    "name": "FIRST ROYAL MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "flexi-microfinance-bank",
+    "name": "Flexi Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "flourish-mfb",
+    "name": "FLOURISH MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "foresight-mfb",
+    "name": "FORESIGHT MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "fortress-mfb",
+    "name": "FORTRESS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "forward-mfb",
+    "name": "FORWARD MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "fta-funtua-mfb",
+    "name": "FTA FUNTUA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "fud-mfb",
+    "name": "FUD MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "fullrange-microfinance-bank-ltd",
+    "name": "Fullrange Microfinance Bank Ltd",
+    "country_code": "NG"
+  },
+  {
+    "id": "fut-minna",
+    "name": "FUT MINNA",
+    "country_code": "NG"
+  },
+  {
+    "id": "futo-mfb",
+    "name": "FUTO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "gaa-akanbi-mfb",
+    "name": "GAA AKANBI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "gabasawa-mfb",
+    "name": "GABASAWA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "gamawa-mfb",
+    "name": "GAMAWA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "garewa-mfb",
+    "name": "GAREWA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "garki-mfb",
+    "name": "GARKI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "garu-mallam-mfb",
+    "name": "GARU MALLAM MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "gashua-mfb",
+    "name": "GASHUA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "gaya-mfb",
+    "name": "GAYA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "gbede-mfb",
+    "name": "GBEDE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "gezawa-mfb",
+    "name": "GEZAWA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "giant-stride-mfb-ltd",
+    "name": "GIANT STRIDE MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "gidauniya-alheri-mfb",
+    "name": "Gidauniya Alheri MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "giginya-mfb",
+    "name": "GIGINYA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "girei-mfb",
+    "name": "GIREI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "giwa-mfb",
+    "name": "GIWA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "global-initiative-mfb",
+    "name": "GLOBAL INITIATIVE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "glory-mfb",
+    "name": "GLORY MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "gmb-mfb",
+    "name": "GMB MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "gobarau-mfb",
+    "name": "GOBARAU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "golden-choice-mfb",
+    "name": "GOLDEN CHOICE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "goldman-mfb",
+    "name": "GOLDMAN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "gombe-mfb",
+    "name": "GOMBE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "good-neighbours-mfb",
+    "name": "GOOD NEIGHBOURS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "good-news-mfb",
+    "name": "GOOD NEWS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "good-shepherd-mfb",
+    "name": "GOOD SHEPHERD MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "gowans-mfb",
+    "name": "GOWANS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "grants-mfb",
+    "name": "GRANTS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "granule-microfinance-bank",
+    "name": "GRANULE MICROFINANCE BANK",
+    "country_code": "NG"
+  },
+  {
+    "id": "green-acres-mfb",
+    "name": "GREEN ACRES MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "green-energy-mfb",
+    "name": "GREEN ENERGY MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "green-bank-mfb",
+    "name": "GREEN-BANK MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "greenville-mfb",
+    "name": "GREENVILLE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "grooming-mfb",
+    "name": "GROOMING MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "gti-mfb",
+    "name": "GTI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "gudusisa-mfb",
+    "name": "GUDUSISA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "gulfare-mfb",
+    "name": "GULFARE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "gwong-mfb",
+    "name": "GWONG MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "hadeija-mfb",
+    "name": "HADEIJA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "halal-credit-mfb",
+    "name": "HALAL CREDIT MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "hallowed-mfb",
+    "name": "HALLOWED MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "hamada-mfb",
+    "name": "HAMADA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "hamda-mfb",
+    "name": "HAMDA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "hasal-mfb",
+    "name": "HASAL MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "headway-mfb-ltd",
+    "name": "HEADWAY MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "hedge-microfinance-bank-limited",
+    "name": "HEDGE MICROFINANCE BANK LIMITED",
+    "country_code": "NG"
+  },
+  {
+    "id": "highland-mfb",
+    "name": "HIGHLAND MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "hinache-mfb",
+    "name": "HINACHE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "honey-mfb",
+    "name": "HONEY MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "hope-alive-mfb",
+    "name": "HOPE ALIVE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "i-care-microfinance-bank-ltd",
+    "name": "I-Care Microfinance Bank Ltd",
+    "country_code": "NG"
+  },
+  {
+    "id": "ibeto-mfb",
+    "name": "IBETO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ibile-mfb",
+    "name": "IBILE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ibolo-mfb",
+    "name": "IBOLO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ibom-fadama-mfb",
+    "name": "IBOM FADAMA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ibrahim-badamasi-babangida-university-mfb",
+    "name": "IBRAHIM BADAMASI BABANGIDA UNIVERSITY  MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ibu-aje-mfb",
+    "name": "IBU-AJE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ichi-mfb",
+    "name": "ICHI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ideato-mfb",
+    "name": "IDEATO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "idemili-mfb",
+    "name": "IDEMILI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ifedapo-mfb",
+    "name": "IFEDAPO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ifelodun-mfb",
+    "name": "IFELODUN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "igbo-ukwu-mfb",
+    "name": "IGBO-UKWU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "igboora-mfb",
+    "name": "IGBOORA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ihiala-mfb",
+    "name": "IHIALA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ijare-mfb",
+    "name": "IJARE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ijebu-ife-mfb",
+    "name": "IJEBU IFE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ikenne-mfb",
+    "name": "IKENNE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ikere-microfinance-bank-limited",
+    "name": "Ikere Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "ikire-mfb",
+    "name": "IKIRE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ikorodu-division-mfb",
+    "name": "IKORODU DIVISION MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ikoyi-ile-mfb",
+    "name": "IKOYI-ILE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ikoyi-osun-mfb",
+    "name": "IKOYI-OSUN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ilaro-polytechnic-mfb",
+    "name": "ILARO POLYTECHNIC MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ile-oluji-mfb",
+    "name": "ILE-OLUJI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ilisan-mfb",
+    "name": "ILISAN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ilobu-mfb",
+    "name": "ILOBU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "iloffa-mfb",
+    "name": "ILOFFA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ilora-mfb",
+    "name": "ILORA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ilorin-mfb",
+    "name": "ILORIN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "iludun-oro-mfb",
+    "name": "ILUDUN ORO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ilutuntun-osoro-mfb",
+    "name": "ILUTUNTUN-OSORO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "imo-state-microfinance-bank",
+    "name": "IMO STATE MICROFINANCE BANK",
+    "country_code": "NG"
+  },
+  {
+    "id": "imodi-imosan-mfb",
+    "name": "IMODI-IMOSAN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "imopoly-mfb",
+    "name": "IMOPOLY MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "imowo-mfb",
+    "name": "IMOWO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "imsu-mfb",
+    "name": "IMSU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "imt-mfb",
+    "name": "IMT MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "indulge-microfinance-bank-limited",
+    "name": "Indulge Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "infinity-mfb",
+    "name": "INFINITY MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "insight-mfb",
+    "name": "INSIGHT MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ipapo-mfb",
+    "name": "IPAPO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "iperu-mfb",
+    "name": "IPERU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "irl-mfb",
+    "name": "IRL MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "isale-oyo-mfb",
+    "name": "ISALE OYO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ishiagu-mfb",
+    "name": "ISHIAGU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ishie-mfb",
+    "name": "ISHIE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "isi-ego-microfinance-bank-limited",
+    "name": "Isi-Ego Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "isi-uzo-mfb",
+    "name": "ISI-UZO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "island-mfb",
+    "name": "ISLAND MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "isua-mfb",
+    "name": "ISUA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "isuofia-mfb",
+    "name": "ISUOFIA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "iwa-mfb",
+    "name": "IWA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "iwoye-ijesa-mfb",
+    "name": "IWOYE-IJESA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "iya-zakari-mashi-mfb",
+    "name": "IYA-ZAKARI (MASHI) MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "iyamoye-mfb",
+    "name": "IYAMOYE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "iyeru-okin-mfb",
+    "name": "IYERU OKIN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "iyin-ekiti-mfb",
+    "name": "IYIN EKITI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "izon-mfb-ltd",
+    "name": "IZON MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "janzama-mfb",
+    "name": "JANZAMA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "jen-mfb",
+    "name": "JEN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "jessefield-mfb",
+    "name": "JESSEFIELD MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "jewel-coop-mfb",
+    "name": "JEWEL COOP MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "kabo-mfb",
+    "name": "KABO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "kadpoly-mfb",
+    "name": "KADPOLY MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "kadupe-mfb",
+    "name": "KADUPE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "kaizen-microfinance-bank-limited",
+    "name": "Kaizen Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "kankara-mfb",
+    "name": "KANKARA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "kankia-mfb-ltd",
+    "name": "KANKIA MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "kano-poly-mfb",
+    "name": "KANO POLY MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "kano-west-mfb",
+    "name": "KANO-WEST MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "katagum-mfb",
+    "name": "KATAGUM MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "katsu-microfinance-bank-limited",
+    "name": "Katsu Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "kayvee-mfb",
+    "name": "KAYVEE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "kc-mfb",
+    "name": "KC MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "kcmb-mfb",
+    "name": "KCMB MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "kenechukwu-mfb",
+    "name": "KENECHUKWU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "khb-mfb",
+    "name": "KHB MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "kingdom-college-mfb-ltd",
+    "name": "KINGDOM COLLEGE MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "kisi-mfb",
+    "name": "KISI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "kku-microfinance",
+    "name": "KKU Microfinance",
+    "country_code": "NG"
+  },
+  {
+    "id": "kmc-mfb",
+    "name": "KMC MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "koboweb-microfinance-bank-limited",
+    "name": "Koboweb Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "koins-microfinance-bank-limited",
+    "name": "Koins Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "kolisa-microfinance-bank-limited",
+    "name": "Kolisa Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "kontagora-mfb",
+    "name": "KONTAGORA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "kopo-kope-mfb",
+    "name": "KOPO-KOPE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "kredi-money-mfb-formerly-conpro-mfb",
+    "name": "KREDI MONEY MFB (Formerly CONPRO MFB)",
+    "country_code": "NG"
+  },
+  {
+    "id": "kuda-mfb",
+    "name": "KUDA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "kumbotso-mfb",
+    "name": "KUMBOTSO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "kunagaba-mfb",
+    "name": "KUNAGABA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "kunchi-mfb",
+    "name": "KUNCHI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "kura-mfb",
+    "name": "KURA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "kusalla-mfb",
+    "name": "KUSALLA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "kwacofocus-mfb",
+    "name": "KWACOFOCUS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "kwara-polytechnic-microfinance-bank-limited",
+    "name": "KWARA POLYTECHNIC MICROFINANCE BANK LIMITED",
+    "country_code": "NG"
+  },
+  {
+    "id": "kwasu-mfb",
+    "name": "KWASU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "kwatashi-mfb",
+    "name": "KWATASHI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "la-fayette-mfb",
+    "name": "LA FAYETTE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ladder-microfinance-bank",
+    "name": "Ladder Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "landgold-mfb",
+    "name": "LANDGOLD MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "lapo-mfb",
+    "name": "LAPO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "lavender",
+    "name": "LAVENDER",
+    "country_code": "NG"
+  },
+  {
+    "id": "lawyers-mfb",
+    "name": "LAWYERS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "layelu-mfb",
+    "name": "LAYELU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "leadcity-mfb",
+    "name": "LEADCITY MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "legacy-mfb",
+    "name": "LEGACY MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "legend-mfb",
+    "name": "LEGEND MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "letshego-mfb",
+    "name": "LETSHEGO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "levite-mfb",
+    "name": "LEVITE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "lifegate-mfb",
+    "name": "LIFEGATE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "light-mfb",
+    "name": "LIGHT MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "lightway-microfinance-bank-limited",
+    "name": "Lightway Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "links-mfb",
+    "name": "LINKS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "living-spring-mfb",
+    "name": "LIVING SPRING MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "lobrem-mfb",
+    "name": "LOBREM MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "lovonus-mfb",
+    "name": "LOVONUS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "m-m-mfb",
+    "name": "M & M MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "mab-allianz-mfb-ltd",
+    "name": "MAB ALLIANZ MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "macrod-mfb",
+    "name": "MACROD MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "madelyn-mfb",
+    "name": "MADELYN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "madobi-mfb",
+    "name": "MADOBI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "magajin-giri-mfb",
+    "name": "MAGAJIN-GIRI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "magnet-mfb",
+    "name": "MAGNET MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "maigatari-mfb",
+    "name": "MAIGATARI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "main-trust-mfb",
+    "name": "MAIN TRUST MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "mainland-mfb",
+    "name": "MAINLAND MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "mainstreet-mfb",
+    "name": "MAINSTREET MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "malachy-mfb",
+    "name": "MALACHY MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "mapoly-mfb",
+    "name": "MAPOLY MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "maritime-mfb",
+    "name": "MARITIME MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "matazu-mfb-ltd",
+    "name": "MATAZU MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "maxitrust-mfb",
+    "name": "MAXITRUST MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "mayden-microfinance-bank",
+    "name": "MAYDEN MICROFINANCE BANK",
+    "country_code": "NG"
+  },
+  {
+    "id": "mbaitoli-mfb",
+    "name": "MBAITOLI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "mbawulu-mfb",
+    "name": "MBAWULU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "mega-mfb",
+    "name": "MEGA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "megapraise-mfb",
+    "name": "MEGAPRAISE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "memento-mfb-ltd",
+    "name": "MEMENTO MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "memphis-microfinance-bank-limited",
+    "name": "MEMPHIS MICROFINANCE BANK LIMITED",
+    "country_code": "NG"
+  },
+  {
+    "id": "meridian-mfb",
+    "name": "MERIDIAN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "mgbidi-mfb",
+    "name": "MGBIDI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "mia-microfinance-bank-limited",
+    "name": "Mia Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "micheal-okpara-university-mfb",
+    "name": "MICHEAL OKPARA UNIVERSITY MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "microvis-mfb",
+    "name": "MICROVIS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "midland-mfb",
+    "name": "MIDLAND MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "mkobo-mfb-ltd",
+    "name": "MKOBO MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "moddibo-adama-university-microfinance-bank-limited",
+    "name": "Moddibo Adama University Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "model-mfb",
+    "name": "MODEL MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "modiya-yekokpe-mfb",
+    "name": "MODIYA YEKOKPE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "molusi-mfb",
+    "name": "MOLUSI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "monarch-mfb",
+    "name": "MONARCH MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "moneytronics-mfb-formerly-ipodo-ikeja-mfb",
+    "name": "MONEYTRONICS MFB (Formerly Ipodo-Ikeja MFB)",
+    "country_code": "NG"
+  },
+  {
+    "id": "moneytrust-mfb",
+    "name": "Moneytrust MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "movasco-op-microfinance-bank-limited",
+    "name": "Movasco-Op Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "moyofade-mfb",
+    "name": "MOYOFADE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "mozfin-mfb",
+    "name": "MOZFIN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "muamala-microfinance-bank-limited",
+    "name": "Muamala Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "multivest-mfb",
+    "name": "MULTIVEST MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "mutual-benefit-mfb",
+    "name": "MUTUAL BENEFIT MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "mutual-trust-mfb",
+    "name": "MUTUAL TRUST MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "nagarta-mfb",
+    "name": "NAGARTA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "naisa-mfb",
+    "name": "NAISA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "nakowa-mfb",
+    "name": "NAKOWA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "namoda-mfb",
+    "name": "NAMODA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "nasarawa-mfb",
+    "name": "NASARAWA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ndiolu-mfb",
+    "name": "NDIOLU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ndiorah-mfb",
+    "name": "NDIORAH MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "nenzit-mfb",
+    "name": "NENZIT MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "neptune-mfb",
+    "name": "NEPTUNE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "new-dawn-mfb",
+    "name": "NEW DAWN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "new-era-mfb",
+    "name": "NEW ERA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "new-golden-pastures-mfb",
+    "name": "NEW GOLDEN PASTURES MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "new-women-s-mfb",
+    "name": "NEW WOMEN'S MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "nexton-microfinance-bank-limited",
+    "name": "Nexton Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "ngbo-mfb-ltd",
+    "name": "NGBO MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "nice-mfb",
+    "name": "NICE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "nigerian-navy-mfb-ltd",
+    "name": "NIGERIAN NAVY MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "nigerian-prisons-mfb",
+    "name": "NIGERIAN PRISONS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ningi-mfb",
+    "name": "NINGI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "nirsal-mfb",
+    "name": "NIRSAL MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "nkpa-mfb",
+    "name": "NKPA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "nkpologwu-mfb",
+    "name": "NKPOLOGWU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "nkpolu-ust-mfb",
+    "name": "NKPOLU-UST MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "nnokwa-mfb",
+    "name": "NNOKWA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "noble-mfb",
+    "name": "NOBLE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "nomase-microfinance-bank-ltd",
+    "name": "NOMASE MICROFINANCE BANK LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "noun-mfb",
+    "name": "NOUN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "novel-mfb",
+    "name": "NOVEL MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "novus-microfinance-bank-limited",
+    "name": "Novus Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "npf-mfb",
+    "name": "NPF MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "nri-mfb",
+    "name": "NRI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "nsu-mfb",
+    "name": "NSU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "nsuk-mfb",
+    "name": "NSUK MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "nsukka-township-mfb",
+    "name": "NSUKKA TOWNSHIP MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "nuggets-mfb",
+    "name": "NUGGETS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "numo-mfb",
+    "name": "NUMO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "nun-mfb",
+    "name": "NUN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "nut-okebola-mfb",
+    "name": "NUT OKEBOLA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "nwannegadi-mfb",
+    "name": "NWANNEGADI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "oakland-mfb",
+    "name": "OAKLAND MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "oba-mfb",
+    "name": "OBA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "obafemi-awolowo-university-mfb",
+    "name": "OBAFEMI AWOLOWO UNIVERSITY MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "obeledu-mfb",
+    "name": "OBELEDU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "obodoukwu-mfb",
+    "name": "OBODOUKWU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "obokun-mfb",
+    "name": "OBOKUN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "obollo-mfb",
+    "name": "OBOLLO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "oche-mfb",
+    "name": "OCHE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ocon-success-mfb",
+    "name": "OCON SUCCESS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "octopus-mfb",
+    "name": "OCTOPUS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "odoakpu-mfb",
+    "name": "ODOAKPU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "odu-mfb",
+    "name": "ODU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "oganiru-microfinance-bank-limited",
+    "name": "Oganiru Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "ogberuru-mfb",
+    "name": "OGBERURU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ogbete-mfb",
+    "name": "OGBETE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ogboefere-mfb",
+    "name": "OGBOEFERE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ogige-mfb",
+    "name": "OGIGE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ogiyan-mfb",
+    "name": "OGIYAN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ohafia-mfb",
+    "name": "OHAFIA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ohha-mfb",
+    "name": "OHHA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ojokoro-mfb",
+    "name": "OJOKORO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "okada-microfinance-bank-limited",
+    "name": "Okada Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "oke-aro-oredegbe-mfb",
+    "name": "OKE- ARO OREDEGBE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "okeagbe-mfb",
+    "name": "OKEAGBE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "okengwe-mfb",
+    "name": "OKENGWE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "oko-mfb",
+    "name": "OKO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "okpe-mfb",
+    "name": "OKPE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "okpofe-mfb",
+    "name": "OKPOFE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "okpoga-mfb",
+    "name": "OKPOGA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "okuku-mfb",
+    "name": "OKUKU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "okuta-mfb",
+    "name": "OKUTA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "okwo-oha-mfb",
+    "name": "OKWO-OHA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "olabisi-onabanjo-university-mfb",
+    "name": "OLABISI ONABANJO UNIVERSITY MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "olive-mfb",
+    "name": "OLIVE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "olomu-aperan-microfinance-bank-limited",
+    "name": "Olomu Aperan Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "olowolagba-mfb",
+    "name": "OLOWOLAGBA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "olu-basiri-mfb",
+    "name": "OLU-BASIRI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "oluchukwu-mfb",
+    "name": "OLUCHUKWU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "omak-mfb",
+    "name": "OMAK MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "omiye-mfb",
+    "name": "OMIYE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "omuma-mfb",
+    "name": "OMUMA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "onewallet-microfinance-bank-limited",
+    "name": "Onewallet Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "onibu-ore-mfb",
+    "name": "ONIBU-ORE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "optimum-global-microfinance-bank-limited",
+    "name": "Optimum Global Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "oraukwu-mfb",
+    "name": "ORAUKWU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "orilonise-mfb",
+    "name": "ORILONISE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "orisun-mfb",
+    "name": "ORISUN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "orita-basorun-mfb",
+    "name": "ORITA BASORUN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "orokam-mfb",
+    "name": "OROKAM MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "orsu-mfb",
+    "name": "ORSU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "osanta-mfb",
+    "name": "OSANTA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "osct-mfb",
+    "name": "OSCT MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "osi-mfb",
+    "name": "OSI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "osomhe-mfb",
+    "name": "OSOMHE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ospoly-mfb",
+    "name": "OSPOLY MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "osumenyi-mfb",
+    "name": "OSUMENYI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "otuo-mfb",
+    "name": "OTUO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ours-mfb",
+    "name": "OURS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "owotutu-mfb",
+    "name": "OWOTUTU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "oyan-mfb",
+    "name": "OYAN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "oye-versity-microfinance-bank-limited",
+    "name": "OYE VERSITY MICROFINANCE BANK LIMITED",
+    "country_code": "NG"
+  },
+  {
+    "id": "pact-microfinance-bank",
+    "name": "PACT MICROFINANCE BANK",
+    "country_code": "NG"
+  },
+  {
+    "id": "palmcoast-mfb",
+    "name": "PALMCOAST MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "palmera-mfb",
+    "name": "PALMERA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "pana-mfb",
+    "name": "PANA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "paragon-microfinance-bank-limited",
+    "name": "Paragon Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "parkway-mfb",
+    "name": "PARKWAY MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "pathfinder-mfb",
+    "name": "PATHFINDER MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "patrickgold-mfb",
+    "name": "PATRICKGOLD MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "payrep-microfinance-bank-limited",
+    "name": "Payrep Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "peace-mfb",
+    "name": "PEACE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "pecan-trust-mfb",
+    "name": "PECAN TRUST MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "peninsula-mfb-ltd",
+    "name": "PENINSULA MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "pennywise-mfb",
+    "name": "PENNYWISE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "pentecost-mfb-ltd",
+    "name": "PENTECOST MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "personal-trust-mfb",
+    "name": "PERSONAL TRUST MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "petra-mfb",
+    "name": "PETRA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "phoenix-mfb",
+    "name": "PHOENIX MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "pillar-mfb",
+    "name": "PILLAR MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "pioneer-microfinance-bank-limited",
+    "name": "Pioneer Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "platinum-microfinance-bank-limited",
+    "name": "Platinum Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "plusone-microfinance-bank-limited",
+    "name": "Plusone Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "pointone-microfinance-bank",
+    "name": "Pointone Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "polybadan-mfb",
+    "name": "POLYBADAN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "polyunwanna-mfb",
+    "name": "POLYUNWANNA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "preeminent-mfb",
+    "name": "PREEMINENT MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "premier-microfinance-bank-limited",
+    "name": "Premier Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "prestige-mfb",
+    "name": "PRESTIGE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "prisco-mfb",
+    "name": "PRISCO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "pristine-divitis-mfb",
+    "name": "PRISTINE DIVITIS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "projects-mfb",
+    "name": "PROJECTS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "prospects-mfb",
+    "name": "PROSPECTS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "prosperity-mfb",
+    "name": "PROSPERITY MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "prudent-mfb",
+    "name": "PRUDENT MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "pyramid-mfb",
+    "name": "PYRAMID MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "qube-mfb",
+    "name": "QUBE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "quickfund-mfb",
+    "name": "QUICKFUND MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "rahama-mfb",
+    "name": "RAHAMA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "rakib-mfb",
+    "name": "RAKIB MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ramilowo-mfb",
+    "name": "RAMILOWO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "randalpha",
+    "name": "RANDALPHA",
+    "country_code": "NG"
+  },
+  {
+    "id": "rano-mfb",
+    "name": "RANO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "refined-benefits-mfb",
+    "name": "REFINED BENEFITS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "regent-mfb",
+    "name": "REGENT MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "rehoboth-mfb",
+    "name": "REHOBOTH MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "reliance-mfb",
+    "name": "RELIANCE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "renmoney-mfb",
+    "name": "RENMONEY MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "rephidim-mfb",
+    "name": "REPHIDIM MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ric-mfb",
+    "name": "RIC MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "richway-mfb-ltd",
+    "name": "RICHWAY MFB LTD.",
+    "country_code": "NG"
+  },
+  {
+    "id": "ricia-capital-microfinance-bank-limited",
+    "name": "Ricia Capital Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "rigo-mfb",
+    "name": "RIGO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "rima-growth-pathway-mfb-ltd",
+    "name": "RIMA GROWTH PATHWAY MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "rima-mfb",
+    "name": "RIMA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "riverside-mfb",
+    "name": "RIVERSIDE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "rockshield-mfb",
+    "name": "ROCKSHIELD MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "rolez-mfb",
+    "name": "ROLEZ MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "royal-blue-mfb",
+    "name": "ROYAL BLUE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "royal-excellent-microfinance-bank-limited",
+    "name": "Royal Excellent Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "royal-exchange-mfb",
+    "name": "ROYAL EXCHANGE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "royal-life-key-mfb",
+    "name": "ROYAL LIFE KEY MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "royal-mfb",
+    "name": "ROYAL MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "rubies-mfb",
+    "name": "RUBIES MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "run-microfinance-bank-limited",
+    "name": "Run Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "sabi-mfb",
+    "name": "SABI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "sabon-yelwa-mfb",
+    "name": "SABON YELWA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "sabuwa-mfb-ltd",
+    "name": "SABUWA MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "safana-mfb",
+    "name": "SAFANA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "safe-haven-mfb",
+    "name": "SAFE HAVEN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "safeline-mfb",
+    "name": "SAFELINE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "sagamu-mfb",
+    "name": "SAGAMU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "sandamu-mfb",
+    "name": "SANDAMU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "sapida-mfb",
+    "name": "SAPIDA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "sarkin-kudu-mfb-ltd",
+    "name": "SARKIN KUDU MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "savesimple-microfinance-bank-limited",
+    "name": "Savesimple Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "seal-microfinance-bank-limited",
+    "name": "SEAL MICROFINANCE BANK LIMITED",
+    "country_code": "NG"
+  },
+  {
+    "id": "seap-mfb",
+    "name": "SEAP MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "seedvest-mfb",
+    "name": "SEEDVEST MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "senchi-mfb",
+    "name": "SENCHI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "shalom-mfb",
+    "name": "Shalom MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "shepherd-trust-mfb",
+    "name": "SHEPHERD TRUST MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "shield-mfb",
+    "name": "SHIELD MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "shine-microfinance-bank-limited",
+    "name": "Shine Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "shongom-mfb",
+    "name": "SHONGOM MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "silverend-microfinance-bank-limited",
+    "name": "Silverend Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "sincere-mfb",
+    "name": "SINCERE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "sls-mfb",
+    "name": "SLS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "smartmicro-mfb",
+    "name": "SMARTMICRO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "snow-mfb",
+    "name": "SNOW MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "solid-allianz-mfb",
+    "name": "SOLID ALLIANZ MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "solid-rock-mfb",
+    "name": "SOLID ROCK MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "solid-trust-mfb",
+    "name": "Solid Trust MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "soroman-mfb",
+    "name": "SOROMAN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "sosa-microfinance-bank-limited",
+    "name": "Sosa Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "source-microfinance-bank-limited",
+    "name": "SOURCE MICROFINANCE BANK LIMITED",
+    "country_code": "NG"
+  },
+  {
+    "id": "sparkle-mfb",
+    "name": "SPARKLE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "spectrum-mfb",
+    "name": "SPECTRUM MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "springfield-microfinance-bank-limited",
+    "name": "Springfield Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "springville-microfinance-bank-limited",
+    "name": "Springville Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "standard-mfb",
+    "name": "STANDARD MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "stateside-mfb",
+    "name": "STATESIDE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "stellas-mfb",
+    "name": "STELLAS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "step-by-step-mfb",
+    "name": "STEP BY STEP MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "stillwaters-mfb-ltd",
+    "name": "STILLWATERS MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "stockcorp-mfb",
+    "name": "STOCKCORP MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "strait-sahara-microfinance-bank-limited",
+    "name": "Strait Sahara Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "sulspap-mfb",
+    "name": "SULSPAP MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "sunbeam-mfb",
+    "name": "SUNBEAM MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "suntop-microfinance-bank",
+    "name": "Suntop Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "support-mfb",
+    "name": "SUPPORT MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "sure-anchor-mfb",
+    "name": "SURE ANCHOR MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "swifttrust-microfinance-bank-limited",
+    "name": "Swifttrust Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "tanadi-mfb",
+    "name": "TANADI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "tangale-mfb",
+    "name": "TANGALE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "tangerine-money-microfinance-bank",
+    "name": "Tangerine Money Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "tasued-mfb",
+    "name": "TASUED MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "tcf-mfb",
+    "name": "TCF MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "teerus-microfinance-bank-limited",
+    "name": "Teerus Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "tellerone-fi-microfinance-bank-limited",
+    "name": "Tellerone FI Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "tenn-microfinance-bank-limited",
+    "name": "Tenn Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "tf-mfb",
+    "name": "TF MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "the-millennium-mfb",
+    "name": "The Millennium MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "top-rate-mfb",
+    "name": "TOP RATE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "topclass-mfb",
+    "name": "TOPCLASS MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "total-trust-mfb",
+    "name": "TOTAL TRUST MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "touchgold-mfb",
+    "name": "TOUCHGOLD MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "townserve-mfb",
+    "name": "TOWNSERVE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "transpay-microfinance-bank-limited",
+    "name": "Transpay Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "treasures-mfb",
+    "name": "TREASURES MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "trident-mfb",
+    "name": "TRIDENT MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "tripple-a-mfb",
+    "name": "TRIPPLE A MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "triumphant-microfinance-bank-limited",
+    "name": "TRIUMPHANT MICROFINANCE BANK LIMITED",
+    "country_code": "NG"
+  },
+  {
+    "id": "trust-mfb",
+    "name": "TRUST MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "trustbanc-j6",
+    "name": "TRUSTBANC J6",
+    "country_code": "NG"
+  },
+  {
+    "id": "trustfund-mfb",
+    "name": "TRUSTFUND MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "tsanyawa-mfb",
+    "name": "TSANYAWA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "tudunwada-mfb-ltd",
+    "name": "TUDUNWADA MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "u-c-mfb",
+    "name": "U & C MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ubj-microfinance-bank-limited",
+    "name": "UBJ Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "ucb-mfb",
+    "name": "UCB MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "uda-mfb",
+    "name": "UDA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "udoka-mfb",
+    "name": "UDOKA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "uforo-microfinance-bank-limited",
+    "name": "Uforo Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "uga-mfb",
+    "name": "UGA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ugborimili-mfb",
+    "name": "UGBORIMILI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "uhuru-mfb",
+    "name": "UHURU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ukpor-mfb",
+    "name": "UKPOR MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ukwala-mfb",
+    "name": "UKWALA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ultimate-mfb",
+    "name": "ULTIMATE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ultraviolet-microfinance-bank-limited",
+    "name": "Ultraviolet Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "ummah-mfb",
+    "name": "UMMAH MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "umuawulu-mfb",
+    "name": "UMUAWULU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "umuchinemere-procredit-mfb",
+    "name": "UMUCHINEMERE PROCREDIT MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "umuchukwu-mfb",
+    "name": "UMUCHUKWU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "umunnachi-mfb",
+    "name": "UMUNNACHI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "umunri-microfinance-bank-limited",
+    "name": "Umunri Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "umuoji-mfb",
+    "name": "UMUOJI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "umyu-microfinance-bank-limited",
+    "name": "UMYU Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "unaab-mfb",
+    "name": "UNAAB MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ungogo-mfb",
+    "name": "UNGOGO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "unibadan-mfb",
+    "name": "UNIBADAN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "unical-mfb",
+    "name": "UNICAL MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "unicorn-microfinance-bank-limited",
+    "name": "Unicorn Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "unifund-mfb",
+    "name": "UNIFUND MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "unilag-mfb-ltd",
+    "name": "UNILAG MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "unilorin-mfb",
+    "name": "UNILORIN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "unimaid-mfb",
+    "name": "UNIMAID MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "united-capital-mfb",
+    "name": "UNITED CAPITAL MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "uniuyo-mfb",
+    "name": "UNIUYO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "university-of-benin-mfb",
+    "name": "UNIVERSITY OF BENIN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "unn-mfb",
+    "name": "UNN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "unubi-mfb",
+    "name": "UNUBI MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "urban-mfb",
+    "name": "URBAN MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "ure-mfb",
+    "name": "URE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "utako-mfb",
+    "name": "UTAKO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "utuh-mfb",
+    "name": "UTUH MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "uvuoma-mfb",
+    "name": "UVUOMA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "uvuru-mfb",
+    "name": "UVURU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "uzondu-mfb",
+    "name": "UZONDU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "vangel-microfinance-bank-limited",
+    "name": "Vangel Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "vcl-mfb",
+    "name": "VCL MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "vfd-mfb-ltd",
+    "name": "VFD MFB LTD",
+    "country_code": "NG"
+  },
+  {
+    "id": "victory-mfb",
+    "name": "VICTORY MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "visa-mfb",
+    "name": "VISA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "viscount-mfb",
+    "name": "VISCOUNT MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "vista-microfinance-bank-limited",
+    "name": "Vista Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "waila-mfb",
+    "name": "WAILA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "wallet-microfinance-bank",
+    "name": "Wallet Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "waya-mfb",
+    "name": "WAYA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "we-microfinance-bank-limited",
+    "name": "WE MICROFINANCE BANK LIMITED",
+    "country_code": "NG"
+  },
+  {
+    "id": "welfare-mfb",
+    "name": "WELFARE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "weston-charis-microfinance-bank-limited",
+    "name": "Weston-Charis Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "wetland-mfb",
+    "name": "WETLAND MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "willows-microfinance-bank-limited",
+    "name": "Willows Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "woliwo-mfb",
+    "name": "WOLIWO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "women-development-mfb",
+    "name": "WOMEN DEVELOPMENT MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "wra-mfb",
+    "name": "WRA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "wudil-mfb",
+    "name": "WUDIL MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "xslnce-mfb",
+    "name": "XSLNCE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "yabo-mfb",
+    "name": "YABO MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "yankari-mfb",
+    "name": "Yankari MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "yauri-emirates-mfb",
+    "name": "YAURI EMIRATES MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "yct-microfinance-bank",
+    "name": "YCT Microfinance Bank",
+    "country_code": "NG"
+  },
+  {
+    "id": "yes-mfb",
+    "name": "YES MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "yobe-state-mfb",
+    "name": "YOBE STATE MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "zazzau-mfb",
+    "name": "ZAZZAU MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "zefa-mfb",
+    "name": "ZEFA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "zikora-mfb",
+    "name": "ZIKORA MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "zion-mfb",
+    "name": "ZION MFB",
+    "country_code": "NG"
+  },
+  {
+    "id": "zircon-microfinance-bank-limited",
+    "name": "Zircon Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "zitra-microfinance-bank-limited",
+    "name": "Zitra Microfinance Bank Limited",
+    "country_code": "NG"
+  },
+  {
+    "id": "zurmi-mfb",
+    "name": "ZURMI MFB",
+    "country_code": "NG"
+  }
+]

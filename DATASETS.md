@@ -202,6 +202,17 @@ The 28-record commercial-bank snapshot from the supplied CBN `Export (1).xlsx` w
 
 Each record uses a deterministic lowercase bank ID, `country_code` `NG`, an official website URL and a required local logo URL. Where verified, `cbn_code` contains the three-digit CBN institution code and `nip_code` contains the six-digit NIP receiving-institution code. These fields are optional in this snapshot; omitted values were not sufficiently verified and are not inferred. Logos are immutable vendored PNG assets with source URLs, hashes and provenance recorded in the attribution files. Bank names and logos remain the property and trademarks of their respective owners; SoftData provides them for identification and directory purposes only. Rights holders may request correction, replacement or removal of an inaccurate logo without removal of the factual bank record.
 
+### `ng-microfinance-banks`
+
+The roster-only 790-record active Nigerian microfinance-bank dataset from the reconciled CBN/NDIC status snapshot.
+
+- Data: `datasets/finance/microfinance_banks.json`
+- Schema: `datasets/schemas/finance/microfinance_banks.schema.json`
+- Metadata: `datasets/metadata/finance/microfinance_banks.json`
+- Reconciliation manifest: `datasets/metadata/finance/microfinance_banks_reconciliation.json`
+
+Records contain only `id`, `name` and `country_code`. The 829-row CBN snapshot is reduced by 39 evidence-backed exclusions: four duplicate/stale rows, 33 matched revoked institutions, the AKPO predecessor and Verdant-Capital. Websites, logos, categories, states, CBN codes and NIP codes are deferred.
+
 ### Nigerian regulated-finance categories
 
 Six additional CBN category snapshots are available as dataset-only packages:

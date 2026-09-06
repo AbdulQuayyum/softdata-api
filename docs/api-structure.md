@@ -102,6 +102,7 @@ softdata-api/
 │   ├── finance/
 │   │   ├── development_finance_institutions.json
 │   │   ├── financial_holding_companies.json
+│   │   ├── microfinance_banks.json
 │   │   ├── merchant_banks.json
 │   │   ├── non_interest_institutions.json
 │   │   ├── payment_service_banks.json
@@ -125,6 +126,7 @@ softdata-api/
 │   │   ├── finance/
 │   │   │   ├── development_finance_institutions.json
 │   │   │   ├── financial_holding_companies.json
+│   │   │   ├── microfinance_banks.json
 │   │   │   ├── merchant_banks.json
 │   │   │   ├── non_interest_institutions.json
 │   │   │   ├── payment_service_banks.json
@@ -148,6 +150,7 @@ softdata-api/
 │       ├── finance/
 │       │   ├── development_finance_institutions.schema.json
 │       │   ├── financial_holding_companies.schema.json
+│       │   ├── microfinance_banks.schema.json
 │       │   ├── merchant_banks.schema.json
 │       │   ├── non_interest_institutions.schema.json
 │       │   ├── payment_service_banks.schema.json

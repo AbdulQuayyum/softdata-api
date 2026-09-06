@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://softdata-api.local/schemas/finance/microfinance_banks.schema.json",
+  "title": "Nigeria Microfinance Banks",
+  "description": "Roster-only active Nigerian microfinance-bank snapshot.",
+  "type": "array",
+  "minItems": 790,
+  "maxItems": 790,
+  "uniqueItems": true,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "name",
+      "country_code"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1
+      },
+      "country_code": {
+        "type": "string",
+        "const": "NG"
+      }
+    }
+  }
+}
