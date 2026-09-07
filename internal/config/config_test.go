@@ -90,6 +90,38 @@ func TestLoadRejectsInvalidPort(t *testing.T) {
 	}
 }
 
+func TestLoadPrefersManagedRuntimePort(t *testing.T) {
+	cfg, err := load(lookupFromMap(map[string]string{
+		"PORT":                "41561",
+		"SERVER_PORT":         "8080",
+		"DATABASE_URL":        "postgres://localhost/softdata",
+		"AUTH_TOKEN_SECRET":   strings.Repeat("a", 32),
+		"ANONYMOUS_ID_SECRET": strings.Repeat("b", 32),
+	}))
+	if err != nil {
+		t.Fatalf("load() error = %v", err)
+	}
+	if got := cfg.Server.ListenAddress(); got != "127.0.0.1:41561" {
+		t.Fatalf("unexpected listen address: %s", got)
+	}
+}
+
+func TestLoadRejectsInvalidManagedRuntimePort(t *testing.T) {
+	_, err := load(lookupFromMap(map[string]string{
+		"PORT":                "not-a-port",
+		"SERVER_PORT":         "8080",
+		"DATABASE_URL":        "postgres://localhost/softdata",
+		"AUTH_TOKEN_SECRET":   strings.Repeat("a", 32),
+		"ANONYMOUS_ID_SECRET": strings.Repeat("b", 32),
+	}))
+	if err == nil {
+		t.Fatal("expected error")
+	}
+	if !strings.Contains(err.Error(), "PORT") {
+		t.Fatalf("expected PORT error, got %v", err)
+	}
+}
+
 func TestLoadRejectsInvalidDuration(t *testing.T) {
 	_, err := load(lookupFromMap(map[string]string{
 		"SERVER_READ_TIMEOUT": "0s",

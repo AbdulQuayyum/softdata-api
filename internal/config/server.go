@@ -33,7 +33,16 @@ func loadServerConfig(lookup LookupEnv) (ServerConfig, error) {
 		host = "127.0.0.1"
 	}
 
-	port, err := parsePort(lookupString(lookup, "SERVER_PORT"))
+	// Managed runtimes commonly inject PORT. Prefer it over the local
+	// SERVER_PORT setting so the process binds to the port being probed.
+	portName := "SERVER_PORT"
+	portRaw := lookupString(lookup, "PORT")
+	if portRaw != "" {
+		portName = "PORT"
+	} else {
+		portRaw = lookupString(lookup, "SERVER_PORT")
+	}
+	port, err := parsePort(portName, portRaw)
 	if err != nil {
 		return ServerConfig{}, err
 	}
@@ -92,17 +101,17 @@ func loadServerConfig(lookup LookupEnv) (ServerConfig, error) {
 	}, nil
 }
 
-func parsePort(raw string) (int, error) {
+func parsePort(name, raw string) (int, error) {
 	if strings.TrimSpace(raw) == "" {
 		return 8080, nil
 	}
 
 	value, err := strconv.Atoi(strings.TrimSpace(raw))
 	if err != nil {
-		return 0, fmt.Errorf("invalid SERVER_PORT")
+		return 0, fmt.Errorf("invalid %s", name)
 	}
 	if value < 1 || value > 65535 {
-		return 0, fmt.Errorf("invalid SERVER_PORT")
+		return 0, fmt.Errorf("invalid %s", name)
 	}
 	return value, nil
 }
