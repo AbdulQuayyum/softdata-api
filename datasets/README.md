@@ -14,6 +14,7 @@ datasets/
 │   └── states.json
 ├── education/
 │   ├── colleges_of_education.json
+│   ├── polytechnics.json
 │   └── universities.json
 ├── finance/
 │   ├── development_finance_institutions.json
@@ -34,6 +35,8 @@ datasets/
 │   │   ├── time_zones.json
 │   │   └── states.json
 │   ├── education/
+│   │   ├── colleges_of_education.json
+│   │   ├── polytechnics.json
 │   │   └── universities.json
 │   └── finance/
 │       ├── development_finance_institutions.json
@@ -55,6 +58,8 @@ datasets/
 │   │   ├── time_zones.schema.json
 │   │   └── states.schema.json
 │   ├── education/
+│   │   ├── colleges_of_education.schema.json
+│   │   ├── polytechnics.schema.json
 │   │   └── universities.schema.json
 │   └── finance/
 │       ├── development_finance_institutions.schema.json
@@ -79,6 +84,7 @@ Regulated-finance logo assets are embedded under `assets/financial-institutions/
 - `geography/states.json` is the data file.
 - `geography/time_zones.json` is the compiled catalogue of canonical IANA time zones from `zone1970.tab`.
 - `education/colleges_of_education.json` is the compiled catalogue of current NCCE-listed colleges of education.
+- `education/polytechnics.json` is the 168-record static catalogue of current NBTE-listed Nigerian polytechnics.
 - `education/universities.json` is the compiled catalogue of current NUC-listed Nigerian universities.
 - `finance/international_money_transfer_operators.json` is the compiled register snapshot of current CBN-listed IMTO entries, with optional verified website URLs.
 - `finance/currencies.json` is the compiled snapshot of current ISO 4217 monetary currencies.
@@ -99,6 +105,7 @@ Regulated-finance logo assets are embedded under `assets/financial-institutions/
 - `schemas/geography/states.schema.json` describes the record contract.
 - `schemas/geography/time_zones.schema.json` describes the canonical IANA time-zone record contract.
 - `schemas/education/colleges_of_education.schema.json` describes the college-of-education record contract.
+- `schemas/education/polytechnics.schema.json` describes the five-field polytechnic record contract.
 - `schemas/education/universities.schema.json` describes the university record contract.
 - `schemas/finance/international_money_transfer_operators.schema.json` describes the IMTO record contract.
 - `schemas/finance/currencies.schema.json` describes the currency record contract.
@@ -106,6 +113,7 @@ Regulated-finance logo assets are embedded under `assets/financial-institutions/
 - The six related Nigerian regulated-finance schemas use Draft 2020-12 arrays with fixed snapshot counts, `NG` country codes, deterministic IDs and optional code, website and logo fields.
 - `metadata/education/universities.json` records provenance, versioning and licensing details for the university catalogue.
 - `metadata/education/colleges_of_education.json` records provenance, versioning and licensing details for the colleges-of-education catalogue.
+- `metadata/education/polytechnics.json` and `metadata/education/polytechnics_reconciliation.json` record source provenance and roster decisions for polytechnics.
 - `metadata/geography/geopolitical_zones.json` records provenance, versioning and licensing details for the zone catalogue.
 - `metadata/geography/lgas.json` records provenance, versioning and licensing details for the LGA catalogue.
 - `metadata/geography/states.json` records provenance, versioning and licensing details.

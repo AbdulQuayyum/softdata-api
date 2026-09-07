@@ -106,6 +106,7 @@ softdata-api/
 │   │           └── *.svg                  # 248 vendored flag assets
 │   ├── education/
 │   │   ├── colleges_of_education.json
+│   │   ├── polytechnics.json
 │   │   └── universities.json
 │   ├── finance/
 │   │   ├── development_finance_institutions.json
@@ -130,6 +131,8 @@ softdata-api/
 │   ├── metadata/
 │   │   ├── education/
 │   │   │   ├── colleges_of_education.json
+│   │   │   ├── polytechnics.json
+│   │   │   ├── polytechnics_reconciliation.json
 │   │   │   └── universities.json
 │   │   ├── finance/
 │   │   │   ├── development_finance_institutions.json
@@ -165,6 +168,7 @@ softdata-api/
 │   └── schemas/
 │       ├── education/
 │       │   ├── colleges_of_education.schema.json
+│       │   ├── polytechnics.schema.json
 │       │   └── universities.schema.json
 │       ├── finance/
 │       │   ├── development_finance_institutions.schema.json

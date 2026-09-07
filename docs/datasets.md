@@ -175,6 +175,17 @@ Nigeria's current National Commission for Colleges of Education register of acti
 
 The package version is `1.0.0` and contains 244 college records across the current NCCE federal, state and private categories (`28` federal, `48` state, `168` private). Each record represents one active college listing, with `state_id` linking the record to `ng-states` and `ownership_type` preserving the category published by the NCCE. The stale `Cross River State Coll. of Education, Akampa` row is excluded because current Cross River State Government evidence describes the successor as a university that is already represented in `ng-universities`. SoftData's independent compilation, schema and metadata are CC BY 4.0; the NCCE and other official publications retain their own rights.
 
+### `ng-polytechnics`
+
+Nigeria's reconciled active polytechnic roster from the NBTE 25th Edition 2025 directory.
+
+- Data: `datasets/education/polytechnics.json`
+- Schema: `datasets/schemas/education/polytechnics.schema.json`
+- Metadata: `datasets/metadata/education/polytechnics.json`
+- Reconciliation: `datasets/metadata/education/polytechnics_reconciliation.json`
+
+The package contains 168 records: 35 federal, 43 state and 90 private polytechnics. The compact public contract contains only `id`, `name`, `ownership_type`, `state_id` and `country_code`; specialist institutes, colleges and transition records from the mixed source section are excluded and documented. This pass adds only the static dataset foundation; websites, logos, repository methods and HTTP routes are intentionally deferred.
+
 ## Dataset Principles
 
 - Every dataset should have a stable identifier.

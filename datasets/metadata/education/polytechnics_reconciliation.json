@@ -1,0 +1,1594 @@
+{
+  "dataset_key": "ng-polytechnics",
+  "source_snapshot": {
+    "organization": "National Board for Technical Education",
+    "title": "25th Edition 2025 Directory of Accredited Programmes",
+    "url": "https://web.nbte.gov.ng/sites/default/files/2025-11/25th%20Edition%202025%20Directory.pdf",
+    "purpose": "Primary current roster boundary and ownership classification for Nigerian polytechnics.",
+    "accessed_at": "2026-09-07",
+    "publication_date": "2025-11",
+    "response_bytes": 13841731,
+    "sha256": "11c7e9b7e6f63136ae114c1bc8cc6884280c5555aad64a4b17cb705bbbbafcda",
+    "raw_record_count": 194,
+    "categories_included": [
+      "polytechnics",
+      "mixed NBTE-supervised institutions appearing under the polytechnic heading"
+    ],
+    "current_active_only": false,
+    "missing_or_incomplete_fields": [
+      "state_id is not a source field",
+      "some source names contain typographical errors",
+      "the heading includes specialist institutes, colleges and transition records"
+    ]
+  },
+  "raw_record_count": 194,
+  "final_record_count": 168,
+  "classification_counts": {
+    "retain_active": 168,
+    "exclude_wrong_category": 21,
+    "exclude_converted_to_university": 1,
+    "exclude_unapproved": 1,
+    "exclude_rename_to_current_identity": 1,
+    "rename_to_current_identity": 2
+  },
+  "arithmetic": "194 source entries = 168 retained + 26 excluded or reconciled source rows.",
+  "records": [
+    {
+      "source_name": "Abdu Gusau Polytechnic",
+      "canonical_name": "Abdu Gusau Polytechnic",
+      "ownership_type": "state",
+      "state_id": "zamfara",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Abia State Polytechnic",
+      "canonical_name": "Abia State Polytechnic",
+      "ownership_type": "state",
+      "state_id": "abia",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Abraham Adesanya Polytechnic",
+      "canonical_name": "Abraham Adesanya Polytechnic",
+      "ownership_type": "state",
+      "state_id": "ogun",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Abubakar Tatari Ali Polytechnic",
+      "canonical_name": "Abubakar Tatari Ali Polytechnic",
+      "ownership_type": "state",
+      "state_id": "bauchi",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Adamawa State Polytechnic",
+      "canonical_name": "Adamawa State Polytechnic",
+      "ownership_type": "state",
+      "state_id": "adamawa",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Adeseun Ogundoyin Polytechnic",
+      "canonical_name": "Adeseun Ogundoyin Polytechnic",
+      "ownership_type": "state",
+      "state_id": "oyo",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Ajayi Polytechnic",
+      "canonical_name": "Ajayi Polytechnic",
+      "ownership_type": "private",
+      "state_id": "ekiti",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Akanu Ibiam Federal Polytechnic",
+      "canonical_name": "Akanu Ibiam Federal Polytechnic",
+      "ownership_type": "federal",
+      "state_id": "ebonyi",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Akperan Orshi Polytechnic",
+      "canonical_name": "Akperan Orshi Polytechnic",
+      "ownership_type": "state",
+      "state_id": "benue",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Akwa Ibom State Polytechnic",
+      "canonical_name": "Akwa Ibom State Polytechnic",
+      "ownership_type": "state",
+      "state_id": "akwa-ibom",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Al-Hikma Polytechnic",
+      "canonical_name": "Al-Hikma Polytechnic",
+      "ownership_type": "private",
+      "state_id": "nasarawa",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Allover Central Polytechnic",
+      "canonical_name": "Allover Central Polytechnic",
+      "ownership_type": "private",
+      "state_id": "ogun",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Anambra State Polytechnic",
+      "canonical_name": "Anambra State Polytechnic",
+      "ownership_type": "state",
+      "state_id": "anambra",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Ashi Polytechnic",
+      "canonical_name": "Ashi Polytechnic",
+      "ownership_type": "private",
+      "state_id": "benue",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Auchi Polytechnic",
+      "canonical_name": "Auchi Polytechnic",
+      "ownership_type": "federal",
+      "state_id": "edo",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Bayelsa State Polytechnic",
+      "canonical_name": "Bayelsa State Polytechnic",
+      "ownership_type": "state",
+      "state_id": "bayelsa",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Bellarks Polytechnic",
+      "canonical_name": "Bellarks Polytechnic",
+      "ownership_type": "private",
+      "state_id": "delta",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Benue State Polytechnic",
+      "canonical_name": "Benue State Polytechnic",
+      "ownership_type": "state",
+      "state_id": "benue",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Best Solution Polytechnic",
+      "canonical_name": "Best Solution Polytechnic",
+      "ownership_type": "private",
+      "state_id": "ondo",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Binyaminu Usman Polytechnic",
+      "canonical_name": "Binyaminu Usman Polytechnic",
+      "ownership_type": "state",
+      "state_id": "jigawa",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Bolmor Polytechnic",
+      "canonical_name": "Bolmor Polytechnic",
+      "ownership_type": "private",
+      "state_id": "oyo",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Brainfill Polytechnic",
+      "canonical_name": "Brainfill Polytechnic",
+      "ownership_type": "private",
+      "state_id": "akwa-ibom",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "British Transatlantic Polytechnic",
+      "canonical_name": "British Transatlantic Polytechnic",
+      "ownership_type": "private",
+      "state_id": "ondo",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Calvary Polytechnic",
+      "canonical_name": "Calvary Polytechnic",
+      "ownership_type": "private",
+      "state_id": "delta",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Citi Polytechnic",
+      "canonical_name": "Citi Polytechnic",
+      "ownership_type": "private",
+      "state_id": "fct",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Coastal Polytechnic",
+      "canonical_name": "Coastal Polytechnic",
+      "ownership_type": "private",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Covenant Polytechnic",
+      "canonical_name": "Covenant Polytechnic",
+      "ownership_type": "private",
+      "state_id": "abia",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Crown Polytechnic",
+      "canonical_name": "Crown Polytechnic",
+      "ownership_type": "private",
+      "state_id": "ekiti",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Crystal Polytechnic",
+      "canonical_name": "Crystal Polytechnic",
+      "ownership_type": "private",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "D.S. Adegbenro ICT Polytechnic",
+      "canonical_name": "D.S. Adegbenro ICT Polytechnic",
+      "ownership_type": "state",
+      "state_id": "ogun",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Daboss Polytechnic",
+      "canonical_name": "Daboss Polytechnic",
+      "ownership_type": "private",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Delta State Polytechnic, Ogwashi-Uku",
+      "canonical_name": "Delta State Polytechnic, Ogwashi-Uku",
+      "ownership_type": "state",
+      "state_id": "delta",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Delta State Polytechnic, Otefe-Oghara",
+      "canonical_name": "Delta State Polytechnic, Otefe-Oghara",
+      "ownership_type": "state",
+      "state_id": "delta",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Distinct Polytechnic",
+      "canonical_name": "Distinct Polytechnic",
+      "ownership_type": "private",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Dorben Polytechnic",
+      "canonical_name": "Dorben Polytechnic",
+      "ownership_type": "private",
+      "state_id": "fct",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Eastern Polytechnic",
+      "canonical_name": "Eastern Polytechnic",
+      "ownership_type": "private",
+      "state_id": "rivers",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Edo State Polytechnic",
+      "canonical_name": "Edo State Polytechnic",
+      "ownership_type": "state",
+      "state_id": "edo",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Edward Olaseni Polytechnic",
+      "canonical_name": "Edward Olaseni Polytechnic",
+      "ownership_type": "private",
+      "state_id": "ondo",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Ekiti State Polytechnic",
+      "canonical_name": "Ekiti State Polytechnic",
+      "ownership_type": "private",
+      "state_id": "ekiti",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "El-Thomp Polytechnic",
+      "canonical_name": "El-Thomp Polytechnic",
+      "ownership_type": "private",
+      "state_id": "akwa-ibom",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Enugu State Polytechnic",
+      "canonical_name": "Enugu State Polytechnic",
+      "ownership_type": "state",
+      "state_id": "enugu",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Enville Polytechnic",
+      "canonical_name": "Enville Polytechnic",
+      "ownership_type": "private",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic of Oil and Gas, Bonny",
+      "canonical_name": "Federal Polytechnic of Oil and Gas, Bonny",
+      "ownership_type": "federal",
+      "state_id": "rivers",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Ado-Ekiti",
+      "canonical_name": "Federal Polytechnic, Ado-Ekiti",
+      "ownership_type": "federal",
+      "state_id": "ekiti",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Ayede",
+      "canonical_name": "Federal Polytechnic, Ayede",
+      "ownership_type": "federal",
+      "state_id": "oyo",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Bali",
+      "canonical_name": "Federal Polytechnic, Bali",
+      "ownership_type": "federal",
+      "state_id": "taraba",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Bauchi",
+      "canonical_name": "Federal Polytechnic, Bauchi",
+      "ownership_type": "federal",
+      "state_id": "bauchi",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Bida",
+      "canonical_name": "Federal Polytechnic, Bida",
+      "ownership_type": "federal",
+      "state_id": "niger",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Damaturu",
+      "canonical_name": "Federal Polytechnic, Damaturu",
+      "ownership_type": "federal",
+      "state_id": "yobe",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Daura",
+      "canonical_name": "Federal Polytechnic, Daura",
+      "ownership_type": "federal",
+      "state_id": "katsina",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Ede",
+      "canonical_name": "Federal Polytechnic, Ede",
+      "ownership_type": "federal",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Ekowe",
+      "canonical_name": "Federal Polytechnic, Ekowe",
+      "ownership_type": "federal",
+      "state_id": "bayelsa",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Idah",
+      "canonical_name": "Federal Polytechnic, Idah",
+      "ownership_type": "federal",
+      "state_id": "kogi",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Ilaro",
+      "canonical_name": "Federal Polytechnic, Ilaro",
+      "ownership_type": "federal",
+      "state_id": "ogun",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Ile-Oluji",
+      "canonical_name": "Federal Polytechnic, Ile-Oluji",
+      "ownership_type": "federal",
+      "state_id": "ondo",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Kabo",
+      "canonical_name": "Federal Polytechnic, Kabo",
+      "ownership_type": "federal",
+      "state_id": "kano",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Kaltungo",
+      "canonical_name": "Federal Polytechnic, Kaltungo",
+      "ownership_type": "federal",
+      "state_id": "gombe",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Kaura Namoda",
+      "canonical_name": "Federal Polytechnic, Kaura Namoda",
+      "ownership_type": "federal",
+      "state_id": "zamfara",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Mubi",
+      "canonical_name": "Federal Polytechnic, Mubi",
+      "ownership_type": "federal",
+      "state_id": "adamawa",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Munguno",
+      "canonical_name": "Federal Polytechnic, Munguno",
+      "ownership_type": "federal",
+      "state_id": "borno",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Nasarawa",
+      "canonical_name": "Federal Polytechnic, Nasarawa",
+      "ownership_type": "federal",
+      "state_id": "nasarawa",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Nekede",
+      "canonical_name": "Federal Polytechnic, Nekede",
+      "ownership_type": "federal",
+      "state_id": "imo",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Nyak Shandam",
+      "canonical_name": "Federal Polytechnic, Nyak Shandam",
+      "ownership_type": "federal",
+      "state_id": "plateau",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Offa",
+      "canonical_name": "Federal Polytechnic, Offa",
+      "ownership_type": "federal",
+      "state_id": "kwara",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Ohodo",
+      "canonical_name": "Federal Polytechnic, Ohodo",
+      "ownership_type": "federal",
+      "state_id": "enugu",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Oko",
+      "canonical_name": "Federal Polytechnic, Oko",
+      "ownership_type": "federal",
+      "state_id": "anambra",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Orugun",
+      "canonical_name": "Federal Polytechnic, Orugun",
+      "ownership_type": "federal",
+      "state_id": "delta",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Ugep",
+      "canonical_name": "Federal Polytechnic, Ugep",
+      "ownership_type": "federal",
+      "state_id": "cross-river",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Ukana",
+      "canonical_name": "Federal Polytechnic, Ukana",
+      "ownership_type": "federal",
+      "state_id": "akwa-ibom",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Federal Polytechnic, Wanune",
+      "canonical_name": "Federal Polytechnic, Wanune",
+      "ownership_type": "federal",
+      "state_id": "benue",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Fidei Polytechnic",
+      "canonical_name": "Fidei Polytechnic",
+      "ownership_type": "private",
+      "state_id": "benue",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Foundation Polytechnic",
+      "canonical_name": "Foundation Polytechnic",
+      "ownership_type": "private",
+      "state_id": "akwa-ibom",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Gateway Polytechnic",
+      "canonical_name": "Gateway Polytechnic",
+      "ownership_type": "state",
+      "state_id": "ogun",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Gboko Polytechnic",
+      "canonical_name": "Gboko Polytechnic",
+      "ownership_type": "private",
+      "state_id": "benue",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Gestric Polytechnic",
+      "canonical_name": "Gestric Polytechnic",
+      "ownership_type": "private",
+      "state_id": "akwa-ibom",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Global Polytechnic",
+      "canonical_name": "Global Polytechnic",
+      "ownership_type": "private",
+      "state_id": "edo",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Gloryland Polytechnic",
+      "canonical_name": "Gloryland Polytechnic",
+      "ownership_type": "private",
+      "state_id": "kogi",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Gombe State Polytechnic",
+      "canonical_name": "Gombe State Polytechnic",
+      "ownership_type": "state",
+      "state_id": "gombe",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Grace Polytechnic",
+      "canonical_name": "Grace Polytechnic",
+      "ownership_type": "private",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Graceland Polytechnic",
+      "canonical_name": "Graceland Polytechnic",
+      "ownership_type": "private",
+      "state_id": "kwara",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Grundtvig Polytechnic",
+      "canonical_name": "Grundtvig Polytechnic",
+      "ownership_type": "private",
+      "state_id": "anambra",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Harry Pass Polytechnic",
+      "canonical_name": "Harry Pass Polytechnic",
+      "ownership_type": "private",
+      "state_id": "benue",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Harvard Polytechnic",
+      "canonical_name": "Harvard Polytechnic",
+      "ownership_type": "private",
+      "state_id": "kwara",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Heritage Polytechnic",
+      "canonical_name": "Heritage Polytechnic",
+      "ownership_type": "private",
+      "state_id": "akwa-ibom",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Hope Polytechnic",
+      "canonical_name": "Hope Polytechnic",
+      "ownership_type": "private",
+      "state_id": "akwa-ibom",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Hussaini Adamu Federal Polytechnic",
+      "canonical_name": "Hussaini Adamu Federal Polytechnic",
+      "ownership_type": "federal",
+      "state_id": "jigawa",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "I-CON-Universal Polytechnic",
+      "canonical_name": "I-CON-Universal Polytechnic",
+      "ownership_type": "private",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Ibadan City Polytechnic",
+      "canonical_name": "Ibadan City Polytechnic",
+      "ownership_type": "private",
+      "state_id": "oyo",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Ibom Metropolitan Polytechnic",
+      "canonical_name": "Ibom Metropolitan Polytechnic",
+      "ownership_type": "private",
+      "state_id": "akwa-ibom",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Igbajo Polytechnic",
+      "canonical_name": "Igbajo Polytechnic",
+      "ownership_type": "private",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Imo State Polytechnic",
+      "canonical_name": "Imo State Polytechnic",
+      "ownership_type": "state",
+      "state_id": "imo",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Interlink Polytechnic",
+      "canonical_name": "Interlink Polytechnic",
+      "ownership_type": "private",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Isa Mustapha Agwai I Polytechnic",
+      "canonical_name": "Isa Mustapha Agwai I Polytechnic",
+      "ownership_type": "state",
+      "state_id": "nasarawa",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Iwo City Polytechnic",
+      "canonical_name": "Iwo City Polytechnic",
+      "ownership_type": "private",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Jigawa State Polytechnic",
+      "canonical_name": "Jigawa State Polytechnic",
+      "ownership_type": "state",
+      "state_id": "jigawa",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Kaduna Polytechnic",
+      "canonical_name": "Kaduna Polytechnic",
+      "ownership_type": "federal",
+      "state_id": "kaduna",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Kano State Polytechnic",
+      "canonical_name": "Kano State Polytechnic",
+      "ownership_type": "state",
+      "state_id": "kano",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Kenule Beeson Saro-Wiwa Polytechnic",
+      "canonical_name": "Kenule Beeson Saro-Wiwa Polytechnic",
+      "ownership_type": "state",
+      "state_id": "rivers",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Kings Polytechnic",
+      "canonical_name": "Kings Polytechnic",
+      "ownership_type": "private",
+      "state_id": "edo",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Kogi State Polytechnic",
+      "canonical_name": "Kogi State Polytechnic",
+      "ownership_type": "state",
+      "state_id": "kogi",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Kwara State Polytechnic",
+      "canonical_name": "Kwara State Polytechnic",
+      "ownership_type": "state",
+      "state_id": "kwara",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Lagos City Polytechnic",
+      "canonical_name": "Lagos City Polytechnic",
+      "ownership_type": "private",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Lagos State Polytechnic",
+      "canonical_name": "Lagos State Polytechnic",
+      "ownership_type": "state",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Landmark Polytechnic",
+      "canonical_name": "Landmark Polytechnic",
+      "ownership_type": "private",
+      "state_id": "ogun",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Lens Polytechnic",
+      "canonical_name": "Lens Polytechnic",
+      "ownership_type": "private",
+      "state_id": "kwara",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Lighthouse Polytechnic",
+      "canonical_name": "Lighthouse Polytechnic",
+      "ownership_type": "private",
+      "state_id": "edo",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Loam Polytechnic",
+      "canonical_name": "Loam Polytechnic",
+      "ownership_type": "private",
+      "state_id": "akwa-ibom",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Mai-Idris Alooma Polytechnic",
+      "canonical_name": "Mai-Idris Alooma Polytechnic",
+      "ownership_type": "state",
+      "state_id": "yobe",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Marist Polytechnic",
+      "canonical_name": "Marist Polytechnic",
+      "ownership_type": "private",
+      "state_id": "enugu",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Mater Dei Polytechnic",
+      "canonical_name": "Mater Dei Polytechnic",
+      "ownership_type": "private",
+      "state_id": "enugu",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Montgomery Polytechnic",
+      "canonical_name": "Montgomery Polytechnic",
+      "ownership_type": "private",
+      "state_id": "ekiti",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Moshood Abiola Polytechnic",
+      "canonical_name": "Moshood Abiola Polytechnic",
+      "ownership_type": "state",
+      "state_id": "ogun",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "NACABS Polytechnic",
+      "canonical_name": "NACABS Polytechnic",
+      "ownership_type": "private",
+      "state_id": "nasarawa",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Niger State Polytechnic",
+      "canonical_name": "Niger State Polytechnic",
+      "ownership_type": "state",
+      "state_id": "niger",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Nigerian Army College of Environmental Science and Technology",
+      "canonical_name": "Nigerian Army College of Environmental Science and Technology",
+      "ownership_type": "federal",
+      "state_id": "benue",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "NOGAK Polytechnic",
+      "canonical_name": "NOGAK Polytechnic",
+      "ownership_type": "private",
+      "state_id": "cross-river",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Novelty Polytechnic",
+      "canonical_name": "Novelty Polytechnic",
+      "ownership_type": "private",
+      "state_id": "oyo",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Nuhu Bamalli Polytechnic",
+      "canonical_name": "Nuhu Bamalli Polytechnic",
+      "ownership_type": "state",
+      "state_id": "kaduna",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Odaji Agbo Polytechnic",
+      "canonical_name": "Odaji Agbo Polytechnic",
+      "ownership_type": "private",
+      "state_id": "cross-river",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Oduduwa Polytechnic",
+      "canonical_name": "Oduduwa Polytechnic",
+      "ownership_type": "private",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Ogun State Institute of Technology",
+      "canonical_name": "Ogun State Institute of Technology",
+      "ownership_type": "state",
+      "state_id": "ogun",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Osun State College of Technology",
+      "canonical_name": "Osun State College of Technology",
+      "ownership_type": "state",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Osun State Polytechnic",
+      "canonical_name": "Osun State Polytechnic",
+      "ownership_type": "state",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Paramount Polytechnic",
+      "canonical_name": "Paramount Polytechnic",
+      "ownership_type": "private",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Plateau State Polytechnic",
+      "canonical_name": "Plateau State Polytechnic",
+      "ownership_type": "state",
+      "state_id": "plateau",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Port-Harcourt Polytechnic",
+      "canonical_name": "Port-Harcourt Polytechnic",
+      "ownership_type": "state",
+      "state_id": "rivers",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Prime Polytechnic",
+      "canonical_name": "Prime Polytechnic",
+      "ownership_type": "private",
+      "state_id": "kogi",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Ramat Polytechnic",
+      "canonical_name": "Ramat Polytechnic",
+      "ownership_type": "state",
+      "state_id": "borno",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Renaissance Modern Polytechnic",
+      "canonical_name": "Renaissance Modern Polytechnic",
+      "ownership_type": "private",
+      "state_id": "anambra",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Ronik Polytechnic",
+      "canonical_name": "Ronik Polytechnic",
+      "ownership_type": "private",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Rufus Giwa Polytechnic",
+      "canonical_name": "Rufus Giwa Polytechnic",
+      "ownership_type": "state",
+      "state_id": "ondo",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "SAF Polytechnic",
+      "canonical_name": "SAF Polytechnic",
+      "ownership_type": "private",
+      "state_id": "oyo",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Shaka Polytechnic",
+      "canonical_name": "Shaka Polytechnic",
+      "ownership_type": "private",
+      "state_id": "edo",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Southern Atlantic Polytechnic",
+      "canonical_name": "Southern Atlantic Polytechnic",
+      "ownership_type": "private",
+      "state_id": "akwa-ibom",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Speedway Polytechnic",
+      "canonical_name": "Speedway Polytechnic",
+      "ownership_type": "private",
+      "state_id": "ogun",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "St. Mary Polytechnic",
+      "canonical_name": "St. Mary Polytechnic",
+      "ownership_type": "private",
+      "state_id": "niger",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Stars Polytechnic",
+      "canonical_name": "Stars Polytechnic",
+      "ownership_type": "private",
+      "state_id": "ogun",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Sure Foundation Polytechnic",
+      "canonical_name": "Sure Foundation Polytechnic",
+      "ownership_type": "private",
+      "state_id": "akwa-ibom",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Taraba State Polytechnic",
+      "canonical_name": "Taraba State Polytechnic",
+      "ownership_type": "state",
+      "state_id": "taraba",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Teedek Polytechnic",
+      "canonical_name": "Teedek Polytechnic",
+      "ownership_type": "private",
+      "state_id": "ekiti",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Temple Gate Polytechnic",
+      "canonical_name": "Temple Gate Polytechnic",
+      "ownership_type": "private",
+      "state_id": "abia",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "The Ekiti City Polytechnic",
+      "canonical_name": "The Ekiti City Polytechnic",
+      "ownership_type": "state",
+      "state_id": "ekiti",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "The Oke-Ogun Polytechnic",
+      "canonical_name": "The Oke-Ogun Polytechnic",
+      "ownership_type": "state",
+      "state_id": "oyo",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "The Polytechnic Adoka",
+      "canonical_name": "The Polytechnic Adoka",
+      "ownership_type": "private",
+      "state_id": "benue",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "The Polytechnic Ibadan",
+      "canonical_name": "The Polytechnic Ibadan",
+      "ownership_type": "state",
+      "state_id": "oyo",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "The Polytechnic Igbo-Owu",
+      "canonical_name": "The Polytechnic Igbo-Owu",
+      "ownership_type": "private",
+      "state_id": "kwara",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "The Polytechnic Ile-Ife",
+      "canonical_name": "The Polytechnic Ile-Ife",
+      "ownership_type": "private",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "The Polytechnic Ojoku",
+      "canonical_name": "The Polytechnic Ojoku",
+      "ownership_type": "private",
+      "state_id": "kwara",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "The Polytechnic, Aran-Orin",
+      "canonical_name": "The Polytechnic, Aran-Orin",
+      "ownership_type": "private",
+      "state_id": "kwara",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "The Polytechnic, Iresi",
+      "canonical_name": "The Polytechnic, Iresi",
+      "ownership_type": "private",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "The Polytechnic, Omou Ekiti",
+      "canonical_name": "The Polytechnic, Omou Ekiti",
+      "ownership_type": "private",
+      "state_id": "ekiti",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "The West African Polytechnic",
+      "canonical_name": "The West African Polytechnic",
+      "ownership_type": "private",
+      "state_id": "oyo",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Thomas Mac Getric Polytechnic",
+      "canonical_name": "Thomas Mac Getric Polytechnic",
+      "ownership_type": "private",
+      "state_id": "cross-river",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Tower Polytechnic",
+      "canonical_name": "Tower Polytechnic",
+      "ownership_type": "private",
+      "state_id": "oyo",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Trinity Polytechnic",
+      "canonical_name": "Trinity Polytechnic",
+      "ownership_type": "private",
+      "state_id": "akwa-ibom",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Ultra Excellence Polytechnic",
+      "canonical_name": "Ultra Excellence Polytechnic",
+      "ownership_type": "private",
+      "state_id": "akwa-ibom",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Uma Ukpai Polytechnic",
+      "canonical_name": "Uma Ukpai Polytechnic",
+      "ownership_type": "private",
+      "state_id": "abia",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Umaru Ali Shinkafi Polytechnic",
+      "canonical_name": "Umaru Ali Shinkafi Polytechnic",
+      "ownership_type": "state",
+      "state_id": "sokoto",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "United Polytechnic",
+      "canonical_name": "United Polytechnic",
+      "ownership_type": "private",
+      "state_id": "plateau",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Uyo City Polytechnic",
+      "canonical_name": "Uyo City Polytechnic",
+      "ownership_type": "private",
+      "state_id": "akwa-ibom",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Valley View Polytechnic",
+      "canonical_name": "Valley View Polytechnic",
+      "ownership_type": "private",
+      "state_id": "abia",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Villanova Polytechnic",
+      "canonical_name": "Villanova Polytechnic",
+      "ownership_type": "private",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Vinyard Polytechnic",
+      "canonical_name": "Vinyard Polytechnic",
+      "ownership_type": "private",
+      "state_id": "nasarawa",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Waziri Umaru Federal Polytechnic",
+      "canonical_name": "Waziri Umaru Federal Polytechnic",
+      "ownership_type": "federal",
+      "state_id": "kebbi",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Westland Polytechnic",
+      "canonical_name": "Westland Polytechnic",
+      "ownership_type": "private",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Wolex Polytechnic",
+      "canonical_name": "Wolex Polytechnic",
+      "ownership_type": "private",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Yaba College of Technology",
+      "canonical_name": "Yaba College of Technology",
+      "ownership_type": "federal",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Yenagoa Polytechnic",
+      "canonical_name": "Yenagoa Polytechnic",
+      "ownership_type": "private",
+      "state_id": "bayelsa",
+      "decision": "retain_active",
+      "reason": "Retained as a current polytechnic entry from the NBTE source roster."
+    },
+    {
+      "source_name": "Airforce Institute of Technology (AFIT)",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "specialized institute; not classified as a polytechnic in the reconciled public boundary"
+    },
+    {
+      "source_name": "Akwa Ibom State College of Arts & Science",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "college, not a polytechnic"
+    },
+    {
+      "source_name": "College of Agriculture, Science and Technology, Gujba",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "college of agriculture"
+    },
+    {
+      "source_name": "College of Agriculture, Science and Technology, Lapia",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "college of agriculture"
+    },
+    {
+      "source_name": "College of Administration, Management, and Technology, Potiskum",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "institute/college, not a polytechnic"
+    },
+    {
+      "source_name": "Cross River Institute of Technology and Management (ITM)",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_converted_to_university",
+      "reason": "source states it was taken over by Federal Polytechnic, Ugep; it is not a separate current polytechnic"
+    },
+    {
+      "source_name": "Delta State School of Marine Technology",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "specialized marine school, not a polytechnic"
+    },
+    {
+      "source_name": "Iheachukwu Madubuike, Institute of Technology",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "institute of technology, not a polytechnic"
+    },
+    {
+      "source_name": "Intercontinental College of Technology",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "college of technology, not a polytechnic"
+    },
+    {
+      "source_name": "Katsina State Institute of Technology and Management",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "institute, not a polytechnic"
+    },
+    {
+      "source_name": "Maritime Academy of Nigeria",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "specialized maritime academy"
+    },
+    {
+      "source_name": "Mekaria Institute of Technology and Administration",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "institute, not a polytechnic"
+    },
+    {
+      "source_name": "National Institute of Construction, Technology and Management",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "specialized institute"
+    },
+    {
+      "source_name": "Nigerian Army College of Environmental Science and Technology (NACEST)",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "specialized military college, not a polytechnic"
+    },
+    {
+      "source_name": "Nigerian College of Aviation Technology (NCAT)",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "specialized aviation college"
+    },
+    {
+      "source_name": "Nigerian Institute of Transport Technology",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "specialized transport institute"
+    },
+    {
+      "source_name": "Our Saviour Institute of Science, Agriculture & Technology (OSISATECH)",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "institute, not a polytechnic"
+    },
+    {
+      "source_name": "Oyo State College of Agriculture, Science and Technology",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "college of agriculture"
+    },
+    {
+      "source_name": "Petroleum Training Institute",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "specialized petroleum training institute"
+    },
+    {
+      "source_name": "Redeemers College of Technology and Management",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "college, not a polytechnic"
+    },
+    {
+      "source_name": "Unique College of Management and Technology",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "college, not a polytechnic"
+    },
+    {
+      "source_name": "Yobe State College Of Agriculture, Science And Management Technology",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "college of agriculture"
+    },
+    {
+      "source_name": "Ogun State Polytechnic, Ipokia",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_unapproved",
+      "reason": "historical NBTE entry states the institution fate was undecided; not in the 25th Edition 2025 polytechnic heading"
+    },
+    {
+      "source_name": "The Ibarapa Polytechnic",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_rename_to_current_identity",
+      "reason": "source alias for Adeseun Ogundoyin Polytechnic, retained under current name"
+    },
+    {
+      "source_name": "Federal Poytechnic, Munguno",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "rename_to_current_identity",
+      "reason": "source spelling corrected to Federal Polytechnic, Munguno"
+    },
+    {
+      "source_name": "Harvad Polytechnic, Illorin",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "rename_to_current_identity",
+      "reason": "source spelling corrected to Harvard Polytechnic, Ilorin"
+    }
+  ],
+  "notes": [
+    "The NBTE polytechnic heading is not current-active-only and includes specialist institutions, colleges and transition records; those are explicitly classified rather than imported.",
+    "Public names use current canonical forms without former-name annotations.",
+    "The temporary source download was used for verification only; the committed manifest and metadata contain the reproducibility details required for future review."
+  ]
+}
