@@ -44,3 +44,12 @@ type CollegeOfAgriculture struct {
 	StateID       string `json:"state_id"`
 	CountryCode   string `json:"country_code"`
 }
+
+// CollegeOfHealthSciencesAndTechnology represents one current NBTE-listed Nigerian health-technology college.
+type CollegeOfHealthSciencesAndTechnology struct {
+	ID            string `json:"id"`
+	Name          string `json:"name"`
+	OwnershipType string `json:"ownership_type"`
+	StateID       string `json:"state_id"`
+	CountryCode   string `json:"country_code"`
+}

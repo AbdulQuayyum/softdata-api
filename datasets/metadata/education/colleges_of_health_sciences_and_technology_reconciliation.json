@@ -1,0 +1,1074 @@
+{
+  "dataset_key": "ng-colleges-of-health-sciences-and-technology",
+  "official_category_name": "Colleges of Health Sciences and Technology",
+  "source_snapshot": {
+    "organization": "National Board for Technical Education",
+    "title": "25th Edition 2025 Directory of Accredited Programmes",
+    "url": "https://web.nbte.gov.ng/sites/default/files/2025-11/25th%20Edition%202025%20Directory.pdf",
+    "purpose": "Primary roster boundary for Colleges of Health Sciences and Technology.",
+    "accessed_at": "2026-09-07",
+    "publication_date": "2025-11",
+    "response_bytes": 13841731,
+    "sha256": "11c7e9b7e6f63136ae114c1bc8cc6884280c5555aad64a4b17cb705bbbbafcda",
+    "raw_record_count": 129,
+    "categories_included": [
+      "Colleges of Health Sciences",
+      "Colleges of Health Technology",
+      "health-sciences and health-technology colleges"
+    ],
+    "current_active_only": false,
+    "missing_or_incomplete_fields": [
+      "state_id is not a source field",
+      "some source names contain spelling and punctuation errors",
+      "hospital-school and nursing-adjacent rows require category reconciliation"
+    ]
+  },
+  "raw_record_count": 129,
+  "final_record_count": 98,
+  "classification_counts": {
+    "retain_active": 98,
+    "exclude_teaching_hospital_only": 29,
+    "exclude_wrong_category": 1,
+    "identity_conflict": 1
+  },
+  "arithmetic": "129 source entries = 98 retained + 31 excluded or unresolved source rows.",
+  "records": [
+    {
+      "source_name": "Abia State College of Health Technology, Aba",
+      "canonical_name": "Abia State College of Health Technology, Aba",
+      "ownership_type": "state",
+      "state_id": "abia",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Abobo Confluence College of Health Technology, Okehi",
+      "canonical_name": "Abobo Confluence College of Health Technology, Okehi",
+      "ownership_type": "private",
+      "state_id": "kogi",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Academy of Medical Health and Education, Oju",
+      "canonical_name": "Academy of Medical Health and Education, Oju",
+      "ownership_type": "private",
+      "state_id": "benue",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Adamawa State College of Health Science and Technology, Michika",
+      "canonical_name": "Adamawa State College of Health Science and Technology, Michika",
+      "ownership_type": "state",
+      "state_id": "adamawa",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Adeshina College of Health Sciences and Technology, Share",
+      "canonical_name": "Adeshina College of Health Sciences and Technology, Share",
+      "ownership_type": "private",
+      "state_id": "kwara",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Adewale Ibrahim College of Health Sciences and Technology, Buari",
+      "canonical_name": "Adewale Ibrahim College of Health Sciences and Technology, Buari",
+      "ownership_type": "private",
+      "state_id": "kwara",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Adonis American College of Health Technology, Osun",
+      "canonical_name": "Adonis American College of Health Technology, Osun",
+      "ownership_type": "private",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Al-Ma'arif College of Health Sciences and Technology, Potiskum",
+      "canonical_name": "Al-Ma'arif College of Health Sciences and Technology, Potiskum",
+      "ownership_type": "private",
+      "state_id": "yobe",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Alhassan Ibrahim Dawanau College of Health Sciences and Technology, Kano",
+      "canonical_name": "Alhassan Ibrahim Dawanau College of Health Sciences and Technology, Kano",
+      "ownership_type": "private",
+      "state_id": "kano",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Aminu Dabo College of Health Sciences and Technology, Kano",
+      "canonical_name": "Aminu Dabo College of Health Sciences and Technology, Kano",
+      "ownership_type": "private",
+      "state_id": "kano",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Anambra State College of Health Technology, Obosi",
+      "canonical_name": "Anambra State College of Health Technology, Obosi",
+      "ownership_type": "state",
+      "state_id": "anambra",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Assam College of Health Sciences and Technology, Kaduna",
+      "canonical_name": "Assam College of Health Sciences and Technology, Kaduna",
+      "ownership_type": "private",
+      "state_id": "kaduna",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Awgu College of Medical Science and Health Technology, Enugu",
+      "canonical_name": "Awgu College of Medical Science and Health Technology, Enugu",
+      "ownership_type": "private",
+      "state_id": "enugu",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Babalola Academy College of Health Technology, Oloru",
+      "canonical_name": "Babalola Academy College of Health Technology, Oloru",
+      "ownership_type": "private",
+      "state_id": "kwara",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Bartholomew College of Health Technology, Shao",
+      "canonical_name": "Bartholomew College of Health Technology, Shao",
+      "ownership_type": "private",
+      "state_id": "kwara",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Bayelsa State College of Health Technology, Otuogidi",
+      "canonical_name": "Bayelsa State College of Health Technology, Otuogidi",
+      "ownership_type": "state",
+      "state_id": "bayelsa",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Beijing College of Health Science and Technology, Kaduna",
+      "canonical_name": "Beijing College of Health Science and Technology, Kaduna",
+      "ownership_type": "private",
+      "state_id": "kaduna",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Benue State College of Health Science and Technology, Agasha",
+      "canonical_name": "Benue State College of Health Science and Technology, Agasha",
+      "ownership_type": "state",
+      "state_id": "benue",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Bethsaida College of Health Technology, Ogbomoso",
+      "canonical_name": "Bethsaida College of Health Technology, Ogbomoso",
+      "ownership_type": "private",
+      "state_id": "oyo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Bichi Academy College of Health Sciences and Technology, Bichi",
+      "canonical_name": "Bichi Academy College of Health Sciences and Technology, Bichi",
+      "ownership_type": "private",
+      "state_id": "kano",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Bill and Melinda Gates College of Health Sciences and Technology, Ningi",
+      "canonical_name": "Bill and Melinda Gates College of Health Sciences and Technology, Ningi",
+      "ownership_type": "state",
+      "state_id": "bauchi",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Blessed Martins International Institute of Sciences and Technology, Ikwo",
+      "canonical_name": "Blessed Martins International Institute of Sciences and Technology, Ikwo",
+      "ownership_type": "private",
+      "state_id": "ebonyi",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Centenary College of Health Science and Technology, Emohua",
+      "canonical_name": "Centenary College of Health Science and Technology, Emohua",
+      "ownership_type": "private",
+      "state_id": "rivers",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "College of Health Science and Technology, Idah",
+      "canonical_name": "College of Health Science and Technology, Idah",
+      "ownership_type": "state",
+      "state_id": "kogi",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "College of Health Technology, Ejigbo",
+      "canonical_name": "College of Health Technology, Ejigbo",
+      "ownership_type": "private",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "College of Health Technology, Ezzangbo",
+      "canonical_name": "College of Health Technology, Ezzangbo",
+      "ownership_type": "private",
+      "state_id": "ebonyi",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "College of Health Technology, Zawan",
+      "canonical_name": "College of Health Technology, Zawan",
+      "ownership_type": "state",
+      "state_id": "plateau",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Crestfield College of Health Sciences and Management Technology, Erin-Osun",
+      "canonical_name": "Crestfield College of Health Sciences and Management Technology, Erin-Osun",
+      "ownership_type": "private",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Cross River State College of Health Technology, Calabar",
+      "canonical_name": "Cross River State College of Health Technology, Calabar",
+      "ownership_type": "state",
+      "state_id": "cross-river",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Crown College of Health Sciences and Technology, Minna",
+      "canonical_name": "Crown College of Health Sciences and Technology, Minna",
+      "ownership_type": "private",
+      "state_id": "niger",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Dagamas College of Health Sciences and Technology, Zaria",
+      "canonical_name": "Dagamas College of Health Sciences and Technology, Zaria",
+      "ownership_type": "private",
+      "state_id": "kaduna",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "De-Potter College of Health Technology, Oru Ijebu-Igbo",
+      "canonical_name": "De-Potter College of Health Technology, Oru Ijebu-Igbo",
+      "ownership_type": "private",
+      "state_id": "ogun",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Dee Perfect Class College of Health Sciences and Technology, Ifon",
+      "canonical_name": "Dee Perfect Class College of Health Sciences and Technology, Ifon",
+      "ownership_type": "private",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Delight College of Health Sciences and Technology, Minna",
+      "canonical_name": "Delight College of Health Sciences and Technology, Minna",
+      "ownership_type": "private",
+      "state_id": "niger",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Delta State School of Health Technology, Ofuoma",
+      "canonical_name": "Delta State School of Health Technology, Ofuoma",
+      "ownership_type": "state",
+      "state_id": "delta",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Edo State College of Health Sciences and Technology, Benin",
+      "canonical_name": "Edo State College of Health Sciences and Technology, Benin",
+      "ownership_type": "state",
+      "state_id": "edo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Ekiti State College of Health Sciences and Technology, Ijero-Ekiti",
+      "canonical_name": "Ekiti State College of Health Sciences and Technology, Ijero-Ekiti",
+      "ownership_type": "state",
+      "state_id": "ekiti",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Elite International College of Health Science and Technology, Zaria",
+      "canonical_name": "Elite International College of Health Science and Technology, Zaria",
+      "ownership_type": "private",
+      "state_id": "kaduna",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Emirates College of Health Sciences and Technology, Kabuga",
+      "canonical_name": "Emirates College of Health Sciences and Technology, Kabuga",
+      "ownership_type": "private",
+      "state_id": "kano",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Eucharistic Heart College of Health Technology, Orba",
+      "canonical_name": "Eucharistic Heart College of Health Technology, Orba",
+      "ownership_type": "private",
+      "state_id": "enugu",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Excellent College of Sciences and Health Technology, Gboko",
+      "canonical_name": "Excellent College of Sciences and Health Technology, Gboko",
+      "ownership_type": "private",
+      "state_id": "benue",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Fabotas College of Health Science and Technology, Ado-Ekiti",
+      "canonical_name": "Fabotas College of Health Science and Technology, Ado-Ekiti",
+      "ownership_type": "private",
+      "state_id": "ekiti",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Famsas College of Health Sciences and Technology, Keffi",
+      "canonical_name": "Famsas College of Health Sciences and Technology, Keffi",
+      "ownership_type": "private",
+      "state_id": "nasarawa",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Federal College of Medical Laboratory Technology, Jos",
+      "canonical_name": "Federal College of Medical Laboratory Technology, Jos",
+      "ownership_type": "federal",
+      "state_id": "plateau",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Federal College of Orthopaedic Technology, Igbobi",
+      "canonical_name": "Federal College of Orthopaedic Technology, Igbobi",
+      "ownership_type": "federal",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Federal School of Dental Technology and Therapy, Enugu",
+      "canonical_name": "Federal School of Dental Technology and Therapy, Enugu",
+      "ownership_type": "federal",
+      "state_id": "enugu",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Foreign Links College of Health and Management Sciences, Moro",
+      "canonical_name": "Foreign Links College of Health and Management Sciences, Moro",
+      "ownership_type": "private",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "G-City College of Health Sciences and Technology, Gwaram",
+      "canonical_name": "G-City College of Health Sciences and Technology, Gwaram",
+      "ownership_type": "private",
+      "state_id": "jigawa",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Galtima Mai-Kyari College of Health Sciences and Technology, Nguru",
+      "canonical_name": "Galtima Mai-Kyari College of Health Sciences and Technology, Nguru",
+      "ownership_type": "state",
+      "state_id": "yobe",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Garu Islamic College of Health Sciences and Technology, Bauchi",
+      "canonical_name": "Garu Islamic College of Health Sciences and Technology, Bauchi",
+      "ownership_type": "private",
+      "state_id": "bauchi",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Gial College of Health Technology and Environmental Sciences, Katsina",
+      "canonical_name": "Gial College of Health Technology and Environmental Sciences, Katsina",
+      "ownership_type": "private",
+      "state_id": "katsina",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Gombe State College of Health Technology, Kaltungo",
+      "canonical_name": "Gombe State College of Health Technology, Kaltungo",
+      "ownership_type": "state",
+      "state_id": "gombe",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Grace College of Health Science and Technology, Osogbo",
+      "canonical_name": "Grace College of Health Science and Technology, Osogbo",
+      "ownership_type": "private",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Grandplus College of Health Sciences and Technology, Ilorin",
+      "canonical_name": "Grandplus College of Health Sciences and Technology, Ilorin",
+      "ownership_type": "private",
+      "state_id": "kwara",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Idris Mika'il College of Health Sciences and Technology, Rikochi",
+      "canonical_name": "Idris Mika'il College of Health Sciences and Technology, Rikochi",
+      "ownership_type": "private",
+      "state_id": "kaduna",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Ikirun College of Health Sciences and Technology, Ikirun",
+      "canonical_name": "Ikirun College of Health Sciences and Technology, Ikirun",
+      "ownership_type": "private",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Imo State College of Health and Management Sciences, Amaigbo",
+      "canonical_name": "Imo State College of Health and Management Sciences, Amaigbo",
+      "ownership_type": "state",
+      "state_id": "imo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "International Christian College of Health Sciences, Owerri",
+      "canonical_name": "International Christian College of Health Sciences, Owerri",
+      "ownership_type": "private",
+      "state_id": "imo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Iseyin College of Health Sciences and Technology, Ibadan",
+      "canonical_name": "Iseyin College of Health Sciences and Technology, Ibadan",
+      "ownership_type": "private",
+      "state_id": "oyo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Islamic Medical Foundation College of Health Technology, Tudun Wada",
+      "canonical_name": "Islamic Medical Foundation College of Health Technology, Tudun Wada",
+      "ownership_type": "private",
+      "state_id": "kaduna",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Jigawa State College of Health Science and Technology, Jahun",
+      "canonical_name": "Jigawa State College of Health Science and Technology, Jahun",
+      "ownership_type": "state",
+      "state_id": "jigawa",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Kano State College of Health Science and Technology, Bebeji",
+      "canonical_name": "Kano State College of Health Science and Technology, Bebeji",
+      "ownership_type": "state",
+      "state_id": "kano",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Kano State College of Health Sciences and Technology, BUK Road",
+      "canonical_name": "Kano State College of Health Sciences and Technology, BUK Road",
+      "ownership_type": "state",
+      "state_id": "kano",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Kano State College of Health Sciences and Technology, Sani Marshall Road",
+      "canonical_name": "Kano State College of Health Sciences and Technology, Sani Marshall Road",
+      "ownership_type": "state",
+      "state_id": "kano",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Katsina State College of Health Sciences, Daura",
+      "canonical_name": "Katsina State College of Health Sciences, Daura",
+      "ownership_type": "state",
+      "state_id": "katsina",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Katsina State College of Health Sciences, Kankiya",
+      "canonical_name": "Katsina State College of Health Sciences, Kankiya",
+      "ownership_type": "state",
+      "state_id": "katsina",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Kwara State College of Health Technology, Offa",
+      "canonical_name": "Kwara State College of Health Technology, Offa",
+      "ownership_type": "state",
+      "state_id": "kwara",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Lagos State College of Health Technology, Yaba",
+      "canonical_name": "Lagos State College of Health Technology, Yaba",
+      "ownership_type": "state",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Lasbery College of Health Technology, Ogidi",
+      "canonical_name": "Lasbery College of Health Technology, Ogidi",
+      "ownership_type": "private",
+      "state_id": "anambra",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Madonna College of Health Technology, Olokoro",
+      "canonical_name": "Madonna College of Health Technology, Olokoro",
+      "ownership_type": "private",
+      "state_id": "abia",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Malikiya College of Health and Social Sciences, Bauchi",
+      "canonical_name": "Malikiya College of Health and Social Sciences, Bauchi",
+      "ownership_type": "private",
+      "state_id": "bauchi",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Maryam Khuddam College of Health Sciences and Technology, Kazaure",
+      "canonical_name": "Maryam Khuddam College of Health Sciences and Technology, Kazaure",
+      "ownership_type": "private",
+      "state_id": "jigawa",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Millenium College of Health Technology, Akure",
+      "canonical_name": "Millenium College of Health Technology, Akure",
+      "ownership_type": "private",
+      "state_id": "ondo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Muslim Community College of Health Sciences and Technology, Funtua",
+      "canonical_name": "Muslim Community College of Health Sciences and Technology, Funtua",
+      "ownership_type": "private",
+      "state_id": "katsina",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Nasarawa State College of Health Science and Technology, Keffi",
+      "canonical_name": "Nasarawa State College of Health Science and Technology, Keffi",
+      "ownership_type": "state",
+      "state_id": "nasarawa",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Nazareth College of Health Science and Technology, Makurdi",
+      "canonical_name": "Nazareth College of Health Science and Technology, Makurdi",
+      "ownership_type": "private",
+      "state_id": "benue",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "New Gate College of Health Science and Technology, Minna",
+      "canonical_name": "New Gate College of Health Science and Technology, Minna",
+      "ownership_type": "private",
+      "state_id": "niger",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Nigerian Navy College of Health Sciences, Offa",
+      "canonical_name": "Nigerian Navy College of Health Sciences, Offa",
+      "ownership_type": "federal",
+      "state_id": "kwara",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "NKST College of Health Technology, Mkar",
+      "canonical_name": "NKST College of Health Technology, Mkar",
+      "ownership_type": "private",
+      "state_id": "benue",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Ogun State College of Health Technology, Ijebu-Ode",
+      "canonical_name": "Ogun State College of Health Technology, Ijebu-Ode",
+      "ownership_type": "state",
+      "state_id": "ogun",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Ondo College of Health Sciences and Technology, Ondo",
+      "canonical_name": "Ondo College of Health Sciences and Technology, Ondo",
+      "ownership_type": "private",
+      "state_id": "ondo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Osun State College of Health Technology, Ilesa",
+      "canonical_name": "Osun State College of Health Technology, Ilesa",
+      "ownership_type": "state",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Oyo State College of Health Sciences and Technology, Eleyele",
+      "canonical_name": "Oyo State College of Health Sciences and Technology, Eleyele",
+      "ownership_type": "state",
+      "state_id": "oyo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Parliament College of Health Sciences and Technology, Yauri",
+      "canonical_name": "Parliament College of Health Sciences and Technology, Yauri",
+      "ownership_type": "private",
+      "state_id": "kebbi",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Peaceland College of Health Sciences and Technology, Enugu",
+      "canonical_name": "Peaceland College of Health Sciences and Technology, Enugu",
+      "ownership_type": "private",
+      "state_id": "enugu",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Penfield College of Health Sciences and Technology, Kaduna",
+      "canonical_name": "Penfield College of Health Sciences and Technology, Kaduna",
+      "ownership_type": "private",
+      "state_id": "kaduna",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Pogil College of Health Technology, Ijebu-Ode",
+      "canonical_name": "Pogil College of Health Technology, Ijebu-Ode",
+      "ownership_type": "private",
+      "state_id": "ogun",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Rhema Ijoko College of Health Technology and Management Sciences, Sango Otta",
+      "canonical_name": "Rhema Ijoko College of Health Technology and Management Sciences, Sango Otta",
+      "ownership_type": "private",
+      "state_id": "ogun",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Rivers State College of Health Technology, Port Harcourt",
+      "canonical_name": "Rivers State College of Health Technology, Port Harcourt",
+      "ownership_type": "state",
+      "state_id": "rivers",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Royal Institute of Health Technology, Ifo",
+      "canonical_name": "Royal Institute of Health Technology, Ifo",
+      "ownership_type": "private",
+      "state_id": "ogun",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Seventh-Day Adventist College of Health Sciences and Technology, Ile-Ife",
+      "canonical_name": "Seventh-Day Adventist College of Health Sciences and Technology, Ile-Ife",
+      "ownership_type": "private",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Shehu Idris College of Health Sciences and Technology, Makarfi",
+      "canonical_name": "Shehu Idris College of Health Sciences and Technology, Makarfi",
+      "ownership_type": "state",
+      "state_id": "kaduna",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "South-Western Nigeria College of Health Technology, Sagamu",
+      "canonical_name": "South-Western Nigeria College of Health Technology, Sagamu",
+      "ownership_type": "private",
+      "state_id": "ogun",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Taraba State College of Health Sciences and Technology, Takum",
+      "canonical_name": "Taraba State College of Health Sciences and Technology, Takum",
+      "ownership_type": "state",
+      "state_id": "taraba",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Umaru Dangaladima College of Health Technology Foundation, Kaduna",
+      "canonical_name": "Umaru Dangaladima College of Health Technology Foundation, Kaduna",
+      "ownership_type": "private",
+      "state_id": "kaduna",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Vision College of Medical Sciences and Health Technology, Mbaise",
+      "canonical_name": "Vision College of Medical Sciences and Health Technology, Mbaise",
+      "ownership_type": "private",
+      "state_id": "imo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Zamaki College of Health Sciences and Technology, Yola",
+      "canonical_name": "Zamaki College of Health Sciences and Technology, Yola",
+      "ownership_type": "private",
+      "state_id": "adamawa",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "Zamfara State College of Health Sciences and Technology, Tsafe",
+      "canonical_name": "Zamfara State College of Health Sciences and Technology, Tsafe",
+      "ownership_type": "state",
+      "state_id": "zamfara",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Health Sciences section after category reconciliation."
+    },
+    {
+      "source_name": "College of Health Information Management, Institute of Health Sciences, Federal Teaching Hospital Gombe",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Hospital institute listing without a separately recognized college identity."
+    },
+    {
+      "source_name": "Institute of Health Sciences and Technology, University of Benin Teaching Hospital",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Teaching-hospital institute, not a separately recognized college."
+    },
+    {
+      "source_name": "Institute of Technology, Benue State University Teaching Hospital",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Teaching-hospital institute, not a separately recognized college."
+    },
+    {
+      "source_name": "LASUTH Institute of Allied Health Sciences and Management",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Hospital institute, not a separately recognized college."
+    },
+    {
+      "source_name": "Nigerian Army School of Medical Sciences",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "Medical school/unit rather than a separately recognized College of Health Sciences and Technology."
+    },
+    {
+      "source_name": "School of Biomedical Engineering Technology, ABUTH",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Hospital school listing."
+    },
+    {
+      "source_name": "School of Biomedical Engineering Technology, LUTH",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Hospital school listing."
+    },
+    {
+      "source_name": "School of Biomedical Engineering, University of Maiduguri Teaching Hospital",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Teaching-hospital school listing."
+    },
+    {
+      "source_name": "School of Health Information Management, ABU Teaching Hospital",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Teaching-hospital school listing."
+    },
+    {
+      "source_name": "School of Health Information Management, AKTH",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Teaching-hospital school listing."
+    },
+    {
+      "source_name": "School of Health Information Management, ATBUTH",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Teaching-hospital school listing."
+    },
+    {
+      "source_name": "School of Health Information Management, Jos University Teaching Hospital",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Teaching-hospital school listing."
+    },
+    {
+      "source_name": "School of Health Information Management Technology, National Ear Care Centre",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Specialist hospital school listing."
+    },
+    {
+      "source_name": "School of Health Information Management, NAUTH",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Teaching-hospital school listing."
+    },
+    {
+      "source_name": "School of Health Information Management, OAUTH",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Teaching-hospital school listing."
+    },
+    {
+      "source_name": "School of Health Information Management, University of Calabar Teaching Hospital",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Teaching-hospital school listing."
+    },
+    {
+      "source_name": "School of Health Information Management, UCH",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Teaching-hospital school listing."
+    },
+    {
+      "source_name": "School of Health Information Management, UDUTH",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Teaching-hospital school listing."
+    },
+    {
+      "source_name": "School of Health Information Management, University of Ilorin Teaching Hospital",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Teaching-hospital school listing."
+    },
+    {
+      "source_name": "School of Health Information Management, Delta State University Teaching Hospital",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Teaching-hospital school listing."
+    },
+    {
+      "source_name": "School of Health Information Management, UMTH",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Teaching-hospital school listing."
+    },
+    {
+      "source_name": "School of Health Information Management, UPTH",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Teaching-hospital school listing."
+    },
+    {
+      "source_name": "School of Health Information Management, LUTH",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Teaching-hospital school listing."
+    },
+    {
+      "source_name": "School of Health Information Management, University of Uyo",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "University or teaching-hospital unit, not a separately recognized college."
+    },
+    {
+      "source_name": "School of Laundry and Dry Cleaning Technology, AKTH",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Hospital technical school listing."
+    },
+    {
+      "source_name": "School of Occupational Therapy, National Neuro Psychiatric Hospital",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Hospital specialist school listing."
+    },
+    {
+      "source_name": "School of Orthopedic Cast Technology, National Orthopedic Hospital Enugu",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Hospital specialist school listing."
+    },
+    {
+      "source_name": "School of Orthopedic Cast Technology, National Orthopedic Hospital Kano",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Hospital specialist school listing."
+    },
+    {
+      "source_name": "School of Orthopedic Cast Technology, UITH",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Teaching-hospital school listing."
+    },
+    {
+      "source_name": "School of Social Development, UPTH",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_teaching_hospital_only",
+      "reason": "Teaching-hospital school listing."
+    },
+    {
+      "source_name": "School of Health Technology, unnamed Akure entry",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "identity_conflict",
+      "reason": "Source entry lacks a reliable canonical institution name beyond a generic school title; retained identity cannot be established without stronger evidence."
+    }
+  ],
+  "notes": [
+    "NBTE labels the source section Colleges of Health Sciences; the approved-institutions category is Colleges of Health Sciences and Technology.",
+    "Nursing and midwifery entries are maintained in a separate future dataset and are not imported here.",
+    "Hospital schools and teaching-hospital institutes are excluded unless the source provides a separately recognized college identity."
+  ]
+}

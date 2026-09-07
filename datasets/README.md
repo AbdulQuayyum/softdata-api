@@ -15,6 +15,7 @@ datasets/
 ├── education/
 │   ├── colleges_of_education.json
 │   ├── colleges_of_agriculture.json
+│   ├── colleges_of_health_sciences_and_technology.json
 │   ├── monotechnics.json
 │   ├── polytechnics.json
 │   └── universities.json
@@ -40,6 +41,8 @@ datasets/
 │   │   ├── colleges_of_education.json
 │   │   ├── colleges_of_agriculture.json
 │   │   ├── colleges_of_agriculture_reconciliation.json
+│   │   ├── colleges_of_health_sciences_and_technology.json
+│   │   ├── colleges_of_health_sciences_and_technology_reconciliation.json
 │   │   ├── monotechnics.json
 │   │   ├── monotechnics_reconciliation.json
 │   │   ├── polytechnics.json
@@ -66,6 +69,7 @@ datasets/
 │   ├── education/
 │   │   ├── colleges_of_education.schema.json
 │   │   ├── colleges_of_agriculture.schema.json
+│   │   ├── colleges_of_health_sciences_and_technology.schema.json
 │   │   ├── monotechnics.schema.json
 │   │   ├── polytechnics.schema.json
 │   │   └── universities.schema.json
@@ -95,6 +99,7 @@ Regulated-finance logo assets are embedded under `assets/financial-institutions/
 - `education/polytechnics.json` is the 168-record static catalogue of current NBTE-listed Nigerian polytechnics.
 - `education/monotechnics.json` is the 86-record static catalogue of NBTE Specialised Institutions (Monotechnics).
 - `education/colleges_of_agriculture.json` is the 31-record static catalogue of NBTE Colleges of Agriculture and Related Disciplines.
+- `education/colleges_of_health_sciences_and_technology.json` is the 98-record static catalogue of NBTE Colleges of Health Sciences and Technology.
 - `education/universities.json` is the compiled catalogue of current NUC-listed Nigerian universities.
 - `finance/international_money_transfer_operators.json` is the compiled register snapshot of current CBN-listed IMTO entries, with optional verified website URLs.
 - `finance/currencies.json` is the compiled snapshot of current ISO 4217 monetary currencies.
@@ -118,6 +123,7 @@ Regulated-finance logo assets are embedded under `assets/financial-institutions/
 - `schemas/education/polytechnics.schema.json` describes the five-field polytechnic record contract.
 - `schemas/education/monotechnics.schema.json` describes the five-field monotechnic record contract.
 - `schemas/education/colleges_of_agriculture.schema.json` describes the five-field college-of-agriculture record contract.
+- `schemas/education/colleges_of_health_sciences_and_technology.schema.json` describes the five-field health-college record contract.
 - `schemas/education/universities.schema.json` describes the university record contract.
 - `schemas/finance/international_money_transfer_operators.schema.json` describes the IMTO record contract.
 - `schemas/finance/currencies.schema.json` describes the currency record contract.
@@ -128,6 +134,7 @@ Regulated-finance logo assets are embedded under `assets/financial-institutions/
 - `metadata/education/polytechnics.json` and `metadata/education/polytechnics_reconciliation.json` record source provenance and roster decisions for polytechnics.
 - `metadata/education/monotechnics.json` and `metadata/education/monotechnics_reconciliation.json` record source provenance and roster decisions for specialised institutions.
 - `metadata/education/colleges_of_agriculture.json` and `metadata/education/colleges_of_agriculture_reconciliation.json` record source provenance and roster decisions for agricultural colleges.
+- `metadata/education/colleges_of_health_sciences_and_technology.json` and its reconciliation manifest record the NBTE health-college boundary and exclusions.
 - `metadata/geography/geopolitical_zones.json` records provenance, versioning and licensing details for the zone catalogue.
 - `metadata/geography/lgas.json` records provenance, versioning and licensing details for the LGA catalogue.
 - `metadata/geography/states.json` records provenance, versioning and licensing details.

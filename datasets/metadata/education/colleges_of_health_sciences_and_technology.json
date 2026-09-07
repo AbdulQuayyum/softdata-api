@@ -1,0 +1,122 @@
+{
+  "dataset_key": "ng-colleges-of-health-sciences-and-technology",
+  "official_category_name": "Colleges of Health Sciences and Technology",
+  "title": "Nigeria Colleges of Health Sciences and Technology",
+  "description": "Independently compiled factual reference data for current Nigerian institutions in NBTE's Colleges of Health Sciences and Technology category.",
+  "country_code": "NG",
+  "dataset_group": "education",
+  "format": "json",
+  "relative_path": "education/colleges_of_health_sciences_and_technology.json",
+  "schema_path": "schemas/education/colleges_of_health_sciences_and_technology.schema.json",
+  "record_count": 98,
+  "ownership_counts": {
+    "state": 31,
+    "private": 63,
+    "federal": 4
+  },
+  "state_coverage": [
+    "abia",
+    "adamawa",
+    "anambra",
+    "bauchi",
+    "bayelsa",
+    "benue",
+    "cross-river",
+    "delta",
+    "ebonyi",
+    "edo",
+    "ekiti",
+    "enugu",
+    "gombe",
+    "imo",
+    "jigawa",
+    "kaduna",
+    "kano",
+    "katsina",
+    "kebbi",
+    "kogi",
+    "kwara",
+    "lagos",
+    "nasarawa",
+    "niger",
+    "ogun",
+    "ondo",
+    "osun",
+    "oyo",
+    "plateau",
+    "rivers",
+    "taraba",
+    "yobe",
+    "zamfara"
+  ],
+  "version": "1.0.0",
+  "license_id": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "methodology": "SoftData reconciled the complete 129-entry NBTE Colleges of Health Sciences section before generating the dataset. Names and locations were normalized to current canonical forms and mapped to ng-states. Hospital-only institutes, medical schools, nursing-adjacent units and one unresolved generic source entry were excluded and documented. The public contract contains only the five base fields.",
+  "source_hierarchy": [
+    "National Board for Technical Education",
+    "Digital NBTE approved-institution directory",
+    "NBTE 25th Edition 2025 Directory",
+    "Federal Ministry of Education",
+    "Federal Ministry of Health and Social Welfare",
+    "relevant health-profession regulators",
+    "Joint Admissions and Matriculation Board",
+    "official government publications",
+    "official institution websites",
+    "secondary sources for discovery only"
+  ],
+  "sources": [
+    {
+      "organization": "National Board for Technical Education",
+      "title": "25th Edition 2025 Directory of Accredited Programmes",
+      "url": "https://web.nbte.gov.ng/sites/default/files/2025-11/25th%20Edition%202025%20Directory.pdf",
+      "purpose": "Primary roster boundary for Colleges of Health Sciences and Technology.",
+      "accessed_at": "2026-09-07",
+      "publication_date": "2025-11",
+      "response_bytes": 13841731,
+      "sha256": "11c7e9b7e6f63136ae114c1bc8cc6884280c5555aad64a4b17cb705bbbbafcda",
+      "raw_record_count": 129,
+      "categories_included": [
+        "Colleges of Health Sciences",
+        "Colleges of Health Technology",
+        "health-sciences and health-technology colleges"
+      ],
+      "current_active_only": false,
+      "missing_or_incomplete_fields": [
+        "state_id is not a source field",
+        "some source names contain spelling and punctuation errors",
+        "hospital-school and nursing-adjacent rows require category reconciliation"
+      ]
+    },
+    {
+      "organization": "National Board for Technical Education",
+      "title": "Approved Institutions",
+      "url": "https://web.nbte.gov.ng/tvet%20institutions",
+      "purpose": "Confirm the official category boundary and its separation from nursing, polytechnic, monotechnic and IEI categories.",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "inclusion_boundary": "Only current separately recognized institutions in NBTE's Colleges of Health Sciences and Technology category; nursing and midwifery institutions are reserved for a separate dataset.",
+  "exclusion_rules": [
+    "Universities, university faculties and medical schools",
+    "teaching-hospital schools or institutes without a separately recognized college",
+    "nursing and midwifery institutions",
+    "polytechnics, monotechnics, agriculture colleges, IEIs, VEIs and technical colleges",
+    "unapproved, closed or approval-withdrawn institutions"
+  ],
+  "regulator_overlap_policy": "NBTE classification is primary. Health-profession regulators and government publications may resolve identity, status or naming conflicts but are not required to publish every NBTE institution.",
+  "update_frequency": "Review on each new NBTE directory or material regulatory roster update.",
+  "last_verification_date": "2026-09-07",
+  "transitions_and_former_names": "Category movements, former names, duplicate identities and hospital absorption concerns are documented in the reconciliation manifest.",
+  "known_limitations": [
+    "The NBTE source is not active-only and does not normalize state_id.",
+    "The source section uses Colleges of Health Sciences while the approved-institutions page uses Colleges of Health Sciences and Technology.",
+    "No programme or profession fields are exposed in this roster-only contract."
+  ],
+  "maintainers": [
+    "SoftData API contributors"
+  ],
+  "rights": "SoftData compilation, schema and metadata are CC BY 4.0. NBTE source publications retain their own rights. This pass adds only the static dataset foundation; websites, logos and API routes are deferred.",
+  "verified_at": "2026-09-07",
+  "reconciliation_path": "metadata/education/colleges_of_health_sciences_and_technology_reconciliation.json"
+}

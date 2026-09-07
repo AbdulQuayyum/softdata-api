@@ -107,6 +107,7 @@ softdata-api/
 │   ├── education/
 │   │   ├── colleges_of_education.json
 │   │   ├── colleges_of_agriculture.json
+│   │   ├── colleges_of_health_sciences_and_technology.json
 │   │   ├── monotechnics.json
 │   │   ├── polytechnics.json
 │   │   └── universities.json
@@ -135,6 +136,8 @@ softdata-api/
 │   │   │   ├── colleges_of_education.json
 │   │   │   ├── colleges_of_agriculture.json
 │   │   │   ├── colleges_of_agriculture_reconciliation.json
+│   │   │   ├── colleges_of_health_sciences_and_technology.json
+│   │   │   ├── colleges_of_health_sciences_and_technology_reconciliation.json
 │   │   │   ├── monotechnics.json
 │   │   │   ├── monotechnics_reconciliation.json
 │   │   │   ├── polytechnics.json
@@ -175,6 +178,7 @@ softdata-api/
 │       ├── education/
 │       │   ├── colleges_of_education.schema.json
 │       │   ├── colleges_of_agriculture.schema.json
+│       │   ├── colleges_of_health_sciences_and_technology.schema.json
 │       │   ├── monotechnics.schema.json
 │       │   ├── polytechnics.schema.json
 │       │   └── universities.schema.json
