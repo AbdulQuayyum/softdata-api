@@ -55,7 +55,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/5tt-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/5tt-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/5tt-microfinance-bank-limited.png",
         "sha256": "31547348caf6da28ac482ec6314b9e754b9a10a1348d1f705724b4ccab793874"
       },
       "target_record_id": "5tt-microfinance-bank-limited",
@@ -138,7 +138,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/ab-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/ab-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/ab-microfinance-bank-limited.png",
         "sha256": "332132cdbc322370bb148417c5f64c04a93225f4e8e26a420545068dc6ddd31e"
       },
       "target_record_id": "ab-microfinance-bank-limited",
@@ -216,7 +216,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/ahmadu-bello-university-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/ahmadu-bello-university-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/ahmadu-bello-university-microfinance-bank-limited.png",
         "sha256": "6a7ecfffb53989862c88734af18ac489c44f94f9a005391a208c21a071b396c9"
       },
       "target_record_id": "ahmadu-bello-university-microfinance-bank-limited",
@@ -331,7 +331,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/amac-microfinance-bank.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/amac-microfinance-bank.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/amac-microfinance-bank.png",
         "sha256": "6afeba668a4ac6ac7a85fbfca79c2399dd2a0d6e3e8863fce700f8f03eafd648"
       },
       "target_record_id": "amac-microfinance-bank",
@@ -382,7 +382,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/amju-unique-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/amju-unique-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/amju-unique-microfinance-bank-limited.png",
         "sha256": "0f42e5c4e8b0f8e6581426c64a6f3e8a29d4a940f62bb0fce3db55711da84d03"
       },
       "target_record_id": "amju-unique-microfinance-bank-limited",
@@ -593,7 +593,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/above-only-microfinance-bank.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/above-only-microfinance-bank.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/above-only-microfinance-bank.png",
         "sha256": "0cdb28310e862f8df5adca3b784583713fd0d602e46a71f1fa8d422330e1959a"
       },
       "target_record_id": "above-only-microfinance-bank",
@@ -638,7 +638,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/abulesoro-microfinance-bank.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/abulesoro-microfinance-bank.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/abulesoro-microfinance-bank.png",
         "sha256": "53e06b38de3acedd22863a6e1e39f6827c5df2b2ae22f11da2a7c9152c1d4306"
       },
       "target_record_id": "abulesoro-microfinance-bank",
@@ -688,7 +688,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/accion-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/accion-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/accion-microfinance-bank-limited.png",
         "sha256": "de47812f0677cd9b1fb85fee7eff18d5b1349235025ead2e256aa177695d96c7"
       },
       "target_record_id": "accion-microfinance-bank-limited",
@@ -741,7 +741,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/ada-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/ada-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/ada-microfinance-bank-limited.png",
         "sha256": "0bbbb429bcfb50f108ce10dbe4ddaedf6f8fb2ea8d0e5b6ba81a4f8c3d7d92f3"
       },
       "target_record_id": "ada-microfinance-bank-limited",
@@ -793,7 +793,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/addosser-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/addosser-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/addosser-microfinance-bank-limited.png",
         "sha256": "67160b1bd4b638afd9b35755ac76df419a0f4eefadfc34f4ecd98025ed17e734"
       },
       "target_record_id": "addosser-microfinance-bank-limited",
@@ -844,7 +844,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/adeyemi-college-staff-microfinance-bank.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/adeyemi-college-staff-microfinance-bank.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/adeyemi-college-staff-microfinance-bank.png",
         "sha256": "32f85a4f0a66fb74bad7c2d5b727ff65f17b21eb54a0b2570836745e64d38e01"
       },
       "target_record_id": "adeyemi-college-staff-microfinance-bank",
@@ -895,7 +895,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/advancly-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/advancly-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/advancly-microfinance-bank-limited.png",
         "sha256": "303da65ee841d876cc44e9c0b5584b1afa3fe040db6cddd56fcdfbd6a2803107"
       },
       "target_record_id": "advancly-microfinance-bank-limited",
@@ -978,7 +978,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/afole-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/afole-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/afole-microfinance-bank-limited.png",
         "sha256": "6889c8318f0a591d3586598fcc367db80e2671ae4e83d49a5db1d38a7cedd10a"
       },
       "target_record_id": "afole-microfinance-bank-limited",
@@ -1029,7 +1029,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/akalabo-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/akalabo-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/akalabo-microfinance-bank-limited.png",
         "sha256": "82cd7cc1c6f069bc690b01c8f3811a8cf97f78aeb38b7a4c5655b1ee5a430056"
       },
       "target_record_id": "akalabo-microfinance-bank-limited",
@@ -1080,7 +1080,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/al-barakah-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/al-barakah-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/al-barakah-microfinance-bank-limited.png",
         "sha256": "1bd0ea75a2c77a968b2a6ce148426434528ae0d8619b8382e6a15f6823429f31"
       },
       "target_record_id": "al-barakah-microfinance-bank-limited",
@@ -1131,7 +1131,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/al-hayat-microfinance-bank.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/al-hayat-microfinance-bank.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/al-hayat-microfinance-bank.png",
         "sha256": "88ed1489e16add87631612cd0d1c28c77b7077cd9eb1a08465577ddce7cd1ed6"
       },
       "target_record_id": "al-hayat-microfinance-bank",
@@ -1182,7 +1182,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/alekun-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/alekun-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/alekun-microfinance-bank-limited.png",
         "sha256": "47318e5e1218a4c5dbbc9dfa51d370c0096ea425241a8b9be9ed8f222cb5495b"
       },
       "target_record_id": "alekun-microfinance-bank-limited",
@@ -1233,7 +1233,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/alert-microfinance-bank.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/alert-microfinance-bank.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/alert-microfinance-bank.png",
         "sha256": "767b9534c8b289c013da75bc3e7e8853d2ea2b2ac3e484f02dac3bd44ff6f2e6"
       },
       "target_record_id": "alert-microfinance-bank",
@@ -1284,7 +1284,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/all-workers-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/all-workers-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/all-workers-microfinance-bank-limited.png",
         "sha256": "cf650861a5bf5e7305fa8e3a75adda2d7f545747081d3620ae91cbac5871695c"
       },
       "target_record_id": "all-workers-microfinance-bank-limited",
@@ -1335,7 +1335,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/alpha-kapital-microfinance-bank.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/alpha-kapital-microfinance-bank.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/alpha-kapital-microfinance-bank.png",
         "sha256": "83c1d1e8e0e39a61e8f3306a9b126834428eba8bb5a76f3f76fd248f3c58c698"
       },
       "target_record_id": "alpha-kapital-microfinance-bank",
@@ -1386,7 +1386,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/ample-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/ample-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/ample-microfinance-bank-limited.png",
         "sha256": "0a7c185995591828c42b0f722f7d76c9c34d627b9cd214d1e3c02d06c1b0b281"
       },
       "target_record_id": "ample-microfinance-bank-limited",
@@ -1469,7 +1469,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/apex-trust-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/apex-trust-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/apex-trust-microfinance-bank-limited.png",
         "sha256": "41557cf7f17c686188643394a82b29352c0a49d49efe76ee478f20dccb0f7609"
       },
       "target_record_id": "apex-trust-microfinance-bank-limited",
@@ -1514,7 +1514,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/aramoko-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/aramoko-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/aramoko-microfinance-bank-limited.png",
         "sha256": "8c45b982d11466fce958e1089fd5a15766ccec9cd0c2ff04846873cdb71bd9df"
       },
       "target_record_id": "aramoko-microfinance-bank-limited",
@@ -1627,7 +1627,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/asha-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/asha-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/asha-microfinance-bank-limited.png",
         "sha256": "17f1ebbe76a1225d0c9f5df7bfd4faf01bc6f570116dc42c408747b0100c7bd3"
       },
       "target_record_id": "asha-microfinance-bank-limited",
@@ -1678,7 +1678,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/asset-matrix-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/asset-matrix-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/asset-matrix-microfinance-bank-limited.png",
         "sha256": "3d2948684b1088b2a516c44ed4531a3842c6e9cd286646566d964313f425cc03"
       },
       "target_record_id": "asset-matrix-microfinance-bank-limited",
@@ -1729,7 +1729,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/assets-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/assets-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/assets-microfinance-bank-limited.png",
         "sha256": "23dac1d27e012554b23394d1d21612639b3b8ea09d9dddbec44487a2ff6aa17e"
       },
       "target_record_id": "assets-microfinance-bank-limited",
@@ -1780,7 +1780,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/astra-polaris-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/astra-polaris-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/astra-polaris-microfinance-bank-limited.png",
         "sha256": "215d0c60207dc9179f9087b32c80caa33bd78eb3b181af408c6b92a2167f1ea2"
       },
       "target_record_id": "astra-polaris-microfinance-bank-limited",
@@ -1831,7 +1831,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/auchi-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/auchi-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/auchi-microfinance-bank-limited.png",
         "sha256": "4d8a08bd63dd7597075a5f42e343f25f2dd888e85d909988436184ae18f58d8d"
       },
       "target_record_id": "auchi-microfinance-bank-limited",
@@ -1914,7 +1914,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/avvic-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/avvic-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/avvic-microfinance-bank-limited.png",
         "sha256": "d7e84b70339d204dcd8467e629f6d182a52e4b1df0477cf8160f86bd8ae40ee3"
       },
       "target_record_id": "avvic-microfinance-bank-limited",
@@ -2029,7 +2029,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/b-c-kash-microfinance-bank.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/b-c-kash-microfinance-bank.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/b-c-kash-microfinance-bank.png",
         "sha256": "dbca43b3188181cb84c759040a17594f62796bc02b49f8789ffa81c7fbe780ae"
       },
       "target_record_id": "b-c-kash-microfinance-bank",
@@ -2112,7 +2112,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/bkd-new-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/bkd-new-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/bkd-new-microfinance-bank-limited.png",
         "sha256": "7a396ae2f7cd43a4d0789a23df1dc71793752fb4065edb5f945a9f51ec231249"
       },
       "target_record_id": "bkd-new-microfinance-bank-limited",
@@ -2163,7 +2163,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/boctrust-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/boctrust-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/boctrust-mfb.png",
         "sha256": "c378eb1620c63d151efccef2965b51d269c099f87cace70b11053741bf5e68d4"
       },
       "target_record_id": "boctrust-mfb",
@@ -2216,7 +2216,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/bold-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/bold-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/bold-microfinance-bank-limited.png",
         "sha256": "f40d6120c3d307b1f1abac52a6cdd71ae8fc80217f2b19093bfeff5790374f21"
       },
       "target_record_id": "bold-microfinance-bank-limited",
@@ -2267,7 +2267,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/babcock-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/babcock-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/babcock-microfinance-bank-limited.png",
         "sha256": "0bddd70c2d198002fd41d3c3f97a8df4d009a6194bd729414ee22d245851712e"
       },
       "target_record_id": "babcock-microfinance-bank-limited",
@@ -2318,7 +2318,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/baige-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/baige-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/baige-microfinance-bank-limited.png",
         "sha256": "a00dde3fef3022f316c3112de1b73bfa5a5dd564dfc30453120f6e37bbc81238"
       },
       "target_record_id": "baige-microfinance-bank-limited",
@@ -2369,7 +2369,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/balogun-gambari-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/balogun-gambari-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/balogun-gambari-microfinance-bank-limited.png",
         "sha256": "14f70a7dbbad7458dfac898f6a4e5afdf001efb4f8f225de20f92bd3cd9e3773"
       },
       "target_record_id": "balogun-gambari-microfinance-bank-limited",
@@ -2420,7 +2420,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/bam-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/bam-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/bam-microfinance-bank-limited.png",
         "sha256": "7131667e875818b8083c4eb101862b975cca2d3087a74cbdbc2b795063e6d9b5"
       },
       "target_record_id": "bam-microfinance-bank-limited",
@@ -2567,7 +2567,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/bankeasy-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/bankeasy-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/bankeasy-microfinance-bank-limited.png",
         "sha256": "ad850e5cd7d861cc25a982b6be6a0e2c7f93f75b51e5a2d11dc93a7cfc7bcbf0"
       },
       "target_record_id": "bankeasy-microfinance-bank-limited",
@@ -2618,7 +2618,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/barnawa-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/barnawa-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/barnawa-microfinance-bank-limited.png",
         "sha256": "acc72d4c45ea0af3943c3d1713a0e63c1fff041b34e80748c3de2dd155645b41"
       },
       "target_record_id": "barnawa-microfinance-bank-limited",
@@ -2765,7 +2765,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/benysta-microfinance-bank.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/benysta-microfinance-bank.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/benysta-microfinance-bank.png",
         "sha256": "4ec0a572351375d1e5332092279df43d4caa2baf57f156ebe2b7b395beb25cd4"
       },
       "target_record_id": "benysta-microfinance-bank",
@@ -2816,7 +2816,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/berachah-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/berachah-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/berachah-microfinance-bank-limited.png",
         "sha256": "9598e953fe29533be1e3eb85e1e511acee78024bb939b97e01e2ce507aab056d"
       },
       "target_record_id": "berachah-microfinance-bank-limited",
@@ -2867,7 +2867,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/best-star-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/best-star-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/best-star-microfinance-bank-limited.png",
         "sha256": "cc934ab7f0b44eb25934e01263ca4608fe861cb2df43749c78e8d3978ebd1edf"
       },
       "target_record_id": "best-star-microfinance-bank-limited",
@@ -2918,7 +2918,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/bethel-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/bethel-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/bethel-microfinance-bank-limited.png",
         "sha256": "2406e9c8e4a3aa336b1be9bf859d466a7cf0c42f5d0c1cb1a97ddffbeb834540"
       },
       "target_record_id": "bethel-microfinance-bank-limited",
@@ -2969,7 +2969,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/bloc-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/bloc-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/bloc-microfinance-bank-limited.png",
         "sha256": "00fda6ab47dc6356b96c459a2d96838ac7bd81015e26c3b16bab5477d1ee3743"
       },
       "target_record_id": "bloc-microfinance-bank-limited",
@@ -3052,7 +3052,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/boost-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/boost-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/boost-microfinance-bank-limited.png",
         "sha256": "7393853487439107270e3afb83e6650a0182db056f590ace34467227ad11033f"
       },
       "target_record_id": "boost-microfinance-bank-limited",
@@ -3103,7 +3103,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/bosak-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/bosak-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/bosak-mfb.png",
         "sha256": "2507e3ff6d9cdeced69691ec4c3557ca1c433916fd63d8c8f3fbf9d35e99f9d5"
       },
       "target_record_id": "bosak-mfb",
@@ -3156,7 +3156,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/bowen-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/bowen-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/bowen-mfb.png",
         "sha256": "c2d52531d5f6a35797e29b6d595d9dabb00b6dd4c39bd70e46f679cdc2f59928"
       },
       "target_record_id": "bowen-mfb",
@@ -3207,7 +3207,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/brethren-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/brethren-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/brethren-mfb.png",
         "sha256": "2ae36459f5eb4b5d90fe051960744607d8509e36989a15db06607dc63ab92726"
       },
       "target_record_id": "brethren-mfb",
@@ -3258,7 +3258,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/brightway-mfb-ltd.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/brightway-mfb-ltd.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/brightway-mfb-ltd.png",
         "sha256": "7dabd808b35ce4030eaf1bc67ec176b7153ac798d31f306f793071e1f6970cdf"
       },
       "target_record_id": "brightway-mfb-ltd",
@@ -3374,7 +3374,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/bway-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/bway-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/bway-microfinance-bank-limited.png",
         "sha256": "87eaeccf521c6b6f04dec1bbd543e22ae3cd1279190951bbced977a439319890"
       },
       "target_record_id": "bway-microfinance-bank-limited",
@@ -3483,7 +3483,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/crutech-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/crutech-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/crutech-mfb.png",
         "sha256": "6fec52802fbbe89cc6948833c39e67adff77fb5845ab002a0fe9f428bbe4cab9"
       },
       "target_record_id": "crutech-mfb",
@@ -3532,7 +3532,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/capitalmetriq-swift-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/capitalmetriq-swift-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/capitalmetriq-swift-mfb.png",
         "sha256": "d852c8dcf0b3b0176f41aaae054c20cc04997bd8b436f4f125c20005a70c1f39"
       },
       "target_record_id": "capitalmetriq-swift-mfb",
@@ -3583,7 +3583,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/casa-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/casa-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/casa-microfinance-bank-limited.png",
         "sha256": "05060398ee4d4772a1ebb4dcf2c3d37f4fb1a6d77291f945968291ffd68fa071"
       },
       "target_record_id": "casa-microfinance-bank-limited",
@@ -3634,7 +3634,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/cash-rite-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/cash-rite-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/cash-rite-mfb.png",
         "sha256": "eca7d535eff247265fac7f03b946df02c0cb65b564025a70d1a1452933d5ea58"
       },
       "target_record_id": "cash-rite-mfb",
@@ -3749,7 +3749,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/cedrus-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/cedrus-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/cedrus-microfinance-bank-limited.png",
         "sha256": "f548d519f4aa7a04a5f3e6f00d25335bca15be2cad962a16b097d099470e6c55"
       },
       "target_record_id": "cedrus-microfinance-bank-limited",
@@ -3832,7 +3832,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/charis-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/charis-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/charis-microfinance-bank-limited.png",
         "sha256": "7c45a57248d3a0aac05bdc1bd604994914ae0eee5ca50aa280fc66d45e39f978"
       },
       "target_record_id": "charis-microfinance-bank-limited",
@@ -3883,7 +3883,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/chase-mfb-ltd.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/chase-mfb-ltd.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/chase-mfb-ltd.png",
         "sha256": "efb6acf609c39b0d095977e5152650cbda23fa96eda5f9e1a1d25f2cc5d12d88"
       },
       "target_record_id": "chase-mfb-ltd",
@@ -3934,7 +3934,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/chikum-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/chikum-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/chikum-mfb.png",
         "sha256": "7a875dd093ece67b6c8c5f635e65680adb8f75ee4908e6c079256efe7d0e167f"
       },
       "target_record_id": "chikum-mfb",
@@ -4019,7 +4019,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/consumer-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/consumer-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/consumer-mfb.png",
         "sha256": "e7078c0c0403d63f9fca636a7f6a98e9d63232b7cd7142dfb2a8d76ae15e038c"
       },
       "target_record_id": "consumer-mfb",
@@ -4166,7 +4166,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/dsc-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/dsc-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/dsc-microfinance-bank-limited.png",
         "sha256": "0db0d951e6ae2b75e8c40e85e145010174d6546606f705e76e2bc66cb0859b95"
       },
       "target_record_id": "dsc-microfinance-bank-limited",
@@ -4249,7 +4249,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/dabtikir-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/dabtikir-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/dabtikir-microfinance-bank-limited.png",
         "sha256": "d242918fd6d53e874a8bb44c59981780cc3afad7860ed84e04fdd4513c829a64"
       },
       "target_record_id": "dabtikir-microfinance-bank-limited",
@@ -4300,7 +4300,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/dash-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/dash-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/dash-microfinance-bank-limited.png",
         "sha256": "924624b9de0712b33083c2bcc64fe72c05092709b029a57d919cef7a9ccd95f4"
       },
       "target_record_id": "dash-microfinance-bank-limited",
@@ -4351,7 +4351,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/davenport-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/davenport-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/davenport-microfinance-bank-limited.png",
         "sha256": "fad426affaf4db3373540fe0f0455f0630cc251f16cc7691664e31fa1fe1ebb0"
       },
       "target_record_id": "davenport-microfinance-bank-limited",
@@ -4402,7 +4402,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/daylight-mfb-ltd.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/daylight-mfb-ltd.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/daylight-mfb-ltd.png",
         "sha256": "305b22fd96b9cd63fb0e539c333ced3fc5437eb75082647840e92ce1321c903c"
       },
       "target_record_id": "daylight-mfb-ltd",
@@ -4613,7 +4613,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/duxbank-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/duxbank-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/duxbank-microfinance-bank-limited.png",
         "sha256": "fbf143cc862cba562ac97e48ad6819328f97424fa5f8fbed35ddbd1da212acaa"
       },
       "target_record_id": "duxbank-microfinance-bank-limited",
@@ -4728,7 +4728,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/eagle-flight-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/eagle-flight-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/eagle-flight-mfb.png",
         "sha256": "c8e05aa001a2e3ccbb821d3e907c09672653a9626179644a41ec6fbd1bdb23be"
       },
       "target_record_id": "eagle-flight-mfb",
@@ -4779,7 +4779,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/edfin-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/edfin-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/edfin-mfb.png",
         "sha256": "e1d8a0aa2f86895b85508102d3d82f783040f112d89e906f20c6b610458d8cd7"
       },
       "target_record_id": "edfin-mfb",
@@ -4830,7 +4830,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/ekondo-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/ekondo-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/ekondo-mfb.png",
         "sha256": "38b13d6c1073b288d194946384d338edc10c9ea8eb51578766528f49c95e2cbe"
       },
       "target_record_id": "ekondo-mfb",
@@ -4883,7 +4883,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/ellington-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/ellington-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/ellington-microfinance-bank-limited.png",
         "sha256": "862db2b021f5805bb20bc5da786fd1ee47916c56d7779db8d22114eb883d99f8"
       },
       "target_record_id": "ellington-microfinance-bank-limited",
@@ -5030,7 +5030,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/empire-trust-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/empire-trust-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/empire-trust-mfb.png",
         "sha256": "9ab7ca7ec08d77ca1c1d2a0e8716870b04256cf7114020255ace9fedb2315093"
       },
       "target_record_id": "empire-trust-mfb",
@@ -5145,7 +5145,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/eso-e-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/eso-e-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/eso-e-mfb.png",
         "sha256": "2fe5c38451a108a803aa9b76e9a66ed126ce3393eff3aa9fc770959cc6225d28"
       },
       "target_record_id": "eso-e-mfb",
@@ -5260,7 +5260,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/evergreen-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/evergreen-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/evergreen-mfb.png",
         "sha256": "a657a283b5b0d8edcf51acc9411aadb30924055393661c4306d146a851da0056"
       },
       "target_record_id": "evergreen-mfb",
@@ -5343,7 +5343,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/fast-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/fast-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/fast-mfb.png",
         "sha256": "8db57e6b44b08d8583c997a678bb69528b84f8b92dc97c27a9430cb7e7fd0f7e"
       },
       "target_record_id": "fast-mfb",
@@ -5394,7 +5394,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/fcmb-mfb-ltd.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/fcmb-mfb-ltd.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/fcmb-mfb-ltd.png",
         "sha256": "6bebfd9f5fc6c6408a3e48a630e917e9455f054c88b8bba6226adae2b27717c4"
       },
       "target_record_id": "fcmb-mfb-ltd",
@@ -5477,7 +5477,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/ffs-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/ffs-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/ffs-mfb.png",
         "sha256": "55b671310d63258825c867d552853cf62528d8b8110a308f3c05c53e07bb867e"
       },
       "target_record_id": "ffs-mfb",
@@ -5592,7 +5592,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/fairmoney-mfb-ltd.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/fairmoney-mfb-ltd.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/fairmoney-mfb-ltd.png",
         "sha256": "5766865a706f7e3ed3bab4695f5fac3fb1472579e08e2a6ad3062062ffa30d85"
       },
       "target_record_id": "fairmoney-mfb-ltd",
@@ -5643,7 +5643,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/federal-polytechnic-nekede-mfb-ltd.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/federal-polytechnic-nekede-mfb-ltd.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/federal-polytechnic-nekede-mfb-ltd.png",
         "sha256": "9af4828107d666b93a2bda4705d8f0afe5c0b775ade25f4b1f4f5f542faaa83b"
       },
       "target_record_id": "federal-polytechnic-nekede-mfb-ltd",
@@ -5758,7 +5758,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/fidfund-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/fidfund-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/fidfund-mfb.png",
         "sha256": "1ea00c9f09f9f39538975526159d0c454a4b07c0b8a22602ca226d661a4954d1"
       },
       "target_record_id": "fidfund-mfb",
@@ -5809,7 +5809,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/finatrust-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/finatrust-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/finatrust-mfb.png",
         "sha256": "e15538e07f58f436cc67b0da2513c0ce9a20efc865dc028c98412a40250eecc2"
       },
       "target_record_id": "finatrust-mfb",
@@ -5860,7 +5860,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/firmus-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/firmus-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/firmus-mfb.png",
         "sha256": "47ba35d05dcc2946d6b14f84787312d78b1e1927e51c2f9dcf634b51625e83bf"
       },
       "target_record_id": "firmus-mfb",
@@ -5975,7 +5975,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/first-option-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/first-option-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/first-option-mfb.png",
         "sha256": "27746b42d7cc0c0c43f45cecf2916c0a909293ef0ffbe261da13555152b70abf"
       },
       "target_record_id": "first-option-mfb",
@@ -6026,7 +6026,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/first-royal-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/first-royal-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/first-royal-mfb.png",
         "sha256": "3dc752e4959450cfec6f3da5bd8312aeeabcd70cbbe98e4f2806895bca302bbe"
       },
       "target_record_id": "first-royal-mfb",
@@ -6109,7 +6109,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/flexi-microfinance-bank.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/flexi-microfinance-bank.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/flexi-microfinance-bank.png",
         "sha256": "d5017b7f7c6aa47e2f9bfeefe6117ea8bd5866ef5f8a722b58b0a62f18f9d4fa"
       },
       "target_record_id": "flexi-microfinance-bank",
@@ -6224,7 +6224,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/fullrange-microfinance-bank-ltd.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/fullrange-microfinance-bank-ltd.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/fullrange-microfinance-bank-ltd.png",
         "sha256": "2a20acbfd9a76d32630fbb9f05f21b1c57bc61d0114d947a1e8e3883cd3f53a8"
       },
       "target_record_id": "fullrange-microfinance-bank-ltd",
@@ -6275,7 +6275,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/futo-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/futo-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/futo-mfb.png",
         "sha256": "c69da0f8e53038978eeafb2fd37280d93be6a08dd356d1960eca927b4f94fe4c"
       },
       "target_record_id": "futo-mfb",
@@ -6326,7 +6326,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/good-shepherd-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/good-shepherd-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/good-shepherd-mfb.png",
         "sha256": "cf95b9fe0754809d484ed2e9918fa1618e22264b977a4b0ecad68354eeb1ac09"
       },
       "target_record_id": "good-shepherd-mfb",
@@ -6377,7 +6377,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/gashua-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/gashua-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/gashua-mfb.png",
         "sha256": "910e6f500451a1d6ac2c540f69d008afd27c855fa85f49c0ca1f74d58ed9a81f"
       },
       "target_record_id": "gashua-mfb",
@@ -6428,7 +6428,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/giant-stride-mfb-ltd.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/giant-stride-mfb-ltd.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/giant-stride-mfb-ltd.png",
         "sha256": "0f571decf3b711fa9ef3a565330c30ca3265b30bdf5b6a6cefeaf7d5cd044cfa"
       },
       "target_record_id": "giant-stride-mfb-ltd",
@@ -6479,7 +6479,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/glory-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/glory-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/glory-mfb.png",
         "sha256": "b6e58f712bdbd23c8827f967138311c9da03d02c5f99a3665f140f5bca4e0cd5"
       },
       "target_record_id": "glory-mfb",
@@ -6562,7 +6562,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/gowans-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/gowans-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/gowans-mfb.png",
         "sha256": "1d1d8165451886bd19ee0dc36c0979b01edcd29385bf07e0f0d472adc587ceeb"
       },
       "target_record_id": "gowans-mfb",
@@ -6613,7 +6613,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/grants-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/grants-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/grants-mfb.png",
         "sha256": "cb94f43095c707584317a4feb447f85213d268a2d41880c598df4f7ee1dfea9b"
       },
       "target_record_id": "grants-mfb",
@@ -6664,7 +6664,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/granule-microfinance-bank.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/granule-microfinance-bank.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/granule-microfinance-bank.png",
         "sha256": "5a2f3b16a7fde90dc82a6ecbb33e408e376560f12fc82503b9ab062beed46e6c"
       },
       "target_record_id": "granule-microfinance-bank",
@@ -6756,7 +6756,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/green-acres-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/green-acres-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/green-acres-mfb.png",
         "sha256": "f993053b13e3163437dd01da09200a7aab655a0b0539cd828b53d903dcd2ec27"
       },
       "target_record_id": "green-acres-mfb",
@@ -6807,7 +6807,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/greenville-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/greenville-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/greenville-mfb.png",
         "sha256": "e3ed711d0cf8f19399cc4f3363aa927127629e9d1eea8708dad46f3a08aa6dd3"
       },
       "target_record_id": "greenville-mfb",
@@ -6858,7 +6858,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/grooming-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/grooming-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/grooming-mfb.png",
         "sha256": "666fb4d2807c4db3de3bfc4df572ffe95017f066495bde14aed289312028f12e"
       },
       "target_record_id": "grooming-mfb",
@@ -6973,7 +6973,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/hasal-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/hasal-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/hasal-mfb.png",
         "sha256": "0b6628c9d893effc70386924c469b0901dd24b3400bcd9767f1b79afdffd7383"
       },
       "target_record_id": "hasal-mfb",
@@ -7120,7 +7120,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/ibile-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/ibile-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/ibile-mfb.png",
         "sha256": "24ccd95bcf9884a41010242a8eaf41948dd7ec97c5bf90cc9f7f9a1b031f2d4a"
       },
       "target_record_id": "ibile-mfb",
@@ -7203,7 +7203,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/indulge-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/indulge-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/indulge-microfinance-bank-limited.png",
         "sha256": "729c048cb65feda9cdec7087cde48d6435b1353ccef9d39fe7b094f731966354"
       },
       "target_record_id": "indulge-microfinance-bank-limited",
@@ -7286,7 +7286,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/irl-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/irl-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/irl-mfb.png",
         "sha256": "ac071505ddc73e8dfe95601204d67de23fb9cf58af685913483078f10bd422aa"
       },
       "target_record_id": "irl-mfb",
@@ -7337,7 +7337,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/ikenne-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/ikenne-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/ikenne-mfb.png",
         "sha256": "00d7f478e9934b16c8e4d7d4e8ee16f3d81e80aacb14a147d046b1296f768cdb"
       },
       "target_record_id": "ikenne-mfb",
@@ -7388,7 +7388,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/ikere-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/ikere-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/ikere-microfinance-bank-limited.png",
         "sha256": "337a9803d0b284ada8d533d467b97e997f7e8bb9052c2d34469b2e1661cd6e3d"
       },
       "target_record_id": "ikere-microfinance-bank-limited",
@@ -7439,7 +7439,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/ikire-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/ikire-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/ikire-mfb.png",
         "sha256": "95a42ae0cee5392b1900233b60c3abb46dacfa02ac59b4f0e2128de11600f362"
       },
       "target_record_id": "ikire-mfb",
@@ -7522,7 +7522,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/infinity-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/infinity-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/infinity-mfb.png",
         "sha256": "9ea876cd393a1de64e30ca9ec5b504ab33af2db41c10d5bf236eaf4e9da02548"
       },
       "target_record_id": "infinity-mfb",
@@ -7673,7 +7673,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/kano-poly-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/kano-poly-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/kano-poly-mfb.png",
         "sha256": "4adce625776fa91e53ccd195e5fd45f2254f6628ab437ff99f73192657924142"
       },
       "target_record_id": "kano-poly-mfb",
@@ -7722,7 +7722,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/kc-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/kc-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/kc-mfb.png",
         "sha256": "ff416803d13fd2687e2269c5061b256038d4fd54e4c21e0d769c327bd993c8f9"
       },
       "target_record_id": "kc-mfb",
@@ -7773,7 +7773,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/kcmb-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/kcmb-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/kcmb-mfb.png",
         "sha256": "54aa42ac1d63ce50d3aa8ddcdc64d95f40d99e8a307e02641bb7dc2af78e6676"
       },
       "target_record_id": "kcmb-mfb",
@@ -7824,7 +7824,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/kaizen-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/kaizen-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/kaizen-microfinance-bank-limited.png",
         "sha256": "1a914e955e1367b7bff30d9842dacbc2d8a9a0716f7152851f26653ee10e7f35"
       },
       "target_record_id": "kaizen-microfinance-bank-limited",
@@ -7875,7 +7875,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/katsu-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/katsu-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/katsu-microfinance-bank-limited.png",
         "sha256": "cfe7b938278393f808e37a9a85cf8bd7518def85c5895d1d2bfaefa5e7a642ef"
       },
       "target_record_id": "katsu-microfinance-bank-limited",
@@ -7958,7 +7958,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/kayvee-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/kayvee-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/kayvee-mfb.png",
         "sha256": "a5f5485846593b4e9660f740c2b3c3586894bbf46eb8cd515701ff930c88a010"
       },
       "target_record_id": "kayvee-mfb",
@@ -8009,7 +8009,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/koboweb-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/koboweb-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/koboweb-microfinance-bank-limited.png",
         "sha256": "89bfa253854821c6a84e92cfe8e6c0c2ee5ff193517e341f1da9797547b61b85"
       },
       "target_record_id": "koboweb-microfinance-bank-limited",
@@ -8060,7 +8060,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/koins-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/koins-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/koins-microfinance-bank-limited.png",
         "sha256": "c4d245f405fcc739aa92ba68f61497629fbbb76cb38b8f2e2f87892f03a531ce"
       },
       "target_record_id": "koins-microfinance-bank-limited",
@@ -8111,7 +8111,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/kolisa-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/kolisa-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/kolisa-microfinance-bank-limited.png",
         "sha256": "3bf6fabd43896ed332faac5fd6f310726f3db6c88d9528bfe17e2f91f0556e48"
       },
       "target_record_id": "kolisa-microfinance-bank-limited",
@@ -8194,7 +8194,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/kontagora-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/kontagora-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/kontagora-mfb.png",
         "sha256": "9084d227fb100440c1543434c56b58d19db6195c2a53078d8c57d9a7aa38f8cf"
       },
       "target_record_id": "kontagora-mfb",
@@ -8278,7 +8278,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/kuda-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/kuda-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/kuda-mfb.png",
         "sha256": "4b58a3c5f11530bdfb182b413fe2fb24d9e474b47b284c3c7f624c3b9989b1c0"
       },
       "target_record_id": "kuda-mfb",
@@ -8329,7 +8329,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/la-fayette-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/la-fayette-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/la-fayette-mfb.png",
         "sha256": "db1770f3f3bf3760deb689e9b4f1e12e7ab8a493e5fd742e2a146ba9d870c037"
       },
       "target_record_id": "la-fayette-mfb",
@@ -8380,7 +8380,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/lapo-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/lapo-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/lapo-mfb.png",
         "sha256": "85c75ad1333578a166f6c3d91226cff35e1a34960dac47e1371f10ea3b619160"
       },
       "target_record_id": "lapo-mfb",
@@ -8425,7 +8425,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/lavender.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/lavender.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/lavender.png",
         "sha256": "78b94cb19d20e5bb6875366ac50f26143f7b53f34e72ab5ae450900a6a98c334"
       },
       "target_record_id": "lavender",
@@ -8474,7 +8474,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/letshego-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/letshego-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/letshego-mfb.png",
         "sha256": "cdef64216683677ce420f8cd7125248cbcc02c3fa07bc48cbd8028f9b25bcd3a"
       },
       "target_record_id": "letshego-mfb",
@@ -8525,7 +8525,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/lightway-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/lightway-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/lightway-microfinance-bank-limited.png",
         "sha256": "61b0a07f180a2e139a2eec66c4be97760e981c9e8c5121a9b2beb7229105635d"
       },
       "target_record_id": "lightway-microfinance-bank-limited",
@@ -8640,7 +8640,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/lovonus-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/lovonus-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/lovonus-mfb.png",
         "sha256": "aec8d435e7489008d27116d6f692e60cb094596864776336b6dc8b244a0fe272"
       },
       "target_record_id": "lovonus-mfb",
@@ -8819,7 +8819,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/mainland-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/mainland-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/mainland-mfb.png",
         "sha256": "3ce116e6aebe1f6fdab7275aef8c5bfd6b85898ea61239eb3f203172a53be58c"
       },
       "target_record_id": "mainland-mfb",
@@ -8870,7 +8870,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/mainstreet-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/mainstreet-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/mainstreet-mfb.png",
         "sha256": "1a1572f5ea16a534e19365a2f666cbcf1f6848b66debf3918e3bab9a8e0b254e"
       },
       "target_record_id": "mainstreet-mfb",
@@ -8923,7 +8923,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/malachy-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/malachy-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/malachy-mfb.png",
         "sha256": "8d3ff2f4584c2cc2b5676b9b74e8dd0c1956e12703b3fa493f7693a1faac7ba1"
       },
       "target_record_id": "malachy-mfb",
@@ -9072,7 +9072,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/mayden-microfinance-bank.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/mayden-microfinance-bank.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/mayden-microfinance-bank.png",
         "sha256": "d0a3d31fd4f584b901cdb2b0cd6354b75a5f73baacf11cbf4f7d2b77b9126438"
       },
       "target_record_id": "mayden-microfinance-bank",
@@ -9155,7 +9155,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/mega-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/mega-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/mega-mfb.png",
         "sha256": "46941393c311f15be8a2ea138bfd4bae2de5a87fa2dac1c821ec19a58232f7f5"
       },
       "target_record_id": "mega-mfb",
@@ -9238,7 +9238,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/mia-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/mia-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/mia-microfinance-bank-limited.png",
         "sha256": "e9ba028847209050e768f9f84ccb2e395b84bff91e5ff7c509b67b6f3f204fe1"
       },
       "target_record_id": "mia-microfinance-bank-limited",
@@ -9355,7 +9355,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/mkobo-mfb-ltd.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/mkobo-mfb-ltd.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/mkobo-mfb-ltd.png",
         "sha256": "b384c39f1fc3d9661f063025c37d9167d2f1856b8ebb290f40fedc7d07a5a95a"
       },
       "target_record_id": "mkobo-mfb-ltd",
@@ -9666,7 +9666,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/nirsal-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/nirsal-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/nirsal-mfb.png",
         "sha256": "1eb81890691002c4db3a9e91e06dcb088f89d99528bc0fba1810f73f8573906d"
       },
       "target_record_id": "nirsal-mfb",
@@ -9709,7 +9709,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/npf-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/npf-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/npf-mfb.png",
         "sha256": "0c3edab3a866c4932079f4ccb5518c3565f91acf74c4bbcdcc0bfc45f150f959"
       },
       "target_record_id": "npf-mfb",
@@ -9758,7 +9758,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/nexton-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/nexton-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/nexton-microfinance-bank-limited.png",
         "sha256": "c257f86846dba773369135cc0d42d3c120859b85ecfb439d35937768cbd209bf"
       },
       "target_record_id": "nexton-microfinance-bank-limited",
@@ -9809,7 +9809,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/nigerian-navy-mfb-ltd.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/nigerian-navy-mfb-ltd.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/nigerian-navy-mfb-ltd.png",
         "sha256": "5638d990e4f535c8ef017c2e95064b55222361a8179a128e36e5c8e213760a95"
       },
       "target_record_id": "nigerian-navy-mfb-ltd",
@@ -9860,7 +9860,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/nomase-microfinance-bank-ltd.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/nomase-microfinance-bank-ltd.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/nomase-microfinance-bank-ltd.png",
         "sha256": "8a25295530faad70f5099483fe095c8acce6432157fc37f0daf80c11e5b31460"
       },
       "target_record_id": "nomase-microfinance-bank-ltd",
@@ -9943,7 +9943,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/novus-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/novus-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/novus-microfinance-bank-limited.png",
         "sha256": "0e83445d2dbfb65d04f1c33fe1f388e379da8d4b896b1f978a062d83fef878fe"
       },
       "target_record_id": "novus-microfinance-bank-limited",
@@ -10020,7 +10020,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/oluchukwu-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/oluchukwu-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/oluchukwu-mfb.png",
         "sha256": "3c055256e5d652c7d59e26262f23c3c0c945ea1d3b39936e654cffd34f47a81d"
       },
       "target_record_id": "oluchukwu-mfb",
@@ -10069,7 +10069,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/olabisi-onabanjo-university-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/olabisi-onabanjo-university-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/olabisi-onabanjo-university-mfb.png",
         "sha256": "5f359ea713fa9a9c4250e8160bee91b36c6ccc00265ee2da2add890461705c7a"
       },
       "target_record_id": "olabisi-onabanjo-university-mfb",
@@ -10152,7 +10152,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/olomu-aperan-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/olomu-aperan-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/olomu-aperan-microfinance-bank-limited.png",
         "sha256": "1fa42311cc8de15a0a37e52f9dd97bcaea13b0e3b7662ff322782039c3663eec"
       },
       "target_record_id": "olomu-aperan-microfinance-bank-limited",
@@ -10247,7 +10247,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/onewallet-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/onewallet-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/onewallet-microfinance-bank-limited.png",
         "sha256": "e5bd89b93d4deb067e67940cf45035cce3d3e7571b3a27ff98a39500069fdccf"
       },
       "target_record_id": "onewallet-microfinance-bank-limited",
@@ -10394,7 +10394,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/oye-versity-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/oye-versity-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/oye-versity-microfinance-bank-limited.png",
         "sha256": "e926fc871c411e9885103c6d06dc2eaef7803c2564cb32da8591c8715a461250"
       },
       "target_record_id": "oye-versity-microfinance-bank-limited",
@@ -10477,7 +10477,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/pathfinder-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/pathfinder-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/pathfinder-mfb.png",
         "sha256": "9c2b3858f6cd1d3ff75377334fc79fd7e66010f67ee3fb074c661a67bbf98b9a"
       },
       "target_record_id": "pathfinder-mfb",
@@ -10528,7 +10528,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/pecan-trust-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/pecan-trust-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/pecan-trust-mfb.png",
         "sha256": "6a7d08e0713525da7411b31406409c95fb84884195085ad1acb7e42914830c80"
       },
       "target_record_id": "pecan-trust-mfb",
@@ -10579,7 +10579,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/pointone-microfinance-bank.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/pointone-microfinance-bank.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/pointone-microfinance-bank.png",
         "sha256": "1c6960e0d7baaeba4ada3a561825b14763ba3c2cd4e2d582dd914a63109044d7"
       },
       "target_record_id": "pointone-microfinance-bank",
@@ -10630,7 +10630,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/pact-microfinance-bank.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/pact-microfinance-bank.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/pact-microfinance-bank.png",
         "sha256": "b445fa796f250b897e9a18ce154665b48dd1fa29d324b8fa59a65f258ff4a032"
       },
       "target_record_id": "pact-microfinance-bank",
@@ -10681,7 +10681,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/payrep-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/payrep-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/payrep-microfinance-bank-limited.png",
         "sha256": "2a54739f495af722a7ae98d4c624d6f9c7b35fec8fa65b0806e4215c877954a1"
       },
       "target_record_id": "payrep-microfinance-bank-limited",
@@ -10764,7 +10764,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/peace-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/peace-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/peace-mfb.png",
         "sha256": "d6ff5dfd3498318dc80ccc70e24ed1e930bbd27901707b20daad3a6ef2d8259e"
       },
       "target_record_id": "peace-mfb",
@@ -10879,7 +10879,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/platinum-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/platinum-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/platinum-microfinance-bank-limited.png",
         "sha256": "b8a2f289245328eb8a946ae93d121c1f310771f471aba6a9eef0f24b85e0d152"
       },
       "target_record_id": "platinum-microfinance-bank-limited",
@@ -11084,7 +11084,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/prudent-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/prudent-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/prudent-mfb.png",
         "sha256": "f0acb0700057b1a4ae10f32dd138398e522bfa43520d426cf0d28fde8b7d333e"
       },
       "target_record_id": "prudent-mfb",
@@ -11133,7 +11133,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/rehoboth-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/rehoboth-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/rehoboth-mfb.png",
         "sha256": "4fa107ce997309518ba55c784f81e02917bc4c1a57892a93bff7c513de75f559"
       },
       "target_record_id": "rehoboth-mfb",
@@ -11184,7 +11184,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/rockshield-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/rockshield-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/rockshield-mfb.png",
         "sha256": "c3170fd0cd540f527b1e8616c592059377c3755ebb21a3288fd9bf809c78afba"
       },
       "target_record_id": "rockshield-mfb",
@@ -11325,7 +11325,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/rephidim-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/rephidim-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/rephidim-mfb.png",
         "sha256": "1f3c2bd43601c0cf895cdf9456d398ba9d41504ab3994b8ce39c056b8f150174"
       },
       "target_record_id": "rephidim-mfb",
@@ -11464,7 +11464,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/rigo-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/rigo-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/rigo-mfb.png",
         "sha256": "fbb3e5e36643f60a4aeb860451d96b77c6d1f80e7a2f3f54437f8df920c90633"
       },
       "target_record_id": "rigo-mfb",
@@ -11513,7 +11513,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/rima-growth-pathway-mfb-ltd.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/rima-growth-pathway-mfb-ltd.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/rima-growth-pathway-mfb-ltd.png",
         "sha256": "09dee49ab6a2dab3323ceffca8683094a0658f0950ffa4e7a4dc49c618ca0262"
       },
       "target_record_id": "rima-growth-pathway-mfb-ltd",
@@ -11564,7 +11564,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/run-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/run-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/run-microfinance-bank-limited.png",
         "sha256": "e9d8c4e970a7a4a3aab8193927e70d0763c0f1a6b7ebd0b338284c6bb7276b2e"
       },
       "target_record_id": "run-microfinance-bank-limited",
@@ -11647,7 +11647,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/swifttrust-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/swifttrust-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/swifttrust-microfinance-bank-limited.png",
         "sha256": "94ae0829445fce6e1e60c66ff2b1fde94071ce578fc82baf42975055e6d971cf"
       },
       "target_record_id": "swifttrust-microfinance-bank-limited",
@@ -11730,7 +11730,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/shine-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/shine-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/shine-microfinance-bank-limited.png",
         "sha256": "d7a2518e619cc161fdb52ab23fffb61f3342430e8075d34a86f1e26e43c54c6f"
       },
       "target_record_id": "shine-microfinance-bank-limited",
@@ -11845,7 +11845,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/sosa-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/sosa-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/sosa-microfinance-bank-limited.png",
         "sha256": "344d04b1b47c05f7f6942ac92de5d91e96ac24ae006c275234e648f05b71be17"
       },
       "target_record_id": "sosa-microfinance-bank-limited",
@@ -11896,7 +11896,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/source-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/source-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/source-microfinance-bank-limited.png",
         "sha256": "fc63a5d26b2fc5d9a7caeca393fee02cc45affb7c3149dc7108d04f3ad23cd96"
       },
       "target_record_id": "source-microfinance-bank-limited",
@@ -11947,7 +11947,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/springfield-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/springfield-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/springfield-microfinance-bank-limited.png",
         "sha256": "e70e0a97d8955244d366bdc6bbc6701164d6217d011dc213587190c34c505462"
       },
       "target_record_id": "springfield-microfinance-bank-limited",
@@ -11998,7 +11998,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/springville-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/springville-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/springville-microfinance-bank-limited.png",
         "sha256": "35583052538289190b6e898b108760bb6058982c6efde4a620e346a1995da817"
       },
       "target_record_id": "springville-microfinance-bank-limited",
@@ -12081,7 +12081,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/suntop-microfinance-bank.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/suntop-microfinance-bank.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/suntop-microfinance-bank.png",
         "sha256": "e4340cc08064473b39c371c1cb37811258f81144f40245e2b426bdcc5186292d"
       },
       "target_record_id": "suntop-microfinance-bank",
@@ -12228,7 +12228,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/tenn-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/tenn-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/tenn-microfinance-bank-limited.png",
         "sha256": "3f1a6f5156a0774e0c8ee7e7e4a1c6856b955c6ed50f2d82f0becc793f75898f"
       },
       "target_record_id": "tenn-microfinance-bank-limited",
@@ -12311,7 +12311,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/teerus-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/teerus-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/teerus-microfinance-bank-limited.png",
         "sha256": "03ae6dcf455d9b897fdb4e07733bba8d61c6467a59d1c0aed323fe8aca103b6a"
       },
       "target_record_id": "teerus-microfinance-bank-limited",
@@ -12362,7 +12362,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/tellerone-fi-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/tellerone-fi-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/tellerone-fi-microfinance-bank-limited.png",
         "sha256": "16eaa0722ff53cde2877cd0fb80ac5ee340686c44cbcd7f38d6be994718c056a"
       },
       "target_record_id": "tellerone-fi-microfinance-bank-limited",
@@ -12445,7 +12445,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/top-rate-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/top-rate-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/top-rate-mfb.png",
         "sha256": "7cfab5739aa91bcf8280ca66cbc5d16688e4b3f500921c9b0a95273602e54826"
       },
       "target_record_id": "top-rate-mfb",
@@ -12496,7 +12496,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/transpay-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/transpay-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/transpay-microfinance-bank-limited.png",
         "sha256": "8d9f1d2b572b2fc531f8dc18ed7d2c57c6af56f0049e1f931a7f92637980bd8a"
       },
       "target_record_id": "transpay-microfinance-bank-limited",
@@ -12547,7 +12547,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/ubj-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/ubj-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/ubj-microfinance-bank-limited.png",
         "sha256": "5775761afc66bf4e1d7b04c5313cd994988af0c21a64e87d6b5c6b56ab6ff1e4"
       },
       "target_record_id": "ubj-microfinance-bank-limited",
@@ -12624,7 +12624,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/unimaid-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/unimaid-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/unimaid-mfb.png",
         "sha256": "a7d571ba27e37cf7a4af614ecf222c3ebe4c99188e31c3bcf2ad5906918e9ca7"
       },
       "target_record_id": "unimaid-mfb",
@@ -12673,7 +12673,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/uniuyo-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/uniuyo-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/uniuyo-mfb.png",
         "sha256": "2a4b9444996f4bef0186dc43a788a88b9c25799db0ddc37580613a2930bc633b"
       },
       "target_record_id": "uniuyo-mfb",
@@ -12724,7 +12724,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/uforo-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/uforo-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/uforo-microfinance-bank-limited.png",
         "sha256": "28cdc81de475ed49fd6bfa0efcd789319de0fa5b30f3964d70fb6a1b67df57a4"
       },
       "target_record_id": "uforo-microfinance-bank-limited",
@@ -12818,7 +12818,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/ultraviolet-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/ultraviolet-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/ultraviolet-microfinance-bank-limited.png",
         "sha256": "02d27725eaa1ac98f047e0decb63738c2716319de43faac884dcf0e2a1b20da0"
       },
       "target_record_id": "ultraviolet-microfinance-bank-limited",
@@ -12863,7 +12863,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/umuchukwu-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/umuchukwu-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/umuchukwu-mfb.png",
         "sha256": "10e7676adad2ded1b9d8dc5dc4fa73063d8091253d97adb9b4b50034af7672a6"
       },
       "target_record_id": "umuchukwu-mfb",
@@ -12912,7 +12912,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/umunri-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/umunri-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/umunri-microfinance-bank-limited.png",
         "sha256": "ac884d1a2ca0b19d9f561156fa81d962f2d07f12a525a20c281ba1005348c8b2"
       },
       "target_record_id": "umunri-microfinance-bank-limited",
@@ -12957,7 +12957,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/unaab-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/unaab-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/unaab-mfb.png",
         "sha256": "ed32243c79f1cd9e4dcb69ad7b5205931b3c7f78a2bbd7cb7edd6a1d51e3ceee"
       },
       "target_record_id": "unaab-mfb",
@@ -13006,7 +13006,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/unilag-mfb-ltd.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/unilag-mfb-ltd.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/unilag-mfb-ltd.png",
         "sha256": "4ec076c44c48171e450a1bd456568c7425b11119f9d92818c4893d0ad2043896"
       },
       "target_record_id": "unilag-mfb-ltd",
@@ -13057,7 +13057,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/vfd-mfb-ltd.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/vfd-mfb-ltd.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/vfd-mfb-ltd.png",
         "sha256": "455d4f9e870db75d696ac21de7894eed170d58a59df82488d72a72446a211f87"
       },
       "target_record_id": "vfd-mfb-ltd",
@@ -13110,7 +13110,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/vista-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/vista-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/vista-microfinance-bank-limited.png",
         "sha256": "273f5526f792937ead89c56e8401a128bf2d72bcfaf64614dbb7ccef284bbc5a"
       },
       "target_record_id": "vista-microfinance-bank-limited",
@@ -13161,7 +13161,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/we-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/we-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/we-microfinance-bank-limited.png",
         "sha256": "a6f89ac23485c95b3bfe8940b9b43771f8fdc3a6319b861a717d13c2ba7b06b2"
       },
       "target_record_id": "we-microfinance-bank-limited",
@@ -13212,7 +13212,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/wallet-microfinance-bank.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/wallet-microfinance-bank.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/wallet-microfinance-bank.png",
         "sha256": "b1a6639084fcff51345b390dc1da5df218f9301f4f1e3b1253782a0c8a3ab7b5"
       },
       "target_record_id": "wallet-microfinance-bank",
@@ -13263,7 +13263,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/waya-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/waya-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/waya-mfb.png",
         "sha256": "95d937c6644d7f64655f226b62e2bd03d4ee2e8bfaaa249848a2a45aa3cb7858"
       },
       "target_record_id": "waya-mfb",
@@ -13314,7 +13314,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/weston-charis-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/weston-charis-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/weston-charis-microfinance-bank-limited.png",
         "sha256": "a5b974d64d784e8510da78e84d0a40a9fe18dcb2bbca9bd19a74c6ead422ec95"
       },
       "target_record_id": "weston-charis-microfinance-bank-limited",
@@ -13431,7 +13431,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/zitra-microfinance-bank-limited.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/zitra-microfinance-bank-limited.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/zitra-microfinance-bank-limited.png",
         "sha256": "087282c87cd42efe83786dcb4dfdc72ea7d81a9cff74dd92bbd76a13832535b7"
       },
       "target_record_id": "zitra-microfinance-bank-limited",
@@ -13482,7 +13482,7 @@
       ],
       "existing_target_asset": {
         "url": "/v1/assets/financial-institutions/ng/microfinance-banks/e-barcs-mfb.png",
-        "path": "/Users/abdul-quayyum/Documents/Projects/Go/softdata-api/datasets/assets/financial-institutions/ng/microfinance-banks/e-barcs-mfb.png",
+        "path": "datasets/assets/financial-institutions/ng/microfinance-banks/e-barcs-mfb.png",
         "sha256": "e3191f3a7d97ed7424d53da9588a41d97c986c14303dfb811df2172fe9a0f7b5"
       },
       "target_record_id": "e-barcs-mfb",

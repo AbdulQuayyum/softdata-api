@@ -5845,7 +5845,17 @@
     "website_corrections": 4
   },
   "deep_pass": {
-    "source_checkpoint": "/private/tmp/imto-remaining-90.json",
+    "checkpoint_purpose": "Resumable research checkpoint for the final 86 IMTO records; retained decisions are fully represented in this manifest.",
+    "checkpoint_ordered_record_count": 86,
+    "checkpoint_completed_ranges": [
+      "1-25",
+      "26-50",
+      "51-75",
+      "76-86"
+    ],
+    "checkpoint_final_processed_count": 86,
+    "checkpoint_final_decision_count": 86,
+    "checkpoint_note": "The temporary working checkpoint was not required after reconciliation and is intentionally not part of the repository.",
     "excluded_completed_records": [
       "91-payments-limited",
       "afriex-inc",
