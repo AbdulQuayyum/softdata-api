@@ -125,7 +125,9 @@
       "accepted_cbn_code": "108",
       "decision": "accepted_verified_source_match",
       "evidence": "Pinned ng-bank-logos data/bank.json catalogue; exact name or verified alias match.",
-      "conflicts": [],
+      "conflicts": [
+        "Published cbn_code 108 is retained from the pinned catalogue; conflicting operational evidence reports 582."
+      ],
       "source_field_used": "bankCode,scCode",
       "current_values": {
         "nip_code": "000041",
@@ -487,7 +489,9 @@
       "accepted_cbn_code": "561",
       "decision": "accepted_verified_source_match",
       "evidence": "Pinned ng-bank-logos data/bank.json catalogue; exact name or verified alias match.",
-      "conflicts": [],
+      "conflicts": [
+        "Published cbn_code 561 and nip_code 060003 are retained from the pinned catalogue; commercial/merchant transition uncertainty remains unresolved."
+      ],
       "source_field_used": "bankCode,scCode",
       "current_values": {
         "nip_code": "060003",
@@ -688,7 +692,9 @@
       "accepted_cbn_code": "101",
       "decision": "accepted_verified_source_match",
       "evidence": "Pinned ng-bank-logos data/bank.json catalogue; exact name or verified alias match.",
-      "conflicts": [],
+      "conflicts": [
+        "Published nip_code 000023 is retained from the pinned catalogue; older evidence reports 000021."
+      ],
       "source_field_used": "bankCode,scCode",
       "current_values": {
         "nip_code": "000023",
@@ -728,7 +734,9 @@
       "accepted_cbn_code": "106",
       "decision": "accepted_verified_source_match",
       "evidence": "Pinned ng-bank-logos data/bank.json catalogue; exact name or verified alias match.",
-      "conflicts": [],
+      "conflicts": [
+        "Published cbn_code 106 is retained from the pinned catalogue; conflicting historical/provider evidence reports 061."
+      ],
       "source_field_used": "bankCode,scCode",
       "current_values": {
         "nip_code": "000034",
@@ -808,7 +816,9 @@
       "accepted_cbn_code": "068",
       "decision": "accepted_verified_source_match",
       "evidence": "Pinned ng-bank-logos data/bank.json catalogue; exact name or verified alias match.",
-      "conflicts": [],
+      "conflicts": [
+        "Published nip_code 000021 is retained from the pinned catalogue."
+      ],
       "source_field_used": "bankCode,scCode",
       "current_values": {
         "nip_code": "000021",
@@ -888,7 +898,9 @@
       "accepted_cbn_code": "100",
       "decision": "accepted_verified_source_match",
       "evidence": "Pinned ng-bank-logos data/bank.json catalogue; exact name or verified alias match.",
-      "conflicts": [],
+      "conflicts": [
+        "Published nip_code 000022 is retained from the pinned catalogue."
+      ],
       "source_field_used": "bankCode,scCode",
       "current_values": {
         "nip_code": "000022",
@@ -928,7 +940,9 @@
       "accepted_cbn_code": "109",
       "decision": "accepted_verified_source_match",
       "evidence": "Pinned ng-bank-logos data/bank.json catalogue; exact name or verified alias match.",
-      "conflicts": [],
+      "conflicts": [
+        "Published cbn_code 109 and nip_code 000042 are retained from the pinned catalogue."
+      ],
       "source_field_used": "bankCode,scCode",
       "current_values": {
         "nip_code": "000042",

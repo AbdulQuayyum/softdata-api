@@ -25,6 +25,7 @@ type paymentServiceProviderMetadata struct {
 	Methodology  string          `json:"methodology"`
 	Sources      []datasetSource `json:"sources"`
 	VerifiedAt   string          `json:"verified_at"`
+	Enrichment   json.RawMessage `json:"enrichment"`
 }
 
 type paymentServiceProviderSchema struct {
@@ -268,6 +269,47 @@ func TestPaymentServiceProvidersPunctuationAndFormerNameAudit(t *testing.T) {
 			if strings.Contains(name, forbidden) {
 				t.Fatalf("former-name annotation leaked into public name %q", name)
 			}
+		}
+	}
+}
+
+func TestPaymentServiceProvidersEnrichmentCoverageAndLeadingZeros(t *testing.T) {
+	providers := loadPaymentServiceProvidersDataset(t)
+	cbnCount, nipCount, websiteCount, logoCount := 0, 0, 0, 0
+	logoPattern := regexp.MustCompile(`^/v1/assets/financial-institutions/ng/payment-service-providers/[a-z0-9-]+\.png$`)
+	byID := make(map[string]PaymentServiceProvider, len(providers))
+	for _, provider := range providers {
+		byID[provider.ID] = provider
+		if provider.CBNCode != "" {
+			cbnCount++
+		}
+		if provider.NIPCode != "" {
+			nipCount++
+		}
+		if provider.WebsiteURL != "" {
+			websiteCount++
+			if !strings.HasPrefix(provider.WebsiteURL, "https://") {
+				t.Fatalf("non-HTTPS website for %s: %q", provider.ID, provider.WebsiteURL)
+			}
+		}
+		if provider.LogoURL != "" {
+			logoCount++
+			if !logoPattern.MatchString(provider.LogoURL) {
+				t.Fatalf("invalid logo URL for %s: %q", provider.ID, provider.LogoURL)
+			}
+		}
+	}
+	if cbnCount != 11 || nipCount != 16 || websiteCount != 109 || logoCount != 23 {
+		t.Fatalf("unexpected enrichment coverage: cbn=%d nip=%d websites=%d logos=%d", cbnCount, nipCount, websiteCount, logoCount)
+	}
+	for id, want := range map[string]struct{ cbn, nip string }{
+		"mobile-money-operator-chams-mobile":                                  {cbn: "929"},
+		"mobile-money-operator-opay-digital-services-limited":                 {nip: "100004"},
+		"payment-solution-service-provider-eyowo-integrated-payments-limited": {nip: "090328"},
+	} {
+		got, ok := byID[id]
+		if !ok || got.CBNCode != want.cbn || got.NIPCode != want.nip {
+			t.Fatalf("unexpected enrichment for %s: %#v", id, got)
 		}
 	}
 }

@@ -96,7 +96,69 @@ Google thumbnails, favicon files and temporary social/CDN responses remain
 visual references only. The FHA asset is explicitly disclosed as a parent-brand
 representative mark, not as an independently verified FHA Homes logo.
 
+## Phase 2C MFB Archive Reconciliation
+
+All 315 provisional microfinance-bank archive PNGs were reviewed in
+deterministic source-path order against the active 790-record roster, current
+codes and existing target assets. No new asset was imported because every
+accepted active target already had an established logo. The final decisions
+are recorded in
+`datasets/metadata/finance/microfinance_banks_phase2c_logo_reconciliation.json`:
+174 source files were byte-identical to existing targets, 7 mapped to targets
+whose stronger existing assets were preserved, 6 were rejected as distinct
+identities, 5 were rejected for code conflicts, and 123 had no active roster
+match. The six established distinct-identity decisions remain Arise/Aris,
+Crust/Crest, Microbiz/Microvis, RSU/ORSU, Rank/Rano and Stanford/Standard.
+
 ## Permission Request
+
+## Phase 2D Commercial-Bank Archive Reconciliation
+
+All 32 provisional commercial-bank archive files were reviewed against the
+active finance datasets and existing assets. Twenty-six matched active
+commercial-bank assets byte-for-byte and were preserved, while five source
+marks matched active cross-category identities whose existing assets were
+preserved as stronger category-specific sources: Jaiz, Lotus, Summit and TAJ
+in non-interest finance, and Nigeria Export-Import Bank in development
+finance. `Access Bank Plc (Diamond)` is explicitly rejected as an obsolete
+predecessor label and is not treated as a second current Access Bank record.
+No new asset was imported. Detailed decisions are recorded in
+`datasets/metadata/finance/cross_dataset_finance_logo_phase2d_reconciliation.json`,
+and the complete 610-file archive inventory is recorded in
+`datasets/metadata/finance/cross_dataset_finance_logo_reconciliation.json`.
+
+The archive repository and its marks remain third-party provenance; no
+permission or ownership claim is made by SoftData.
+
+## Payment-Service-Provider Enrichment
+
+The payment-service-provider package contains 255 category memberships. The
+second-stage reconciliation accepted 23 PNG marks from the pinned
+`Nigerian-Bank-Logos/ng-bank-logos` repository at commit
+`a56f7857b1ccca69784cd86a8080531fd3c7e6a8` (archive SHA-256
+`2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4`). The
+accepted mappings and all 255 decisions are recorded in
+`datasets/metadata/finance/payment_service_providers_reconciliation.json`.
+Phase 2A separately reviewed all 55 provisional unmatched mobile-money
+assets. Two new product-to-legal-entity imports (NowNow and Parkway) and one
+verified Kadick alias were added; existing stronger assets were preserved for
+the remaining accepted source identities. The complete per-file decisions,
+source hashes and evidence are recorded in
+`datasets/metadata/finance/payment_service_provider_mobile_money_logo_reconciliation.json`.
+
+Phase 2B reviewed the remaining 29 provisional merchant-bank, mortgage-bank
+and payment-service-bank archive assets. Twenty source files were byte-
+identical to active target assets and six mapped to active targets whose
+existing assets were retained as stronger sources. FBNQuest Merchant Bank,
+Aspire Mortgage Bank and Omoluabi Mortgage Bank were not imported because no
+matching active target record exists in the current rosters. The complete
+per-file hashes, target candidates and decisions are recorded in
+`datasets/metadata/finance/cross_dataset_finance_logo_phase2b_reconciliation.json`.
+No permission is claimed; the marks remain the property of their respective
+owners. VTNetwork received code enrichment but no logo because the supplied
+candidate did not meet the identity threshold for this pass. Paystack and
+similar product evidence was not used as automatic legal-entity or code
+authority.
 
 **Subject:** Permission to use your logo in the SoftData public API
 
@@ -115,3 +177,13 @@ Please confirm whether you grant permission for this use and, if possible,
 provide your preferred official logo file and applicable brand guidelines.
 
 Thank you.
+
+## IMTO Official CDN Extraction
+
+The following two IMTO marks were retrieved as PNG files directly referenced
+by the official websites. Original bytes were preserved without conversion.
+
+| ID | Official page | Asset URL | MIME | Dimensions | Bytes | SHA-256 | Decision |
+| --- | --- | --- | --- | --- | ---: | --- | --- |
+| `remitly-inc` | `https://www.remitly.com/` | `https://cdn.remitly.com/images/v1/img/remtily_logo_vertical_midnight_b.6eT0nA18TSlQIsjllF72RN.png` | `image/png` | 648x528 | 5272 | `8cf3f5d8567b5f6677c348f315256c337f01d6643b294d17af68c42822233fd2` | `accepted_official_cdn_asset` |
+| `worldremit-limited` | `https://www.worldremit.com/` | `https://images.ctfassets.net/sb7j5o4oxtgv/7oO3Cgp9jctbnoHxJEIfpm/9d2506197d9157fee41b7694127f2a03/WorldRemit_Logo_Purple_228x52.png` | `image/png` | 475x109 | 10019 | `8a16cf7743a54e33ea67685c90bb5e42c51425f1dd9c2af9bb2ad577f6b154` | `accepted_official_cdn_asset` |

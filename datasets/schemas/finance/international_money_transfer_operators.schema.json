@@ -22,6 +22,15 @@
       "name": {
         "type": "string",
         "minLength": 1
+      },
+      "website_url": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^https://"
+      },
+      "logo_url": {
+        "type": "string",
+        "pattern": "^/v1/assets/financial-institutions/ng/international-money-transfer-operators/[a-z0-9]+(?:-[a-z0-9]+)*\\.png$"
       }
     }
   }

@@ -92,7 +92,8 @@ softdata-api/
 │   │   │       ├── microfinance-banks/*.png
 │   │   │       ├── non-interest/*.png
 │   │   │       ├── payment-service-banks/*.png
-│   │   │       └── primary-mortgage/*.png  # 393 embedded regulated-finance PNG assets total
+│   │   │       ├── payment-service-providers/*.png
+│   │   │       └── primary-mortgage/*.png  # regulated-finance PNG assets
 │   │   └── flags/
 │   │       ├── ATTRIBUTION.md
 │   │       ├── LICENSE
@@ -138,7 +139,13 @@ softdata-api/
 │   │   │   ├── commercial_banks.json
 │   │   │   ├── currencies.json
 │   │   │   ├── international_money_transfer_operators.json
-│   │   │   └── payment_service_providers.json
+│   │   │   ├── payment_service_providers.json
+│   │   │   ├── payment_service_providers_reconciliation.json
+│   │   │   ├── payment_service_provider_mobile_money_logo_reconciliation.json
+│   │   │   ├── cross_dataset_finance_logo_phase2b_reconciliation.json
+│   │   │   ├── cross_dataset_finance_logo_phase2d_reconciliation.json
+│   │   │   ├── cross_dataset_finance_logo_reconciliation.json
+│   │   │   └── microfinance_banks_phase2c_logo_reconciliation.json
 │   │   └── geography/
 │   │       ├── countries_and_areas.json
 │   │       ├── country_languages.json

@@ -36,13 +36,18 @@ func TestPublicRoutesServeRegulatedFinanceLists(t *testing.T) {
 
 func TestPublicRoutesServeRegulatedFinanceLogo(t *testing.T) {
 	router := newTestRouter(t, &routerRecorder{})
-	rr := httptest.NewRecorder()
-	router.ServeHTTP(rr, httptest.NewRequest(http.MethodGet, "/v1/assets/financial-institutions/ng/non-interest/mint-microfinance-bank.png", nil))
-	if rr.Code != http.StatusOK || rr.Header().Get("Content-Type") != "image/png" || len(rr.Body.Bytes()) == 0 {
-		t.Fatalf("unexpected logo response: status=%d content-type=%q bytes=%d", rr.Code, rr.Header().Get("Content-Type"), len(rr.Body.Bytes()))
-	}
-	if rr.Header().Get("Cache-Control") != "public, max-age=31536000, immutable" {
-		t.Fatalf("unexpected cache policy: %q", rr.Header().Get("Cache-Control"))
+	for _, path := range []string{
+		"/v1/assets/financial-institutions/ng/non-interest/mint-microfinance-bank.png",
+		"/v1/assets/financial-institutions/ng/payment-service-providers/mobile-money-operator-chams-mobile.png",
+	} {
+		rr := httptest.NewRecorder()
+		router.ServeHTTP(rr, httptest.NewRequest(http.MethodGet, path, nil))
+		if rr.Code != http.StatusOK || rr.Header().Get("Content-Type") != "image/png" || len(rr.Body.Bytes()) == 0 {
+			t.Fatalf("unexpected logo response for %s: status=%d content-type=%q bytes=%d", path, rr.Code, rr.Header().Get("Content-Type"), len(rr.Body.Bytes()))
+		}
+		if rr.Header().Get("Cache-Control") != "public, max-age=31536000, immutable" {
+			t.Fatalf("unexpected cache policy for %s: %q", path, rr.Header().Get("Cache-Control"))
+		}
 	}
 }
 
