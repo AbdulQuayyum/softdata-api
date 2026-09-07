@@ -274,6 +274,15 @@ The static foundation contains 168 current NBTE-listed polytechnics: 35 federal,
 
 The static foundation contains 86 NBTE Specialised Institutions (Monotechnics): 32 federal, 4 state and 50 private. It exposes only `id`, `name`, `ownership_type`, `state_id` and `country_code`. Colleges, remedial schools and other wrong-category source entries are excluded and documented. Website/logo enrichment and API integration are intentionally deferred.
 
+### `ng-colleges-of-agriculture`
+
+- `datasets/education/colleges_of_agriculture.json`
+- `datasets/schemas/education/colleges_of_agriculture.schema.json`
+- `datasets/metadata/education/colleges_of_agriculture.json`
+- `datasets/metadata/education/colleges_of_agriculture_reconciliation.json`
+
+The static foundation contains 31 NBTE Colleges of Agriculture and Related Disciplines: 23 federal, 7 state and 1 private. It exposes only `id`, `name`, `ownership_type`, `state_id` and `country_code`. The source-marked conversion of College of Agriculture, Zuru is excluded; no universities, polytechnics or monotechnics are merged into this dataset. Website/logo enrichment and API integration are intentionally deferred.
+
 ## Directory Structure
 
 ```text

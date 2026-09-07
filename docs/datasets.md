@@ -197,6 +197,17 @@ Nigeria's reconciled roster of NBTE **Specialised Institutions (Monotechnics)**.
 
 The package contains 86 records: 32 federal, 4 state and 50 private institutions across 27 states. It uses the same five-field static contract as the university, college-of-education and Polytechnic datasets. Colleges of education, general schools, remedial institutions and other wrong-category entries are excluded in the reconciliation manifest. Website/logo enrichment and API integration are intentionally deferred.
 
+### `ng-colleges-of-agriculture`
+
+Nigeria's reconciled roster of NBTE **Colleges of Agriculture and Related Disciplines**.
+
+- Data: `datasets/education/colleges_of_agriculture.json`
+- Schema: `datasets/schemas/education/colleges_of_agriculture.schema.json`
+- Metadata: `datasets/metadata/education/colleges_of_agriculture.json`
+- Reconciliation: `datasets/metadata/education/colleges_of_agriculture_reconciliation.json`
+
+The package contains 31 records: 23 federal, 7 state and 1 private college across 16 states. Agricultural, forestry, fisheries, animal-health, horticultural and land-resource colleges remain in this NBTE category and are not merged into polytechnics or monotechnics. The source-marked Zuru conversion is excluded. This is a roster-only foundation; websites, logos and API integration are intentionally deferred.
+
 ## Dataset Principles
 
 - Every dataset should have a stable identifier.

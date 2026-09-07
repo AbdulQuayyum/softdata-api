@@ -1,0 +1,219 @@
+[
+  {
+    "id": "audu-bako-college-of-agriculture-danbatta",
+    "name": "Audu Bako College of Agriculture, Danbatta",
+    "ownership_type": "state",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "bauchi-state-college-of-agriculture-bauchi",
+    "name": "Bauchi State College of Agriculture, Bauchi",
+    "ownership_type": "state",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-agriculture-and-animal-health-bakura",
+    "name": "College of Agriculture and Animal Health, Bakura",
+    "ownership_type": "state",
+    "state_id": "zamfara",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-agriculture-and-animal-science-dac-abu-mando",
+    "name": "College of Agriculture and Animal Science, DAC-ABU, Mando",
+    "ownership_type": "federal",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-agriculture-dac-abu-kabba",
+    "name": "College of Agriculture, DAC-ABU, Kabba",
+    "ownership_type": "federal",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "edo-state-college-of-agriculture-and-natural-resources-iguoriakhi",
+    "name": "Edo State College of Agriculture and Natural Resources, Iguoriakhi",
+    "ownership_type": "state",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-agricultural-produce-kano",
+    "name": "Federal College of Agricultural Produce, Kano",
+    "ownership_type": "federal",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-agriculture-akure",
+    "name": "Federal College of Agriculture, Akure",
+    "ownership_type": "federal",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-agriculture-ishiagu",
+    "name": "Federal College of Agriculture, Ishiagu",
+    "ownership_type": "federal",
+    "state_id": "ebonyi",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-agriculture-moor-plantation-ibadan",
+    "name": "Federal College of Agriculture, Moor Plantation, Ibadan",
+    "ownership_type": "federal",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-animal-health-and-production-technology-ibadan",
+    "name": "Federal College of Animal Health and Production Technology, Ibadan",
+    "ownership_type": "federal",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-animal-health-and-production-technology-vom",
+    "name": "Federal College of Animal Health and Production Technology, Vom",
+    "ownership_type": "federal",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-fisheries-and-marine-technology-victoria-island",
+    "name": "Federal College of Fisheries and Marine Technology, Victoria Island",
+    "ownership_type": "federal",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-forestry-mechanisation-afaka",
+    "name": "Federal College of Forestry Mechanisation, Afaka",
+    "ownership_type": "federal",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-forestry-resources-management-fugar",
+    "name": "Federal College of Forestry Resources Management, Fugar",
+    "ownership_type": "federal",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-forestry-resources-management-ishiagu",
+    "name": "Federal College of Forestry Resources Management, Ishiagu",
+    "ownership_type": "federal",
+    "state_id": "ebonyi",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-forestry-resources-management-maiduguri",
+    "name": "Federal College of Forestry Resources Management, Maiduguri",
+    "ownership_type": "federal",
+    "state_id": "borno",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-forestry-jericho-hill-ibadan",
+    "name": "Federal College of Forestry, Jericho Hill, Ibadan",
+    "ownership_type": "federal",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-forestry-jos",
+    "name": "Federal College of Forestry, Jos",
+    "ownership_type": "federal",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-freshwater-fisheries-technology-baga",
+    "name": "Federal College of Freshwater Fisheries Technology, Baga",
+    "ownership_type": "federal",
+    "state_id": "borno",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-freshwater-fisheries-technology-new-bussa",
+    "name": "Federal College of Freshwater Fisheries Technology, New Bussa",
+    "ownership_type": "federal",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-horticultural-technology-dadin-kowa",
+    "name": "Federal College of Horticultural Technology, Dadin Kowa",
+    "ownership_type": "federal",
+    "state_id": "gombe",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-land-resources-technology-kuru",
+    "name": "Federal College of Land Resources Technology, Kuru",
+    "ownership_type": "federal",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-land-resources-technology-owerri",
+    "name": "Federal College of Land Resources Technology, Owerri",
+    "ownership_type": "federal",
+    "state_id": "imo",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-veterinary-and-medical-laboratory-technology-vom",
+    "name": "Federal College of Veterinary and Medical Laboratory Technology, Vom",
+    "ownership_type": "federal",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-wildlife-management-new-bussa",
+    "name": "Federal College of Wildlife Management, New Bussa",
+    "ownership_type": "federal",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "mohammet-lawan-college-of-agriculture-maiduguri",
+    "name": "Mohammet Lawan College of Agriculture, Maiduguri",
+    "ownership_type": "state",
+    "state_id": "borno",
+    "country_code": "NG"
+  },
+  {
+    "id": "niger-state-college-of-agriculture-mokwa",
+    "name": "Niger State College of Agriculture, Mokwa",
+    "ownership_type": "state",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "plateau-state-college-of-agriculture-garkawa",
+    "name": "Plateau State College of Agriculture, Garkawa",
+    "ownership_type": "state",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "samaru-college-of-agriculture-dac-abu-zaria",
+    "name": "Samaru College of Agriculture, DAC-ABU, Zaria",
+    "ownership_type": "federal",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "usteem-college-of-agriculture-osogbo",
+    "name": "Usteem College of Agriculture, Osogbo",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  }
+]
