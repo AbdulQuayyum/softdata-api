@@ -1,0 +1,822 @@
+{
+  "dataset_key": "cross-dataset-finance-logo-reconciliation",
+  "scope": "Phase 2B merchant-bank, mortgage-bank and payment-service-bank provisional archive assets",
+  "source_repository": "https://github.com/Nigerian-Bank-Logos/ng-bank-logos",
+  "pinned_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+  "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4",
+  "reviewed_at": "2026-09-07",
+  "source_file_count": 29,
+  "classifications": {
+    "preserved_existing_byte_identical": 20,
+    "preserved_existing_stronger_source": 6,
+    "rejected_no_active_dataset_match": 3
+  },
+  "records": [
+    {
+      "archive_position": 1,
+      "archive_category": "merchant_banks",
+      "source_file": "FBNQuest Merchant Bank.png",
+      "source_path": "logos/ngn/png/merchant-banks/FBNQuest Merchant Bank.png",
+      "source_name": "FBNQuest Merchant Bank",
+      "aliases": [
+        "FBNQuest Merchant Bank"
+      ],
+      "bankCode": "911",
+      "scCode": "911",
+      "source_sha256": "8dc85e5057aaadf74b74f073f806f35bb8279cc5e30ecd879a3092c4a9727134",
+      "width": 400,
+      "height": 400,
+      "bytes": 13386,
+      "classification": "rejected_no_active_dataset_match",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "existing_target_sha256": [],
+      "reason": "FBNQuest Merchant Bank is not an active record in the current six-record merchant-bank roster; no exact active cross-dataset target was verified.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 2,
+      "archive_category": "merchant_banks",
+      "source_file": "FSDH Merchant Bank Limited.png",
+      "source_path": "logos/ngn/png/merchant-banks/FSDH Merchant Bank Limited.png",
+      "source_name": "FSDH Merchant Bank Limited",
+      "aliases": [
+        "FSDH Merchant Bank Limited"
+      ],
+      "bankCode": "400001",
+      "scCode": "601",
+      "source_sha256": "ef861ed86563bdc9c574be78cf73bfe8feb10f21f205c0b5d666e50d9e00e961",
+      "width": 400,
+      "height": 400,
+      "bytes": 8371,
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved_existing",
+      "target_record_ids": [
+        "fsdh-merchant-bank"
+      ],
+      "existing_target_sha256": [
+        "ef861ed86563bdc9c574be78cf73bfe8feb10f21f205c0b5d666e50d9e00e961"
+      ],
+      "reason": "The legal-name suffix variant maps exactly to FSDH Merchant Bank and the source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 3,
+      "archive_category": "mortgage_banks",
+      "source_file": "AG Mortgage Bank.png",
+      "source_path": "logos/ngn/png/mortgage-banks/AG Mortgage Bank.png",
+      "source_name": "AG Mortgage Bank",
+      "aliases": [
+        "AG Mortgage Bank"
+      ],
+      "bankCode": "100028",
+      "scCode": "90077",
+      "source_sha256": "60538484025d4fc11e314d1e00a981db8f0029a1d11755757664e147688caa67",
+      "width": 400,
+      "height": 400,
+      "bytes": 12111,
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved_existing",
+      "target_record_ids": [
+        "ag-homes"
+      ],
+      "existing_target_sha256": [
+        "60538484025d4fc11e314d1e00a981db8f0029a1d11755757664e147688caa67"
+      ],
+      "reason": "The current AG Homes record uses the same AG mortgage-bank identity and the source SHA matches its existing asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 4,
+      "archive_category": "mortgage_banks",
+      "source_file": "Abbey Bank.png",
+      "source_path": "logos/ngn/png/mortgage-banks/Abbey Bank.png",
+      "source_name": "Abbey Bank",
+      "aliases": [
+        "Abbey Mortgage Bank",
+        "Abbey Bank Plc"
+      ],
+      "bankCode": "070010",
+      "scCode": "404",
+      "source_sha256": "088ff7278f90ced1b397e423ed39d1cea56535702e877d4fcbbe19378b954894",
+      "width": 400,
+      "height": 400,
+      "bytes": 6535,
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved_existing",
+      "target_record_ids": [
+        "abbey-mortgage-bank"
+      ],
+      "existing_target_sha256": [
+        "088ff7278f90ced1b397e423ed39d1cea56535702e877d4fcbbe19378b954894"
+      ],
+      "reason": "Abbey Bank is the shortened source name for the current Abbey Mortgage Bank record and the source SHA matches its existing asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 5,
+      "archive_category": "mortgage_banks",
+      "source_file": "Aspire Mortgage Bank.png",
+      "source_path": "logos/ngn/png/mortgage-banks/Aspire Mortgage Bank.png",
+      "source_name": "Aspire Mortgage Bank",
+      "aliases": [
+        "Aspire Mortgage Bank"
+      ],
+      "bankCode": "070033",
+      "scCode": null,
+      "source_sha256": "024e4c9df28eb581564c864daea0f95c0313cc5cb40d4a7118f8195620e5dff0",
+      "width": 400,
+      "height": 400,
+      "bytes": 6425,
+      "classification": "rejected_no_active_dataset_match",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "existing_target_sha256": [],
+      "reason": "Aspire Mortgage Bank is not an active record in the current 31-record PMI roster.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 6,
+      "archive_category": "mortgage_banks",
+      "source_file": "Brent Mortgage Bank.png",
+      "source_path": "logos/ngn/png/mortgage-banks/Brent Mortgage Bank.png",
+      "source_name": "Brent Mortgage Bank",
+      "aliases": [
+        "Brent Mortgage Bank"
+      ],
+      "bankCode": "070015",
+      "scCode": "90070",
+      "source_sha256": "1e7399cf82302a03e42e1ef0e1ed8d02ba854a0d19a9d12c78870c505803c995",
+      "width": 400,
+      "height": 400,
+      "bytes": 4810,
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved_existing",
+      "target_record_ids": [
+        "brent-skyfield-savings"
+      ],
+      "existing_target_sha256": [
+        "1e7399cf82302a03e42e1ef0e1ed8d02ba854a0d19a9d12c78870c505803c995"
+      ],
+      "reason": "The current Brent (Skyfield) Savings record represents the source mortgage-bank identity and the source SHA matches its existing asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 7,
+      "archive_category": "mortgage_banks",
+      "source_file": "CITYCODE MORTAGE BANK.png",
+      "source_path": "logos/ngn/png/mortgage-banks/CITYCODE MORTAGE BANK.png",
+      "source_name": "CITYCODE MORTAGE BANK",
+      "aliases": [
+        "CITYCODE MORTAGE BANK"
+      ],
+      "bankCode": "070027",
+      "scCode": null,
+      "source_sha256": "4e7c156402f7d035d58d80e0ddb2dcbdaec6e095b00fec5c7dad697e11ea616f",
+      "width": 400,
+      "height": 400,
+      "bytes": 8520,
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved_existing",
+      "target_record_ids": [
+        "city-code"
+      ],
+      "existing_target_sha256": [
+        "4e7c156402f7d035d58d80e0ddb2dcbdaec6e095b00fec5c7dad697e11ea616f"
+      ],
+      "reason": "The source spelling typo mortage is formatting noise for the current City Code record and the source SHA matches its existing asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 8,
+      "archive_category": "mortgage_banks",
+      "source_file": "Cooperative Mortgage Bank.png",
+      "source_path": "logos/ngn/png/mortgage-banks/Cooperative Mortgage Bank.png",
+      "source_name": "Cooperative Mortgage Bank",
+      "aliases": [
+        "Cooperative Mortgage Bank"
+      ],
+      "bankCode": "90089",
+      "scCode": "90089",
+      "source_sha256": "33cfe7ea0652b2fe9ff52af58fe48b6d2216d65014bbe3a01d76411443819c85",
+      "width": 400,
+      "height": 400,
+      "bytes": 8512,
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved_existing",
+      "target_record_ids": [
+        "coop-mortgage-bank"
+      ],
+      "existing_target_sha256": [
+        "93ca64712d2fe8b921073231ee27d31e1759f88dad27ce3ff3c1762c7bf5c3bd"
+      ],
+      "reason": "The shortened legal name maps to Cooperative Mortgage Bank Limited; the existing target asset is retained as the stronger curated asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 9,
+      "archive_category": "mortgage_banks",
+      "source_file": "Delta Trust Mortgage Bank.png",
+      "source_path": "logos/ngn/png/mortgage-banks/Delta Trust Mortgage Bank.png",
+      "source_name": "Delta Trust Mortgage Bank",
+      "aliases": [
+        "Delta Trust Mortgage Bank"
+      ],
+      "bankCode": "070023",
+      "scCode": null,
+      "source_sha256": "038ced10517058f348bf872492908a8165a288aa8c156b26ed1a225760f36870",
+      "width": 400,
+      "height": 400,
+      "bytes": 52749,
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved_existing",
+      "target_record_ids": [
+        "delta-trust-mortgage-finance"
+      ],
+      "existing_target_sha256": [
+        "ab8d3d77744165a3b8bb0917ba3b41e9cd1a6fa4ce8f80613ddb7f6bf3c8ac21"
+      ],
+      "reason": "The source and current record identify the Delta Trust mortgage institution despite the current legal-name suffix; the existing target asset is retained.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 10,
+      "archive_category": "mortgage_banks",
+      "source_file": "First Generation Mortgage Bank.png",
+      "source_path": "logos/ngn/png/mortgage-banks/First Generation Mortgage Bank.png",
+      "source_name": "First Generation Mortgage Bank",
+      "aliases": [
+        "First Generation Mortgage Bank"
+      ],
+      "bankCode": "070014",
+      "scCode": null,
+      "source_sha256": "4776645afd3e1830a219a908b4fc5bc17e860fef0b43ae5612f387aa87a6c284",
+      "width": 400,
+      "height": 400,
+      "bytes": 7297,
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved_existing",
+      "target_record_ids": [
+        "first-generation-homes"
+      ],
+      "existing_target_sha256": [
+        "4776645afd3e1830a219a908b4fc5bc17e860fef0b43ae5612f387aa87a6c284"
+      ],
+      "reason": "The source naming variant maps to First Generation Homes and the source SHA matches its existing asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 11,
+      "archive_category": "mortgage_banks",
+      "source_file": "FirstTrust Mortgage Bank Nigeria.png",
+      "source_path": "logos/ngn/png/mortgage-banks/FirstTrust Mortgage Bank Nigeria.png",
+      "source_name": "FirstTrust Mortgage Bank Nigeria",
+      "aliases": [
+        "FirstTrust Mortgage Bank Nigeria"
+      ],
+      "bankCode": "090107",
+      "scCode": "413",
+      "source_sha256": "7cd89811467606fc4366d63ce8f28a785f1816116f224e608bf83df2dc3f236b",
+      "width": 400,
+      "height": 400,
+      "bytes": 6832,
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved_existing",
+      "target_record_ids": [
+        "firsttrust-mortgage-bank"
+      ],
+      "existing_target_sha256": [
+        "c94905dac1100e993b0eaa71e89a129f22ddcbf1a2ddf465683accdd36c83edd"
+      ],
+      "reason": "The source naming variant maps to FirstTrust Mortgage Bank Plc; the existing target asset is retained.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 12,
+      "archive_category": "mortgage_banks",
+      "source_file": "Gateway Mortgage Bank LTD.png",
+      "source_path": "logos/ngn/png/mortgage-banks/Gateway Mortgage Bank LTD.png",
+      "source_name": "Gateway Mortgage Bank LTD",
+      "aliases": [
+        "Gateway Mortgage Bank LTD"
+      ],
+      "bankCode": "070009",
+      "scCode": "812",
+      "source_sha256": "0a158090e3c866964c58448fab6bd8c1041d380434aaca45540834fbcc5701a4",
+      "width": 400,
+      "height": 400,
+      "bytes": 4241,
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved_existing",
+      "target_record_ids": [
+        "gateway-savings"
+      ],
+      "existing_target_sha256": [
+        "0a158090e3c866964c58448fab6bd8c1041d380434aaca45540834fbcc5701a4"
+      ],
+      "reason": "The source naming variant maps to Gateway Savings and the source SHA matches its existing asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 13,
+      "archive_category": "mortgage_banks",
+      "source_file": "Global Trust Savings and Loans Limited.png",
+      "source_path": "logos/ngn/png/mortgage-banks/Global Trust Savings and Loans Limited.png",
+      "source_name": "Global Trust Savings and Loans Limited",
+      "aliases": [
+        "Global Trust Savings and Loans Limited"
+      ],
+      "bankCode": "070032",
+      "scCode": null,
+      "source_sha256": "740b796721cffd452068edfb180cc45d0e2a6cd769623372c469badbfc62f617",
+      "width": 400,
+      "height": 400,
+      "bytes": 7291,
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved_existing",
+      "target_record_ids": [
+        "global-trust"
+      ],
+      "existing_target_sha256": [
+        "740b796721cffd452068edfb180cc45d0e2a6cd769623372c469badbfc62f617"
+      ],
+      "reason": "The source legal name maps to the current Global Trust record and the source SHA matches its existing asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 14,
+      "archive_category": "mortgage_banks",
+      "source_file": "Imperial Homes Mortgage Bank.png",
+      "source_path": "logos/ngn/png/mortgage-banks/Imperial Homes Mortgage Bank.png",
+      "source_name": "Imperial Homes Mortgage Bank",
+      "aliases": [
+        "Imperial Homes Mortgage Bank"
+      ],
+      "bankCode": "100024",
+      "scCode": "938",
+      "source_sha256": "4b81fd9abdd69074b5e2db8d486f0b55f23954aa5b1f290aa42d030559720994",
+      "width": 400,
+      "height": 400,
+      "bytes": 9971,
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved_existing",
+      "target_record_ids": [
+        "imperial-homes"
+      ],
+      "existing_target_sha256": [
+        "4b81fd9abdd69074b5e2db8d486f0b55f23954aa5b1f290aa42d030559720994"
+      ],
+      "reason": "The source naming variant maps to Imperial Homes and the source SHA matches its existing asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 15,
+      "archive_category": "mortgage_banks",
+      "source_file": "Infinity Trust Mortgage Bank.png",
+      "source_path": "logos/ngn/png/mortgage-banks/Infinity Trust Mortgage Bank.png",
+      "source_name": "Infinity Trust Mortgage Bank",
+      "aliases": [
+        "Infinity Trust Mortgage Bank"
+      ],
+      "bankCode": "070016",
+      "scCode": "070016",
+      "source_sha256": "8c685e5a6c0513a8c9590f7fa3c0328f4385f94a29ca9d2dbc9063c720c4565a",
+      "width": 400,
+      "height": 400,
+      "bytes": 12894,
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved_existing",
+      "target_record_ids": [
+        "infinity-trust"
+      ],
+      "existing_target_sha256": [
+        "8c685e5a6c0513a8c9590f7fa3c0328f4385f94a29ca9d2dbc9063c720c4565a"
+      ],
+      "reason": "The source naming variant maps to Infinity Trust and the source SHA matches its existing asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 16,
+      "archive_category": "mortgage_banks",
+      "source_file": "Jigawa Savings and Loans Limited.png",
+      "source_path": "logos/ngn/png/mortgage-banks/Jigawa Savings and Loans Limited.png",
+      "source_name": "Jigawa Savings and Loans Limited",
+      "aliases": [
+        "Jigawa Savings and Loans Limited"
+      ],
+      "bankCode": "070029",
+      "scCode": null,
+      "source_sha256": "6c8cefe2ebd3ddad6cdca32676c78cf2761ce94ef37fa390d6bd8c4e0fdd2ddb",
+      "width": 400,
+      "height": 400,
+      "bytes": 12677,
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved_existing",
+      "target_record_ids": [
+        "jigawa-savings-loans"
+      ],
+      "existing_target_sha256": [
+        "6c8cefe2ebd3ddad6cdca32676c78cf2761ce94ef37fa390d6bd8c4e0fdd2ddb"
+      ],
+      "reason": "The source legal name maps exactly to the current Jigawa Savings & Loans record and the source SHA matches its existing asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 17,
+      "archive_category": "mortgage_banks",
+      "source_file": "JubileeLife.png",
+      "source_path": "logos/ngn/png/mortgage-banks/JubileeLife.png",
+      "source_name": "JubileeLife",
+      "aliases": [
+        "JubileeLife Mortgage Bank"
+      ],
+      "bankCode": "090003",
+      "scCode": "906",
+      "source_sha256": "a58698951bf47367965d0eb42bb459b420cadbf34ec0f38f7122ea6220d71df5",
+      "width": 400,
+      "height": 400,
+      "bytes": 5944,
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved_existing",
+      "target_record_ids": [
+        "jubilee-life-mortgage-bank"
+      ],
+      "existing_target_sha256": [
+        "a58698951bf47367965d0eb42bb459b420cadbf34ec0f38f7122ea6220d71df5"
+      ],
+      "reason": "JubileeLife is the source brand for the current Jubilee-Life Mortgage Bank record and the source SHA matches its existing asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 18,
+      "archive_category": "mortgage_banks",
+      "source_file": "Kebbi State Home Savings and Loans.png",
+      "source_path": "logos/ngn/png/mortgage-banks/Kebbi State Home Savings and Loans.png",
+      "source_name": "Kebbi State Home Savings and Loans",
+      "aliases": [
+        "Kebbi State Home Savings and Loans"
+      ],
+      "bankCode": "070031",
+      "scCode": "90028",
+      "source_sha256": "9c3d8932f883df9ea681649d57ccbad357b4950f586578b1bc72edf7bfe900ea",
+      "width": 400,
+      "height": 400,
+      "bytes": 10448,
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved_existing",
+      "target_record_ids": [
+        "kebbi-state-homes"
+      ],
+      "existing_target_sha256": [
+        "9c3d8932f883df9ea681649d57ccbad357b4950f586578b1bc72edf7bfe900ea"
+      ],
+      "reason": "The source naming variant maps to Kebbi State Homes and the source SHA matches its existing asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 19,
+      "archive_category": "mortgage_banks",
+      "source_file": "Lagos Building Investment Company.png",
+      "source_path": "logos/ngn/png/mortgage-banks/Lagos Building Investment Company.png",
+      "source_name": "Lagos Building Investment Company",
+      "aliases": [
+        "Lagos Building Investment Company Plc",
+        "LBIC"
+      ],
+      "bankCode": "070012",
+      "scCode": "90052",
+      "source_sha256": "f6abd53ba9cd300831f94b3f49f7a51da5a171464f4857660d65199e6f0332ec",
+      "width": 400,
+      "height": 400,
+      "bytes": 11146,
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved_existing",
+      "target_record_ids": [
+        "lagos-building-investment"
+      ],
+      "existing_target_sha256": [
+        "f6abd53ba9cd300831f94b3f49f7a51da5a171464f4857660d65199e6f0332ec"
+      ],
+      "reason": "The source naming variant maps to Lagos Building & Investment and the source SHA matches its existing asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 20,
+      "archive_category": "mortgage_banks",
+      "source_file": "Living Trust Mortgage Bank.png",
+      "source_path": "logos/ngn/png/mortgage-banks/Living Trust Mortgage Bank.png",
+      "source_name": "Living Trust Mortgage Bank",
+      "aliases": [
+        "Living Trust Mortgage Bank"
+      ],
+      "bankCode": "070007",
+      "scCode": "031",
+      "source_sha256": "dc34b2cca0aa8e762ec59acd92fe67221cf6557ceacf10a0ad103d04ca52f95e",
+      "width": 400,
+      "height": 400,
+      "bytes": 10755,
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved_existing",
+      "target_record_ids": [
+        "living-trust-mortgage-bank"
+      ],
+      "existing_target_sha256": [
+        "538f864c862c4a794a1fab737097c20f93ec7f22c3d21c4078f89c2240a0a111"
+      ],
+      "reason": "The source naming variant maps to Living Trust Mortgage Bank Plc; the existing target asset is retained.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 21,
+      "archive_category": "mortgage_banks",
+      "source_file": "Mutual Alliance Mortgage Bank.png",
+      "source_path": "logos/ngn/png/mortgage-banks/Mutual Alliance Mortgage Bank.png",
+      "source_name": "Mutual Alliance Mortgage Bank",
+      "aliases": [
+        "Mutual Alliance Mortgage Bank"
+      ],
+      "bankCode": "070028",
+      "scCode": null,
+      "source_sha256": "b5908980f6dd2de1502a8e7640ae7bdb238af6447ae40424bdf2e05582f47b7c",
+      "width": 400,
+      "height": 400,
+      "bytes": 32957,
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved_existing",
+      "target_record_ids": [
+        "mutual-alliance"
+      ],
+      "existing_target_sha256": [
+        "b5908980f6dd2de1502a8e7640ae7bdb238af6447ae40424bdf2e05582f47b7c"
+      ],
+      "reason": "The source naming variant maps to the current Mutual Alliance record and the source SHA matches its existing asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 22,
+      "archive_category": "mortgage_banks",
+      "source_file": "Omoluabi Mortgage Bank.png",
+      "source_path": "logos/ngn/png/mortgage-banks/Omoluabi Mortgage Bank.png",
+      "source_name": "Omoluabi Mortgage Bank",
+      "aliases": [
+        "Omoluabi Mortgage Bank"
+      ],
+      "bankCode": "950",
+      "scCode": "950",
+      "source_sha256": "c3e9f8ae505b8397c431de3e653af65a6bafe3acf4f4552e5576d351f13cd6a2",
+      "width": 400,
+      "height": 400,
+      "bytes": 12473,
+      "classification": "rejected_no_active_dataset_match",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "existing_target_sha256": [],
+      "reason": "Omoluabi Mortgage Bank is not an active record in the current 31-record PMI roster.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 23,
+      "archive_category": "mortgage_banks",
+      "source_file": "Refuge Mortgage Bank.png",
+      "source_path": "logos/ngn/png/mortgage-banks/Refuge Mortgage Bank.png",
+      "source_name": "Refuge Mortgage Bank",
+      "aliases": [
+        "Refuge Mortgage Bank"
+      ],
+      "bankCode": "070011",
+      "scCode": "90067",
+      "source_sha256": "ea7c88b4157bf43e39e16b438007dc69e5f1f1e47b8734a3442981f42b436656",
+      "width": 400,
+      "height": 400,
+      "bytes": 29326,
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved_existing",
+      "target_record_ids": [
+        "refuge-mortgage-bank"
+      ],
+      "existing_target_sha256": [
+        "a7b7b848cfa3f204266e0b5924db3c0079e62adbc2ea7f1e5b87411a55ef815d"
+      ],
+      "reason": "The source naming variant maps to Refuge Mortgage Bank Limited; the existing target asset is retained.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 24,
+      "archive_category": "mortgage_banks",
+      "source_file": "STB Mortgage Bank.png",
+      "source_path": "logos/ngn/png/mortgage-banks/STB Mortgage Bank.png",
+      "source_name": "STB Mortgage Bank",
+      "aliases": [
+        "STB Mortgage Bank"
+      ],
+      "bankCode": "070022",
+      "scCode": null,
+      "source_sha256": "b08e58772e485bea9f072bfe55689cc800653f9335c3dd7117a10aa486898344",
+      "width": 400,
+      "height": 400,
+      "bytes": 8790,
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved_existing",
+      "target_record_ids": [
+        "stb-mortgage-bank"
+      ],
+      "existing_target_sha256": [
+        "9b6c3d33eedd9b92c59bfe36a22be2b065efe8fbd38b99c0f0285fb863cb01b5"
+      ],
+      "reason": "The source naming variant maps to STB Mortgage Bank Limited; the existing target asset is retained.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 25,
+      "archive_category": "payment_service_banks",
+      "source_file": "9 Payment Service Bank.png",
+      "source_path": "logos/ngn/png/payment-service-banks/9 Payment Service Bank.png",
+      "source_name": "9 Payment Service Bank",
+      "aliases": [
+        "9 Payment Service Bank",
+        "9PSB",
+        "9mobile PSB"
+      ],
+      "bankCode": "120001",
+      "scCode": null,
+      "source_sha256": "c5b695d81ccc0bfdf9b04a50e1f37bd55cf7059102c455771960bef58e30e5bb",
+      "width": 400,
+      "height": 400,
+      "bytes": 26070,
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved_existing",
+      "target_record_ids": [
+        "9-psb"
+      ],
+      "existing_target_sha256": [
+        "c5b695d81ccc0bfdf9b04a50e1f37bd55cf7059102c455771960bef58e30e5bb"
+      ],
+      "reason": "The source name maps to 9 PSB Ltd and the source SHA matches its existing asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 26,
+      "archive_category": "payment_service_banks",
+      "source_file": "Airtel Smartcash PSB.png",
+      "source_path": "logos/ngn/png/payment-service-banks/Airtel Smartcash PSB.png",
+      "source_name": "Airtel Smartcash PSB",
+      "aliases": [
+        "Airtel Smartcash PSB",
+        "Smartcash",
+        "Airtel PSB"
+      ],
+      "bankCode": "120004",
+      "scCode": null,
+      "source_sha256": "d29410c1581fdd3c1a11bacd13f394054872c19678e67bd689ea838ea6f381ea",
+      "width": 400,
+      "height": 400,
+      "bytes": 14404,
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved_existing",
+      "target_record_ids": [
+        "smartcash-psb"
+      ],
+      "existing_target_sha256": [
+        "d29410c1581fdd3c1a11bacd13f394054872c19678e67bd689ea838ea6f381ea"
+      ],
+      "reason": "The source brand maps to SmartCash PSB Limited and the source SHA matches its existing asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 27,
+      "archive_category": "payment_service_banks",
+      "source_file": "HopePSB.png",
+      "source_path": "logos/ngn/png/payment-service-banks/HopePSB.png",
+      "source_name": "HopePSB",
+      "aliases": [
+        "HopePSB"
+      ],
+      "bankCode": "120002",
+      "scCode": null,
+      "source_sha256": "e4030ed400ed0845f4578a8343cfa390ac8c3c2b323306194e4efd23970c21d3",
+      "width": 400,
+      "height": 400,
+      "bytes": 13860,
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved_existing",
+      "target_record_ids": [
+        "hope-psb"
+      ],
+      "existing_target_sha256": [
+        "e4030ed400ed0845f4578a8343cfa390ac8c3c2b323306194e4efd23970c21d3"
+      ],
+      "reason": "The source spelling variant maps to Hope PSB Ltd and the source SHA matches its existing asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 28,
+      "archive_category": "payment_service_banks",
+      "source_file": "MTN Momo PSB.png",
+      "source_path": "logos/ngn/png/payment-service-banks/MTN Momo PSB.png",
+      "source_name": "MTN Momo PSB",
+      "aliases": [
+        "MTN Momo PSB"
+      ],
+      "bankCode": "120003",
+      "scCode": null,
+      "source_sha256": "829c99e4df3e498fac01b3b1dc0fa7111c1135cee063c11c8254ad1bc33b4e2f",
+      "width": 400,
+      "height": 400,
+      "bytes": 11219,
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved_existing",
+      "target_record_ids": [
+        "momo-payment-service-bank"
+      ],
+      "existing_target_sha256": [
+        "829c99e4df3e498fac01b3b1dc0fa7111c1135cee063c11c8254ad1bc33b4e2f"
+      ],
+      "reason": "The source brand maps to MoMo Payment Service Bank and the source SHA matches its existing asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 29,
+      "archive_category": "payment_service_banks",
+      "source_file": "Money Master PSB.png",
+      "source_path": "logos/ngn/png/payment-service-banks/Money Master PSB.png",
+      "source_name": "Money Master PSB",
+      "aliases": [
+        "Money Master PSB"
+      ],
+      "bankCode": "120005",
+      "scCode": "946",
+      "source_sha256": "9dece32097b0c5bb31966eba6b16aabace77721fcc0fe93b441d0a7487d6ae4d",
+      "width": 400,
+      "height": 400,
+      "bytes": 10984,
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved_existing",
+      "target_record_ids": [
+        "moneymaster-psb"
+      ],
+      "existing_target_sha256": [
+        "9dece32097b0c5bb31966eba6b16aabace77721fcc0fe93b441d0a7487d6ae4d"
+      ],
+      "reason": "The source spacing variant maps to MoneyMaster PSB Ltd and the source SHA matches its existing asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    }
+  ]
+}

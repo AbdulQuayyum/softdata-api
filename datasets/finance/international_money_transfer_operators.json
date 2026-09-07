@@ -1,7 +1,8 @@
 [
   {
     "id": "91-payments-limited",
-    "name": "91 PAYMENTS LIMITED"
+    "name": "91 PAYMENTS LIMITED",
+    "website_url": "https://91-payments.com/"
   },
   {
     "id": "acha-global-hub-limited",
@@ -9,7 +10,8 @@
   },
   {
     "id": "afriex-inc",
-    "name": "AFRIEX INC"
+    "name": "AFRIEX INC",
+    "website_url": "https://afriex.com/"
   },
   {
     "id": "afrisurge-technologies-limited",
@@ -57,7 +59,8 @@
   },
   {
     "id": "chime-inc-sendwave",
-    "name": "CHIME INC (SENDWAVE)"
+    "name": "CHIME INC (SENDWAVE)",
+    "website_url": "https://www.sendwave.com/"
   },
   {
     "id": "chrisborough-solutions-limited",
@@ -117,7 +120,8 @@
   },
   {
     "id": "etranzact-international-plc",
-    "name": "eTRANZACT INTERNATIONAL PLC"
+    "name": "eTRANZACT INTERNATIONAL PLC",
+    "website_url": "https://www.etranzact.com/"
   },
   {
     "id": "exactrem-limited",
@@ -129,7 +133,8 @@
   },
   {
     "id": "fincra-technologies-limited",
-    "name": "FINCRA TECHNOLOGIES LIMITED"
+    "name": "FINCRA TECHNOLOGIES LIMITED",
+    "website_url": "https://fincra.com/"
   },
   {
     "id": "flutterwave-tech-payments-limited",
@@ -169,7 +174,8 @@
   },
   {
     "id": "interswitch-limited",
-    "name": "INTERSWITCH LIMITED"
+    "name": "INTERSWITCH LIMITED",
+    "website_url": "https://www.interswitchgroup.com/"
   },
   {
     "id": "jitaku-financial-services-limited",
@@ -217,7 +223,9 @@
   },
   {
     "id": "moneygram",
-    "name": "MONEYGRAM"
+    "name": "MONEYGRAM",
+    "website_url": "https://www.moneygram.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/international-money-transfer-operators/moneygram.png"
   },
   {
     "id": "more-money-transfers-limited",
@@ -233,7 +241,8 @@
   },
   {
     "id": "nala-payments-limited",
-    "name": "NALA PAYMENTS LIMITED"
+    "name": "NALA PAYMENTS LIMITED",
+    "website_url": "https://www.nala.com/"
   },
   {
     "id": "nash-technology-limited",
@@ -261,11 +270,13 @@
   },
   {
     "id": "paga-remit-limited",
-    "name": "PAGA REMIT LIMITED"
+    "name": "PAGA REMIT LIMITED",
+    "website_url": "https://www.mypaga.com/"
   },
   {
     "id": "payaza-africa-limited",
-    "name": "PAYAZA AFRICA LIMITED"
+    "name": "PAYAZA AFRICA LIMITED",
+    "website_url": "https://payaza.africa/"
   },
   {
     "id": "payceler-limited",
@@ -277,7 +288,8 @@
   },
   {
     "id": "paysend-plc",
-    "name": "PAYSEND PLC"
+    "name": "PAYSEND PLC",
+    "website_url": "https://paysend.com/"
   },
   {
     "id": "pearl-payments-limited",
@@ -297,7 +309,8 @@
   },
   {
     "id": "quickremit-limited",
-    "name": "QUICKREMIT LIMITED"
+    "name": "QUICKREMIT LIMITED",
+    "website_url": "https://www.quickremitltd.com/"
   },
   {
     "id": "radiantlife-financial-services-limited",
@@ -317,7 +330,9 @@
   },
   {
     "id": "remitly-inc",
-    "name": "REMITLY INC."
+    "name": "REMITLY INC.",
+    "website_url": "https://www.remitly.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/international-money-transfer-operators/remitly-inc.png"
   },
   {
     "id": "ria-financials",
@@ -325,7 +340,8 @@
   },
   {
     "id": "rightcard-payment-services-ltd-a-lemfi-brand-company",
-    "name": "RIGHTCARD PAYMENT SERVICES LTD (A LEMFI BRAND COMPANY)"
+    "name": "RIGHTCARD PAYMENT SERVICES LTD (A LEMFI BRAND COMPANY)",
+    "website_url": "https://lemfi.com/"
   },
   {
     "id": "saana-capital-llc",
@@ -349,7 +365,8 @@
   },
   {
     "id": "small-world-financial-services-group-limited",
-    "name": "SMALL WORLD FINANCIAL SERVICES GROUP LIMITED"
+    "name": "SMALL WORLD FINANCIAL SERVICES GROUP LIMITED",
+    "website_url": "https://www.smallworldfs.com/"
   },
   {
     "id": "super-transfer-uk-limited",
@@ -361,7 +378,8 @@
   },
   {
     "id": "taptap-send-uk-limited",
-    "name": "TAPTAP SEND UK LIMITED"
+    "name": "TAPTAP SEND UK LIMITED",
+    "website_url": "https://www.taptapsend.com/"
   },
   {
     "id": "tcf-services-limited",
@@ -389,7 +407,8 @@
   },
   {
     "id": "transferto-mobile-financial-services-limited-thunes",
-    "name": "TRANSFERTO MOBILE FINANCIAL SERVICES LIMITED (THUNES)"
+    "name": "TRANSFERTO MOBILE FINANCIAL SERVICES LIMITED (THUNES)",
+    "website_url": "https://www.thunes.com/"
   },
   {
     "id": "velocity-transfers-limited",
@@ -401,11 +420,14 @@
   },
   {
     "id": "vertofx-ltd",
-    "name": "VERTOFX LTD"
+    "name": "VERTOFX LTD",
+    "website_url": "https://www.verto.co/",
+    "logo_url": "/v1/assets/financial-institutions/ng/international-money-transfer-operators/vertofx-ltd.png"
   },
   {
     "id": "volopa-financial-services-scotland-limited",
-    "name": "VOLOPA FINANCIAL SERVICES (SCOTLAND) LIMITED"
+    "name": "VOLOPA FINANCIAL SERVICES (SCOTLAND) LIMITED",
+    "website_url": "https://www.volopa.com/"
   },
   {
     "id": "voyse-technologies-nigeria-limited",
@@ -413,7 +435,9 @@
   },
   {
     "id": "waza-technologies-inc",
-    "name": "WAZA TECHNOLOGIES INC"
+    "name": "WAZA TECHNOLOGIES INC",
+    "website_url": "https://waza.co/",
+    "logo_url": "/v1/assets/financial-institutions/ng/international-money-transfer-operators/waza-technologies-inc.png"
   },
   {
     "id": "weblink-international-limited",
@@ -421,11 +445,15 @@
   },
   {
     "id": "western-union",
-    "name": "WESTERN UNION"
+    "name": "WESTERN UNION",
+    "website_url": "https://www.westernunion.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/international-money-transfer-operators/western-union.png"
   },
   {
     "id": "worldremit-limited",
-    "name": "WORLDREMIT LIMITED"
+    "name": "WORLDREMIT LIMITED",
+    "website_url": "https://www.worldremit.com/",
+    "logo_url": "/v1/assets/financial-institutions/ng/international-money-transfer-operators/worldremit-limited.png"
   },
   {
     "id": "zytrex-payments-limited",

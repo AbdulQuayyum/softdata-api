@@ -32009,5 +32009,30 @@
     610,
     611
   ],
-  "final_quality_audit_complete": true
+  "final_quality_audit_complete": true,
+  "phase2c_logo_reconciliation": {
+    "manifest_path": "metadata/finance/microfinance_banks_phase2c_logo_reconciliation.json",
+    "reviewed_source_files": 315,
+    "checkpoint_positions": [
+      50,
+      100,
+      150,
+      200,
+      250,
+      300,
+      315
+    ],
+    "classification_counts": {
+      "preserved_existing_byte_identical": 174,
+      "preserved_existing_stronger_source": 7,
+      "rejected_distinct_identity": 6,
+      "rejected_code_conflict": 5,
+      "rejected_no_active_dataset_match": 123
+    },
+    "new_imports": 0,
+    "logo_count_before": 330,
+    "logo_count_after": 330,
+    "provenance": "curated_repository",
+    "pinned_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8"
+  }
 }

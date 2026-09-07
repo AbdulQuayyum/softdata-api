@@ -155,11 +155,36 @@ func TestInternationalMoneyTransferOperatorsDatasetMatchesApprovedSnapshot(t *te
 	if err := json.Unmarshal(serialized, &got); err != nil {
 		t.Fatalf("json.Unmarshal: %v", err)
 	}
-	if len(got) != 2 || got["id"] == nil || got["name"] == nil {
+	if len(got) < 2 || len(got) > 4 || got["id"] == nil || got["name"] == nil {
 		t.Fatalf("unexpected serialized public fields: %#v", got)
+	}
+	for key := range got {
+		if key != "id" && key != "name" && key != "website_url" && key != "logo_url" {
+			t.Fatalf("unexpected serialized field %q: %#v", key, got)
+		}
 	}
 	if _, ok := got["country_code"]; ok {
 		t.Fatalf("country_code should not be serialized: %#v", got)
+	}
+}
+
+func TestInternationalMoneyTransferOperatorOptionalFieldsSerialize(t *testing.T) {
+	operator := InternationalMoneyTransferOperator{
+		ID:         "example-imto",
+		Name:       "Example IMTO",
+		WebsiteURL: "https://example.com",
+		LogoURL:    "/v1/assets/financial-institutions/ng/international-money-transfer-operators/example-imto.png",
+	}
+	serialized, err := json.Marshal(operator)
+	if err != nil {
+		t.Fatalf("json.Marshal: %v", err)
+	}
+	var got map[string]any
+	if err := json.Unmarshal(serialized, &got); err != nil {
+		t.Fatalf("json.Unmarshal: %v", err)
+	}
+	if got["website_url"] != operator.WebsiteURL || got["logo_url"] != operator.LogoURL {
+		t.Fatalf("optional fields were not serialized: %#v", got)
 	}
 }
 

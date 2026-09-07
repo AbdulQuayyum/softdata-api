@@ -88,11 +88,17 @@ softdata-api/
 │   │   │       ├── LOGO_PERMISSION_REQUESTS.md
 │   │   │       ├── development-finance/*.png
 │   │   │       ├── holding-companies/*.png
+│   │   │       ├── international-money-transfer-operators/*.png
 │   │   │       ├── merchant-banks/*.png
 │   │   │       ├── microfinance-banks/*.png
+│   │   │       ├── microfinance-banks/ACQUISITION_AUDIT.md
+│   │   │       ├── microfinance-banks/ATTRIBUTION.md
+│   │   │       ├── microfinance-banks/LOGO_PERMISSION_REQUESTS.md
+│   │   │       └── microfinance-banks/SOURCE_RECONCILIATION.md
 │   │   │       ├── non-interest/*.png
 │   │   │       ├── payment-service-banks/*.png
-│   │   │       └── primary-mortgage/*.png  # 393 embedded regulated-finance PNG assets total
+│   │   │       ├── payment-service-providers/*.png
+│   │   │       └── primary-mortgage/*.png  # regulated-finance PNG assets
 │   │   └── flags/
 │   │       ├── ATTRIBUTION.md
 │   │       ├── LICENSE
@@ -138,7 +144,16 @@ softdata-api/
 │   │   │   ├── commercial_banks.json
 │   │   │   ├── currencies.json
 │   │   │   ├── international_money_transfer_operators.json
-│   │   │   └── payment_service_providers.json
+│   │   │   ├── international_money_transfer_operators_enrichment.json
+│   │   │   ├── microfinance_banks_reconciliation.json
+│   │   │   ├── payment_service_providers.json
+│   │   │   ├── payment_service_providers_reconciliation.json
+│   │   │   ├── payment_service_provider_mobile_money_logo_reconciliation.json
+│   │   │   ├── cross_dataset_finance_logo_phase2b_reconciliation.json
+│   │   │   ├── cross_dataset_finance_logo_phase2d_reconciliation.json
+│   │   │   ├── cross_dataset_finance_logo_reconciliation.json
+│   │   │   ├── microfinance_banks_phase2c_logo_reconciliation.json
+│   │   │   └── microfinance_banks_unused_source_reconciliation.json
 │   │   └── geography/
 │   │       ├── countries_and_areas.json
 │   │       ├── country_languages.json
@@ -440,9 +455,6 @@ softdata-api/
 │       ├── geography_validator_test.go
 │       ├── query_validator.go
 │       └── query_validator_test.go
-└── tmp/
-    ├── build-errors.log
-    └── main
 ```
 
 ## What Each Area Does
@@ -488,7 +500,7 @@ Repository interfaces plus PostgreSQL, Redis, and file-backed implementations. T
 - Local development reads JSON files from `DATASETS_PATH` (normally `datasets/`).
 - Production/serverless startup can fall back to the embedded JSON filesystem exposed by `datasets.Files()` when the configured path is unavailable.
 - Flag assets and regulated-finance logo assets are embedded by `datasets/assets`; public asset handlers read them through category- and identifier-scoped helpers and expose only the supported public formats.
-- The source tree includes `248` flag SVGs, `28` commercial-bank PNGs, and `393` regulated-finance PNGs. The wildcard entries in the tree represent those complete inventories.
+- The source tree includes `248` flag SVGs, `28` commercial-bank PNGs, and `422` regulated-finance PNGs. The wildcard entries in the tree represent those complete inventories; together the finance asset trees contain `450` PNG files.
 
 ### `internal/services/`
 

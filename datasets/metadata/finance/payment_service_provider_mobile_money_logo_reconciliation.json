@@ -1,0 +1,1346 @@
+{
+  "dataset_key": "ng-payment-service-providers",
+  "scope": "Phase 2A mobile-money provisional unmatched assets",
+  "source_repository": "https://github.com/Nigerian-Bank-Logos/ng-bank-logos",
+  "pinned_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+  "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4",
+  "reviewed_at": "2026-09-07",
+  "source_file_count": 55,
+  "classifications": {
+    "accepted_alias": 1,
+    "accepted_product_to_legal_entity": 2,
+    "preserved_existing_stronger_source": 16,
+    "rejected_distinct_identity": 1,
+    "rejected_no_active_dataset_match": 9,
+    "rejected_product_relationship_unproven": 2,
+    "rejected_wrong_entity": 24
+  },
+  "records": [
+    {
+      "archive_position": 1,
+      "source_file": "ALAT by WEMA.png",
+      "source_path": "logos/ngn/png/mobile-money/ALAT by WEMA.png",
+      "source_name": "ALAT by WEMA",
+      "aliases": [
+        "ALAT by WEMA",
+        "ALAT",
+        "Wema Bank"
+      ],
+      "bankCode": "035150103",
+      "scCode": "035A",
+      "source_sha256": "55d0f8dd433f60608d6f7e7d2f73883f04040f20ef70e5f4f84db844999b36ea",
+      "width": 400,
+      "height": 400,
+      "bytes": 10948,
+      "classification": "rejected_wrong_entity",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "ALAT is a Wema Bank product, not the legal identity of a current PSP record.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 2,
+      "source_file": "Access Closa.png",
+      "source_path": "logos/ngn/png/mobile-money/Access Closa.png",
+      "source_name": "Access Closa",
+      "aliases": [
+        "Access Money",
+        "Access Bank PSB"
+      ],
+      "bankCode": "100013",
+      "scCode": "927",
+      "source_sha256": "bf69221c9243d8ddd28f2297c411f7366c66eebbdd099b8245e248f6ba0132d0",
+      "width": 400,
+      "height": 400,
+      "bytes": 3870,
+      "classification": "rejected_wrong_entity",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "Access Closa is an Access Bank/Access PSB product and must not be mapped to an unrelated PSP record.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 3,
+      "source_file": "Access Mobile.png",
+      "source_path": "logos/ngn/png/mobile-money/Access Mobile.png",
+      "source_name": "Access Mobile",
+      "aliases": [
+        "ACCESS MOBILE"
+      ],
+      "bankCode": "323",
+      "scCode": "323",
+      "source_sha256": "bf69221c9243d8ddd28f2297c411f7366c66eebbdd099b8245e248f6ba0132d0",
+      "width": 400,
+      "height": 400,
+      "bytes": 3870,
+      "classification": "rejected_wrong_entity",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "Access Mobile is an Access Bank product and must not be mapped to an unrelated PSP record.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 4,
+      "source_file": "Access Yello & Beta.png",
+      "source_path": "logos/ngn/png/mobile-money/Access Yello & Beta.png",
+      "source_name": "Access Yello & Beta",
+      "aliases": [
+        "Access Yello & Beta"
+      ],
+      "bankCode": "100052",
+      "scCode": null,
+      "source_sha256": "bf69221c9243d8ddd28f2297c411f7366c66eebbdd099b8245e248f6ba0132d0",
+      "width": 400,
+      "height": 400,
+      "bytes": 3870,
+      "classification": "rejected_wrong_entity",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "Access Yello & Beta is a bank product and does not identify an exact current PSP legal entity.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 5,
+      "source_file": "Betastack Technologies.png",
+      "source_path": "logos/ngn/png/mobile-money/Betastack Technologies.png",
+      "source_name": "Betastack Technologies",
+      "aliases": [
+        "Betastack Technologies"
+      ],
+      "bankCode": "110074",
+      "scCode": null,
+      "source_sha256": "be0722181fe19d8f5b378d31c25553fc545515a03a8787385824c45de539a9bd",
+      "width": 400,
+      "height": 400,
+      "bytes": 7915,
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved_or_imported",
+      "target_record_ids": [
+        "payment-solution-service-provider-betastack-technology-limited",
+        "payment-terminal-service-provider-betastack-technology-limited",
+        "super-agent-betastack-technology-limited"
+      ],
+      "evidence_urls": [],
+      "reason": "The source catalogue legal name is the same entity as all three active licence-category records; existing target assets are retained.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 6,
+      "source_file": "Carbon.png",
+      "source_path": "logos/ngn/png/mobile-money/Carbon.png",
+      "source_name": "Carbon",
+      "aliases": [
+        "Carbon",
+        "Carbon MFB",
+        "OneFi",
+        "Paylater"
+      ],
+      "bankCode": "100026",
+      "scCode": "565",
+      "source_sha256": "4fe6924250c12be77e304df068c9cb24fa35e961157adef84435f920753381c9",
+      "width": 400,
+      "height": 400,
+      "bytes": 6781,
+      "classification": "rejected_wrong_entity",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "Carbon is a financial product/company identity not proven to be any current target PSP legal entity.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 7,
+      "source_file": "Cellulant.png",
+      "source_path": "logos/ngn/png/mobile-money/Cellulant.png",
+      "source_name": "Cellulant",
+      "aliases": [
+        "Cellulant"
+      ],
+      "bankCode": "919",
+      "scCode": "919",
+      "source_sha256": "154fce99f05ac728ecee0db7a1df5aee3a258f8835849361f2cd85dfa0bae1bb",
+      "width": 400,
+      "height": 400,
+      "bytes": 13530,
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved_or_imported",
+      "target_record_ids": [
+        "payment-solution-service-provider-cellulant-nigeria-limited"
+      ],
+      "evidence_urls": [],
+      "reason": "Cellulant is the same active legal entity as the existing PSP record; its existing asset is retained.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 8,
+      "source_file": "Contec Global (NowNow).png",
+      "source_path": "logos/ngn/png/mobile-money/Contec Global (NowNow).png",
+      "source_name": "Contec Global (NowNow)",
+      "aliases": [
+        "Contec Global (NowNow)"
+      ],
+      "bankCode": "100032",
+      "scCode": "100032",
+      "source_sha256": "39a9c46ca6933685d7fc477cf8dd238f1bb5de021bfb8f0a126301580258e079",
+      "width": 400,
+      "height": 400,
+      "bytes": 8920,
+      "classification": "accepted_product_to_legal_entity",
+      "decision": "preserved_or_imported",
+      "target_record_ids": [
+        "mobile-money-operator-nownow-digital-systems-limited"
+      ],
+      "evidence_urls": [
+        "https://www.cbn.gov.ng/PaymentsSystem/PSPs.html",
+        "https://nownow.ng/get-start/"
+      ],
+      "reason": "The CBN PSP listing identifies NowNow Digital Systems Limited as formerly Contec Global Infotech Limited, and the first-party NowNow page identifies the operating service.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 9,
+      "source_file": "Eartholeum.png",
+      "source_path": "logos/ngn/png/mobile-money/Eartholeum.png",
+      "source_name": "Eartholeum",
+      "aliases": [
+        "Eartholeum"
+      ],
+      "bankCode": "935",
+      "scCode": "935",
+      "source_sha256": "021d419f12b8187201225ed8e8ce899397db80bce18f3f67e9cda8ec0f9a2c18",
+      "width": 400,
+      "height": 400,
+      "bytes": 16951,
+      "classification": "rejected_no_active_dataset_match",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "No exact active target legal entity was verified for the source identity.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 10,
+      "source_file": "Ecobank Mobile.png",
+      "source_path": "logos/ngn/png/mobile-money/Ecobank Mobile.png",
+      "source_name": "Ecobank Mobile",
+      "aliases": [
+        "Ecobank Mobile"
+      ],
+      "bankCode": "307",
+      "scCode": "307",
+      "source_sha256": "01521d8bdd27271fdf72066ae3ae85a28a3914e6ce6bd47dd8ee268ac4d139a6",
+      "width": 400,
+      "height": 400,
+      "bytes": 14245,
+      "classification": "rejected_wrong_entity",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "Ecobank Mobile is a commercial-bank product, not an unrelated PSP legal entity.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 11,
+      "source_file": "Ecobank Xpress Account.png",
+      "source_path": "logos/ngn/png/mobile-money/Ecobank Xpress Account.png",
+      "source_name": "Ecobank Xpress Account",
+      "aliases": [
+        "Ecobank Xpress Account"
+      ],
+      "bankCode": "100008",
+      "scCode": "922",
+      "source_sha256": "1542a00c62ba1c0a0c7c72b45f6f204fb404346c37245f62caed1293f6ae9d79",
+      "width": 400,
+      "height": 400,
+      "bytes": 11379,
+      "classification": "rejected_wrong_entity",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "Ecobank Xpress Account is an Ecobank product and is explicitly distinct from Xpress Payments Solution Limited.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 12,
+      "source_file": "FBN Mobile.png",
+      "source_path": "logos/ngn/png/mobile-money/FBN Mobile.png",
+      "source_name": "FBN Mobile",
+      "aliases": [
+        "First Bank Mobile"
+      ],
+      "bankCode": "309",
+      "scCode": "309",
+      "source_sha256": "94a0b6ee3c51afb752311d0413692d8912a4efa537c6d3a1eccf1378cddc0a09",
+      "width": 400,
+      "height": 400,
+      "bytes": 13206,
+      "classification": "rejected_wrong_entity",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "FBN Mobile is a FirstBank product, not an exact target PSP legal entity.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 13,
+      "source_file": "FCMB Easy Account.png",
+      "source_path": "logos/ngn/png/mobile-money/FCMB Easy Account.png",
+      "source_name": "FCMB Easy Account",
+      "aliases": [
+        "FCMB Easy Account"
+      ],
+      "bankCode": "100031",
+      "scCode": null,
+      "source_sha256": "4fb0b3979fb219a44cccf1c9d085cc426f880b0c188287c0c1eac48fd85279e3",
+      "width": 400,
+      "height": 400,
+      "bytes": 8183,
+      "classification": "rejected_wrong_entity",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "FCMB Easy Account is a commercial-bank product, not an exact target PSP legal entity.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 14,
+      "source_file": "Fidelity Mobile.png",
+      "source_path": "logos/ngn/png/mobile-money/Fidelity Mobile.png",
+      "source_name": "Fidelity Mobile",
+      "aliases": [
+        "Fidelity Mobile"
+      ],
+      "bankCode": "933",
+      "scCode": "933",
+      "source_sha256": "a70be3163699be5e0aa1530895d0bed2fc9ee83bfd3c07c097adec7a93abe37d",
+      "width": 400,
+      "height": 400,
+      "bytes": 6892,
+      "classification": "rejected_wrong_entity",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "Fidelity Mobile is a Fidelity Bank product, not an exact target PSP legal entity.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 15,
+      "source_file": "FirstMonie Wallet.png",
+      "source_path": "logos/ngn/png/mobile-money/FirstMonie Wallet.png",
+      "source_name": "FirstMonie Wallet",
+      "aliases": [
+        "FirstMonie Wallet"
+      ],
+      "bankCode": "100014",
+      "scCode": "928",
+      "source_sha256": "94a14fccc3a27c7403812fc4f17e58cd53e7d03dea601e0c5f2ef8dc993887e3",
+      "width": 400,
+      "height": 400,
+      "bytes": 7737,
+      "classification": "rejected_wrong_entity",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "FirstMonie Wallet is a FirstBank product, not an exact target PSP legal entity.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 16,
+      "source_file": "Flutterwave.png",
+      "source_path": "logos/ngn/png/mobile-money/Flutterwave.png",
+      "source_name": "Flutterwave",
+      "aliases": [
+        "Flutterwave"
+      ],
+      "bankCode": "110002",
+      "scCode": null,
+      "source_sha256": "0cd0915a4af3e3df0e3b05a380dd57e0e7d90e63832a0402077e3eceeb5ff2db",
+      "width": 400,
+      "height": 400,
+      "bytes": 15171,
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved_or_imported",
+      "target_record_ids": [
+        "switching-and-processing-company-flutterwave-technology-solutions-limited"
+      ],
+      "evidence_urls": [],
+      "reason": "The source mark names Flutterwave, matching the existing active switching-and-processing legal entity; existing asset is retained.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 17,
+      "source_file": "Fortis Mobile.png",
+      "source_path": "logos/ngn/png/mobile-money/Fortis Mobile.png",
+      "source_name": "Fortis Mobile",
+      "aliases": [
+        "Fortis Mobile"
+      ],
+      "bankCode": "100016",
+      "scCode": "930",
+      "source_sha256": "32bba4e9313f457991a63b40d673d5df4081a0a6215155cde4774a51d85c0a6f",
+      "width": 400,
+      "height": 400,
+      "bytes": 9850,
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved_or_imported",
+      "target_record_ids": [
+        "mobile-money-operator-fortis-mobile-money-limited"
+      ],
+      "evidence_urls": [],
+      "reason": "The source mark identifies the same Fortis Mobile Money entity as the existing active record; existing asset is retained.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 18,
+      "source_file": "GT Mobile.png",
+      "source_path": "logos/ngn/png/mobile-money/GT Mobile.png",
+      "source_name": "GT Mobile",
+      "aliases": [
+        "GT Mobile"
+      ],
+      "bankCode": "923",
+      "scCode": "923",
+      "source_sha256": "d5cefdd95db6c81ce773cff631cd659e6ec73c5c1f85f45ff817d56ed558e8f0",
+      "width": 400,
+      "height": 400,
+      "bytes": 8597,
+      "classification": "rejected_wrong_entity",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "GT Mobile is a GTBank product, not an exact target PSP legal entity.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 19,
+      "source_file": "GTBank Mobile Money.png",
+      "source_path": "logos/ngn/png/mobile-money/GTBank Mobile Money.png",
+      "source_name": "GTBank Mobile Money",
+      "aliases": [
+        "GTBank Mobile Money"
+      ],
+      "bankCode": "315",
+      "scCode": "315",
+      "source_sha256": "d5cefdd95db6c81ce773cff631cd659e6ec73c5c1f85f45ff817d56ed558e8f0",
+      "width": 400,
+      "height": 400,
+      "bytes": 8597,
+      "classification": "rejected_wrong_entity",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "GTBank Mobile Money is a commercial-bank product, not an exact target PSP legal entity.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 20,
+      "source_file": "GoMoney.png",
+      "source_path": "logos/ngn/png/mobile-money/GoMoney.png",
+      "source_name": "GoMoney",
+      "aliases": [
+        "GoMoney"
+      ],
+      "bankCode": "100022",
+      "scCode": "100022",
+      "source_sha256": "f2de0c3841595300af4a9ab303a298bcee54e55425a130f04031408945d98b81",
+      "width": 400,
+      "height": 400,
+      "bytes": 19239,
+      "classification": "rejected_wrong_entity",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "GoMoney is a bank product and no exact active PSP legal entity was verified.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 21,
+      "source_file": "Hedonmark.png",
+      "source_path": "logos/ngn/png/mobile-money/Hedonmark.png",
+      "source_name": "Hedonmark",
+      "aliases": [
+        "Hedonmark"
+      ],
+      "bankCode": "931",
+      "scCode": "931",
+      "source_sha256": "89ef3f0f8f9d85c625d023dd2f354b150993672c880205e50e3e4080fe0b26a8",
+      "width": 400,
+      "height": 400,
+      "bytes": 5628,
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved_or_imported",
+      "target_record_ids": [
+        "mobile-money-operator-hedonmark-management-services-limited"
+      ],
+      "evidence_urls": [],
+      "reason": "The source catalogue identity matches the existing active Hedonmark provider record; existing asset is retained.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 22,
+      "source_file": "Innovectives Kesh.png",
+      "source_path": "logos/ngn/png/mobile-money/Innovectives Kesh.png",
+      "source_name": "Innovectives Kesh",
+      "aliases": [
+        "Innovectives Kesh"
+      ],
+      "bankCode": "100029",
+      "scCode": null,
+      "source_sha256": "bad81a4137f2fcff945851e2a15f47d2841c358f4f15dcdbf6725b3846d880aa",
+      "width": 400,
+      "height": 400,
+      "bytes": 7031,
+      "classification": "rejected_no_active_dataset_match",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "No exact active target legal entity was verified for the source identity.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 23,
+      "source_file": "Intellifin.png",
+      "source_path": "logos/ngn/png/mobile-money/Intellifin.png",
+      "source_name": "Intellifin",
+      "aliases": [
+        "Intellifin"
+      ],
+      "bankCode": "941",
+      "scCode": "941",
+      "source_sha256": "23685d6cd792dbd29684a42e6b3208611aecdb6dac0b3f9b8e5bfae9262e9471",
+      "width": 400,
+      "height": 400,
+      "bytes": 64166,
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved_or_imported",
+      "target_record_ids": [
+        "payment-terminal-service-provider-intellifin-solution-limited"
+      ],
+      "evidence_urls": [],
+      "reason": "The source identity matches the existing Intellifin active target; existing asset is retained.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 24,
+      "source_file": "KEGOW (ChamsMobile).png",
+      "source_path": "logos/ngn/png/mobile-money/KEGOW (ChamsMobile).png",
+      "source_name": "KEGOW (ChamsMobile)",
+      "aliases": [
+        "Kegow"
+      ],
+      "bankCode": "100036",
+      "scCode": null,
+      "source_sha256": "8317bf63820ba55444b19b2b0112a1c9d857fbdfe8d76440f53c20f58ee9b487",
+      "width": 400,
+      "height": 400,
+      "bytes": 6291,
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved_or_imported",
+      "target_record_ids": [
+        "mobile-money-operator-chams-mobile"
+      ],
+      "evidence_urls": [],
+      "reason": "KEGOW is identified in the source catalogue as ChamsMobile; the existing Chams Mobile asset is retained.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 25,
+      "source_file": "Kadick Integration.png",
+      "source_path": "logos/ngn/png/mobile-money/Kadick Integration.png",
+      "source_name": "Kadick Integration",
+      "aliases": [
+        "Kadick Integration"
+      ],
+      "bankCode": "110008",
+      "scCode": null,
+      "source_sha256": "8fe3e02e54f486bdaf3188572970eb8c66a6c49fe73ef3994e0824e08fbab396",
+      "width": 400,
+      "height": 400,
+      "bytes": 12370,
+      "classification": "accepted_alias",
+      "decision": "preserved_or_imported",
+      "target_record_ids": [
+        "super-agent-kadick-integrated-limited"
+      ],
+      "evidence_urls": [
+        "https://www.cbn.gov.ng/PaymentsSystem/PSPs.html"
+      ],
+      "reason": "The source catalogue name Kadick Integration is a spelling/grammatical variant of the active Kadick Integrated Limited super-agent record, with the same catalogue institution family and code.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 26,
+      "source_file": "Kegow.png",
+      "source_path": "logos/ngn/png/mobile-money/Kegow.png",
+      "source_name": "Kegow",
+      "aliases": [
+        "Kegow"
+      ],
+      "bankCode": "100015",
+      "scCode": null,
+      "source_sha256": "8317bf63820ba55444b19b2b0112a1c9d857fbdfe8d76440f53c20f58ee9b487",
+      "width": 400,
+      "height": 400,
+      "bytes": 6291,
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved_or_imported",
+      "target_record_ids": [
+        "mobile-money-operator-chams-mobile"
+      ],
+      "evidence_urls": [],
+      "reason": "Kegow is the same ChamsMobile source identity as the existing Chams Mobile target; existing asset is retained.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 27,
+      "source_file": "M36.png",
+      "source_path": "logos/ngn/png/mobile-money/M36.png",
+      "source_name": "M36",
+      "aliases": [
+        "M36"
+      ],
+      "bankCode": "100035",
+      "scCode": null,
+      "source_sha256": "81adaff109e341561dd6eda1a6b978e7632d4aba83dc27d02409d390444b6800",
+      "width": 400,
+      "height": 400,
+      "bytes": 8739,
+      "classification": "rejected_no_active_dataset_match",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "No exact active target legal entity was verified for the source identity.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 28,
+      "source_file": "Mkudi.png",
+      "source_path": "logos/ngn/png/mobile-money/Mkudi.png",
+      "source_name": "Mkudi",
+      "aliases": [
+        "Mkudi"
+      ],
+      "bankCode": "100011",
+      "scCode": null,
+      "source_sha256": "8b6e1eec4250604012d69696fd5e71294230fbac2ac9b8611b8e7fe968cad548",
+      "width": 400,
+      "height": 400,
+      "bytes": 10562,
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved_or_imported",
+      "target_record_ids": [
+        "mobile-money-operator-mkudi-limited"
+      ],
+      "evidence_urls": [],
+      "reason": "The source mark matches the existing active Mkudi provider record; existing asset is retained.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 29,
+      "source_file": "One Finance.png",
+      "source_path": "logos/ngn/png/mobile-money/One Finance.png",
+      "source_name": "One Finance",
+      "aliases": [
+        "One Finance"
+      ],
+      "bankCode": "940",
+      "scCode": "940",
+      "source_sha256": "21440e5f3a1b8aae64ee76e88ae30d90895eeffa3bf8c1202cfbfd29ad7ef300",
+      "width": 400,
+      "height": 400,
+      "bytes": 8346,
+      "classification": "rejected_wrong_entity",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "One Finance is a finance-company identity, not an exact active PSP legal entity.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 30,
+      "source_file": "Paga.png",
+      "source_path": "logos/ngn/png/mobile-money/Paga.png",
+      "source_name": "Paga",
+      "aliases": [
+        "PAGA"
+      ],
+      "bankCode": "100002",
+      "scCode": "916",
+      "source_sha256": "5343df3dd875e2119bd9b38e6ced5f8d1403bc0d478c59df7c2709c3ec785637",
+      "width": 400,
+      "height": 400,
+      "bytes": 9250,
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved_or_imported",
+      "target_record_ids": [
+        "mobile-money-operator-pagatech-limited"
+      ],
+      "evidence_urls": [],
+      "reason": "Paga is the operating brand of the existing Pagatech active provider record; existing asset is retained.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 31,
+      "source_file": "Palmpay.png",
+      "source_path": "logos/ngn/png/mobile-money/Palmpay.png",
+      "source_name": "Palmpay",
+      "aliases": [
+        "PALMPAY"
+      ],
+      "bankCode": "100033",
+      "scCode": "999991",
+      "source_sha256": "fe258e112a350f28ecf527d1f7f42460d3ca2011895bc9cb4b1c7f99f9cd4006",
+      "width": 400,
+      "height": 400,
+      "bytes": 8743,
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved_or_imported",
+      "target_record_ids": [
+        "mobile-money-operator-palmpay-limited"
+      ],
+      "evidence_urls": [],
+      "reason": "PalmPay is the same active legal provider as the existing PalmPay record; existing asset is retained.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 32,
+      "source_file": "ParkWay-ReadyCash.png",
+      "source_path": "logos/ngn/png/mobile-money/ParkWay-ReadyCash.png",
+      "source_name": "ParkWay-ReadyCash",
+      "aliases": [
+        "ParkWay-ReadyCash"
+      ],
+      "bankCode": "100003",
+      "scCode": "311",
+      "source_sha256": "d079b4cda65ea9104ceaf2547301eddaff3e264a337d907ab192f9036f0e3329",
+      "width": 400,
+      "height": 400,
+      "bytes": 6895,
+      "classification": "accepted_product_to_legal_entity",
+      "decision": "preserved_or_imported",
+      "target_record_ids": [
+        "mobile-money-operator-parkway-projects-limited"
+      ],
+      "evidence_urls": [
+        "https://readycash.parkway.ng/",
+        "https://readycash.parkway.ng/terms-of-service/",
+        "https://parkway.ng/solutions/readycash/"
+      ],
+      "reason": "ReadyCash official pages identify Parkway Projects Limited as the CBN-licensed operator and creator of the product.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 33,
+      "source_file": "PayAttitude Online.png",
+      "source_path": "logos/ngn/png/mobile-money/PayAttitude Online.png",
+      "source_name": "PayAttitude Online",
+      "aliases": [
+        "PayAttitude Online"
+      ],
+      "bankCode": "943",
+      "scCode": "943",
+      "source_sha256": "cb580ea765b5a9167a1cf333969cbc73ca3ff7333edc6755c5ba70e164273c0b",
+      "width": 400,
+      "height": 400,
+      "bytes": 9614,
+      "classification": "rejected_wrong_entity",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "PayAttitude Online is a product identity and no exact active PSP legal entity was verified.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 34,
+      "source_file": "Paystack-Titan.png",
+      "source_path": "logos/ngn/png/mobile-money/Paystack-Titan.png",
+      "source_name": "Paystack-Titan",
+      "aliases": [
+        "Paystack-Titan"
+      ],
+      "bankCode": "100039",
+      "scCode": null,
+      "source_sha256": "b2e976dc8b09e997b504a722545bb7b0495618e57407cfd6925b8a18ea56f198",
+      "width": 400,
+      "height": 400,
+      "bytes": 6448,
+      "classification": "rejected_product_relationship_unproven",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "The compound product label does not establish whether the mark belongs to Paystack Payment Limited, Titan Trust Bank, or a separate channel; no exact legal-entity evidence supports import.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 35,
+      "source_file": "Pocket App.png",
+      "source_path": "logos/ngn/png/mobile-money/Pocket App.png",
+      "source_name": "Pocket App",
+      "aliases": [
+        "Pocket App",
+        "Pocket by FirstBank"
+      ],
+      "bankCode": "100042",
+      "scCode": "00716",
+      "source_sha256": "36fd134019b3df0e3f021cb0b9aca0f97d4dc81600877c25388969f8c64e4c20",
+      "width": 400,
+      "height": 400,
+      "bytes": 10702,
+      "classification": "rejected_wrong_entity",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "Pocket App is a product identity and no exact active PSP legal entity was verified.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 36,
+      "source_file": "Purplemoney.png",
+      "source_path": "logos/ngn/png/mobile-money/Purplemoney.png",
+      "source_name": "Purplemoney",
+      "aliases": [
+        "Purplemoney"
+      ],
+      "bankCode": "090303",
+      "scCode": null,
+      "source_sha256": "9306c3ea518cfeac86414411dce7ad905aa0dbbc4a2293bc965f5ad2c9ae8541",
+      "width": 400,
+      "height": 400,
+      "bytes": 15344,
+      "classification": "rejected_no_active_dataset_match",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "No exact active target legal entity was verified for the source identity.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 37,
+      "source_file": "Simplify Energy.png",
+      "source_path": "logos/ngn/png/mobile-money/Simplify Energy.png",
+      "source_name": "Simplify Energy",
+      "aliases": [
+        "Simplify Energy"
+      ],
+      "bankCode": "110034",
+      "scCode": null,
+      "source_sha256": "9fc5cb37ec5f27dd1eebc9e8ea4bb381e6ae9d97f9ef55800a9915e41f58b61a",
+      "width": 400,
+      "height": 400,
+      "bytes": 5240,
+      "classification": "rejected_no_active_dataset_match",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "No exact active target legal entity was verified for the source identity.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 38,
+      "source_file": "Stanbic IBTC @ease.png",
+      "source_path": "logos/ngn/png/mobile-money/Stanbic IBTC @ease.png",
+      "source_name": "Stanbic IBTC @ease",
+      "aliases": [
+        "Stanbic IBTC @ease"
+      ],
+      "bankCode": "921",
+      "scCode": "921",
+      "source_sha256": "25b74d286bd965ca78d8378938f4cb520fec4f89df0668665e221538b98d5710",
+      "width": 400,
+      "height": 400,
+      "bytes": 22878,
+      "classification": "rejected_wrong_entity",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "Stanbic IBTC @ease is a bank product, not an exact active PSP legal entity.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 39,
+      "source_file": "Stanbic Mobile.png",
+      "source_path": "logos/ngn/png/mobile-money/Stanbic Mobile.png",
+      "source_name": "Stanbic Mobile",
+      "aliases": [
+        "Stanbic Mobile"
+      ],
+      "bankCode": "304",
+      "scCode": "304",
+      "source_sha256": "25b74d286bd965ca78d8378938f4cb520fec4f89df0668665e221538b98d5710",
+      "width": 400,
+      "height": 400,
+      "bytes": 22878,
+      "classification": "rejected_wrong_entity",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "Stanbic Mobile is a bank product, not an exact active PSP legal entity.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 40,
+      "source_file": "StanbicMobileMoney.png",
+      "source_path": "logos/ngn/png/mobile-money/StanbicMobileMoney.png",
+      "source_name": "StanbicMobileMoney",
+      "aliases": [
+        "StanbicMobileMoney"
+      ],
+      "bankCode": "100007",
+      "scCode": null,
+      "source_sha256": "25b74d286bd965ca78d8378938f4cb520fec4f89df0668665e221538b98d5710",
+      "width": 400,
+      "height": 400,
+      "bytes": 22878,
+      "classification": "rejected_wrong_entity",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "StanbicMobileMoney is a bank product, not an exact active PSP legal entity.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 41,
+      "source_file": "Sterling Mobile.png",
+      "source_path": "logos/ngn/png/mobile-money/Sterling Mobile.png",
+      "source_name": "Sterling Mobile",
+      "aliases": [
+        "Sterling Mobile"
+      ],
+      "bankCode": "936",
+      "scCode": "936",
+      "source_sha256": "bf4b6b9ee77f377350cf1f81f3358295e3db72de76f9c5139af18ef9cd504c5e",
+      "width": 400,
+      "height": 400,
+      "bytes": 7352,
+      "classification": "rejected_wrong_entity",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "Sterling Mobile is a bank product, not an exact active PSP legal entity.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 42,
+      "source_file": "TAGPAY.png",
+      "source_path": "logos/ngn/png/mobile-money/TAGPAY.png",
+      "source_name": "TAGPAY",
+      "aliases": [
+        "TAGPAY"
+      ],
+      "bankCode": "937",
+      "scCode": "937",
+      "source_sha256": "f64766fdd9249487c070d4de713b7f05ac47a68e67bd8769fb2113888c52fd34",
+      "width": 400,
+      "height": 400,
+      "bytes": 13771,
+      "classification": "rejected_no_active_dataset_match",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "No exact active target legal entity was verified for the source identity.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 43,
+      "source_file": "TENN.png",
+      "source_path": "logos/ngn/png/mobile-money/TENN.png",
+      "source_name": "TENN",
+      "aliases": [
+        "TENN"
+      ],
+      "bankCode": "51403",
+      "scCode": "51403",
+      "source_sha256": "ee294eeb6e8e23784a12f34dcdcefe865162f664e262f442e4f51cb38bbe2635",
+      "width": 400,
+      "height": 400,
+      "bytes": 2915,
+      "classification": "rejected_no_active_dataset_match",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "No exact active target legal entity was verified for the source identity.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 44,
+      "source_file": "Tangerine Money.png",
+      "source_path": "logos/ngn/png/mobile-money/Tangerine Money.png",
+      "source_name": "Tangerine Money",
+      "aliases": [
+        "Tangerine Money"
+      ],
+      "bankCode": "090426",
+      "scCode": "51269",
+      "source_sha256": "a1e349e79cf4283a8a1df346145441f7b9746a56be40dc5a30ed5ad3c59b1303",
+      "width": 400,
+      "height": 400,
+      "bytes": 10740,
+      "classification": "rejected_no_active_dataset_match",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "No exact active target legal entity was verified for the source identity.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 45,
+      "source_file": "Teasy MOBILE.png",
+      "source_path": "logos/ngn/png/mobile-money/Teasy MOBILE.png",
+      "source_name": "Teasy MOBILE",
+      "aliases": [
+        "Teasy MOBILE"
+      ],
+      "bankCode": "924",
+      "scCode": "924",
+      "source_sha256": "b8407f722dba235a777ff722c11b6fac72d316f4a1a079900342aa1f4f8f063c",
+      "width": 400,
+      "height": 400,
+      "bytes": 10484,
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved_or_imported",
+      "target_record_ids": [
+        "mobile-money-operator-teasy-international-company-ltd"
+      ],
+      "evidence_urls": [],
+      "reason": "The source mark matches the existing Teasy International Company active provider record; existing asset is retained.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 46,
+      "source_file": "UBA MONI.png",
+      "source_path": "logos/ngn/png/mobile-money/UBA MONI.png",
+      "source_name": "UBA MONI",
+      "aliases": [
+        "UBA MONI"
+      ],
+      "bankCode": "000040",
+      "scCode": null,
+      "source_sha256": "3c902707dbd366959b6cbac5d3200737de932afda8d0f64c1e3ef4fae70ab351",
+      "width": 400,
+      "height": 400,
+      "bytes": 108208,
+      "classification": "rejected_wrong_entity",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "UBA MONI is a bank product, not an exact active PSP legal entity.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 47,
+      "source_file": "Unlimit Nigeria Limited.png",
+      "source_path": "logos/ngn/png/mobile-money/Unlimit Nigeria Limited.png",
+      "source_name": "Unlimit Nigeria Limited",
+      "aliases": [
+        "Unlimit Nigeria Limited"
+      ],
+      "bankCode": "110081",
+      "scCode": null,
+      "source_sha256": "f93b1a9cbebd3ebae16993d6f511cf392d3ded08c407ce20837719aaf7287ec2",
+      "width": 400,
+      "height": 400,
+      "bytes": 8773,
+      "classification": "rejected_no_active_dataset_match",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "No exact active target legal entity was verified for the source identity.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 48,
+      "source_file": "VT Networks.png",
+      "source_path": "logos/ngn/png/mobile-money/VT Networks.png",
+      "source_name": "VT Networks",
+      "aliases": [
+        "VT Networks"
+      ],
+      "bankCode": "100012",
+      "scCode": "926",
+      "source_sha256": "7917f18eee3514d68f5f30ba09791c2944cdccee9596b707d3e04a4e5b106138",
+      "width": 400,
+      "height": 400,
+      "bytes": 7882,
+      "classification": "rejected_distinct_identity",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "VT Networks is not Network International; no authoritative evidence ties this mark to an active target legal entity in the current datasets.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 49,
+      "source_file": "Xpress Wallet.png",
+      "source_path": "logos/ngn/png/mobile-money/Xpress Wallet.png",
+      "source_name": "Xpress Wallet",
+      "aliases": [
+        "Xpress Wallet"
+      ],
+      "bankCode": "100040",
+      "scCode": null,
+      "source_sha256": "082a314475e6c08411050488372c28f9f5f1550dd5f3e366ce343f16cf1acd75",
+      "width": 400,
+      "height": 400,
+      "bytes": 7185,
+      "classification": "rejected_product_relationship_unproven",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "Xpress Wallet is a product label and the available evidence does not prove that its mark is the exact logo of Xpress MTS Limited or Xpress Payments Solution Limited.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 50,
+      "source_file": "XpressMTS.png",
+      "source_path": "logos/ngn/png/mobile-money/XpressMTS.png",
+      "source_name": "XpressMTS",
+      "aliases": [
+        "XpressMTS"
+      ],
+      "bankCode": "100041",
+      "scCode": null,
+      "source_sha256": "d56f94e22bbac8641d861aca43be82b7ca5242983e9cd0ba53b96573d9fc3659",
+      "width": 400,
+      "height": 400,
+      "bytes": 6111,
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved_or_imported",
+      "target_record_ids": [
+        "mobile-money-operator-xpress-mts-limited"
+      ],
+      "evidence_urls": [
+        "https://xpressmts.com/company/"
+      ],
+      "reason": "The first-party XpressMTS company page identifies the product/company and its CBN-focused mobile-money activity; the existing target asset is retained unchanged.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 51,
+      "source_file": "ZENITH Mobile.png",
+      "source_path": "logos/ngn/png/mobile-money/ZENITH Mobile.png",
+      "source_name": "ZENITH Mobile",
+      "aliases": [
+        "ZENITH Mobile"
+      ],
+      "bankCode": "322",
+      "scCode": "322",
+      "source_sha256": "1636e6481c02922c406a555e1fcf2dc5fa064bda61410859bb903afd314060fd",
+      "width": 400,
+      "height": 400,
+      "bytes": 8584,
+      "classification": "rejected_wrong_entity",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "ZENITH Mobile is a bank product, not an exact active PSP legal entity.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 52,
+      "source_file": "ZINTERNET - KONGAPAY.png",
+      "source_path": "logos/ngn/png/mobile-money/ZINTERNET - KONGAPAY.png",
+      "source_name": "ZINTERNET - KONGAPAY",
+      "aliases": [
+        "ZINTERNET - KONGAPAY"
+      ],
+      "bankCode": "100025",
+      "scCode": "939",
+      "source_sha256": "cdf8559b80f50ad4260f7b81899b47f44cfba819c5be046022dc66b5c8691b8e",
+      "width": 400,
+      "height": 400,
+      "bytes": 5146,
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved_or_imported",
+      "target_record_ids": [
+        "mobile-money-operator-kongapay-technologies-limited"
+      ],
+      "evidence_urls": [],
+      "reason": "The source mark explicitly names KongaPay, matching the existing KongaPay active provider record; existing asset is retained.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 53,
+      "source_file": "Zenith Eazy Wallet.png",
+      "source_path": "logos/ngn/png/mobile-money/Zenith Eazy Wallet.png",
+      "source_name": "Zenith Eazy Wallet",
+      "aliases": [
+        "Zenith Eazy Wallet"
+      ],
+      "bankCode": "100034",
+      "scCode": null,
+      "source_sha256": "1636e6481c02922c406a555e1fcf2dc5fa064bda61410859bb903afd314060fd",
+      "width": 400,
+      "height": 400,
+      "bytes": 8584,
+      "classification": "rejected_wrong_entity",
+      "decision": "not_imported",
+      "target_record_ids": [],
+      "evidence_urls": [],
+      "reason": "Zenith Eazy Wallet is a bank product, not an exact active PSP legal entity.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 54,
+      "source_file": "eTRANZACT.png",
+      "source_path": "logos/ngn/png/mobile-money/eTRANZACT.png",
+      "source_name": "eTRANZACT",
+      "aliases": [
+        "eTRANZACT NG"
+      ],
+      "bankCode": "100006",
+      "scCode": "920",
+      "source_sha256": "5800905e0b0e71c078cdefe281ac11de547c3ae68ec41817346fbea9c2b5d500",
+      "width": 400,
+      "height": 400,
+      "bytes": 8765,
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved_or_imported",
+      "target_record_ids": [
+        "mobile-money-operator-etranzact-international-limited",
+        "switching-and-processing-company-etranzact-international-limited"
+      ],
+      "evidence_urls": [],
+      "reason": "The source mark identifies the same eTranzact legal entity represented in two active PSP licence categories; existing assets are retained.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 55,
+      "source_file": "eyowo.png",
+      "source_path": "logos/ngn/png/mobile-money/eyowo.png",
+      "source_name": "eyowo",
+      "aliases": [
+        "Eyowo",
+        "Eyowo MFB"
+      ],
+      "bankCode": "090328",
+      "scCode": "50126",
+      "source_sha256": "4884051004d1fdfa4351cc055d7d66bc67a3ee03efac28fd69342fd752f9d5f8",
+      "width": 400,
+      "height": 400,
+      "bytes": 10386,
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved_or_imported",
+      "target_record_ids": [
+        "payment-solution-service-provider-eyowo-integrated-payments-limited",
+        "payment-terminal-service-provider-eyowo-integrated-payments-limited"
+      ],
+      "evidence_urls": [],
+      "reason": "The source mark identifies eyowo, the same legal entity represented in both existing active licence categories; existing assets are retained.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    }
+  ]
+}

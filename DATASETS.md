@@ -178,8 +178,14 @@ Nigeria's current Central Bank of Nigeria payment-service-provider register snap
 - `datasets/finance/payment_service_providers.json`
 - `datasets/schemas/finance/payment_service_providers.schema.json`
 - `datasets/metadata/finance/payment_service_providers.json`
+- `datasets/metadata/finance/payment_service_providers_reconciliation.json`
+- `datasets/metadata/finance/payment_service_provider_mobile_money_logo_reconciliation.json`
+- `datasets/metadata/finance/cross_dataset_finance_logo_phase2b_reconciliation.json`
+- `datasets/metadata/finance/cross_dataset_finance_logo_phase2d_reconciliation.json`
+- `datasets/metadata/finance/cross_dataset_finance_logo_reconciliation.json`
+- `datasets/assets/financial-institutions/ng/payment-service-providers/`
 
-The package contains 255 provider-category memberships across seven approved PSP categories. Each record represents one provider-category membership, and a provider may appear in multiple categories.
+The package contains 255 provider-category memberships across seven approved PSP categories. Each record represents one provider-category membership, and a provider may appear in multiple categories. The optional enrichment contains 11 `cbn_code` values, 16 `nip_code` values, 109 verified `website_url` values and 23 curated PNG assets. `cbn_code` represents the three-digit legacy CBN/sort-code field (`scCode`); `nip_code` represents the six-digit NIP institution-code field (`bankCode`). Most values are from the pinned community catalogue, Paystack is supporting evidence only, and unresolved values are omitted pending possible CBN/NIBSS confirmation. Phase 2A reviewed all 55 provisional unmatched mobile-money assets and records the accepted, preserved and rejected decisions in the dedicated reconciliation manifest.
 
 ### `ng-international-money-transfer-operators`
 
@@ -189,7 +195,7 @@ Nigeria's current Central Bank of Nigeria IMTO register snapshot.
 - `datasets/schemas/finance/international_money_transfer_operators.schema.json`
 - `datasets/metadata/finance/international_money_transfer_operators.json`
 
-The package contains 108 CBN-listed IMTO entries. Each record represents one current register listing, with the source-side concatenation defect at SN 63 normalized transparently in metadata. The package is names-only, does not record addresses or inferred country data, and IMTOs remain separate from the payment-service-provider register. No API routes are introduced by this dataset package.
+The package contains 108 CBN-listed IMTO entries. Each record represents one current register listing, with the source-side concatenation defect at SN 63 normalized transparently in metadata. Optional HTTPS website URLs and verified logo URLs are included where the global or Nigerian legal-entity relationship and asset provenance were established. IMTOs remain separate from the payment-service-provider register.
 
 ### `ng-commercial-banks`
 
@@ -212,7 +218,7 @@ The roster-only 790-record active Nigerian microfinance-bank dataset from the re
 - Reconciliation manifest: `datasets/metadata/finance/microfinance_banks_reconciliation.json`
 - Identifier reconciliation: `datasets/metadata/finance/financial_institution_codes_reconciliation.json`
 
-Records require `id`, `name` and `country_code`; `cbn_code`, `nip_code`, `website_url` and `logo_url` are optional fields. CBN/NIP values are sourced from the pinned catalogue and accepted only when they match the required three- or six-digit semantics; Paystack provider codes are never published. The 829-row CBN snapshot is reduced by 39 evidence-backed exclusions: four duplicate/stale rows, 33 matched revoked institutions, the AKPO predecessor and Verdant-Capital. Website/logo evidence is tracked in `datasets/metadata/finance/microfinance_banks_enrichment.json` and the category asset attribution files. Logo acceptance requires exact identity and byte validation; explicit redistribution permission is not a prerequisite, and logo/trademark rights remain with the respective institutions. Current enrichment coverage is 330 logos for 790 records.
+Records require `id`, `name` and `country_code`; `cbn_code`, `nip_code`, `website_url` and `logo_url` are optional fields. CBN/NIP values are sourced from the pinned catalogue and accepted only when they match the required three- or six-digit semantics; Paystack provider codes are never published. The 829-row CBN snapshot is reduced by 39 evidence-backed exclusions: four duplicate/stale rows, 33 matched revoked institutions, the AKPO predecessor and Verdant-Capital. Website/logo evidence is tracked in `datasets/metadata/finance/microfinance_banks_enrichment.json`, `datasets/metadata/finance/microfinance_banks_phase2c_logo_reconciliation.json` and the category asset attribution files. Phase 2C reviewed all 315 provisional MFB archive assets without changing the 330 accepted-logo coverage. Logo acceptance requires exact identity and byte validation; explicit redistribution permission is not a prerequisite, and logo/trademark rights remain with the respective institutions. Current enrichment coverage is 330 logos for 790 records.
 
 ### Nigerian regulated-finance categories
 

@@ -35,6 +35,10 @@ func (s *financeJSONRepoStub) Decode(ctx context.Context, relativePath string, d
 		return s.decodeFn(ctx, relativePath, destination)
 	}
 
+	if raw, ok := destination.(*[]json.RawMessage); ok {
+		*raw = nil
+		return nil
+	}
 	dest, ok := destination.(*[]models.PaymentServiceProvider)
 	if !ok {
 		return fmt.Errorf("unexpected destination %T", destination)
@@ -354,6 +358,12 @@ func TestFinanceRepositoryDecodeCounts(t *testing.T) {
 	stub := &financeJSONRepoStub{decodeFn: func(ctx context.Context, relativePath string, destination any) error {
 		records := clonePaymentServiceProviderList(fixture)
 		switch dest := destination.(type) {
+		case *[]json.RawMessage:
+			encoded, err := json.Marshal(records)
+			if err != nil {
+				return err
+			}
+			return json.Unmarshal(encoded, dest)
 		case *[]models.PaymentServiceProvider:
 			*dest = records
 			return nil

@@ -1,7 +1,7 @@
 {
   "dataset_key": "ng-payment-service-providers",
   "title": "Nigeria Payment Service Providers",
-  "description": "Independently compiled factual reference data for the current Central Bank of Nigeria payment-service-provider register snapshot. Each record represents one provider-category membership across the seven approved CBN PSP sections.",
+  "description": "Independently compiled factual reference data for the current Central Bank of Nigeria payment-service-provider register snapshot, with optional code, website and logo enrichment. Each record represents one provider-category membership across the seven approved CBN PSP sections.",
   "country_code": "NG",
   "dataset_group": "finance",
   "format": "json",
@@ -11,7 +11,7 @@
   "version": "1.0.0",
   "license_id": "CC-BY-4.0",
   "license_url": "https://creativecommons.org/licenses/by/4.0/",
-  "methodology": "Independently compiled and cross-verified factual reference data from the public Central Bank of Nigeria PSP register. The register was retrieved three times with consistent results on 2026-08-29. Observed counts: mobile_money_operator 17; switching_and_processing_company 19; payment_solution_service_provider 108; payment_terminal_service_provider 47; super_agent 61; payment_service_holding_company 1; payment_terminal_service_aggregator 2. SoftData anchored extraction to the seven approved PSP sections and excluded card schemes, payment schemes, clearing-house content, IMTOs and adjacent page material. The CBN register is mutable; these counts describe the verified snapshot and do not establish a universal institution identifier. Former-name annotations were preserved in the working audit, then removed from the public display name only when clearly indicated.",
+  "methodology": "Independently compiled and cross-verified factual reference data from the public Central Bank of Nigeria PSP register. The register was retrieved three times with consistent results on 2026-08-29. Observed counts: mobile_money_operator 17; switching_and_processing_company 19; payment_solution_service_provider 108; payment_terminal_service_provider 47; super_agent 61; payment_service_holding_company 1; payment_terminal_service_aggregator 2. SoftData anchored extraction to the seven approved PSP sections and excluded card schemes, payment schemes, clearing-house content, IMTOs and adjacent page material. The CBN register is mutable; these counts describe the verified snapshot and do not establish a universal institution identifier. Former-name annotations were preserved in the working audit, then removed from the public display name only when clearly indicated. Optional enrichment is documented in payment_service_providers_reconciliation.json and uses the pinned community catalogue as the primary code/logo source. In that catalogue, bankCode represents the six-digit NIP institution-code field and scCode represents the three-digit legacy CBN/sort-code field. Most enrichment values are community-sourced; Paystack data is supporting evidence only, and mappings may require future confirmation against current CBN/NIBSS registers. Unresolved values are omitted rather than emitted as empty strings. Website research completed for all 255 records; 109 records have verified websites and 146 records currently lack websites.",
   "sources": [
     {
       "organization": "Central Bank of Nigeria",
@@ -21,5 +21,17 @@
       "accessed_at": "2026-08-29"
     }
   ],
+  "enrichment": {
+    "cbn_code_count": 11,
+    "nip_code_count": 16,
+    "website_count": 109,
+    "logo_count": 23,
+    "website_first_party_count": 92,
+    "website_parent_profile_count": 17,
+    "records_unresearched": 0,
+    "records_without_website": 146,
+    "unresolved_identity_notes": "Paystack Payment Limited and Xpress Payments Solution Limited remain identity conflicts for code/logo enrichment. Phase 2A reconciled 55 mobile-money archive assets, accepting three target assignments while preserving existing stronger assets; 36 source assets were rejected with explicit reasons.",
+    "methodology": null
+  },
   "verified_at": "2026-08-29"
 }

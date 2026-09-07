@@ -21,10 +21,14 @@ import (
 var financePaymentServiceProviderIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)+$`)
 var financePaymentServiceProviderSlugPattern = regexp.MustCompile(`[^a-z0-9]+`)
 var financePaymentServiceProviderCollapsePattern = regexp.MustCompile(`-+`)
+var financePaymentServiceProviderCBNCodePattern = regexp.MustCompile(`^[0-9]{3}$`)
+var financePaymentServiceProviderNIPCodePattern = regexp.MustCompile(`^[0-9]{6}$`)
+var financePaymentServiceProviderLogoPattern = regexp.MustCompile(`^/v1/assets/financial-institutions/ng/payment-service-providers/[a-z0-9]+(?:-[a-z0-9]+)*\.png$`)
 
 var financeInternationalMoneyTransferOperatorIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)*$`)
 var financeInternationalMoneyTransferOperatorSlugPattern = regexp.MustCompile(`[^a-z0-9]+`)
 var financeInternationalMoneyTransferOperatorCollapsePattern = regexp.MustCompile(`-+`)
+var financeInternationalMoneyTransferOperatorLogoPattern = regexp.MustCompile(`^/v1/assets/financial-institutions/ng/international-money-transfer-operators/[a-z0-9]+(?:-[a-z0-9]+)*\.png$`)
 
 var financeCurrencyIDPattern = regexp.MustCompile(`^[a-z]{3}$`)
 var financeCurrencyAlphabeticCodePattern = regexp.MustCompile(`^[A-Z]{3}$`)
@@ -445,15 +449,35 @@ func (r *FinanceFileRepository) loadPaymentServiceProviders(ctx context.Context)
 		return nil, err
 	}
 
-	var providers []models.PaymentServiceProvider
-	if err := r.jsonRepository.Decode(ctx, r.paymentServiceProvidersPath, &providers); err != nil {
+	var rawProviders []json.RawMessage
+	if err := r.jsonRepository.Decode(ctx, r.paymentServiceProvidersPath, &rawProviders); err != nil {
 		return nil, translateFinanceLoadError(err)
 	}
 	if err := ctx.Err(); err != nil {
 		return nil, err
 	}
-	if providers == nil || len(providers) == 0 {
+	if rawProviders == nil || len(rawProviders) == 0 {
 		return nil, fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+	}
+	providers := make([]models.PaymentServiceProvider, 0, len(rawProviders))
+	for _, raw := range rawProviders {
+		var fields map[string]json.RawMessage
+		if err := json.Unmarshal(raw, &fields); err != nil {
+			return nil, fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		for _, field := range []string{"cbn_code", "nip_code", "website_url", "logo_url"} {
+			if value, ok := fields[field]; ok {
+				var text string
+				if err := json.Unmarshal(value, &text); err != nil || text == "" {
+					return nil, fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+				}
+			}
+		}
+		var provider models.PaymentServiceProvider
+		if err := json.Unmarshal(raw, &provider); err != nil {
+			return nil, fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		providers = append(providers, provider)
 	}
 	if err := validatePaymentServiceProviders(providers); err != nil {
 		return nil, err
@@ -589,6 +613,26 @@ func validatePaymentServiceProviders(providers []models.PaymentServiceProvider) 
 		if provider.CountryCode != "NG" {
 			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
 		}
+		if provider.CBNCode != "" && !financePaymentServiceProviderCBNCodePattern.MatchString(provider.CBNCode) {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if provider.NIPCode != "" && !financePaymentServiceProviderNIPCodePattern.MatchString(provider.NIPCode) {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if provider.WebsiteURL != "" {
+			parsed, err := url.Parse(provider.WebsiteURL)
+			if err != nil || parsed.Scheme != "https" || parsed.Host == "" || parsed.User != nil || parsed.RawQuery != "" || parsed.Fragment != "" || (parsed.Path != "" && parsed.Path != "/") {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+		}
+		if provider.LogoURL != "" {
+			if !financePaymentServiceProviderLogoPattern.MatchString(provider.LogoURL) || provider.LogoURL != "/v1/assets/financial-institutions/ng/payment-service-providers/"+provider.ID+".png" {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+			if _, err := assets.FinancialInstitutionLogo("payment-service-providers", provider.ID, "png"); err != nil {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+		}
 
 		typeOrder, ok := financePaymentServiceProviderTypeOrder[provider.InstitutionType]
 		if !ok {
@@ -684,6 +728,17 @@ func validateInternationalMoneyTransferOperators(operators []models.Internationa
 		}
 		if operator.Name == "OLIVE MONIES EXPRESS LIMITEDNOUVEAU MOBILE LIMITED" {
 			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if operator.WebsiteURL != "" {
+			parsed, err := url.Parse(operator.WebsiteURL)
+			if err != nil || parsed.Scheme != "https" || parsed.Host == "" {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
+		}
+		if operator.LogoURL != "" {
+			if !financeInternationalMoneyTransferOperatorLogoPattern.MatchString(operator.LogoURL) || operator.LogoURL != "/v1/assets/financial-institutions/ng/international-money-transfer-operators/"+operator.ID+".png" {
+				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+			}
 		}
 		if _, ok := financeInternationalMoneyTransferOperatorFormerNames[strings.TrimSpace(operator.Name)]; ok {
 			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)

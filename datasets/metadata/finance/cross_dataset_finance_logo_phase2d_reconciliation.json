@@ -1,0 +1,1136 @@
+{
+  "dataset_key": "cross-dataset-finance-logo-reconciliation",
+  "scope": "Phase 2D commercial-bank archive assets, including verified non-interest and development-finance cross-dataset identities",
+  "source_repository": "https://github.com/Nigerian-Bank-Logos/ng-bank-logos",
+  "pinned_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+  "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4",
+  "reviewed_at": "2026-09-07",
+  "source_file_count": 32,
+  "new_import_count": 0,
+  "classifications": {
+    "preserved_existing_byte_identical": 26,
+    "preserved_existing_stronger_source": 5,
+    "rejected_obsolete": 1
+  },
+  "records": [
+    {
+      "archive_position": 1,
+      "archive_category": "commercial_banks",
+      "source_file": "Access Bank Nigeria.png",
+      "source_path": "logos/ngn/png/commercial-banks/Access Bank Nigeria.png",
+      "source_name": "Access Bank Nigeria",
+      "aliases": [
+        "Access Bank Nigeria"
+      ],
+      "bankCode": "000014",
+      "scCode": "044",
+      "source_sha256": "359193a5423d7ab8b704944c21cca78ed7a635cb5f8b8e46cb0c96fd426e0eb5",
+      "width": 400,
+      "height": 400,
+      "bytes": 3813,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "access-bank",
+          "name": "Access Bank Plc"
+        }
+      ],
+      "target_record_ids": [
+        "access-bank"
+      ],
+      "existing_target_sha256": [
+        "359193a5423d7ab8b704944c21cca78ed7a635cb5f8b8e46cb0c96fd426e0eb5"
+      ],
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved",
+      "reason": "The archive source name is an accepted legal-name or abbreviation variant for the active Access Bank Plc record, and the independently verified source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 2,
+      "archive_category": "commercial_banks",
+      "source_file": "Access Bank Plc (Diamond).png",
+      "source_path": "logos/ngn/png/commercial-banks/Access Bank Plc (Diamond).png",
+      "source_name": "Access Bank Plc (Diamond)",
+      "aliases": [
+        "Access Bank Plc (Diamond)"
+      ],
+      "bankCode": "000005",
+      "scCode": "063",
+      "source_sha256": "359193a5423d7ab8b704944c21cca78ed7a635cb5f8b8e46cb0c96fd426e0eb5",
+      "width": 400,
+      "height": 400,
+      "bytes": 3813,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "access-bank",
+          "name": "Access Bank Plc"
+        }
+      ],
+      "target_record_ids": [],
+      "existing_target_sha256": [],
+      "classification": "rejected_obsolete",
+      "decision": "not_imported",
+      "reason": "The Diamond Bank predecessor label is obsolete after the Access Bank acquisition; the identical Access Bank mark is not evidence that this historical source record is a current independent institution.",
+      "provenance": null,
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 3,
+      "archive_category": "commercial_banks",
+      "source_file": "Alpha Morgan Bank.png",
+      "source_path": "logos/ngn/png/commercial-banks/Alpha Morgan Bank.png",
+      "source_name": "Alpha Morgan Bank",
+      "aliases": [
+        "Alpha Morgan Bank"
+      ],
+      "bankCode": "000041",
+      "scCode": "108",
+      "source_sha256": "5b4862d45f5a4cd17d745e3789831d46e525bf762c051c6cfe7a9684eadbccf2",
+      "width": 400,
+      "height": 400,
+      "bytes": 9529,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "alpha-morgan-bank",
+          "name": "Alpha Morgan Bank Limited"
+        }
+      ],
+      "target_record_ids": [
+        "alpha-morgan-bank"
+      ],
+      "existing_target_sha256": [
+        "5b4862d45f5a4cd17d745e3789831d46e525bf762c051c6cfe7a9684eadbccf2"
+      ],
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved",
+      "reason": "The archive source name is an accepted legal-name or abbreviation variant for the active Alpha Morgan Bank Limited record, and the independently verified source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 5,
+      "archive_category": "commercial_banks",
+      "source_file": "Citibank.png",
+      "source_path": "logos/ngn/png/commercial-banks/Citibank.png",
+      "source_name": "Citibank",
+      "aliases": [
+        "Citibank Nigeria"
+      ],
+      "bankCode": "000009",
+      "scCode": "023",
+      "source_sha256": "a9f4bddff7f25b432f4b28bb54780be7c9f32c961a103c981f72f088473dc22f",
+      "width": 400,
+      "height": 400,
+      "bytes": 5935,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "citibank-nigeria",
+          "name": "Citibank Nigeria Limited"
+        }
+      ],
+      "target_record_ids": [
+        "citibank-nigeria"
+      ],
+      "existing_target_sha256": [
+        "a9f4bddff7f25b432f4b28bb54780be7c9f32c961a103c981f72f088473dc22f"
+      ],
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved",
+      "reason": "The archive source name is an accepted legal-name or abbreviation variant for the active Citibank Nigeria Limited record, and the independently verified source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 6,
+      "archive_category": "commercial_banks",
+      "source_file": "Ecobank.png",
+      "source_path": "logos/ngn/png/commercial-banks/Ecobank.png",
+      "source_name": "Ecobank",
+      "aliases": [
+        "Ecobank Nigeria"
+      ],
+      "bankCode": "000010",
+      "scCode": "050",
+      "source_sha256": "af516afd5baae4bce5c426283f83aaa39296e91d2beef74702e66acbfe40c151",
+      "width": 400,
+      "height": 400,
+      "bytes": 12161,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "ecobank-nigeria",
+          "name": "Ecobank Nigeria Plc"
+        }
+      ],
+      "target_record_ids": [
+        "ecobank-nigeria"
+      ],
+      "existing_target_sha256": [
+        "af516afd5baae4bce5c426283f83aaa39296e91d2beef74702e66acbfe40c151"
+      ],
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved",
+      "reason": "The archive source name is an accepted legal-name or abbreviation variant for the active Ecobank Nigeria Plc record, and the independently verified source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 7,
+      "archive_category": "commercial_banks",
+      "source_file": "Fidelity Bank.png",
+      "source_path": "logos/ngn/png/commercial-banks/Fidelity Bank.png",
+      "source_name": "Fidelity Bank",
+      "aliases": [
+        "Fidelity Bank"
+      ],
+      "bankCode": "000007",
+      "scCode": "070",
+      "source_sha256": "51950be59b4182319970f75be262ca842fb22bdcb5730791457713f593ef565f",
+      "width": 400,
+      "height": 400,
+      "bytes": 6869,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "fidelity-bank",
+          "name": "Fidelity Bank Plc"
+        }
+      ],
+      "target_record_ids": [
+        "fidelity-bank"
+      ],
+      "existing_target_sha256": [
+        "51950be59b4182319970f75be262ca842fb22bdcb5730791457713f593ef565f"
+      ],
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved",
+      "reason": "The archive source name is an accepted legal-name or abbreviation variant for the active Fidelity Bank Plc record, and the independently verified source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 8,
+      "archive_category": "commercial_banks",
+      "source_file": "First Bank of Nigeria.png",
+      "source_path": "logos/ngn/png/commercial-banks/First Bank of Nigeria.png",
+      "source_name": "First Bank of Nigeria",
+      "aliases": [
+        "FBN"
+      ],
+      "bankCode": "000016",
+      "scCode": "011",
+      "source_sha256": "4b5b7c73f477019b8ae1d8780633df1d2f06c8de11ff9c83432b9fa5e85a2f52",
+      "width": 400,
+      "height": 400,
+      "bytes": 13174,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "first-bank-of-nigeria",
+          "name": "First Bank of Nigeria Limited"
+        }
+      ],
+      "target_record_ids": [
+        "first-bank-of-nigeria"
+      ],
+      "existing_target_sha256": [
+        "4b5b7c73f477019b8ae1d8780633df1d2f06c8de11ff9c83432b9fa5e85a2f52"
+      ],
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved",
+      "reason": "The archive source name is an accepted legal-name or abbreviation variant for the active First Bank of Nigeria Limited record, and the independently verified source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 9,
+      "archive_category": "commercial_banks",
+      "source_file": "First City Monument Bank.png",
+      "source_path": "logos/ngn/png/commercial-banks/First City Monument Bank.png",
+      "source_name": "First City Monument Bank",
+      "aliases": [
+        "FCMB"
+      ],
+      "bankCode": "000003",
+      "scCode": "214",
+      "source_sha256": "f89c2b212d83dd301373586499e5b3f89489f91177e05d3c7c625167bfe7607e",
+      "width": 400,
+      "height": 400,
+      "bytes": 8193,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "first-city-monument-bank",
+          "name": "First City Monument Bank Plc"
+        }
+      ],
+      "target_record_ids": [
+        "first-city-monument-bank"
+      ],
+      "existing_target_sha256": [
+        "f89c2b212d83dd301373586499e5b3f89489f91177e05d3c7c625167bfe7607e"
+      ],
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved",
+      "reason": "The archive source name is an accepted legal-name or abbreviation variant for the active First City Monument Bank Plc record, and the independently verified source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 10,
+      "archive_category": "commercial_banks",
+      "source_file": "GTBank Plc.png",
+      "source_path": "logos/ngn/png/commercial-banks/GTBank Plc.png",
+      "source_name": "GTBank Plc",
+      "aliases": [
+        "Guaranty Trust Bank",
+        "GTB",
+        "GTCO"
+      ],
+      "bankCode": "000013",
+      "scCode": "058",
+      "source_sha256": "0f9041ee81b2b1e504659c5e5d0f75f59cb57114dffa40778a7dd201a80a9a94",
+      "width": 400,
+      "height": 400,
+      "bytes": 8605,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "guaranty-trust-bank",
+          "name": "Guaranty Trust Bank Plc"
+        }
+      ],
+      "target_record_ids": [
+        "guaranty-trust-bank"
+      ],
+      "existing_target_sha256": [
+        "0f9041ee81b2b1e504659c5e5d0f75f59cb57114dffa40778a7dd201a80a9a94"
+      ],
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved",
+      "reason": "The archive source name is an accepted legal-name or abbreviation variant for the active Guaranty Trust Bank Plc record, and the independently verified source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 11,
+      "archive_category": "commercial_banks",
+      "source_file": "Globus Bank.png",
+      "source_path": "logos/ngn/png/commercial-banks/Globus Bank.png",
+      "source_name": "Globus Bank",
+      "aliases": [
+        "Globus Bank"
+      ],
+      "bankCode": "000027",
+      "scCode": "103",
+      "source_sha256": "1ed2073ad4cf2375696d56882d25a8bbb22899378b11136e8ff0e88520b40b48",
+      "width": 400,
+      "height": 400,
+      "bytes": 10448,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "globus-bank",
+          "name": "Globus Bank Limited"
+        }
+      ],
+      "target_record_ids": [
+        "globus-bank"
+      ],
+      "existing_target_sha256": [
+        "1ed2073ad4cf2375696d56882d25a8bbb22899378b11136e8ff0e88520b40b48"
+      ],
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved",
+      "reason": "The archive source name is an accepted legal-name or abbreviation variant for the active Globus Bank Limited record, and the independently verified source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 13,
+      "archive_category": "commercial_banks",
+      "source_file": "Jaiz Bank.png",
+      "source_path": "logos/ngn/png/commercial-banks/Jaiz Bank.png",
+      "source_name": "Jaiz Bank",
+      "aliases": [
+        "Jaiz Bank"
+      ],
+      "bankCode": "000006",
+      "scCode": "301",
+      "source_sha256": "766ad51bded15eefe337a1b7e2d8ff7e7d76150939da5149daaaa51956e8cc1a",
+      "width": 400,
+      "height": 400,
+      "bytes": 6533,
+      "candidate_targets": [
+        {
+          "dataset": "non_interest_institutions",
+          "id": "jaiz-bank",
+          "name": "Jaiz Bank Plc"
+        }
+      ],
+      "target_record_ids": [
+        "jaiz-bank"
+      ],
+      "existing_target_sha256": [
+        "2df8a0a07952b25a087eea1803c568889fb9b250c887cc771f86ed61766bd5d9"
+      ],
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved",
+      "reason": "The archive source identifies the active Jaiz Bank Plc record through a cross-dataset legal-entity match; the existing target asset is retained because its bytes differ and remain the established category-specific source.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 14,
+      "archive_category": "commercial_banks",
+      "source_file": "Keystone Bank.png",
+      "source_path": "logos/ngn/png/commercial-banks/Keystone Bank.png",
+      "source_name": "Keystone Bank",
+      "aliases": [
+        "Keystone Bank"
+      ],
+      "bankCode": "000002",
+      "scCode": "082",
+      "source_sha256": "cf68af82b173a6776227f9e89a84b6b6830a19de20e1a3b11d3a7fb7425c7425",
+      "width": 400,
+      "height": 400,
+      "bytes": 14838,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "keystone-bank",
+          "name": "Keystone Bank Limited"
+        }
+      ],
+      "target_record_ids": [
+        "keystone-bank"
+      ],
+      "existing_target_sha256": [
+        "cf68af82b173a6776227f9e89a84b6b6830a19de20e1a3b11d3a7fb7425c7425"
+      ],
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved",
+      "reason": "The archive source name is an accepted legal-name or abbreviation variant for the active Keystone Bank Limited record, and the independently verified source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 15,
+      "archive_category": "commercial_banks",
+      "source_file": "Lotus Bank.png",
+      "source_path": "logos/ngn/png/commercial-banks/Lotus Bank.png",
+      "source_name": "Lotus Bank",
+      "aliases": [
+        "Lotus Bank"
+      ],
+      "bankCode": "000029",
+      "scCode": "303",
+      "source_sha256": "4b45a68dbf656a3e91a8af0d8206e38bfabfa58c41c10b0910228f7aea6cff3a",
+      "width": 400,
+      "height": 400,
+      "bytes": 16915,
+      "candidate_targets": [
+        {
+          "dataset": "non_interest_institutions",
+          "id": "lotus-bank",
+          "name": "Lotus Bank Ltd"
+        }
+      ],
+      "target_record_ids": [
+        "lotus-bank"
+      ],
+      "existing_target_sha256": [
+        "4a3de9133645bdf53abca238511e90846abeaa66b632443dfbd67236c0473f4d"
+      ],
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved",
+      "reason": "The archive source identifies the active Lotus Bank Ltd record through a cross-dataset legal-entity match; the existing target asset is retained because its bytes differ and remain the established category-specific source.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 16,
+      "archive_category": "commercial_banks",
+      "source_file": "NOVA Bank.png",
+      "source_path": "logos/ngn/png/commercial-banks/NOVA Bank.png",
+      "source_name": "NOVA Bank",
+      "aliases": [
+        "NOVA Bank"
+      ],
+      "bankCode": "060003",
+      "scCode": "561",
+      "source_sha256": "f6bd7d8f4ed49c4b8099d09d8f67afa910735c19fd5eae79728fcd8c0ce7b164",
+      "width": 400,
+      "height": 400,
+      "bytes": 6940,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "nova-bank",
+          "name": "Nova Commercial Bank Limited"
+        }
+      ],
+      "target_record_ids": [
+        "nova-bank"
+      ],
+      "existing_target_sha256": [
+        "f6bd7d8f4ed49c4b8099d09d8f67afa910735c19fd5eae79728fcd8c0ce7b164"
+      ],
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved",
+      "reason": "The archive source name is an accepted legal-name or abbreviation variant for the active Nova Commercial Bank Limited record, and the independently verified source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 17,
+      "archive_category": "commercial_banks",
+      "source_file": "Nexim Bank.png",
+      "source_path": "logos/ngn/png/commercial-banks/Nexim Bank.png",
+      "source_name": "Nexim Bank",
+      "aliases": [
+        "Nexim Bank"
+      ],
+      "bankCode": "030001",
+      "scCode": null,
+      "source_sha256": "f4a00fda7516f58a57dee12a4171bfaf1c88955f7c6adaa9ef5e2e2ca93dcb73",
+      "width": 400,
+      "height": 400,
+      "bytes": 9527,
+      "candidate_targets": [
+        {
+          "dataset": "development_finance_institutions",
+          "id": "nigeria-export-import-bank",
+          "name": "Nigeria Export-Import Bank"
+        }
+      ],
+      "target_record_ids": [
+        "nigeria-export-import-bank"
+      ],
+      "existing_target_sha256": [
+        "06f6868fb558bcb3e194c1e1df9571e3c6129685bd7e15a16d2c0b4a8f73c4ca"
+      ],
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved",
+      "reason": "The archive source identifies the active Nigeria Export-Import Bank record through a cross-dataset legal-entity match; the existing target asset is retained because its bytes differ and remain the established category-specific source.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 18,
+      "archive_category": "commercial_banks",
+      "source_file": "Optimus Bank Limited.png",
+      "source_path": "logos/ngn/png/commercial-banks/Optimus Bank Limited.png",
+      "source_name": "Optimus Bank Limited",
+      "aliases": [
+        "Optimus Bank Limited"
+      ],
+      "bankCode": "000036",
+      "scCode": "107",
+      "source_sha256": "a6968191d34587bde0be98d39e7a0185b5440c0f0a0bfc208ce5a3f6bb41ef16",
+      "width": 400,
+      "height": 400,
+      "bytes": 17571,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "optimus-bank",
+          "name": "Optimus Bank"
+        }
+      ],
+      "target_record_ids": [
+        "optimus-bank"
+      ],
+      "existing_target_sha256": [
+        "a6968191d34587bde0be98d39e7a0185b5440c0f0a0bfc208ce5a3f6bb41ef16"
+      ],
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved",
+      "reason": "The archive source name is an accepted legal-name or abbreviation variant for the active Optimus Bank record, and the independently verified source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 19,
+      "archive_category": "commercial_banks",
+      "source_file": "Parallex Bank.png",
+      "source_path": "logos/ngn/png/commercial-banks/Parallex Bank.png",
+      "source_name": "Parallex Bank",
+      "aliases": [
+        "Parallex Bank",
+        "Parallex"
+      ],
+      "bankCode": "000030",
+      "scCode": "104",
+      "source_sha256": "26defbb73b18c3ec017c9ad7bdd9c6c074f10079b6d1b6278281acc98284e4d9",
+      "width": 400,
+      "height": 400,
+      "bytes": 14587,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "parallex-bank",
+          "name": "Parallex Bank Ltd"
+        }
+      ],
+      "target_record_ids": [
+        "parallex-bank"
+      ],
+      "existing_target_sha256": [
+        "26defbb73b18c3ec017c9ad7bdd9c6c074f10079b6d1b6278281acc98284e4d9"
+      ],
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved",
+      "reason": "The archive source name is an accepted legal-name or abbreviation variant for the active Parallex Bank Ltd record, and the independently verified source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 20,
+      "archive_category": "commercial_banks",
+      "source_file": "Polaris Bank.png",
+      "source_path": "logos/ngn/png/commercial-banks/Polaris Bank.png",
+      "source_name": "Polaris Bank",
+      "aliases": [
+        "Skye Bank"
+      ],
+      "bankCode": "000008",
+      "scCode": "076",
+      "source_sha256": "c07d6fc6fa92a319430d35f422f101ebba819b3cab5588cba214ab10476dd059",
+      "width": 400,
+      "height": 400,
+      "bytes": 9478,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "polaris-bank",
+          "name": "Polaris Bank Plc"
+        }
+      ],
+      "target_record_ids": [
+        "polaris-bank"
+      ],
+      "existing_target_sha256": [
+        "c07d6fc6fa92a319430d35f422f101ebba819b3cab5588cba214ab10476dd059"
+      ],
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved",
+      "reason": "The archive source name is an accepted legal-name or abbreviation variant for the active Polaris Bank Plc record, and the independently verified source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 21,
+      "archive_category": "commercial_banks",
+      "source_file": "PremiumTrust Bank.png",
+      "source_path": "logos/ngn/png/commercial-banks/PremiumTrust Bank.png",
+      "source_name": "PremiumTrust Bank",
+      "aliases": [
+        "PremiumTrust Bank"
+      ],
+      "bankCode": "000031",
+      "scCode": "105",
+      "source_sha256": "fe6e3c6493e706307a7150be31e4322e461bdfa7683bac5770553dbbb9dc948d",
+      "width": 400,
+      "height": 400,
+      "bytes": 4294,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "premium-trust-bank",
+          "name": "Premium Trust Bank"
+        }
+      ],
+      "target_record_ids": [
+        "premium-trust-bank"
+      ],
+      "existing_target_sha256": [
+        "fe6e3c6493e706307a7150be31e4322e461bdfa7683bac5770553dbbb9dc948d"
+      ],
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved",
+      "reason": "The archive source name is an accepted legal-name or abbreviation variant for the active Premium Trust Bank record, and the independently verified source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 23,
+      "archive_category": "commercial_banks",
+      "source_file": "Signature Bank Ltd.png",
+      "source_path": "logos/ngn/png/commercial-banks/Signature Bank Ltd.png",
+      "source_name": "Signature Bank Ltd",
+      "aliases": [
+        "Signature Bank Ltd"
+      ],
+      "bankCode": "000034",
+      "scCode": "106",
+      "source_sha256": "2e1d4a3a25b4b120ba13218f77479de39b40dc8551d6c00f8ab110152a6fc1e3",
+      "width": 400,
+      "height": 400,
+      "bytes": 13357,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "signature-bank",
+          "name": "Signature Bank Limited"
+        }
+      ],
+      "target_record_ids": [
+        "signature-bank"
+      ],
+      "existing_target_sha256": [
+        "2e1d4a3a25b4b120ba13218f77479de39b40dc8551d6c00f8ab110152a6fc1e3"
+      ],
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved",
+      "reason": "The archive source name is an accepted legal-name or abbreviation variant for the active Signature Bank Limited record, and the independently verified source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 24,
+      "archive_category": "commercial_banks",
+      "source_file": "Stanbic IBTC Bank.png",
+      "source_path": "logos/ngn/png/commercial-banks/Stanbic IBTC Bank.png",
+      "source_name": "Stanbic IBTC Bank",
+      "aliases": [
+        "Stanbic IBTC Bank"
+      ],
+      "bankCode": "000012",
+      "scCode": "221",
+      "source_sha256": "07523ef570c987c833d91dfb6c5c4c2e78f389953193a7ed0aeaeea647c3f5e9",
+      "width": 400,
+      "height": 400,
+      "bytes": 22911,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "stanbic-ibtc-bank",
+          "name": "Stanbic IBTC Bank Plc"
+        }
+      ],
+      "target_record_ids": [
+        "stanbic-ibtc-bank"
+      ],
+      "existing_target_sha256": [
+        "07523ef570c987c833d91dfb6c5c4c2e78f389953193a7ed0aeaeea647c3f5e9"
+      ],
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved",
+      "reason": "The archive source name is an accepted legal-name or abbreviation variant for the active Stanbic IBTC Bank Plc record, and the independently verified source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 25,
+      "archive_category": "commercial_banks",
+      "source_file": "Standard Chartered Bank.png",
+      "source_path": "logos/ngn/png/commercial-banks/Standard Chartered Bank.png",
+      "source_name": "Standard Chartered Bank",
+      "aliases": [
+        "Standard Chartered Bank"
+      ],
+      "bankCode": "000021",
+      "scCode": "068",
+      "source_sha256": "6d4d9da8bb3a5391a3bf9a9cbf057621095097d35488b10ecc7a2146387457d8",
+      "width": 400,
+      "height": 400,
+      "bytes": 8631,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "standard-chartered-bank",
+          "name": "Standard Chartered Bank Nigeria Limited"
+        }
+      ],
+      "target_record_ids": [
+        "standard-chartered-bank"
+      ],
+      "existing_target_sha256": [
+        "6d4d9da8bb3a5391a3bf9a9cbf057621095097d35488b10ecc7a2146387457d8"
+      ],
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved",
+      "reason": "The archive source name is an accepted legal-name or abbreviation variant for the active Standard Chartered Bank Nigeria Limited record, and the independently verified source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 26,
+      "archive_category": "commercial_banks",
+      "source_file": "Sterling Bank.png",
+      "source_path": "logos/ngn/png/commercial-banks/Sterling Bank.png",
+      "source_name": "Sterling Bank",
+      "aliases": [
+        "Sterling Bank"
+      ],
+      "bankCode": "000001",
+      "scCode": "232",
+      "source_sha256": "bf4b6b9ee77f377350cf1f81f3358295e3db72de76f9c5139af18ef9cd504c5e",
+      "width": 400,
+      "height": 400,
+      "bytes": 7352,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "sterling-bank",
+          "name": "Sterling Bank Plc"
+        }
+      ],
+      "target_record_ids": [
+        "sterling-bank"
+      ],
+      "existing_target_sha256": [
+        "bf4b6b9ee77f377350cf1f81f3358295e3db72de76f9c5139af18ef9cd504c5e"
+      ],
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved",
+      "reason": "The archive source name is an accepted legal-name or abbreviation variant for the active Sterling Bank Plc record, and the independently verified source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 27,
+      "archive_category": "commercial_banks",
+      "source_file": "Summit Bank.png",
+      "source_path": "logos/ngn/png/commercial-banks/Summit Bank.png",
+      "source_name": "Summit Bank",
+      "aliases": [
+        "Summit Bank"
+      ],
+      "bankCode": "080003",
+      "scCode": "00305",
+      "source_sha256": "51c33c0a4d65728d6035ce4857e4d0ddcc34ec5ff22943b9d53b503d9a0b7aa5",
+      "width": 400,
+      "height": 400,
+      "bytes": 7975,
+      "candidate_targets": [
+        {
+          "dataset": "non_interest_institutions",
+          "id": "summit-bank",
+          "name": "Summit Bank Limited"
+        }
+      ],
+      "target_record_ids": [
+        "summit-bank"
+      ],
+      "existing_target_sha256": [
+        "05d629a487042cc8f43f9c363e75da0f7b86a5802c77c0c2a09c6b64caf104e6"
+      ],
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved",
+      "reason": "The archive source identifies the active Summit Bank Limited record through a cross-dataset legal-entity match; the existing target asset is retained because its bytes differ and remain the established category-specific source.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 28,
+      "archive_category": "commercial_banks",
+      "source_file": "SunTrust Bank.png",
+      "source_path": "logos/ngn/png/commercial-banks/SunTrust Bank.png",
+      "source_name": "SunTrust Bank",
+      "aliases": [
+        "SunTrust Bank"
+      ],
+      "bankCode": "000022",
+      "scCode": "100",
+      "source_sha256": "b78266eb148f5ad490805831ba14b99eed79dfbd0d68556f14e68c698fff63ac",
+      "width": 400,
+      "height": 400,
+      "bytes": 81585,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "suntrust-bank",
+          "name": "SunTrust Bank Nigeria Limited"
+        }
+      ],
+      "target_record_ids": [
+        "suntrust-bank"
+      ],
+      "existing_target_sha256": [
+        "b78266eb148f5ad490805831ba14b99eed79dfbd0d68556f14e68c698fff63ac"
+      ],
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved",
+      "reason": "The archive source name is an accepted legal-name or abbreviation variant for the active SunTrust Bank Nigeria Limited record, and the independently verified source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 29,
+      "archive_category": "commercial_banks",
+      "source_file": "TAJ Bank.png",
+      "source_path": "logos/ngn/png/commercial-banks/TAJ Bank.png",
+      "source_name": "TAJ Bank",
+      "aliases": [
+        "TAJ Bank"
+      ],
+      "bankCode": "000026",
+      "scCode": "302",
+      "source_sha256": "c41d96a96558ca91739d5a18ceae695e1d4fc7abf878f53a313ab32a15696167",
+      "width": 400,
+      "height": 400,
+      "bytes": 6786,
+      "candidate_targets": [
+        {
+          "dataset": "non_interest_institutions",
+          "id": "taj-bank",
+          "name": "TAJBank Limited"
+        }
+      ],
+      "target_record_ids": [
+        "taj-bank"
+      ],
+      "existing_target_sha256": [
+        "ebd7854784fe59087957a3ebb9a615489ff1d241afc550b10257e16b498002e0"
+      ],
+      "classification": "preserved_existing_stronger_source",
+      "decision": "preserved",
+      "reason": "The archive source identifies the active TAJBank Limited record through a cross-dataset legal-entity match; the existing target asset is retained because its bytes differ and remain the established category-specific source.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 30,
+      "archive_category": "commercial_banks",
+      "source_file": "Tatum Bank.png",
+      "source_path": "logos/ngn/png/commercial-banks/Tatum Bank.png",
+      "source_name": "Tatum Bank",
+      "aliases": [
+        "Tatum Bank"
+      ],
+      "bankCode": "000042",
+      "scCode": "109",
+      "source_sha256": "980f23039a99c6e87b774283e355cc7bd6ef20f5a55be0dfa59ac4930c5d955f",
+      "width": 400,
+      "height": 400,
+      "bytes": 9785,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "tatum-bank",
+          "name": "Tatum Bank Limited"
+        }
+      ],
+      "target_record_ids": [
+        "tatum-bank"
+      ],
+      "existing_target_sha256": [
+        "980f23039a99c6e87b774283e355cc7bd6ef20f5a55be0dfa59ac4930c5d955f"
+      ],
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved",
+      "reason": "The archive source name is an accepted legal-name or abbreviation variant for the active Tatum Bank Limited record, and the independently verified source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 31,
+      "archive_category": "commercial_banks",
+      "source_file": "Titan Trust Bank.png",
+      "source_path": "logos/ngn/png/commercial-banks/Titan Trust Bank.png",
+      "source_name": "Titan Trust Bank",
+      "aliases": [
+        "Titan Trust Bank"
+      ],
+      "bankCode": "000025",
+      "scCode": "102",
+      "source_sha256": "7d1454fefea13924732c477fb8d9a8c6fbb7040ea1458e5f52fccd41026a43a8",
+      "width": 400,
+      "height": 400,
+      "bytes": 7239,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "titan-trust-bank",
+          "name": "Titan Trust Bank Ltd"
+        }
+      ],
+      "target_record_ids": [
+        "titan-trust-bank"
+      ],
+      "existing_target_sha256": [
+        "7d1454fefea13924732c477fb8d9a8c6fbb7040ea1458e5f52fccd41026a43a8"
+      ],
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved",
+      "reason": "The archive source name is an accepted legal-name or abbreviation variant for the active Titan Trust Bank Ltd record, and the independently verified source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 32,
+      "archive_category": "commercial_banks",
+      "source_file": "Union Bank.png",
+      "source_path": "logos/ngn/png/commercial-banks/Union Bank.png",
+      "source_name": "Union Bank",
+      "aliases": [
+        "Union Bank"
+      ],
+      "bankCode": "000018",
+      "scCode": "032",
+      "source_sha256": "1758c24a7336e79b56dbd0b645245be72afd68e5af255a809124ba3f772cbd24",
+      "width": 400,
+      "height": 400,
+      "bytes": 10338,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "union-bank",
+          "name": "Union Bank of Nigeria Plc"
+        }
+      ],
+      "target_record_ids": [
+        "union-bank"
+      ],
+      "existing_target_sha256": [
+        "1758c24a7336e79b56dbd0b645245be72afd68e5af255a809124ba3f772cbd24"
+      ],
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved",
+      "reason": "The archive source name is an accepted legal-name or abbreviation variant for the active Union Bank of Nigeria Plc record, and the independently verified source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 33,
+      "archive_category": "commercial_banks",
+      "source_file": "United Bank for Africa.png",
+      "source_path": "logos/ngn/png/commercial-banks/United Bank for Africa.png",
+      "source_name": "United Bank for Africa",
+      "aliases": [
+        "UBA"
+      ],
+      "bankCode": "000004",
+      "scCode": "033",
+      "source_sha256": "3357e869d8147b935e94a98da8f8924cc990261501b9f5d72e5e8b7745106ad1",
+      "width": 400,
+      "height": 400,
+      "bytes": 9240,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "united-bank-for-africa",
+          "name": "United Bank for Africa Plc"
+        }
+      ],
+      "target_record_ids": [
+        "united-bank-for-africa"
+      ],
+      "existing_target_sha256": [
+        "3357e869d8147b935e94a98da8f8924cc990261501b9f5d72e5e8b7745106ad1"
+      ],
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved",
+      "reason": "The archive source name is an accepted legal-name or abbreviation variant for the active United Bank for Africa Plc record, and the independently verified source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 34,
+      "archive_category": "commercial_banks",
+      "source_file": "Unity Bank.png",
+      "source_path": "logos/ngn/png/commercial-banks/Unity Bank.png",
+      "source_name": "Unity Bank",
+      "aliases": [
+        "Unity Bank"
+      ],
+      "bankCode": "000011",
+      "scCode": "215",
+      "source_sha256": "989eefc48317dd5c5ecd7b7b41ab1fcf51478779fd5ff73f688d749fc41729b9",
+      "width": 400,
+      "height": 400,
+      "bytes": 10665,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "unity-bank",
+          "name": "Unity Bank Plc"
+        }
+      ],
+      "target_record_ids": [
+        "unity-bank"
+      ],
+      "existing_target_sha256": [
+        "989eefc48317dd5c5ecd7b7b41ab1fcf51478779fd5ff73f688d749fc41729b9"
+      ],
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved",
+      "reason": "The archive source name is an accepted legal-name or abbreviation variant for the active Unity Bank Plc record, and the independently verified source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    },
+    {
+      "archive_position": 35,
+      "archive_category": "commercial_banks",
+      "source_file": "Wema Bank.png",
+      "source_path": "logos/ngn/png/commercial-banks/Wema Bank.png",
+      "source_name": "Wema Bank",
+      "aliases": [
+        "Wema Bank"
+      ],
+      "bankCode": "000017",
+      "scCode": "035",
+      "source_sha256": "d9817f273b0caeb5aadc182c63cf99981f635e6b496deafae62e891a7ab3090a",
+      "width": 400,
+      "height": 400,
+      "bytes": 15701,
+      "candidate_targets": [
+        {
+          "dataset": "commercial_banks",
+          "id": "wema-bank",
+          "name": "Wema Bank Plc"
+        }
+      ],
+      "target_record_ids": [
+        "wema-bank"
+      ],
+      "existing_target_sha256": [
+        "d9817f273b0caeb5aadc182c63cf99981f635e6b496deafae62e891a7ab3090a"
+      ],
+      "classification": "preserved_existing_byte_identical",
+      "decision": "preserved",
+      "reason": "The archive source name is an accepted legal-name or abbreviation variant for the active Wema Bank Plc record, and the independently verified source SHA matches the existing target asset.",
+      "provenance": "curated_repository",
+      "source_commit": "a56f7857b1ccca69784cd86a8080531fd3c7e6a8",
+      "source_archive_sha256": "2c09cdc1cc93c95a6e844e0b853fcff39f073cebca300c8c1bf086421d4c14b4"
+    }
+  ]
+}

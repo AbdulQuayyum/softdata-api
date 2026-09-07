@@ -45,8 +45,8 @@ func TestFinancialInstitutionLogosAreEmbeddedAndAttributed(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if count != 393 {
-		t.Fatalf("embedded logo count = %d, want 393", count)
+	if count != 422 {
+		t.Fatalf("embedded logo count = %d, want 422", count)
 	}
 }
 
@@ -81,6 +81,7 @@ func TestFinancialInstitutionLogoURLsResolve(t *testing.T) {
 		"../finance/financial_holding_companies.json",
 		"../finance/development_finance_institutions.json",
 		"../finance/primary_mortgage_institutions.json",
+		"../finance/payment_service_providers.json",
 	}
 	for _, path := range paths {
 		data, err := os.ReadFile(path)
@@ -152,5 +153,128 @@ func TestMissingLogoInventoryIsDocumented(t *testing.T) {
 		if !missingIDs[id] {
 			t.Errorf("unexpected missing logo inventory: %s", id)
 		}
+	}
+}
+
+func TestMicrofinancePhase2CReconciliationIsComplete(t *testing.T) {
+	data, err := os.ReadFile("../metadata/finance/microfinance_banks_phase2c_logo_reconciliation.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var manifest struct {
+		SourceFileCount int            `json:"source_file_count"`
+		Classifications map[string]int `json:"classifications"`
+		Records         []struct {
+			Classification string `json:"classification"`
+		} `json:"records"`
+	}
+	if err := json.Unmarshal(data, &manifest); err != nil {
+		t.Fatal(err)
+	}
+	allowed := map[string]bool{
+		"accepted_exact_name":                true,
+		"accepted_alias":                     true,
+		"accepted_nip_code_supported":        true,
+		"accepted_cbn_code_supported":        true,
+		"accepted_successor":                 true,
+		"accepted_same_entity_cross_dataset": true,
+		"preserved_existing_byte_identical":  true,
+		"preserved_existing_stronger_source": true,
+		"rejected_revoked":                   true,
+		"rejected_obsolete":                  true,
+		"rejected_distinct_identity":         true,
+		"rejected_code_conflict":             true,
+		"rejected_no_active_dataset_match":   true,
+		"ambiguous_manual_review":            true,
+	}
+	if manifest.SourceFileCount != 315 || len(manifest.Records) != 315 {
+		t.Fatalf("phase 2C records = %d/%d, want 315/315", manifest.SourceFileCount, len(manifest.Records))
+	}
+	var total int
+	for classification, count := range manifest.Classifications {
+		if !allowed[classification] {
+			t.Fatalf("unexpected phase 2C classification %q", classification)
+		}
+		total += count
+	}
+	if total != 315 {
+		t.Fatalf("phase 2C classification total = %d, want 315", total)
+	}
+}
+
+func TestCommercialPhase2DReconciliationIsComplete(t *testing.T) {
+	data, err := os.ReadFile("../metadata/finance/cross_dataset_finance_logo_phase2d_reconciliation.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var manifest struct {
+		SourceFileCount int            `json:"source_file_count"`
+		Classifications map[string]int `json:"classifications"`
+		Records         []struct {
+			Classification string `json:"classification"`
+		} `json:"records"`
+	}
+	if err := json.Unmarshal(data, &manifest); err != nil {
+		t.Fatal(err)
+	}
+	allowed := map[string]bool{
+		"preserved_existing_byte_identical":  true,
+		"preserved_existing_stronger_source": true,
+		"rejected_obsolete":                  true,
+		"rejected_wrong_category":            true,
+		"rejected_distinct_identity":         true,
+		"rejected_no_active_dataset_match":   true,
+		"ambiguous_manual_review":            true,
+	}
+	if manifest.SourceFileCount != 32 || len(manifest.Records) != 32 {
+		t.Fatalf("phase 2D records = %d/%d, want 32/32", manifest.SourceFileCount, len(manifest.Records))
+	}
+	var total int
+	for classification, count := range manifest.Classifications {
+		if !allowed[classification] {
+			t.Fatalf("unexpected phase 2D classification %q", classification)
+		}
+		total += count
+	}
+	if total != 32 {
+		t.Fatalf("phase 2D classification total = %d, want 32", total)
+	}
+}
+
+func TestCrossDatasetFinanceLogoArchiveReconciliationIsComplete(t *testing.T) {
+	data, err := os.ReadFile("../metadata/finance/cross_dataset_finance_logo_reconciliation.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var manifest struct {
+		SourceFileCount      int            `json:"source_file_count"`
+		ClassificationCounts map[string]int `json:"classification_counts"`
+		Records              []struct {
+			SourcePath     string `json:"source_path"`
+			Classification string `json:"classification"`
+		} `json:"records"`
+	}
+	if err := json.Unmarshal(data, &manifest); err != nil {
+		t.Fatal(err)
+	}
+	if manifest.SourceFileCount != 610 || len(manifest.Records) != 610 {
+		t.Fatalf("archive reconciliation records = %d/%d, want 610/610", manifest.SourceFileCount, len(manifest.Records))
+	}
+	seen := make(map[string]bool, len(manifest.Records))
+	var total int
+	for _, record := range manifest.Records {
+		if record.SourcePath == "" || seen[record.SourcePath] {
+			t.Fatalf("duplicate or empty archive source path %q", record.SourcePath)
+		}
+		seen[record.SourcePath] = true
+		if record.Classification == "" {
+			t.Fatal("archive record has no classification")
+		}
+	}
+	for _, count := range manifest.ClassificationCounts {
+		total += count
+	}
+	if total != 610 {
+		t.Fatalf("archive classification total = %d, want 610", total)
 	}
 }
