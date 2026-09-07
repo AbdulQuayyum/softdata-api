@@ -2,7 +2,9 @@ package models
 
 import (
 	"bytes"
+	"crypto/sha256"
 	"encoding/json"
+	"fmt"
 	"reflect"
 	"regexp"
 	"sort"
@@ -101,13 +103,86 @@ func TestNigeriaNursingCollegeMetadataAndReconciliation(t *testing.T) {
 			NMCN   int `json:"nmcn_raw_entries"`
 			Merged int `json:"nmcn_programme_duplicates_or_subrows_merged"`
 		} `json:"source_arithmetic"`
-		Records []json.RawMessage `json:"records"`
+		FinalClassifications map[string]int `json:"final_classification_counts"`
+		Records              []struct {
+			SourcePosition           int    `json:"source_position"`
+			CanonicalInstitutionID   string `json:"canonical_institution_id"`
+			Decision                 string `json:"decision"`
+			CreatesPublicRecord      bool   `json:"creates_public_record"`
+			MergedIntoSourcePosition *int   `json:"merged_into_source_position"`
+		} `json:"records"`
 	}
 	if err := json.Unmarshal(readTextBytes(t, datasetPath("metadata/education/colleges_of_nursing_and_midwifery_reconciliation.json")), &reconciliation); err != nil {
 		t.Fatal(err)
 	}
-	if reconciliation.SourceArithmetic.Raw != 176 || len(reconciliation.Records) != 176 || reconciliation.SourceArithmetic.NMCN != 290 || reconciliation.SourceArithmetic.Merged != 114 {
-		t.Fatalf("reconciliation mismatch: %#v", reconciliation)
+	if reconciliation.SourceArithmetic.Raw != 176 || len(reconciliation.Records) != 290 || reconciliation.SourceArithmetic.NMCN != 290 || reconciliation.SourceArithmetic.Merged != 114 {
+		t.Fatalf("reconciliation mismatch: raw=%d records=%d nmcn=%d merges=%d", reconciliation.SourceArithmetic.Raw, len(reconciliation.Records), reconciliation.SourceArithmetic.NMCN, reconciliation.SourceArithmetic.Merged)
+	}
+	if !reflect.DeepEqual(reconciliation.FinalClassifications, map[string]int{"retained_as_institution": 176, "merged_programme_under_institution": 114}) {
+		t.Fatalf("unexpected reconciliation classifications: %#v", reconciliation.FinalClassifications)
+	}
+	targets := map[string]struct{}{}
+	for _, value := range loadNursingCollegeDataset(t) {
+		targets[value.ID] = struct{}{}
+	}
+	positions := map[int]struct{}{}
+	retained := map[int]struct{}{}
+	for _, record := range reconciliation.Records {
+		if record.SourcePosition < 1 || record.SourcePosition > 290 {
+			t.Fatalf("invalid source position: %d", record.SourcePosition)
+		}
+		if _, ok := positions[record.SourcePosition]; ok {
+			t.Fatalf("duplicate source position: %d", record.SourcePosition)
+		}
+		positions[record.SourcePosition] = struct{}{}
+		if _, ok := targets[record.CanonicalInstitutionID]; !ok {
+			t.Fatalf("unknown target id: %q", record.CanonicalInstitutionID)
+		}
+		if record.Decision == "retained_as_institution" {
+			if !record.CreatesPublicRecord {
+				t.Fatalf("retained source entry does not create a public record: %d", record.SourcePosition)
+			}
+			retained[record.SourcePosition] = struct{}{}
+		} else if record.Decision == "merged_programme_under_institution" {
+			if record.CreatesPublicRecord || record.MergedIntoSourcePosition == nil {
+				t.Fatalf("invalid programme merge: %d", record.SourcePosition)
+			}
+			if _, ok := retained[*record.MergedIntoSourcePosition]; !ok {
+				t.Fatalf("merge target is not retained: %d -> %d", record.SourcePosition, *record.MergedIntoSourcePosition)
+			}
+		} else {
+			t.Fatalf("unsupported decision %q", record.Decision)
+		}
+	}
+	if len(positions) != 290 || len(retained) != 176 {
+		t.Fatalf("incomplete source ledger: positions=%d retained=%d", len(positions), len(retained))
+	}
+	if len(targets) != 176 {
+		t.Fatalf("unexpected public target count: %d", len(targets))
+	}
+	for position := 1; position <= 290; position++ {
+		if _, ok := positions[position]; !ok {
+			t.Fatalf("missing source position: %d", position)
+		}
+	}
+	for target := range targets {
+		found := false
+		for _, record := range reconciliation.Records {
+			if record.CanonicalInstitutionID == target {
+				found = true
+				break
+			}
+		}
+		if !found {
+			t.Fatalf("public target is not referenced: %q", target)
+		}
+	}
+}
+
+func TestNigeriaNursingCollegePublicRosterFingerprint(t *testing.T) {
+	data := readTextBytes(t, datasetPath("education/colleges_of_nursing_and_midwifery.json"))
+	if got := fmt.Sprintf("%x", sha256.Sum256(data)); got != "1f6e6567998ff864f3bfa0a6a5a1992a4a15dafd916518fc4a9522828512985b" {
+		t.Fatalf("public roster fingerprint changed: %s", got)
 	}
 }
 
