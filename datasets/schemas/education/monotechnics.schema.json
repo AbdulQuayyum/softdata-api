@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://softdata.com.ng/schemas/education/monotechnics.schema.json",
+  "title": "Nigeria Specialised Institutions (Monotechnics)",
+  "description": "The current Nigerian institutions in NBTE's Specialised Institutions (Monotechnics) category.",
+  "type": "array",
+  "minItems": 86,
+  "maxItems": 86,
+  "uniqueItems": true,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["id", "name", "ownership_type", "state_id", "country_code"],
+    "properties": {
+      "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+      "name": {"type": "string", "minLength": 1},
+      "ownership_type": {"type": "string", "enum": ["federal", "state", "private"]},
+      "state_id": {"type": "string", "enum": ["abia", "adamawa", "akwa-ibom", "anambra", "bauchi", "bayelsa", "benue", "borno", "cross-river", "delta", "ebonyi", "edo", "ekiti", "enugu", "fct", "gombe", "imo", "jigawa", "kaduna", "kano", "katsina", "kebbi", "kogi", "kwara", "lagos", "nasarawa", "niger", "ogun", "ondo", "osun", "oyo", "plateau", "rivers", "sokoto", "taraba", "yobe", "zamfara"]},
+      "country_code": {"const": "NG"}
+    }
+  }
+}

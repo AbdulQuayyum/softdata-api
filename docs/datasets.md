@@ -186,6 +186,17 @@ Nigeria's reconciled active polytechnic roster from the NBTE 25th Edition 2025 d
 
 The package contains 168 records: 35 federal, 43 state and 90 private polytechnics. The compact public contract contains only `id`, `name`, `ownership_type`, `state_id` and `country_code`; specialist institutes, colleges and transition records from the mixed source section are excluded and documented. This pass adds only the static dataset foundation; websites, logos, repository methods and HTTP routes are intentionally deferred.
 
+### `ng-monotechnics`
+
+Nigeria's reconciled roster of NBTE **Specialised Institutions (Monotechnics)**.
+
+- Data: `datasets/education/monotechnics.json`
+- Schema: `datasets/schemas/education/monotechnics.schema.json`
+- Metadata: `datasets/metadata/education/monotechnics.json`
+- Reconciliation: `datasets/metadata/education/monotechnics_reconciliation.json`
+
+The package contains 86 records: 32 federal, 4 state and 50 private institutions across 27 states. It uses the same five-field static contract as the university, college-of-education and Polytechnic datasets. Colleges of education, general schools, remedial institutions and other wrong-category entries are excluded in the reconciliation manifest. Website/logo enrichment and API integration are intentionally deferred.
+
 ## Dataset Principles
 
 - Every dataset should have a stable identifier.

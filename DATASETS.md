@@ -265,6 +265,15 @@ The package version is `1.0.0` and contains 244 college records across the curre
 
 The static foundation contains 168 current NBTE-listed polytechnics: 35 federal, 43 state and 90 private. It exposes only `id`, `name`, `ownership_type`, `state_id` and `country_code`, with `state_id` resolving to `ng-states`. Colleges, specialist institutes, transition records and other wrong-category entries are excluded and documented. Website/logo enrichment and API integration are intentionally deferred.
 
+### `ng-monotechnics`
+
+- `datasets/education/monotechnics.json`
+- `datasets/schemas/education/monotechnics.schema.json`
+- `datasets/metadata/education/monotechnics.json`
+- `datasets/metadata/education/monotechnics_reconciliation.json`
+
+The static foundation contains 86 NBTE Specialised Institutions (Monotechnics): 32 federal, 4 state and 50 private. It exposes only `id`, `name`, `ownership_type`, `state_id` and `country_code`. Colleges, remedial schools and other wrong-category source entries are excluded and documented. Website/logo enrichment and API integration are intentionally deferred.
+
 ## Directory Structure
 
 ```text

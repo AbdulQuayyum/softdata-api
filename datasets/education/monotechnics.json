@@ -1,0 +1,604 @@
+[
+  {
+    "id": "abuja-school-of-pension-and-retirement-planning-karu",
+    "name": "Abuja School of Pension and Retirement Planning, Karu",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "adecom-college-of-business-and-management-studies-ibadan",
+    "name": "Adecom College of Business and Management Studies, Ibadan",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "adeyemi-college-of-technology-ondo",
+    "name": "Adeyemi College of Technology, Ondo",
+    "ownership_type": "federal",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "all-nations-institute-of-marine-and-technology-oghara-otefe",
+    "name": "All Nations Institute of Marine and Technology, Oghara-Otefe",
+    "ownership_type": "private",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "arosurge-college-of-survey-and-geo-informatics-oshogbo",
+    "name": "Arosurge College of Survey and Geo-Informatics, Oshogbo",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "atlas-institute-of-management-and-technology-eluama-uzuakoli",
+    "name": "Atlas Institute of Management and Technology, Eluama Uzuakoli",
+    "ownership_type": "private",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "calvary-foundation-institute-of-technology-enugu",
+    "name": "Calvary Foundation Institute of Technology, Enugu",
+    "ownership_type": "private",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "centre-for-advanced-library-and-information-management-enugu",
+    "name": "Centre for Advanced Library and Information Management, Enugu",
+    "ownership_type": "federal",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "centre-for-technology-training-and-innovation-abuja",
+    "name": "Centre for Technology Training and Innovation, Abuja",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "charkin-maritime-academy-port-harcourt",
+    "name": "Charkin Maritime Academy, Port Harcourt",
+    "ownership_type": "private",
+    "state_id": "rivers",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-business-and-management-studies-konduga",
+    "name": "College of Business and Management Studies, Konduga",
+    "ownership_type": "state",
+    "state_id": "borno",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-vocational-science-and-technology-of-nigeria-damaturu",
+    "name": "College of Vocational Science and Technology of Nigeria, Damaturu",
+    "ownership_type": "private",
+    "state_id": "yobe",
+    "country_code": "NG"
+  },
+  {
+    "id": "commonwealth-college-of-technology-gboko",
+    "name": "Commonwealth College of Technology, Gboko",
+    "ownership_type": "private",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "complete-computers-college-of-management-and-technology-benin-city",
+    "name": "Complete Computers College of Management and Technology, Benin City",
+    "ownership_type": "private",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "dalewares-institute-of-technology-lagos",
+    "name": "Dalewares Institute of Technology, Lagos",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "delta-central-college-of-business-and-management-studies-ughelli",
+    "name": "Delta Central College of Business and Management Studies, Ughelli",
+    "ownership_type": "private",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "eastwing-aviation-institute-emene",
+    "name": "EastWing Aviation Institute, Emene",
+    "ownership_type": "private",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "ed-john-institute-of-management-and-technology-ikorodu",
+    "name": "ED-John Institute of Management and Technology, Ikorodu",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "efon-alaaye-college-of-management-technology-efon-alaaye",
+    "name": "Efon Alaaye College of Management Technology, Efon Alaaye",
+    "ownership_type": "private",
+    "state_id": "ekiti",
+    "country_code": "NG"
+  },
+  {
+    "id": "elerinmosa-institute-of-technology-erin-osun",
+    "name": "Elerinmosa Institute of Technology, Erin-Osun",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-cooperative-college-ibadan",
+    "name": "Federal Cooperative College, Ibadan",
+    "ownership_type": "federal",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-cooperative-college-kaduna",
+    "name": "Federal Cooperative College, Kaduna",
+    "ownership_type": "federal",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-cooperative-college-oji-river",
+    "name": "Federal Cooperative College, Oji River",
+    "ownership_type": "federal",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-school-of-social-works-emene",
+    "name": "Federal School of Social Works, Emene",
+    "ownership_type": "federal",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-school-of-statistics-ibadan",
+    "name": "Federal School of Statistics, Ibadan",
+    "ownership_type": "federal",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-school-of-statistics-manchok",
+    "name": "Federal School of Statistics, Manchok",
+    "ownership_type": "federal",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-school-of-surveying-oyo",
+    "name": "Federal School of Surveying, Oyo",
+    "ownership_type": "federal",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-training-centre-calabar",
+    "name": "Federal Training Centre, Calabar",
+    "ownership_type": "federal",
+    "state_id": "cross-river",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-training-centre-emene",
+    "name": "Federal Training Centre, Emene",
+    "ownership_type": "federal",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-training-centre-ilorin",
+    "name": "Federal Training Centre, Ilorin",
+    "ownership_type": "federal",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-training-centre-kaduna",
+    "name": "Federal Training Centre, Kaduna",
+    "ownership_type": "federal",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-training-centre-lagos",
+    "name": "Federal Training Centre, Lagos",
+    "ownership_type": "federal",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-training-centre-maiduguri",
+    "name": "Federal Training Centre, Maiduguri",
+    "ownership_type": "federal",
+    "state_id": "borno",
+    "country_code": "NG"
+  },
+  {
+    "id": "global-maritime-academy-agbowhiame",
+    "name": "Global Maritime Academy, Agbowhiame",
+    "ownership_type": "private",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "harvarde-college-of-science-business-and-management-studies-abeokuta",
+    "name": "Harvarde College of Science, Business and Management Studies, Abeokuta",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "highland-college-ibadan",
+    "name": "Highland College, Ibadan",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "ifo-college-of-management-and-technology-ifo",
+    "name": "IFO College of Management and Technology, Ifo",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "impact-school-of-broadcasting-and-communication-ibadan",
+    "name": "Impact School of Broadcasting and Communication, Ibadan",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "institute-of-administration-abu-zaria",
+    "name": "Institute of Administration, ABU, Zaria",
+    "ownership_type": "federal",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "institute-of-maritime-and-safety-lagos",
+    "name": "Institute of Maritime and Safety, Lagos",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "institute-of-transport-and-management-technology-lagos",
+    "name": "Institute of Transport and Management Technology, Lagos",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "international-institute-of-tourism-yenagoa",
+    "name": "International Institute of Tourism, Yenagoa",
+    "ownership_type": "state",
+    "state_id": "bayelsa",
+    "country_code": "NG"
+  },
+  {
+    "id": "jigawa-state-institute-of-information-technology-kazaure",
+    "name": "Jigawa State Institute of Information Technology, Kazaure",
+    "ownership_type": "state",
+    "state_id": "jigawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "joemarine-institute-of-nautical-studies-and-research-effurun",
+    "name": "Joemarine Institute of Nautical Studies and Research, Effurun",
+    "ownership_type": "private",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "kaduna-business-school",
+    "name": "Kaduna Business School",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "ken-idehen-college-of-science-and-technology-port-harcourt",
+    "name": "Ken-Idehen College of Science and Technology, Port Harcourt",
+    "ownership_type": "private",
+    "state_id": "rivers",
+    "country_code": "NG"
+  },
+  {
+    "id": "khemsafe-college-of-management-science-and-technology-kaduna",
+    "name": "Khemsafe College of Management, Science and Technology, Kaduna",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "lagos-state-co-operative-college-agege",
+    "name": "Lagos State Co-operative College, Agege",
+    "ownership_type": "state",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "lapo-institute-for-microfinance-and-management-studies-benin",
+    "name": "Lapo Institute for Microfinance and Management Studies, Benin",
+    "ownership_type": "private",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "leadtech-school-of-management-and-technology-abuja",
+    "name": "LeadTech School of Management and Technology, Abuja",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "lufem-college-of-technology-agege",
+    "name": "Lufem College of Technology, Agege",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "mario-institute-of-hospitality-management-and-entrepreneurship-education-nsukka",
+    "name": "Mario Institute of Hospitality Management and Entrepreneurship Education, Nsukka",
+    "ownership_type": "private",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "master-builder-institute-of-media-studies-warri",
+    "name": "Master Builder Institute of Media Studies, Warri",
+    "ownership_type": "private",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "mastermind-catering-and-culinary-institute-abuja",
+    "name": "Mastermind Catering and Culinary Institute, Abuja",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "metallurgical-training-institute-onitsha",
+    "name": "Metallurgical Training Institute, Onitsha",
+    "ownership_type": "federal",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "michael-imodu-national-institute-for-labour-studies-ilorin",
+    "name": "Michael Imodu National Institute for Labour Studies, Ilorin",
+    "ownership_type": "federal",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "muhammadu-buhari-meteorological-institute-of-science-and-technology-katsina",
+    "name": "Muhammadu Buhari Meteorological Institute of Science and Technology, Katsina",
+    "ownership_type": "federal",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "muson-school-of-music-lagos",
+    "name": "MUSON School of Music, Lagos",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "mustibrah-college-of-information-technology-and-management-studies-kano",
+    "name": "Mustibrah College of Information Technology and Management Studies, Kano",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "national-institute-for-cultural-orientation-lagos",
+    "name": "National Institute for Cultural Orientation, Lagos",
+    "ownership_type": "federal",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "national-institute-for-hospitality-and-tourism-kano",
+    "name": "National Institute for Hospitality and Tourism, Kano",
+    "ownership_type": "federal",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "national-institute-for-legislative-and-democratic-studies-abuja",
+    "name": "National Institute for Legislative and Democratic Studies, Abuja",
+    "ownership_type": "federal",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "national-institute-for-sports-lagos",
+    "name": "National Institute for Sports, Lagos",
+    "ownership_type": "federal",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "national-meteorological-institute-of-science-and-technology-oshodi",
+    "name": "National Meteorological Institute of Science and Technology, Oshodi",
+    "ownership_type": "federal",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "national-water-resources-institute-kaduna",
+    "name": "National Water Resources Institute, Kaduna",
+    "ownership_type": "federal",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "nigerian-army-school-of-finance-and-administration-apapa",
+    "name": "Nigerian Army School of Finance and Administration, Apapa",
+    "ownership_type": "federal",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "nigerian-army-school-of-signals-apapa",
+    "name": "Nigerian Army School of Signals, Apapa",
+    "ownership_type": "federal",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "nigerian-institute-of-journalism-ikeja",
+    "name": "Nigerian Institute of Journalism, Ikeja",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "nigerian-institute-of-leather-and-chemical-technology-zaria",
+    "name": "Nigerian Institute of Leather and Chemical Technology, Zaria",
+    "ownership_type": "federal",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "nigerian-institute-of-mining-and-geoscience-jos",
+    "name": "Nigerian Institute of Mining and Geoscience, Jos",
+    "ownership_type": "federal",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "nigerian-navy-college-of-accounts-and-finance-owerrinta",
+    "name": "Nigerian Navy College of Accounts and Finance, Owerrinta",
+    "ownership_type": "federal",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "nigerian-navy-college-of-engineering-sapele",
+    "name": "Nigerian Navy College of Engineering, Sapele",
+    "ownership_type": "federal",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "nigerian-navy-logistics-college-dawakin-tofa",
+    "name": "Nigerian Navy Logistics College, Dawakin Tofa",
+    "ownership_type": "federal",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "nubian-american-advanced-college-lekki",
+    "name": "Nubian American Advanced College, Lekki",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "oak-business-school-of-management-and-technology-lagos",
+    "name": "OAK Business School of Management and Technology, Lagos",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "olawoyin-awosika-school-of-innovation-studies-isheri-north",
+    "name": "Olawoyin Awosika School of Innovation Studies, Isheri North",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "osun-college-of-management-sciences-ipetu-ijesha",
+    "name": "Osun College of Management Sciences, Ipetu-Ijesha",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "peace-institute-of-management-technology-abak",
+    "name": "Peace Institute of Management Technology, Abak",
+    "ownership_type": "private",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "pemgo-college-of-business-and-management-studies-karu",
+    "name": "Pemgo College of Business and Management Studies, Karu",
+    "ownership_type": "private",
+    "state_id": "nasarawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "pencil-film-and-television-institute-oshodi",
+    "name": "Pencil Film and Television Institute, Oshodi",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "sani-yar-adua-college-of-environmental-studies-katsina",
+    "name": "Sani Yar’adua College of Environmental Studies, Katsina",
+    "ownership_type": "private",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "savannah-institute-of-technology-abakaliki",
+    "name": "Savannah Institute of Technology, Abakaliki",
+    "ownership_type": "private",
+    "state_id": "ebonyi",
+    "country_code": "NG"
+  },
+  {
+    "id": "soteria-business-school-ibadan",
+    "name": "Soteria Business School, Ibadan",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "sqi-college-of-ict-ogbomoso",
+    "name": "SQI College of ICT, Ogbomoso",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "stars-maritime-academy-itele",
+    "name": "Stars Maritime Academy, Itele",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "wavecrest-college-of-catering-and-hospitality-management-technology-lagos",
+    "name": "Wavecrest College of Catering and Hospitality Management Technology, Lagos",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  }
+]

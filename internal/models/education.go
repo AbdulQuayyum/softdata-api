@@ -26,3 +26,12 @@ type Polytechnic struct {
 	StateID       string `json:"state_id"`
 	CountryCode   string `json:"country_code"`
 }
+
+// Monotechnic represents one current NBTE-listed specialised institution.
+type Monotechnic struct {
+	ID            string `json:"id"`
+	Name          string `json:"name"`
+	OwnershipType string `json:"ownership_type"`
+	StateID       string `json:"state_id"`
+	CountryCode   string `json:"country_code"`
+}
