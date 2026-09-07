@@ -1,0 +1,32 @@
+{
+  "dataset_key": "ng-colleges-of-nursing-and-midwifery",
+  "official_category_name": "Approved Colleges of Nursing and Departments of Nursing",
+  "title": "Nigeria Colleges of Nursing and Midwifery",
+  "description": "Institution-level directory of current Nigerian nursing and midwifery training institutions approved by the Nursing and Midwifery Council of Nigeria.",
+  "country_code": "NG",
+  "dataset_group": "education",
+  "format": "json",
+  "relative_path": "education/colleges_of_nursing_and_midwifery.json",
+  "schema_path": "schemas/education/colleges_of_nursing_and_midwifery.schema.json",
+  "record_count": 176,
+  "ownership_counts": {"federal": 13, "state": 57, "private": 106},
+  "state_coverage_count": 32,
+  "institution_aggregation_policy": "One record per independently recognized institution or separately approved training centre; nursing, midwifery, community and post-basic programmes under one centre are merged rather than exposed as separate public records.",
+  "source_hierarchy": ["Nursing and Midwifery Council of Nigeria", "National Board for Technical Education", "Federal Ministry of Health and Social Welfare", "Federal Ministry of Education", "Joint Admissions and Matriculation Board", "official government publications", "official institution websites", "secondary sources for discovery only"],
+  "sources": [
+    {"organization":"Nursing and Midwifery Council of Nigeria","title":"Updated List of Approved Colleges of Nursing and Departments of Nursing with their Accreditation Status, December 2025","url":"https://nmcn.gov.ng/docs/New_List_of_Approved_Schools_Dec_2025.pdf","accessed_at":"2026-09-07","publication_date":"2025-12","response_bytes":1126730,"sha256":"a393f9b8d8acebd2c1d3074c44903f00007dd6ae03314c589fac63cb2224e22d","raw_entry_count":290,"entry_semantics":"approved institutions and programme-bearing training centres","approval_status_semantics":"full and provisional are current approval statuses; withdrawn, denied and embargoed entries are not retained; the list is periodically reviewed","limitations":["programme rows and institution rows are interleaved","the source does not provide SoftData state IDs or normalized ownership fields"]},
+    {"organization":"National Board for Technical Education","title":"Approved Institutions","url":"https://web.nbte.gov.ng/tvet%20institutions","accessed_at":"2026-09-07","purpose":"Category-boundary cross-check; nursing institutions are not treated as health-technology colleges without separate evidence."},
+    {"organization":"National Board for Technical Education","title":"25th Edition 2025 Directory","url":"https://web.nbte.gov.ng/sites/default/files/2025-11/25th%20Edition%202025%20Directory.pdf","accessed_at":"2026-09-07","publication_date":"2025-11","response_bytes":13841731,"sha256":"11c7e9b7e6f63136ae114c1bc8cc6884280c5555aad64a4b17cb705bbbbafcda","purpose":"Cross-source category and identity reconciliation","limitations":["not an NMCN nursing-school register"]}
+  ],
+  "inclusion_rules": ["Current NMCN-approved nursing or midwifery training institution or separately approved centre", "Teaching-hospital, military and specialist schools are included only where NMCN lists a distinct training institution"],
+  "exclusion_rules": ["University departments and faculties", "programme-only rows", "hospitals without a separately recognized school", "withdrawn, denied, embargoed, proposed or under-accreditation entries", "duplicate programme/campus rows"],
+  "regulator_overlap_policy": "NMCN approval is the primary inclusion authority. NBTE and health-sector sources resolve category and identity conflicts; absence from NBTE alone does not establish inactivity.",
+  "update_frequency": "Review on each new NMCN approved-schools register or material regulatory update.",
+  "last_verification_date": "2026-09-07",
+  "known_limitations": ["The NMCN PDF reports 290 training institutions while its programme summary contains overlapping programme counts.", "Ownership is reconciled from institution/government identity and requires review when an institution changes operator.", "The public contract intentionally does not expose programme, accreditation or quota fields."],
+  "transitions_and_former_names": "Programme aggregation, absorbed university departments, duplicate campuses and inactive entries are documented in the reconciliation manifest.",
+  "rights": "SoftData compilation, schema and metadata are CC BY 4.0. NMCN and NBTE publications retain their own rights. This pass adds only a static roster foundation; websites and logos are deferred.",
+  "maintainers": ["SoftData API contributors"],
+  "verified_at": "2026-09-07",
+  "reconciliation_path": "metadata/education/colleges_of_nursing_and_midwifery_reconciliation.json"
+}

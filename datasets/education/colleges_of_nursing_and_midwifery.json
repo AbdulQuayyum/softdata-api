@@ -1,0 +1,1234 @@
+[
+  {
+    "id": "a-b-naibi-college-of-nursing-sciences-lau",
+    "name": "A.B. Na’ibi College of Nursing Sciences, Lau",
+    "ownership_type": "private",
+    "state_id": "taraba",
+    "country_code": "NG"
+  },
+  {
+    "id": "abia-state-college-of-nursing-sciences-amachara",
+    "name": "Abia State College of Nursing Sciences, Amachara",
+    "ownership_type": "state",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "abia-state-college-of-nursing-sciences-umuahia",
+    "name": "Abia State College of Nursing Sciences, Umuahia",
+    "ownership_type": "state",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "abia-state-university-teaching-hospital-college-of-nursing-sciences",
+    "name": "Abia State University Teaching Hospital College of Nursing Sciences, Aba",
+    "ownership_type": "state",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "achievers-college-of-nursing-sciences-owo",
+    "name": "Achievers College of Nursing Sciences, Owo",
+    "ownership_type": "private",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "adamawa-state-college-of-nursing-sciences-yola",
+    "name": "Adamawa State College of Nursing Sciences, Yola",
+    "ownership_type": "state",
+    "state_id": "adamawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "adamu-adamu-college-of-nursing-sciences-azare",
+    "name": "Adamu Adamu College of Nursing Sciences, FMC, Azare",
+    "ownership_type": "federal",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "adventist-college-of-nursing-sciences-jengre",
+    "name": "Adventist College of Nursing Sciences, Jengre",
+    "ownership_type": "private",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "akwa-ibom-state-college-of-nursing-sciences-uyo",
+    "name": "Akwa Ibom State College of Nursing Sciences, Uyo",
+    "ownership_type": "state",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "al-huda-college-of-nursing-bauchi",
+    "name": "Al-Huda College of Nursing, Bauchi",
+    "ownership_type": "private",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "al-madinah-college-of-nursing-sciences-zaria",
+    "name": "Al-Madinah College of Nursing Sciences, Zaria",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "al-maarif-college-of-nursing-sciences-potiskum",
+    "name": "Al-Ma’arif College of Nursing Sciences, Potiskum",
+    "ownership_type": "private",
+    "state_id": "yobe",
+    "country_code": "NG"
+  },
+  {
+    "id": "aliko-dangote-college-of-nursing-sciences-bauchi",
+    "name": "Aliko Dangote College of Nursing Sciences, Bauchi",
+    "ownership_type": "state",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "ameenatu-college-of-nursing-sciences-jigawa",
+    "name": "Ameenatu College of Nursing Sciences, Jigawa",
+    "ownership_type": "private",
+    "state_id": "jigawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "aminu-dabo-college-of-nursing-sciences-kano",
+    "name": "Aminu Dabo College of Nursing Sciences, Kano",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "anchor-college-of-nursing-sciences-asaba",
+    "name": "Anchor College of Nursing Sciences, Asaba",
+    "ownership_type": "private",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "apex-college-of-nursing-sciences-igbo-ukwu",
+    "name": "Apex College of Nursing Sciences, Igbo-Ukwu",
+    "ownership_type": "private",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "archbishop-charles-heerey-memorial-college-of-nursing-sciences",
+    "name": "Archbishop Charles Heerey Memorial College of Nursing Sciences, Aba",
+    "ownership_type": "private",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "bawo-college-of-nursing-sciences-daura",
+    "name": "Bawo College of Nursing Sciences, Daura",
+    "ownership_type": "private",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "bayelsa-state-college-of-nursing-sciences-tombia",
+    "name": "Bayelsa State College of Nursing Sciences, Tombia",
+    "ownership_type": "state",
+    "state_id": "bayelsa",
+    "country_code": "NG"
+  },
+  {
+    "id": "bailla-college-of-nursing-sciences-kaura-namoda",
+    "name": "Ba’illa College of Nursing Sciences, Kaura-Namoda",
+    "ownership_type": "private",
+    "state_id": "zamfara",
+    "country_code": "NG"
+  },
+  {
+    "id": "belba-college-of-nursing-sciences-jigawa",
+    "name": "Belba College of Nursing Sciences, Jigawa",
+    "ownership_type": "private",
+    "state_id": "jigawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "benue-state-college-of-nursing-sciences-makurdi",
+    "name": "Benue State College of Nursing Sciences, Makurdi",
+    "ownership_type": "state",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "blessed-martins-college-of-nursing-sciences-ebonyi",
+    "name": "Blessed Martins College of Nursing Sciences, Ebonyi",
+    "ownership_type": "private",
+    "state_id": "ebonyi",
+    "country_code": "NG"
+  },
+  {
+    "id": "borno-state-college-of-nursing-sciences-maiduguri",
+    "name": "Borno State College of Nursing Sciences, Maiduguri",
+    "ownership_type": "state",
+    "state_id": "borno",
+    "country_code": "NG"
+  },
+  {
+    "id": "chep-college-of-nursing-sciences-ota",
+    "name": "Chep College of Nursing Sciences, Ota",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "cherish-college-of-nursing-sciences-batsari",
+    "name": "Cherish College of Nursing Sciences, Batsari",
+    "ownership_type": "private",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "chukwuemeka-odumegwu-ojukwu-university-teaching-hospital-college-of-nursing-sciences",
+    "name": "Chukwuemeka Odumegwu Ojukwu University Teaching Hospital College of Nursing Sciences, Nkpor",
+    "ownership_type": "state",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-science-sokoto",
+    "name": "College of Nursing Science, Sokoto",
+    "ownership_type": "state",
+    "state_id": "sokoto",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-adazi-nnukwu",
+    "name": "College of Nursing Sciences, Adazi-Nnukwu",
+    "ownership_type": "private",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-abuth-zaria",
+    "name": "College of Nursing Sciences, Ahmadu Bello University Teaching Hospital, Zaria",
+    "ownership_type": "federal",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-akure",
+    "name": "College of Nursing Sciences, Akure",
+    "ownership_type": "state",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-aefutha-abakaliki",
+    "name": "College of Nursing Sciences, Alex Ekwueme Federal University Teaching Hospital, Abakaliki",
+    "ownership_type": "federal",
+    "state_id": "ebonyi",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-alor",
+    "name": "College of Nursing Sciences, Alor",
+    "ownership_type": "private",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-atbuth-bauchi",
+    "name": "College of Nursing Sciences, ATBUTH, Bauchi",
+    "ownership_type": "federal",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-babura",
+    "name": "College of Nursing Sciences, Babura",
+    "ownership_type": "private",
+    "state_id": "jigawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-birnin-kebbi",
+    "name": "College of Nursing Sciences, Birnin Kebbi",
+    "ownership_type": "state",
+    "state_id": "kebbi",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-calabar",
+    "name": "College of Nursing Sciences, Calabar",
+    "ownership_type": "state",
+    "state_id": "cross-river",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-diocesan-hospital-amichi",
+    "name": "College of Nursing Sciences, Diocesan Hospital, Amichi",
+    "ownership_type": "private",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-eket",
+    "name": "College of Nursing Sciences, Eket",
+    "ownership_type": "state",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-federal-medical-centre-nguru",
+    "name": "College of Nursing Sciences, Federal Medical Centre, Nguru",
+    "ownership_type": "federal",
+    "state_id": "yobe",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-federal-neuropsychiatry-hospital-kware",
+    "name": "College of Nursing Sciences, Federal Neuro-Psychiatry Hospital, Kware",
+    "ownership_type": "federal",
+    "state_id": "sokoto",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-gwoza",
+    "name": "College of Nursing Sciences, Gwoza",
+    "ownership_type": "state",
+    "state_id": "borno",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-hadejia",
+    "name": "College of Nursing Sciences, Hadejia",
+    "ownership_type": "state",
+    "state_id": "jigawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-igbinedion-university-teaching-hospital",
+    "name": "College of Nursing Sciences, Igbinedion University Teaching Hospital, Okada",
+    "ownership_type": "private",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-ihiala",
+    "name": "College of Nursing Sciences, Ihiala",
+    "ownership_type": "state",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-ikot-ekpene",
+    "name": "College of Nursing Sciences, Ikot-Ekpene",
+    "ownership_type": "state",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-ilorin",
+    "name": "College of Nursing Sciences, Ilorin",
+    "ownership_type": "state",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-iquita-oron",
+    "name": "College of Nursing Sciences, Iquita-Oron",
+    "ownership_type": "state",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-itigidi",
+    "name": "College of Nursing Sciences, Itigidi",
+    "ownership_type": "state",
+    "state_id": "cross-river",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-ituk-mbang",
+    "name": "College of Nursing Sciences, Ituk-Mbang",
+    "ownership_type": "state",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-iyi-enu",
+    "name": "College of Nursing Sciences, Iyi-Enu",
+    "ownership_type": "private",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-jahi",
+    "name": "College of Nursing Sciences, Jahi",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-science-kaduna-state",
+    "name": "College of Nursing Sciences, Kaduna State",
+    "ownership_type": "state",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-kano",
+    "name": "College of Nursing Sciences, Kano",
+    "ownership_type": "state",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-kazaure",
+    "name": "College of Nursing Sciences, Kazaure",
+    "ownership_type": "private",
+    "state_id": "jigawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-lafia",
+    "name": "College of Nursing Sciences, Lafia",
+    "ownership_type": "state",
+    "state_id": "nasarawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-luth",
+    "name": "College of Nursing Sciences, Lagos University Teaching Hospital, Idi-Araba",
+    "ownership_type": "state",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-mmh-afikpo",
+    "name": "College of Nursing Sciences, Mater Misericordiae Hospital, Afikpo",
+    "ownership_type": "private",
+    "state_id": "ebonyi",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-monguno",
+    "name": "College of Nursing Sciences, Monguno",
+    "ownership_type": "state",
+    "state_id": "borno",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-national-orthopaedic-hospital-igbobi",
+    "name": "College of Nursing Sciences, National Orthopaedic Hospital, Igbobi",
+    "ownership_type": "federal",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-oau-teaching-hospitals-complex",
+    "name": "College of Nursing Sciences, Obafemi Awolowo University Teaching Hospitals Complex, Osogbo",
+    "ownership_type": "federal",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-obohia-ndoki",
+    "name": "College of Nursing Sciences, Obohia-Ndoki",
+    "ownership_type": "private",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-obudu",
+    "name": "College of Nursing Sciences, Obudu",
+    "ownership_type": "state",
+    "state_id": "cross-river",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-oke-ode",
+    "name": "College of Nursing Sciences, Oke-Ode",
+    "ownership_type": "state",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-okunland",
+    "name": "College of Nursing Sciences, Okunland",
+    "ownership_type": "private",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-our-lady-of-apostles-hospital-jos",
+    "name": "College of Nursing Sciences, Our Lady of Apostles Hospital, Jos",
+    "ownership_type": "private",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-plateau-state",
+    "name": "College of Nursing Sciences, Plateau State",
+    "ownership_type": "state",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-st-camillus-hospital-uromi",
+    "name": "College of Nursing Sciences, St. Camillus Hospital, Uromi",
+    "ownership_type": "private",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-st-gerards-kakuri",
+    "name": "College of Nursing Sciences, St. Gerard’s Catholic Hospital, Kakuri",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-st-louis-zonkwa",
+    "name": "College of Nursing Sciences, St. Louis Hospital, Zonkwa",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-st-lukes-wusasa",
+    "name": "College of Nursing Sciences, St. Luke’s Anglican Hospital, Wusasa",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-st-margarets-hospital-calabar",
+    "name": "College of Nursing Sciences, St. Margaret’s Hospital, Calabar",
+    "ownership_type": "private",
+    "state_id": "cross-river",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-tambuwal",
+    "name": "College of Nursing Sciences, Tambuwal",
+    "ownership_type": "state",
+    "state_id": "sokoto",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-uburu",
+    "name": "College of Nursing Sciences, Uburu",
+    "ownership_type": "state",
+    "state_id": "ebonyi",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-university-of-benin-teaching-hospital",
+    "name": "College of Nursing Sciences, University of Benin Teaching Hospital, Benin City",
+    "ownership_type": "federal",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-sciences-university-of-port-harcourt-teaching-hospital",
+    "name": "College of Nursing Sciences, University of Port Harcourt Teaching Hospital",
+    "ownership_type": "state",
+    "state_id": "rivers",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-obangede",
+    "name": "College of Nursing, Obangede",
+    "ownership_type": "state",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-st-charles-borromeo-hospital-onitsha",
+    "name": "College of Nursing, St. Charles Borromeo Hospital, Onitsha",
+    "ownership_type": "private",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-nursing-united-evangelical-church-mission-ochadamu",
+    "name": "College of Nursing, United Evangelical Church Mission, Ochadamu",
+    "ownership_type": "private",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "cross-river-state-college-of-nursing-sciences",
+    "name": "Cross River State College of Nursing Sciences",
+    "ownership_type": "state",
+    "state_id": "cross-river",
+    "country_code": "NG"
+  },
+  {
+    "id": "dako-college-of-nursing-and-midwifery-suleja",
+    "name": "Dako College of Nursing and Midwifery, Suleja",
+    "ownership_type": "private",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "dankoli-abdulrashid-college-of-nursing-kaduna",
+    "name": "Dankoli Abdulrashid College of Nursing, Kaduna",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "dansharif-college-of-nursing-sciences-kano",
+    "name": "Dansharif College of Nursing Sciences, Kano",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "delta-state-college-of-nursing-sciences-agbor",
+    "name": "Delta State College of Nursing Sciences, Agbor",
+    "ownership_type": "state",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "delta-state-college-of-nursing-sciences-asaba",
+    "name": "Delta State College of Nursing Sciences, Asaba",
+    "ownership_type": "state",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "delta-state-college-of-nursing-sciences-eku",
+    "name": "Delta State College of Nursing Sciences, Eku",
+    "ownership_type": "state",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "delta-state-college-of-nursing-sciences-sapele",
+    "name": "Delta State College of Nursing Sciences, Sapele",
+    "ownership_type": "state",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "delta-state-college-of-nursing-sciences-warri",
+    "name": "Delta State College of Nursing Sciences, Warri",
+    "ownership_type": "state",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "eastern-oak-college-of-nursing-sciences-ebonyi",
+    "name": "Eastern Oak College of Nursing Sciences, Ebonyi",
+    "ownership_type": "private",
+    "state_id": "ebonyi",
+    "country_code": "NG"
+  },
+  {
+    "id": "ecwa-school-of-basic-midwifery-egbe",
+    "name": "ECWA School of Basic Midwifery, Egbe",
+    "ownership_type": "private",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "ecwa-school-of-nursing-egbe",
+    "name": "ECWA School of Nursing, Egbe",
+    "ownership_type": "private",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "edo-state-college-of-nursing-sciences-benin",
+    "name": "Edo State College of Nursing Sciences, Benin",
+    "ownership_type": "state",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "emirate-college-of-nursing-sciences-kano",
+    "name": "Emirate College of Nursing Sciences, Kano",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "essemm-college-of-nursing-sciences-katsina",
+    "name": "EssEMM College of Nursing Sciences, Katsina",
+    "ownership_type": "private",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "fatima-college-of-nursing-sciences-sifawa",
+    "name": "Fatima College of Nursing Sciences, Sifawa",
+    "ownership_type": "private",
+    "state_id": "sokoto",
+    "country_code": "NG"
+  },
+  {
+    "id": "fct-college-of-nursing-sciences-gwagwalada",
+    "name": "FCT College of Nursing Sciences, Gwagwalada",
+    "ownership_type": "state",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "flagship-college-of-nursing-sciences-kano",
+    "name": "Flagship College of Nursing Sciences, Kano",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "florence-nightingale-college-of-nursing-jos",
+    "name": "Florence Nightingale College of Nursing, Jos",
+    "ownership_type": "private",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "galaxy-college-of-nursing-minna",
+    "name": "Galaxy College of Nursing, Minna",
+    "ownership_type": "private",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "gamji-college-of-nursing-sciences-kware",
+    "name": "Gamji College of Nursing Sciences, Kware",
+    "ownership_type": "private",
+    "state_id": "sokoto",
+    "country_code": "NG"
+  },
+  {
+    "id": "gateway-college-of-nursing-sciences-port-harcourt",
+    "name": "Gateway College of Nursing Sciences, Port Harcourt",
+    "ownership_type": "private",
+    "state_id": "rivers",
+    "country_code": "NG"
+  },
+  {
+    "id": "grimard-college-of-nursing-sciences-anyigba",
+    "name": "Grimard College of Nursing Sciences, Anyigba",
+    "ownership_type": "private",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "hamdala-college-of-nursing-science-kano",
+    "name": "Hamdala College of Nursing Science, Kano",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "hill-college-of-nursing-science-jos",
+    "name": "Hill College of Nursing Science, Jos",
+    "ownership_type": "private",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "horizon-college-of-nursing-sciences-abuja",
+    "name": "Horizon College of Nursing Sciences, Abuja",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "ideal-college-of-nursing-sciences-jalingo",
+    "name": "Ideal College of Nursing Sciences, Jalingo",
+    "ownership_type": "private",
+    "state_id": "taraba",
+    "country_code": "NG"
+  },
+  {
+    "id": "iman-college-of-nursing-sciences-kano",
+    "name": "Iman College of Nursing Sciences, Kano",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "iqra-college-of-nursing-sciences-dutse",
+    "name": "Iqra College of Nursing Sciences, Dutse",
+    "ownership_type": "private",
+    "state_id": "jigawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "jafad-school-of-nursing-oru-ijebu",
+    "name": "Jala Jalaaluka For Ahad School of Nursing, Oru-Ijebu",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "janet-frank-college-of-nursing-aba",
+    "name": "Janet Frank College of Nursing, Aba",
+    "ownership_type": "private",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "jibape-memorial-college-of-nursing-sciences-jengre",
+    "name": "Jibape Memorial College of Nursing Sciences, Jengre",
+    "ownership_type": "private",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "jigawa-state-college-of-nursing-sciences-birnin-kudu",
+    "name": "Jigawa State College of Nursing Sciences, Birnin Kudu",
+    "ownership_type": "state",
+    "state_id": "jigawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "kariyoma-college-of-nursing-sciences-lafia",
+    "name": "Kariyoma College of Nursing Sciences, Lafia",
+    "ownership_type": "private",
+    "state_id": "nasarawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "katsina-state-college-of-nursing-sciences",
+    "name": "Katsina State College of Nursing Sciences, Katsina",
+    "ownership_type": "state",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "kezia-college-of-nursing-sciences-edo",
+    "name": "Kezia College of Nursing Sciences, Edo",
+    "ownership_type": "private",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "kwara-state-college-of-health-technology-offa",
+    "name": "Kwara State College of Health Technology, Offa",
+    "ownership_type": "state",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "lagos-state-college-of-nursing-and-midwifery-igando",
+    "name": "Lagos State College of Nursing and Midwifery, Igando",
+    "ownership_type": "state",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "lily-college-of-nursing-sciences-warri",
+    "name": "Lily College of Nursing Sciences, Warri",
+    "ownership_type": "private",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "makurdi-college-of-nursing-sciences",
+    "name": "Makurdi College of Nursing Sciences",
+    "ownership_type": "state",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "malami-bunza-college-of-nursing-sciences",
+    "name": "Malami Bunza College of Nursing Sciences",
+    "ownership_type": "private",
+    "state_id": "kebbi",
+    "country_code": "NG"
+  },
+  {
+    "id": "mama-yelwa-college-of-nursing-sciences-misau",
+    "name": "Mama Yelwa College of Nursing Sciences, Misau",
+    "ownership_type": "private",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "manga-college-of-nursing-sciences-zuru",
+    "name": "Manga College of Nursing Sciences, Zuru",
+    "ownership_type": "private",
+    "state_id": "kebbi",
+    "country_code": "NG"
+  },
+  {
+    "id": "margaret-college-of-nursing-sciences-amichi",
+    "name": "Margaret College of Nursing Sciences, Amichi",
+    "ownership_type": "private",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "mary-martha-college-of-nursing-sciences-oleh",
+    "name": "Mary Martha College of Nursing Sciences, Oleh",
+    "ownership_type": "private",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "maurid-college-of-nursing-sciences-uyo",
+    "name": "Maurid College of Nursing Sciences, Uyo",
+    "ownership_type": "private",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "mercy-college-of-nursing-ido-osun",
+    "name": "Mercy College of Nursing, Ido-Osun",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "millennium-college-of-nursing-sciences-awka",
+    "name": "Millennium College of Nursing Sciences, Awka",
+    "ownership_type": "private",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "modibbo-adama-university-teaching-hospital-college-of-nursing-sciences",
+    "name": "Modibbo Adama University Teaching Hospital College of Nursing Sciences, Yola",
+    "ownership_type": "federal",
+    "state_id": "adamawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "muhammad-bn-el-barau-college-of-nursing-sciences-zaria",
+    "name": "Muhammad Bn El-Barau College of Nursing Sciences, Zaria",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "mustapha-umar-college-of-nursing-sciences-biu",
+    "name": "Mustapha Umar College of Nursing Sciences, Biu",
+    "ownership_type": "private",
+    "state_id": "borno",
+    "country_code": "NG"
+  },
+  {
+    "id": "nafisatu-college-of-nursing-sciences-madobi",
+    "name": "Nafisatu College of Nursing Sciences, Madobi",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "nana-college-of-nursing-sciences-anyigba",
+    "name": "Nana College of Nursing Sciences, Anyigba",
+    "ownership_type": "private",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "nana-fatima-umar-college-of-nursing-sciences-kaduna",
+    "name": "Nana Fatima Umar College of Nursing Sciences, Kaduna",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "niger-state-college-of-nursing-sciences-minna",
+    "name": "Niger State College of Nursing Sciences, Minna",
+    "ownership_type": "state",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "nigerian-air-force-college-of-nursing-sciences-kaduna",
+    "name": "Nigerian Air Force College of Nursing Sciences, Kaduna",
+    "ownership_type": "federal",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "nigerian-army-college-of-nursing-yaba",
+    "name": "Nigerian Army College of Nursing, Yaba",
+    "ownership_type": "federal",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "nkst-college-of-nursing-sciences-mkar",
+    "name": "NKST College of Nursing Sciences, Mkar",
+    "ownership_type": "private",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "nnamdi-azikiwe-university-teaching-hospital-college-of-nursing-sciences",
+    "name": "Nnamdi Azikiwe University Teaching Hospital College of Nursing Sciences, Nnewi",
+    "ownership_type": "state",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "north-west-college-of-nursing-sciences-katsina",
+    "name": "North West College of Nursing Sciences, Katsina",
+    "ownership_type": "private",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "oasis-college-of-nursing-sciences-kuje",
+    "name": "Oasis College of Nursing Sciences, Kuje",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "peacock-college-of-nursing-sciences-akure",
+    "name": "Peacock College of Nursing Sciences, Akure",
+    "ownership_type": "private",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "premier-college-of-nursing-sciences-ejigbo",
+    "name": "Premier College of Nursing Sciences, Ejigbo",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "rivers-state-college-of-nursing-sciences-port-harcourt",
+    "name": "Rivers State College of Nursing Sciences, Port Harcourt",
+    "ownership_type": "state",
+    "state_id": "rivers",
+    "country_code": "NG"
+  },
+  {
+    "id": "royal-college-of-nursing-sciences-ebonyi",
+    "name": "Royal College of Nursing Sciences, Ebonyi",
+    "ownership_type": "private",
+    "state_id": "ebonyi",
+    "country_code": "NG"
+  },
+  {
+    "id": "royal-mira-college-of-nursing-agbor",
+    "name": "Royal Mira College of Nursing, Agbor",
+    "ownership_type": "private",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "sacred-heart-hospital-college-of-nursing-sciences-lantoro",
+    "name": "Sacred Heart Hospital College of Nursing Sciences, Lantoro",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "sahad-college-of-nursing-sciences-abuja",
+    "name": "Sahad College of Nursing Sciences, Abuja",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "sajo-college-of-nursing-sciences-birnin-kebbi",
+    "name": "Sajo College of Nursing Sciences, Birnin Kebbi",
+    "ownership_type": "private",
+    "state_id": "kebbi",
+    "country_code": "NG"
+  },
+  {
+    "id": "sancta-maria-college-of-nursing-sciences-auchi",
+    "name": "Sancta Maria College of Nursing Sciences, Auchi",
+    "ownership_type": "private",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "saad-zungur-college-of-nursing-sciences-dass",
+    "name": "Sa’ad Zungur College of Nursing Sciences, Dass",
+    "ownership_type": "state",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "school-of-nursing-abeokuta",
+    "name": "School of Nursing, Abeokuta",
+    "ownership_type": "state",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "school-of-nursing-gusau",
+    "name": "School of Nursing, Gusau",
+    "ownership_type": "state",
+    "state_id": "zamfara",
+    "country_code": "NG"
+  },
+  {
+    "id": "school-of-nursing-ijebu-ode",
+    "name": "School of Nursing, Ijebu-Ode",
+    "ownership_type": "state",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "school-of-nursing-ilaro",
+    "name": "School of Nursing, Ilaro",
+    "ownership_type": "state",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "school-of-nursing-seventh-day-adventist-hospital-ile-ife",
+    "name": "School of Nursing, Seventh-day Adventist Hospital, Ile-Ife",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "soarstar-college-of-nursing-sciences-abah-unor",
+    "name": "Soarstar College of Nursing Sciences, Abah-Unor",
+    "ownership_type": "private",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "st-anna-college-of-nursing-port-harcourt",
+    "name": "St. Anna College of Nursing, Port Harcourt",
+    "ownership_type": "private",
+    "state_id": "rivers",
+    "country_code": "NG"
+  },
+  {
+    "id": "st-anthony-college-of-nursing-sciences-aba",
+    "name": "St. Anthony College of Nursing Sciences, Aba",
+    "ownership_type": "private",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "st-francis-college-of-nursing-sciences-asaba",
+    "name": "St. Francis College of Nursing Sciences, Asaba",
+    "ownership_type": "private",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "st-mathew-college-of-nursing-sciences-irrua",
+    "name": "St. Mathew College of Nursing Sciences, Irrua",
+    "ownership_type": "private",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "st-philomenas-college-of-nursing-sciences-benin",
+    "name": "St. Philomena’s College of Nursing Sciences, Benin City",
+    "ownership_type": "private",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "st-pio-college-of-nursing-asaba",
+    "name": "St. Pio College of Nursing, Asaba",
+    "ownership_type": "private",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "standard-college-of-nursing-minna",
+    "name": "Standard College of Nursing, Minna",
+    "ownership_type": "private",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "sudawa-college-of-nursing-sciences-kano",
+    "name": "Sudawa College of Nursing Sciences, Kano",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "sure-foundation-college-of-nursing-sciences-ikot-akai",
+    "name": "Sure Foundation College of Nursing Sciences, Ikot Akai",
+    "ownership_type": "private",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "umar-bin-khaddabi-college-of-nursing-sciences-kaura-namoda",
+    "name": "Umar Bin Khaddabi College of Nursing Sciences, Kaura Namoda",
+    "ownership_type": "private",
+    "state_id": "zamfara",
+    "country_code": "NG"
+  },
+  {
+    "id": "umar-farouq-bilingual-college-of-nursing-sciences-daura",
+    "name": "Umar Farouq Bilingual College of Nursing Sciences, Daura",
+    "ownership_type": "private",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "ummul-khair-college-of-nursing-sciences-zamfara",
+    "name": "Ummul-Khair College of Nursing Sciences, Zamfara",
+    "ownership_type": "private",
+    "state_id": "zamfara",
+    "country_code": "NG"
+  },
+  {
+    "id": "unique-college-of-nursing-sciences-lagos",
+    "name": "Unique College of Nursing Sciences, Lagos",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "unity-college-of-nursing-sciences-bwari",
+    "name": "Unity College of Nursing Sciences, Bwari",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "university-of-maiduguri-teaching-hospital-college-of-nursing-sciences",
+    "name": "University of Maiduguri Teaching Hospital College of Nursing Sciences, Maiduguri",
+    "ownership_type": "federal",
+    "state_id": "borno",
+    "country_code": "NG"
+  },
+  {
+    "id": "yagongwo-college-of-nursing-sciences-kuje",
+    "name": "Yagongwo College of Nursing Sciences, Kuje",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "yitzhak-college-of-nursing-sciences-port-harcourt",
+    "name": "Yitzhak College of Nursing Sciences, Port Harcourt",
+    "ownership_type": "private",
+    "state_id": "rivers",
+    "country_code": "NG"
+  },
+  {
+    "id": "yobe-state-college-of-nursing-sciences-damaturu",
+    "name": "Yobe State College of Nursing Sciences, Damaturu",
+    "ownership_type": "state",
+    "state_id": "yobe",
+    "country_code": "NG"
+  },
+  {
+    "id": "zenith-college-of-nursing-sciences-maiduguri",
+    "name": "Zenith College of Nursing Sciences, Maiduguri",
+    "ownership_type": "private",
+    "state_id": "borno",
+    "country_code": "NG"
+  }
+]

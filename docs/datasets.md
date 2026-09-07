@@ -219,6 +219,15 @@ Nigeria's reconciled roster of NBTE **Colleges of Health Sciences and Technology
 
 The package contains 98 records: 4 federal, 31 state and 63 private institutions across 33 states. It uses the same five-field roster contract as the other education datasets. Hospital-only schools and institutes are excluded, while nursing and midwifery institutions remain reserved for a separate future dataset. Websites, logos and API integration are intentionally deferred.
 
+### `ng-colleges-of-nursing-and-midwifery`
+
+- Data: `datasets/education/colleges_of_nursing_and_midwifery.json`
+- Schema: `datasets/schemas/education/colleges_of_nursing_and_midwifery.schema.json`
+- Metadata: `datasets/metadata/education/colleges_of_nursing_and_midwifery.json`
+- Reconciliation: `datasets/metadata/education/colleges_of_nursing_and_midwifery_reconciliation.json`
+
+The package contains 176 institution-level records: 13 federal, 57 state and 106 private institutions across 32 states. It uses NMCN's December 2025 approved-schools register as the primary source and aggregates multiple nursing, midwifery, community and post-basic programmes under one independently recognized training institution. University departments, programme-only rows and inactive entries are excluded. This is a roster-only foundation; websites, logos, repository methods and HTTP routes are intentionally deferred.
+
 ## Dataset Principles
 
 - Every dataset should have a stable identifier.

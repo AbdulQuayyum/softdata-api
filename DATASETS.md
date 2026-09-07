@@ -292,6 +292,15 @@ The static foundation contains 31 NBTE Colleges of Agriculture and Related Disci
 
 The static foundation contains 98 NBTE Colleges of Health Sciences and Technology: 4 federal, 31 state and 63 private across 33 states. It exposes only the five roster fields. Hospital-only schools and institutes are excluded, and nursing and midwifery institutions are reserved for a separate future dataset. Website/logo enrichment and API integration are intentionally deferred.
 
+### Colleges of Nursing and Midwifery
+
+- `datasets/education/colleges_of_nursing_and_midwifery.json`
+- `datasets/schemas/education/colleges_of_nursing_and_midwifery.schema.json`
+- `datasets/metadata/education/colleges_of_nursing_and_midwifery.json`
+- `datasets/metadata/education/colleges_of_nursing_and_midwifery_reconciliation.json`
+
+The static foundation contains 176 institution-level records approved by NMCN: 13 federal, 57 state and 106 private across 32 states. Nursing, midwifery, community and post-basic programmes are aggregated under their independently recognized training institution. University departments, programme-only rows and inactive/withdrawn entries are not public records. Website/logo enrichment and API integration are intentionally deferred.
+
 ## Directory Structure
 
 ```text

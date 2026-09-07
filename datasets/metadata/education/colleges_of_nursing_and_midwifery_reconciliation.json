@@ -1,0 +1,1454 @@
+{
+  "dataset_key": "ng-colleges-of-nursing-and-midwifery",
+  "institution_aggregation_policy": "One record per independently recognized institution or separately approved training centre; multiple programmes at one centre are merged.",
+  "source_arithmetic": {
+    "nmcn_raw_entries": 290,
+    "nmcn_programme_duplicates_or_subrows_merged": 114,
+    "nmcn_inactive_or_non_current_entries_excluded": 0,
+    "nmcn_reconciled_institutions": 176,
+    "nbte_relevant_nursing_entries": 0,
+    "cross_source_duplicates_removed": 0,
+    "wrong_category_or_university_entries_excluded": 0,
+    "final_active_institutions": 176
+  },
+  "final_classification_counts": {
+    "retain_active_institution": 176,
+    "merge_programmes_under_institution": 114,
+    "exclude_university_department": 0,
+    "exclude_programme_only": 0,
+    "exclude_withdrawn_or_denied": 0
+  },
+  "source_snapshots": [
+    {
+      "organization": "Nursing and Midwifery Council of Nigeria",
+      "url": "https://nmcn.gov.ng/docs/New_List_of_Approved_Schools_Dec_2025.pdf",
+      "accessed_at": "2026-09-07",
+      "response_bytes": 1126730,
+      "sha256": "a393f9b8d8acebd2c1d3074c44903f00007dd6ae03314c589fac63cb2224e22d",
+      "raw_entries": 290
+    },
+    {
+      "organization": "National Board for Technical Education",
+      "url": "https://web.nbte.gov.ng/sites/default/files/2025-11/25th%20Edition%202025%20Directory.pdf",
+      "accessed_at": "2026-09-07",
+      "response_bytes": 13841731,
+      "sha256": "11c7e9b7e6f63136ae114c1bc8cc6884280c5555aad64a4b17cb705bbbbafcda",
+      "raw_entries": 0
+    }
+  ],
+  "notes": [
+    "The NMCN PDF is the primary roster and includes both institution headers and programme subrows; the source arithmetic is reported separately from the final institution count.",
+    "University nursing departments are excluded from this institution directory; their parent universities remain in the university dataset.",
+    "No unresolved public institution record was imported."
+  ],
+  "records": [
+    {
+      "source_name": "A.B. Na’ibi College of Nursing Sciences, Lau",
+      "canonical_name": "A.B. Na’ibi College of Nursing Sciences, Lau",
+      "ownership_type": "private",
+      "state_id": "taraba",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Abia State College of Nursing Sciences, Amachara",
+      "canonical_name": "Abia State College of Nursing Sciences, Amachara",
+      "ownership_type": "state",
+      "state_id": "abia",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Abia State College of Nursing Sciences, Umuahia",
+      "canonical_name": "Abia State College of Nursing Sciences, Umuahia",
+      "ownership_type": "state",
+      "state_id": "abia",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Abia State University Teaching Hospital College of Nursing Sciences, Aba",
+      "canonical_name": "Abia State University Teaching Hospital College of Nursing Sciences, Aba",
+      "ownership_type": "state",
+      "state_id": "abia",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Achievers College of Nursing Sciences, Owo",
+      "canonical_name": "Achievers College of Nursing Sciences, Owo",
+      "ownership_type": "private",
+      "state_id": "ondo",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Adamawa State College of Nursing Sciences, Yola",
+      "canonical_name": "Adamawa State College of Nursing Sciences, Yola",
+      "ownership_type": "state",
+      "state_id": "adamawa",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Adamu Adamu College of Nursing Sciences, FMC, Azare",
+      "canonical_name": "Adamu Adamu College of Nursing Sciences, FMC, Azare",
+      "ownership_type": "federal",
+      "state_id": "bauchi",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Adventist College of Nursing Sciences, Jengre",
+      "canonical_name": "Adventist College of Nursing Sciences, Jengre",
+      "ownership_type": "private",
+      "state_id": "plateau",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Akwa Ibom State College of Nursing Sciences, Uyo",
+      "canonical_name": "Akwa Ibom State College of Nursing Sciences, Uyo",
+      "ownership_type": "state",
+      "state_id": "akwa-ibom",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Al-Huda College of Nursing, Bauchi",
+      "canonical_name": "Al-Huda College of Nursing, Bauchi",
+      "ownership_type": "private",
+      "state_id": "bauchi",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Al-Madinah College of Nursing Sciences, Zaria",
+      "canonical_name": "Al-Madinah College of Nursing Sciences, Zaria",
+      "ownership_type": "private",
+      "state_id": "kaduna",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Al-Ma’arif College of Nursing Sciences, Potiskum",
+      "canonical_name": "Al-Ma’arif College of Nursing Sciences, Potiskum",
+      "ownership_type": "private",
+      "state_id": "yobe",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Aliko Dangote College of Nursing Sciences, Bauchi",
+      "canonical_name": "Aliko Dangote College of Nursing Sciences, Bauchi",
+      "ownership_type": "state",
+      "state_id": "bauchi",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Ameenatu College of Nursing Sciences, Jigawa",
+      "canonical_name": "Ameenatu College of Nursing Sciences, Jigawa",
+      "ownership_type": "private",
+      "state_id": "jigawa",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Aminu Dabo College of Nursing Sciences, Kano",
+      "canonical_name": "Aminu Dabo College of Nursing Sciences, Kano",
+      "ownership_type": "private",
+      "state_id": "kano",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Anchor College of Nursing Sciences, Asaba",
+      "canonical_name": "Anchor College of Nursing Sciences, Asaba",
+      "ownership_type": "private",
+      "state_id": "delta",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Apex College of Nursing Sciences, Igbo-Ukwu",
+      "canonical_name": "Apex College of Nursing Sciences, Igbo-Ukwu",
+      "ownership_type": "private",
+      "state_id": "anambra",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Archbishop Charles Heerey Memorial College of Nursing Sciences, Aba",
+      "canonical_name": "Archbishop Charles Heerey Memorial College of Nursing Sciences, Aba",
+      "ownership_type": "private",
+      "state_id": "abia",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Bawo College of Nursing Sciences, Daura",
+      "canonical_name": "Bawo College of Nursing Sciences, Daura",
+      "ownership_type": "private",
+      "state_id": "katsina",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Bayelsa State College of Nursing Sciences, Tombia",
+      "canonical_name": "Bayelsa State College of Nursing Sciences, Tombia",
+      "ownership_type": "state",
+      "state_id": "bayelsa",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Ba’illa College of Nursing Sciences, Kaura-Namoda",
+      "canonical_name": "Ba’illa College of Nursing Sciences, Kaura-Namoda",
+      "ownership_type": "private",
+      "state_id": "zamfara",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Belba College of Nursing Sciences, Jigawa",
+      "canonical_name": "Belba College of Nursing Sciences, Jigawa",
+      "ownership_type": "private",
+      "state_id": "jigawa",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Benue State College of Nursing Sciences, Makurdi",
+      "canonical_name": "Benue State College of Nursing Sciences, Makurdi",
+      "ownership_type": "state",
+      "state_id": "benue",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Blessed Martins College of Nursing Sciences, Ebonyi",
+      "canonical_name": "Blessed Martins College of Nursing Sciences, Ebonyi",
+      "ownership_type": "private",
+      "state_id": "ebonyi",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Borno State College of Nursing Sciences, Maiduguri",
+      "canonical_name": "Borno State College of Nursing Sciences, Maiduguri",
+      "ownership_type": "state",
+      "state_id": "borno",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Chep College of Nursing Sciences, Ota",
+      "canonical_name": "Chep College of Nursing Sciences, Ota",
+      "ownership_type": "private",
+      "state_id": "ogun",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Cherish College of Nursing Sciences, Batsari",
+      "canonical_name": "Cherish College of Nursing Sciences, Batsari",
+      "ownership_type": "private",
+      "state_id": "katsina",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Chukwuemeka Odumegwu Ojukwu University Teaching Hospital College of Nursing Sciences, Nkpor",
+      "canonical_name": "Chukwuemeka Odumegwu Ojukwu University Teaching Hospital College of Nursing Sciences, Nkpor",
+      "ownership_type": "state",
+      "state_id": "anambra",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Science, Sokoto",
+      "canonical_name": "College of Nursing Science, Sokoto",
+      "ownership_type": "state",
+      "state_id": "sokoto",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Adazi-Nnukwu",
+      "canonical_name": "College of Nursing Sciences, Adazi-Nnukwu",
+      "ownership_type": "private",
+      "state_id": "anambra",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Ahmadu Bello University Teaching Hospital, Zaria",
+      "canonical_name": "College of Nursing Sciences, Ahmadu Bello University Teaching Hospital, Zaria",
+      "ownership_type": "federal",
+      "state_id": "kaduna",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Akure",
+      "canonical_name": "College of Nursing Sciences, Akure",
+      "ownership_type": "state",
+      "state_id": "ondo",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Alex Ekwueme Federal University Teaching Hospital, Abakaliki",
+      "canonical_name": "College of Nursing Sciences, Alex Ekwueme Federal University Teaching Hospital, Abakaliki",
+      "ownership_type": "federal",
+      "state_id": "ebonyi",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Alor",
+      "canonical_name": "College of Nursing Sciences, Alor",
+      "ownership_type": "private",
+      "state_id": "anambra",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, ATBUTH, Bauchi",
+      "canonical_name": "College of Nursing Sciences, ATBUTH, Bauchi",
+      "ownership_type": "federal",
+      "state_id": "bauchi",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Babura",
+      "canonical_name": "College of Nursing Sciences, Babura",
+      "ownership_type": "private",
+      "state_id": "jigawa",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Birnin Kebbi",
+      "canonical_name": "College of Nursing Sciences, Birnin Kebbi",
+      "ownership_type": "state",
+      "state_id": "kebbi",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Calabar",
+      "canonical_name": "College of Nursing Sciences, Calabar",
+      "ownership_type": "state",
+      "state_id": "cross-river",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Diocesan Hospital, Amichi",
+      "canonical_name": "College of Nursing Sciences, Diocesan Hospital, Amichi",
+      "ownership_type": "private",
+      "state_id": "anambra",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Eket",
+      "canonical_name": "College of Nursing Sciences, Eket",
+      "ownership_type": "state",
+      "state_id": "akwa-ibom",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Federal Medical Centre, Nguru",
+      "canonical_name": "College of Nursing Sciences, Federal Medical Centre, Nguru",
+      "ownership_type": "federal",
+      "state_id": "yobe",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Federal Neuro-Psychiatry Hospital, Kware",
+      "canonical_name": "College of Nursing Sciences, Federal Neuro-Psychiatry Hospital, Kware",
+      "ownership_type": "federal",
+      "state_id": "sokoto",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Gwoza",
+      "canonical_name": "College of Nursing Sciences, Gwoza",
+      "ownership_type": "state",
+      "state_id": "borno",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Hadejia",
+      "canonical_name": "College of Nursing Sciences, Hadejia",
+      "ownership_type": "state",
+      "state_id": "jigawa",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Igbinedion University Teaching Hospital, Okada",
+      "canonical_name": "College of Nursing Sciences, Igbinedion University Teaching Hospital, Okada",
+      "ownership_type": "private",
+      "state_id": "edo",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Ihiala",
+      "canonical_name": "College of Nursing Sciences, Ihiala",
+      "ownership_type": "state",
+      "state_id": "anambra",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Ikot-Ekpene",
+      "canonical_name": "College of Nursing Sciences, Ikot-Ekpene",
+      "ownership_type": "state",
+      "state_id": "akwa-ibom",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Ilorin",
+      "canonical_name": "College of Nursing Sciences, Ilorin",
+      "ownership_type": "state",
+      "state_id": "kwara",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Iquita-Oron",
+      "canonical_name": "College of Nursing Sciences, Iquita-Oron",
+      "ownership_type": "state",
+      "state_id": "akwa-ibom",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Itigidi",
+      "canonical_name": "College of Nursing Sciences, Itigidi",
+      "ownership_type": "state",
+      "state_id": "cross-river",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Ituk-Mbang",
+      "canonical_name": "College of Nursing Sciences, Ituk-Mbang",
+      "ownership_type": "state",
+      "state_id": "akwa-ibom",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Iyi-Enu",
+      "canonical_name": "College of Nursing Sciences, Iyi-Enu",
+      "ownership_type": "private",
+      "state_id": "anambra",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Jahi",
+      "canonical_name": "College of Nursing Sciences, Jahi",
+      "ownership_type": "private",
+      "state_id": "fct",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Kaduna State",
+      "canonical_name": "College of Nursing Sciences, Kaduna State",
+      "ownership_type": "state",
+      "state_id": "kaduna",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Kano",
+      "canonical_name": "College of Nursing Sciences, Kano",
+      "ownership_type": "state",
+      "state_id": "kano",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Kazaure",
+      "canonical_name": "College of Nursing Sciences, Kazaure",
+      "ownership_type": "private",
+      "state_id": "jigawa",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Lafia",
+      "canonical_name": "College of Nursing Sciences, Lafia",
+      "ownership_type": "state",
+      "state_id": "nasarawa",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Lagos University Teaching Hospital, Idi-Araba",
+      "canonical_name": "College of Nursing Sciences, Lagos University Teaching Hospital, Idi-Araba",
+      "ownership_type": "state",
+      "state_id": "lagos",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Mater Misericordiae Hospital, Afikpo",
+      "canonical_name": "College of Nursing Sciences, Mater Misericordiae Hospital, Afikpo",
+      "ownership_type": "private",
+      "state_id": "ebonyi",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Monguno",
+      "canonical_name": "College of Nursing Sciences, Monguno",
+      "ownership_type": "state",
+      "state_id": "borno",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, National Orthopaedic Hospital, Igbobi",
+      "canonical_name": "College of Nursing Sciences, National Orthopaedic Hospital, Igbobi",
+      "ownership_type": "federal",
+      "state_id": "lagos",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Obafemi Awolowo University Teaching Hospitals Complex, Osogbo",
+      "canonical_name": "College of Nursing Sciences, Obafemi Awolowo University Teaching Hospitals Complex, Osogbo",
+      "ownership_type": "federal",
+      "state_id": "osun",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Obohia-Ndoki",
+      "canonical_name": "College of Nursing Sciences, Obohia-Ndoki",
+      "ownership_type": "private",
+      "state_id": "abia",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Obudu",
+      "canonical_name": "College of Nursing Sciences, Obudu",
+      "ownership_type": "state",
+      "state_id": "cross-river",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Oke-Ode",
+      "canonical_name": "College of Nursing Sciences, Oke-Ode",
+      "ownership_type": "state",
+      "state_id": "kwara",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Okunland",
+      "canonical_name": "College of Nursing Sciences, Okunland",
+      "ownership_type": "private",
+      "state_id": "kogi",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Our Lady of Apostles Hospital, Jos",
+      "canonical_name": "College of Nursing Sciences, Our Lady of Apostles Hospital, Jos",
+      "ownership_type": "private",
+      "state_id": "plateau",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Plateau State",
+      "canonical_name": "College of Nursing Sciences, Plateau State",
+      "ownership_type": "state",
+      "state_id": "plateau",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, St. Camillus Hospital, Uromi",
+      "canonical_name": "College of Nursing Sciences, St. Camillus Hospital, Uromi",
+      "ownership_type": "private",
+      "state_id": "edo",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, St. Gerard’s Catholic Hospital, Kakuri",
+      "canonical_name": "College of Nursing Sciences, St. Gerard’s Catholic Hospital, Kakuri",
+      "ownership_type": "private",
+      "state_id": "kaduna",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, St. Louis Hospital, Zonkwa",
+      "canonical_name": "College of Nursing Sciences, St. Louis Hospital, Zonkwa",
+      "ownership_type": "private",
+      "state_id": "kaduna",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, St. Luke’s Anglican Hospital, Wusasa",
+      "canonical_name": "College of Nursing Sciences, St. Luke’s Anglican Hospital, Wusasa",
+      "ownership_type": "private",
+      "state_id": "kaduna",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, St. Margaret’s Hospital, Calabar",
+      "canonical_name": "College of Nursing Sciences, St. Margaret’s Hospital, Calabar",
+      "ownership_type": "private",
+      "state_id": "cross-river",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Tambuwal",
+      "canonical_name": "College of Nursing Sciences, Tambuwal",
+      "ownership_type": "state",
+      "state_id": "sokoto",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, Uburu",
+      "canonical_name": "College of Nursing Sciences, Uburu",
+      "ownership_type": "state",
+      "state_id": "ebonyi",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, University of Benin Teaching Hospital, Benin City",
+      "canonical_name": "College of Nursing Sciences, University of Benin Teaching Hospital, Benin City",
+      "ownership_type": "federal",
+      "state_id": "edo",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing Sciences, University of Port Harcourt Teaching Hospital",
+      "canonical_name": "College of Nursing Sciences, University of Port Harcourt Teaching Hospital",
+      "ownership_type": "state",
+      "state_id": "rivers",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing, Obangede",
+      "canonical_name": "College of Nursing, Obangede",
+      "ownership_type": "state",
+      "state_id": "kogi",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing, St. Charles Borromeo Hospital, Onitsha",
+      "canonical_name": "College of Nursing, St. Charles Borromeo Hospital, Onitsha",
+      "ownership_type": "private",
+      "state_id": "anambra",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "College of Nursing, United Evangelical Church Mission, Ochadamu",
+      "canonical_name": "College of Nursing, United Evangelical Church Mission, Ochadamu",
+      "ownership_type": "private",
+      "state_id": "kogi",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Cross River State College of Nursing Sciences",
+      "canonical_name": "Cross River State College of Nursing Sciences",
+      "ownership_type": "state",
+      "state_id": "cross-river",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Dako College of Nursing and Midwifery, Suleja",
+      "canonical_name": "Dako College of Nursing and Midwifery, Suleja",
+      "ownership_type": "private",
+      "state_id": "niger",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Dankoli Abdulrashid College of Nursing, Kaduna",
+      "canonical_name": "Dankoli Abdulrashid College of Nursing, Kaduna",
+      "ownership_type": "private",
+      "state_id": "kaduna",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Dansharif College of Nursing Sciences, Kano",
+      "canonical_name": "Dansharif College of Nursing Sciences, Kano",
+      "ownership_type": "private",
+      "state_id": "kano",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Delta State College of Nursing Sciences, Agbor",
+      "canonical_name": "Delta State College of Nursing Sciences, Agbor",
+      "ownership_type": "state",
+      "state_id": "delta",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Delta State College of Nursing Sciences, Asaba",
+      "canonical_name": "Delta State College of Nursing Sciences, Asaba",
+      "ownership_type": "state",
+      "state_id": "delta",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Delta State College of Nursing Sciences, Eku",
+      "canonical_name": "Delta State College of Nursing Sciences, Eku",
+      "ownership_type": "state",
+      "state_id": "delta",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Delta State College of Nursing Sciences, Sapele",
+      "canonical_name": "Delta State College of Nursing Sciences, Sapele",
+      "ownership_type": "state",
+      "state_id": "delta",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Delta State College of Nursing Sciences, Warri",
+      "canonical_name": "Delta State College of Nursing Sciences, Warri",
+      "ownership_type": "state",
+      "state_id": "delta",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Eastern Oak College of Nursing Sciences, Ebonyi",
+      "canonical_name": "Eastern Oak College of Nursing Sciences, Ebonyi",
+      "ownership_type": "private",
+      "state_id": "ebonyi",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "ECWA School of Basic Midwifery, Egbe",
+      "canonical_name": "ECWA School of Basic Midwifery, Egbe",
+      "ownership_type": "private",
+      "state_id": "kogi",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "ECWA School of Nursing, Egbe",
+      "canonical_name": "ECWA School of Nursing, Egbe",
+      "ownership_type": "private",
+      "state_id": "kogi",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Edo State College of Nursing Sciences, Benin",
+      "canonical_name": "Edo State College of Nursing Sciences, Benin",
+      "ownership_type": "state",
+      "state_id": "edo",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Emirate College of Nursing Sciences, Kano",
+      "canonical_name": "Emirate College of Nursing Sciences, Kano",
+      "ownership_type": "private",
+      "state_id": "kano",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "EssEMM College of Nursing Sciences, Katsina",
+      "canonical_name": "EssEMM College of Nursing Sciences, Katsina",
+      "ownership_type": "private",
+      "state_id": "katsina",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Fatima College of Nursing Sciences, Sifawa",
+      "canonical_name": "Fatima College of Nursing Sciences, Sifawa",
+      "ownership_type": "private",
+      "state_id": "sokoto",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "FCT College of Nursing Sciences, Gwagwalada",
+      "canonical_name": "FCT College of Nursing Sciences, Gwagwalada",
+      "ownership_type": "state",
+      "state_id": "fct",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Flagship College of Nursing Sciences, Kano",
+      "canonical_name": "Flagship College of Nursing Sciences, Kano",
+      "ownership_type": "private",
+      "state_id": "kano",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Florence Nightingale College of Nursing, Jos",
+      "canonical_name": "Florence Nightingale College of Nursing, Jos",
+      "ownership_type": "private",
+      "state_id": "plateau",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Galaxy College of Nursing, Minna",
+      "canonical_name": "Galaxy College of Nursing, Minna",
+      "ownership_type": "private",
+      "state_id": "niger",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Gamji College of Nursing Sciences, Kware",
+      "canonical_name": "Gamji College of Nursing Sciences, Kware",
+      "ownership_type": "private",
+      "state_id": "sokoto",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Gateway College of Nursing Sciences, Port Harcourt",
+      "canonical_name": "Gateway College of Nursing Sciences, Port Harcourt",
+      "ownership_type": "private",
+      "state_id": "rivers",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Grimard College of Nursing Sciences, Anyigba",
+      "canonical_name": "Grimard College of Nursing Sciences, Anyigba",
+      "ownership_type": "private",
+      "state_id": "kogi",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Hamdala College of Nursing Science, Kano",
+      "canonical_name": "Hamdala College of Nursing Science, Kano",
+      "ownership_type": "private",
+      "state_id": "kano",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Hill College of Nursing Science, Jos",
+      "canonical_name": "Hill College of Nursing Science, Jos",
+      "ownership_type": "private",
+      "state_id": "plateau",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Horizon College of Nursing Sciences, Abuja",
+      "canonical_name": "Horizon College of Nursing Sciences, Abuja",
+      "ownership_type": "private",
+      "state_id": "fct",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Ideal College of Nursing Sciences, Jalingo",
+      "canonical_name": "Ideal College of Nursing Sciences, Jalingo",
+      "ownership_type": "private",
+      "state_id": "taraba",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Iman College of Nursing Sciences, Kano",
+      "canonical_name": "Iman College of Nursing Sciences, Kano",
+      "ownership_type": "private",
+      "state_id": "kano",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Iqra College of Nursing Sciences, Dutse",
+      "canonical_name": "Iqra College of Nursing Sciences, Dutse",
+      "ownership_type": "private",
+      "state_id": "jigawa",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Jala Jalaaluka For Ahad School of Nursing, Oru-Ijebu",
+      "canonical_name": "Jala Jalaaluka For Ahad School of Nursing, Oru-Ijebu",
+      "ownership_type": "private",
+      "state_id": "ogun",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Janet Frank College of Nursing, Aba",
+      "canonical_name": "Janet Frank College of Nursing, Aba",
+      "ownership_type": "private",
+      "state_id": "abia",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Jibape Memorial College of Nursing Sciences, Jengre",
+      "canonical_name": "Jibape Memorial College of Nursing Sciences, Jengre",
+      "ownership_type": "private",
+      "state_id": "plateau",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Jigawa State College of Nursing Sciences, Birnin Kudu",
+      "canonical_name": "Jigawa State College of Nursing Sciences, Birnin Kudu",
+      "ownership_type": "state",
+      "state_id": "jigawa",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Kariyoma College of Nursing Sciences, Lafia",
+      "canonical_name": "Kariyoma College of Nursing Sciences, Lafia",
+      "ownership_type": "private",
+      "state_id": "nasarawa",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Katsina State College of Nursing Sciences, Katsina",
+      "canonical_name": "Katsina State College of Nursing Sciences, Katsina",
+      "ownership_type": "state",
+      "state_id": "katsina",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Kezia College of Nursing Sciences, Edo",
+      "canonical_name": "Kezia College of Nursing Sciences, Edo",
+      "ownership_type": "private",
+      "state_id": "edo",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Kwara State College of Health Technology, Offa",
+      "canonical_name": "Kwara State College of Health Technology, Offa",
+      "ownership_type": "state",
+      "state_id": "kwara",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Lagos State College of Nursing and Midwifery, Igando",
+      "canonical_name": "Lagos State College of Nursing and Midwifery, Igando",
+      "ownership_type": "state",
+      "state_id": "lagos",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Lily College of Nursing Sciences, Warri",
+      "canonical_name": "Lily College of Nursing Sciences, Warri",
+      "ownership_type": "private",
+      "state_id": "delta",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Makurdi College of Nursing Sciences",
+      "canonical_name": "Makurdi College of Nursing Sciences",
+      "ownership_type": "state",
+      "state_id": "benue",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Malami Bunza College of Nursing Sciences",
+      "canonical_name": "Malami Bunza College of Nursing Sciences",
+      "ownership_type": "private",
+      "state_id": "kebbi",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Mama Yelwa College of Nursing Sciences, Misau",
+      "canonical_name": "Mama Yelwa College of Nursing Sciences, Misau",
+      "ownership_type": "private",
+      "state_id": "bauchi",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Manga College of Nursing Sciences, Zuru",
+      "canonical_name": "Manga College of Nursing Sciences, Zuru",
+      "ownership_type": "private",
+      "state_id": "kebbi",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Margaret College of Nursing Sciences, Amichi",
+      "canonical_name": "Margaret College of Nursing Sciences, Amichi",
+      "ownership_type": "private",
+      "state_id": "anambra",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Mary Martha College of Nursing Sciences, Oleh",
+      "canonical_name": "Mary Martha College of Nursing Sciences, Oleh",
+      "ownership_type": "private",
+      "state_id": "delta",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Maurid College of Nursing Sciences, Uyo",
+      "canonical_name": "Maurid College of Nursing Sciences, Uyo",
+      "ownership_type": "private",
+      "state_id": "akwa-ibom",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Mercy College of Nursing, Ido-Osun",
+      "canonical_name": "Mercy College of Nursing, Ido-Osun",
+      "ownership_type": "private",
+      "state_id": "osun",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Millennium College of Nursing Sciences, Awka",
+      "canonical_name": "Millennium College of Nursing Sciences, Awka",
+      "ownership_type": "private",
+      "state_id": "anambra",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Modibbo Adama University Teaching Hospital College of Nursing Sciences, Yola",
+      "canonical_name": "Modibbo Adama University Teaching Hospital College of Nursing Sciences, Yola",
+      "ownership_type": "federal",
+      "state_id": "adamawa",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Muhammad Bn El-Barau College of Nursing Sciences, Zaria",
+      "canonical_name": "Muhammad Bn El-Barau College of Nursing Sciences, Zaria",
+      "ownership_type": "private",
+      "state_id": "kaduna",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Mustapha Umar College of Nursing Sciences, Biu",
+      "canonical_name": "Mustapha Umar College of Nursing Sciences, Biu",
+      "ownership_type": "private",
+      "state_id": "borno",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Nafisatu College of Nursing Sciences, Madobi",
+      "canonical_name": "Nafisatu College of Nursing Sciences, Madobi",
+      "ownership_type": "private",
+      "state_id": "kano",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Nana College of Nursing Sciences, Anyigba",
+      "canonical_name": "Nana College of Nursing Sciences, Anyigba",
+      "ownership_type": "private",
+      "state_id": "kogi",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Nana Fatima Umar College of Nursing Sciences, Kaduna",
+      "canonical_name": "Nana Fatima Umar College of Nursing Sciences, Kaduna",
+      "ownership_type": "private",
+      "state_id": "kaduna",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Niger State College of Nursing Sciences, Minna",
+      "canonical_name": "Niger State College of Nursing Sciences, Minna",
+      "ownership_type": "state",
+      "state_id": "niger",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Nigerian Air Force College of Nursing Sciences, Kaduna",
+      "canonical_name": "Nigerian Air Force College of Nursing Sciences, Kaduna",
+      "ownership_type": "federal",
+      "state_id": "kaduna",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Nigerian Army College of Nursing, Yaba",
+      "canonical_name": "Nigerian Army College of Nursing, Yaba",
+      "ownership_type": "federal",
+      "state_id": "lagos",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "NKST College of Nursing Sciences, Mkar",
+      "canonical_name": "NKST College of Nursing Sciences, Mkar",
+      "ownership_type": "private",
+      "state_id": "benue",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Nnamdi Azikiwe University Teaching Hospital College of Nursing Sciences, Nnewi",
+      "canonical_name": "Nnamdi Azikiwe University Teaching Hospital College of Nursing Sciences, Nnewi",
+      "ownership_type": "state",
+      "state_id": "anambra",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "North West College of Nursing Sciences, Katsina",
+      "canonical_name": "North West College of Nursing Sciences, Katsina",
+      "ownership_type": "private",
+      "state_id": "katsina",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Oasis College of Nursing Sciences, Kuje",
+      "canonical_name": "Oasis College of Nursing Sciences, Kuje",
+      "ownership_type": "private",
+      "state_id": "fct",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Peacock College of Nursing Sciences, Akure",
+      "canonical_name": "Peacock College of Nursing Sciences, Akure",
+      "ownership_type": "private",
+      "state_id": "ondo",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Premier College of Nursing Sciences, Ejigbo",
+      "canonical_name": "Premier College of Nursing Sciences, Ejigbo",
+      "ownership_type": "private",
+      "state_id": "osun",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Rivers State College of Nursing Sciences, Port Harcourt",
+      "canonical_name": "Rivers State College of Nursing Sciences, Port Harcourt",
+      "ownership_type": "state",
+      "state_id": "rivers",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Royal College of Nursing Sciences, Ebonyi",
+      "canonical_name": "Royal College of Nursing Sciences, Ebonyi",
+      "ownership_type": "private",
+      "state_id": "ebonyi",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Royal Mira College of Nursing, Agbor",
+      "canonical_name": "Royal Mira College of Nursing, Agbor",
+      "ownership_type": "private",
+      "state_id": "delta",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Sacred Heart Hospital College of Nursing Sciences, Lantoro",
+      "canonical_name": "Sacred Heart Hospital College of Nursing Sciences, Lantoro",
+      "ownership_type": "private",
+      "state_id": "ogun",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Sahad College of Nursing Sciences, Abuja",
+      "canonical_name": "Sahad College of Nursing Sciences, Abuja",
+      "ownership_type": "private",
+      "state_id": "fct",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Sajo College of Nursing Sciences, Birnin Kebbi",
+      "canonical_name": "Sajo College of Nursing Sciences, Birnin Kebbi",
+      "ownership_type": "private",
+      "state_id": "kebbi",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Sancta Maria College of Nursing Sciences, Auchi",
+      "canonical_name": "Sancta Maria College of Nursing Sciences, Auchi",
+      "ownership_type": "private",
+      "state_id": "edo",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Sa’ad Zungur College of Nursing Sciences, Dass",
+      "canonical_name": "Sa’ad Zungur College of Nursing Sciences, Dass",
+      "ownership_type": "state",
+      "state_id": "bauchi",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "School of Nursing, Abeokuta",
+      "canonical_name": "School of Nursing, Abeokuta",
+      "ownership_type": "state",
+      "state_id": "ogun",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "School of Nursing, Gusau",
+      "canonical_name": "School of Nursing, Gusau",
+      "ownership_type": "state",
+      "state_id": "zamfara",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "School of Nursing, Ijebu-Ode",
+      "canonical_name": "School of Nursing, Ijebu-Ode",
+      "ownership_type": "state",
+      "state_id": "ogun",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "School of Nursing, Ilaro",
+      "canonical_name": "School of Nursing, Ilaro",
+      "ownership_type": "state",
+      "state_id": "ogun",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "School of Nursing, Seventh-day Adventist Hospital, Ile-Ife",
+      "canonical_name": "School of Nursing, Seventh-day Adventist Hospital, Ile-Ife",
+      "ownership_type": "private",
+      "state_id": "osun",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Soarstar College of Nursing Sciences, Abah-Unor",
+      "canonical_name": "Soarstar College of Nursing Sciences, Abah-Unor",
+      "ownership_type": "private",
+      "state_id": "delta",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "St. Anna College of Nursing, Port Harcourt",
+      "canonical_name": "St. Anna College of Nursing, Port Harcourt",
+      "ownership_type": "private",
+      "state_id": "rivers",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "St. Anthony College of Nursing Sciences, Aba",
+      "canonical_name": "St. Anthony College of Nursing Sciences, Aba",
+      "ownership_type": "private",
+      "state_id": "abia",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "St. Francis College of Nursing Sciences, Asaba",
+      "canonical_name": "St. Francis College of Nursing Sciences, Asaba",
+      "ownership_type": "private",
+      "state_id": "delta",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "St. Mathew College of Nursing Sciences, Irrua",
+      "canonical_name": "St. Mathew College of Nursing Sciences, Irrua",
+      "ownership_type": "private",
+      "state_id": "edo",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "St. Philomena’s College of Nursing Sciences, Benin City",
+      "canonical_name": "St. Philomena’s College of Nursing Sciences, Benin City",
+      "ownership_type": "private",
+      "state_id": "edo",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "St. Pio College of Nursing, Asaba",
+      "canonical_name": "St. Pio College of Nursing, Asaba",
+      "ownership_type": "private",
+      "state_id": "delta",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Standard College of Nursing, Minna",
+      "canonical_name": "Standard College of Nursing, Minna",
+      "ownership_type": "private",
+      "state_id": "niger",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Sudawa College of Nursing Sciences, Kano",
+      "canonical_name": "Sudawa College of Nursing Sciences, Kano",
+      "ownership_type": "private",
+      "state_id": "kano",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Sure Foundation College of Nursing Sciences, Ikot Akai",
+      "canonical_name": "Sure Foundation College of Nursing Sciences, Ikot Akai",
+      "ownership_type": "private",
+      "state_id": "akwa-ibom",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Umar Bin Khaddabi College of Nursing Sciences, Kaura Namoda",
+      "canonical_name": "Umar Bin Khaddabi College of Nursing Sciences, Kaura Namoda",
+      "ownership_type": "private",
+      "state_id": "zamfara",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Umar Farouq Bilingual College of Nursing Sciences, Daura",
+      "canonical_name": "Umar Farouq Bilingual College of Nursing Sciences, Daura",
+      "ownership_type": "private",
+      "state_id": "katsina",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Ummul-Khair College of Nursing Sciences, Zamfara",
+      "canonical_name": "Ummul-Khair College of Nursing Sciences, Zamfara",
+      "ownership_type": "private",
+      "state_id": "zamfara",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Unique College of Nursing Sciences, Lagos",
+      "canonical_name": "Unique College of Nursing Sciences, Lagos",
+      "ownership_type": "private",
+      "state_id": "lagos",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Unity College of Nursing Sciences, Bwari",
+      "canonical_name": "Unity College of Nursing Sciences, Bwari",
+      "ownership_type": "private",
+      "state_id": "fct",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "University of Maiduguri Teaching Hospital College of Nursing Sciences, Maiduguri",
+      "canonical_name": "University of Maiduguri Teaching Hospital College of Nursing Sciences, Maiduguri",
+      "ownership_type": "federal",
+      "state_id": "borno",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Yagongwo College of Nursing Sciences, Kuje",
+      "canonical_name": "Yagongwo College of Nursing Sciences, Kuje",
+      "ownership_type": "private",
+      "state_id": "fct",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Yitzhak College of Nursing Sciences, Port Harcourt",
+      "canonical_name": "Yitzhak College of Nursing Sciences, Port Harcourt",
+      "ownership_type": "private",
+      "state_id": "rivers",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Yobe State College of Nursing Sciences, Damaturu",
+      "canonical_name": "Yobe State College of Nursing Sciences, Damaturu",
+      "ownership_type": "state",
+      "state_id": "yobe",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    },
+    {
+      "source_name": "Zenith College of Nursing Sciences, Maiduguri",
+      "canonical_name": "Zenith College of Nursing Sciences, Maiduguri",
+      "ownership_type": "private",
+      "state_id": "borno",
+      "decision": "retain_active_institution",
+      "reason": "Retained as a current institution-level NMCN-approved training centre; programmes are aggregated under this record."
+    }
+  ]
+}
