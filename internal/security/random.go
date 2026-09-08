@@ -31,7 +31,15 @@ func secureRandomString(length int) (string, error) {
 }
 
 func newTokenID() (string, error) {
-	return secureRandomString(16)
+	buf, err := secureRandomBytes(16)
+	if err != nil {
+		return "", err
+	}
+	// sessions.access_token_jti is a PostgreSQL UUID. Generate a random
+	// version-4 UUID so login and refresh can persist the signed token's ID.
+	buf[6] = (buf[6] & 0x0f) | 0x40
+	buf[8] = (buf[8] & 0x3f) | 0x80
+	return fmt.Sprintf("%x-%x-%x-%x-%x", buf[:4], buf[4:6], buf[6:8], buf[8:10], buf[10:]), nil
 }
 
 func GenerateRefreshToken() (string, string, error) {
