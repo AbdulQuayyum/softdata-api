@@ -76,7 +76,7 @@ func (s *HealthFacilityService) GetHealthFacility(ctx context.Context, id string
 		return models.HealthFacility{}, err
 	}
 	id = strings.TrimSpace(id)
-	if id == "" || len(id) > 128 || !healthFacilityServiceIDPattern.MatchString(id) {
+	if id == "" || !healthFacilityServiceIDPattern.MatchString(id) {
 		return models.HealthFacility{}, ErrInvalidHealthFacilityID
 	}
 	facility, err := s.repository.GetHealthFacility(ctx, id)

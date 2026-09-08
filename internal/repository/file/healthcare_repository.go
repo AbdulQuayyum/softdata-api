@@ -304,7 +304,7 @@ func validateHealthFacilityRecords(ctx context.Context, records []models.HealthF
 				return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
 			}
 		}
-		if facility.OperationalStatus != "" || strings.TrimSpace(facility.Name) != facility.Name || strings.TrimSpace(facility.SourceFacilityID) != facility.SourceFacilityID {
+		if strings.TrimSpace(facility.Name) != facility.Name || strings.TrimSpace(facility.SourceFacilityID) != facility.SourceFacilityID {
 			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
 		}
 		if _, ok := stateIDs[facility.StateID]; !ok {

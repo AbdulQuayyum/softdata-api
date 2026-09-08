@@ -76,15 +76,6 @@
           "type": "string",
           "minLength": 1
         },
-        "operational_status": {
-          "type": "string",
-          "enum": [
-            "operational",
-            "temporarily-closed",
-            "closed",
-            "unknown"
-          ]
-        },
         "latitude": {
           "type": "number",
           "minimum": 4.281710,

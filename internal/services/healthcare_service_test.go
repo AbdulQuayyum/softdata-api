@@ -2,13 +2,45 @@ package services
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
+	"os"
 	"strings"
 	"testing"
 
 	"github.com/AbdulQuayyum/softdata-api/internal/models"
+	fileRepo "github.com/AbdulQuayyum/softdata-api/internal/repository/file"
 	"github.com/AbdulQuayyum/softdata-api/internal/repository/interfaces"
 )
+
+func TestHealthFacilityServiceRetrievesEveryPublishedID(t *testing.T) {
+	data, err := os.ReadFile("../../datasets/healthcare/health_facilities.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var facilities []models.HealthFacility
+	if err := json.Unmarshal(data, &facilities); err != nil {
+		t.Fatal(err)
+	}
+	jsonRepository, err := fileRepo.NewJSONRepository("../../datasets", 64<<20)
+	if err != nil {
+		t.Fatal(err)
+	}
+	repository, err := fileRepo.NewHealthFacilityRepository(jsonRepository, "healthcare/health_facilities.json", "geography/states.json", "geography/lgas.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	service, err := NewHealthFacilityService(repository)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, facility := range facilities {
+		got, err := service.GetHealthFacility(context.Background(), facility.ID)
+		if err != nil || got.ID != facility.ID {
+			t.Fatalf("published ID %q is not retrievable: got %q, error %v", facility.ID, got.ID, err)
+		}
+	}
+}
 
 type healthFacilityServiceRepositoryStub struct {
 	listResult interfaces.HealthFacilityListResult

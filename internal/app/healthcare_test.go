@@ -5,9 +5,33 @@ import (
 	"errors"
 	"testing"
 
+	"github.com/AbdulQuayyum/softdata-api/datasets"
 	"github.com/AbdulQuayyum/softdata-api/internal/models"
+	fileRepo "github.com/AbdulQuayyum/softdata-api/internal/repository/file"
 	"github.com/AbdulQuayyum/softdata-api/internal/repository/interfaces"
+	"github.com/AbdulQuayyum/softdata-api/internal/services"
 )
+
+func TestVerifyHealthFacilityEmbeddedDataset(t *testing.T) {
+	jsonRepository, err := fileRepo.NewEmbeddedJSONRepository(datasets.Files(), 64<<20)
+	if err != nil {
+		t.Fatal(err)
+	}
+	repository, err := fileRepo.NewHealthFacilityRepository(jsonRepository, "healthcare/health_facilities.json", "geography/states.json", "geography/lgas.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	service, err := services.NewHealthFacilityService(repository)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := verifyHealthFacilityDataset(context.Background(), service); err != nil {
+		t.Fatalf("embedded healthcare startup verification: %v", err)
+	}
+	if _, err := datasets.Files().Open("metadata/healthcare/health_facilities_reconciliation/index.json"); err == nil {
+		t.Fatal("reconciliation metadata must not be embedded for runtime")
+	}
+}
 
 type startupHealthFacilityStub struct {
 	first    interfaces.HealthFacilityListResult

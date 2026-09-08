@@ -186,6 +186,7 @@ func TestHealthFacilityRepositoryRejectsMalformedTrailingAndUnknownJSON(t *testi
 		{name: "malformed", body: "["},
 		{name: "trailing", body: "[] []"},
 		{name: "unknown field", body: `[{"unexpected":true}]`},
+		{name: "operational status", body: `[{"operational_status":"operational"}]`},
 	} {
 		t.Run(test.name, func(t *testing.T) {
 			root := t.TempDir()

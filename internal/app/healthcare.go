@@ -108,9 +108,6 @@ func validateStartupHealthFacility(facility models.HealthFacility) error {
 	if facility.Latitude == nil || facility.Longitude == nil || *facility.Latitude < 4.281710 || *facility.Latitude > 13.865239 || *facility.Longitude < 2.707790 || *facility.Longitude > 14.636383 {
 		return invalidHealthFacilityVerification("invalid first facility coordinates")
 	}
-	if facility.OperationalStatus != "" {
-		return invalidHealthFacilityVerification("unexpected operational status")
-	}
 	return nil
 }
 
