@@ -29,6 +29,8 @@ func benchmarkSchoolRepository(b *testing.B) *EducationFileRepository {
 		"education/monotechnics.json",
 		"education/colleges_of_agriculture.json",
 		"education/colleges_of_health_sciences_and_technology.json",
+		"education/colleges_of_nursing_and_midwifery.json",
+		"education/technical_colleges.json",
 		"education/vocational_enterprise_institutions.json",
 		"education/primary_and_secondary_schools.json",
 	)

@@ -101,7 +101,7 @@ Regulated-finance logo assets are embedded under `assets/financial-institutions/
 - `education/vocational_enterprise_institutions.json` is the 25-record static catalogue of current Digital NBTE-listed Vocational Enterprise Institutions. It excludes Skill Training Centers, Master Craft Persons and abolished or upgraded IEIs.
 - `education/colleges_of_agriculture.json` is the 31-record static catalogue of NBTE Colleges of Agriculture and Related Disciplines.
 - `education/colleges_of_health_sciences_and_technology.json` is the 98-record static catalogue of NBTE Colleges of Health Sciences and Technology.
-- `education/colleges_of_nursing_and_midwifery.json` is a 156-record NMCN December 2025 approved-schools snapshot across 32 states. It is not a complete live register; 220 unresolved extracted rows are explicitly excluded in the reconciliation manifest.
+- `education/colleges_of_nursing_and_midwifery.json` is a 152-record NMCN December 2025 approved-schools snapshot across 31 states. It is not a complete live register; 188 unresolved extracted rows are explicitly excluded in the reconciliation manifest.
 - `education/technical_colleges.json` is a 115-record NBTE Technical Colleges directory snapshot. The source page exposes 122 numbered entries while NBTE separately reports 153 institutions; the difference is documented and no institutions are inferred.
 - `education/universities.json` is the compiled catalogue of current NUC-listed Nigerian universities.
 - `education/primary_and_secondary_schools.json` is the 166,604-record UBEC 2022 source-observed school/campus snapshot. It is not a current licensing register; its reconciliation preserves every source row and explicitly quarantines 69 ambiguous Osun geography rows.

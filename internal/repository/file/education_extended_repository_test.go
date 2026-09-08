@@ -49,6 +49,16 @@ func TestEducationRepositoryNewSmallDatasets(t *testing.T) {
 		fixture := loadEducationSlice[models.CollegeOfHealthSciencesAndTechnology](t, "../../../datasets/education/colleges_of_health_sciences_and_technology.json")
 		runInstitutionDatasetSpec(t, "health", "education/colleges_of_health_sciences_and_technology.json", interfaces.ErrCollegeOfHealthSciencesAndTechnologyNotFound, fixture)
 	})
+	t.Run("nursing", func(t *testing.T) {
+		t.Parallel()
+		fixture := loadEducationSlice[models.CollegeOfNursingAndMidwifery](t, "../../../datasets/education/colleges_of_nursing_and_midwifery.json")
+		runInstitutionDatasetSpec(t, "nursing", "education/colleges_of_nursing_and_midwifery.json", interfaces.ErrCollegeOfNursingAndMidwiferyNotFound, fixture)
+	})
+	t.Run("technical", func(t *testing.T) {
+		t.Parallel()
+		fixture := loadEducationSlice[models.TechnicalCollege](t, "../../../datasets/education/technical_colleges.json")
+		runInstitutionDatasetSpec(t, "technical", "education/technical_colleges.json", interfaces.ErrTechnicalCollegeNotFound, fixture)
+	})
 	t.Run("vei", func(t *testing.T) {
 		t.Parallel()
 		fixture := loadEducationSlice[models.VocationalEnterpriseInstitution](t, "../../../datasets/education/vocational_enterprise_institutions.json")
@@ -122,7 +132,8 @@ func runInstitutionDatasetSpec[T any](t *testing.T, name, path string, notFound 
 	}
 	repo, err = NewEducationRepository(stub, "education/universities.json", "education/colleges_of_education.json",
 		"education/polytechnics.json", "education/monotechnics.json", "education/colleges_of_agriculture.json",
-		"education/colleges_of_health_sciences_and_technology.json", "education/vocational_enterprise_institutions.json",
+		"education/colleges_of_health_sciences_and_technology.json", "education/colleges_of_nursing_and_midwifery.json",
+		"education/technical_colleges.json", "education/vocational_enterprise_institutions.json",
 		"education/primary_and_secondary_schools.json")
 	if err != nil {
 		t.Fatalf("NewEducationRepository() error = %v", err)
@@ -220,7 +231,8 @@ func runInstitutionDatasetSpec[T any](t *testing.T, name, path string, notFound 
 		}
 		repo, err := NewEducationRepository(jsonRepo, "education/universities.json", "education/colleges_of_education.json",
 			"education/polytechnics.json", "education/monotechnics.json", "education/colleges_of_agriculture.json",
-			"education/colleges_of_health_sciences_and_technology.json", "education/vocational_enterprise_institutions.json",
+			"education/colleges_of_health_sciences_and_technology.json", "education/colleges_of_nursing_and_midwifery.json",
+			"education/technical_colleges.json", "education/vocational_enterprise_institutions.json",
 			"education/primary_and_secondary_schools.json")
 		if err != nil {
 			t.Fatalf("NewEducationRepository() error = %v", err)
@@ -255,7 +267,8 @@ func mustNewEducationRepositoryWithDatasetStub[T any](t *testing.T, path string,
 
 	repo, err := NewEducationRepository(stub, "education/universities.json", "education/colleges_of_education.json",
 		"education/polytechnics.json", "education/monotechnics.json", "education/colleges_of_agriculture.json",
-		"education/colleges_of_health_sciences_and_technology.json", "education/vocational_enterprise_institutions.json",
+		"education/colleges_of_health_sciences_and_technology.json", "education/colleges_of_nursing_and_midwifery.json",
+		"education/technical_colleges.json", "education/vocational_enterprise_institutions.json",
 		"education/primary_and_secondary_schools.json")
 	if err != nil {
 		t.Fatalf("NewEducationRepository() error = %v", err)
@@ -276,6 +289,12 @@ func callInstitutionList[T any](repo *EducationFileRepository, ctx context.Conte
 		return any(rows).([]T), err
 	case "health":
 		rows, err := repo.ListCollegesOfHealthSciencesAndTechnology(ctx)
+		return any(rows).([]T), err
+	case "nursing":
+		rows, err := repo.ListCollegesOfNursingAndMidwifery(ctx)
+		return any(rows).([]T), err
+	case "technical":
+		rows, err := repo.ListTechnicalColleges(ctx)
 		return any(rows).([]T), err
 	case "vei":
 		rows, err := repo.ListVocationalEnterpriseInstitutions(ctx)
@@ -298,6 +317,12 @@ func callInstitutionGet[T any](repo *EducationFileRepository, ctx context.Contex
 		return any(rows).(T), err
 	case "health":
 		rows, err := repo.GetCollegeOfHealthSciencesAndTechnology(ctx, id)
+		return any(rows).(T), err
+	case "nursing":
+		rows, err := repo.GetCollegeOfNursingAndMidwifery(ctx, id)
+		return any(rows).(T), err
+	case "technical":
+		rows, err := repo.GetTechnicalCollege(ctx, id)
 		return any(rows).(T), err
 	case "vei":
 		rows, err := repo.GetVocationalEnterpriseInstitution(ctx, id)
@@ -524,7 +549,8 @@ func TestSchoolRepositoryContextAndCacheIsolation(t *testing.T) {
 	}
 	repo, err := NewEducationRepository(stub, "education/universities.json", "education/colleges_of_education.json",
 		"education/polytechnics.json", "education/monotechnics.json", "education/colleges_of_agriculture.json",
-		"education/colleges_of_health_sciences_and_technology.json", "education/vocational_enterprise_institutions.json",
+		"education/colleges_of_health_sciences_and_technology.json", "education/colleges_of_nursing_and_midwifery.json",
+		"education/technical_colleges.json", "education/vocational_enterprise_institutions.json",
 		"education/primary_and_secondary_schools.json")
 	if err != nil {
 		t.Fatalf("NewEducationRepository() error = %v", err)
@@ -546,6 +572,81 @@ func TestSchoolRepositoryContextAndCacheIsolation(t *testing.T) {
 	}
 }
 
+func TestNursingAndTechnicalCollegeMetadataAndSchemaAlignment(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		name             string
+		metadataPath     string
+		schemaPath       string
+		reconciliation   string
+		wantRecordCount  int
+		wantTitleSnippet string
+	}{
+		{
+			name:             "nursing",
+			metadataPath:     "../../../datasets/metadata/education/colleges_of_nursing_and_midwifery.json",
+			schemaPath:       "../../../datasets/schemas/education/colleges_of_nursing_and_midwifery.schema.json",
+			reconciliation:   "../../../datasets/metadata/education/colleges_of_nursing_and_midwifery_reconciliation.json",
+			wantRecordCount:  152,
+			wantTitleSnippet: "NMCN December 2025 Snapshot",
+		},
+		{
+			name:             "technical",
+			metadataPath:     "../../../datasets/metadata/education/technical_colleges.json",
+			schemaPath:       "../../../datasets/schemas/education/technical_colleges.schema.json",
+			reconciliation:   "../../../datasets/metadata/education/technical_colleges_reconciliation.json",
+			wantRecordCount:  115,
+			wantTitleSnippet: "NBTE Directory Snapshot",
+		},
+	}
+
+	for _, tc := range tests {
+		tc := tc
+		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+
+			type metadata struct {
+				Status      string `json:"status"`
+				Snapshot    bool   `json:"snapshot"`
+				Title       string `json:"title"`
+				Description string `json:"description"`
+				RecordCount int    `json:"record_count"`
+			}
+			type schema struct {
+				MinItems int `json:"minItems"`
+				MaxItems int `json:"maxItems"`
+			}
+
+			var meta metadata
+			if err := decodeJSONFileForTest(tc.metadataPath, &meta); err != nil {
+				t.Fatalf("decode metadata: %v", err)
+			}
+			if meta.Status != "active" || !meta.Snapshot || meta.RecordCount != tc.wantRecordCount {
+				t.Fatalf("unexpected metadata: %#v", meta)
+			}
+			if !strings.Contains(meta.Title, tc.wantTitleSnippet) {
+				t.Fatalf("metadata title mismatch: %q", meta.Title)
+			}
+			if meta.Description == "" {
+				t.Fatal("metadata description was empty")
+			}
+
+			var sch schema
+			if err := decodeJSONFileForTest(tc.schemaPath, &sch); err != nil {
+				t.Fatalf("decode schema: %v", err)
+			}
+			if sch.MinItems != tc.wantRecordCount || sch.MaxItems != tc.wantRecordCount {
+				t.Fatalf("unexpected schema bounds: %#v", sch)
+			}
+
+			if _, err := os.Stat(filepath.Clean(tc.reconciliation)); err != nil {
+				t.Fatalf("reconciliation file missing: %v", err)
+			}
+		})
+	}
+}
+
 func mustNewSchoolRepositoryWithFixture(t *testing.T, fixture []models.PrimaryAndSecondarySchool) *EducationFileRepository {
 	t.Helper()
 
@@ -562,7 +663,8 @@ func mustNewSchoolRepositoryWithFixture(t *testing.T, fixture []models.PrimaryAn
 	}
 	repo, err := NewEducationRepository(stub, "education/universities.json", "education/colleges_of_education.json",
 		"education/polytechnics.json", "education/monotechnics.json", "education/colleges_of_agriculture.json",
-		"education/colleges_of_health_sciences_and_technology.json", "education/vocational_enterprise_institutions.json",
+		"education/colleges_of_health_sciences_and_technology.json", "education/colleges_of_nursing_and_midwifery.json",
+		"education/technical_colleges.json", "education/vocational_enterprise_institutions.json",
 		"education/primary_and_secondary_schools.json")
 	if err != nil {
 		t.Fatalf("NewEducationRepository() error = %v", err)
@@ -577,4 +679,16 @@ func containsString(values []string, want string) bool {
 		}
 	}
 	return false
+}
+
+func decodeJSONFileForTest(path string, destination any) error {
+	data, err := os.ReadFile(filepath.Clean(path))
+	if err != nil {
+		return err
+	}
+	dec := json.NewDecoder(bytes.NewReader(data))
+	if err := dec.Decode(destination); err != nil {
+		return err
+	}
+	return nil
 }

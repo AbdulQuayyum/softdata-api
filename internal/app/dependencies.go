@@ -47,6 +47,8 @@ const (
 	educationMonotechnicsRelativePath                          = "education/monotechnics.json"
 	educationCollegesOfAgricultureRelativePath                 = "education/colleges_of_agriculture.json"
 	educationCollegesOfHealthSciencesAndTechnologyRelativePath = "education/colleges_of_health_sciences_and_technology.json"
+	educationCollegesOfNursingAndMidwiferyRelativePath         = "education/colleges_of_nursing_and_midwifery.json"
+	educationTechnicalCollegesRelativePath                     = "education/technical_colleges.json"
 	educationVocationalEnterpriseInstitutionsRelativePath      = "education/vocational_enterprise_institutions.json"
 	educationPrimaryAndSecondarySchoolsRelativePath            = "education/primary_and_secondary_schools.json"
 	financePaymentServiceProvidersRelativePath                 = "finance/payment_service_providers.json"
@@ -558,6 +560,8 @@ func buildEducationHandlerFromJSONRepository(
 		educationMonotechnicsRelativePath,
 		educationCollegesOfAgricultureRelativePath,
 		educationCollegesOfHealthSciencesAndTechnologyRelativePath,
+		educationCollegesOfNursingAndMidwiferyRelativePath,
+		educationTechnicalCollegesRelativePath,
 		educationVocationalEnterpriseInstitutionsRelativePath,
 		educationPrimaryAndSecondarySchoolsRelativePath,
 	)

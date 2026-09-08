@@ -40,6 +40,9 @@ func (s *EducationService) ListPolytechnics(ctx context.Context) ([]models.Polyt
 }
 
 func (s *EducationService) GetPolytechnic(ctx context.Context, id string) (models.Polytechnic, error) {
+	if err := ctx.Err(); err != nil {
+		return models.Polytechnic{}, err
+	}
 	id, err := normalizeEducationInstitutionID(id)
 	if err != nil {
 		return models.Polytechnic{}, err
@@ -63,6 +66,9 @@ func (s *EducationService) ListMonotechnics(ctx context.Context) ([]models.Monot
 }
 
 func (s *EducationService) GetMonotechnic(ctx context.Context, id string) (models.Monotechnic, error) {
+	if err := ctx.Err(); err != nil {
+		return models.Monotechnic{}, err
+	}
 	id, err := normalizeEducationInstitutionID(id)
 	if err != nil {
 		return models.Monotechnic{}, err
@@ -86,6 +92,9 @@ func (s *EducationService) ListCollegesOfAgriculture(ctx context.Context) ([]mod
 }
 
 func (s *EducationService) GetCollegeOfAgriculture(ctx context.Context, id string) (models.CollegeOfAgriculture, error) {
+	if err := ctx.Err(); err != nil {
+		return models.CollegeOfAgriculture{}, err
+	}
 	id, err := normalizeEducationInstitutionID(id)
 	if err != nil {
 		return models.CollegeOfAgriculture{}, err
@@ -109,6 +118,9 @@ func (s *EducationService) ListCollegesOfHealthSciencesAndTechnology(ctx context
 }
 
 func (s *EducationService) GetCollegeOfHealthSciencesAndTechnology(ctx context.Context, id string) (models.CollegeOfHealthSciencesAndTechnology, error) {
+	if err := ctx.Err(); err != nil {
+		return models.CollegeOfHealthSciencesAndTechnology{}, err
+	}
 	id, err := normalizeEducationInstitutionID(id)
 	if err != nil {
 		return models.CollegeOfHealthSciencesAndTechnology{}, err
@@ -116,6 +128,58 @@ func (s *EducationService) GetCollegeOfHealthSciencesAndTechnology(ctx context.C
 	rows, err := s.repository.GetCollegeOfHealthSciencesAndTechnology(ctx, id)
 	if err != nil {
 		return models.CollegeOfHealthSciencesAndTechnology{}, translateEducationInstitutionLookupError("get college of health sciences and technology", err, ErrCollegeOfHealthSciencesAndTechnologyNotFound)
+	}
+	return rows, nil
+}
+
+func (s *EducationService) ListCollegesOfNursingAndMidwifery(ctx context.Context) ([]models.CollegeOfNursingAndMidwifery, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	rows, err := s.repository.ListCollegesOfNursingAndMidwifery(ctx)
+	if err != nil {
+		return nil, translateEducationInstitutionListError("list colleges of nursing and midwifery", err)
+	}
+	return cloneCollegeOfNursingAndMidwiferyList(rows), nil
+}
+
+func (s *EducationService) GetCollegeOfNursingAndMidwifery(ctx context.Context, id string) (models.CollegeOfNursingAndMidwifery, error) {
+	if err := ctx.Err(); err != nil {
+		return models.CollegeOfNursingAndMidwifery{}, err
+	}
+	id, err := normalizeEducationInstitutionID(id)
+	if err != nil {
+		return models.CollegeOfNursingAndMidwifery{}, err
+	}
+	rows, err := s.repository.GetCollegeOfNursingAndMidwifery(ctx, id)
+	if err != nil {
+		return models.CollegeOfNursingAndMidwifery{}, translateEducationInstitutionLookupError("get college of nursing and midwifery", err, ErrCollegeOfNursingAndMidwiferyNotFound)
+	}
+	return rows, nil
+}
+
+func (s *EducationService) ListTechnicalColleges(ctx context.Context) ([]models.TechnicalCollege, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	rows, err := s.repository.ListTechnicalColleges(ctx)
+	if err != nil {
+		return nil, translateEducationInstitutionListError("list technical colleges", err)
+	}
+	return cloneTechnicalCollegeList(rows), nil
+}
+
+func (s *EducationService) GetTechnicalCollege(ctx context.Context, id string) (models.TechnicalCollege, error) {
+	if err := ctx.Err(); err != nil {
+		return models.TechnicalCollege{}, err
+	}
+	id, err := normalizeEducationInstitutionID(id)
+	if err != nil {
+		return models.TechnicalCollege{}, err
+	}
+	rows, err := s.repository.GetTechnicalCollege(ctx, id)
+	if err != nil {
+		return models.TechnicalCollege{}, translateEducationInstitutionLookupError("get technical college", err, ErrTechnicalCollegeNotFound)
 	}
 	return rows, nil
 }
@@ -132,6 +196,9 @@ func (s *EducationService) ListVocationalEnterpriseInstitutions(ctx context.Cont
 }
 
 func (s *EducationService) GetVocationalEnterpriseInstitution(ctx context.Context, id string) (models.VocationalEnterpriseInstitution, error) {
+	if err := ctx.Err(); err != nil {
+		return models.VocationalEnterpriseInstitution{}, err
+	}
 	id, err := normalizeEducationInstitutionID(id)
 	if err != nil {
 		return models.VocationalEnterpriseInstitution{}, err
@@ -245,6 +312,24 @@ func translateEducationInstitutionLookupError(op string, err error, notFound err
 		return nil
 	case errors.Is(err, context.Canceled), errors.Is(err, context.DeadlineExceeded):
 		return err
+	case errors.Is(err, interfaces.ErrPolytechnicNotFound), errors.Is(err, interfaces.ErrMonotechnicNotFound), errors.Is(err, interfaces.ErrCollegeOfAgricultureNotFound), errors.Is(err, interfaces.ErrCollegeOfHealthSciencesAndTechnologyNotFound), errors.Is(err, interfaces.ErrCollegeOfNursingAndMidwiferyNotFound), errors.Is(err, interfaces.ErrTechnicalCollegeNotFound), errors.Is(err, interfaces.ErrVocationalEnterpriseInstitutionNotFound):
+		switch {
+		case errors.Is(err, interfaces.ErrPolytechnicNotFound):
+			return ErrPolytechnicNotFound
+		case errors.Is(err, interfaces.ErrMonotechnicNotFound):
+			return ErrMonotechnicNotFound
+		case errors.Is(err, interfaces.ErrCollegeOfAgricultureNotFound):
+			return ErrCollegeOfAgricultureNotFound
+		case errors.Is(err, interfaces.ErrCollegeOfHealthSciencesAndTechnologyNotFound):
+			return ErrCollegeOfHealthSciencesAndTechnologyNotFound
+		case errors.Is(err, interfaces.ErrCollegeOfNursingAndMidwiferyNotFound):
+			return ErrCollegeOfNursingAndMidwiferyNotFound
+		case errors.Is(err, interfaces.ErrTechnicalCollegeNotFound):
+			return ErrTechnicalCollegeNotFound
+		case errors.Is(err, interfaces.ErrVocationalEnterpriseInstitutionNotFound):
+			return ErrVocationalEnterpriseInstitutionNotFound
+		}
+		return fmt.Errorf("%s: repository unavailable", op)
 	case errors.Is(err, notFound):
 		return notFound
 	case errors.Is(err, interfaces.ErrDatasetFileNotFound), errors.Is(err, interfaces.ErrDatasetFileUnavailable), errors.Is(err, interfaces.ErrInvalidDatasetFile):
@@ -310,6 +395,14 @@ func cloneCollegeOfAgricultureList(rows []models.CollegeOfAgriculture) []models.
 }
 
 func cloneCollegeOfHealthSciencesAndTechnologyList(rows []models.CollegeOfHealthSciencesAndTechnology) []models.CollegeOfHealthSciencesAndTechnology {
+	return cloneEducationSlice(rows)
+}
+
+func cloneCollegeOfNursingAndMidwiferyList(rows []models.CollegeOfNursingAndMidwifery) []models.CollegeOfNursingAndMidwifery {
+	return cloneEducationSlice(rows)
+}
+
+func cloneTechnicalCollegeList(rows []models.TechnicalCollege) []models.TechnicalCollege {
 	return cloneEducationSlice(rows)
 }
 

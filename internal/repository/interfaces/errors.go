@@ -51,8 +51,12 @@ var (
 	ErrCollegeOfAgricultureNotFound = errors.New("repository: college of agriculture not found")
 	// ErrCollegeOfHealthSciencesAndTechnologyNotFound reports that a requested health-sciences-and-technology college is not present in the dataset.
 	ErrCollegeOfHealthSciencesAndTechnologyNotFound = errors.New("repository: college of health sciences and technology not found")
+	// ErrCollegeOfNursingAndMidwiferyNotFound reports that a requested college of nursing and midwifery is not present in the dataset.
+	ErrCollegeOfNursingAndMidwiferyNotFound = errors.New("repository: college of nursing and midwifery not found")
 	// ErrVocationalEnterpriseInstitutionNotFound reports that a requested vocational enterprise institution is not present in the dataset.
 	ErrVocationalEnterpriseInstitutionNotFound = errors.New("repository: vocational enterprise institution not found")
+	// ErrTechnicalCollegeNotFound reports that a requested technical college is not present in the dataset.
+	ErrTechnicalCollegeNotFound = errors.New("repository: technical college not found")
 	// ErrPrimaryAndSecondarySchoolNotFound reports that a requested primary or secondary school is not present in the dataset.
 	ErrPrimaryAndSecondarySchoolNotFound = errors.New("repository: primary and secondary school not found")
 	// ErrInvalidPrimaryAndSecondarySchoolQuery reports that a primary/secondary school query is invalid.

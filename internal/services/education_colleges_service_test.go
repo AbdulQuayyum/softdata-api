@@ -94,6 +94,22 @@ func (s *collegeServiceRepositoryStub) GetCollegeOfHealthSciencesAndTechnology(c
 	return models.CollegeOfHealthSciencesAndTechnology{}, interfaces.ErrCollegeOfHealthSciencesAndTechnologyNotFound
 }
 
+func (s *collegeServiceRepositoryStub) ListCollegesOfNursingAndMidwifery(context.Context) ([]models.CollegeOfNursingAndMidwifery, error) {
+	return nil, nil
+}
+
+func (s *collegeServiceRepositoryStub) GetCollegeOfNursingAndMidwifery(context.Context, string) (models.CollegeOfNursingAndMidwifery, error) {
+	return models.CollegeOfNursingAndMidwifery{}, interfaces.ErrCollegeOfNursingAndMidwiferyNotFound
+}
+
+func (s *collegeServiceRepositoryStub) ListTechnicalColleges(context.Context) ([]models.TechnicalCollege, error) {
+	return nil, nil
+}
+
+func (s *collegeServiceRepositoryStub) GetTechnicalCollege(context.Context, string) (models.TechnicalCollege, error) {
+	return models.TechnicalCollege{}, interfaces.ErrTechnicalCollegeNotFound
+}
+
 func (s *collegeServiceRepositoryStub) ListVocationalEnterpriseInstitutions(context.Context) ([]models.VocationalEnterpriseInstitution, error) {
 	return nil, nil
 }

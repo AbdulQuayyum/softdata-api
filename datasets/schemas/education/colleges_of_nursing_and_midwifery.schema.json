@@ -4,8 +4,8 @@
   "title": "Nigeria Colleges of Nursing and Midwifery",
   "description": "NMCN December 2025 approved-schools institution and campus snapshot.",
   "type": "array",
-  "minItems": 156,
-  "maxItems": 156,
+  "minItems": 152,
+  "maxItems": 152,
   "uniqueItems": true,
   "items": {
     "type": "object",

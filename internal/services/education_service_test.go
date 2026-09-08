@@ -46,6 +46,18 @@ type educationRepositoryStub struct {
 	collegesOfHealthSciencesAndTechnologyGetErr   error
 	collegesOfHealthSciencesAndTechnologyCalls    int
 	collegesOfHealthSciencesAndTechnologyGetCalls int
+	collegesOfNursingAndMidwifery                 []models.CollegeOfNursingAndMidwifery
+	collegesOfNursingAndMidwiferyErr              error
+	collegesOfNursingAndMidwiferyGet              map[string]models.CollegeOfNursingAndMidwifery
+	collegesOfNursingAndMidwiferyGetErr           error
+	collegesOfNursingAndMidwiferyCalls            int
+	collegesOfNursingAndMidwiferyGetCalls         int
+	technicalColleges                             []models.TechnicalCollege
+	technicalCollegesErr                          error
+	technicalCollegesGet                          map[string]models.TechnicalCollege
+	technicalCollegesGetErr                       error
+	technicalCollegesCalls                        int
+	technicalCollegesGetCalls                     int
 	vocationalEnterpriseInstitutions              []models.VocationalEnterpriseInstitution
 	vocationalEnterpriseInstitutionsErr           error
 	vocationalEnterpriseInstitutionsGet           map[string]models.VocationalEnterpriseInstitution
@@ -182,6 +194,48 @@ func (s *educationRepositoryStub) GetCollegeOfHealthSciencesAndTechnology(_ cont
 		}
 	}
 	return models.CollegeOfHealthSciencesAndTechnology{}, interfaces.ErrCollegeOfHealthSciencesAndTechnologyNotFound
+}
+
+func (s *educationRepositoryStub) ListCollegesOfNursingAndMidwifery(context.Context) ([]models.CollegeOfNursingAndMidwifery, error) {
+	s.collegesOfNursingAndMidwiferyCalls++
+	if s.collegesOfNursingAndMidwiferyErr != nil {
+		return nil, s.collegesOfNursingAndMidwiferyErr
+	}
+	return cloneServiceSlice(s.collegesOfNursingAndMidwifery), nil
+}
+
+func (s *educationRepositoryStub) GetCollegeOfNursingAndMidwifery(_ context.Context, id string) (models.CollegeOfNursingAndMidwifery, error) {
+	s.collegesOfNursingAndMidwiferyGetCalls++
+	if s.collegesOfNursingAndMidwiferyGetErr != nil {
+		return models.CollegeOfNursingAndMidwifery{}, s.collegesOfNursingAndMidwiferyGetErr
+	}
+	if s.collegesOfNursingAndMidwiferyGet != nil {
+		if row, ok := s.collegesOfNursingAndMidwiferyGet[strings.TrimSpace(id)]; ok {
+			return row, nil
+		}
+	}
+	return models.CollegeOfNursingAndMidwifery{}, interfaces.ErrCollegeOfNursingAndMidwiferyNotFound
+}
+
+func (s *educationRepositoryStub) ListTechnicalColleges(context.Context) ([]models.TechnicalCollege, error) {
+	s.technicalCollegesCalls++
+	if s.technicalCollegesErr != nil {
+		return nil, s.technicalCollegesErr
+	}
+	return cloneServiceSlice(s.technicalColleges), nil
+}
+
+func (s *educationRepositoryStub) GetTechnicalCollege(_ context.Context, id string) (models.TechnicalCollege, error) {
+	s.technicalCollegesGetCalls++
+	if s.technicalCollegesGetErr != nil {
+		return models.TechnicalCollege{}, s.technicalCollegesGetErr
+	}
+	if s.technicalCollegesGet != nil {
+		if row, ok := s.technicalCollegesGet[strings.TrimSpace(id)]; ok {
+			return row, nil
+		}
+	}
+	return models.TechnicalCollege{}, interfaces.ErrTechnicalCollegeNotFound
 }
 
 func (s *educationRepositoryStub) ListVocationalEnterpriseInstitutions(context.Context) ([]models.VocationalEnterpriseInstitution, error) {

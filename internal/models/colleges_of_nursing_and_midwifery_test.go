@@ -21,8 +21,8 @@ type nursingCollegeMetadata struct {
 
 func TestNigeriaNursingCollegeDataset(t *testing.T) {
 	values := loadNursingCollegeDataset(t)
-	if len(values) != 156 {
-		t.Fatalf("unexpected record count: got %d want 156", len(values))
+	if len(values) != 152 {
+		t.Fatalf("unexpected record count: got %d want 152", len(values))
 	}
 	states := loadStateDataset(t)
 	stateIDs := map[string]struct{}{}
@@ -73,10 +73,10 @@ func TestNigeriaNursingCollegeDataset(t *testing.T) {
 			t.Fatalf("unexpected public fields for %q", value.ID)
 		}
 	}
-	if !reflect.DeepEqual(counts, map[string]int{"federal": 13, "state": 52, "private": 91}) {
+	if !reflect.DeepEqual(counts, map[string]int{"federal": 13, "state": 48, "private": 91}) {
 		t.Fatalf("ownership mismatch: %#v", counts)
 	}
-	if len(stateCount) != 32 {
+	if len(stateCount) != 31 {
 		t.Fatalf("state coverage mismatch: %d", len(stateCount))
 	}
 	for _, value := range values {
@@ -91,10 +91,10 @@ func TestNigeriaNursingCollegeMetadataAndReconciliation(t *testing.T) {
 	if err := json.Unmarshal(readTextBytes(t, datasetPath("metadata/education/colleges_of_nursing_and_midwifery.json")), &metadata); err != nil {
 		t.Fatal(err)
 	}
-	if metadata.DatasetKey != "ng-colleges-of-nursing-and-midwifery" || metadata.Status != "active" || !metadata.PubliclyPublished || metadata.RecordCount != 156 || metadata.StateCoverage != 32 {
+	if metadata.DatasetKey != "ng-colleges-of-nursing-and-midwifery" || metadata.Status != "active" || !metadata.PubliclyPublished || metadata.RecordCount != 152 || metadata.StateCoverage != 31 {
 		t.Fatalf("metadata mismatch: %#v", metadata)
 	}
-	if !reflect.DeepEqual(metadata.OwnershipCounts, map[string]int{"federal": 13, "state": 52, "private": 91}) {
+	if !reflect.DeepEqual(metadata.OwnershipCounts, map[string]int{"federal": 13, "state": 48, "private": 91}) {
 		t.Fatalf("metadata ownership mismatch: %#v", metadata.OwnershipCounts)
 	}
 	var reconciliation struct {
@@ -110,7 +110,7 @@ func TestNigeriaNursingCollegeMetadataAndReconciliation(t *testing.T) {
 	if err := json.Unmarshal(readTextBytes(t, datasetPath("metadata/education/colleges_of_nursing_and_midwifery_reconciliation.json")), &reconciliation); err != nil {
 		t.Fatal(err)
 	}
-	if reconciliation.Status != "active" || reconciliation.SourceRows != 376 || reconciliation.Published != 156 || reconciliation.Unresolved != 220 || len(reconciliation.Records) != 376 {
+	if reconciliation.Status != "active" || reconciliation.SourceRows != 340 || reconciliation.Published != 152 || reconciliation.Unresolved != 188 || len(reconciliation.Records) != 340 {
 		t.Fatalf("reconciliation mismatch: %#v", reconciliation)
 	}
 	retained := 0
@@ -127,13 +127,13 @@ func TestNigeriaNursingCollegeMetadataAndReconciliation(t *testing.T) {
 			t.Fatal("excluded row has a final record")
 		}
 	}
-	if retained != 156 {
+	if retained != 152 {
 		t.Fatalf("retained rows: %d", retained)
 	}
 }
 
 func TestNigeriaNursingCollegePublicRosterFingerprint(t *testing.T) {
-	if len(loadNursingCollegeDataset(t)) != 156 {
+	if len(loadNursingCollegeDataset(t)) != 152 {
 		t.Fatal("snapshot fingerprint/count changed")
 	}
 }

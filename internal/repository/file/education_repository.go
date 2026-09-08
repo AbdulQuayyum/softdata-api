@@ -48,6 +48,8 @@ type EducationFileRepository struct {
 	monotechnicsPath                           string
 	collegesOfAgriculturePath                  string
 	collegesOfHealthSciencesAndTechnologyPath  string
+	collegesOfNursingAndMidwiferyPath          string
+	technicalCollegesPath                      string
 	vocationalEnterpriseInstitutionsPath       string
 	primaryAndSecondarySchoolsPath             string
 	universitiesCache                          lazyDatasetCache[models.University]
@@ -56,6 +58,8 @@ type EducationFileRepository struct {
 	monotechnicsCache                          lazyDatasetCache[models.Monotechnic]
 	collegesOfAgricultureCache                 lazyDatasetCache[models.CollegeOfAgriculture]
 	collegesOfHealthSciencesAndTechnologyCache lazyDatasetCache[models.CollegeOfHealthSciencesAndTechnology]
+	collegesOfNursingAndMidwiferyCache         lazyDatasetCache[models.CollegeOfNursingAndMidwifery]
+	technicalCollegesCache                     lazyDatasetCache[models.TechnicalCollege]
 	vocationalEnterpriseInstitutionsCache      lazyDatasetCache[models.VocationalEnterpriseInstitution]
 	primaryAndSecondarySchoolsCache            schoolDatasetCache
 }
@@ -75,17 +79,19 @@ func NewEducationRepository(jsonRepository interfaces.JSONFileRepository, univer
 	if err != nil {
 		return nil, err
 	}
-	if len(datasetPaths) != 0 && len(datasetPaths) != 6 {
-		return nil, fmt.Errorf("education dataset paths accept either zero or six additional values")
+	if len(datasetPaths) != 0 && len(datasetPaths) != 8 {
+		return nil, fmt.Errorf("education dataset paths accept either zero or eight additional values")
 	}
 
 	var cleanedPolytechnicsPath string
 	var cleanedMonotechnicsPath string
 	var cleanedCollegesOfAgriculturePath string
 	var cleanedCollegesOfHealthSciencesAndTechnologyPath string
+	var cleanedCollegesOfNursingAndMidwiferyPath string
+	var cleanedTechnicalCollegesPath string
 	var cleanedVocationalEnterpriseInstitutionsPath string
 	var cleanedPrimaryAndSecondarySchoolsPath string
-	if len(datasetPaths) == 6 {
+	if len(datasetPaths) == 8 {
 		if cleanedPolytechnicsPath, err = validateGeographyDatasetPath("polytechnics", datasetPaths[0]); err != nil {
 			return nil, err
 		}
@@ -98,10 +104,16 @@ func NewEducationRepository(jsonRepository interfaces.JSONFileRepository, univer
 		if cleanedCollegesOfHealthSciencesAndTechnologyPath, err = validateGeographyDatasetPath("colleges of health sciences and technology", datasetPaths[3]); err != nil {
 			return nil, err
 		}
-		if cleanedVocationalEnterpriseInstitutionsPath, err = validateGeographyDatasetPath("vocational enterprise institutions", datasetPaths[4]); err != nil {
+		if cleanedCollegesOfNursingAndMidwiferyPath, err = validateGeographyDatasetPath("colleges of nursing and midwifery", datasetPaths[4]); err != nil {
 			return nil, err
 		}
-		if cleanedPrimaryAndSecondarySchoolsPath, err = validateGeographyDatasetPath("primary and secondary schools", datasetPaths[5]); err != nil {
+		if cleanedTechnicalCollegesPath, err = validateGeographyDatasetPath("technical colleges", datasetPaths[5]); err != nil {
+			return nil, err
+		}
+		if cleanedVocationalEnterpriseInstitutionsPath, err = validateGeographyDatasetPath("vocational enterprise institutions", datasetPaths[6]); err != nil {
+			return nil, err
+		}
+		if cleanedPrimaryAndSecondarySchoolsPath, err = validateGeographyDatasetPath("primary and secondary schools", datasetPaths[7]); err != nil {
 			return nil, err
 		}
 	}
@@ -114,6 +126,8 @@ func NewEducationRepository(jsonRepository interfaces.JSONFileRepository, univer
 		monotechnicsPath:                          cleanedMonotechnicsPath,
 		collegesOfAgriculturePath:                 cleanedCollegesOfAgriculturePath,
 		collegesOfHealthSciencesAndTechnologyPath: cleanedCollegesOfHealthSciencesAndTechnologyPath,
+		collegesOfNursingAndMidwiferyPath:         cleanedCollegesOfNursingAndMidwiferyPath,
+		technicalCollegesPath:                     cleanedTechnicalCollegesPath,
 		vocationalEnterpriseInstitutionsPath:      cleanedVocationalEnterpriseInstitutionsPath,
 		primaryAndSecondarySchoolsPath:            cleanedPrimaryAndSecondarySchoolsPath,
 	}, nil

@@ -235,7 +235,7 @@ The package contains 98 records: 4 federal, 31 state and 63 private institutions
 - Metadata: `datasets/metadata/education/colleges_of_nursing_and_midwifery.json`
 - Reconciliation: `datasets/metadata/education/colleges_of_nursing_and_midwifery_reconciliation.json`
 
-The package contains 156 institution/campus records: 13 federal, 52 state and 91 private institutions across 32 states. It is the NMCN December 2025 approved-schools snapshot, not a complete live register. Its reconciliation preserves 376 extracted numbered-row candidates and explicitly excludes 220 unresolved rows; NMCN separately reports 290 training institutions. Websites, logos, repository methods and HTTP routes are intentionally deferred.
+The package contains 152 institution/campus records: 13 federal, 48 state and 91 private institutions across 31 states. It is the NMCN December 2025 approved-schools snapshot, not a complete live register. Its reconciliation preserves 340 extracted numbered-row candidates and explicitly excludes 188 unresolved rows; NMCN separately reports 290 training institutions. Websites, logos, repository methods and HTTP routes are intentionally deferred.
 
 ### `ng-technical-colleges`
 

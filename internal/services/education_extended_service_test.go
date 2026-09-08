@@ -5,6 +5,7 @@ import (
 	"errors"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/AbdulQuayyum/softdata-api/internal/models"
 	"github.com/AbdulQuayyum/softdata-api/internal/repository/interfaces"
@@ -37,6 +38,18 @@ func TestEducationServiceNewInstitutionMethods(t *testing.T) {
 		}},
 		collegesOfHealthSciencesAndTechnologyGet: map[string]models.CollegeOfHealthSciencesAndTechnology{
 			"abia-state-college-of-health-technology-aba": {ID: "abia-state-college-of-health-technology-aba", Name: "Abia State College of Health Technology, Aba", OwnershipType: "state", StateID: "abia", CountryCode: "NG"},
+		},
+		collegesOfNursingAndMidwifery: []models.CollegeOfNursingAndMidwifery{{
+			ID: "abia-state-college-of-nursing-sciences-amachara", Name: "Abia State College of Nursing Sciences, Amachara", OwnershipType: "state", StateID: "abia", CountryCode: "NG",
+		}},
+		collegesOfNursingAndMidwiferyGet: map[string]models.CollegeOfNursingAndMidwifery{
+			"abia-state-college-of-nursing-sciences-amachara": {ID: "abia-state-college-of-nursing-sciences-amachara", Name: "Abia State College of Nursing Sciences, Amachara", OwnershipType: "state", StateID: "abia", CountryCode: "NG"},
+		},
+		technicalColleges: []models.TechnicalCollege{{
+			ID: "agbor-technical-college-agbor", Name: "Agbor Technical College, Agbor", OwnershipType: "state", StateID: "delta", CountryCode: "NG",
+		}},
+		technicalCollegesGet: map[string]models.TechnicalCollege{
+			"agbor-technical-college-agbor": {ID: "agbor-technical-college-agbor", Name: "Agbor Technical College, Agbor", OwnershipType: "state", StateID: "delta", CountryCode: "NG"},
 		},
 		vocationalEnterpriseInstitutions: []models.VocationalEnterpriseInstitution{{
 			ID: "adhama-innovation-enterprise-institute", Name: "Adhama Innovation Enterprise Institute", OwnershipType: "private", StateID: "kano", CountryCode: "NG",
@@ -75,6 +88,18 @@ func TestEducationServiceNewInstitutionMethods(t *testing.T) {
 	if got, err := svc.GetCollegeOfHealthSciencesAndTechnology(context.Background(), "abia-state-college-of-health-technology-aba"); err != nil || got.ID != "abia-state-college-of-health-technology-aba" {
 		t.Fatalf("GetCollegeOfHealthSciencesAndTechnology() => %#v, %v", got, err)
 	}
+	if rows, err := svc.ListCollegesOfNursingAndMidwifery(context.Background()); err != nil || len(rows) != 1 || rows[0].ID != "abia-state-college-of-nursing-sciences-amachara" {
+		t.Fatalf("ListCollegesOfNursingAndMidwifery() => %#v, %v", rows, err)
+	}
+	if got, err := svc.GetCollegeOfNursingAndMidwifery(context.Background(), "  abia-state-college-of-nursing-sciences-amachara  "); err != nil || got.ID != "abia-state-college-of-nursing-sciences-amachara" {
+		t.Fatalf("GetCollegeOfNursingAndMidwifery() => %#v, %v", got, err)
+	}
+	if rows, err := svc.ListTechnicalColleges(context.Background()); err != nil || len(rows) != 1 || rows[0].ID != "agbor-technical-college-agbor" {
+		t.Fatalf("ListTechnicalColleges() => %#v, %v", rows, err)
+	}
+	if got, err := svc.GetTechnicalCollege(context.Background(), "agbor-technical-college-agbor"); err != nil || got.ID != "agbor-technical-college-agbor" {
+		t.Fatalf("GetTechnicalCollege() => %#v, %v", got, err)
+	}
 	if rows, err := svc.ListVocationalEnterpriseInstitutions(context.Background()); err != nil || len(rows) != 1 || rows[0].ID != "adhama-innovation-enterprise-institute" {
 		t.Fatalf("ListVocationalEnterpriseInstitutions() => %#v, %v", rows, err)
 	}
@@ -97,6 +122,48 @@ func TestEducationServiceNewInstitutionMethods(t *testing.T) {
 
 	if _, err := svc.GetPolytechnic(context.Background(), "Invalid ID"); !errors.Is(err, ErrInvalidEducationInstitutionID) {
 		t.Fatalf("GetPolytechnic invalid id error = %v, want ErrInvalidEducationInstitutionID", err)
+	}
+	if _, err := svc.GetCollegeOfNursingAndMidwifery(context.Background(), "Invalid ID"); !errors.Is(err, ErrInvalidEducationInstitutionID) {
+		t.Fatalf("GetCollegeOfNursingAndMidwifery invalid id error = %v, want ErrInvalidEducationInstitutionID", err)
+	}
+	if _, err := svc.GetTechnicalCollege(context.Background(), "Invalid ID"); !errors.Is(err, ErrInvalidEducationInstitutionID) {
+		t.Fatalf("GetTechnicalCollege invalid id error = %v, want ErrInvalidEducationInstitutionID", err)
+	}
+}
+
+func TestEducationServiceNewInstitutionErrorTranslation(t *testing.T) {
+	t.Parallel()
+
+	stub := &educationRepositoryStub{
+		collegesOfNursingAndMidwiferyGet: map[string]models.CollegeOfNursingAndMidwifery{},
+		technicalCollegesGet:             map[string]models.TechnicalCollege{},
+	}
+	svc, err := NewEducationService(stub)
+	if err != nil {
+		t.Fatalf("NewEducationService() error = %v", err)
+	}
+
+	if _, err := svc.GetCollegeOfNursingAndMidwifery(context.Background(), "  abia-state-college-of-nursing-sciences-amachara  "); !errors.Is(err, ErrCollegeOfNursingAndMidwiferyNotFound) {
+		t.Fatalf("GetCollegeOfNursingAndMidwifery() not-found translation = %v", err)
+	}
+	if _, err := svc.GetTechnicalCollege(context.Background(), "agbor-technical-college-agbor"); !errors.Is(err, ErrTechnicalCollegeNotFound) {
+		t.Fatalf("GetTechnicalCollege() not-found translation = %v", err)
+	}
+
+	stub.collegesOfNursingAndMidwiferyErr = context.Canceled
+	if _, err := svc.ListCollegesOfNursingAndMidwifery(context.Background()); !errors.Is(err, context.Canceled) {
+		t.Fatalf("ListCollegesOfNursingAndMidwifery() canceled translation = %v", err)
+	}
+
+	deadlineCtx, cancel := context.WithDeadline(context.Background(), time.Now().Add(-time.Second))
+	cancel()
+	if _, err := svc.GetTechnicalCollege(deadlineCtx, "agbor-technical-college-agbor"); !errors.Is(err, context.Canceled) && !errors.Is(err, context.DeadlineExceeded) {
+		t.Fatalf("GetTechnicalCollege() deadline translation = %v", err)
+	}
+
+	stub.technicalCollegesErr = errors.New("/private/tmp/education/technical_colleges.json: permission denied")
+	if _, err := svc.ListTechnicalColleges(context.Background()); err == nil || strings.Contains(err.Error(), "/private/tmp/education/technical_colleges.json") {
+		t.Fatalf("ListTechnicalColleges() sanitization = %v", err)
 	}
 }
 

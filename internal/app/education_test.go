@@ -98,6 +98,22 @@ func (s *educationRepositoryStub) GetCollegeOfHealthSciencesAndTechnology(contex
 	return models.CollegeOfHealthSciencesAndTechnology{}, nil
 }
 
+func (s *educationRepositoryStub) ListCollegesOfNursingAndMidwifery(context.Context) ([]models.CollegeOfNursingAndMidwifery, error) {
+	return nil, nil
+}
+
+func (s *educationRepositoryStub) GetCollegeOfNursingAndMidwifery(context.Context, string) (models.CollegeOfNursingAndMidwifery, error) {
+	return models.CollegeOfNursingAndMidwifery{}, nil
+}
+
+func (s *educationRepositoryStub) ListTechnicalColleges(context.Context) ([]models.TechnicalCollege, error) {
+	return nil, nil
+}
+
+func (s *educationRepositoryStub) GetTechnicalCollege(context.Context, string) (models.TechnicalCollege, error) {
+	return models.TechnicalCollege{}, nil
+}
+
 func (s *educationRepositoryStub) ListVocationalEnterpriseInstitutions(context.Context) ([]models.VocationalEnterpriseInstitution, error) {
 	return nil, nil
 }

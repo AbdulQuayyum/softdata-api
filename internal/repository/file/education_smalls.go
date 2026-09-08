@@ -55,6 +55,30 @@ func (r *EducationFileRepository) GetCollegeOfHealthSciencesAndTechnology(ctx co
 	return getEducationInstitutionByID(ctx, items, id, func(item models.CollegeOfHealthSciencesAndTechnology) string { return item.ID }, interfaces.ErrCollegeOfHealthSciencesAndTechnologyNotFound, cloneCollegeOfHealthSciencesAndTechnology)
 }
 
+func (r *EducationFileRepository) ListCollegesOfNursingAndMidwifery(ctx context.Context) ([]models.CollegeOfNursingAndMidwifery, error) {
+	return loadCachedEducationDataset(ctx, r, &r.collegesOfNursingAndMidwiferyCache, r.collegesOfNursingAndMidwiferyPath, validateCollegesOfNursingAndMidwifery, cloneSlice[models.CollegeOfNursingAndMidwifery])
+}
+
+func (r *EducationFileRepository) GetCollegeOfNursingAndMidwifery(ctx context.Context, id string) (models.CollegeOfNursingAndMidwifery, error) {
+	items, err := r.ListCollegesOfNursingAndMidwifery(ctx)
+	if err != nil {
+		return models.CollegeOfNursingAndMidwifery{}, err
+	}
+	return getEducationInstitutionByID(ctx, items, id, func(item models.CollegeOfNursingAndMidwifery) string { return item.ID }, interfaces.ErrCollegeOfNursingAndMidwiferyNotFound, cloneCollegeOfNursingAndMidwifery)
+}
+
+func (r *EducationFileRepository) ListTechnicalColleges(ctx context.Context) ([]models.TechnicalCollege, error) {
+	return loadCachedEducationDataset(ctx, r, &r.technicalCollegesCache, r.technicalCollegesPath, validateTechnicalColleges, cloneSlice[models.TechnicalCollege])
+}
+
+func (r *EducationFileRepository) GetTechnicalCollege(ctx context.Context, id string) (models.TechnicalCollege, error) {
+	items, err := r.ListTechnicalColleges(ctx)
+	if err != nil {
+		return models.TechnicalCollege{}, err
+	}
+	return getEducationInstitutionByID(ctx, items, id, func(item models.TechnicalCollege) string { return item.ID }, interfaces.ErrTechnicalCollegeNotFound, cloneTechnicalCollege)
+}
+
 func (r *EducationFileRepository) ListVocationalEnterpriseInstitutions(ctx context.Context) ([]models.VocationalEnterpriseInstitution, error) {
 	return loadCachedEducationDataset(ctx, r, &r.vocationalEnterpriseInstitutionsCache, r.vocationalEnterpriseInstitutionsPath, validateVocationalEnterpriseInstitutions, cloneSlice[models.VocationalEnterpriseInstitution])
 }
@@ -80,6 +104,14 @@ func cloneCollegeOfAgriculture(item models.CollegeOfAgriculture) models.CollegeO
 }
 
 func cloneCollegeOfHealthSciencesAndTechnology(item models.CollegeOfHealthSciencesAndTechnology) models.CollegeOfHealthSciencesAndTechnology {
+	return item
+}
+
+func cloneCollegeOfNursingAndMidwifery(item models.CollegeOfNursingAndMidwifery) models.CollegeOfNursingAndMidwifery {
+	return item
+}
+
+func cloneTechnicalCollege(item models.TechnicalCollege) models.TechnicalCollege {
 	return item
 }
 

@@ -36,6 +36,8 @@ const (
 	expectedMonotechnicCount                          = 86
 	expectedCollegeOfAgricultureCount                 = 31
 	expectedCollegeOfHealthSciencesAndTechnologyCount = 98
+	expectedCollegeOfNursingAndMidwiferyCount         = 152
+	expectedTechnicalCollegeCount                     = 115
 	expectedVocationalEnterpriseInstitutionCount      = 25
 )
 
@@ -216,6 +218,56 @@ func validateVocationalEnterpriseInstitutions(ctx context.Context, records []mod
 			countryCode:   record.CountryCode,
 		}
 	})
+}
+
+func validateCollegesOfNursingAndMidwifery(ctx context.Context, records []models.CollegeOfNursingAndMidwifery) error {
+	if err := validateEducationInstitutionRecords(ctx, records, expectedCollegeOfNursingAndMidwiferyCount, func(record models.CollegeOfNursingAndMidwifery) educationInstitutionFields {
+		return educationInstitutionFields{
+			id:            record.ID,
+			name:          record.Name,
+			ownershipType: record.OwnershipType,
+			stateID:       record.StateID,
+			countryCode:   record.CountryCode,
+		}
+	}); err != nil {
+		return err
+	}
+	return validateNormalizedEducationInstitutionNames(ctx, records, func(record models.CollegeOfNursingAndMidwifery) string { return record.Name })
+}
+
+func validateTechnicalColleges(ctx context.Context, records []models.TechnicalCollege) error {
+	if err := validateEducationInstitutionRecords(ctx, records, expectedTechnicalCollegeCount, func(record models.TechnicalCollege) educationInstitutionFields {
+		return educationInstitutionFields{
+			id:            record.ID,
+			name:          record.Name,
+			ownershipType: record.OwnershipType,
+			stateID:       record.StateID,
+			countryCode:   record.CountryCode,
+		}
+	}); err != nil {
+		return err
+	}
+	return validateNormalizedEducationInstitutionNames(ctx, records, func(record models.TechnicalCollege) string { return record.Name })
+}
+
+func validateNormalizedEducationInstitutionNames[T any](ctx context.Context, records []T, getName func(T) string) error {
+	seen := make(map[string]struct{}, len(records))
+	for i, record := range records {
+		if i%256 == 0 {
+			if err := ctx.Err(); err != nil {
+				return err
+			}
+		}
+		normalized := slugifyEducationInstitutionName(getName(record))
+		if normalized == "" {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		if _, ok := seen[normalized]; ok {
+			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
+		}
+		seen[normalized] = struct{}{}
+	}
+	return nil
 }
 
 func validateOwnershipCounts[T any](records []T, getOwnership func(T) string) error {
