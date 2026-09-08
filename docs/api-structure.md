@@ -231,6 +231,7 @@ softdata-api/
 │   ├── openapi.yaml
 │   ├── quick-start.md
 │   ├── rate-limits.md
+│   ├── softdata-api.postman_collection.json
 │   └── versioning.md
 ├── internal/
 │   ├── app/
