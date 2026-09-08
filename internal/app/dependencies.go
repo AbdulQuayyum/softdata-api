@@ -61,6 +61,7 @@ const (
 	financeDevelopmentFinanceInstitutionsRelativePath          = "finance/development_finance_institutions.json"
 	financePrimaryMortgageInstitutionsRelativePath             = "finance/primary_mortgage_institutions.json"
 	financeMicrofinanceBanksRelativePath                       = "finance/microfinance_banks.json"
+	healthcareHealthFacilitiesRelativePath                     = "healthcare/health_facilities.json"
 )
 
 var approvedUniversityStateIDs = map[string]struct{}{
@@ -204,6 +205,21 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	if err != nil {
 		return appDependencies{}, err
 	}
+	healthcareService, err := buildHealthFacilityServiceFromJSONRepository(ctx, jsonRepository,
+		func(repository interfaces.JSONFileRepository, healthPath, statesPath, lgasPath string) (interfaces.HealthFacilityRepository, error) {
+			return fileRepo.NewHealthFacilityRepository(repository, healthPath, statesPath, lgasPath)
+		},
+		func(repository interfaces.HealthFacilityRepository) (healthFacilityService, error) {
+			service, err := services.NewHealthFacilityService(repository)
+			if err != nil {
+				return nil, err
+			}
+			return service, nil
+		},
+	)
+	if err != nil {
+		return appDependencies{}, err
+	}
 	financeHandler, err := handlers.NewFinanceHandlerWithPublicAPIURL(financeService, cfg.PublicAPIURL)
 	if err != nil {
 		return appDependencies{}, err
@@ -333,8 +349,9 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 			}
 			return nil
 		},
-		closeRedis:    redisClose,
-		closePostgres: pool.Close,
+		closeRedis:        redisClose,
+		closePostgres:     pool.Close,
+		healthcareService: healthcareService,
 	}
 	return deps, nil
 }
@@ -391,6 +408,11 @@ type extendedEducationService interface {
 	GetTechnicalCollege(context.Context, string) (models.TechnicalCollege, error)
 	ListPrimaryAndSecondarySchools(context.Context, interfaces.PrimaryAndSecondarySchoolQuery) (interfaces.PrimaryAndSecondarySchoolListResult, error)
 	GetPrimaryAndSecondarySchool(context.Context, string) (models.PrimaryAndSecondarySchool, error)
+}
+
+type healthFacilityService interface {
+	ListHealthFacilities(context.Context, services.HealthFacilityQuery) (services.HealthFacilityListResult, error)
+	GetHealthFacility(context.Context, string) (models.HealthFacility, error)
 }
 
 type financeService interface {
@@ -546,6 +568,40 @@ func buildEducationHandler(
 		return nil, fmt.Errorf("initialize education json repository: %w", err)
 	}
 	return buildEducationHandlerFromJSONRepository(ctx, jsonRepository, newEducationRepository, newEducationService, newEducationHandler)
+}
+
+func buildHealthFacilityServiceFromJSONRepository(
+	ctx context.Context,
+	jsonRepository interfaces.JSONFileRepository,
+	newRepository func(interfaces.JSONFileRepository, string, string, string) (interfaces.HealthFacilityRepository, error),
+	newService func(interfaces.HealthFacilityRepository) (healthFacilityService, error),
+) (healthFacilityService, error) {
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if jsonRepository == nil {
+		return nil, fmt.Errorf("json repository is required")
+	}
+	if newRepository == nil {
+		return nil, fmt.Errorf("health facility repository factory is required")
+	}
+	if newService == nil {
+		return nil, fmt.Errorf("health facility service factory is required")
+	}
+	repository, err := newRepository(
+		jsonRepository,
+		healthcareHealthFacilitiesRelativePath,
+		geographyStatesRelativePath,
+		geographyLocalGovernmentUnitsRelativePath,
+	)
+	if err != nil {
+		return nil, fmt.Errorf("initialize health facility repository: %w", err)
+	}
+	service, err := newService(repository)
+	if err != nil {
+		return nil, fmt.Errorf("initialize health facility service: %w", err)
+	}
+	return service, nil
 }
 
 func buildEducationHandlerFromJSONRepository(

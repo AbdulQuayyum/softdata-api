@@ -59,6 +59,24 @@ var (
 	ErrTechnicalCollegeNotFound = errors.New("repository: technical college not found")
 	// ErrPrimaryAndSecondarySchoolNotFound reports that a requested primary or secondary school is not present in the dataset.
 	ErrPrimaryAndSecondarySchoolNotFound = errors.New("repository: primary and secondary school not found")
+	// ErrHealthFacilityNotFound reports that a requested health facility is not present in the dataset.
+	ErrHealthFacilityNotFound = errors.New("repository: health facility not found")
+	// ErrInvalidHealthFacilityQuery reports an invalid health-facility query.
+	ErrInvalidHealthFacilityQuery = errors.New("repository: invalid health facility query")
+	// ErrInvalidHealthFacilityStateFilter reports an unknown health-facility state filter.
+	ErrInvalidHealthFacilityStateFilter = errors.New("repository: invalid health facility state filter")
+	// ErrInvalidHealthFacilityLGAFilter reports an unknown health-facility LGA filter.
+	ErrInvalidHealthFacilityLGAFilter = errors.New("repository: invalid health facility lga filter")
+	// ErrInvalidHealthFacilityStateLGA reports an invalid health-facility state/LGA combination.
+	ErrInvalidHealthFacilityStateLGA = errors.New("repository: invalid health facility state lga relationship")
+	// ErrInvalidHealthFacilityType reports an unsupported facility type filter.
+	ErrInvalidHealthFacilityType = errors.New("repository: invalid health facility type")
+	// ErrInvalidHealthFacilityLevel reports an unsupported facility level filter.
+	ErrInvalidHealthFacilityLevel = errors.New("repository: invalid health facility level")
+	// ErrInvalidHealthFacilityOwnership reports an unsupported ownership filter.
+	ErrInvalidHealthFacilityOwnership = errors.New("repository: invalid health facility ownership")
+	// ErrInvalidHealthFacilitySearch reports an invalid search filter.
+	ErrInvalidHealthFacilitySearch = errors.New("repository: invalid health facility search")
 	// ErrInvalidPrimaryAndSecondarySchoolQuery reports that a primary/secondary school query is invalid.
 	ErrInvalidPrimaryAndSecondarySchoolQuery = errors.New("repository: invalid primary and secondary school query")
 	// ErrPaymentServiceProviderNotFound reports that a requested payment service provider is not present in the dataset.

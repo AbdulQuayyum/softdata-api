@@ -385,6 +385,9 @@ softdata-api/
 │   │   │   ├── education_extended_repository_test.go
 │   │   │   ├── education_repository.go
 │   │   │   ├── education_repository_test.go
+│   │   │   ├── healthcare_bench_test.go
+│   │   │   ├── healthcare_repository.go
+│   │   │   ├── healthcare_repository_test.go
 │   │   │   ├── education_schools.go
 │   │   │   ├── education_smalls.go
 │   │   │   ├── finance_commercial_banks_test.go
@@ -412,6 +415,7 @@ softdata-api/
 │   │   │   ├── api_key_repository.go
 │   │   │   ├── dataset_repository.go
 │   │   │   ├── education_repository.go
+│   │   │   ├── healthcare_repository.go
 │   │   │   ├── errors.go
 │   │   │   ├── file_repository.go
 │   │   │   ├── finance_repository.go
@@ -484,6 +488,8 @@ softdata-api/
 │   │   ├── education_extended_service_test.go
 │   │   ├── education_service.go
 │   │   ├── education_service_test.go
+│   │   ├── healthcare_service.go
+│   │   ├── healthcare_service_test.go
 │   │   ├── errors.go
 │   │   ├── finance_service.go
 │   │   ├── finance_service_test.go
@@ -563,7 +569,7 @@ Domain and API-facing models kept separate from sqlc-generated persistence struc
 
 ### `internal/repository/`
 
-Repository interfaces plus PostgreSQL, Redis, and file-backed implementations. The file repository includes lazy, synchronized, validated loading for education snapshots, paginated school indexing, and dedicated validation/loading for regulated-finance datasets.
+Repository interfaces plus PostgreSQL, Redis, and file-backed implementations. The file repository includes lazy, synchronized, validated loading for education snapshots, indexed paginated school access, and the source-verified health-facility repository with immutable filter indexes. Healthcare repository loading validates the committed snapshot and geography references but does not load reconciliation partitions.
 
 ### Runtime/Data Loading
 
@@ -574,7 +580,7 @@ Repository interfaces plus PostgreSQL, Redis, and file-backed implementations. T
 
 ### `internal/services/`
 
-Application use cases and business rules for accounts, authentication, datasets, education, finance, geography, and usage. Education services expose list/detail operations for institution snapshots and paginated filtering/detail lookup for primary and secondary schools.
+Application use cases and business rules for accounts, authentication, datasets, education, healthcare, finance, geography, and usage. Education services expose list/detail operations for institution snapshots and paginated filtering/detail lookup for primary and secondary schools. `healthcare_service.go` exposes validated paginated list and detail access for the unified health-facility snapshot.
 
 ### `internal/validators/`
 
