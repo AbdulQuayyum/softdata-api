@@ -220,6 +220,10 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	if err != nil {
 		return appDependencies{}, err
 	}
+	healthcareHandler, err := handlers.NewHealthFacilityHandler(healthcareService)
+	if err != nil {
+		return appDependencies{}, fmt.Errorf("initialize health facility handler: %w", err)
+	}
 	financeHandler, err := handlers.NewFinanceHandlerWithPublicAPIURL(financeService, cfg.PublicAPIURL)
 	if err != nil {
 		return appDependencies{}, err
@@ -301,16 +305,17 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	}
 
 	routerHandler, err := router.New(router.Handlers{
-		Health:    healthHandler,
-		Discovery: discoveryHandler,
-		Geography: geographyHandler,
-		Education: educationHandler,
-		Finance:   financeHandler,
-		Auth:      authHandler,
-		Account:   accountHandler,
-		APIKey:    apiKeyHandler,
-		Usage:     usageHandler,
-		Dataset:   datasetHandler,
+		Health:     healthHandler,
+		Discovery:  discoveryHandler,
+		Geography:  geographyHandler,
+		Education:  educationHandler,
+		Healthcare: healthcareHandler,
+		Finance:    financeHandler,
+		Auth:       authHandler,
+		Account:    accountHandler,
+		APIKey:     apiKeyHandler,
+		Usage:      usageHandler,
+		Dataset:    datasetHandler,
 	}, router.Middleware{
 		RequestID:       requestIDMiddleware,
 		Recovery:        recoveryMiddleware,
@@ -600,6 +605,9 @@ func buildHealthFacilityServiceFromJSONRepository(
 	service, err := newService(repository)
 	if err != nil {
 		return nil, fmt.Errorf("initialize health facility service: %w", err)
+	}
+	if err := verifyHealthFacilityDataset(ctx, service); err != nil {
+		return nil, err
 	}
 	return service, nil
 }

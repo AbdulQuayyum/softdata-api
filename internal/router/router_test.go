@@ -101,6 +101,7 @@ func testHandlers(t *testing.T, rec *routerRecorder) Handlers {
 	geography := &routerGeographyStub{rec: rec}
 	education := &routerEducationStub{rec: rec}
 	finance := &routerFinanceStub{rec: rec}
+	healthcare := &routerHealthFacilityStub{rec: rec}
 
 	authHandler, err := handlers.NewAuthHandler(auth, auth)
 	if err != nil {
@@ -134,18 +135,23 @@ func testHandlers(t *testing.T, rec *routerRecorder) Handlers {
 	if err != nil {
 		t.Fatalf("NewFinanceHandler() error = %v", err)
 	}
+	healthcareHandler, err := handlers.NewHealthFacilityHandler(healthcare)
+	if err != nil {
+		t.Fatalf("NewHealthFacilityHandler() error = %v", err)
+	}
 
 	return Handlers{
-		Health:    handlers.NewHealthHandler(),
-		Discovery: handlers.NewDiscoveryHandler(),
-		Geography: geographyHandler,
-		Education: educationHandler,
-		Finance:   financeHandler,
-		Auth:      authHandler,
-		Account:   accountHandler,
-		APIKey:    apiKeyHandler,
-		Usage:     usageHandler,
-		Dataset:   datasetHandler,
+		Health:     handlers.NewHealthHandler(),
+		Discovery:  handlers.NewDiscoveryHandler(),
+		Geography:  geographyHandler,
+		Education:  educationHandler,
+		Healthcare: healthcareHandler,
+		Finance:    financeHandler,
+		Auth:       authHandler,
+		Account:    accountHandler,
+		APIKey:     apiKeyHandler,
+		Usage:      usageHandler,
+		Dataset:    datasetHandler,
 	}
 }
 
@@ -159,6 +165,7 @@ func testHandlersWithGeography(t *testing.T, rec *routerRecorder, geography *rou
 	dataset := &routerDatasetStub{rec: rec}
 	education := &routerEducationStub{rec: rec}
 	finance := &routerFinanceStub{rec: rec}
+	healthcare := &routerHealthFacilityStub{rec: rec}
 
 	authHandler, err := handlers.NewAuthHandler(auth, auth)
 	if err != nil {
@@ -192,18 +199,23 @@ func testHandlersWithGeography(t *testing.T, rec *routerRecorder, geography *rou
 	if err != nil {
 		t.Fatalf("NewFinanceHandler() error = %v", err)
 	}
+	healthcareHandler, err := handlers.NewHealthFacilityHandler(healthcare)
+	if err != nil {
+		t.Fatalf("NewHealthFacilityHandler() error = %v", err)
+	}
 
 	return Handlers{
-		Health:    handlers.NewHealthHandler(),
-		Discovery: handlers.NewDiscoveryHandler(),
-		Geography: geographyHandler,
-		Education: educationHandler,
-		Finance:   financeHandler,
-		Auth:      authHandler,
-		Account:   accountHandler,
-		APIKey:    apiKeyHandler,
-		Usage:     usageHandler,
-		Dataset:   datasetHandler,
+		Health:     handlers.NewHealthHandler(),
+		Discovery:  handlers.NewDiscoveryHandler(),
+		Geography:  geographyHandler,
+		Education:  educationHandler,
+		Healthcare: healthcareHandler,
+		Finance:    financeHandler,
+		Auth:       authHandler,
+		Account:    accountHandler,
+		APIKey:     apiKeyHandler,
+		Usage:      usageHandler,
+		Dataset:    datasetHandler,
 	}
 }
 
@@ -1642,16 +1654,17 @@ func newGeographyPolicyRouter(t *testing.T) geographyPolicyHarness {
 	}
 
 	routerHandler, err := New(Handlers{
-		Health:    handlers.NewHealthHandler(),
-		Discovery: handlers.NewDiscoveryHandler(),
-		Geography: geographyHandler,
-		Education: baseHandlers.Education,
-		Finance:   baseHandlers.Finance,
-		Auth:      baseHandlers.Auth,
-		Account:   baseHandlers.Account,
-		APIKey:    baseHandlers.APIKey,
-		Usage:     baseHandlers.Usage,
-		Dataset:   baseHandlers.Dataset,
+		Health:     handlers.NewHealthHandler(),
+		Discovery:  handlers.NewDiscoveryHandler(),
+		Geography:  geographyHandler,
+		Education:  baseHandlers.Education,
+		Healthcare: baseHandlers.Healthcare,
+		Finance:    baseHandlers.Finance,
+		Auth:       baseHandlers.Auth,
+		Account:    baseHandlers.Account,
+		APIKey:     baseHandlers.APIKey,
+		Usage:      baseHandlers.Usage,
+		Dataset:    baseHandlers.Dataset,
 	}, Middleware{
 		RequestID:       middlewares.RequestID,
 		Recovery:        func(next http.Handler) http.Handler { return next },
@@ -1745,16 +1758,17 @@ func newFinancePolicyRouter(t *testing.T) financePolicyHarness {
 	}
 
 	routerHandler, err := New(Handlers{
-		Health:    handlers.NewHealthHandler(),
-		Discovery: handlers.NewDiscoveryHandler(),
-		Geography: baseHandlers.Geography,
-		Education: baseHandlers.Education,
-		Finance:   financeHandler,
-		Auth:      baseHandlers.Auth,
-		Account:   baseHandlers.Account,
-		APIKey:    baseHandlers.APIKey,
-		Usage:     baseHandlers.Usage,
-		Dataset:   baseHandlers.Dataset,
+		Health:     handlers.NewHealthHandler(),
+		Discovery:  handlers.NewDiscoveryHandler(),
+		Geography:  baseHandlers.Geography,
+		Education:  baseHandlers.Education,
+		Healthcare: baseHandlers.Healthcare,
+		Finance:    financeHandler,
+		Auth:       baseHandlers.Auth,
+		Account:    baseHandlers.Account,
+		APIKey:     baseHandlers.APIKey,
+		Usage:      baseHandlers.Usage,
+		Dataset:    baseHandlers.Dataset,
 	}, Middleware{
 		RequestID:       middlewares.RequestID,
 		Recovery:        func(next http.Handler) http.Handler { return next },
@@ -1848,16 +1862,17 @@ func newEducationPolicyRouter(t *testing.T) educationPolicyHarness {
 	}
 
 	routerHandler, err := New(Handlers{
-		Health:    handlers.NewHealthHandler(),
-		Discovery: handlers.NewDiscoveryHandler(),
-		Geography: baseHandlers.Geography,
-		Education: educationHandler,
-		Finance:   baseHandlers.Finance,
-		Auth:      baseHandlers.Auth,
-		Account:   baseHandlers.Account,
-		APIKey:    baseHandlers.APIKey,
-		Usage:     baseHandlers.Usage,
-		Dataset:   baseHandlers.Dataset,
+		Health:     handlers.NewHealthHandler(),
+		Discovery:  handlers.NewDiscoveryHandler(),
+		Geography:  baseHandlers.Geography,
+		Education:  educationHandler,
+		Healthcare: baseHandlers.Healthcare,
+		Finance:    baseHandlers.Finance,
+		Auth:       baseHandlers.Auth,
+		Account:    baseHandlers.Account,
+		APIKey:     baseHandlers.APIKey,
+		Usage:      baseHandlers.Usage,
+		Dataset:    baseHandlers.Dataset,
 	}, Middleware{
 		RequestID:       middlewares.RequestID,
 		Recovery:        func(next http.Handler) http.Handler { return next },
