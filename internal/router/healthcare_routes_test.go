@@ -21,8 +21,8 @@ func (s *routerHealthFacilityStub) ListHealthFacilities(_ context.Context, query
 			FacilityLevel: "primary", OwnershipType: "private", StateID: "lagos", LGAID: "lagos-ikeja",
 			CountryCode: "NG",
 		}},
-		Page: query.Page, PageSize: query.PageSize, Total: 50654,
-		TotalPages: (50654 + query.PageSize - 1) / query.PageSize,
+		Page: query.Page, PageSize: query.PageSize, Total: 50649,
+		TotalPages: (50649 + query.PageSize - 1) / query.PageSize,
 	}, nil
 }
 

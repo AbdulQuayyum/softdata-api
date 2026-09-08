@@ -4,8 +4,8 @@
   "title": "Nigeria Health Facilities",
   "description": "Source-verified GRID3 HFR-derived 2024 health-facilities snapshot.",
   "type": "array",
-  "minItems": 50654,
-  "maxItems": 50654,
+  "minItems": 50649,
+  "maxItems": 50649,
   "uniqueItems": true,
   "items": {
     "$ref": "#/$defs/healthFacility"
@@ -24,7 +24,8 @@
       "properties": {
         "id": {
           "type": "string",
-          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "maxLength": 255
         },
         "name": {
           "type": "string",
@@ -78,12 +79,12 @@
         },
         "latitude": {
           "type": "number",
-          "minimum": 4.281710,
+          "minimum": 4.28171,
           "maximum": 13.865239
         },
         "longitude": {
           "type": "number",
-          "minimum": 2.707790,
+          "minimum": 2.70779,
           "maximum": 14.636383
         }
       }

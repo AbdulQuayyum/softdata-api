@@ -1,0 +1,929 @@
+{
+  "dataset_key": "ng-health-facilities",
+  "review_date": "2026-09-09",
+  "policy": "Quarantine both conflicting observations when identity cannot be established. Never prefer the earlier source position or a particular provider solely because it is earlier or more complete.",
+  "boundary_verification": {
+    "url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/NGA/ADM0/geoBoundaries-NGA-ADM0.geojson",
+    "boundary_id": "NGA-ADM0-39225661",
+    "publisher": "geoBoundaries, sourced from GRID3",
+    "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+    "sha256": "cb2407fde9f81c67a3637fbc13bd1c7bcfe20c469eba77148b3e4895ee33acaa",
+    "method": "Ray-casting point-in-polygon against ADM0 exterior rings with holes excluded; all ten disputed points are inside Nigeria.",
+    "retrieved_at": "2026-09-09"
+  },
+  "pairs": [
+    {
+      "pair_id": "edo-7801-27202",
+      "name": "Awo Primary Health Center",
+      "source_positions": [
+        7801,
+        27202
+      ],
+      "distance_metres": 1141.633,
+      "distance_method": "Haversine inverse great-circle geodesic on a sphere, mean Earth radius 6371008.8 metres; WGS84 latitude/longitude degrees; no rounding before distance calculation. Not a survey-grade ellipsoidal distance.",
+      "conflicting_fields": [
+        "OBJECTID",
+        "globalid",
+        "nhfr_uid",
+        "nhfr_facility_code",
+        "ward",
+        "facility_name_source",
+        "ownership_type",
+        "facility_level_option",
+        "latitude",
+        "longitude"
+      ],
+      "observations": [
+        {
+          "source_position": 7801,
+          "source_facility_id": "aa21df1f-8378-4331-bd03-354f71b72b30",
+          "raw_attributes": {
+            "OBJECTID": 16301,
+            "globalid": "aa21df1f-8378-4331-bd03-354f71b72b30",
+            "nhfr_uid": 73873249,
+            "nhfr_facility_code": "12/04/1/1/1/0006",
+            "country": "Nigeria",
+            "iso": "NGA",
+            "state": "Edo",
+            "lga": "Esan North-East",
+            "lga_name_disagreement": 0,
+            "ward": "Obiyon/Amedokhian",
+            "ward_name_disagreement": 0,
+            "facility_name": "Awo Primary Health Center",
+            "facility_name_source": "NHFR_2024",
+            "ownership": "Public",
+            "ownership_type": "Local Government",
+            "facility_level": "Primary",
+            "facility_level_option": "Primary Health Clinic",
+            "latitude": 6.72964,
+            "longitude": 6.36953,
+            "geocoordinates_source": "GRID3_EHEALTH",
+            "last_updated": "2024-11-11"
+          },
+          "geometry": {
+            "x": 6.369530000000054,
+            "y": 6.7296400000000745
+          },
+          "normalized_name": "Awo Primary Health Center",
+          "normalized_state_id": "edo",
+          "normalized_lga_id": "edo-esan-north-east",
+          "previous_decision": "retain",
+          "previous_final_record_id": "awo-primary-health-center-edo-edo-esan-north-east-aa21df1f-8378-4331-bd03-354f71b72b30",
+          "previous_merge_target_id": null,
+          "within_nigeria": true
+        },
+        {
+          "source_position": 27202,
+          "source_facility_id": "c6181dcb-ccdd-457c-a251-bcbc7a6718a0",
+          "raw_attributes": {
+            "OBJECTID": 34202,
+            "globalid": "c6181dcb-ccdd-457c-a251-bcbc7a6718a0",
+            "nhfr_uid": null,
+            "nhfr_facility_code": "",
+            "country": "Nigeria",
+            "iso": "NGA",
+            "state": "Edo",
+            "lga": "Esan North-East",
+            "lga_name_disagreement": 0,
+            "ward": "Obiyon / Amedokhian",
+            "ward_name_disagreement": 0,
+            "facility_name": "Awo Primary Health Center",
+            "facility_name_source": "GRID3_EHEALTH",
+            "ownership": "Public",
+            "ownership_type": "Unknown",
+            "facility_level": "Primary",
+            "facility_level_option": "Primary Health Center",
+            "latitude": 6.71966448921,
+            "longitude": 6.36708435282,
+            "geocoordinates_source": "GRID3_EHEALTH",
+            "last_updated": "2024-11-11"
+          },
+          "geometry": {
+            "x": 6.3670843530000525,
+            "y": 6.719664489000024
+          },
+          "normalized_name": "Awo Primary Health Center",
+          "normalized_state_id": "edo",
+          "normalized_lga_id": "edo-esan-north-east",
+          "previous_decision": "merge_exact_duplicate",
+          "previous_final_record_id": null,
+          "previous_merge_target_id": "awo-primary-health-center-edo-edo-esan-north-east-aa21df1f-8378-4331-bd03-354f71b72b30",
+          "within_nigeria": true
+        }
+      ],
+      "evidence_sources": [
+        {
+          "url": "https://services3.arcgis.com/BU6Aadhn6tbBEdyk/ArcGIS/rest/services/GRID3_NGA_health_facilities_v2_0/FeatureServer/0/query?objectIds=16301,34202&outFields=*&returnGeometry=true&f=pjson",
+          "retrieved_at": "2026-09-09",
+          "result": "Retrieved public JSON with all 21 attributes and geometry. All preserved fields agree with committed observations; full attributes are pinned above. Neither row cross-references the other.",
+          "role": "primary row-level evidence"
+        },
+        {
+          "url": "https://services3.arcgis.com/BU6Aadhn6tbBEdyk/ArcGIS/rest/services/GRID3_NGA_health_facilities_v2_0/FeatureServer/0?f=pjson",
+          "retrieved_at": "2026-09-09",
+          "result": "Layer describes incorporation of NHFR 2024 and NPHCDA standards. Provenance differs by observation; common layer update date does not establish measurement order or location accuracy.",
+          "role": "primary provenance"
+        },
+        {
+          "url": "https://hfr.fmohconnect.gov.ng/facilitieslist",
+          "retrieved_at": "2026-09-09",
+          "result": "Public Facility Finder HTML and its public page script inspected; search uses the POST endpoint recorded below.",
+          "role": "public NHFR search"
+        },
+        {
+          "url": "https://backend.hfr.fmohconnect.gov.ng/api/facilities-hospitals-search",
+          "method": "POST (read-only public search)",
+          "request": {
+            "facility_name": "Awo",
+            "per_page": 100,
+            "page": 1
+          },
+          "retrieved_at": "2026-09-09",
+          "result": "Read timed out after 35 seconds; no facility result obtained. No credentials used.",
+          "role": "public NHFR search attempt"
+        },
+        {
+          "url": "https://www.hfr.fmohconnect.gov.ng/developers",
+          "retrieved_at": "2026-09-09",
+          "result": "External v1 API documentation requires X-API-Key. An unauthenticated v1 facilities request returned HTTP 401; no access restriction was bypassed.",
+          "role": "NHFR access limitation"
+        },
+        {
+          "url": "https://nphcda.gov.ng/",
+          "retrieved_at": "2026-09-09",
+          "result": "Agency page inspected and facility-name/site-restricted searches attempted. No site-level crosswalk or coordinate correction resolving this pair was obtained. Standards define categories, not equality of these observations.",
+          "role": "government review"
+        },
+        {
+          "url": "https://edophcda.org/",
+          "retrieved_at": "2026-09-09",
+          "result": "Direct retrieval failed DNS resolution. Edo ministry/agency searches found no primary site-level identifier crosswalk.",
+          "role": "state agency attempt"
+        },
+        {
+          "url": "https://thehospitalbook.com/awo-primary-health-centre/",
+          "retrieved_at": "2026-09-09",
+          "result": "Discovered third-party directory; direct retrieval returned 403. Search snippets were not used to establish identity.",
+          "role": "secondary source attempt"
+        },
+        {
+          "url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/NGA/ADM0/geoBoundaries-NGA-ADM0.geojson",
+          "retrieved_at": "2026-09-09",
+          "result": "Both points pass ADM0 polygon containment; country membership alone cannot distinguish facility identity.",
+          "role": "supporting geography"
+        }
+      ],
+      "final_decision": "exclude_unresolved_identity",
+      "final_record_ids": [],
+      "canonical_value_decisions": {
+        "canonical_observation": null,
+        "coordinates": null,
+        "classification": null,
+        "ownership": null,
+        "explanation": "Neither observation is selected as canonical. Both are quarantined; no conflicting values are published or averaged."
+      },
+      "reason": "The live GRID3 observations confirm the committed conflicts and do not cross-reference a common facility. Name and ward agreement do not establish one physical/legal site. Different source provenance does not prove chronology or accuracy; last_updated is the same for both. Public sources did not establish whether these are separate sites, relocation, or a source error. Exclude both observations until authoritative site-level evidence resolves identity.",
+      "coordinate_assessment": {
+        "gps_variation": "Not established; no accuracy radius or field-measurement dates are supplied.",
+        "entrance_vs_centroid": "Not established; no surveyed facility footprint identifies both points.",
+        "relocation": "Not established; layer update date is not a relocation date.",
+        "separate_campuses_or_same_name_sites": "Reviewed as a possibility, especially for the 3.23 km pair; no primary source links two campuses to these identifiers.",
+        "source_error": "Plausible but unproven; no correction notice identifies a canonical point."
+      },
+      "review_date": "2026-09-09",
+      "source_provenance_assessment": "One observation has NHFR_2024 name provenance and an NHFR UID/code; its partner has GRID3_EHEALTH name provenance without an NHFR UID/code.",
+      "map_imagery": "No imagery used as identity authority. No authoritative building/entrance footprint linking both coordinates was obtained."
+    },
+    {
+      "pair_id": "ondo-8152-28718",
+      "name": "Ibuji Comprehensive Health Center",
+      "source_positions": [
+        8152,
+        28718
+      ],
+      "distance_metres": 628.82,
+      "distance_method": "Haversine inverse great-circle geodesic on a sphere, mean Earth radius 6371008.8 metres; WGS84 latitude/longitude degrees; no rounding before distance calculation. Not a survey-grade ellipsoidal distance.",
+      "conflicting_fields": [
+        "OBJECTID",
+        "globalid",
+        "nhfr_uid",
+        "nhfr_facility_code",
+        "ward",
+        "facility_name_source",
+        "ownership",
+        "latitude",
+        "longitude"
+      ],
+      "observations": [
+        {
+          "source_position": 8152,
+          "source_facility_id": "3a97c530-e47e-411e-953f-22450fcb8668",
+          "raw_attributes": {
+            "OBJECTID": 16652,
+            "globalid": "3a97c530-e47e-411e-953f-22450fcb8668",
+            "nhfr_uid": 39292622,
+            "nhfr_facility_code": "28/10/1/1/1/0012",
+            "country": "Nigeria",
+            "iso": "NGA",
+            "state": "Ondo",
+            "lga": "Ifedore",
+            "lga_name_disagreement": 0,
+            "ward": "Ero/Ibuji",
+            "ward_name_disagreement": 0,
+            "facility_name": "Ibuji Comprehensive Health Center",
+            "facility_name_source": "NHFR_2024",
+            "ownership": "Public",
+            "ownership_type": "Unknown",
+            "facility_level": "Primary",
+            "facility_level_option": "Primary Health Center",
+            "latitude": 7.45354,
+            "longitude": 5.06979,
+            "geocoordinates_source": "GRID3_EHEALTH",
+            "last_updated": "2024-11-11"
+          },
+          "geometry": {
+            "x": 5.069790000000069,
+            "y": 7.453540000000032
+          },
+          "normalized_name": "Ibuji Comprehensive Health Center",
+          "normalized_state_id": "ondo",
+          "normalized_lga_id": "ondo-ifedore",
+          "previous_decision": "retain",
+          "previous_final_record_id": "ibuji-comprehensive-health-center-ondo-ondo-ifedore-3a97c530-e47e-411e-953f-22450fcb8668",
+          "previous_merge_target_id": null,
+          "within_nigeria": true
+        },
+        {
+          "source_position": 28718,
+          "source_facility_id": "153d5d89-b73f-4333-be0d-8207f55547c7",
+          "raw_attributes": {
+            "OBJECTID": 35218,
+            "globalid": "153d5d89-b73f-4333-be0d-8207f55547c7",
+            "nhfr_uid": null,
+            "nhfr_facility_code": "",
+            "country": "Nigeria",
+            "iso": "NGA",
+            "state": "Ondo",
+            "lga": "Ifedore",
+            "lga_name_disagreement": 0,
+            "ward": "Ero / Ibuji",
+            "ward_name_disagreement": 0,
+            "facility_name": "Ibuji Comprehensive Health Center",
+            "facility_name_source": "GRID3_EHEALTH",
+            "ownership": "Unknown",
+            "ownership_type": "Unknown",
+            "facility_level": "Primary",
+            "facility_level_option": "Primary Health Center",
+            "latitude": 7.453491211,
+            "longitude": 5.064086914,
+            "geocoordinates_source": "GRID3_EHEALTH",
+            "last_updated": "2024-11-11"
+          },
+          "geometry": {
+            "x": 5.064086914000029,
+            "y": 7.453491211000028
+          },
+          "normalized_name": "Ibuji Comprehensive Health Center",
+          "normalized_state_id": "ondo",
+          "normalized_lga_id": "ondo-ifedore",
+          "previous_decision": "merge_exact_duplicate",
+          "previous_final_record_id": null,
+          "previous_merge_target_id": "ibuji-comprehensive-health-center-ondo-ondo-ifedore-3a97c530-e47e-411e-953f-22450fcb8668",
+          "within_nigeria": true
+        }
+      ],
+      "evidence_sources": [
+        {
+          "url": "https://services3.arcgis.com/BU6Aadhn6tbBEdyk/ArcGIS/rest/services/GRID3_NGA_health_facilities_v2_0/FeatureServer/0/query?objectIds=16652,35218&outFields=*&returnGeometry=true&f=pjson",
+          "retrieved_at": "2026-09-09",
+          "result": "Retrieved public JSON with all 21 attributes and geometry. All preserved fields agree with committed observations; full attributes are pinned above. Neither row cross-references the other.",
+          "role": "primary row-level evidence"
+        },
+        {
+          "url": "https://services3.arcgis.com/BU6Aadhn6tbBEdyk/ArcGIS/rest/services/GRID3_NGA_health_facilities_v2_0/FeatureServer/0?f=pjson",
+          "retrieved_at": "2026-09-09",
+          "result": "Layer describes incorporation of NHFR 2024 and NPHCDA standards. Provenance differs by observation; common layer update date does not establish measurement order or location accuracy.",
+          "role": "primary provenance"
+        },
+        {
+          "url": "https://hfr.fmohconnect.gov.ng/facilitieslist",
+          "retrieved_at": "2026-09-09",
+          "result": "Public Facility Finder HTML and its public page script inspected; search uses the POST endpoint recorded below.",
+          "role": "public NHFR search"
+        },
+        {
+          "url": "https://backend.hfr.fmohconnect.gov.ng/api/facilities-hospitals-search",
+          "method": "POST (read-only public search)",
+          "request": {
+            "facility_name": "Ibuji",
+            "per_page": 100,
+            "page": 1
+          },
+          "retrieved_at": "2026-09-09",
+          "result": "Read timed out after 35 seconds; no facility result obtained. No credentials used.",
+          "role": "public NHFR search attempt"
+        },
+        {
+          "url": "https://www.hfr.fmohconnect.gov.ng/developers",
+          "retrieved_at": "2026-09-09",
+          "result": "External v1 API documentation requires X-API-Key. An unauthenticated v1 facilities request returned HTTP 401; no access restriction was bypassed.",
+          "role": "NHFR access limitation"
+        },
+        {
+          "url": "https://nphcda.gov.ng/",
+          "retrieved_at": "2026-09-09",
+          "result": "Agency page inspected and facility-name/site-restricted searches attempted. No site-level crosswalk or coordinate correction resolving this pair was obtained. Standards define categories, not equality of these observations.",
+          "role": "government review"
+        },
+        {
+          "url": "https://www.ondobudget.org/materials/SDPIC%20Complete%20Report.pdf",
+          "retrieved_at": "2026-09-09",
+          "result": "Downloaded and read government report, printed page 104. Ibuji is included among comprehensive health-centre locations. No exact coordinates, observation crosswalk, or relocation chronology are supplied.",
+          "role": "state government source"
+        },
+        {
+          "url": "https://www.swap.gov.ng/assets/NEW%20HOPE-HEALTH%20ANNEX%20FEB7-CQ-CWlHw.pdf",
+          "retrieved_at": "2026-09-09",
+          "result": "Attempted federal health-sector annex retrieval returned an HTML application shell rather than the PDF. No search-snippet claim used.",
+          "role": "federal health source attempt"
+        },
+        {
+          "url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/NGA/ADM0/geoBoundaries-NGA-ADM0.geojson",
+          "retrieved_at": "2026-09-09",
+          "result": "Both points pass ADM0 polygon containment; country membership alone cannot distinguish facility identity.",
+          "role": "supporting geography"
+        }
+      ],
+      "final_decision": "exclude_unresolved_identity",
+      "final_record_ids": [],
+      "canonical_value_decisions": {
+        "canonical_observation": null,
+        "coordinates": null,
+        "classification": null,
+        "ownership": null,
+        "explanation": "Neither observation is selected as canonical. Both are quarantined; no conflicting values are published or averaged."
+      },
+      "reason": "The live GRID3 observations confirm the committed conflicts and do not cross-reference a common facility. Name and ward agreement do not establish one physical/legal site. Different source provenance does not prove chronology or accuracy; last_updated is the same for both. Public sources did not establish whether these are separate sites, relocation, or a source error. Exclude both observations until authoritative site-level evidence resolves identity.",
+      "coordinate_assessment": {
+        "gps_variation": "Not established; no accuracy radius or field-measurement dates are supplied.",
+        "entrance_vs_centroid": "Not established; no surveyed facility footprint identifies both points.",
+        "relocation": "Not established; layer update date is not a relocation date.",
+        "separate_campuses_or_same_name_sites": "Reviewed as a possibility, especially for the 3.23 km pair; no primary source links two campuses to these identifiers.",
+        "source_error": "Plausible but unproven; no correction notice identifies a canonical point."
+      },
+      "review_date": "2026-09-09",
+      "source_provenance_assessment": "One observation has NHFR_2024 name provenance and an NHFR UID/code; its partner has GRID3_EHEALTH name provenance without an NHFR UID/code.",
+      "map_imagery": "No imagery used as identity authority. No authoritative building/entrance footprint linking both coordinates was obtained."
+    },
+    {
+      "pair_id": "enugu-8185-31128",
+      "name": "Nkume Health Post",
+      "source_positions": [
+        8185,
+        31128
+      ],
+      "distance_metres": 474.398,
+      "distance_method": "Haversine inverse great-circle geodesic on a sphere, mean Earth radius 6371008.8 metres; WGS84 latitude/longitude degrees; no rounding before distance calculation. Not a survey-grade ellipsoidal distance.",
+      "conflicting_fields": [
+        "OBJECTID",
+        "globalid",
+        "nhfr_uid",
+        "nhfr_facility_code",
+        "ward",
+        "facility_name_source",
+        "ownership_type",
+        "facility_level_option",
+        "latitude",
+        "longitude"
+      ],
+      "observations": [
+        {
+          "source_position": 8185,
+          "source_facility_id": "082fc2d9-3c9c-400b-bc3a-8677112440b5",
+          "raw_attributes": {
+            "OBJECTID": 16685,
+            "globalid": "082fc2d9-3c9c-400b-bc3a-8677112440b5",
+            "nhfr_uid": 70966232,
+            "nhfr_facility_code": "14/17/1/1/2/0022",
+            "country": "Nigeria",
+            "iso": "NGA",
+            "state": "Enugu",
+            "lga": "Uzo-Uwani",
+            "lga_name_disagreement": 0,
+            "ward": "Adaba/Nkume",
+            "ward_name_disagreement": 0,
+            "facility_name": "Nkume Health Post",
+            "facility_name_source": "NHFR_2024",
+            "ownership": "Public",
+            "ownership_type": "Local Government",
+            "facility_level": "Primary",
+            "facility_level_option": "Primary Health Clinic",
+            "latitude": 6.54372,
+            "longitude": 7.13728,
+            "geocoordinates_source": "GRID3_EHEALTH",
+            "last_updated": "2024-11-11"
+          },
+          "geometry": {
+            "x": 7.1372800000000325,
+            "y": 6.543720000000064
+          },
+          "normalized_name": "Nkume Health Post",
+          "normalized_state_id": "enugu",
+          "normalized_lga_id": "enugu-uzo-uwani",
+          "previous_decision": "retain",
+          "previous_final_record_id": "nkume-health-post-enugu-enugu-uzo-uwani-082fc2d9-3c9c-400b-bc3a-8677112440b5",
+          "previous_merge_target_id": null,
+          "within_nigeria": true
+        },
+        {
+          "source_position": 31128,
+          "source_facility_id": "fe46c762-bf6c-4b16-a066-0cf9236eff30",
+          "raw_attributes": {
+            "OBJECTID": 37628,
+            "globalid": "fe46c762-bf6c-4b16-a066-0cf9236eff30",
+            "nhfr_uid": null,
+            "nhfr_facility_code": "",
+            "country": "Nigeria",
+            "iso": "NGA",
+            "state": "Enugu",
+            "lga": "Uzo-Uwani",
+            "lga_name_disagreement": 0,
+            "ward": "Adaba / Nkume",
+            "ward_name_disagreement": 0,
+            "facility_name": "Nkume Health Post",
+            "facility_name_source": "GRID3_EHEALTH",
+            "ownership": "Public",
+            "ownership_type": "Unknown",
+            "facility_level": "Primary",
+            "facility_level_option": "Health Post",
+            "latitude": 6.5474513194,
+            "longitude": 7.13519783242,
+            "geocoordinates_source": "GRID3_EHEALTH",
+            "last_updated": "2024-11-11"
+          },
+          "geometry": {
+            "x": 7.135197832000074,
+            "y": 6.547451319000061
+          },
+          "normalized_name": "Nkume Health Post",
+          "normalized_state_id": "enugu",
+          "normalized_lga_id": "enugu-uzo-uwani",
+          "previous_decision": "merge_exact_duplicate",
+          "previous_final_record_id": null,
+          "previous_merge_target_id": "nkume-health-post-enugu-enugu-uzo-uwani-082fc2d9-3c9c-400b-bc3a-8677112440b5",
+          "within_nigeria": true
+        }
+      ],
+      "evidence_sources": [
+        {
+          "url": "https://services3.arcgis.com/BU6Aadhn6tbBEdyk/ArcGIS/rest/services/GRID3_NGA_health_facilities_v2_0/FeatureServer/0/query?objectIds=16685,37628&outFields=*&returnGeometry=true&f=pjson",
+          "retrieved_at": "2026-09-09",
+          "result": "Retrieved public JSON with all 21 attributes and geometry. All preserved fields agree with committed observations; full attributes are pinned above. Neither row cross-references the other.",
+          "role": "primary row-level evidence"
+        },
+        {
+          "url": "https://services3.arcgis.com/BU6Aadhn6tbBEdyk/ArcGIS/rest/services/GRID3_NGA_health_facilities_v2_0/FeatureServer/0?f=pjson",
+          "retrieved_at": "2026-09-09",
+          "result": "Layer describes incorporation of NHFR 2024 and NPHCDA standards. Provenance differs by observation; common layer update date does not establish measurement order or location accuracy.",
+          "role": "primary provenance"
+        },
+        {
+          "url": "https://hfr.fmohconnect.gov.ng/facilitieslist",
+          "retrieved_at": "2026-09-09",
+          "result": "Public Facility Finder HTML and its public page script inspected; search uses the POST endpoint recorded below.",
+          "role": "public NHFR search"
+        },
+        {
+          "url": "https://backend.hfr.fmohconnect.gov.ng/api/facilities-hospitals-search",
+          "method": "POST (read-only public search)",
+          "request": {
+            "facility_name": "Nkume",
+            "per_page": 100,
+            "page": 1
+          },
+          "retrieved_at": "2026-09-09",
+          "result": "Read timed out after 35 seconds; no facility result obtained. No credentials used.",
+          "role": "public NHFR search attempt"
+        },
+        {
+          "url": "https://www.hfr.fmohconnect.gov.ng/developers",
+          "retrieved_at": "2026-09-09",
+          "result": "External v1 API documentation requires X-API-Key. An unauthenticated v1 facilities request returned HTTP 401; no access restriction was bypassed.",
+          "role": "NHFR access limitation"
+        },
+        {
+          "url": "https://nphcda.gov.ng/",
+          "retrieved_at": "2026-09-09",
+          "result": "Agency page inspected and facility-name/site-restricted searches attempted. No site-level crosswalk or coordinate correction resolving this pair was obtained. Standards define categories, not equality of these observations.",
+          "role": "government review"
+        },
+        {
+          "url": "https://enugustate.gov.ng/wp-content/uploads/2025/03/Enugu-State-Local-Government-Harmonised-Budget-Classification-Codes-and-Chart-of-Accounts-V2.pdf",
+          "retrieved_at": "2026-09-09",
+          "result": "Full government PDF inspected. It identifies Adaba-Nkume in Uzo Uwani, but supplies no crosswalk of the two health-facility observations or their coordinates.",
+          "role": "state government context"
+        },
+        {
+          "url": "https://www.unn.edu.ng/wp-content/uploads/2016/06/5.-UBACHUKWU.pdf",
+          "retrieved_at": "2026-09-09",
+          "result": "University publication discovered for locality context; not used as facility identity evidence. No first-party facility page establishing these sites was found.",
+          "role": "first-party search attempt"
+        },
+        {
+          "url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/NGA/ADM0/geoBoundaries-NGA-ADM0.geojson",
+          "retrieved_at": "2026-09-09",
+          "result": "Both points pass ADM0 polygon containment; country membership alone cannot distinguish facility identity.",
+          "role": "supporting geography"
+        }
+      ],
+      "final_decision": "exclude_unresolved_identity",
+      "final_record_ids": [],
+      "canonical_value_decisions": {
+        "canonical_observation": null,
+        "coordinates": null,
+        "classification": null,
+        "ownership": null,
+        "explanation": "Neither observation is selected as canonical. Both are quarantined; no conflicting values are published or averaged."
+      },
+      "reason": "The live GRID3 observations confirm the committed conflicts and do not cross-reference a common facility. Name and ward agreement do not establish one physical/legal site. Different source provenance does not prove chronology or accuracy; last_updated is the same for both. Public sources did not establish whether these are separate sites, relocation, or a source error. Exclude both observations until authoritative site-level evidence resolves identity.",
+      "coordinate_assessment": {
+        "gps_variation": "Not established; no accuracy radius or field-measurement dates are supplied.",
+        "entrance_vs_centroid": "Not established; no surveyed facility footprint identifies both points.",
+        "relocation": "Not established; layer update date is not a relocation date.",
+        "separate_campuses_or_same_name_sites": "Reviewed as a possibility, especially for the 3.23 km pair; no primary source links two campuses to these identifiers.",
+        "source_error": "Plausible but unproven; no correction notice identifies a canonical point."
+      },
+      "review_date": "2026-09-09",
+      "source_provenance_assessment": "One observation has NHFR_2024 name provenance and an NHFR UID/code; its partner has GRID3_EHEALTH name provenance without an NHFR UID/code.",
+      "map_imagery": "No imagery used as identity authority. No authoritative building/entrance footprint linking both coordinates was obtained."
+    },
+    {
+      "pair_id": "kwara-14772-35746",
+      "name": "Aran Orin Comprehensive Health Center",
+      "source_positions": [
+        14772,
+        35746
+      ],
+      "distance_metres": 3229.159,
+      "distance_method": "Haversine inverse great-circle geodesic on a sphere, mean Earth radius 6371008.8 metres; WGS84 latitude/longitude degrees; no rounding before distance calculation. Not a survey-grade ellipsoidal distance.",
+      "conflicting_fields": [
+        "OBJECTID",
+        "globalid",
+        "nhfr_uid",
+        "nhfr_facility_code",
+        "ward",
+        "facility_name_source",
+        "ownership_type",
+        "latitude",
+        "longitude"
+      ],
+      "observations": [
+        {
+          "source_position": 14772,
+          "source_facility_id": "b1207f33-3278-4de1-bc16-12c70ff75d2c",
+          "raw_attributes": {
+            "OBJECTID": 22772,
+            "globalid": "b1207f33-3278-4de1-bc16-12c70ff75d2c",
+            "nhfr_uid": 71098438,
+            "nhfr_facility_code": "23/09/1/1/1/0010",
+            "country": "Nigeria",
+            "iso": "NGA",
+            "state": "Kwara",
+            "lga": "Irepodun",
+            "lga_name_disagreement": 0,
+            "ward": "Ipetu/Rore/Aran Orin",
+            "ward_name_disagreement": 0,
+            "facility_name": "Aran Orin Comprehensive Health Center",
+            "facility_name_source": "NHFR_2024",
+            "ownership": "Public",
+            "ownership_type": "Local Government",
+            "facility_level": "Primary",
+            "facility_level_option": "Primary Health Center",
+            "latitude": 8.08405,
+            "longitude": 5.07729,
+            "geocoordinates_source": "GRID3_EHEALTH",
+            "last_updated": "2024-11-11"
+          },
+          "geometry": {
+            "x": 5.077290000000062,
+            "y": 8.084050000000047
+          },
+          "normalized_name": "Aran Orin Comprehensive Health Center",
+          "normalized_state_id": "kwara",
+          "normalized_lga_id": "kwara-irepodun",
+          "previous_decision": "retain",
+          "previous_final_record_id": "aran-orin-comprehensive-health-center-kwara-kwara-irepodun-b1207f33-3278-4de1-bc16-12c70ff75d2c",
+          "previous_merge_target_id": null,
+          "within_nigeria": true
+        },
+        {
+          "source_position": 35746,
+          "source_facility_id": "a65391e6-6f4d-4d52-a5db-377e74aaed02",
+          "raw_attributes": {
+            "OBJECTID": 41746,
+            "globalid": "a65391e6-6f4d-4d52-a5db-377e74aaed02",
+            "nhfr_uid": null,
+            "nhfr_facility_code": "",
+            "country": "Nigeria",
+            "iso": "NGA",
+            "state": "Kwara",
+            "lga": "Irepodun",
+            "lga_name_disagreement": 0,
+            "ward": "Ipetu / Rore / Aran Orin",
+            "ward_name_disagreement": 0,
+            "facility_name": "Aran Orin Comprehensive Health Center",
+            "facility_name_source": "GRID3_EHEALTH",
+            "ownership": "Public",
+            "ownership_type": "Unknown",
+            "facility_level": "Primary",
+            "facility_level_option": "Primary Health Center",
+            "latitude": 8.109295,
+            "longitude": 5.0917886,
+            "geocoordinates_source": "GRID3_EHEALTH",
+            "last_updated": "2024-11-11"
+          },
+          "geometry": {
+            "x": 5.091788600000029,
+            "y": 8.109295000000031
+          },
+          "normalized_name": "Aran Orin Comprehensive Health Center",
+          "normalized_state_id": "kwara",
+          "normalized_lga_id": "kwara-irepodun",
+          "previous_decision": "merge_exact_duplicate",
+          "previous_final_record_id": null,
+          "previous_merge_target_id": "aran-orin-comprehensive-health-center-kwara-kwara-irepodun-b1207f33-3278-4de1-bc16-12c70ff75d2c",
+          "within_nigeria": true
+        }
+      ],
+      "evidence_sources": [
+        {
+          "url": "https://services3.arcgis.com/BU6Aadhn6tbBEdyk/ArcGIS/rest/services/GRID3_NGA_health_facilities_v2_0/FeatureServer/0/query?objectIds=22772,41746&outFields=*&returnGeometry=true&f=pjson",
+          "retrieved_at": "2026-09-09",
+          "result": "Retrieved public JSON with all 21 attributes and geometry. All preserved fields agree with committed observations; full attributes are pinned above. Neither row cross-references the other.",
+          "role": "primary row-level evidence"
+        },
+        {
+          "url": "https://services3.arcgis.com/BU6Aadhn6tbBEdyk/ArcGIS/rest/services/GRID3_NGA_health_facilities_v2_0/FeatureServer/0?f=pjson",
+          "retrieved_at": "2026-09-09",
+          "result": "Layer describes incorporation of NHFR 2024 and NPHCDA standards. Provenance differs by observation; common layer update date does not establish measurement order or location accuracy.",
+          "role": "primary provenance"
+        },
+        {
+          "url": "https://hfr.fmohconnect.gov.ng/facilitieslist",
+          "retrieved_at": "2026-09-09",
+          "result": "Public Facility Finder HTML and its public page script inspected; search uses the POST endpoint recorded below.",
+          "role": "public NHFR search"
+        },
+        {
+          "url": "https://backend.hfr.fmohconnect.gov.ng/api/facilities-hospitals-search",
+          "method": "POST (read-only public search)",
+          "request": {
+            "facility_name": "Aran",
+            "per_page": 100,
+            "page": 1
+          },
+          "retrieved_at": "2026-09-09",
+          "result": "Read timed out after 35 seconds; no facility result obtained. No credentials used.",
+          "role": "public NHFR search attempt"
+        },
+        {
+          "url": "https://www.hfr.fmohconnect.gov.ng/developers",
+          "retrieved_at": "2026-09-09",
+          "result": "External v1 API documentation requires X-API-Key. An unauthenticated v1 facilities request returned HTTP 401; no access restriction was bypassed.",
+          "role": "NHFR access limitation"
+        },
+        {
+          "url": "https://nphcda.gov.ng/",
+          "retrieved_at": "2026-09-09",
+          "result": "Agency page inspected and facility-name/site-restricted searches attempted. No site-level crosswalk or coordinate correction resolving this pair was obtained. Standards define categories, not equality of these observations.",
+          "role": "government review"
+        },
+        {
+          "url": "https://kwaracare.com.ng/our-hospital-network/",
+          "retrieved_at": "2026-09-09",
+          "result": "Full state insurance network page lists PHC Aran Orin in Aran Orin town/village under SPHCDA. It does not identify which of the two points is that site or establish whether a second campus exists.",
+          "role": "state health source"
+        },
+        {
+          "url": "https://www.unilorin.edu.ng/wp-content/uploads/2024/10/TRANSFORMING-UNIVERSITY-EDUCATION-IN-THE-21ST-CENTURY-1.pdf",
+          "retrieved_at": "2026-09-09",
+          "result": "Full first-party university PDF, page 11 (PDF index 10), describes training at the community health centre and university COBES infrastructure. It gives no GRID3 identifier crosswalk, coordinate correction, or facility relocation history.",
+          "role": "first-party parent/community source"
+        },
+        {
+          "url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/NGA/ADM0/geoBoundaries-NGA-ADM0.geojson",
+          "retrieved_at": "2026-09-09",
+          "result": "Both points pass ADM0 polygon containment; country membership alone cannot distinguish facility identity.",
+          "role": "supporting geography"
+        }
+      ],
+      "final_decision": "exclude_unresolved_identity",
+      "final_record_ids": [],
+      "canonical_value_decisions": {
+        "canonical_observation": null,
+        "coordinates": null,
+        "classification": null,
+        "ownership": null,
+        "explanation": "Neither observation is selected as canonical. Both are quarantined; no conflicting values are published or averaged."
+      },
+      "reason": "The live GRID3 observations confirm the committed conflicts and do not cross-reference a common facility. Name and ward agreement do not establish one physical/legal site. Different source provenance does not prove chronology or accuracy; last_updated is the same for both. Public sources did not establish whether these are separate sites, relocation, or a source error. Exclude both observations until authoritative site-level evidence resolves identity.",
+      "coordinate_assessment": {
+        "gps_variation": "Not established; no accuracy radius or field-measurement dates are supplied.",
+        "entrance_vs_centroid": "Not established; no surveyed facility footprint identifies both points.",
+        "relocation": "Not established; layer update date is not a relocation date.",
+        "separate_campuses_or_same_name_sites": "Reviewed as a possibility, especially for the 3.23 km pair; no primary source links two campuses to these identifiers.",
+        "source_error": "Plausible but unproven; no correction notice identifies a canonical point."
+      },
+      "review_date": "2026-09-09",
+      "source_provenance_assessment": "One observation has NHFR_2024 name provenance and an NHFR UID/code; its partner has GRID3_EHEALTH name provenance without an NHFR UID/code.",
+      "map_imagery": "No imagery used as identity authority. No authoritative building/entrance footprint linking both coordinates was obtained."
+    },
+    {
+      "pair_id": "gombe-37122-46719",
+      "name": "Kurba Health Clinic",
+      "source_positions": [
+        37122,
+        46719
+      ],
+      "distance_metres": 446.054,
+      "distance_method": "Haversine inverse great-circle geodesic on a sphere, mean Earth radius 6371008.8 metres; WGS84 latitude/longitude degrees; no rounding before distance calculation. Not a survey-grade ellipsoidal distance.",
+      "conflicting_fields": [
+        "OBJECTID",
+        "globalid",
+        "nhfr_uid",
+        "nhfr_facility_code",
+        "lga_name_disagreement",
+        "ward",
+        "ward_name_disagreement",
+        "facility_name_source",
+        "ownership",
+        "ownership_type",
+        "facility_level",
+        "facility_level_option",
+        "latitude",
+        "longitude",
+        "geocoordinates_source"
+      ],
+      "observations": [
+        {
+          "source_position": 37122,
+          "source_facility_id": "uuid:6ea51323-50b0-4c4b-a108-3e05bb868d84",
+          "raw_attributes": {
+            "OBJECTID": 43122,
+            "globalid": "uuid:6ea51323-50b0-4c4b-a108-3e05bb868d84",
+            "nhfr_uid": null,
+            "nhfr_facility_code": "",
+            "country": "Nigeria",
+            "iso": "NGA",
+            "state": "Gombe",
+            "lga": "Yamaltu/Deba",
+            "lga_name_disagreement": 0,
+            "ward": "Kwadon / Liji / Kurba",
+            "ward_name_disagreement": 0,
+            "facility_name": "Kurba Health Clinic",
+            "facility_name_source": "GRID3_2024",
+            "ownership": "Unknown",
+            "ownership_type": "Unknown",
+            "facility_level": "Unknown",
+            "facility_level_option": "Unknown",
+            "latitude": 10.3436346,
+            "longitude": 11.2128,
+            "geocoordinates_source": "GRID3_2024",
+            "last_updated": "2024-11-11"
+          },
+          "geometry": {
+            "x": 11.212800000000072,
+            "y": 10.34363460000003
+          },
+          "normalized_name": "Kurba Health Clinic",
+          "normalized_state_id": "gombe",
+          "normalized_lga_id": "gombe-yamaltu-delta",
+          "previous_decision": "retain",
+          "previous_final_record_id": "kurba-health-clinic-gombe-gombe-yamaltu-delta-uuid-6ea51323-50b0-4c4b-a108-3e05bb868d84",
+          "previous_merge_target_id": null,
+          "within_nigeria": true
+        },
+        {
+          "source_position": 46719,
+          "source_facility_id": "49cf0b83-a4e0-43bc-a40e-bbff25073ebe",
+          "raw_attributes": {
+            "OBJECTID": 5697,
+            "globalid": "49cf0b83-a4e0-43bc-a40e-bbff25073ebe",
+            "nhfr_uid": 32780252,
+            "nhfr_facility_code": "15/11/1/1/1/0023",
+            "country": "Nigeria",
+            "iso": "NGA",
+            "state": "Gombe",
+            "lga": "Yamaltu/Deba",
+            "lga_name_disagreement": 1,
+            "ward": "Kwadon/Liji/Kurba",
+            "ward_name_disagreement": 1,
+            "facility_name": "Kurba Health Clinic",
+            "facility_name_source": "NHFR_2024",
+            "ownership": "Public",
+            "ownership_type": "Local Government",
+            "facility_level": "Primary",
+            "facility_level_option": "Primary Health Clinic",
+            "latitude": 10.34763167,
+            "longitude": 11.213145,
+            "geocoordinates_source": "GRID3_EHEALTH",
+            "last_updated": "2024-11-11"
+          },
+          "geometry": {
+            "x": 11.213145000000054,
+            "y": 10.347631670000055
+          },
+          "normalized_name": "Kurba Health Clinic",
+          "normalized_state_id": "gombe",
+          "normalized_lga_id": "gombe-yamaltu-delta",
+          "previous_decision": "merge_exact_duplicate",
+          "previous_final_record_id": null,
+          "previous_merge_target_id": "kurba-health-clinic-gombe-gombe-yamaltu-delta-uuid-6ea51323-50b0-4c4b-a108-3e05bb868d84",
+          "within_nigeria": true
+        }
+      ],
+      "evidence_sources": [
+        {
+          "url": "https://services3.arcgis.com/BU6Aadhn6tbBEdyk/ArcGIS/rest/services/GRID3_NGA_health_facilities_v2_0/FeatureServer/0/query?objectIds=43122,5697&outFields=*&returnGeometry=true&f=pjson",
+          "retrieved_at": "2026-09-09",
+          "result": "Retrieved public JSON with all 21 attributes and geometry. All preserved fields agree with committed observations; full attributes are pinned above. Neither row cross-references the other.",
+          "role": "primary row-level evidence"
+        },
+        {
+          "url": "https://services3.arcgis.com/BU6Aadhn6tbBEdyk/ArcGIS/rest/services/GRID3_NGA_health_facilities_v2_0/FeatureServer/0?f=pjson",
+          "retrieved_at": "2026-09-09",
+          "result": "Layer describes incorporation of NHFR 2024 and NPHCDA standards. Provenance differs by observation; common layer update date does not establish measurement order or location accuracy.",
+          "role": "primary provenance"
+        },
+        {
+          "url": "https://hfr.fmohconnect.gov.ng/facilitieslist",
+          "retrieved_at": "2026-09-09",
+          "result": "Public Facility Finder HTML and its public page script inspected; search uses the POST endpoint recorded below.",
+          "role": "public NHFR search"
+        },
+        {
+          "url": "https://backend.hfr.fmohconnect.gov.ng/api/facilities-hospitals-search",
+          "method": "POST (read-only public search)",
+          "request": {
+            "facility_name": "Kurba",
+            "per_page": 100,
+            "page": 1
+          },
+          "retrieved_at": "2026-09-09",
+          "result": "Read timed out after 35 seconds; no facility result obtained. No credentials used.",
+          "role": "public NHFR search attempt"
+        },
+        {
+          "url": "https://www.hfr.fmohconnect.gov.ng/developers",
+          "retrieved_at": "2026-09-09",
+          "result": "External v1 API documentation requires X-API-Key. An unauthenticated v1 facilities request returned HTTP 401; no access restriction was bypassed.",
+          "role": "NHFR access limitation"
+        },
+        {
+          "url": "https://nphcda.gov.ng/",
+          "retrieved_at": "2026-09-09",
+          "result": "Agency page inspected and facility-name/site-restricted searches attempted. No site-level crosswalk or coordinate correction resolving this pair was obtained. Standards define categories, not equality of these observations.",
+          "role": "government review"
+        },
+        {
+          "url": "https://www.gombestate.gov.ng/wp-content/uploads/2022/04/approved-gombe-state-goverment-2022-budget-ncoa.pdf",
+          "retrieved_at": "2026-09-09",
+          "result": "Government document discovered but full retrieval through web reader failed. No facility identity assertion taken from search snippets. Gombe ministry and agency searches did not obtain a site-level crosswalk.",
+          "role": "state government attempt"
+        },
+        {
+          "url": "https://thehospitalbook.com/kurba-health-clinic/",
+          "retrieved_at": "2026-09-09",
+          "result": "Full third-party page read via web reader: a named clinic in Kwadon/Liji/Kurba with NHFR code 15/11/1/1/1/0023. It does not link the second GRID3 observation or establish a coordinate correction. Its licensing and activity claims are not adopted.",
+          "role": "secondary corroboration only"
+        },
+        {
+          "url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/NGA/ADM0/geoBoundaries-NGA-ADM0.geojson",
+          "retrieved_at": "2026-09-09",
+          "result": "Both points pass ADM0 polygon containment; country membership alone cannot distinguish facility identity.",
+          "role": "supporting geography"
+        }
+      ],
+      "final_decision": "exclude_unresolved_identity",
+      "final_record_ids": [],
+      "canonical_value_decisions": {
+        "canonical_observation": null,
+        "coordinates": null,
+        "classification": null,
+        "ownership": null,
+        "explanation": "Neither observation is selected as canonical. Both are quarantined; no conflicting values are published or averaged."
+      },
+      "reason": "The live GRID3 observations confirm the committed conflicts and do not cross-reference a common facility. Name and ward agreement do not establish one physical/legal site. Different source provenance does not prove chronology or accuracy; last_updated is the same for both. Public sources did not establish whether these are separate sites, relocation, or a source error. Exclude both observations until authoritative site-level evidence resolves identity.",
+      "coordinate_assessment": {
+        "gps_variation": "Not established; no accuracy radius or field-measurement dates are supplied.",
+        "entrance_vs_centroid": "Not established; no surveyed facility footprint identifies both points.",
+        "relocation": "Not established; layer update date is not a relocation date.",
+        "separate_campuses_or_same_name_sites": "Reviewed as a possibility, especially for the 3.23 km pair; no primary source links two campuses to these identifiers.",
+        "source_error": "Plausible but unproven; no correction notice identifies a canonical point."
+      },
+      "review_date": "2026-09-09",
+      "source_provenance_assessment": "The earlier retained observation has GRID3_2024 name/coordinate provenance and no NHFR UID/code; the later observation has NHFR_2024 name provenance, GRID3_EHEALTH coordinates and an NHFR UID/code. Source-position order is not a quality ranking.",
+      "map_imagery": "No imagery used as identity authority. No authoritative building/entrance footprint linking both coordinates was obtained."
+    }
+  ]
+}

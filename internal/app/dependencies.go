@@ -153,10 +153,7 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	if err != nil {
 		return appDependencies{}, err
 	}
-	jsonRepository, err := fileRepo.NewJSONRepository(cfg.Datasets.Path, cfg.Datasets.JSONMaxBytes)
-	if err != nil && (os.Getenv("VERCEL") == "1" || strings.EqualFold(cfg.Environment, string(config.AppEnvironmentProduction))) {
-		jsonRepository, err = fileRepo.NewEmbeddedJSONRepository(datasets.Files(), cfg.Datasets.JSONMaxBytes)
-	}
+	jsonRepository, err := newRuntimeJSONRepository(cfg)
 	if err != nil {
 		return appDependencies{}, fmt.Errorf("initialize json repository: %w", err)
 	}
@@ -2352,4 +2349,14 @@ type accessTokenVerifier struct {
 
 func (v accessTokenVerifier) ValidateAccessToken(token string) (*security.AccessTokenClaims, error) {
 	return security.ValidateAccessToken(token, v.secret)
+}
+
+// newRuntimeJSONRepository keeps the production embedded fallback testable
+// without requiring PostgreSQL or changing dataset loading semantics.
+func newRuntimeJSONRepository(cfg *config.Config) (*fileRepo.JSONRepository, error) {
+	repository, err := fileRepo.NewJSONRepository(cfg.Datasets.Path, cfg.Datasets.JSONMaxBytes)
+	if err != nil && (os.Getenv("VERCEL") == "1" || strings.EqualFold(cfg.Environment, string(config.AppEnvironmentProduction))) {
+		return fileRepo.NewEmbeddedJSONRepository(datasets.Files(), cfg.Datasets.JSONMaxBytes)
+	}
+	return repository, err
 }

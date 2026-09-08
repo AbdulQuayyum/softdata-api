@@ -45,3 +45,15 @@ func TestValidateHealthFacilityListQuery(t *testing.T) {
 		t.Fatal("accepted duplicate page")
 	}
 }
+
+func TestValidateHealthFacilityIDLengthBoundaries(t *testing.T) {
+	for _, size := range []int{129, 255} {
+		value := strings.Repeat("a", size)
+		if got, err := ValidateHealthFacilityID("facility_id", value); err != nil || got != value {
+			t.Fatalf("length %d: %q %v", size, got, err)
+		}
+	}
+	if _, err := ValidateHealthFacilityID("facility_id", strings.Repeat("a", 256)); err == nil {
+		t.Fatal("over-limit ID accepted")
+	}
+}

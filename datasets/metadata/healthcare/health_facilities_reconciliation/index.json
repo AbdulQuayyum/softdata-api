@@ -1,271 +1,271 @@
 {
   "dataset_key": "ng-health-facilities",
   "source_rows": 51022,
-  "final_record_count": 50654,
+  "final_record_count": 50649,
   "decision_counts": {
     "exclude_invalid_geography": 363,
-    "merge_exact_duplicate": 5,
-    "retain": 50654
+    "exclude_unresolved_identity": 10,
+    "retain": 50649
   },
   "partitions": [
     {
       "state_id": "abia",
       "path": "metadata/healthcare/health_facilities_reconciliation/abia.json",
       "source_rows": 1321,
-      "size_bytes": 1567035,
-      "sha256": "0568112c2e5215ace690bd6f290b57c73488d1f45bcbc0477f3da59bd70216db"
+      "size_bytes": 1532689,
+      "sha256": "6b122c21189d7e174360bee60c2cd00cce4e062401b58873ab19eb27ac329eea"
     },
     {
       "state_id": "adamawa",
       "path": "metadata/healthcare/health_facilities_reconciliation/adamawa.json",
       "source_rows": 1561,
-      "size_bytes": 1851550,
-      "sha256": "f5c5f2df42b03294a0b09e22fdf3c0579d48d96b14a1277db3b206c46984a9b2"
+      "size_bytes": 1810964,
+      "sha256": "633c0a545dad7cae7c83a23c3c7588cc2e326d8f2361ff64a8e3c15b65dc6f76"
     },
     {
       "state_id": "akwa-ibom",
       "path": "metadata/healthcare/health_facilities_reconciliation/akwa-ibom.json",
       "source_rows": 934,
-      "size_bytes": 1126852,
-      "sha256": "f12f56b1f1998763af5aff40984997d144e68b6f3af246028b6dd99babe4c7a3"
+      "size_bytes": 1102568,
+      "sha256": "8d701c8c9ff0dfc1182da52ba8e098881aa5d2aba27e989398cbc09285989903"
     },
     {
       "state_id": "anambra",
       "path": "metadata/healthcare/health_facilities_reconciliation/anambra.json",
       "source_rows": 1867,
-      "size_bytes": 2254167,
-      "sha256": "39381737d39c5ad5f82a1b30933097caff802b70e76fbf1abd1d79fa7962c03f"
+      "size_bytes": 2205625,
+      "sha256": "e983c43bd2e68175169610774edef3f93f20c443a3deb34a58447514e44b9cc6"
     },
     {
       "state_id": "bauchi",
       "path": "metadata/healthcare/health_facilities_reconciliation/bauchi.json",
       "source_rows": 1468,
-      "size_bytes": 1735960,
-      "sha256": "13b6c603c65eb18e4b9ed8a0720e75133f414359b1baf9639c8851c577cc681d"
+      "size_bytes": 1697792,
+      "sha256": "c2b5d78eae4f1ee80a8811387603dac6e14f075e48279490a268ec77dcbe8f6f"
     },
     {
       "state_id": "bayelsa",
       "path": "metadata/healthcare/health_facilities_reconciliation/bayelsa.json",
       "source_rows": 422,
-      "size_bytes": 516011,
-      "sha256": "e9c10732135bef12ba57e90715ad60b66136c3ebd3cf6fb81476ffca3cf068ef"
+      "size_bytes": 505039,
+      "sha256": "85c11b582d494927e504ca290292ca4c76aa1c814db77b091c268904f9ed1e5b"
     },
     {
       "state_id": "benue",
       "path": "metadata/healthcare/health_facilities_reconciliation/benue.json",
       "source_rows": 2284,
-      "size_bytes": 2696758,
-      "sha256": "ded3a7846bde47cfe759eba5fd6ed8d7658a133f90107475ded02fd0800b6a83"
+      "size_bytes": 2637374,
+      "sha256": "48dcf0541c706365a7270be447a2f82acf1cd167ac15dc806db16b071a6cfe78"
     },
     {
       "state_id": "borno",
       "path": "metadata/healthcare/health_facilities_reconciliation/borno.json",
       "source_rows": 804,
-      "size_bytes": 943496,
-      "sha256": "5f7be185a074a982bc21fdd3900d92692ca0e76ffa64879867b4aa368001b19a"
+      "size_bytes": 922592,
+      "sha256": "58994fa3560127b7b21be6a246a7b165a29daa09bbd922231627be799f7e3ec2"
     },
     {
       "state_id": "cross-river",
       "path": "metadata/healthcare/health_facilities_reconciliation/cross-river.json",
       "source_rows": 1522,
-      "size_bytes": 1840909,
-      "sha256": "c8a1a51c79d3a849c30839e32751a309b157a2fb3d507ce7ecb197f47096ee65"
+      "size_bytes": 1801337,
+      "sha256": "5de3ff49fc576c0d85f0153bfb551d98910f26d4d2426b23801168745a3a4a3b"
     },
     {
       "state_id": "delta",
       "path": "metadata/healthcare/health_facilities_reconciliation/delta.json",
       "source_rows": 1059,
-      "size_bytes": 1266154,
-      "sha256": "f9c1eb75792d982294d47196c7debb7ec37be41ffe7fcab18851925a448c7778"
+      "size_bytes": 1238620,
+      "sha256": "95439153ebc7fd0ed09cf27e4b58a95c6c8bdf2a2b616a98787629712fc91ecd"
     },
     {
       "state_id": "ebonyi",
       "path": "metadata/healthcare/health_facilities_reconciliation/ebonyi.json",
       "source_rows": 1243,
-      "size_bytes": 1477452,
-      "sha256": "777db05f80efd87615688de9e40d2bae14ef6f8a68aa305acea1e07ad2a21749"
+      "size_bytes": 1445134,
+      "sha256": "3ced7008d467c7a3e18556f8dd6e64d0d0207a098312cffa8e6572de29e1d595"
     },
     {
       "state_id": "edo",
       "path": "metadata/healthcare/health_facilities_reconciliation/edo.json",
       "source_rows": 1069,
-      "size_bytes": 1263715,
-      "sha256": "02d2ff77990f5c95102b079567df23ec99993800cc392dfe59684c1d470e438e"
+      "size_bytes": 1236809,
+      "sha256": "0fa2c59a058654d54d5176f202119a75e576becc24c9379c1dc0632fc03ab2e3"
     },
     {
       "state_id": "ekiti",
       "path": "metadata/healthcare/health_facilities_reconciliation/ekiti.json",
       "source_rows": 772,
-      "size_bytes": 918855,
-      "sha256": "f084bd0a95fa0f4edf3db37748da84f07791f385045878ce21264093b23d0429"
+      "size_bytes": 898783,
+      "sha256": "f67e02f95edc706c81eeebf23276cd0ca0535cfb16ff5e60b32fcd5f05eb6597"
     },
     {
       "state_id": "enugu",
       "path": "metadata/healthcare/health_facilities_reconciliation/enugu.json",
       "source_rows": 1457,
-      "size_bytes": 1728697,
-      "sha256": "500af23041642cf362f160cfaed6e6cf58eb1e726e4321e60afdd35df3d0092e"
+      "size_bytes": 1691739,
+      "sha256": "5a3d62d4ec672848d505de466c6c5d62c0135fffbcdc39aa9d8e926766bd30a6"
     },
     {
       "state_id": "fct",
       "path": "metadata/healthcare/health_facilities_reconciliation/fct.json",
       "source_rows": 652,
-      "size_bytes": 777893,
-      "sha256": "42860c300b071952078e03bf9a008965d2248bb739f37aa563489cf223aa9ca4"
+      "size_bytes": 760941,
+      "sha256": "1bf2dee890445cf323ae9638ad6204f9f5bba1dc8675b1bd9bfd60cd337cd8d8"
     },
     {
       "state_id": "gombe",
       "path": "metadata/healthcare/health_facilities_reconciliation/gombe.json",
       "source_rows": 897,
-      "size_bytes": 1066818,
-      "sha256": "6f25ee090a0458e989a2707e0043f98f0730ab8767779e733e0d8bf1bc3ca2e9"
+      "size_bytes": 1044362,
+      "sha256": "656d83a3e74c339865535b263e8011c1782fb8723664402bc71085a046bb7242"
     },
     {
       "state_id": "imo",
       "path": "metadata/healthcare/health_facilities_reconciliation/imo.json",
       "source_rows": 1779,
-      "size_bytes": 2100522,
-      "sha256": "05fc28cc6f37aac64cf4194ec94eb6791ad5e98dc297aa1c17e711d5be17a900"
+      "size_bytes": 2054268,
+      "sha256": "19bd335e0b4569b78a11ccab23dc178979f7cbb65c65f4dbab745246acd89a93"
     },
     {
       "state_id": "jigawa",
       "path": "metadata/healthcare/health_facilities_reconciliation/jigawa.json",
       "source_rows": 904,
-      "size_bytes": 1081192,
-      "sha256": "8d00d66c9503f8a02e9b1c4eb5d10a86bf2a306b5a390a20aa8c4dea0c7c82dc"
+      "size_bytes": 1057688,
+      "sha256": "ff574ef3224e738f5862c65456ee1c7edaa1bf1536622e3bbba064690f96fdc6"
     },
     {
       "state_id": "kaduna",
       "path": "metadata/healthcare/health_facilities_reconciliation/kaduna.json",
       "source_rows": 1545,
-      "size_bytes": 1837983,
-      "sha256": "dc1e26bb3c1c844be8d84bf6fd19d2df9e3f01870f5ffbd01732915076a13dad"
+      "size_bytes": 1797813,
+      "sha256": "c7664d6f8b6798b1594f003e435d0a3e283b9f231c83c003fe79d953c4b634b4"
     },
     {
       "state_id": "kano",
       "path": "metadata/healthcare/health_facilities_reconciliation/kano.json",
       "source_rows": 1723,
-      "size_bytes": 2023106,
-      "sha256": "43aa2a2062f66c4274362cb6e4e3f7096202b2b2351c765d0b0840a8622b5199"
+      "size_bytes": 1978308,
+      "sha256": "2c4927165ad67008141e972f22a9ccf0be6ccdb32825efca679b0d99de8c6aab"
     },
     {
       "state_id": "katsina",
       "path": "metadata/healthcare/health_facilities_reconciliation/katsina.json",
       "source_rows": 2296,
-      "size_bytes": 2738354,
-      "sha256": "401ad3aaed4c2ec9ab9192795f054017829eeb7e4195806f62d426d6f4941356"
+      "size_bytes": 2678658,
+      "sha256": "0261953f7e169a82c749189a7e3e8ee8d7cf6bbf3aeecf77a2948c7ba9b53a6b"
     },
     {
       "state_id": "kebbi",
       "path": "metadata/healthcare/health_facilities_reconciliation/kebbi.json",
       "source_rows": 1207,
-      "size_bytes": 1431190,
-      "sha256": "7c186de7af8f804555859e4c2dbf565fccd6100aa60771c8a13e2e56403a480a"
+      "size_bytes": 1399808,
+      "sha256": "1a68bd662abdd44d33623c4d8fe132a03f12b5fe94fbf31e81df56a60f5346ed"
     },
     {
       "state_id": "kogi",
       "path": "metadata/healthcare/health_facilities_reconciliation/kogi.json",
       "source_rows": 1644,
-      "size_bytes": 1944034,
-      "sha256": "af7040a349fe47d82266b96597f995adc4a075261297cfc847275fc219d408f5"
+      "size_bytes": 1901290,
+      "sha256": "f459acc4050cc8e7ecd2e01f1136e586a87aa34ddcf5facb68d5f47fc8dd7827"
     },
     {
       "state_id": "kwara",
       "path": "metadata/healthcare/health_facilities_reconciliation/kwara.json",
       "source_rows": 1097,
-      "size_bytes": 1299040,
-      "sha256": "08e329555567bf45451aa37eb536a4f17d70b211ac4b77a9744704faa43f560c"
+      "size_bytes": 1271388,
+      "sha256": "c209d49347a4388e3c39d9368fe71ea609fbb124189bac8bb03df874a3b0b974"
     },
     {
       "state_id": "lagos",
       "path": "metadata/healthcare/health_facilities_reconciliation/lagos.json",
       "source_rows": 2798,
-      "size_bytes": 3292535,
-      "sha256": "362c749a6fe8e34e2201e894e215465e383f5665cbbc8df62e87e0b5326b6838"
+      "size_bytes": 3219787,
+      "sha256": "c268f3fc181eaf1e6ffe42421a4a77e365158a4ac1ff242b170c86b0a9efb63f"
     },
     {
       "state_id": "nasarawa",
       "path": "metadata/healthcare/health_facilities_reconciliation/nasarawa.json",
       "source_rows": 1207,
-      "size_bytes": 1446684,
-      "sha256": "bdc0fe94dcf2d796c753484845b11064b31708ed2ec606cf97e4984087202325"
+      "size_bytes": 1415302,
+      "sha256": "4b720082bec30ee05581b8b7ede507d96cbf393b0b7d24793515d7344f74d765"
     },
     {
       "state_id": "niger",
       "path": "metadata/healthcare/health_facilities_reconciliation/niger.json",
       "source_rows": 2201,
-      "size_bytes": 2605066,
-      "sha256": "ce91641256462c29655f69ed035ca9617c5c9bc7c91bceed5b6dbd9c4e0051ba"
+      "size_bytes": 2547840,
+      "sha256": "d00da93b22947447053b1a4c584d6a32d131b34e46ed3ff54b835145f8408951"
     },
     {
       "state_id": "ogun",
       "path": "metadata/healthcare/health_facilities_reconciliation/ogun.json",
       "source_rows": 1993,
-      "size_bytes": 2356211,
-      "sha256": "7ad26217111d777f52a58ad6e2bc9cde49dc0551d4311c2f81b896b04b10523d"
+      "size_bytes": 2304393,
+      "sha256": "6a9c1cab9f664fe6d3aabbf6429864f52d81d7675cb188e35a8e08ca32bbe0d0"
     },
     {
       "state_id": "ondo",
       "path": "metadata/healthcare/health_facilities_reconciliation/ondo.json",
       "source_rows": 1096,
-      "size_bytes": 1299195,
-      "sha256": "cc76b48280caff03b521aa98c7202bad6c89975041e153fbbe076cf89512123a"
+      "size_bytes": 1271579,
+      "sha256": "a9303ed0ddd0e430bd1acc828d76bc05f8a1a8fabac4947995bf1cb18169df44"
     },
     {
       "state_id": "osun",
       "path": "metadata/healthcare/health_facilities_reconciliation/osun.json",
       "source_rows": 1729,
-      "size_bytes": 2049561,
-      "sha256": "1a48a6c0b03065d202063afbc2e3e67027a6f615aa14d3076e97b04561f74701"
+      "size_bytes": 2004607,
+      "sha256": "9ae645430a0f6f4d01f51881ef4e2de095f90d6fde4e467c546e964a10f59877"
     },
     {
       "state_id": "oyo",
       "path": "metadata/healthcare/health_facilities_reconciliation/oyo.json",
       "source_rows": 2045,
-      "size_bytes": 2417590,
-      "sha256": "0b7ff9ebc14c55abce48771eebae8807bbbd2db1d259e737dcfbe576dd684567"
+      "size_bytes": 2364420,
+      "sha256": "1165a619da6f05292f96893d68357de27ba6c4f093c8905b53176ca7ac11fdf1"
     },
     {
       "state_id": "plateau",
       "path": "metadata/healthcare/health_facilities_reconciliation/plateau.json",
       "source_rows": 1643,
-      "size_bytes": 1971850,
-      "sha256": "8282891597e60fd995936d47ebefb5bc1a673d96a79c48ac723fcf909b56b4ef"
+      "size_bytes": 1929132,
+      "sha256": "16bf1cd4cb7171eb7ea39391b7a150b1e453cf82fc35bcfc8a4f434cde306736"
     },
     {
       "state_id": "rivers",
       "path": "metadata/healthcare/health_facilities_reconciliation/rivers.json",
       "source_rows": 791,
-      "size_bytes": 945523,
-      "sha256": "edff98b4378a107905ef629cb42047a00ae25f227332657aebfffd652badd642"
+      "size_bytes": 924957,
+      "sha256": "8cca1ee8882a938a43de7deab72d75888dea731ea19cb7bea832334c8ab86239"
     },
     {
       "state_id": "sokoto",
       "path": "metadata/healthcare/health_facilities_reconciliation/sokoto.json",
       "source_rows": 937,
-      "size_bytes": 1108753,
-      "sha256": "deadf7e375decda07b29756626e9ce02329c82be0648851f3ce19078cb6a2e06"
+      "size_bytes": 1084391,
+      "sha256": "5aa958de96f091b4b8affa16ab8ab81e781bbffecb622d6c9918b2c119c64f6c"
     },
     {
       "state_id": "taraba",
       "path": "metadata/healthcare/health_facilities_reconciliation/taraba.json",
       "source_rows": 1464,
-      "size_bytes": 1728053,
-      "sha256": "387234f6c4ebf038c0c9be2a3a3e61dbd24a955b792b767f5d954e484739eabe"
+      "size_bytes": 1689989,
+      "sha256": "0b9f6bf7ed4d83757234eb25a9ddb8084e011e8b001a0562105d63491b2940f3"
     },
     {
       "state_id": "yobe",
       "path": "metadata/healthcare/health_facilities_reconciliation/yobe.json",
       "source_rows": 663,
-      "size_bytes": 782460,
-      "sha256": "b2c62bc1415f731b70b2ffd9ee7ddd645bcb1e90a0b5620ddde843dac8f9e2b5"
+      "size_bytes": 765222,
+      "sha256": "6c3cd2d6f912151e0f3911329572452404823d04d69e6d4205c051949dcafcbc"
     },
     {
       "state_id": "zamfara",
       "path": "metadata/healthcare/health_facilities_reconciliation/zamfara.json",
       "source_rows": 928,
-      "size_bytes": 1117256,
-      "sha256": "a350922883593ce4c31eaceba045f232f7d7b193da02c8bc50c564c5f2c6e8a6"
+      "size_bytes": 1093128,
+      "sha256": "0517a89c0dc66fc1037520e7d30ce2bcf4c6693ff0d7f6c4924e94509f22a686"
     }
   ]
 }

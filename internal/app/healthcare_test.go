@@ -3,9 +3,11 @@ package app
 import (
 	"context"
 	"errors"
+	"path/filepath"
 	"testing"
 
 	"github.com/AbdulQuayyum/softdata-api/datasets"
+	"github.com/AbdulQuayyum/softdata-api/internal/config"
 	"github.com/AbdulQuayyum/softdata-api/internal/models"
 	fileRepo "github.com/AbdulQuayyum/softdata-api/internal/repository/file"
 	"github.com/AbdulQuayyum/softdata-api/internal/repository/interfaces"
@@ -164,4 +166,41 @@ type deadlineExceededContext struct {
 
 func (deadlineExceededContext) Err() error {
 	return context.DeadlineExceeded
+}
+
+func TestHealthFacilityRuntimeDatasetSources(t *testing.T) {
+	for _, tc := range []struct {
+		name, path, environment, vercel string
+		wantError                       bool
+	}{
+		{"external", "../../datasets", "production", "", false},
+		{"production embedded", filepath.Join(t.TempDir(), "missing"), "production", "", false},
+		{"vercel embedded", filepath.Join(t.TempDir(), "missing"), "development", "1", false},
+		{"development missing", filepath.Join(t.TempDir(), "missing"), "development", "", true},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			t.Setenv("VERCEL", tc.vercel)
+			jsonRepository, err := newRuntimeJSONRepository(&config.Config{Environment: tc.environment, Datasets: config.DatasetConfig{Path: tc.path, JSONMaxBytes: 64 << 20}})
+			if tc.wantError {
+				if err == nil {
+					t.Fatal("missing external directory accepted")
+				}
+				return
+			}
+			if err != nil {
+				t.Fatal(err)
+			}
+			repository, err := fileRepo.NewHealthFacilityRepository(jsonRepository, "healthcare/health_facilities.json", "geography/states.json", "geography/lgas.json")
+			if err != nil {
+				t.Fatal(err)
+			}
+			service, err := services.NewHealthFacilityService(repository)
+			if err != nil {
+				t.Fatal(err)
+			}
+			if err := verifyHealthFacilityDataset(context.Background(), service); err != nil {
+				t.Fatal(err)
+			}
+		})
+	}
 }

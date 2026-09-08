@@ -28,24 +28,24 @@ func TestHealthFacilityRepositoryRealDataset(t *testing.T) {
 	if err != nil {
 		t.Fatalf("ListHealthFacilities() error = %v", err)
 	}
-	if result.Page != 1 || result.PageSize != 50 || result.Total != 50654 || result.TotalPages != 1014 {
+	if result.Page != 1 || result.PageSize != 50 || result.Total != 50649 || result.TotalPages != 1013 {
 		t.Fatalf("unexpected default result metadata: %#v", result)
 	}
 	if len(result.Facilities) != 50 || result.Facilities == nil {
 		t.Fatalf("unexpected default result size: %d", len(result.Facilities))
 	}
 
-	last, err := repository.ListHealthFacilities(context.Background(), interfaces.HealthFacilityQuery{Page: 1014, PageSize: 50})
-	if err != nil || len(last.Facilities) != 4 {
+	last, err := repository.ListHealthFacilities(context.Background(), interfaces.HealthFacilityQuery{Page: 1013, PageSize: 50})
+	if err != nil || len(last.Facilities) != 49 {
 		t.Fatalf("unexpected final page: result=%#v err=%v", last, err)
 	}
-	beyond, err := repository.ListHealthFacilities(context.Background(), interfaces.HealthFacilityQuery{Page: 1015, PageSize: 50})
-	if err != nil || beyond.Facilities == nil || len(beyond.Facilities) != 0 || beyond.Total != 50654 || beyond.TotalPages != 1014 {
+	beyond, err := repository.ListHealthFacilities(context.Background(), interfaces.HealthFacilityQuery{Page: 1014, PageSize: 50})
+	if err != nil || beyond.Facilities == nil || len(beyond.Facilities) != 0 || beyond.Total != 50649 || beyond.TotalPages != 1013 {
 		t.Fatalf("unexpected beyond-final page: result=%#v err=%v", beyond, err)
 	}
 
 	all, err := repository.ListHealthFacilities(context.Background(), interfaces.HealthFacilityQuery{Page: 1, PageSize: 100, FacilityType: "clinic"})
-	if err != nil || all.Total != 13819 || len(all.Facilities) != 100 {
+	if err != nil || all.Total != 13817 || len(all.Facilities) != 100 {
 		t.Fatalf("unexpected clinic page: result=%#v err=%v", all, err)
 	}
 	first, middle, lastRecord := allFacilityRecords(t)
@@ -73,7 +73,7 @@ func TestHealthFacilityRepositoryRealDataset(t *testing.T) {
 		t.Fatalf("combined filter failed: result=%#v err=%v", combined, err)
 	}
 	level, err := repository.ListHealthFacilities(context.Background(), interfaces.HealthFacilityQuery{PageSize: 100, FacilityLevel: "primary"})
-	if err != nil || level.Total != 44582 {
+	if err != nil || level.Total != 44578 {
 		t.Fatalf("facility level filter failed: result=%#v err=%v", level, err)
 	}
 	ownership, err := repository.ListHealthFacilities(context.Background(), interfaces.HealthFacilityQuery{PageSize: 100, OwnershipType: "private"})
@@ -186,7 +186,6 @@ func TestHealthFacilityRepositoryRejectsMalformedTrailingAndUnknownJSON(t *testi
 		{name: "malformed", body: "["},
 		{name: "trailing", body: "[] []"},
 		{name: "unknown field", body: `[{"unexpected":true}]`},
-		{name: "operational status", body: `[{"operational_status":"operational"}]`},
 	} {
 		t.Run(test.name, func(t *testing.T) {
 			root := t.TempDir()

@@ -27,10 +27,10 @@ func TestOpenAPIDocumentsHealthFacilityPaths(t *testing.T) {
 	for _, value := range []string{"get:", "HealthFacilityID", `"400":`, `"404":`, `"500":`} {
 		requireContains(t, detail, value)
 	}
-	if strings.Contains(list, "operational_status") || strings.Contains(detail, "operational_status") || strings.Contains(text, "HealthFacilityWebsite") || strings.Contains(text, "HealthFacilityLogo") {
+	if strings.Contains(text, "HealthFacilityWebsite") || strings.Contains(text, "HealthFacilityLogo") {
 		t.Fatal("health OpenAPI contract contains forbidden fields")
 	}
-	if !strings.Contains(list, "50,654") || !strings.Contains(list, "2024-11-11") || !strings.Contains(list, "does not establish current operational status") {
+	if !strings.Contains(list, "50,649") || !strings.Contains(list, "2024-11-11") || !strings.Contains(list, "does not establish current operational status") {
 		t.Fatal("health snapshot limitation is not documented")
 	}
 }

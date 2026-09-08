@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	healthFacilityRecordCount  = 50654
+	healthFacilityRecordCount  = 50649
 	healthFacilityDefaultPage  = 1
 	healthFacilityDefaultSize  = 50
 	healthFacilityMaxPageSize  = 100
@@ -288,7 +288,7 @@ func validateHealthFacilityRecords(ctx context.Context, records []models.HealthF
 		if facility.ID == "" || facility.Name == "" || facility.FacilityType == "" || facility.StateID == "" || facility.CountryCode != "NG" || facility.SourceFacilityID == "" {
 			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
 		}
-		if !healthFacilityIDPattern.MatchString(facility.ID) || strings.TrimSpace(facility.SourceFacilityID) != facility.SourceFacilityID {
+		if len(facility.ID) > models.HealthFacilityIDMaxLength || !healthFacilityIDPattern.MatchString(facility.ID) || strings.TrimSpace(facility.SourceFacilityID) != facility.SourceFacilityID {
 			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
 		}
 		if _, ok := healthFacilityTypes[facility.FacilityType]; !ok {

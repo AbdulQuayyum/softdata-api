@@ -6,6 +6,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/AbdulQuayyum/softdata-api/internal/models"
 	"github.com/AbdulQuayyum/softdata-api/internal/repository/interfaces"
 )
 
@@ -28,7 +29,7 @@ func ValidateHealthFacilityID(field, value string) (string, error) {
 	if value == "" {
 		return "", requiredError(field, "Facility ID is required.")
 	}
-	if !healthFacilitySlugPattern.MatchString(value) {
+	if len(value) > models.HealthFacilityIDMaxLength || !healthFacilitySlugPattern.MatchString(value) {
 		return "", invalidField(field, "Facility ID must be a valid lowercase public slug.")
 	}
 	return value, nil

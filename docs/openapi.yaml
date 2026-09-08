@@ -632,7 +632,7 @@ paths:
       tags: [Healthcare]
       operationId: listHealthFacilities
       summary: List health facilities
-      description: Returns the paginated GRID3 Nigeria Health Facilities v2.0 observed snapshot containing 50,654 source-verified facilities. The source snapshot was last updated on 2024-11-11 and does not establish current operational status. It is not a live NHFR register, complete currently operational facility list, or FMoH licensing register.
+      description: Returns the paginated GRID3 Nigeria Health Facilities v2.0 observed snapshot containing 50,649 source-verified facilities. The source snapshot was last updated on 2024-11-11 and does not establish current operational status. It is not a live NHFR register, complete currently operational facility list, or FMoH licensing register.
       parameters:
         - {$ref: "#/components/parameters/HealthFacilityPage"}
         - {$ref: "#/components/parameters/HealthFacilityPageSize"}
@@ -1637,7 +1637,7 @@ components:
       in: path
       required: true
       description: Stable lowercase public identifier for the health facility.
-      schema: {type: string, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'}
+      schema: {type: string, maxLength: 255, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'}
     HealthFacilityPage:
       name: page
       in: query
@@ -2574,7 +2574,7 @@ components:
       type: object
       additionalProperties: false
       properties:
-        id: {type: string, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'}
+        id: {type: string, maxLength: 255, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'}
         name: {type: string}
         facility_type: {type: string, enum: [primary-health-centre, clinic, health-post, general-hospital, other, teaching-hospital, specialist-hospital]}
         facility_level: {type: string, enum: [primary, secondary, tertiary]}

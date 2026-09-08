@@ -259,7 +259,7 @@ Unified Nigerian health-facility snapshot derived from the public GRID3 Nigeria 
 - Metadata: `datasets/metadata/healthcare/health_facilities.json`
 - Reconciliation: `datasets/metadata/healthcare/health_facilities_reconciliation/index.json` and its 37 state/FCT partitions
 
-The package contains 50,654 retained records from 51,022 source rows across all 36 states and the FCT and 768 canonical LGAs. It is a dated observed registry snapshot, not a continuously current active-facility register. Five exact duplicates and 363 unresolved geography rows are excluded and recorded in reconciliation metadata. Operational status is omitted because the source snapshot does not establish current activity. Websites, logos and runtime API integration are intentionally deferred.
+The package contains 50,649 retained records from 51,022 source rows across all 36 states and the FCT and 768 canonical LGAs. It is a dated observed registry snapshot, not a continuously current active-facility register. Ten observations in five unresolved identity pairs and 363 unresolved geography rows are excluded and recorded in reconciliation metadata. There are no duplicate merges. Operational status is omitted because the source snapshot does not establish current activity. Websites, logos and runtime API integration are intentionally deferred.
 
 ## Dataset Principles
 

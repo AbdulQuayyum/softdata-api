@@ -2,7 +2,6 @@
 """Generate the traceable Nigerian health-facilities snapshot."""
 
 import argparse
-import datetime as dt
 import difflib
 import hashlib
 import json
@@ -10,6 +9,17 @@ import re
 import unicodedata
 from collections import Counter, defaultdict
 from pathlib import Path
+
+ID_MAX_LENGTH = 255
+REVIEW_PATH = "datasets/metadata/healthcare/health_facilities_identity_reviews.json"
+RAW_FIELDS = {
+    "facility_name": "raw_name", "globalid": "raw_globalid",
+    "nhfr_facility_code": "raw_nhfr_facility_code", "OBJECTID": "raw_object_id",
+    "facility_level_option": "raw_facility_type", "facility_level": "raw_facility_level",
+    "ownership": "raw_ownership", "ownership_type": "raw_ownership_type",
+    "iso": "raw_country", "state": "raw_state", "lga": "raw_lga",
+    "ward": "raw_ward_or_town", "latitude": "raw_latitude", "longitude": "raw_longitude",
+}
 
 SOURCE_URL = (
     "https://services3.arcgis.com/BU6Aadhn6tbBEdyk/ArcGIS/rest/services/"
@@ -93,7 +103,7 @@ def source_info(path, retrieved_at):
         "response_bytes": len(data),
         "sha256": hashlib.sha256(data).hexdigest(),
         "format": "ArcGIS FeatureServer JSON",
-        "pagination": "OBJECTID ASC, resultOffset/resultRecordCount; retrieved in deterministic 500-record pages",
+        "pagination": "Source positions preserve the supplied combined response order; they are not an OBJECTID sort or observation chronology.",
         "raw_record_count": None,
         "last_updated": "2024-11-11",
         "terms": "The service provides citation and copyright information but no machine-readable licence field; preserve source attribution and consult GRID3/CIESIN terms before redistribution.",
@@ -168,17 +178,126 @@ def record_identity(name, state_id, lga_id, ward):
     return "|".join((slug(name), state_id, lga_id or "", slug(ward)))
 
 
-def generate(source_path, repo, retrieved_at):
-    source_path = Path(source_path)
-    payload = json.loads(source_path.read_text())
-    features = payload["features"]
-    state_ids, lga_by_state = load_geography(repo)
-    source = source_info(source_path, retrieved_at)
+def normalized_attributes(raw):
+    """Compare every supplied attribute, not just the facility name.
+
+    OBJECTID is the ArcGIS storage key. The stable source ID, all provenance,
+    classification, ownership, location and coordinate attributes remain part
+    of equality. Missing and unknown values do not equal known values.
+    """
+    return {key: clean(value).casefold() if isinstance(value, str) else value
+            for key, value in raw.items() if key != "OBJECTID"}
+
+
+def exact_duplicate(left, right):
+    return normalized_attributes(left) == normalized_attributes(right)
+
+
+def public_id(raw, state_id, lga_id, disambiguator=None):
+    parts = [raw.get("facility_name"), state_id, lga_id, disambiguator]
+    if not disambiguator:
+        parts.append(raw.get("globalid"))
+    value = slug("-".join(filter(None, parts)))
+    if not value or len(value) > ID_MAX_LENGTH:
+        raise ValueError("generated facility ID exceeds the public ID contract")
+    return value
+
+
+def load_reconciliation(repo, reviews):
+    """Replay the preserved normalization input without fetching a live dataset.
+
+    The original response byte hash is provenance, not a claim that this
+    projection recreates the entire ArcGIS transport response. Full attributes
+    for the ten reviewed observations are separately pinned in the review file.
+    """
+    metadata = json.loads((repo / "datasets/metadata/healthcare/health_facilities.json").read_text())
+    index = json.loads((repo / "datasets/metadata/healthcare/health_facilities_reconciliation/index.json").read_text())
+    rows = []
+    for partition in index["partitions"]:
+        data = (repo / "datasets" / partition["path"]).read_bytes()
+        if len(data) != partition["size_bytes"] or hashlib.sha256(data).hexdigest() != partition["sha256"]:
+            raise ValueError("reconciliation partition hash/size mismatch")
+        value = json.loads(data)
+        if len(value["records"]) != partition["source_rows"]:
+            raise ValueError("reconciliation partition row count mismatch")
+        rows.extend(value["records"])
+    rows.sort(key=lambda row: row["source_position"])
+    if [row["source_position"] for row in rows] != list(range(1, index["source_rows"] + 1)):
+        raise ValueError("source positions must be unique and contiguous")
+    full = {obs["source_position"]: obs["raw_attributes"]
+            for pair in reviews["pairs"] for obs in pair["observations"]}
+    features = []
+    for row in rows:
+        raw = {key: row[field] for key, field in RAW_FIELDS.items()}
+        if row["source_position"] in full:
+            expected = full[row["source_position"]]
+            if any(clean(raw[key]) != clean(expected[key]) for key in RAW_FIELDS):
+                raise ValueError("reviewed source attributes disagree with reconciliation")
+            raw = expected.copy()
+        features.append({"attributes": raw})
+    return features, metadata["source"]
+
+
+def reviewed_decisions(features, state_ids, lga_by_state, reviews):
+    """Fail closed on an unreviewed identity collision or a stale review."""
+    decisions = {}
+    for pair in reviews["pairs"]:
+        if pair["final_decision"] not in {"exclude_unresolved_identity", "retain_separate_facility"}:
+            raise ValueError("this review requires an explicit supported resolution")
+        if not pair.get("evidence_sources") or not pair.get("reason"):
+            raise ValueError("identity review must include evidence and a reason")
+        for obs in pair["observations"]:
+            position = obs["source_position"]
+            if position in decisions or position < 1 or position > len(features):
+                raise ValueError("invalid or overlapping review positions")
+            raw = features[position - 1]["attributes"]
+            # Compare the complete pinned observation when full attributes are
+            # supplied, and every preserved field in projection-only input.
+            expected = obs["raw_attributes"]
+            if any(key not in expected or clean(value) != clean(expected[key]) for key, value in raw.items()):
+                raise ValueError("source changed since identity review")
+            decisions[position] = pair
+    groups = defaultdict(list)
+    source_groups = defaultdict(list)
+    for position, feature in enumerate(features, 1):
+        raw = feature["attributes"]
+        if raw.get("globalid"):
+            source_groups[clean(raw["globalid"])].append(position)
+        state = slug(raw.get("state"))
+        lga, _ = resolve_lga(state, raw.get("lga"), lga_by_state)
+        if state not in state_ids or not clean(raw.get("facility_name")) or (raw.get("lga") and not lga):
+            continue
+        key = record_identity(raw["facility_name"], state, lga, raw.get("ward"))
+        groups[key].append(position)
+    for positions in list(groups.values()) + list(source_groups.values()):
+        if len(positions) < 2:
+            continue
+        first = features[positions[0] - 1]["attributes"]
+        if all(exact_duplicate(first, features[pos - 1]["attributes"]) for pos in positions[1:]):
+            continue
+        pairs = [decisions.get(pos) for pos in positions]
+        if any(pair is None for pair in pairs) or len({pair["pair_id"] for pair in pairs}) != 1:
+            raise ValueError(f"conflicting facility observations require identity review: {positions}")
+    return decisions
+
+
+def generate(source_path, repo, retrieved_at, reconciliation_repo=None, review_path=None):
+    review_path = Path(review_path) if review_path else Path(__file__).resolve().parents[1] / REVIEW_PATH
+    reviews = json.loads(review_path.read_text())
+    if reconciliation_repo is not None:
+        features, source = load_reconciliation(Path(reconciliation_repo), reviews)
+    else:
+        source_path = Path(source_path)
+        features = json.loads(source_path.read_text())["features"]
+        source = source_info(source_path, retrieved_at)
     source["raw_record_count"] = len(features)
+    source["pagination"] = "Archived source_position order preserved from the combined response; not an OBJECTID sort or observation chronology."
+    state_ids, lga_by_state = load_geography(repo)
+    decisions = reviewed_decisions(features, state_ids, lga_by_state, reviews)
 
     records = []
     reconciliation = defaultdict(list)
-    seen_identity = {}
+    seen_exact = {}
     counters = Counter()
     for position, feature in enumerate(features, 1):
         raw = feature["attributes"]
@@ -190,7 +309,11 @@ def generate(source_path, repo, retrieved_at):
         final_id = None
         merge_target = None
         notes = []
-        if state_id not in state_ids or not raw_name:
+        review = decisions.get(position)
+        if review and review["final_decision"] == "exclude_unresolved_identity":
+            decision = "exclude_unresolved_identity"
+            notes.append(f"Identity review {review['pair_id']}: {review['reason']}")
+        elif state_id not in state_ids or not raw_name:
             decision = "exclude_invalid_geography"
             notes.append("Missing name or state does not match the existing Nigerian states snapshot.")
         elif raw.get("lga") and not lga_id:
@@ -199,15 +322,19 @@ def generate(source_path, repo, retrieved_at):
         else:
             if lga_note:
                 notes.append(lga_note)
-            final_id = slug("-".join(filter(None, [raw_name, state_id, lga_id, raw.get("globalid")])))
-            identity = record_identity(raw_name, state_id, lga_id, raw.get("ward"))
-            if identity in seen_identity:
+            disambiguator = None
+            if review:
+                decision = "retain_separate_facility"
+                disambiguator = review.get("disambiguators", {}).get(source_id)
+            final_id = public_id(raw, state_id, lga_id, disambiguator)
+            signature = json.dumps(normalized_attributes(raw), sort_keys=True, ensure_ascii=False)
+            if signature in seen_exact:
                 decision = "merge_exact_duplicate"
-                merge_target = seen_identity[identity]
+                merge_target = seen_exact[signature]
                 final_id = None
-                notes.append("Exact normalized facility identity already retained from an earlier source row.")
+                notes.append("All normalized source attributes, including stable source identity and coordinates, equal an earlier observation.")
             else:
-                seen_identity[identity] = final_id
+                seen_exact[signature] = final_id
                 output = {
                     "id": final_id,
                     "name": raw_name,
@@ -247,7 +374,6 @@ def generate(source_path, repo, retrieved_at):
             "raw_state": clean(raw.get("state")),
             "raw_lga": clean(raw.get("lga")),
             "raw_ward_or_town": clean(raw.get("ward")),
-            "raw_status": None,
             "raw_latitude": raw.get("latitude"),
             "raw_longitude": raw.get("longitude"),
             "normalized_name": raw_name if final_id else None,
@@ -256,10 +382,13 @@ def generate(source_path, repo, retrieved_at):
             "decision": decision,
             "final_record_id": final_id,
             "merge_target_id": merge_target,
-            "evidence": [SOURCE_LAYER_URL],
+            "evidence": [SOURCE_LAYER_URL] + ([REVIEW_PATH + "#" + review["pair_id"]] if review else []),
             "notes": " ".join(notes) or "Retained from the dated GRID3 HFR-derived row-level snapshot.",
         })
 
+    ids = [item["id"] for item in records]
+    if len(set(ids)) != len(ids):
+        raise ValueError("public IDs must be unique")
     records.sort(key=lambda item: (item["state_id"], item.get("lga_id", ""), item["name"].casefold(), item["id"]))
     healthcare = repo / "datasets/healthcare"
     metadata_dir = repo / "datasets/metadata/healthcare"
@@ -327,20 +456,40 @@ def generate(source_path, repo, retrieved_at):
         "source_limitations": [
             "The NHFR external API is API-key protected; the public portal documents it as the canonical registry interface.",
             "This published row-level snapshot uses the public GRID3 layer whose metadata says it incorporates NHFR 2024 inputs.",
-            "Rows with unresolved state/LGA geography and exact normalized duplicates are excluded and retained in reconciliation metadata.",
+            "Unresolved geography and reviewed identity conflicts are excluded with row-level evidence; name equality does not establish an exact duplicate.",
             "NHFR facility codes are not globally unique in this layer; GRID3 globalid is retained as the source row identifier.",
         ],
         "licensing": "Source ownership remains with GRID3/CIESIN and its credited contributors. SoftData claims only its independent normalization, schema, identifiers, reconciliation, and metadata; public availability does not transfer source ownership.",
-        "verified_at": retrieved_at,
+        "identity_review_path": "metadata/healthcare/health_facilities_identity_reviews.json",
+        "generation": {
+            "input": "preserved reconciliation attributes with pinned full GRID3 observations for reviewed pairs",
+            "input_projection_sha256": hashlib.sha256(json.dumps(
+                [{key: feature["attributes"].get(key) for key in RAW_FIELDS} for feature in features],
+                ensure_ascii=False, sort_keys=True, separators=(",", ":")
+            ).encode()).hexdigest(),
+            "identity_reviews_sha256": hashlib.sha256(review_path.read_bytes()).hexdigest(),
+            "original_response_hash_note": "source.sha256 identifies the original archived response; reconciliation replay does not reconstruct its transport bytes.",
+        },
+        "verified_at": reviews["review_date"],
     }
     (metadata_dir / "health_facilities.json").write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + "\n")
+    schema_path = repo / "datasets/schemas/healthcare/health_facilities.schema.json"
+    schema_source = Path(__file__).resolve().parents[1] / "datasets/schemas/healthcare/health_facilities.schema.json"
+    schema = json.loads(schema_source.read_text())
+    schema["minItems"] = schema["maxItems"] = len(records)
+    schema["$defs"]["healthFacility"]["properties"]["id"]["maxLength"] = ID_MAX_LENGTH
+    schema_path.parent.mkdir(parents=True, exist_ok=True)
+    schema_path.write_text(json.dumps(schema, ensure_ascii=False, indent=2) + "\n")
     return len(features), len(records), counters
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--source", required=True, help="Combined ArcGIS JSON query response")
+    inputs = parser.add_mutually_exclusive_group(required=True)
+    inputs.add_argument("--source", help="Combined ArcGIS JSON query response in the reviewed source-position order")
+    inputs.add_argument("--from-reconciliation", help="Repository containing the committed source evidence to replay offline")
+    parser.add_argument("--reviews", help="Pinned per-pair identity decisions; defaults to the repository review manifest")
     parser.add_argument("--repo", default=".")
     parser.add_argument("--retrieved-at", required=True, help="Fixed retrieval date for deterministic output")
     args = parser.parse_args()
-    print(generate(args.source, Path(args.repo), args.retrieved_at))
+    print(generate(args.source, Path(args.repo), args.retrieved_at, args.from_reconciliation, args.reviews))

@@ -1,5 +1,8 @@
 package models
 
+// HealthFacilityIDMaxLength bounds public ASCII slug IDs across all API layers.
+const HealthFacilityIDMaxLength = 255
+
 // HealthFacility represents one source-verified Nigerian health facility.
 // It is published as a dated registry snapshot rather than a live status feed.
 type HealthFacility struct {

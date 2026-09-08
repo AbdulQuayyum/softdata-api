@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"reflect"
 	"regexp"
 	"sort"
 	"strings"
@@ -36,8 +37,8 @@ func TestNigeriaHealthFacilitiesDatasetAndReconciliation(t *testing.T) {
 	if err := decoder.Decode(&facilities); err != nil {
 		t.Fatalf("decode health facilities: %v", err)
 	}
-	if len(facilities) != 50654 {
-		t.Fatalf("unexpected health facility count: got %d want 50654", len(facilities))
+	if len(facilities) != 50649 {
+		t.Fatalf("unexpected health facility count: got %d want 50649", len(facilities))
 	}
 
 	states := loadStateDataset(t)
@@ -72,7 +73,7 @@ func TestNigeriaHealthFacilitiesDatasetAndReconciliation(t *testing.T) {
 		if facility.ID == "" || facility.Name == "" || facility.FacilityType == "" || facility.StateID == "" || facility.CountryCode != "NG" {
 			t.Fatalf("record %d has invalid required fields: %#v", i, facility)
 		}
-		if !idPattern.MatchString(facility.ID) {
+		if len(facility.ID) > HealthFacilityIDMaxLength || !idPattern.MatchString(facility.ID) {
 			t.Fatalf("record %d has invalid id %q", i, facility.ID)
 		}
 		if _, ok := stateIDs[facility.StateID]; !ok {
@@ -137,7 +138,7 @@ func TestNigeriaHealthFacilitiesDatasetAndReconciliation(t *testing.T) {
 	if metadata.DatasetKey != "ng-health-facilities" || metadata.Status != "active" || metadata.RecordCount != len(facilities) || metadata.SourceRows != 51022 {
 		t.Fatalf("health metadata mismatch: %#v", metadata)
 	}
-	if metadata.DecisionCounts["retain"] != 50654 || metadata.DecisionCounts["exclude_invalid_geography"] != 363 || metadata.DecisionCounts["merge_exact_duplicate"] != 5 {
+	if metadata.DecisionCounts["retain"] != 50649 || metadata.DecisionCounts["exclude_invalid_geography"] != 363 || metadata.DecisionCounts["merge_exact_duplicate"] != 0 || metadata.DecisionCounts["exclude_unresolved_identity"] != 10 {
 		t.Fatalf("health decision counts mismatch: %#v", metadata.DecisionCounts)
 	}
 
@@ -237,4 +238,39 @@ func equalStringIntMap(left, right map[string]int) bool {
 		}
 	}
 	return true
+}
+
+func TestHealthFacilityPublicFieldContract(t *testing.T) {
+	expected := map[string]bool{"id": true, "name": true, "facility_type": true, "facility_level": true, "ownership_type": true, "state_id": true, "lga_id": true, "country_code": true, "source_facility_id": true, "latitude": true, "longitude": true}
+	model := reflect.TypeOf(HealthFacility{})
+	if model.NumField() != len(expected) {
+		t.Fatal("unexpected public model fields")
+	}
+	for i := 0; i < model.NumField(); i++ {
+		if !expected[strings.Split(model.Field(i).Tag.Get("json"), ",")[0]] {
+			t.Fatal("unsupported public field")
+		}
+	}
+	var schema struct {
+		Defs map[string]struct {
+			Properties map[string]struct {
+				MaxLength int `json:"maxLength"`
+			} `json:"properties"`
+		} `json:"$defs"`
+	}
+	if err := json.Unmarshal(readTextBytes(t, datasetPath("schemas/healthcare/health_facilities.schema.json")), &schema); err != nil {
+		t.Fatal(err)
+	}
+	properties := schema.Defs["healthFacility"].Properties
+	if len(properties) != len(expected) {
+		t.Fatal("unexpected schema fields")
+	}
+	for key := range properties {
+		if !expected[key] {
+			t.Fatal("unsupported schema field")
+		}
+	}
+	if properties["id"].MaxLength != HealthFacilityIDMaxLength || HealthFacilityIDMaxLength != 255 {
+		t.Fatal("ID bounds disagree")
+	}
 }

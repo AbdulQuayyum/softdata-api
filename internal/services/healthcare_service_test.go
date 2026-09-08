@@ -157,3 +157,25 @@ func TestHealthFacilityServiceErrorTranslationAndContext(t *testing.T) {
 		t.Fatalf("deadline detail error = %v", err)
 	}
 }
+
+func TestHealthFacilityServiceIDLengthBoundaries(t *testing.T) {
+	repository := &healthFacilityServiceRepositoryStub{getErr: interfaces.ErrHealthFacilityNotFound}
+	service, err := NewHealthFacilityService(repository)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, size := range []int{129, models.HealthFacilityIDMaxLength} {
+		if _, err := service.GetHealthFacility(context.Background(), strings.Repeat("a", size)); !errors.Is(err, ErrHealthFacilityNotFound) {
+			t.Fatalf("valid unknown ID length %d: %v", size, err)
+		}
+	}
+	calls := repository.getCalls
+	for _, id := range []string{strings.Repeat("a", models.HealthFacilityIDMaxLength+1), "valid/invalid", "UPPER"} {
+		if _, err := service.GetHealthFacility(context.Background(), id); !errors.Is(err, ErrInvalidHealthFacilityID) {
+			t.Fatalf("invalid ID accepted: %v", err)
+		}
+	}
+	if repository.getCalls != calls {
+		t.Fatal("invalid IDs reached repository")
+	}
+}

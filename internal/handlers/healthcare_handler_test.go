@@ -10,6 +10,7 @@ import (
 	"testing"
 
 	"github.com/AbdulQuayyum/softdata-api/internal/models"
+	fileRepo "github.com/AbdulQuayyum/softdata-api/internal/repository/file"
 	"github.com/AbdulQuayyum/softdata-api/internal/repository/interfaces"
 	"github.com/AbdulQuayyum/softdata-api/internal/services"
 )
@@ -37,7 +38,7 @@ func TestHealthFacilityHandlerListContract(t *testing.T) {
 	latitude, longitude := 6.6018, 3.3515
 	stub := &healthFacilityHandlerStub{listResult: interfaces.HealthFacilityListResult{
 		Facilities: []models.HealthFacility{{ID: "example-health-facility", Name: "Example Health Facility", FacilityType: "primary-health-centre", FacilityLevel: "primary", OwnershipType: "private", StateID: "lagos", LGAID: "lagos-ikeja", CountryCode: "NG", SourceFacilityID: "source-1", Latitude: &latitude, Longitude: &longitude}},
-		Page:       1, PageSize: 50, Total: 50654, TotalPages: 1014,
+		Page:       1, PageSize: 50, Total: 50649, TotalPages: 1013,
 	}}
 	handler, err := NewHealthFacilityHandler(stub)
 	if err != nil {
@@ -62,7 +63,7 @@ func TestHealthFacilityHandlerListContract(t *testing.T) {
 	if err := json.Unmarshal(response.Body.Bytes(), &body); err != nil {
 		t.Fatal(err)
 	}
-	if !body.Success || len(body.Data) != 1 || body.Meta.Page != 1 || body.Meta.Limit != 50 || body.Meta.Total != 50654 || body.Meta.TotalPages != 1014 {
+	if !body.Success || len(body.Data) != 1 || body.Meta.Page != 1 || body.Meta.Limit != 50 || body.Meta.Total != 50649 || body.Meta.TotalPages != 1013 {
 		t.Fatalf("unexpected response: %#v", body)
 	}
 	if stub.lastQuery.StateID != "lagos" || stub.lastQuery.Search != "Example" {
@@ -74,7 +75,7 @@ func TestHealthFacilityHandlerListContract(t *testing.T) {
 }
 
 func TestHealthFacilityHandlerListValidationAndEmptyPage(t *testing.T) {
-	stub := &healthFacilityHandlerStub{listResult: interfaces.HealthFacilityListResult{Facilities: []models.HealthFacility{}, Page: 9999, PageSize: 100, Total: 50654, TotalPages: 507}}
+	stub := &healthFacilityHandlerStub{listResult: interfaces.HealthFacilityListResult{Facilities: []models.HealthFacility{}, Page: 9999, PageSize: 100, Total: 50649, TotalPages: 507}}
 	handler, _ := NewHealthFacilityHandler(stub)
 	for _, raw := range []string{"page_size=101", "page=0", "page=-1", "page=1.5", "page=+1", "page=999999999999999999999", "facility_type=hospital", "facility_level=quaternary", "ownership_type=public", "search=" + strings.Repeat("x", 101)} {
 		req := httptest.NewRequest(http.MethodGet, "/v1/healthcare/health-facilities?"+raw, nil)
@@ -179,5 +180,56 @@ func TestHealthFacilityHandlerMapsStateLGARelationshipError(t *testing.T) {
 	handler.ListHealthFacilities(response, req)
 	if response.Code != http.StatusBadRequest {
 		t.Fatalf("state/LGA relationship returned %d: %s", response.Code, response.Body.String())
+	}
+}
+
+func TestHealthFacilityHandlerPublishedAndBoundedIDs(t *testing.T) {
+	jsonRepository, err := fileRepo.NewJSONRepository("../../datasets", 64<<20)
+	if err != nil {
+		t.Fatal(err)
+	}
+	repository, err := fileRepo.NewHealthFacilityRepository(jsonRepository, "healthcare/health_facilities.json", "geography/states.json", "geography/lgas.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	service, err := services.NewHealthFacilityService(repository)
+	if err != nil {
+		t.Fatal(err)
+	}
+	handler, err := NewHealthFacilityHandler(service)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var facilities []models.HealthFacility
+	if err := jsonRepository.Decode(context.Background(), "healthcare/health_facilities.json", &facilities); err != nil {
+		t.Fatal(err)
+	}
+	longest := ""
+	for _, facility := range facilities {
+		if len(facility.ID) > len(longest) {
+			longest = facility.ID
+		}
+	}
+	if len(longest) <= 128 || len(longest) > models.HealthFacilityIDMaxLength {
+		t.Fatalf("unexpected longest ID: %d", len(longest))
+	}
+	cases := []struct {
+		id     string
+		status int
+	}{
+		{longest, http.StatusOK},
+		{strings.Repeat("a", models.HealthFacilityIDMaxLength), http.StatusNotFound},
+		{strings.Repeat("a", models.HealthFacilityIDMaxLength+1), http.StatusBadRequest},
+		{strings.Repeat("a", 129), http.StatusNotFound},
+		{"invalid_id", http.StatusBadRequest},
+	}
+	for _, tc := range cases {
+		request := httptest.NewRequest(http.MethodGet, "/v1/healthcare/health-facilities/"+tc.id, nil)
+		request.SetPathValue("facility_id", tc.id)
+		response := httptest.NewRecorder()
+		handler.GetHealthFacility(response, request)
+		if response.Code != tc.status || !strings.Contains(response.Header().Get("Content-Type"), "application/json") || !json.Valid(response.Body.Bytes()) {
+			t.Fatalf("ID length %d: %d %s", len(tc.id), response.Code, response.Body.String())
+		}
 	}
 }

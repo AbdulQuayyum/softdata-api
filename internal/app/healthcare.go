@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	healthFacilityExpectedCount = 50654
+	healthFacilityExpectedCount = 50649
 	healthFacilityFirstAnchor   = "222-cliford-medical-center-abia-abia-aba-north-cea7a6ea-db7e-4845-8057-5caf45dc26c1"
 	healthFacilityLastAnchor    = "zurmi-town-health-post-zamfara-zamfara-zurmi-662c2adb-b082-407c-b7dd-e6830b9f3b46"
 )
@@ -84,7 +84,7 @@ func verifyHealthFacilityDataset(ctx context.Context, service healthFacilityServ
 }
 
 func validateStartupHealthFacility(facility models.HealthFacility) error {
-	if facility.ID == "" || !startupHealthFacilityIDPattern.MatchString(facility.ID) || strings.TrimSpace(facility.Name) == "" || facility.CountryCode != "NG" || facility.StateID == "" {
+	if facility.ID == "" || len(facility.ID) > models.HealthFacilityIDMaxLength || !startupHealthFacilityIDPattern.MatchString(facility.ID) || strings.TrimSpace(facility.Name) == "" || facility.CountryCode != "NG" || facility.StateID == "" {
 		return invalidHealthFacilityVerification("invalid first facility identity")
 	}
 	if _, ok := approvedUniversityStateIDs[facility.StateID]; !ok {

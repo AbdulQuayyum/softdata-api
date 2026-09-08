@@ -1647,7 +1647,7 @@
     },
     {
       "name": "Healthcare",
-      "description": "Public Nigerian health-facility snapshot. The dataset contains 50,654 GRID3 Nigeria Health Facilities v2.0 observed records, last updated 2024-11-11. It is not a live NHFR register, a complete current operational facility list, or an FMoH licensing register. Results are always paginated with a default page size of 50 and a maximum of 100.",
+      "description": "Public Nigerian health-facility snapshot. The dataset contains 50,649 GRID3 Nigeria Health Facilities v2.0 observed records, last updated 2024-11-11. It is not a live NHFR register, a complete current operational facility list, or an FMoH licensing register. Results are always paginated with a default page size of 50 and a maximum of 100.",
       "item": [
         {
           "name": "List health facilities",
