@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://softdata-api.dev/schemas/education/vocational-enterprise-institutions.schema.json",
+  "title": "Nigerian Vocational Enterprise Institutions",
+  "description": "Current active Vocational Enterprise Institutions returned by the Digital NBTE register.",
+  "type": "array",
+  "minItems": 25,
+  "maxItems": 25,
+  "uniqueItems": true,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["id", "name", "ownership_type", "state_id", "country_code"],
+    "properties": {
+      "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+      "name": {"type": "string", "minLength": 1},
+      "ownership_type": {"type": "string", "enum": ["federal", "state", "private"]},
+      "state_id": {"type": "string", "minLength": 1},
+      "country_code": {"const": "NG"}
+    }
+  }
+}

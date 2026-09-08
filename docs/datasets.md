@@ -197,6 +197,15 @@ Nigeria's reconciled roster of NBTE **Specialised Institutions (Monotechnics)**.
 
 The package contains 86 records: 32 federal, 4 state and 50 private institutions across 27 states. It uses the same five-field static contract as the university, college-of-education and Polytechnic datasets. Colleges of education, general schools, remedial institutions and other wrong-category entries are excluded in the reconciliation manifest. Website/logo enrichment and API integration are intentionally deferred.
 
+### `ng-vocational-enterprise-institutions`
+
+- Data: `datasets/education/vocational_enterprise_institutions.json`
+- Schema: `datasets/schemas/education/vocational_enterprise_institutions.schema.json`
+- Metadata: `datasets/metadata/education/vocational_enterprise_institutions.json`
+- Reconciliation: `datasets/metadata/education/vocational_enterprise_institutions_reconciliation.json`
+
+The package contains 25 current VEIs: 4 state and 21 private institutions across 11 states. It uses the live Digital NBTE VEI/Training Center/MCP register and retains only rows explicitly categorized as VEI. IEIs were a former NBTE category; the newer reform abolished IEIs and the NID programme, so revoked or upgraded IEIs are excluded. This is a roster-only foundation; websites, logos and API integration are intentionally deferred.
+
 ### `ng-colleges-of-agriculture`
 
 Nigeria's reconciled roster of NBTE **Colleges of Agriculture and Related Disciplines**.

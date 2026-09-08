@@ -98,6 +98,7 @@ Regulated-finance logo assets are embedded under `assets/financial-institutions/
 - `education/colleges_of_education.json` is the compiled catalogue of current NCCE-listed colleges of education.
 - `education/polytechnics.json` is the 168-record static catalogue of current NBTE-listed Nigerian polytechnics.
 - `education/monotechnics.json` is the 86-record static catalogue of NBTE Specialised Institutions (Monotechnics).
+- `education/vocational_enterprise_institutions.json` is the 25-record static catalogue of current Digital NBTE-listed Vocational Enterprise Institutions. It excludes Skill Training Centers, Master Craft Persons and abolished or upgraded IEIs.
 - `education/colleges_of_agriculture.json` is the 31-record static catalogue of NBTE Colleges of Agriculture and Related Disciplines.
 - `education/colleges_of_health_sciences_and_technology.json` is the 98-record static catalogue of NBTE Colleges of Health Sciences and Technology.
 - `education/colleges_of_nursing_and_midwifery.json` is a 176-record provisional, non-public reconstruction of NMCN nursing and midwifery training institutions. Its institution-level aggregation is unresolved; the NMCN webpage reports 290 institutions while the PDF has 340 numbered rows, 36 section headings, 494 programme markers and 329 unique printed row labels.

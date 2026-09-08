@@ -62,3 +62,12 @@ type CollegeOfNursingAndMidwifery struct {
 	StateID       string `json:"state_id"`
 	CountryCode   string `json:"country_code"`
 }
+
+// VocationalEnterpriseInstitution represents one current Digital NBTE-listed VEI.
+type VocationalEnterpriseInstitution struct {
+	ID            string `json:"id"`
+	Name          string `json:"name"`
+	OwnershipType string `json:"ownership_type"`
+	StateID       string `json:"state_id"`
+	CountryCode   string `json:"country_code"`
+}

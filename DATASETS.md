@@ -274,6 +274,15 @@ The static foundation contains 168 current NBTE-listed polytechnics: 35 federal,
 
 The static foundation contains 86 NBTE Specialised Institutions (Monotechnics): 32 federal, 4 state and 50 private. It exposes only `id`, `name`, `ownership_type`, `state_id` and `country_code`. Colleges, remedial schools and other wrong-category source entries are excluded and documented. Website/logo enrichment and API integration are intentionally deferred.
 
+### `ng-vocational-enterprise-institutions`
+
+- `datasets/education/vocational_enterprise_institutions.json`
+- `datasets/schemas/education/vocational_enterprise_institutions.schema.json`
+- `datasets/metadata/education/vocational_enterprise_institutions.json`
+- `datasets/metadata/education/vocational_enterprise_institutions_reconciliation.json`
+
+The static foundation contains 25 current Digital NBTE-listed VEIs: 4 state and 21 private across 11 states. It filters the live combined VEI/Skill Training Center/Master Craft Person register to rows explicitly categorized as VEI. IEIs were previously recognized by NBTE, but the category and NID programme were abolished under the newer reform; upgraded and revoked IEIs are not included. This is a roster-only foundation with no websites, logos or API integration.
+
 ### `ng-colleges-of-agriculture`
 
 - `datasets/education/colleges_of_agriculture.json`

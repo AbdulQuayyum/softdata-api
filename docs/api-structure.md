@@ -142,6 +142,7 @@ softdata-api/
 │   │   │   ├── colleges_of_nursing_and_midwifery.json
 │   │   │   ├── colleges_of_nursing_and_midwifery_reconciliation.json
 │   │   │   ├── monotechnics.json
+│   │   │   ├── vocational_enterprise_institutions.json
 │   │   │   ├── monotechnics_reconciliation.json
 │   │   │   ├── polytechnics.json
 │   │   │   ├── polytechnics_reconciliation.json
@@ -184,6 +185,7 @@ softdata-api/
 │       │   ├── colleges_of_health_sciences_and_technology.schema.json
 │       │   ├── colleges_of_nursing_and_midwifery.schema.json
 │       │   ├── monotechnics.schema.json
+│       │   ├── vocational_enterprise_institutions.schema.json
 │       │   ├── polytechnics.schema.json
 │       │   └── universities.schema.json
 │       ├── finance/
