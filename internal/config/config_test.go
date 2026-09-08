@@ -55,7 +55,7 @@ func TestLoadDevelopmentConfig(t *testing.T) {
 	if cfg.Datasets.Path != "datasets" {
 		t.Fatalf("unexpected datasets path: %s", cfg.Datasets.Path)
 	}
-	if cfg.Datasets.JSONMaxBytes != 16777216 {
+	if cfg.Datasets.JSONMaxBytes != 67108864 {
 		t.Fatalf("unexpected datasets json max bytes: %d", cfg.Datasets.JSONMaxBytes)
 	}
 }
@@ -353,7 +353,7 @@ func TestLoadDatasetsConfigUsesDefaultJsonMaxBytes(t *testing.T) {
 	if err != nil {
 		t.Fatalf("loadDatasetsConfig() error = %v", err)
 	}
-	if cfg.JSONMaxBytes != 16777216 {
+	if cfg.JSONMaxBytes != 67108864 {
 		t.Fatalf("unexpected JSONMaxBytes: %d", cfg.JSONMaxBytes)
 	}
 }
