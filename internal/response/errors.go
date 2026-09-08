@@ -80,6 +80,15 @@ func Error(w http.ResponseWriter, err error, requestID string) error {
 
 // Validation writes a validation error response with stable field-level details.
 func Validation(w http.ResponseWriter, requestID string, details []ValidationError) error {
+	return validation(w, http.StatusUnprocessableEntity, requestID, details)
+}
+
+// ValidationBadRequest writes a validation error using HTTP 400.
+func ValidationBadRequest(w http.ResponseWriter, requestID string, details []ValidationError) error {
+	return validation(w, http.StatusBadRequest, requestID, details)
+}
+
+func validation(w http.ResponseWriter, status int, requestID string, details []ValidationError) error {
 	if details == nil {
 		details = []ValidationError{}
 	}
@@ -92,7 +101,7 @@ func Validation(w http.ResponseWriter, requestID string, details []ValidationErr
 			RequestID: requestID,
 		},
 	}
-	return JSON(w, http.StatusUnprocessableEntity, body)
+	return JSON(w, status, body)
 }
 
 func mapError(err error) mappedError {
@@ -138,6 +147,10 @@ func mapError(err error) mappedError {
 	case errors.Is(err, services.ErrCollegeOfEducationNotFound):
 		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}
 	case errors.Is(err, services.ErrInvalidCollegeOfEducationID), errors.Is(err, services.ErrInvalidCollegeOfEducationOwnershipType), errors.Is(err, services.ErrInvalidCollegeOfEducationStateID):
+		return mappedError{status: http.StatusBadRequest, code: codeInvalidRequest, message: messageInvalidRequest}
+	case errors.Is(err, services.ErrPolytechnicNotFound), errors.Is(err, services.ErrMonotechnicNotFound), errors.Is(err, services.ErrCollegeOfAgricultureNotFound), errors.Is(err, services.ErrCollegeOfHealthSciencesAndTechnologyNotFound), errors.Is(err, services.ErrCollegeOfNursingAndMidwiferyNotFound), errors.Is(err, services.ErrVocationalEnterpriseInstitutionNotFound), errors.Is(err, services.ErrTechnicalCollegeNotFound), errors.Is(err, services.ErrPrimaryAndSecondarySchoolNotFound):
+		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}
+	case errors.Is(err, services.ErrInvalidEducationInstitutionID), errors.Is(err, services.ErrInvalidSchoolPagination), errors.Is(err, services.ErrInvalidSchoolStateFilter), errors.Is(err, services.ErrInvalidSchoolLGAFilter), errors.Is(err, services.ErrInvalidSchoolEducationLevel), errors.Is(err, services.ErrInvalidSchoolOwnershipType), errors.Is(err, services.ErrInvalidSchoolSearch):
 		return mappedError{status: http.StatusBadRequest, code: codeInvalidRequest, message: messageInvalidRequest}
 	case errors.Is(err, services.ErrPaymentServiceProviderNotFound):
 		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}

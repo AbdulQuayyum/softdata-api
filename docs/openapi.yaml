@@ -457,6 +457,176 @@ paths:
           $ref: "#/components/responses/ValidationFailed"
         "500":
           $ref: "#/components/responses/InternalError"
+  /v1/education/polytechnics:
+    get:
+      tags: [Education]
+      operationId: listPolytechnics
+      summary: List polytechnics
+      description: Returns 168 verified NBTE polytechnic records.
+      responses:
+        "200": {description: Polytechnic records, content: {application/json: {schema: {$ref: "#/components/schemas/EducationInstitutionListResponse"}}}}
+        "500": {$ref: "#/components/responses/InternalError"}
+  /v1/education/polytechnics/{institution_id}:
+    get:
+      tags: [Education]
+      operationId: getPolytechnic
+      summary: Get a polytechnic
+      parameters: [{$ref: "#/components/parameters/EducationInstitutionID"}]
+      responses:
+        "200": {description: Polytechnic record, content: {application/json: {schema: {$ref: "#/components/schemas/EducationInstitutionDetailResponse"}}}}
+        "400": {$ref: "#/components/responses/BadRequest"}
+        "404": {$ref: "#/components/responses/NotFound"}
+        "500": {$ref: "#/components/responses/InternalError"}
+  /v1/education/monotechnics:
+    get:
+      tags: [Education]
+      operationId: listMonotechnics
+      summary: List monotechnics
+      description: Returns 86 verified NBTE monotechnic records.
+      responses:
+        "200": {description: Monotechnic records, content: {application/json: {schema: {$ref: "#/components/schemas/EducationInstitutionListResponse"}}}}
+        "500": {$ref: "#/components/responses/InternalError"}
+  /v1/education/monotechnics/{institution_id}:
+    get:
+      tags: [Education]
+      operationId: getMonotechnic
+      summary: Get a monotechnic
+      parameters: [{$ref: "#/components/parameters/EducationInstitutionID"}]
+      responses:
+        "200": {description: Monotechnic record, content: {application/json: {schema: {$ref: "#/components/schemas/EducationInstitutionDetailResponse"}}}}
+        "400": {$ref: "#/components/responses/BadRequest"}
+        "404": {$ref: "#/components/responses/NotFound"}
+        "500": {$ref: "#/components/responses/InternalError"}
+  /v1/education/colleges-of-agriculture:
+    get:
+      tags: [Education]
+      operationId: listCollegesOfAgriculture
+      summary: List colleges of agriculture
+      description: Returns 31 verified NBTE colleges of agriculture records.
+      responses:
+        "200": {description: College of agriculture records, content: {application/json: {schema: {$ref: "#/components/schemas/EducationInstitutionListResponse"}}}}
+        "500": {$ref: "#/components/responses/InternalError"}
+  /v1/education/colleges-of-agriculture/{institution_id}:
+    get:
+      tags: [Education]
+      operationId: getCollegeOfAgriculture
+      summary: Get a college of agriculture
+      parameters: [{$ref: "#/components/parameters/EducationInstitutionID"}]
+      responses:
+        "200": {description: College of agriculture record, content: {application/json: {schema: {$ref: "#/components/schemas/EducationInstitutionDetailResponse"}}}}
+        "400": {$ref: "#/components/responses/BadRequest"}
+        "404": {$ref: "#/components/responses/NotFound"}
+        "500": {$ref: "#/components/responses/InternalError"}
+  /v1/education/colleges-of-health-sciences-and-technology:
+    get:
+      tags: [Education]
+      operationId: listCollegesOfHealthSciencesAndTechnology
+      summary: List colleges of health sciences and technology
+      description: Returns 98 verified NBTE colleges of health sciences and technology records.
+      responses:
+        "200": {description: College records, content: {application/json: {schema: {$ref: "#/components/schemas/EducationInstitutionListResponse"}}}}
+        "500": {$ref: "#/components/responses/InternalError"}
+  /v1/education/colleges-of-health-sciences-and-technology/{institution_id}:
+    get:
+      tags: [Education]
+      operationId: getCollegeOfHealthSciencesAndTechnology
+      summary: Get a college of health sciences and technology
+      parameters: [{$ref: "#/components/parameters/EducationInstitutionID"}]
+      responses:
+        "200": {description: College record, content: {application/json: {schema: {$ref: "#/components/schemas/EducationInstitutionDetailResponse"}}}}
+        "400": {$ref: "#/components/responses/BadRequest"}
+        "404": {$ref: "#/components/responses/NotFound"}
+        "500": {$ref: "#/components/responses/InternalError"}
+  /v1/education/colleges-of-nursing-and-midwifery:
+    get:
+      tags: [Education]
+      operationId: listCollegesOfNursingAndMidwifery
+      summary: List colleges of nursing and midwifery
+      description: Returns 152 public records from the NMCN December 2025 approved-schools snapshot. This is a snapshot, not a continuously current live register.
+      responses:
+        "200": {description: Nursing and midwifery records, content: {application/json: {schema: {$ref: "#/components/schemas/EducationInstitutionListResponse"}}}}
+        "500": {$ref: "#/components/responses/InternalError"}
+  /v1/education/colleges-of-nursing-and-midwifery/{institution_id}:
+    get:
+      tags: [Education]
+      operationId: getCollegeOfNursingAndMidwifery
+      summary: Get a college of nursing and midwifery
+      parameters: [{$ref: "#/components/parameters/EducationInstitutionID"}]
+      responses:
+        "200": {description: Nursing and midwifery record, content: {application/json: {schema: {$ref: "#/components/schemas/EducationInstitutionDetailResponse"}}}}
+        "400": {$ref: "#/components/responses/BadRequest"}
+        "404": {$ref: "#/components/responses/NotFound"}
+        "500": {$ref: "#/components/responses/InternalError"}
+  /v1/education/vocational-enterprise-institutions:
+    get:
+      tags: [Education]
+      operationId: listVocationalEnterpriseInstitutions
+      summary: List vocational enterprise institutions
+      description: Returns 25 verified Digital NBTE vocational enterprise institution records.
+      responses:
+        "200": {description: Vocational enterprise institution records, content: {application/json: {schema: {$ref: "#/components/schemas/EducationInstitutionListResponse"}}}}
+        "500": {$ref: "#/components/responses/InternalError"}
+  /v1/education/vocational-enterprise-institutions/{institution_id}:
+    get:
+      tags: [Education]
+      operationId: getVocationalEnterpriseInstitution
+      summary: Get a vocational enterprise institution
+      parameters: [{$ref: "#/components/parameters/EducationInstitutionID"}]
+      responses:
+        "200": {description: Vocational enterprise institution record, content: {application/json: {schema: {$ref: "#/components/schemas/EducationInstitutionDetailResponse"}}}}
+        "400": {$ref: "#/components/responses/BadRequest"}
+        "404": {$ref: "#/components/responses/NotFound"}
+        "500": {$ref: "#/components/responses/InternalError"}
+  /v1/education/technical-colleges:
+    get:
+      tags: [Education]
+      operationId: listTechnicalColleges
+      summary: List technical colleges
+      description: Returns 115 verified row-level institutions from the NBTE Technical Colleges directory snapshot. NBTE separately reports a sector total of 153; unidentified institutions are not fabricated into this API dataset, and wrong-category or unresolved directory entries were excluded through reconciliation.
+      responses:
+        "200": {description: Technical college records, content: {application/json: {schema: {$ref: "#/components/schemas/EducationInstitutionListResponse"}}}}
+        "500": {$ref: "#/components/responses/InternalError"}
+  /v1/education/technical-colleges/{institution_id}:
+    get:
+      tags: [Education]
+      operationId: getTechnicalCollege
+      summary: Get a technical college
+      parameters: [{$ref: "#/components/parameters/EducationInstitutionID"}]
+      responses:
+        "200": {description: Technical college record, content: {application/json: {schema: {$ref: "#/components/schemas/EducationInstitutionDetailResponse"}}}}
+        "400": {$ref: "#/components/responses/BadRequest"}
+        "404": {$ref: "#/components/responses/NotFound"}
+        "500": {$ref: "#/components/responses/InternalError"}
+  /v1/education/primary-and-secondary-schools:
+    get:
+      tags: [Education]
+      operationId: listPrimaryAndSecondarySchools
+      summary: List primary and secondary schools
+      description: Returns an always-paginated UBEC 2022 observed school snapshot; it is not a current live school-licensing register.
+      parameters:
+        - {$ref: "#/components/parameters/SchoolPage"}
+        - {$ref: "#/components/parameters/SchoolPageSize"}
+        - {$ref: "#/components/parameters/SchoolStateID"}
+        - {$ref: "#/components/parameters/SchoolLGAID"}
+        - {$ref: "#/components/parameters/SchoolEducationLevel"}
+        - {$ref: "#/components/parameters/SchoolOwnershipType"}
+        - {$ref: "#/components/parameters/SchoolSearch"}
+      responses:
+        "200": {description: Paginated school records, content: {application/json: {schema: {$ref: "#/components/schemas/PrimaryAndSecondarySchoolListResponse"}}}}
+        "400": {$ref: "#/components/responses/BadRequest"}
+        "500": {$ref: "#/components/responses/InternalError"}
+  /v1/education/primary-and-secondary-schools/{school_id}:
+    get:
+      tags: [Education]
+      operationId: getPrimaryAndSecondarySchool
+      summary: Get a primary or secondary school
+      parameters:
+        - {$ref: "#/components/parameters/SchoolID"}
+      responses:
+        "200": {description: School record, content: {application/json: {schema: {$ref: "#/components/schemas/PrimaryAndSecondarySchoolResponse"}}}}
+        "400": {$ref: "#/components/responses/BadRequest"}
+        "404": {$ref: "#/components/responses/NotFound"}
+        "500": {$ref: "#/components/responses/InternalError"}
   /v1/finance/payment-service-providers:
     get:
       tags: [Finance]
@@ -1366,6 +1536,71 @@ components:
       description: Optional public state or FCT ID used to filter college-of-education records.
       schema:
         $ref: "#/components/schemas/CollegeOfEducationStateID"
+    EducationInstitutionID:
+      name: institution_id
+      in: path
+      required: true
+      description: Stable lowercase public identifier for the institution.
+      schema:
+        type: string
+        pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'
+    SchoolID:
+      name: school_id
+      in: path
+      required: true
+      description: Stable lowercase public identifier for the observed school.
+      schema:
+        type: string
+        pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'
+    SchoolPage:
+      name: page
+      in: query
+      required: false
+      description: One-based page number.
+      example: 1
+      schema: {type: integer, minimum: 1, default: 1}
+    SchoolPageSize:
+      name: page_size
+      in: query
+      required: false
+      description: Number of schools per page.
+      example: 50
+      schema: {type: integer, minimum: 1, maximum: 100, default: 50}
+    SchoolStateID:
+      name: state_id
+      in: query
+      required: false
+      description: Optional lowercase Nigerian state or FCT ID.
+      example: lagos
+      schema: {type: string, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'}
+    SchoolLGAID:
+      name: lga_id
+      in: query
+      required: false
+      description: Optional lowercase local government area ID.
+      example: ikeja
+      schema: {type: string, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'}
+    SchoolEducationLevel:
+      name: education_level
+      in: query
+      required: false
+      description: Optional education level filter.
+      example: primary
+      schema: {type: string, enum: [pre-primary, primary, junior-secondary, senior-secondary]}
+    SchoolOwnershipType:
+      name: ownership_type
+      in: query
+      required: false
+      description: Optional school ownership filter.
+      example: public
+      schema: {type: string, enum: [public, private]}
+    SchoolSearch:
+      name: search
+      in: query
+      required: false
+      description: Case-insensitive school-name search, trimmed and limited to 100 characters.
+      example: community primary
+      schema: {type: string, maxLength: 100}
     PaymentServiceProviderID:
       name: provider_id
       in: path
@@ -2173,6 +2408,74 @@ components:
           type: boolean
         data:
           $ref: "#/components/schemas/CollegeOfEducation"
+      required: [success, data]
+    EducationInstitution:
+      type: object
+      additionalProperties: false
+      properties:
+        id: {type: string}
+        name: {type: string}
+        ownership_type: {type: string, enum: [federal, state, private]}
+        state_id: {type: string}
+        country_code: {type: string, enum: [NG]}
+      required: [id, name, ownership_type, state_id, country_code]
+    EducationInstitutionListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success: {type: boolean}
+        data:
+          type: array
+          items: {$ref: "#/components/schemas/EducationInstitution"}
+      required: [success, data]
+    EducationInstitutionDetailResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success: {type: boolean}
+        data: {$ref: "#/components/schemas/EducationInstitution"}
+      required: [success, data]
+    PrimaryAndSecondarySchool:
+      type: object
+      additionalProperties: false
+      properties:
+        id: {type: string}
+        name: {type: string}
+        ownership_type: {type: string, enum: [public, private]}
+        government_owner: {type: string}
+        state_id: {type: string}
+        lga_id: {type: string}
+        country_code: {type: string, enum: [NG]}
+        education_levels:
+          type: array
+          items: {type: string, enum: [pre-primary, primary, junior-secondary, senior-secondary]}
+        ubec_school_code: {type: string}
+      required: [id, name, state_id, country_code, education_levels]
+    SchoolPagination:
+      type: object
+      additionalProperties: false
+      properties:
+        page: {type: integer, minimum: 1}
+        limit: {type: integer, minimum: 1, maximum: 100}
+        total: {type: integer, format: int64, minimum: 0}
+        total_pages: {type: integer, minimum: 0}
+      required: [page, limit, total, total_pages]
+    PrimaryAndSecondarySchoolListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success: {type: boolean}
+        data:
+          type: array
+          items: {$ref: "#/components/schemas/PrimaryAndSecondarySchool"}
+        meta: {$ref: "#/components/schemas/SchoolPagination"}
+      required: [success, data, meta]
+    PrimaryAndSecondarySchoolResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success: {type: boolean}
+        data: {$ref: "#/components/schemas/PrimaryAndSecondarySchool"}
       required: [success, data]
     PaymentServiceProviderType:
       type: string

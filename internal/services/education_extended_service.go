@@ -229,6 +229,9 @@ func (s *EducationService) ListPrimaryAndSecondarySchools(ctx context.Context, q
 }
 
 func (s *EducationService) GetPrimaryAndSecondarySchool(ctx context.Context, id string) (models.PrimaryAndSecondarySchool, error) {
+	if err := ctx.Err(); err != nil {
+		return models.PrimaryAndSecondarySchool{}, err
+	}
 	id, err := normalizeEducationInstitutionID(id)
 	if err != nil {
 		return models.PrimaryAndSecondarySchool{}, err
