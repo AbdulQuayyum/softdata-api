@@ -256,6 +256,78 @@ Nigeria's current National Commission for Colleges of Education register of acti
 
 The package version is `1.0.0` and contains 244 college records across the current NCCE federal, state and private categories (`28` federal, `48` state, `168` private). Each record represents one active college listing, with `state_id` linking the record to `ng-states` and `ownership_type` preserving the category published by the NCCE. The stale `Cross River State Coll. of Education, Akampa` row is excluded because current Cross River State Government evidence describes the successor as a university that is already represented in `ng-universities`. SoftData's independent compilation, schema and metadata are CC BY 4.0; the NCCE and other official publications retain their own rights.
 
+### `ng-polytechnics`
+
+- `datasets/education/polytechnics.json`
+- `datasets/schemas/education/polytechnics.schema.json`
+- `datasets/metadata/education/polytechnics.json`
+- `datasets/metadata/education/polytechnics_reconciliation.json`
+
+The static foundation contains 168 current NBTE-listed polytechnics: 35 federal, 43 state and 90 private. It exposes only `id`, `name`, `ownership_type`, `state_id` and `country_code`, with `state_id` resolving to `ng-states`. Colleges, specialist institutes, transition records and other wrong-category entries are excluded and documented. Website/logo enrichment and API integration are intentionally deferred.
+
+### `ng-monotechnics`
+
+- `datasets/education/monotechnics.json`
+- `datasets/schemas/education/monotechnics.schema.json`
+- `datasets/metadata/education/monotechnics.json`
+- `datasets/metadata/education/monotechnics_reconciliation.json`
+
+The static foundation contains 86 NBTE Specialised Institutions (Monotechnics): 32 federal, 4 state and 50 private. It exposes only `id`, `name`, `ownership_type`, `state_id` and `country_code`. Colleges, remedial schools and other wrong-category source entries are excluded and documented. Website/logo enrichment and API integration are intentionally deferred.
+
+### `ng-vocational-enterprise-institutions`
+
+- `datasets/education/vocational_enterprise_institutions.json`
+- `datasets/schemas/education/vocational_enterprise_institutions.schema.json`
+- `datasets/metadata/education/vocational_enterprise_institutions.json`
+- `datasets/metadata/education/vocational_enterprise_institutions_reconciliation.json`
+
+The static foundation contains 25 current Digital NBTE-listed VEIs: 4 state and 21 private across 11 states. It filters the live combined VEI/Skill Training Center/Master Craft Person register to rows explicitly categorized as VEI. IEIs were previously recognized by NBTE, but the category and NID programme were abolished under the newer reform; upgraded and revoked IEIs are not included. This is a roster-only foundation with no websites, logos or API integration.
+
+### `ng-colleges-of-agriculture`
+
+- `datasets/education/colleges_of_agriculture.json`
+- `datasets/schemas/education/colleges_of_agriculture.schema.json`
+- `datasets/metadata/education/colleges_of_agriculture.json`
+- `datasets/metadata/education/colleges_of_agriculture_reconciliation.json`
+
+The static foundation contains 31 NBTE Colleges of Agriculture and Related Disciplines: 23 federal, 7 state and 1 private. It exposes only `id`, `name`, `ownership_type`, `state_id` and `country_code`. The source-marked conversion of College of Agriculture, Zuru is excluded; no universities, polytechnics or monotechnics are merged into this dataset. Website/logo enrichment and API integration are intentionally deferred.
+
+### `ng-primary-and-secondary-schools`
+
+- `datasets/education/primary_and_secondary_schools.json`
+- `datasets/schemas/education/primary_and_secondary_schools.schema.json`
+- `datasets/metadata/education/primary_and_secondary_schools.json`
+- `datasets/metadata/education/primary_and_secondary_schools_reconciliation/index.json` and its 37 state/FCT partitions
+
+This source-observed snapshot contains 166,604 reconciled school/campus records from the official UBEC 2022 Primary and Junior Secondary workbooks: 81,160 public and 85,444 private records across 37 state/FCT values and 772 resolved LGAs. It is not a current active-school, licensing or complete senior-secondary register; 69 ambiguous Osun `ILESHA` rows are explicitly quarantined. Repository, service and HTTP support are deferred.
+
+### `ng-colleges-of-health-sciences-and-technology`
+
+- `datasets/education/colleges_of_health_sciences_and_technology.json`
+- `datasets/schemas/education/colleges_of_health_sciences_and_technology.schema.json`
+- `datasets/metadata/education/colleges_of_health_sciences_and_technology.json`
+- `datasets/metadata/education/colleges_of_health_sciences_and_technology_reconciliation.json`
+
+The static foundation contains 98 NBTE Colleges of Health Sciences and Technology: 4 federal, 31 state and 63 private across 33 states. It exposes only the five roster fields. Hospital-only schools and institutes are excluded, and nursing and midwifery institutions are reserved for a separate future dataset. Website/logo enrichment and API integration are intentionally deferred.
+
+### `ng-colleges-of-nursing-and-midwifery`
+
+- `datasets/education/colleges_of_nursing_and_midwifery.json`
+- `datasets/schemas/education/colleges_of_nursing_and_midwifery.schema.json`
+- `datasets/metadata/education/colleges_of_nursing_and_midwifery.json`
+- `datasets/metadata/education/colleges_of_nursing_and_midwifery_reconciliation.json`
+
+The active package contains 156 institution/campus records: 13 federal, 52 state and 91 private across 32 states. It is the NMCN December 2025 approved-schools snapshot, not a complete live register. The reconciliation preserves 376 extracted numbered-row candidates and explicitly excludes 220 unresolved rows; NMCN separately reports 290 training institutions. Websites, logos and API integration remain intentionally deferred.
+
+### `ng-technical-colleges`
+
+- `datasets/education/technical_colleges.json`
+- `datasets/schemas/education/technical_colleges.schema.json`
+- `datasets/metadata/education/technical_colleges.json`
+- `datasets/metadata/education/technical_colleges_reconciliation.json`
+
+The active package contains 115 institution records retained from 122 numbered entries in the official NBTE Technical Colleges directory. It is a dated row-level directory snapshot, not a complete live national register. NBTE separately reports 153 technical colleges; the 38-entry coverage difference is not filled with inferred institutions. Websites, logos and API integration remain intentionally deferred.
+
 ## Directory Structure
 
 ```text

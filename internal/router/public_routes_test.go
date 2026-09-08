@@ -1,11 +1,111 @@
 package router
 
 import (
+	"encoding/json"
 	"net/http"
 	"net/http/httptest"
 	"strings"
 	"testing"
 )
+
+func TestPublicRoutesServeCompleteEducationContract(t *testing.T) {
+	tests := []struct {
+		name           string
+		listPath       string
+		detailPath     string
+		detailTemplate string
+	}{
+		{"polytechnics", "/v1/education/polytechnics", "/v1/education/polytechnics/sample-polytechnic", "/v1/education/polytechnics/{institution_id}"},
+		{"monotechnics", "/v1/education/monotechnics", "/v1/education/monotechnics/sample-monotechnic", "/v1/education/monotechnics/{institution_id}"},
+		{"agriculture", "/v1/education/colleges-of-agriculture", "/v1/education/colleges-of-agriculture/sample-agriculture", "/v1/education/colleges-of-agriculture/{institution_id}"},
+		{"health", "/v1/education/colleges-of-health-sciences-and-technology", "/v1/education/colleges-of-health-sciences-and-technology/sample-health-college", "/v1/education/colleges-of-health-sciences-and-technology/{institution_id}"},
+		{"nursing", "/v1/education/colleges-of-nursing-and-midwifery", "/v1/education/colleges-of-nursing-and-midwifery/sample-nursing-college", "/v1/education/colleges-of-nursing-and-midwifery/{institution_id}"},
+		{"vei", "/v1/education/vocational-enterprise-institutions", "/v1/education/vocational-enterprise-institutions/sample-vei", "/v1/education/vocational-enterprise-institutions/{institution_id}"},
+		{"technical", "/v1/education/technical-colleges", "/v1/education/technical-colleges/sample-technical-college", "/v1/education/technical-colleges/{institution_id}"},
+		{"schools", "/v1/education/primary-and-secondary-schools", "/v1/education/primary-and-secondary-schools/sample-school", "/v1/education/primary-and-secondary-schools/{school_id}"},
+	}
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			rec := &routerRecorder{}
+			r := newTestRouter(t, rec)
+			rr := httptest.NewRecorder()
+			r.ServeHTTP(rr, httptest.NewRequest(http.MethodGet, tc.listPath+"?page_size=100", nil))
+			if rr.Code != http.StatusOK || !strings.Contains(rr.Header().Get("Content-Type"), "application/json") {
+				t.Fatalf("list response: %d %s", rr.Code, rr.Body.String())
+			}
+			if !strings.Contains(strings.Join(rec.snapshot(), ","), "usage:"+tc.listPath+"|education") {
+				t.Fatalf("list usage template missing: %v", rec.snapshot())
+			}
+			if strings.Contains(strings.Join(rec.snapshot(), ","), "sample-") {
+				t.Fatalf("list usage should not contain an ID: %v", rec.snapshot())
+			}
+
+			rec = &routerRecorder{}
+			r = newTestRouter(t, rec)
+			rr = httptest.NewRecorder()
+			r.ServeHTTP(rr, httptest.NewRequest(http.MethodGet, tc.detailPath, nil))
+			if rr.Code != http.StatusOK || !strings.Contains(rr.Body.String(), `"success":true`) {
+				t.Fatalf("detail response: %d %s", rr.Code, rr.Body.String())
+			}
+			if !strings.Contains(strings.Join(rec.snapshot(), ","), "usage:"+tc.detailTemplate+"|education") {
+				t.Fatalf("detail usage template missing: %v", rec.snapshot())
+			}
+		})
+	}
+}
+
+func TestPublicRoutesEducationMethodProtectionAndPaginationSafety(t *testing.T) {
+	r := newTestRouter(t, &routerRecorder{})
+	for _, tc := range []struct{ method, path string }{
+		{http.MethodPost, "/v1/education/polytechnics"},
+		{http.MethodPut, "/v1/education/polytechnics/sample-polytechnic"},
+		{http.MethodPatch, "/v1/education/technical-colleges"},
+		{http.MethodDelete, "/v1/education/primary-and-secondary-schools/sample-school"},
+	} {
+		rr := httptest.NewRecorder()
+		r.ServeHTTP(rr, httptest.NewRequest(tc.method, tc.path, nil))
+		if rr.Code != http.StatusMethodNotAllowed || rr.Header().Get("Allow") != http.MethodGet || !strings.Contains(rr.Header().Get("Content-Type"), "application/json") {
+			t.Fatalf("%s %s: status=%d allow=%q content-type=%q body=%s", tc.method, tc.path, rr.Code, rr.Header().Get("Allow"), rr.Header().Get("Content-Type"), rr.Body.String())
+		}
+		if strings.Contains(rr.Body.String(), "Method Not Allowed") || strings.Contains(rr.Body.String(), "405 method") {
+			t.Fatalf("plain method error: %s", rr.Body.String())
+		}
+	}
+
+	for _, path := range []string{
+		"/v1/education/polytechnics/one/two",
+		"/v1/education/primary-and-secondary-schools/one/two",
+	} {
+		rr := httptest.NewRecorder()
+		r.ServeHTTP(rr, httptest.NewRequest(http.MethodGet, path, nil))
+		if rr.Code != http.StatusNotFound {
+			t.Fatalf("extra path %s status=%d", path, rr.Code)
+		}
+	}
+
+	for _, query := range []string{"", "?page_size=100"} {
+		rr := httptest.NewRecorder()
+		r.ServeHTTP(rr, httptest.NewRequest(http.MethodGet, "/v1/education/primary-and-secondary-schools"+query, nil))
+		var body struct {
+			Data []json.RawMessage `json:"data"`
+		}
+		if err := json.Unmarshal(rr.Body.Bytes(), &body); err != nil {
+			t.Fatal(err)
+		}
+		limit := 50
+		if query != "" {
+			limit = 100
+		}
+		if len(body.Data) > limit {
+			t.Fatalf("query %q returned %d records", query, len(body.Data))
+		}
+	}
+	rr := httptest.NewRecorder()
+	r.ServeHTTP(rr, httptest.NewRequest(http.MethodGet, "/v1/education/primary-and-secondary-schools?page_size=101", nil))
+	if rr.Code != http.StatusBadRequest {
+		t.Fatalf("page_size=101 status=%d", rr.Code)
+	}
+}
 
 func TestPublicRoutesServeHealthAndDiscovery(t *testing.T) {
 	rec := &routerRecorder{}

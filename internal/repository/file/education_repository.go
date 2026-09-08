@@ -41,15 +41,33 @@ var expectedUniversityStateCounts = map[string]int{
 
 // EducationFileRepository reads university records from a JSON dataset file.
 type EducationFileRepository struct {
-	jsonRepository          interfaces.JSONFileRepository
-	universitiesPath        string
-	collegesOfEducationPath string
+	jsonRepository                             interfaces.JSONFileRepository
+	universitiesPath                           string
+	collegesOfEducationPath                    string
+	polytechnicsPath                           string
+	monotechnicsPath                           string
+	collegesOfAgriculturePath                  string
+	collegesOfHealthSciencesAndTechnologyPath  string
+	collegesOfNursingAndMidwiferyPath          string
+	technicalCollegesPath                      string
+	vocationalEnterpriseInstitutionsPath       string
+	primaryAndSecondarySchoolsPath             string
+	universitiesCache                          lazyDatasetCache[models.University]
+	collegesOfEducationCache                   lazyDatasetCache[models.CollegeOfEducation]
+	polytechnicsCache                          lazyDatasetCache[models.Polytechnic]
+	monotechnicsCache                          lazyDatasetCache[models.Monotechnic]
+	collegesOfAgricultureCache                 lazyDatasetCache[models.CollegeOfAgriculture]
+	collegesOfHealthSciencesAndTechnologyCache lazyDatasetCache[models.CollegeOfHealthSciencesAndTechnology]
+	collegesOfNursingAndMidwiferyCache         lazyDatasetCache[models.CollegeOfNursingAndMidwifery]
+	technicalCollegesCache                     lazyDatasetCache[models.TechnicalCollege]
+	vocationalEnterpriseInstitutionsCache      lazyDatasetCache[models.VocationalEnterpriseInstitution]
+	primaryAndSecondarySchoolsCache            schoolDatasetCache
 }
 
 var _ interfaces.EducationRepository = (*EducationFileRepository)(nil)
 
 // NewEducationRepository constructs a file-backed education repository.
-func NewEducationRepository(jsonRepository interfaces.JSONFileRepository, universitiesPath, collegesOfEducationPath string) (*EducationFileRepository, error) {
+func NewEducationRepository(jsonRepository interfaces.JSONFileRepository, universitiesPath, collegesOfEducationPath string, datasetPaths ...string) (*EducationFileRepository, error) {
 	if jsonRepository == nil {
 		return nil, fmt.Errorf("json repository is required")
 	}
@@ -61,11 +79,57 @@ func NewEducationRepository(jsonRepository interfaces.JSONFileRepository, univer
 	if err != nil {
 		return nil, err
 	}
+	if len(datasetPaths) != 0 && len(datasetPaths) != 8 {
+		return nil, fmt.Errorf("education dataset paths accept either zero or eight additional values")
+	}
+
+	var cleanedPolytechnicsPath string
+	var cleanedMonotechnicsPath string
+	var cleanedCollegesOfAgriculturePath string
+	var cleanedCollegesOfHealthSciencesAndTechnologyPath string
+	var cleanedCollegesOfNursingAndMidwiferyPath string
+	var cleanedTechnicalCollegesPath string
+	var cleanedVocationalEnterpriseInstitutionsPath string
+	var cleanedPrimaryAndSecondarySchoolsPath string
+	if len(datasetPaths) == 8 {
+		if cleanedPolytechnicsPath, err = validateGeographyDatasetPath("polytechnics", datasetPaths[0]); err != nil {
+			return nil, err
+		}
+		if cleanedMonotechnicsPath, err = validateGeographyDatasetPath("monotechnics", datasetPaths[1]); err != nil {
+			return nil, err
+		}
+		if cleanedCollegesOfAgriculturePath, err = validateGeographyDatasetPath("colleges of agriculture", datasetPaths[2]); err != nil {
+			return nil, err
+		}
+		if cleanedCollegesOfHealthSciencesAndTechnologyPath, err = validateGeographyDatasetPath("colleges of health sciences and technology", datasetPaths[3]); err != nil {
+			return nil, err
+		}
+		if cleanedCollegesOfNursingAndMidwiferyPath, err = validateGeographyDatasetPath("colleges of nursing and midwifery", datasetPaths[4]); err != nil {
+			return nil, err
+		}
+		if cleanedTechnicalCollegesPath, err = validateGeographyDatasetPath("technical colleges", datasetPaths[5]); err != nil {
+			return nil, err
+		}
+		if cleanedVocationalEnterpriseInstitutionsPath, err = validateGeographyDatasetPath("vocational enterprise institutions", datasetPaths[6]); err != nil {
+			return nil, err
+		}
+		if cleanedPrimaryAndSecondarySchoolsPath, err = validateGeographyDatasetPath("primary and secondary schools", datasetPaths[7]); err != nil {
+			return nil, err
+		}
+	}
 
 	return &EducationFileRepository{
-		jsonRepository:          jsonRepository,
-		universitiesPath:        cleanedUniversitiesPath,
-		collegesOfEducationPath: cleanedCollegesPath,
+		jsonRepository:                            jsonRepository,
+		universitiesPath:                          cleanedUniversitiesPath,
+		collegesOfEducationPath:                   cleanedCollegesPath,
+		polytechnicsPath:                          cleanedPolytechnicsPath,
+		monotechnicsPath:                          cleanedMonotechnicsPath,
+		collegesOfAgriculturePath:                 cleanedCollegesOfAgriculturePath,
+		collegesOfHealthSciencesAndTechnologyPath: cleanedCollegesOfHealthSciencesAndTechnologyPath,
+		collegesOfNursingAndMidwiferyPath:         cleanedCollegesOfNursingAndMidwiferyPath,
+		technicalCollegesPath:                     cleanedTechnicalCollegesPath,
+		vocationalEnterpriseInstitutionsPath:      cleanedVocationalEnterpriseInstitutionsPath,
+		primaryAndSecondarySchoolsPath:            cleanedPrimaryAndSecondarySchoolsPath,
 	}, nil
 }
 
@@ -106,34 +170,10 @@ func (r *EducationFileRepository) GetUniversityByID(ctx context.Context, univers
 }
 
 func (r *EducationFileRepository) loadUniversities(ctx context.Context) ([]models.University, error) {
-	if r == nil || r.jsonRepository == nil {
-		return nil, fmt.Errorf("%w", interfaces.ErrDatasetFileUnavailable)
-	}
-	if ctx == nil {
-		ctx = context.Background()
-	}
-	if err := ctx.Err(); err != nil {
-		return nil, err
-	}
-
-	var universities []models.University
-	if err := r.jsonRepository.Decode(ctx, r.universitiesPath, &universities); err != nil {
-		return nil, translateEducationLoadError(err)
-	}
-	if err := ctx.Err(); err != nil {
-		return nil, err
-	}
-	if universities == nil || len(universities) == 0 {
-		return nil, fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
-	}
-	if err := validateUniversities(universities); err != nil {
-		return nil, err
-	}
-
-	return universities, nil
+	return loadCachedEducationDataset(ctx, r, &r.universitiesCache, r.universitiesPath, validateUniversities, cloneUniversityList)
 }
 
-func validateUniversities(universities []models.University) error {
+func validateUniversities(ctx context.Context, universities []models.University) error {
 	if len(universities) != 328 {
 		return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
 	}
@@ -152,7 +192,12 @@ func validateUniversities(universities []models.University) error {
 		stateCounts[stateID] = 0
 	}
 
-	for _, university := range universities {
+	for i, university := range universities {
+		if i%64 == 0 {
+			if err := ctx.Err(); err != nil {
+				return err
+			}
+		}
 		if university.ID == "" || university.Name == "" || university.OwnershipType == "" || university.StateID == "" || university.CountryCode == "" {
 			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
 		}

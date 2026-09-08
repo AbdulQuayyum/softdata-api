@@ -9,6 +9,7 @@ SoftData API uses a layered Go layout that keeps entry points, configuration, pe
 - `datasets/` contains versioned source data, schemas, provenance metadata, licensing notes, and embedded dataset, flag, and regulated-finance logo assets.
 - `database/` contains PostgreSQL migrations and handwritten SQL queries.
 - `docs/` contains API and project documentation, including the OpenAPI contract.
+- `tools/` contains dataset generation and snapshot tooling.
 - Root files provide development configuration, build metadata, contribution guidance, and project licensing.
 - `api`, `build/`, `dist/`, and `tmp/` are generated or local development artifacts and are not application source files. `.env` is a local ignored configuration file; `.env.example` is the shareable configuration template.
 
@@ -106,7 +107,15 @@ softdata-api/
 │   │           └── *.svg                  # 248 vendored flag assets
 │   ├── education/
 │   │   ├── colleges_of_education.json
-│   │   └── universities.json
+│   │   ├── colleges_of_agriculture.json
+│   │   ├── colleges_of_health_sciences_and_technology.json
+│   │   ├── colleges_of_nursing_and_midwifery.json
+│   │   ├── primary_and_secondary_schools.json
+│   │   ├── technical_colleges.json
+│   │   ├── monotechnics.json
+│   │   ├── polytechnics.json
+│   │   ├── universities.json
+│   │   └── vocational_enterprise_institutions.json
 │   ├── finance/
 │   │   ├── development_finance_institutions.json
 │   │   ├── financial_holding_companies.json
@@ -130,7 +139,26 @@ softdata-api/
 │   ├── metadata/
 │   │   ├── education/
 │   │   │   ├── colleges_of_education.json
-│   │   │   └── universities.json
+│   │   │   ├── colleges_of_agriculture.json
+│   │   │   ├── colleges_of_agriculture_reconciliation.json
+│   │   │   ├── colleges_of_health_sciences_and_technology.json
+│   │   │   ├── colleges_of_health_sciences_and_technology_reconciliation.json
+│   │   │   ├── colleges_of_nursing_and_midwifery.json
+│   │   │   ├── colleges_of_nursing_and_midwifery_reconciliation.json
+│   │   │   ├── monotechnics.json
+│   │   │   ├── vocational_enterprise_institutions.json
+│   │   │   ├── monotechnics_reconciliation.json
+│   │   │   ├── polytechnics.json
+│   │   │   ├── polytechnics_reconciliation.json
+│   │   │   ├── primary_and_secondary_schools.json
+│   │   │   ├── primary_and_secondary_schools_checkpoint.json
+│   │   │   ├── primary_and_secondary_schools_reconciliation/
+│   │   │   │   ├── index.json
+│   │   │   │   └── {state-or-fct}.json          # 37 state/FCT partition summaries
+│   │   │   ├── technical_colleges.json
+│   │   │   ├── technical_colleges_reconciliation.json
+│   │   │   ├── universities.json
+│   │   │   └── vocational_enterprise_institutions.json
 │   │   ├── finance/
 │   │   │   ├── development_finance_institutions.json
 │   │   │   ├── financial_holding_companies.json
@@ -165,6 +193,14 @@ softdata-api/
 │   └── schemas/
 │       ├── education/
 │       │   ├── colleges_of_education.schema.json
+│       │   ├── colleges_of_agriculture.schema.json
+│       │   ├── colleges_of_health_sciences_and_technology.schema.json
+│       │   ├── colleges_of_nursing_and_midwifery.schema.json
+│       │   ├── primary_and_secondary_schools.schema.json
+│       │   ├── technical_colleges.schema.json
+│       │   ├── monotechnics.schema.json
+│       │   ├── vocational_enterprise_institutions.schema.json
+│       │   ├── polytechnics.schema.json
 │       │   └── universities.schema.json
 │       ├── finance/
 │       │   ├── development_finance_institutions.schema.json
@@ -195,6 +231,7 @@ softdata-api/
 │   ├── openapi.yaml
 │   ├── quick-start.md
 │   ├── rate-limits.md
+│   ├── softdata-api.postman_collection.json
 │   └── versioning.md
 ├── internal/
 │   ├── app/
@@ -244,6 +281,8 @@ softdata-api/
 │   │   ├── education_colleges_handler_test.go
 │   │   ├── education_handler.go
 │   │   ├── education_handler_test.go
+│   │   ├── education_extended_handler.go
+│   │   ├── education_extended_handler_test.go
 │   │   ├── finance_handler.go
 │   │   ├── finance_handler_test.go
 │   │   ├── finance_commercial_banks_test.go
@@ -289,6 +328,9 @@ softdata-api/
 │   │   ├── api_request.go
 │   │   ├── auth.go
 │   │   ├── colleges_of_education_test.go
+│   │   ├── colleges_of_agriculture_test.go
+│   │   ├── colleges_of_health_sciences_and_technology_test.go
+│   │   ├── colleges_of_nursing_and_midwifery_test.go
 │   │   ├── countries_and_areas_test.go
 │   │   ├── currencies_test.go
 │   │   ├── dataset.go
@@ -309,10 +351,15 @@ softdata-api/
 │   │   ├── geography_test.go
 │   │   ├── lgas_test.go
 │   │   ├── session.go
+│   │   ├── monotechnics_test.go
+│   │   ├── polytechnics_test.go
+│   │   ├── primary_and_secondary_schools_test.go
+│   │   ├── technical_colleges_test.go
 │   │   ├── time_zones_test.go
 │   │   ├── universities_test.go
 │   │   ├── usage_summary.go
-│   │   └── usage_summary_test.go
+│   │   ├── usage_summary_test.go
+│   │   └── vocational_enterprise_institutions_test.go
 │   ├── redis/
 │   │   ├── client.go
 │   │   └── client_test.go
@@ -323,8 +370,14 @@ softdata-api/
 │   │   │   ├── csv_repository_test.go
 │   │   │   ├── education_colleges_repository.go
 │   │   │   ├── education_colleges_repository_test.go
+│   │   │   ├── education_bench_test.go
+│   │   │   ├── education_cache.go
+│   │   │   ├── education_datasets.go
+│   │   │   ├── education_extended_repository_test.go
 │   │   │   ├── education_repository.go
 │   │   │   ├── education_repository_test.go
+│   │   │   ├── education_schools.go
+│   │   │   ├── education_smalls.go
 │   │   │   ├── finance_commercial_banks_test.go
 │   │   │   ├── finance_currency_test.go
 │   │   │   ├── finance_microfinance_banks.go
@@ -418,6 +471,8 @@ softdata-api/
 │   │   ├── dataset_service_test.go
 │   │   ├── education_colleges_service.go
 │   │   ├── education_colleges_service_test.go
+│   │   ├── education_extended_service.go
+│   │   ├── education_extended_service_test.go
 │   │   ├── education_service.go
 │   │   ├── education_service_test.go
 │   │   ├── errors.go
@@ -444,6 +499,8 @@ softdata-api/
 │       ├── dataset_validator.go
 │       ├── dataset_validator_test.go
 │       ├── education_colleges_validator_test.go
+│       ├── education_extended_validator.go
+│       ├── education_extended_validator_test.go
 │       ├── education_validator.go
 │       ├── education_validator_test.go
 │       ├── finance_validator.go
@@ -455,6 +512,9 @@ softdata-api/
 │       ├── geography_validator_test.go
 │       ├── query_validator.go
 │       └── query_validator_test.go
+├── tools/
+│   ├── generate_education_snapshots.py
+│   └── generate_primary_and_secondary_schools.py
 ```
 
 ## What Each Area Does
@@ -473,7 +533,7 @@ Environment-driven application configuration for the server, database, security,
 
 ### `datasets/`
 
-Versioned geography, education, and finance datasets, schemas, provenance metadata, licensing notes, and embedded runtime assets. `embedded.go` embeds the JSON dataset directories used when a deployment cannot provide the configured filesystem dataset path. Regulated-finance logo provenance is recorded in `datasets/assets/financial-institutions/ng/ATTRIBUTION.md`; the FHA Homes asset is explicitly a Federal Housing Authority parent-brand representative mark.
+Versioned geography, education, and finance datasets, schemas, provenance metadata, reconciliation manifests, licensing notes, and embedded runtime assets. `embedded.go` embeds the JSON dataset directories used when a deployment cannot provide the configured filesystem dataset path. Education includes paginated primary and secondary schools plus institution snapshots for universities, colleges of education, polytechnics, monotechnics, colleges of agriculture, health sciences and technology, nursing and midwifery, technical colleges, and vocational enterprise institutions. Regulated-finance logo provenance is recorded in `datasets/assets/financial-institutions/ng/ATTRIBUTION.md`; the FHA Homes asset is explicitly a Federal Housing Authority parent-brand representative mark.
 
 ### `internal/database/`
 
@@ -481,7 +541,7 @@ PostgreSQL pool creation, readiness checks, and generated sqlc persistence code.
 
 ### `internal/handlers/`
 
-HTTP handlers that validate requests, call services, and produce shared response envelopes.
+HTTP handlers that validate requests, call services, and produce shared response envelopes. Education handlers are split between the existing education handler and `education_extended_handler.go`, which serves the additional institution categories and paginated schools.
 
 ### `internal/middlewares/`
 
@@ -493,7 +553,7 @@ Domain and API-facing models kept separate from sqlc-generated persistence struc
 
 ### `internal/repository/`
 
-Repository interfaces plus PostgreSQL, Redis, and file-backed implementations. The file repository includes dedicated validation and loading for the regulated-finance datasets.
+Repository interfaces plus PostgreSQL, Redis, and file-backed implementations. The file repository includes lazy, synchronized, validated loading for education snapshots, paginated school indexing, and dedicated validation/loading for regulated-finance datasets.
 
 ### Runtime/Data Loading
 
@@ -504,11 +564,11 @@ Repository interfaces plus PostgreSQL, Redis, and file-backed implementations. T
 
 ### `internal/services/`
 
-Application use cases and business rules for accounts, authentication, datasets, education, finance, geography, and usage.
+Application use cases and business rules for accounts, authentication, datasets, education, finance, geography, and usage. Education services expose list/detail operations for institution snapshots and paginated filtering/detail lookup for primary and secondary schools.
 
 ### `internal/validators/`
 
-Request validation and normalization helpers for authentication, accounts, API keys, datasets, geography, and query inputs.
+Request validation and normalization helpers for authentication, accounts, API keys, datasets, geography, education institution IDs, school IDs, pagination, filters, and query inputs.
 
 ### `internal/router/`
 
@@ -534,11 +594,19 @@ Database schema migrations and handwritten SQL query files used to generate pers
 
 User-facing and contributor-facing documentation, including the OpenAPI specification and this structure reference.
 
+### `tools/`
+
+Dataset generation and snapshot tooling. `generate_education_snapshots.py` builds verified institution snapshots, while `generate_primary_and_secondary_schools.py` builds the partitioned UBEC school dataset and reconciliation summaries. Generators are not run during API startup.
+
 ### `tmp/`
 
 Local scratch outputs used during development and verification. This directory is not required at runtime.
 
 ## Design Notes
+
+### UBEC School Snapshot
+
+The education data tree contains `datasets/education/primary_and_secondary_schools.json`, its Draft 2020-12 schema, source metadata, checkpoint summary, and 37-file state/FCT reconciliation index under `datasets/metadata/education/primary_and_secondary_schools_reconciliation/`. The generator is `tools/generate_primary_and_secondary_schools.py`. This is a source-observed UBEC 2022 snapshot exposed through a paginated repository, service, handler, and production HTTP route.
 
 - Public dataset access stays anonymous by default.
 - Optional API keys add higher limits and usage analytics.

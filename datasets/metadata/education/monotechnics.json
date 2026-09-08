@@ -1,0 +1,110 @@
+{
+  "dataset_key": "ng-monotechnics",
+  "official_category_name": "Specialised Institutions (Monotechnics)",
+  "title": "Nigeria Specialised Institutions (Monotechnics)",
+  "description": "Independently compiled factual reference data for current Nigerian institutions in the NBTE Specialised Institutions (Monotechnics) category.",
+  "country_code": "NG",
+  "dataset_group": "education",
+  "format": "json",
+  "relative_path": "education/monotechnics.json",
+  "schema_path": "schemas/education/monotechnics.schema.json",
+  "record_count": 86,
+  "ownership_counts": {
+    "private": 50,
+    "federal": 32,
+    "state": 4
+  },
+  "state_coverage": [
+    "abia",
+    "akwa-ibom",
+    "anambra",
+    "bayelsa",
+    "benue",
+    "borno",
+    "cross-river",
+    "delta",
+    "ebonyi",
+    "edo",
+    "ekiti",
+    "enugu",
+    "fct",
+    "jigawa",
+    "kaduna",
+    "kano",
+    "katsina",
+    "kwara",
+    "lagos",
+    "nasarawa",
+    "ogun",
+    "ondo",
+    "osun",
+    "oyo",
+    "plateau",
+    "rivers",
+    "yobe"
+  ],
+  "version": "1.0.0",
+  "license_id": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "methodology": "SoftData reconciled the complete 98-entry Specialised Institutions (Monotechnics) section of the NBTE 25th Edition 2025 directory before generating the dataset. Names and locations were normalized to current canonical forms and state_id values were mapped to ng-states. Colleges of education, general schools, remedial institutions and other wrong-category entries were excluded and documented. The public contract intentionally contains no specialisation, website or logo fields.",
+  "source_hierarchy": [
+    "National Board for Technical Education",
+    "Digital NBTE approved-institution directory",
+    "Federal Ministry of Education",
+    "Joint Admissions and Matriculation Board",
+    "official federal or state government publications",
+    "official institution websites",
+    "reputable secondary sources for discovery only"
+  ],
+  "sources": [
+    {
+      "organization": "National Board for Technical Education",
+      "title": "25th Edition 2025 Directory of Accredited Programmes",
+      "url": "https://web.nbte.gov.ng/sites/default/files/2025-11/25th%20Edition%202025%20Directory.pdf",
+      "purpose": "Primary roster boundary for NBTE Specialised Institutions (Monotechnics).",
+      "accessed_at": "2026-09-07",
+      "publication_date": "2025-11",
+      "response_bytes": 13841731,
+      "sha256": "11c7e9b7e6f63136ae114c1bc8cc6884280c5555aad64a4b17cb705bbbbafcda",
+      "raw_record_count": 98,
+      "categories_included": [
+        "Specialised Institutions (Monotechnics)"
+      ],
+      "current_active_only": false,
+      "missing_or_incomplete_fields": [
+        "state_id is not a source field",
+        "some names contain typographical errors",
+        "the section includes some colleges and schools requiring category reconciliation"
+      ]
+    },
+    {
+      "organization": "National Board for Technical Education",
+      "title": "Approved Institutions",
+      "url": "https://www.nbte.gov.ng/nbte/approved%20institutions",
+      "purpose": "Confirm the official category name and separation from polytechnics, colleges and IEIs.",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "update_frequency": "Review on each new NBTE directory or material regulatory roster update.",
+  "last_verification_date": "2026-09-07",
+  "inclusion_rules": [
+    "Current Nigerian institution placed by NBTE in Specialised Institutions (Monotechnics).",
+    "One record per current legal institution or independently approved campus.",
+    "Every state_id resolves to ng-states and every record has country_code NG."
+  ],
+  "exclusion_rules": [
+    "Universities, polytechnics, colleges of education, agriculture, health, nursing, IEIs, VEIs, technical colleges, general schools, remedial institutions, closed institutions and approval-withdrawn institutions."
+  ],
+  "transitions_and_former_names": "Potential renames, category movements and duplicate identities are preserved in the reconciliation manifest; no unresolved identity is imported.",
+  "known_limitations": [
+    "The NBTE section is not active-only and does not normalize state_id.",
+    "The directory does not provide a reliable public specialisation field for every institution.",
+    "Approval and naming can change between directory editions."
+  ],
+  "maintainers": [
+    "SoftData API contributors"
+  ],
+  "rights": "SoftData compilation, schema and metadata are CC BY 4.0. NBTE source publications retain their own rights. This pass adds only the static dataset foundation; websites, logos and API routes are deferred.",
+  "verified_at": "2026-09-07",
+  "reconciliation_path": "metadata/education/monotechnics_reconciliation.json"
+}

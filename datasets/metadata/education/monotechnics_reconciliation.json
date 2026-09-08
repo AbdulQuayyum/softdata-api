@@ -1,0 +1,823 @@
+{
+  "dataset_key": "ng-monotechnics",
+  "official_category_name": "Specialised Institutions (Monotechnics)",
+  "source_snapshot": {
+    "organization": "National Board for Technical Education",
+    "title": "25th Edition 2025 Directory of Accredited Programmes",
+    "url": "https://web.nbte.gov.ng/sites/default/files/2025-11/25th%20Edition%202025%20Directory.pdf",
+    "purpose": "Primary roster boundary for NBTE Specialised Institutions (Monotechnics).",
+    "accessed_at": "2026-09-07",
+    "publication_date": "2025-11",
+    "response_bytes": 13841731,
+    "sha256": "11c7e9b7e6f63136ae114c1bc8cc6884280c5555aad64a4b17cb705bbbbafcda",
+    "raw_record_count": 98,
+    "categories_included": [
+      "Specialised Institutions (Monotechnics)"
+    ],
+    "current_active_only": false,
+    "missing_or_incomplete_fields": [
+      "state_id is not a source field",
+      "some names contain typographical errors",
+      "the section includes some colleges and schools requiring category reconciliation"
+    ]
+  },
+  "raw_record_count": 98,
+  "final_record_count": 86,
+  "classification_counts": {
+    "retain_active": 86,
+    "exclude_wrong_category": 9,
+    "exclude_college_of_education": 3
+  },
+  "arithmetic": "98 source entries = 86 retained + 12 excluded.",
+  "records": [
+    {
+      "source_name": "Abuja School of Pension and Retirement Planning, Karu",
+      "canonical_name": "Abuja School of Pension and Retirement Planning, Karu",
+      "ownership_type": "private",
+      "state_id": "fct",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Adecom College of Business and Management Studies, Ibadan",
+      "canonical_name": "Adecom College of Business and Management Studies, Ibadan",
+      "ownership_type": "private",
+      "state_id": "oyo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Adeyemi College of Technology, Ondo",
+      "canonical_name": "Adeyemi College of Technology, Ondo",
+      "ownership_type": "federal",
+      "state_id": "ondo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "All Nations Institute of Marine and Technology, Oghara-Otefe",
+      "canonical_name": "All Nations Institute of Marine and Technology, Oghara-Otefe",
+      "ownership_type": "private",
+      "state_id": "delta",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Arosurge College of Survey and Geo-Informatics, Oshogbo",
+      "canonical_name": "Arosurge College of Survey and Geo-Informatics, Oshogbo",
+      "ownership_type": "private",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Atlas Institute of Management and Technology, Eluama Uzuakoli",
+      "canonical_name": "Atlas Institute of Management and Technology, Eluama Uzuakoli",
+      "ownership_type": "private",
+      "state_id": "abia",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Calvary Foundation Institute of Technology, Enugu",
+      "canonical_name": "Calvary Foundation Institute of Technology, Enugu",
+      "ownership_type": "private",
+      "state_id": "enugu",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Centre for Advanced Library and Information Management, Enugu",
+      "canonical_name": "Centre for Advanced Library and Information Management, Enugu",
+      "ownership_type": "federal",
+      "state_id": "enugu",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Centre for Technology Training and Innovation, Abuja",
+      "canonical_name": "Centre for Technology Training and Innovation, Abuja",
+      "ownership_type": "private",
+      "state_id": "fct",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Charkin Maritime Academy, Port Harcourt",
+      "canonical_name": "Charkin Maritime Academy, Port Harcourt",
+      "ownership_type": "private",
+      "state_id": "rivers",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "College of Business and Management Studies, Konduga",
+      "canonical_name": "College of Business and Management Studies, Konduga",
+      "ownership_type": "state",
+      "state_id": "borno",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "College of Vocational Science and Technology of Nigeria, Damaturu",
+      "canonical_name": "College of Vocational Science and Technology of Nigeria, Damaturu",
+      "ownership_type": "private",
+      "state_id": "yobe",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Commonwealth College of Technology, Gboko",
+      "canonical_name": "Commonwealth College of Technology, Gboko",
+      "ownership_type": "private",
+      "state_id": "benue",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Complete Computers College of Management and Technology, Benin City",
+      "canonical_name": "Complete Computers College of Management and Technology, Benin City",
+      "ownership_type": "private",
+      "state_id": "edo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Dalewares Institute of Technology, Lagos",
+      "canonical_name": "Dalewares Institute of Technology, Lagos",
+      "ownership_type": "private",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Delta Central College of Business and Management Studies, Ughelli",
+      "canonical_name": "Delta Central College of Business and Management Studies, Ughelli",
+      "ownership_type": "private",
+      "state_id": "delta",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "EastWing Aviation Institute, Emene",
+      "canonical_name": "EastWing Aviation Institute, Emene",
+      "ownership_type": "private",
+      "state_id": "enugu",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "ED-John Institute of Management and Technology, Ikorodu",
+      "canonical_name": "ED-John Institute of Management and Technology, Ikorodu",
+      "ownership_type": "private",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Efon Alaaye College of Management Technology, Efon Alaaye",
+      "canonical_name": "Efon Alaaye College of Management Technology, Efon Alaaye",
+      "ownership_type": "private",
+      "state_id": "ekiti",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Elerinmosa Institute of Technology, Erin-Osun",
+      "canonical_name": "Elerinmosa Institute of Technology, Erin-Osun",
+      "ownership_type": "private",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Federal Cooperative College, Ibadan",
+      "canonical_name": "Federal Cooperative College, Ibadan",
+      "ownership_type": "federal",
+      "state_id": "oyo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Federal Cooperative College, Kaduna",
+      "canonical_name": "Federal Cooperative College, Kaduna",
+      "ownership_type": "federal",
+      "state_id": "kaduna",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Federal Cooperative College, Oji River",
+      "canonical_name": "Federal Cooperative College, Oji River",
+      "ownership_type": "federal",
+      "state_id": "enugu",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Federal School of Social Works, Emene",
+      "canonical_name": "Federal School of Social Works, Emene",
+      "ownership_type": "federal",
+      "state_id": "enugu",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Federal School of Statistics, Ibadan",
+      "canonical_name": "Federal School of Statistics, Ibadan",
+      "ownership_type": "federal",
+      "state_id": "oyo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Federal School of Statistics, Manchok",
+      "canonical_name": "Federal School of Statistics, Manchok",
+      "ownership_type": "federal",
+      "state_id": "kaduna",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Federal School of Surveying, Oyo",
+      "canonical_name": "Federal School of Surveying, Oyo",
+      "ownership_type": "federal",
+      "state_id": "oyo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Federal Training Centre, Calabar",
+      "canonical_name": "Federal Training Centre, Calabar",
+      "ownership_type": "federal",
+      "state_id": "cross-river",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Federal Training Centre, Emene",
+      "canonical_name": "Federal Training Centre, Emene",
+      "ownership_type": "federal",
+      "state_id": "enugu",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Federal Training Centre, Ilorin",
+      "canonical_name": "Federal Training Centre, Ilorin",
+      "ownership_type": "federal",
+      "state_id": "kwara",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Federal Training Centre, Kaduna",
+      "canonical_name": "Federal Training Centre, Kaduna",
+      "ownership_type": "federal",
+      "state_id": "kaduna",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Federal Training Centre, Lagos",
+      "canonical_name": "Federal Training Centre, Lagos",
+      "ownership_type": "federal",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Federal Training Centre, Maiduguri",
+      "canonical_name": "Federal Training Centre, Maiduguri",
+      "ownership_type": "federal",
+      "state_id": "borno",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Global Maritime Academy, Agbowhiame",
+      "canonical_name": "Global Maritime Academy, Agbowhiame",
+      "ownership_type": "private",
+      "state_id": "delta",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Harvarde College of Science, Business and Management Studies, Abeokuta",
+      "canonical_name": "Harvarde College of Science, Business and Management Studies, Abeokuta",
+      "ownership_type": "private",
+      "state_id": "ogun",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Highland College, Ibadan",
+      "canonical_name": "Highland College, Ibadan",
+      "ownership_type": "private",
+      "state_id": "oyo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "IFO College of Management and Technology, Ifo",
+      "canonical_name": "IFO College of Management and Technology, Ifo",
+      "ownership_type": "private",
+      "state_id": "ogun",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Impact School of Broadcasting and Communication, Ibadan",
+      "canonical_name": "Impact School of Broadcasting and Communication, Ibadan",
+      "ownership_type": "private",
+      "state_id": "oyo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Institute of Administration, ABU, Zaria",
+      "canonical_name": "Institute of Administration, ABU, Zaria",
+      "ownership_type": "federal",
+      "state_id": "kaduna",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Institute of Maritime and Safety, Lagos",
+      "canonical_name": "Institute of Maritime and Safety, Lagos",
+      "ownership_type": "private",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Institute of Transport and Management Technology, Lagos",
+      "canonical_name": "Institute of Transport and Management Technology, Lagos",
+      "ownership_type": "private",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "International Institute of Tourism, Yenagoa",
+      "canonical_name": "International Institute of Tourism, Yenagoa",
+      "ownership_type": "state",
+      "state_id": "bayelsa",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Jigawa State Institute of Information Technology, Kazaure",
+      "canonical_name": "Jigawa State Institute of Information Technology, Kazaure",
+      "ownership_type": "state",
+      "state_id": "jigawa",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Joemarine Institute of Nautical Studies and Research, Effurun",
+      "canonical_name": "Joemarine Institute of Nautical Studies and Research, Effurun",
+      "ownership_type": "private",
+      "state_id": "delta",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Kaduna Business School",
+      "canonical_name": "Kaduna Business School",
+      "ownership_type": "private",
+      "state_id": "kaduna",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Ken-Idehen College of Science and Technology, Port Harcourt",
+      "canonical_name": "Ken-Idehen College of Science and Technology, Port Harcourt",
+      "ownership_type": "private",
+      "state_id": "rivers",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Khemsafe College of Management, Science and Technology, Kaduna",
+      "canonical_name": "Khemsafe College of Management, Science and Technology, Kaduna",
+      "ownership_type": "private",
+      "state_id": "kaduna",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Lagos State Co-operative College, Agege",
+      "canonical_name": "Lagos State Co-operative College, Agege",
+      "ownership_type": "state",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Lapo Institute for Microfinance and Management Studies, Benin",
+      "canonical_name": "Lapo Institute for Microfinance and Management Studies, Benin",
+      "ownership_type": "private",
+      "state_id": "edo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "LeadTech School of Management and Technology, Abuja",
+      "canonical_name": "LeadTech School of Management and Technology, Abuja",
+      "ownership_type": "private",
+      "state_id": "fct",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Lufem College of Technology, Agege",
+      "canonical_name": "Lufem College of Technology, Agege",
+      "ownership_type": "private",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Mario Institute of Hospitality Management and Entrepreneurship Education, Nsukka",
+      "canonical_name": "Mario Institute of Hospitality Management and Entrepreneurship Education, Nsukka",
+      "ownership_type": "private",
+      "state_id": "enugu",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Master Builder Institute of Media Studies, Warri",
+      "canonical_name": "Master Builder Institute of Media Studies, Warri",
+      "ownership_type": "private",
+      "state_id": "delta",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Mastermind Catering and Culinary Institute, Abuja",
+      "canonical_name": "Mastermind Catering and Culinary Institute, Abuja",
+      "ownership_type": "private",
+      "state_id": "fct",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Metallurgical Training Institute, Onitsha",
+      "canonical_name": "Metallurgical Training Institute, Onitsha",
+      "ownership_type": "federal",
+      "state_id": "anambra",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Michael Imodu National Institute for Labour Studies, Ilorin",
+      "canonical_name": "Michael Imodu National Institute for Labour Studies, Ilorin",
+      "ownership_type": "federal",
+      "state_id": "kwara",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Muhammadu Buhari Meteorological Institute of Science and Technology, Katsina",
+      "canonical_name": "Muhammadu Buhari Meteorological Institute of Science and Technology, Katsina",
+      "ownership_type": "federal",
+      "state_id": "katsina",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "MUSON School of Music, Lagos",
+      "canonical_name": "MUSON School of Music, Lagos",
+      "ownership_type": "private",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Mustibrah College of Information Technology and Management Studies, Kano",
+      "canonical_name": "Mustibrah College of Information Technology and Management Studies, Kano",
+      "ownership_type": "private",
+      "state_id": "kano",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "National Institute for Cultural Orientation, Lagos",
+      "canonical_name": "National Institute for Cultural Orientation, Lagos",
+      "ownership_type": "federal",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "National Institute for Hospitality and Tourism, Kano",
+      "canonical_name": "National Institute for Hospitality and Tourism, Kano",
+      "ownership_type": "federal",
+      "state_id": "kano",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "National Institute for Legislative and Democratic Studies, Abuja",
+      "canonical_name": "National Institute for Legislative and Democratic Studies, Abuja",
+      "ownership_type": "federal",
+      "state_id": "fct",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "National Institute for Sports, Lagos",
+      "canonical_name": "National Institute for Sports, Lagos",
+      "ownership_type": "federal",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "National Meteorological Institute of Science and Technology, Oshodi",
+      "canonical_name": "National Meteorological Institute of Science and Technology, Oshodi",
+      "ownership_type": "federal",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "National Water Resources Institute, Kaduna",
+      "canonical_name": "National Water Resources Institute, Kaduna",
+      "ownership_type": "federal",
+      "state_id": "kaduna",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Nigerian Army School of Finance and Administration, Apapa",
+      "canonical_name": "Nigerian Army School of Finance and Administration, Apapa",
+      "ownership_type": "federal",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Nigerian Army School of Signals, Apapa",
+      "canonical_name": "Nigerian Army School of Signals, Apapa",
+      "ownership_type": "federal",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Nigerian Institute of Journalism, Ikeja",
+      "canonical_name": "Nigerian Institute of Journalism, Ikeja",
+      "ownership_type": "private",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Nigerian Institute of Leather and Chemical Technology, Zaria",
+      "canonical_name": "Nigerian Institute of Leather and Chemical Technology, Zaria",
+      "ownership_type": "federal",
+      "state_id": "kaduna",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Nigerian Institute of Mining and Geoscience, Jos",
+      "canonical_name": "Nigerian Institute of Mining and Geoscience, Jos",
+      "ownership_type": "federal",
+      "state_id": "plateau",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Nigerian Navy College of Accounts and Finance, Owerrinta",
+      "canonical_name": "Nigerian Navy College of Accounts and Finance, Owerrinta",
+      "ownership_type": "federal",
+      "state_id": "abia",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Nigerian Navy College of Engineering, Sapele",
+      "canonical_name": "Nigerian Navy College of Engineering, Sapele",
+      "ownership_type": "federal",
+      "state_id": "delta",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Nigerian Navy Logistics College, Dawakin Tofa",
+      "canonical_name": "Nigerian Navy Logistics College, Dawakin Tofa",
+      "ownership_type": "federal",
+      "state_id": "kano",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Nubian American Advanced College, Lekki",
+      "canonical_name": "Nubian American Advanced College, Lekki",
+      "ownership_type": "private",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "OAK Business School of Management and Technology, Lagos",
+      "canonical_name": "OAK Business School of Management and Technology, Lagos",
+      "ownership_type": "private",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Olawoyin Awosika School of Innovation Studies, Isheri North",
+      "canonical_name": "Olawoyin Awosika School of Innovation Studies, Isheri North",
+      "ownership_type": "private",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Osun College of Management Sciences, Ipetu-Ijesha",
+      "canonical_name": "Osun College of Management Sciences, Ipetu-Ijesha",
+      "ownership_type": "private",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Peace Institute of Management Technology, Abak",
+      "canonical_name": "Peace Institute of Management Technology, Abak",
+      "ownership_type": "private",
+      "state_id": "akwa-ibom",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Pemgo College of Business and Management Studies, Karu",
+      "canonical_name": "Pemgo College of Business and Management Studies, Karu",
+      "ownership_type": "private",
+      "state_id": "nasarawa",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Pencil Film and Television Institute, Oshodi",
+      "canonical_name": "Pencil Film and Television Institute, Oshodi",
+      "ownership_type": "private",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Sani Yar’adua College of Environmental Studies, Katsina",
+      "canonical_name": "Sani Yar’adua College of Environmental Studies, Katsina",
+      "ownership_type": "private",
+      "state_id": "katsina",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Savannah Institute of Technology, Abakaliki",
+      "canonical_name": "Savannah Institute of Technology, Abakaliki",
+      "ownership_type": "private",
+      "state_id": "ebonyi",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Soteria Business School, Ibadan",
+      "canonical_name": "Soteria Business School, Ibadan",
+      "ownership_type": "private",
+      "state_id": "oyo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "SQI College of ICT, Ogbomoso",
+      "canonical_name": "SQI College of ICT, Ogbomoso",
+      "ownership_type": "private",
+      "state_id": "oyo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Stars Maritime Academy, Itele",
+      "canonical_name": "Stars Maritime Academy, Itele",
+      "ownership_type": "private",
+      "state_id": "ogun",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "Wavecrest College of Catering and Hospitality Management Technology, Lagos",
+      "canonical_name": "Wavecrest College of Catering and Hospitality Management Technology, Lagos",
+      "ownership_type": "private",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Specialised Institutions (Monotechnics) section after category reconciliation."
+    },
+    {
+      "source_name": "A.D. Rufa’i College of Education, Legal and General Studies",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_college_of_education",
+      "reason": "The source institution is explicitly a college of education, outside this monotechnics boundary."
+    },
+    {
+      "source_name": "Aminu Kano College of Islamic and Legal Studies",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "College of Islamic and legal studies, not a specialised technical institution in this dataset boundary."
+    },
+    {
+      "source_name": "Arabic and Islamic Training Centre (Markaz)",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "Training centre, not a current approved specialised technical institution for this roster."
+    },
+    {
+      "source_name": "Bala Abdullahi College of Administration",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "College of administration, not a specialised technical institution in this roster."
+    },
+    {
+      "source_name": "College of Arabic and Islamic Legal Studies",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "College of Arabic and Islamic legal studies, outside the specialised technical institution boundary."
+    },
+    {
+      "source_name": "Fati Lami Abubakar Institute of Legal and Administrative Studies",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "Legal and administrative studies institute, not a specialised technical institution in this dataset boundary."
+    },
+    {
+      "source_name": "Jigawa State College of Remedial and Advance Studies",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "Remedial studies college, not a monotechnic."
+    },
+    {
+      "source_name": "Quest for Knowledge International School",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "General school, not a specialised technical institution."
+    },
+    {
+      "source_name": "Sharifat College of Education and Islamic Legal Studies",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_college_of_education",
+      "reason": "College of education, outside this dataset boundary."
+    },
+    {
+      "source_name": "State College of Basic and Remedial Studies",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "Basic and remedial studies college, not a monotechnic."
+    },
+    {
+      "source_name": "Yusuf Bala Usman College of Education and Legal Studies",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_college_of_education",
+      "reason": "College of education, outside this dataset boundary."
+    },
+    {
+      "source_name": "Zamfara State College of Arts and Science",
+      "canonical_name": null,
+      "ownership_type": null,
+      "state_id": null,
+      "decision": "exclude_wrong_category",
+      "reason": "General college, not a specialised technical institution."
+    }
+  ],
+  "notes": [
+    "NBTE uses Specialised Institutions (Monotechnics) as the official category label.",
+    "The source section is not active-only and includes several colleges or general schools; each was explicitly classified.",
+    "No institution specialisation field is exposed in the public contract; the category and source notes remain in metadata."
+  ]
+}

@@ -1,0 +1,688 @@
+[
+  {
+    "id": "abia-state-college-of-health-technology-aba",
+    "name": "Abia State College of Health Technology, Aba",
+    "ownership_type": "state",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "abobo-confluence-college-of-health-technology-okehi",
+    "name": "Abobo Confluence College of Health Technology, Okehi",
+    "ownership_type": "private",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "academy-of-medical-health-and-education-oju",
+    "name": "Academy of Medical Health and Education, Oju",
+    "ownership_type": "private",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "adamawa-state-college-of-health-science-and-technology-michika",
+    "name": "Adamawa State College of Health Science and Technology, Michika",
+    "ownership_type": "state",
+    "state_id": "adamawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "adeshina-college-of-health-sciences-and-technology-share",
+    "name": "Adeshina College of Health Sciences and Technology, Share",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "adewale-ibrahim-college-of-health-sciences-and-technology-buari",
+    "name": "Adewale Ibrahim College of Health Sciences and Technology, Buari",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "adonis-american-college-of-health-technology-osun",
+    "name": "Adonis American College of Health Technology, Osun",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "al-ma-arif-college-of-health-sciences-and-technology-potiskum",
+    "name": "Al-Ma'arif College of Health Sciences and Technology, Potiskum",
+    "ownership_type": "private",
+    "state_id": "yobe",
+    "country_code": "NG"
+  },
+  {
+    "id": "alhassan-ibrahim-dawanau-college-of-health-sciences-and-technology-kano",
+    "name": "Alhassan Ibrahim Dawanau College of Health Sciences and Technology, Kano",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "aminu-dabo-college-of-health-sciences-and-technology-kano",
+    "name": "Aminu Dabo College of Health Sciences and Technology, Kano",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "anambra-state-college-of-health-technology-obosi",
+    "name": "Anambra State College of Health Technology, Obosi",
+    "ownership_type": "state",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "assam-college-of-health-sciences-and-technology-kaduna",
+    "name": "Assam College of Health Sciences and Technology, Kaduna",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "awgu-college-of-medical-science-and-health-technology-enugu",
+    "name": "Awgu College of Medical Science and Health Technology, Enugu",
+    "ownership_type": "private",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "babalola-academy-college-of-health-technology-oloru",
+    "name": "Babalola Academy College of Health Technology, Oloru",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "bartholomew-college-of-health-technology-shao",
+    "name": "Bartholomew College of Health Technology, Shao",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "bayelsa-state-college-of-health-technology-otuogidi",
+    "name": "Bayelsa State College of Health Technology, Otuogidi",
+    "ownership_type": "state",
+    "state_id": "bayelsa",
+    "country_code": "NG"
+  },
+  {
+    "id": "beijing-college-of-health-science-and-technology-kaduna",
+    "name": "Beijing College of Health Science and Technology, Kaduna",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "benue-state-college-of-health-science-and-technology-agasha",
+    "name": "Benue State College of Health Science and Technology, Agasha",
+    "ownership_type": "state",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "bethsaida-college-of-health-technology-ogbomoso",
+    "name": "Bethsaida College of Health Technology, Ogbomoso",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "bichi-academy-college-of-health-sciences-and-technology-bichi",
+    "name": "Bichi Academy College of Health Sciences and Technology, Bichi",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "bill-and-melinda-gates-college-of-health-sciences-and-technology-ningi",
+    "name": "Bill and Melinda Gates College of Health Sciences and Technology, Ningi",
+    "ownership_type": "state",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "blessed-martins-international-institute-of-sciences-and-technology-ikwo",
+    "name": "Blessed Martins International Institute of Sciences and Technology, Ikwo",
+    "ownership_type": "private",
+    "state_id": "ebonyi",
+    "country_code": "NG"
+  },
+  {
+    "id": "centenary-college-of-health-science-and-technology-emohua",
+    "name": "Centenary College of Health Science and Technology, Emohua",
+    "ownership_type": "private",
+    "state_id": "rivers",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-health-science-and-technology-idah",
+    "name": "College of Health Science and Technology, Idah",
+    "ownership_type": "state",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-health-technology-ejigbo",
+    "name": "College of Health Technology, Ejigbo",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-health-technology-ezzangbo",
+    "name": "College of Health Technology, Ezzangbo",
+    "ownership_type": "private",
+    "state_id": "ebonyi",
+    "country_code": "NG"
+  },
+  {
+    "id": "college-of-health-technology-zawan",
+    "name": "College of Health Technology, Zawan",
+    "ownership_type": "state",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "crestfield-college-of-health-sciences-and-management-technology-erin-osun",
+    "name": "Crestfield College of Health Sciences and Management Technology, Erin-Osun",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "cross-river-state-college-of-health-technology-calabar",
+    "name": "Cross River State College of Health Technology, Calabar",
+    "ownership_type": "state",
+    "state_id": "cross-river",
+    "country_code": "NG"
+  },
+  {
+    "id": "crown-college-of-health-sciences-and-technology-minna",
+    "name": "Crown College of Health Sciences and Technology, Minna",
+    "ownership_type": "private",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "dagamas-college-of-health-sciences-and-technology-zaria",
+    "name": "Dagamas College of Health Sciences and Technology, Zaria",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "de-potter-college-of-health-technology-oru-ijebu-igbo",
+    "name": "De-Potter College of Health Technology, Oru Ijebu-Igbo",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "dee-perfect-class-college-of-health-sciences-and-technology-ifon",
+    "name": "Dee Perfect Class College of Health Sciences and Technology, Ifon",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "delight-college-of-health-sciences-and-technology-minna",
+    "name": "Delight College of Health Sciences and Technology, Minna",
+    "ownership_type": "private",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "delta-state-school-of-health-technology-ofuoma",
+    "name": "Delta State School of Health Technology, Ofuoma",
+    "ownership_type": "state",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "edo-state-college-of-health-sciences-and-technology-benin",
+    "name": "Edo State College of Health Sciences and Technology, Benin",
+    "ownership_type": "state",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "ekiti-state-college-of-health-sciences-and-technology-ijero-ekiti",
+    "name": "Ekiti State College of Health Sciences and Technology, Ijero-Ekiti",
+    "ownership_type": "state",
+    "state_id": "ekiti",
+    "country_code": "NG"
+  },
+  {
+    "id": "elite-international-college-of-health-science-and-technology-zaria",
+    "name": "Elite International College of Health Science and Technology, Zaria",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "emirates-college-of-health-sciences-and-technology-kabuga",
+    "name": "Emirates College of Health Sciences and Technology, Kabuga",
+    "ownership_type": "private",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "eucharistic-heart-college-of-health-technology-orba",
+    "name": "Eucharistic Heart College of Health Technology, Orba",
+    "ownership_type": "private",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "excellent-college-of-sciences-and-health-technology-gboko",
+    "name": "Excellent College of Sciences and Health Technology, Gboko",
+    "ownership_type": "private",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "fabotas-college-of-health-science-and-technology-ado-ekiti",
+    "name": "Fabotas College of Health Science and Technology, Ado-Ekiti",
+    "ownership_type": "private",
+    "state_id": "ekiti",
+    "country_code": "NG"
+  },
+  {
+    "id": "famsas-college-of-health-sciences-and-technology-keffi",
+    "name": "Famsas College of Health Sciences and Technology, Keffi",
+    "ownership_type": "private",
+    "state_id": "nasarawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-medical-laboratory-technology-jos",
+    "name": "Federal College of Medical Laboratory Technology, Jos",
+    "ownership_type": "federal",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-college-of-orthopaedic-technology-igbobi",
+    "name": "Federal College of Orthopaedic Technology, Igbobi",
+    "ownership_type": "federal",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-school-of-dental-technology-and-therapy-enugu",
+    "name": "Federal School of Dental Technology and Therapy, Enugu",
+    "ownership_type": "federal",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "foreign-links-college-of-health-and-management-sciences-moro",
+    "name": "Foreign Links College of Health and Management Sciences, Moro",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "g-city-college-of-health-sciences-and-technology-gwaram",
+    "name": "G-City College of Health Sciences and Technology, Gwaram",
+    "ownership_type": "private",
+    "state_id": "jigawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "galtima-mai-kyari-college-of-health-sciences-and-technology-nguru",
+    "name": "Galtima Mai-Kyari College of Health Sciences and Technology, Nguru",
+    "ownership_type": "state",
+    "state_id": "yobe",
+    "country_code": "NG"
+  },
+  {
+    "id": "garu-islamic-college-of-health-sciences-and-technology-bauchi",
+    "name": "Garu Islamic College of Health Sciences and Technology, Bauchi",
+    "ownership_type": "private",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "gial-college-of-health-technology-and-environmental-sciences-katsina",
+    "name": "Gial College of Health Technology and Environmental Sciences, Katsina",
+    "ownership_type": "private",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "gombe-state-college-of-health-technology-kaltungo",
+    "name": "Gombe State College of Health Technology, Kaltungo",
+    "ownership_type": "state",
+    "state_id": "gombe",
+    "country_code": "NG"
+  },
+  {
+    "id": "grace-college-of-health-science-and-technology-osogbo",
+    "name": "Grace College of Health Science and Technology, Osogbo",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "grandplus-college-of-health-sciences-and-technology-ilorin",
+    "name": "Grandplus College of Health Sciences and Technology, Ilorin",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "idris-mika-il-college-of-health-sciences-and-technology-rikochi",
+    "name": "Idris Mika'il College of Health Sciences and Technology, Rikochi",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "ikirun-college-of-health-sciences-and-technology-ikirun",
+    "name": "Ikirun College of Health Sciences and Technology, Ikirun",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "imo-state-college-of-health-and-management-sciences-amaigbo",
+    "name": "Imo State College of Health and Management Sciences, Amaigbo",
+    "ownership_type": "state",
+    "state_id": "imo",
+    "country_code": "NG"
+  },
+  {
+    "id": "international-christian-college-of-health-sciences-owerri",
+    "name": "International Christian College of Health Sciences, Owerri",
+    "ownership_type": "private",
+    "state_id": "imo",
+    "country_code": "NG"
+  },
+  {
+    "id": "iseyin-college-of-health-sciences-and-technology-ibadan",
+    "name": "Iseyin College of Health Sciences and Technology, Ibadan",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "islamic-medical-foundation-college-of-health-technology-tudun-wada",
+    "name": "Islamic Medical Foundation College of Health Technology, Tudun Wada",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "jigawa-state-college-of-health-science-and-technology-jahun",
+    "name": "Jigawa State College of Health Science and Technology, Jahun",
+    "ownership_type": "state",
+    "state_id": "jigawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "kano-state-college-of-health-science-and-technology-bebeji",
+    "name": "Kano State College of Health Science and Technology, Bebeji",
+    "ownership_type": "state",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "kano-state-college-of-health-sciences-and-technology-buk-road",
+    "name": "Kano State College of Health Sciences and Technology, BUK Road",
+    "ownership_type": "state",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "kano-state-college-of-health-sciences-and-technology-sani-marshall-road",
+    "name": "Kano State College of Health Sciences and Technology, Sani Marshall Road",
+    "ownership_type": "state",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "katsina-state-college-of-health-sciences-daura",
+    "name": "Katsina State College of Health Sciences, Daura",
+    "ownership_type": "state",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "katsina-state-college-of-health-sciences-kankiya",
+    "name": "Katsina State College of Health Sciences, Kankiya",
+    "ownership_type": "state",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "kwara-state-college-of-health-technology-offa",
+    "name": "Kwara State College of Health Technology, Offa",
+    "ownership_type": "state",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "lagos-state-college-of-health-technology-yaba",
+    "name": "Lagos State College of Health Technology, Yaba",
+    "ownership_type": "state",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "lasbery-college-of-health-technology-ogidi",
+    "name": "Lasbery College of Health Technology, Ogidi",
+    "ownership_type": "private",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "madonna-college-of-health-technology-olokoro",
+    "name": "Madonna College of Health Technology, Olokoro",
+    "ownership_type": "private",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "malikiya-college-of-health-and-social-sciences-bauchi",
+    "name": "Malikiya College of Health and Social Sciences, Bauchi",
+    "ownership_type": "private",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "maryam-khuddam-college-of-health-sciences-and-technology-kazaure",
+    "name": "Maryam Khuddam College of Health Sciences and Technology, Kazaure",
+    "ownership_type": "private",
+    "state_id": "jigawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "millenium-college-of-health-technology-akure",
+    "name": "Millenium College of Health Technology, Akure",
+    "ownership_type": "private",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "muslim-community-college-of-health-sciences-and-technology-funtua",
+    "name": "Muslim Community College of Health Sciences and Technology, Funtua",
+    "ownership_type": "private",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "nasarawa-state-college-of-health-science-and-technology-keffi",
+    "name": "Nasarawa State College of Health Science and Technology, Keffi",
+    "ownership_type": "state",
+    "state_id": "nasarawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "nazareth-college-of-health-science-and-technology-makurdi",
+    "name": "Nazareth College of Health Science and Technology, Makurdi",
+    "ownership_type": "private",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "new-gate-college-of-health-science-and-technology-minna",
+    "name": "New Gate College of Health Science and Technology, Minna",
+    "ownership_type": "private",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "nigerian-navy-college-of-health-sciences-offa",
+    "name": "Nigerian Navy College of Health Sciences, Offa",
+    "ownership_type": "federal",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "nkst-college-of-health-technology-mkar",
+    "name": "NKST College of Health Technology, Mkar",
+    "ownership_type": "private",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "ogun-state-college-of-health-technology-ijebu-ode",
+    "name": "Ogun State College of Health Technology, Ijebu-Ode",
+    "ownership_type": "state",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "ondo-college-of-health-sciences-and-technology-ondo",
+    "name": "Ondo College of Health Sciences and Technology, Ondo",
+    "ownership_type": "private",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "osun-state-college-of-health-technology-ilesa",
+    "name": "Osun State College of Health Technology, Ilesa",
+    "ownership_type": "state",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "oyo-state-college-of-health-sciences-and-technology-eleyele",
+    "name": "Oyo State College of Health Sciences and Technology, Eleyele",
+    "ownership_type": "state",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "parliament-college-of-health-sciences-and-technology-yauri",
+    "name": "Parliament College of Health Sciences and Technology, Yauri",
+    "ownership_type": "private",
+    "state_id": "kebbi",
+    "country_code": "NG"
+  },
+  {
+    "id": "peaceland-college-of-health-sciences-and-technology-enugu",
+    "name": "Peaceland College of Health Sciences and Technology, Enugu",
+    "ownership_type": "private",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "penfield-college-of-health-sciences-and-technology-kaduna",
+    "name": "Penfield College of Health Sciences and Technology, Kaduna",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "pogil-college-of-health-technology-ijebu-ode",
+    "name": "Pogil College of Health Technology, Ijebu-Ode",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "rhema-ijoko-college-of-health-technology-and-management-sciences-sango-otta",
+    "name": "Rhema Ijoko College of Health Technology and Management Sciences, Sango Otta",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "rivers-state-college-of-health-technology-port-harcourt",
+    "name": "Rivers State College of Health Technology, Port Harcourt",
+    "ownership_type": "state",
+    "state_id": "rivers",
+    "country_code": "NG"
+  },
+  {
+    "id": "royal-institute-of-health-technology-ifo",
+    "name": "Royal Institute of Health Technology, Ifo",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "seventh-day-adventist-college-of-health-sciences-and-technology-ile-ife",
+    "name": "Seventh-Day Adventist College of Health Sciences and Technology, Ile-Ife",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "shehu-idris-college-of-health-sciences-and-technology-makarfi",
+    "name": "Shehu Idris College of Health Sciences and Technology, Makarfi",
+    "ownership_type": "state",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "south-western-nigeria-college-of-health-technology-sagamu",
+    "name": "South-Western Nigeria College of Health Technology, Sagamu",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "taraba-state-college-of-health-sciences-and-technology-takum",
+    "name": "Taraba State College of Health Sciences and Technology, Takum",
+    "ownership_type": "state",
+    "state_id": "taraba",
+    "country_code": "NG"
+  },
+  {
+    "id": "umaru-dangaladima-college-of-health-technology-foundation-kaduna",
+    "name": "Umaru Dangaladima College of Health Technology Foundation, Kaduna",
+    "ownership_type": "private",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "vision-college-of-medical-sciences-and-health-technology-mbaise",
+    "name": "Vision College of Medical Sciences and Health Technology, Mbaise",
+    "ownership_type": "private",
+    "state_id": "imo",
+    "country_code": "NG"
+  },
+  {
+    "id": "zamaki-college-of-health-sciences-and-technology-yola",
+    "name": "Zamaki College of Health Sciences and Technology, Yola",
+    "ownership_type": "private",
+    "state_id": "adamawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "zamfara-state-college-of-health-sciences-and-technology-tsafe",
+    "name": "Zamfara State College of Health Sciences and Technology, Tsafe",
+    "ownership_type": "state",
+    "state_id": "zamfara",
+    "country_code": "NG"
+  }
+]

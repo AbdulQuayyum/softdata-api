@@ -1,0 +1,2210 @@
+{
+  "dataset_key": "ng-technical-colleges",
+  "status": "active",
+  "source": {
+    "url": "https://web.nbte.gov.ng/technical%20colleges1",
+    "accessed_at": "2026-09-08",
+    "response_bytes": 250471,
+    "sha256": "34b21b6cfbca5da12d48d305c902cb8aaf01be09102ffd4f2b9b7f141de42dc8"
+  },
+  "official_aggregate_total": 153,
+  "row_level_directory_entries": 123,
+  "records": [
+    {
+      "source_page": null,
+      "printed_row_number": 1,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Ohafia Technical College, Ania",
+      "raw_location": "Ministry for Education, PMB 7217, Umuahia, Abia State 1988",
+      "raw_programme": null,
+      "normalized_name": "Ohafia Technical College, Ania",
+      "state_id": "abia",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "ohafia-technical-college-ania",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 2,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Mubi",
+      "raw_location": "Ministry for Education, PMB 2024, Yola, Adamawa State 1989",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Mubi",
+      "state_id": "adamawa",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-mubi",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 3,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Yola",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Yola",
+      "state_id": "adamawa",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-yola",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 4,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Vocational Technical Training Centre, Mayo-Balwa",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": null,
+      "state_id": "adamawa",
+      "ownership_type": null,
+      "decision": "exclude_wrong_category",
+      "final_record_id": null,
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 5,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Vocational Technical Training Centre, Mubi",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": null,
+      "state_id": "adamawa",
+      "ownership_type": null,
+      "decision": "exclude_wrong_category",
+      "final_record_id": null,
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 6,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Vocational Technical Training Centre, Yola",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": null,
+      "state_id": "adamawa",
+      "ownership_type": null,
+      "decision": "exclude_wrong_category",
+      "final_record_id": null,
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 7,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Community Technical College, Ikot-Akata",
+      "raw_location": "Akwa Ibom State Science and Technical Schools Board, PMB 1214, Uyo, Akwa Ibom State 1988",
+      "raw_programme": null,
+      "normalized_name": "Community Technical College, Ikot-Akata",
+      "state_id": "akwa-ibom",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "community-technical-college-ikot-akata",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 8,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Abak",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Abak",
+      "state_id": "akwa-ibom",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-abak",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 9,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Ewet-Uyo",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Ewet-Uyo",
+      "state_id": "akwa-ibom",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-ewet-uyo",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 10,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Oron",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Oron",
+      "state_id": "akwa-ibom",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-oron",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 11,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Union Technical College, Ikpa-Eket",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Union Technical College, Ikpa-Eket",
+      "state_id": "akwa-ibom",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "union-technical-college-ikpa-eket",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 12,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Federal Science Technical College, Zik Avenue, Awka, P.M.B. 5006, Awka, Anambra State",
+      "raw_location": "Federal Ministry of Education, Abuja 1988",
+      "raw_programme": null,
+      "normalized_name": "Federal Science Technical College, Zik Avenue, Awka, P.M.B. 5006, Awka, Anambra State",
+      "state_id": "anambra",
+      "ownership_type": "federal",
+      "decision": "retain",
+      "final_record_id": "federal-science-technical-college-zik-avenue-awka-p-m-b-5006-awka-anambra-state",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 13,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Onitsha",
+      "raw_location": "Ministry for Education, PMB 5038, Awka, Anambra State 1988",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Onitsha",
+      "state_id": "anambra",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-onitsha",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 14,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Nigeria Science and Technical College Nnewi, Anambra State",
+      "raw_location": "2015",
+      "raw_programme": null,
+      "normalized_name": "Nigeria Science and Technical College Nnewi, Anambra State",
+      "state_id": "anambra",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "nigeria-science-and-technical-college-nnewi-anambra-state",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 15,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College Nkpor, Anambra State",
+      "raw_location": "2017",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College Nkpor, Anambra State",
+      "state_id": "anambra",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-nkpor-anambra-state",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 16,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College Umuchu, Anambra State",
+      "raw_location": "2017",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College Umuchu, Anambra State",
+      "state_id": "anambra",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-umuchu-anambra-state",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 17,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College Umueri, Anambra State",
+      "raw_location": "2017",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College Umueri, Anambra State",
+      "state_id": "anambra",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-umueri-anambra-state",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 18,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Umunze",
+      "raw_location": "2017",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Umunze",
+      "state_id": "anambra",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-umunze",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 19,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "St. John’s Science and Technical College, Alor",
+      "raw_location": "2017",
+      "raw_programme": null,
+      "normalized_name": "St. John’s Science and Technical College, Alor",
+      "state_id": "anambra",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "st-johns-science-and-technical-college-alor",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 20,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Federal Science Technical College, Tungbo, Bayelsa State",
+      "raw_location": "Federal Ministry of Education, Abuja 2002",
+      "raw_programme": null,
+      "normalized_name": "Federal Science Technical College, Tungbo, Bayelsa State",
+      "state_id": "bayelsa",
+      "ownership_type": "federal",
+      "decision": "retain",
+      "final_record_id": "federal-science-technical-college-tungbo-bayelsa-state",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 21,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Day Technical College, Bauchi",
+      "raw_location": "Bauchi State Science and Technical Schools Board, Bauchi, Bauchi State 2014",
+      "raw_programme": null,
+      "normalized_name": "Government Day Technical College, Bauchi",
+      "state_id": "bauchi",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-day-technical-college-bauchi",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 22,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Day Technical College, Gar",
+      "raw_location": "2014",
+      "raw_programme": null,
+      "normalized_name": "Government Day Technical College, Gar",
+      "state_id": "bauchi",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-day-technical-college-gar",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 23,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Day Technical College, Azare",
+      "raw_location": "2014",
+      "raw_programme": null,
+      "normalized_name": "Government Day Technical College, Azare",
+      "state_id": "bauchi",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-day-technical-college-azare",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 24,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Day Technical College, Tafawa Balewa",
+      "raw_location": "2014",
+      "raw_programme": null,
+      "normalized_name": "Government Day Technical College, Tafawa Balewa",
+      "state_id": "bauchi",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-day-technical-college-tafawa-balewa",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 25,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Day Technical College,Jama’are",
+      "raw_location": "2014",
+      "raw_programme": null,
+      "normalized_name": "Government Day Technical College,Jama’are",
+      "state_id": "bauchi",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-day-technical-college-jamaare",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 26,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Day Technical College, Gamawa",
+      "raw_location": "2014",
+      "raw_programme": null,
+      "normalized_name": "Government Day Technical College, Gamawa",
+      "state_id": "bauchi",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-day-technical-college-gamawa",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 27,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Day Technical College, Kafin Madaki",
+      "raw_location": "2014",
+      "raw_programme": null,
+      "normalized_name": "Government Day Technical College, Kafin Madaki",
+      "state_id": "bauchi",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-day-technical-college-kafin-madaki",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 28,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Benue State University Technical College, Makurdi",
+      "raw_location": "Benue State Science and Technical Education Board (STEB), No. 213 Edward Ujebe Street, High-Level, P/M.B. 102116, Makurdi 1989",
+      "raw_programme": null,
+      "normalized_name": "Benue State University Technical College, Makurdi",
+      "state_id": "benue",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "benue-state-university-technical-college-makurdi",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 29,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "St. Joseph Technical College, Makurdi",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "St. Joseph Technical College, Makurdi",
+      "state_id": "benue",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "st-joseph-technical-college-makurdi",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 30,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "St. Jude’s Technical College, Tse-Mker",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "St. Jude’s Technical College, Tse-Mker",
+      "state_id": "benue",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "st-judes-technical-college-tse-mker",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 31,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Community Technical College, Calabar",
+      "raw_location": "Cross Rivers State Science and Technical Schools Board, PMB 1165, Calabar, Cross Rivers State 1988",
+      "raw_programme": null,
+      "normalized_name": "Community Technical College, Calabar",
+      "state_id": "cross-river",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "community-technical-college-calabar",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 32,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Ogoja",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Ogoja",
+      "state_id": "cross-river",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-ogoja",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 33,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Agbor Technical College, Agbor",
+      "raw_location": "Ministry for Education, PMB 5051, Asaba, Delta State 1989",
+      "raw_programme": null,
+      "normalized_name": "Agbor Technical College, Agbor",
+      "state_id": "delta",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "agbor-technical-college-agbor",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 34,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Issele-Uku Technical College, Issele-Uku",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Issele-Uku Technical College, Issele-Uku",
+      "state_id": "delta",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "issele-uku-technical-college-issele-uku",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 35,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Ofagbe Technical College, Ofagbe",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Ofagbe Technical College, Ofagbe",
+      "state_id": "delta",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "ofagbe-technical-college-ofagbe",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 36,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Ogor Technical College, Otogor Ughelli",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Ogor Technical College, Otogor Ughelli",
+      "state_id": "delta",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "ogor-technical-college-otogor-ughelli",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 37,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Sapele Technical College, Sapele",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Sapele Technical College, Sapele",
+      "state_id": "delta",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "sapele-technical-college-sapele",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 39,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Federal Science Technical College, Uromi, P.M.B. 4, Uromi",
+      "raw_location": "Federal Ministry of Education, Abuja 1989",
+      "raw_programme": null,
+      "normalized_name": "Federal Science Technical College, Uromi, P.M.B. 4, Uromi",
+      "state_id": "edo",
+      "ownership_type": "federal",
+      "decision": "retain",
+      "final_record_id": "federal-science-technical-college-uromi-p-m-b-4-uromi",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 40,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Science and Technical College, Benin",
+      "raw_location": "Edo State Board for Technical and Vocational Education, Benin City 2019",
+      "raw_programme": null,
+      "normalized_name": "Government Science and Technical College, Benin",
+      "state_id": "edo",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-science-and-technical-college-benin",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 41,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Science and Technical College, Irrua",
+      "raw_location": "2019",
+      "raw_programme": null,
+      "normalized_name": "Government Science and Technical College, Irrua",
+      "state_id": "edo",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-science-and-technical-college-irrua",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 42,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Science and Technical College, Igarra",
+      "raw_location": "2019",
+      "raw_programme": null,
+      "normalized_name": "Government Science and Technical College, Igarra",
+      "state_id": "edo",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-science-and-technical-college-igarra",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 43,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Science and Technical College, Afuze",
+      "raw_location": "2019",
+      "raw_programme": null,
+      "normalized_name": "Government Science and Technical College, Afuze",
+      "state_id": "edo",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-science-and-technical-college-afuze",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 44,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Ado Ekiti",
+      "raw_location": "Ministry for Education, Ado-Ekiti, Imo State ",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Ado Ekiti",
+      "state_id": "ekiti",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-ado-ekiti",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 45,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Ikole-Ekiti",
+      "raw_location": null,
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Ikole-Ekiti",
+      "state_id": "ekiti",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-ikole-ekiti",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 46,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Igbara – Odo",
+      "raw_location": null,
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Igbara – Odo",
+      "state_id": "ekiti",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-igbara-odo",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 47,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Enugu",
+      "raw_location": "Enugu State Science and Vocational Schools Management Board, State Secretariat, P.O. Box 3598, Enugu 1988",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Enugu",
+      "state_id": "enugu",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-enugu",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 48,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Nsukka",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Nsukka",
+      "state_id": "enugu",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-nsukka",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 49,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Science and Technical College, Gombe",
+      "raw_location": "Ministry for Education, Gombe, Gombe State -",
+      "raw_programme": null,
+      "normalized_name": "Government Science and Technical College, Gombe",
+      "state_id": "gombe",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-science-and-technical-college-gombe",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 50,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Science and Technical College, Kumo",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Science and Technical College, Kumo",
+      "state_id": "gombe",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-science-and-technical-college-kumo",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 51,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Ahiara Science & Technical College, Ahiara",
+      "raw_location": "Ministry for Education, Owerri, Imo State 1988",
+      "raw_programme": null,
+      "normalized_name": "Ahiara Science & Technical College, Ahiara",
+      "state_id": "imo",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "ahiara-science-technical-college-ahiara",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 52,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Owerri",
+      "raw_location": "1989",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Owerri",
+      "state_id": "imo",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-owerri",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 53,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Okohia, Osu",
+      "raw_location": "1988",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Okohia, Osu",
+      "state_id": "imo",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-okohia-osu",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 54,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Okporo, Orlu",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Okporo, Orlu",
+      "state_id": "imo",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-okporo-orlu",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 55,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Hadejia",
+      "raw_location": "Ministry for Higher Education, PMB 5004, Kazaure, Jigawa State -",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Hadejia",
+      "state_id": "jigawa",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-hadejia",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 56,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Science Technical College Karkarna",
+      "raw_location": "2014",
+      "raw_programme": null,
+      "normalized_name": "Government Science Technical College Karkarna",
+      "state_id": "jigawa",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-science-technical-college-karkarna",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 57,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Science Technical College Birnin Kudu",
+      "raw_location": "2014",
+      "raw_programme": null,
+      "normalized_name": "Government Science Technical College Birnin Kudu",
+      "state_id": "jigawa",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-science-technical-college-birnin-kudu",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 58,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Science Technical College Ringim",
+      "raw_location": "2014",
+      "raw_programme": null,
+      "normalized_name": "Government Science Technical College Ringim",
+      "state_id": "jigawa",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-science-technical-college-ringim",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 59,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Federal Science Technical College, Kafanchan, P. M. B. 1017, Kafanchan",
+      "raw_location": "Federal Ministry of Education, Abuja 1992",
+      "raw_programme": null,
+      "normalized_name": "Federal Science Technical College, Kafanchan, P. M. B. 1017, Kafanchan",
+      "state_id": "kaduna",
+      "ownership_type": "federal",
+      "decision": "retain",
+      "final_record_id": "federal-science-technical-college-kafanchan-p-m-b-1017-kafanchan",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 60,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Kajuru",
+      "raw_location": "Kaduna State Science and Technical Schools Management Board, PMB 2344, Kaduna, Kaduna State -",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Kajuru",
+      "state_id": "kaduna",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-kajuru",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 61,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Malali",
+      "raw_location": "1988",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Malali",
+      "state_id": "kaduna",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-malali",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 62,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Tafawa Balewa Memorial Commercial College, Samaru Kataf",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Tafawa Balewa Memorial Commercial College, Samaru Kataf",
+      "state_id": "kaduna",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "tafawa-balewa-memorial-commercial-college-samaru-kataf",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 63,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Commercial College, Bagauda",
+      "raw_location": "Kano State Science and Technical Schools Board, PMB 3142, Kano, Kano State 1988",
+      "raw_programme": null,
+      "normalized_name": "Government Commercial College, Bagauda",
+      "state_id": "kano",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-commercial-college-bagauda",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 64,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Kano",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Kano",
+      "state_id": "kano",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-kano",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 65,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Ungogo",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Ungogo",
+      "state_id": "kano",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-ungogo",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 66,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Wudil",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Wudil",
+      "state_id": "kano",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-wudil",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 67,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Girl’s Commercial College, Mai Adua",
+      "raw_location": "Katsina State Science and Technical Schools Board, PMB 2103, Katsina, Katsina State 1992",
+      "raw_programme": null,
+      "normalized_name": "Government Girl’s Commercial College, Mai Adua",
+      "state_id": "katsina",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-girls-commercial-college-mai-adua",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 68,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Girl’s Technical Commercial College, Charanchi",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Girl’s Technical Commercial College, Charanchi",
+      "state_id": "katsina",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-girls-technical-commercial-college-charanchi",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 69,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Funtua",
+      "raw_location": " -",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Funtua",
+      "state_id": "katsina",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-funtua",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 70,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Ingawa",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Ingawa",
+      "state_id": "katsina",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-ingawa",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 71,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Mashi",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Mashi",
+      "state_id": "katsina",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-mashi",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 72,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Federal Science Technical College, Zuru, P.M.B. 1022, Zuru",
+      "raw_location": "Federal Ministry of Education, Abuja 1996",
+      "raw_programme": null,
+      "normalized_name": "Federal Science Technical College, Zuru, P.M.B. 1022, Zuru",
+      "state_id": "kebbi",
+      "ownership_type": "federal",
+      "decision": "retain",
+      "final_record_id": "federal-science-technical-college-zuru-p-m-b-1022-zuru",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 73,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Bunza",
+      "raw_location": "Kebbi State Science and Technical Schools Board, PMB 2103, Birnin Kebbi, Kebbi State 1989",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Bunza",
+      "state_id": "kebbi",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-bunza",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 74,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Zuru",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Zuru",
+      "state_id": "kebbi",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-zuru",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 75,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Amadu-Asungblu",
+      "raw_location": "Ministry for Education, PMB 1391, Ilorin, Kwara State 1988",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Amadu-Asungblu",
+      "state_id": "kwara",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-amadu-asungblu",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 76,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Erinle Ille",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Erinle Ille",
+      "state_id": "kwara",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-erinle-ille",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 77,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Esie Iludun",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Esie Iludun",
+      "state_id": "kwara",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-esie-iludun",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 78,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Pategi",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Pategi",
+      "state_id": "kwara",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-pategi",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 79,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Federal Science Technical College, Yaba",
+      "raw_location": "Federal Ministry of Education, Abuja 1988",
+      "raw_programme": null,
+      "normalized_name": "Federal Science Technical College, Yaba",
+      "state_id": "lagos",
+      "ownership_type": "federal",
+      "decision": "retain",
+      "final_record_id": "federal-science-technical-college-yaba",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 80,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Ado-Soba",
+      "raw_location": "Ministry for Education, Ikeja, Lagos State 1988",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Ado-Soba",
+      "state_id": "lagos",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-ado-soba",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 81,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Agidingbi, Ikeja",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Agidingbi, Ikeja",
+      "state_id": "lagos",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-agidingbi-ikeja",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 82,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Ikorodu",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Ikorodu",
+      "state_id": "lagos",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-ikorodu",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 83,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Ikotun",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Ikotun",
+      "state_id": "lagos",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-ikotun",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 84,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Odomola, Epe",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Odomola, Epe",
+      "state_id": "lagos",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-odomola-epe",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 85,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Asakio",
+      "raw_location": "Ministry for Education, PMB 044, Lafia, Nasarawa State 1997",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Asakio",
+      "state_id": "nasarawa",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-asakio",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 86,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Science and Technical College, Agwada",
+      "raw_location": "2017",
+      "raw_programme": null,
+      "normalized_name": "Government Science and Technical College, Agwada",
+      "state_id": "nasarawa",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-science-and-technical-college-agwada",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 87,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Science and Technical College, Mada Station",
+      "raw_location": "2017",
+      "raw_programme": null,
+      "normalized_name": "Government Science and Technical College, Mada Station",
+      "state_id": "nasarawa",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-science-and-technical-college-mada-station",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 88,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "APJ Science and Technical College, KM 24 Abuja – Keffi Road, Masaka, Nasarawa State",
+      "raw_location": "Private 2018",
+      "raw_programme": null,
+      "normalized_name": "APJ Science and Technical College, KM 24 Abuja – Keffi Road, Masaka, Nasarawa State",
+      "state_id": "nasarawa",
+      "ownership_type": "private",
+      "decision": "retain",
+      "final_record_id": "apj-science-and-technical-college-km-24-abuja-keffi-road-masaka-nasarawa-state",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 89,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Federal Science and Technical, College, Shiroro",
+      "raw_location": "Federal Ministry of Education, Abuja ",
+      "raw_programme": null,
+      "normalized_name": "Federal Science and Technical, College, Shiroro",
+      "state_id": "niger",
+      "ownership_type": "federal",
+      "decision": "retain",
+      "final_record_id": "federal-science-and-technical-college-shiroro",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 90,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Eyagi Bida",
+      "raw_location": "Niger State Science and Technical Schools Board, PMB 190, Minna, Niger State 1988",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Eyagi Bida",
+      "state_id": "niger",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-eyagi-bida",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 91,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Kontagora",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Kontagora",
+      "state_id": "niger",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-kontagora",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 92,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Minna",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Minna",
+      "state_id": "niger",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-minna",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 93,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, New Bussa",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, New Bussa",
+      "state_id": "niger",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-new-bussa",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 94,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Aiyetoro",
+      "raw_location": "Ministry for Education, PMB 2060, Abeokuta, Ogun State 1989",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Aiyetoro",
+      "state_id": "ogun",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-aiyetoro",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 95,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Ajegunle",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Ajegunle",
+      "state_id": "ogun",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-ajegunle",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 96,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Idi-Aba (Abeokuta)",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Idi-Aba (Abeokuta)",
+      "state_id": "ogun",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-idi-aba-abeokuta",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 97,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Igbesa",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Igbesa",
+      "state_id": "ogun",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-igbesa",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 98,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Ijegbu Igbo",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Ijegbu Igbo",
+      "state_id": "ogun",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-ijegbu-igbo",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 99,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Ijebu-Ode",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Ijebu-Ode",
+      "state_id": "ogun",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-ijebu-ode",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 100,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Ilara Remo",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Ilara Remo",
+      "state_id": "ogun",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-ilara-remo",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 101,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Don Bosco Training Centres, Ondo, Ondo State",
+      "raw_location": "Private 2001",
+      "raw_programme": null,
+      "normalized_name": null,
+      "state_id": "ondo",
+      "ownership_type": null,
+      "decision": "exclude_wrong_category",
+      "final_record_id": null,
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 102,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Federal Science Technical College, Ikare Akoko",
+      "raw_location": "Federal Ministry of Education, Abuja -",
+      "raw_programme": null,
+      "normalized_name": "Federal Science Technical College, Ikare Akoko",
+      "state_id": "ondo",
+      "ownership_type": "federal",
+      "decision": "retain",
+      "final_record_id": "federal-science-technical-college-ikare-akoko",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 103,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Idanre",
+      "raw_location": "Ondo State Board for Technical and Vocational Education, Akure, Ondo State -",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Idanre",
+      "state_id": "ondo",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-idanre",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 104,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Oka Akoko",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Oka Akoko",
+      "state_id": "ondo",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-oka-akoko",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 105,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Owo",
+      "raw_location": "1988",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Owo",
+      "state_id": "ondo",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-owo",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 106,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Federal Science Technical College, Ilesa",
+      "raw_location": "Federal Ministry of Education, Abuja -",
+      "raw_programme": null,
+      "normalized_name": "Federal Science Technical College, Ilesa",
+      "state_id": "osun",
+      "ownership_type": "federal",
+      "decision": "retain",
+      "final_record_id": "federal-science-technical-college-ilesa",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 107,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Osogbo",
+      "raw_location": "Ministry for Education, Osogbo, Osun State -",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Osogbo",
+      "state_id": "osun",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-osogbo",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 108,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Bukuru",
+      "raw_location": "Ministry for Education, PMB 2001, Jos, Plateau State 1988",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Bukuru",
+      "state_id": "plateau",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-bukuru",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 109,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Ele-Ogu",
+      "raw_location": "Ministry for Higher Education, PMB 5020, Port Harcourt, Rivers State -",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Ele-Ogu",
+      "state_id": "rivers",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-ele-ogu",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 110,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Port Harcourt",
+      "raw_location": "1989",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Port Harcourt",
+      "state_id": "rivers",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-port-harcourt",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 111,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College Ahoada",
+      "raw_location": " ",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College Ahoada",
+      "state_id": "rivers",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-ahoada",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 112,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College Tombia",
+      "raw_location": null,
+      "raw_programme": null,
+      "normalized_name": "Government Technical College Tombia",
+      "state_id": "rivers",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-tombia",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 113,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Craft Development Centre, Port Harcourt",
+      "raw_location": " ",
+      "raw_programme": null,
+      "normalized_name": null,
+      "state_id": "rivers",
+      "ownership_type": null,
+      "decision": "exclude_wrong_category",
+      "final_record_id": null,
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 114,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Ahmadu Bello Academy, Farfaru",
+      "raw_location": "Department for Science and Technical Education, Sokoto, Sokoto State -",
+      "raw_programme": null,
+      "normalized_name": null,
+      "state_id": "sokoto",
+      "ownership_type": null,
+      "decision": "exclude_wrong_category",
+      "final_record_id": null,
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 115,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Girl’s Secondary School, Tambuwal",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": null,
+      "state_id": "sokoto",
+      "ownership_type": null,
+      "decision": "exclude_wrong_category",
+      "final_record_id": null,
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 116,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Bafarawa",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Bafarawa",
+      "state_id": "sokoto",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-bafarawa",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 117,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Binji",
+      "raw_location": "1989",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Binji",
+      "state_id": "sokoto",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-binji",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 118,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Farfaru",
+      "raw_location": "-",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Farfaru",
+      "state_id": "sokoto",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-farfaru",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 119,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Federal Science Technical College, Jalingo, P.M.B. 1022, Jalingo, Taraba State",
+      "raw_location": "Federal Ministry of Education, Abuja 1992",
+      "raw_programme": null,
+      "normalized_name": "Federal Science Technical College, Jalingo, P.M.B. 1022, Jalingo, Taraba State",
+      "state_id": "taraba",
+      "ownership_type": "federal",
+      "decision": "retain",
+      "final_record_id": "federal-science-technical-college-jalingo-p-m-b-1022-jalingo-taraba-state",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 120,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Science and Technical College, Geidam",
+      "raw_location": "Ministry for Education, Damaturu, Yobe State -",
+      "raw_programme": null,
+      "normalized_name": "Government Science and Technical College, Geidam",
+      "state_id": "yobe",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-science-and-technical-college-geidam",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 121,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Technical College, Kaura Namoda",
+      "raw_location": "Ministry for Science and Technology, Gusau, Zamfara State 1989",
+      "raw_programme": null,
+      "normalized_name": "Government Technical College, Kaura Namoda",
+      "state_id": "zamfara",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-technical-college-kaura-namoda",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 122,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Federal Science and Technical College, Orozo, Abuja",
+      "raw_location": "Federal Ministry of Education, Abuja ",
+      "raw_programme": null,
+      "normalized_name": "Federal Science and Technical College, Orozo, Abuja",
+      "state_id": "fct",
+      "ownership_type": "federal",
+      "decision": "retain",
+      "final_record_id": "federal-science-and-technical-college-orozo-abuja",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    },
+    {
+      "source_page": null,
+      "printed_row_number": 123,
+      "section_heading": "Technical Colleges",
+      "raw_institution_name": "Government Science and Technical College, Garki",
+      "raw_location": "Abuja Municipal Area Council -",
+      "raw_programme": null,
+      "normalized_name": "Government Science and Technical College, Garki",
+      "state_id": "fct",
+      "ownership_type": "state",
+      "decision": "retain",
+      "final_record_id": "government-science-and-technical-college-garki",
+      "merge_target_id": null,
+      "evidence": [
+        "https://web.nbte.gov.ng/technical%20colleges1"
+      ],
+      "notes": "NBTE directory row; the homepage aggregate is tracked separately."
+    }
+  ]
+}

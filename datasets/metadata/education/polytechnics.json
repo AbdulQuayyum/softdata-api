@@ -1,0 +1,112 @@
+{
+  "dataset_key": "ng-polytechnics",
+  "title": "Nigeria Polytechnics",
+  "description": "Independently compiled factual reference data for current Nigerian polytechnics in the NBTE 2025 directory boundary after excluding specialist institutes, colleges, transition records and other non-polytechnic entries.",
+  "country_code": "NG",
+  "dataset_group": "education",
+  "format": "json",
+  "relative_path": "education/polytechnics.json",
+  "schema_path": "schemas/education/polytechnics.schema.json",
+  "record_count": 168,
+  "ownership_counts": {
+    "state": 43,
+    "private": 90,
+    "federal": 35
+  },
+  "state_coverage": [
+    "abia",
+    "adamawa",
+    "akwa-ibom",
+    "anambra",
+    "bauchi",
+    "bayelsa",
+    "benue",
+    "borno",
+    "cross-river",
+    "delta",
+    "ebonyi",
+    "edo",
+    "ekiti",
+    "enugu",
+    "fct",
+    "gombe",
+    "imo",
+    "jigawa",
+    "kaduna",
+    "kano",
+    "katsina",
+    "kebbi",
+    "kogi",
+    "kwara",
+    "lagos",
+    "nasarawa",
+    "niger",
+    "ogun",
+    "ondo",
+    "osun",
+    "oyo",
+    "plateau",
+    "rivers",
+    "sokoto",
+    "taraba",
+    "yobe",
+    "zamfara"
+  ],
+  "version": "1.0.0",
+  "license_id": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "methodology": "SoftData reconciled the complete NBTE 25th Edition 2025 polytechnic-section roster before generating the dataset. Names and locations were normalized to current canonical forms; state_id values were mapped to the existing Nigerian states dataset. Specialist institutes, colleges, agriculture schools, technical institutes, converted institutions and unresolved non-polytechnic rows were excluded and documented in the reconciliation manifest. The public boundary contains only the five base fields and no website or logo enrichment.",
+  "source_hierarchy": [
+    "National Board for Technical Education",
+    "Federal Ministry of Education",
+    "Joint Admissions and Matriculation Board",
+    "official federal or state government publications",
+    "official institution websites",
+    "other regulatory or government publications",
+    "reputable secondary sources for discovery only"
+  ],
+  "sources": [
+    {
+      "organization": "National Board for Technical Education",
+      "title": "25th Edition 2025 Directory of Accredited Programmes",
+      "url": "https://web.nbte.gov.ng/sites/default/files/2025-11/25th%20Edition%202025%20Directory.pdf",
+      "purpose": "Primary current roster boundary and ownership classification for Nigerian polytechnics.",
+      "accessed_at": "2026-09-07",
+      "publication_date": "2025-11",
+      "response_bytes": 13841731,
+      "sha256": "11c7e9b7e6f63136ae114c1bc8cc6884280c5555aad64a4b17cb705bbbbafcda",
+      "raw_record_count": 194,
+      "categories_included": [
+        "polytechnics",
+        "mixed NBTE-supervised institutions appearing under the polytechnic heading"
+      ],
+      "current_active_only": false,
+      "missing_or_incomplete_fields": [
+        "state_id is not a source field",
+        "some source names contain typographical errors",
+        "the heading includes specialist institutes, colleges and transition records"
+      ]
+    }
+  ],
+  "update_frequency": "Review on each new NBTE directory or material regulatory roster update.",
+  "last_verification_date": "2026-09-07",
+  "inclusion_rules": [
+    "Current Nigerian institution classified as a polytechnic by the authoritative source hierarchy.",
+    "One record per current legal institution; campuses are not separate records unless independently recognized.",
+    "Every state_id resolves to ng-states and every record has country_code NG."
+  ],
+  "exclusion_rules": [
+    "Universities, colleges of education, monotechnics, health or nursing colleges, technical colleges, specialist institutes, agriculture colleges, unapproved or closed institutions, and transition duplicates."
+  ],
+  "known_limitations": [
+    "NBTE publishes some mixed or stale rows under the polytechnic heading; those source limitations are retained in the reconciliation manifest.",
+    "NBTE does not provide state_id as a normalized field, so state mapping is a SoftData compilation decision.",
+    "Institution approval and naming can change between directory editions."
+  ],
+  "maintainers": [
+    "SoftData API contributors"
+  ],
+  "rights": "SoftData compilation, schema and metadata are CC BY 4.0. NBTE source publications retain their own rights. This pass adds only the static dataset foundation; it does not add websites, logos or API routes.",
+  "verified_at": "2026-09-07",
+  "reconciliation_path": "metadata/education/polytechnics_reconciliation.json"
+}

@@ -1,0 +1,1178 @@
+[
+  {
+    "id": "abdu-gusau-polytechnic",
+    "name": "Abdu Gusau Polytechnic",
+    "ownership_type": "state",
+    "state_id": "zamfara",
+    "country_code": "NG"
+  },
+  {
+    "id": "abia-state-polytechnic",
+    "name": "Abia State Polytechnic",
+    "ownership_type": "state",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "abraham-adesanya-polytechnic",
+    "name": "Abraham Adesanya Polytechnic",
+    "ownership_type": "state",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "abubakar-tatari-ali-polytechnic",
+    "name": "Abubakar Tatari Ali Polytechnic",
+    "ownership_type": "state",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "adamawa-state-polytechnic",
+    "name": "Adamawa State Polytechnic",
+    "ownership_type": "state",
+    "state_id": "adamawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "adeseun-ogundoyin-polytechnic",
+    "name": "Adeseun Ogundoyin Polytechnic",
+    "ownership_type": "state",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "ajayi-polytechnic",
+    "name": "Ajayi Polytechnic",
+    "ownership_type": "private",
+    "state_id": "ekiti",
+    "country_code": "NG"
+  },
+  {
+    "id": "akanu-ibiam-federal-polytechnic",
+    "name": "Akanu Ibiam Federal Polytechnic",
+    "ownership_type": "federal",
+    "state_id": "ebonyi",
+    "country_code": "NG"
+  },
+  {
+    "id": "akperan-orshi-polytechnic",
+    "name": "Akperan Orshi Polytechnic",
+    "ownership_type": "state",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "akwa-ibom-state-polytechnic",
+    "name": "Akwa Ibom State Polytechnic",
+    "ownership_type": "state",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "al-hikma-polytechnic",
+    "name": "Al-Hikma Polytechnic",
+    "ownership_type": "private",
+    "state_id": "nasarawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "allover-central-polytechnic",
+    "name": "Allover Central Polytechnic",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "anambra-state-polytechnic",
+    "name": "Anambra State Polytechnic",
+    "ownership_type": "state",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "ashi-polytechnic",
+    "name": "Ashi Polytechnic",
+    "ownership_type": "private",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "auchi-polytechnic",
+    "name": "Auchi Polytechnic",
+    "ownership_type": "federal",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "bayelsa-state-polytechnic",
+    "name": "Bayelsa State Polytechnic",
+    "ownership_type": "state",
+    "state_id": "bayelsa",
+    "country_code": "NG"
+  },
+  {
+    "id": "bellarks-polytechnic",
+    "name": "Bellarks Polytechnic",
+    "ownership_type": "private",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "benue-state-polytechnic",
+    "name": "Benue State Polytechnic",
+    "ownership_type": "state",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "best-solution-polytechnic",
+    "name": "Best Solution Polytechnic",
+    "ownership_type": "private",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "binyaminu-usman-polytechnic",
+    "name": "Binyaminu Usman Polytechnic",
+    "ownership_type": "state",
+    "state_id": "jigawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "bolmor-polytechnic",
+    "name": "Bolmor Polytechnic",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "brainfill-polytechnic",
+    "name": "Brainfill Polytechnic",
+    "ownership_type": "private",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "british-transatlantic-polytechnic",
+    "name": "British Transatlantic Polytechnic",
+    "ownership_type": "private",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "calvary-polytechnic",
+    "name": "Calvary Polytechnic",
+    "ownership_type": "private",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "citi-polytechnic",
+    "name": "Citi Polytechnic",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "coastal-polytechnic",
+    "name": "Coastal Polytechnic",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "covenant-polytechnic",
+    "name": "Covenant Polytechnic",
+    "ownership_type": "private",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "crown-polytechnic",
+    "name": "Crown Polytechnic",
+    "ownership_type": "private",
+    "state_id": "ekiti",
+    "country_code": "NG"
+  },
+  {
+    "id": "crystal-polytechnic",
+    "name": "Crystal Polytechnic",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "d-s-adegbenro-ict-polytechnic",
+    "name": "D.S. Adegbenro ICT Polytechnic",
+    "ownership_type": "state",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "daboss-polytechnic",
+    "name": "Daboss Polytechnic",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "delta-state-polytechnic-ogwashi-uku",
+    "name": "Delta State Polytechnic, Ogwashi-Uku",
+    "ownership_type": "state",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "delta-state-polytechnic-otefe-oghara",
+    "name": "Delta State Polytechnic, Otefe-Oghara",
+    "ownership_type": "state",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "distinct-polytechnic",
+    "name": "Distinct Polytechnic",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "dorben-polytechnic",
+    "name": "Dorben Polytechnic",
+    "ownership_type": "private",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "eastern-polytechnic",
+    "name": "Eastern Polytechnic",
+    "ownership_type": "private",
+    "state_id": "rivers",
+    "country_code": "NG"
+  },
+  {
+    "id": "edo-state-polytechnic",
+    "name": "Edo State Polytechnic",
+    "ownership_type": "state",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "edward-olaseni-polytechnic",
+    "name": "Edward Olaseni Polytechnic",
+    "ownership_type": "private",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "ekiti-state-polytechnic",
+    "name": "Ekiti State Polytechnic",
+    "ownership_type": "private",
+    "state_id": "ekiti",
+    "country_code": "NG"
+  },
+  {
+    "id": "el-thomp-polytechnic",
+    "name": "El-Thomp Polytechnic",
+    "ownership_type": "private",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "enugu-state-polytechnic",
+    "name": "Enugu State Polytechnic",
+    "ownership_type": "state",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "enville-polytechnic",
+    "name": "Enville Polytechnic",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-of-oil-and-gas-bonny",
+    "name": "Federal Polytechnic of Oil and Gas, Bonny",
+    "ownership_type": "federal",
+    "state_id": "rivers",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-ado-ekiti",
+    "name": "Federal Polytechnic, Ado-Ekiti",
+    "ownership_type": "federal",
+    "state_id": "ekiti",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-ayede",
+    "name": "Federal Polytechnic, Ayede",
+    "ownership_type": "federal",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-bali",
+    "name": "Federal Polytechnic, Bali",
+    "ownership_type": "federal",
+    "state_id": "taraba",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-bauchi",
+    "name": "Federal Polytechnic, Bauchi",
+    "ownership_type": "federal",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-bida",
+    "name": "Federal Polytechnic, Bida",
+    "ownership_type": "federal",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-damaturu",
+    "name": "Federal Polytechnic, Damaturu",
+    "ownership_type": "federal",
+    "state_id": "yobe",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-daura",
+    "name": "Federal Polytechnic, Daura",
+    "ownership_type": "federal",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-ede",
+    "name": "Federal Polytechnic, Ede",
+    "ownership_type": "federal",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-ekowe",
+    "name": "Federal Polytechnic, Ekowe",
+    "ownership_type": "federal",
+    "state_id": "bayelsa",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-idah",
+    "name": "Federal Polytechnic, Idah",
+    "ownership_type": "federal",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-ilaro",
+    "name": "Federal Polytechnic, Ilaro",
+    "ownership_type": "federal",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-ile-oluji",
+    "name": "Federal Polytechnic, Ile-Oluji",
+    "ownership_type": "federal",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-kabo",
+    "name": "Federal Polytechnic, Kabo",
+    "ownership_type": "federal",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-kaltungo",
+    "name": "Federal Polytechnic, Kaltungo",
+    "ownership_type": "federal",
+    "state_id": "gombe",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-kaura-namoda",
+    "name": "Federal Polytechnic, Kaura Namoda",
+    "ownership_type": "federal",
+    "state_id": "zamfara",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-mubi",
+    "name": "Federal Polytechnic, Mubi",
+    "ownership_type": "federal",
+    "state_id": "adamawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-munguno",
+    "name": "Federal Polytechnic, Munguno",
+    "ownership_type": "federal",
+    "state_id": "borno",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-nasarawa",
+    "name": "Federal Polytechnic, Nasarawa",
+    "ownership_type": "federal",
+    "state_id": "nasarawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-nekede",
+    "name": "Federal Polytechnic, Nekede",
+    "ownership_type": "federal",
+    "state_id": "imo",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-nyak-shandam",
+    "name": "Federal Polytechnic, Nyak Shandam",
+    "ownership_type": "federal",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-offa",
+    "name": "Federal Polytechnic, Offa",
+    "ownership_type": "federal",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-ohodo",
+    "name": "Federal Polytechnic, Ohodo",
+    "ownership_type": "federal",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-oko",
+    "name": "Federal Polytechnic, Oko",
+    "ownership_type": "federal",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-orugun",
+    "name": "Federal Polytechnic, Orugun",
+    "ownership_type": "federal",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-ugep",
+    "name": "Federal Polytechnic, Ugep",
+    "ownership_type": "federal",
+    "state_id": "cross-river",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-ukana",
+    "name": "Federal Polytechnic, Ukana",
+    "ownership_type": "federal",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-polytechnic-wanune",
+    "name": "Federal Polytechnic, Wanune",
+    "ownership_type": "federal",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "fidei-polytechnic",
+    "name": "Fidei Polytechnic",
+    "ownership_type": "private",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "foundation-polytechnic",
+    "name": "Foundation Polytechnic",
+    "ownership_type": "private",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "gateway-polytechnic",
+    "name": "Gateway Polytechnic",
+    "ownership_type": "state",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "gboko-polytechnic",
+    "name": "Gboko Polytechnic",
+    "ownership_type": "private",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "gestric-polytechnic",
+    "name": "Gestric Polytechnic",
+    "ownership_type": "private",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "global-polytechnic",
+    "name": "Global Polytechnic",
+    "ownership_type": "private",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "gloryland-polytechnic",
+    "name": "Gloryland Polytechnic",
+    "ownership_type": "private",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "gombe-state-polytechnic",
+    "name": "Gombe State Polytechnic",
+    "ownership_type": "state",
+    "state_id": "gombe",
+    "country_code": "NG"
+  },
+  {
+    "id": "grace-polytechnic",
+    "name": "Grace Polytechnic",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "graceland-polytechnic",
+    "name": "Graceland Polytechnic",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "grundtvig-polytechnic",
+    "name": "Grundtvig Polytechnic",
+    "ownership_type": "private",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "harry-pass-polytechnic",
+    "name": "Harry Pass Polytechnic",
+    "ownership_type": "private",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "harvard-polytechnic",
+    "name": "Harvard Polytechnic",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "heritage-polytechnic",
+    "name": "Heritage Polytechnic",
+    "ownership_type": "private",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "hope-polytechnic",
+    "name": "Hope Polytechnic",
+    "ownership_type": "private",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "hussaini-adamu-federal-polytechnic",
+    "name": "Hussaini Adamu Federal Polytechnic",
+    "ownership_type": "federal",
+    "state_id": "jigawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "i-con-universal-polytechnic",
+    "name": "I-CON-Universal Polytechnic",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "ibadan-city-polytechnic",
+    "name": "Ibadan City Polytechnic",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "ibom-metropolitan-polytechnic",
+    "name": "Ibom Metropolitan Polytechnic",
+    "ownership_type": "private",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "igbajo-polytechnic",
+    "name": "Igbajo Polytechnic",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "imo-state-polytechnic",
+    "name": "Imo State Polytechnic",
+    "ownership_type": "state",
+    "state_id": "imo",
+    "country_code": "NG"
+  },
+  {
+    "id": "interlink-polytechnic",
+    "name": "Interlink Polytechnic",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "isa-mustapha-agwai-i-polytechnic",
+    "name": "Isa Mustapha Agwai I Polytechnic",
+    "ownership_type": "state",
+    "state_id": "nasarawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "iwo-city-polytechnic",
+    "name": "Iwo City Polytechnic",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "jigawa-state-polytechnic",
+    "name": "Jigawa State Polytechnic",
+    "ownership_type": "state",
+    "state_id": "jigawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "kaduna-polytechnic",
+    "name": "Kaduna Polytechnic",
+    "ownership_type": "federal",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "kano-state-polytechnic",
+    "name": "Kano State Polytechnic",
+    "ownership_type": "state",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "kenule-beeson-saro-wiwa-polytechnic",
+    "name": "Kenule Beeson Saro-Wiwa Polytechnic",
+    "ownership_type": "state",
+    "state_id": "rivers",
+    "country_code": "NG"
+  },
+  {
+    "id": "kings-polytechnic",
+    "name": "Kings Polytechnic",
+    "ownership_type": "private",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "kogi-state-polytechnic",
+    "name": "Kogi State Polytechnic",
+    "ownership_type": "state",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "kwara-state-polytechnic",
+    "name": "Kwara State Polytechnic",
+    "ownership_type": "state",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "lagos-city-polytechnic",
+    "name": "Lagos City Polytechnic",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "lagos-state-polytechnic",
+    "name": "Lagos State Polytechnic",
+    "ownership_type": "state",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "landmark-polytechnic",
+    "name": "Landmark Polytechnic",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "lens-polytechnic",
+    "name": "Lens Polytechnic",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "lighthouse-polytechnic",
+    "name": "Lighthouse Polytechnic",
+    "ownership_type": "private",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "loam-polytechnic",
+    "name": "Loam Polytechnic",
+    "ownership_type": "private",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "mai-idris-alooma-polytechnic",
+    "name": "Mai-Idris Alooma Polytechnic",
+    "ownership_type": "state",
+    "state_id": "yobe",
+    "country_code": "NG"
+  },
+  {
+    "id": "marist-polytechnic",
+    "name": "Marist Polytechnic",
+    "ownership_type": "private",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "mater-dei-polytechnic",
+    "name": "Mater Dei Polytechnic",
+    "ownership_type": "private",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "montgomery-polytechnic",
+    "name": "Montgomery Polytechnic",
+    "ownership_type": "private",
+    "state_id": "ekiti",
+    "country_code": "NG"
+  },
+  {
+    "id": "moshood-abiola-polytechnic",
+    "name": "Moshood Abiola Polytechnic",
+    "ownership_type": "state",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "nacabs-polytechnic",
+    "name": "NACABS Polytechnic",
+    "ownership_type": "private",
+    "state_id": "nasarawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "niger-state-polytechnic",
+    "name": "Niger State Polytechnic",
+    "ownership_type": "state",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "nigerian-army-college-of-environmental-science-and-technology",
+    "name": "Nigerian Army College of Environmental Science and Technology",
+    "ownership_type": "federal",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "nogak-polytechnic",
+    "name": "NOGAK Polytechnic",
+    "ownership_type": "private",
+    "state_id": "cross-river",
+    "country_code": "NG"
+  },
+  {
+    "id": "novelty-polytechnic",
+    "name": "Novelty Polytechnic",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "nuhu-bamalli-polytechnic",
+    "name": "Nuhu Bamalli Polytechnic",
+    "ownership_type": "state",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "odaji-agbo-polytechnic",
+    "name": "Odaji Agbo Polytechnic",
+    "ownership_type": "private",
+    "state_id": "cross-river",
+    "country_code": "NG"
+  },
+  {
+    "id": "oduduwa-polytechnic",
+    "name": "Oduduwa Polytechnic",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "ogun-state-institute-of-technology",
+    "name": "Ogun State Institute of Technology",
+    "ownership_type": "state",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "osun-state-college-of-technology",
+    "name": "Osun State College of Technology",
+    "ownership_type": "state",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "osun-state-polytechnic",
+    "name": "Osun State Polytechnic",
+    "ownership_type": "state",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "paramount-polytechnic",
+    "name": "Paramount Polytechnic",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "plateau-state-polytechnic",
+    "name": "Plateau State Polytechnic",
+    "ownership_type": "state",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "port-harcourt-polytechnic",
+    "name": "Port-Harcourt Polytechnic",
+    "ownership_type": "state",
+    "state_id": "rivers",
+    "country_code": "NG"
+  },
+  {
+    "id": "prime-polytechnic",
+    "name": "Prime Polytechnic",
+    "ownership_type": "private",
+    "state_id": "kogi",
+    "country_code": "NG"
+  },
+  {
+    "id": "ramat-polytechnic",
+    "name": "Ramat Polytechnic",
+    "ownership_type": "state",
+    "state_id": "borno",
+    "country_code": "NG"
+  },
+  {
+    "id": "renaissance-modern-polytechnic",
+    "name": "Renaissance Modern Polytechnic",
+    "ownership_type": "private",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "ronik-polytechnic",
+    "name": "Ronik Polytechnic",
+    "ownership_type": "private",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "rufus-giwa-polytechnic",
+    "name": "Rufus Giwa Polytechnic",
+    "ownership_type": "state",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "saf-polytechnic",
+    "name": "SAF Polytechnic",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "shaka-polytechnic",
+    "name": "Shaka Polytechnic",
+    "ownership_type": "private",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "southern-atlantic-polytechnic",
+    "name": "Southern Atlantic Polytechnic",
+    "ownership_type": "private",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "speedway-polytechnic",
+    "name": "Speedway Polytechnic",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "st-mary-polytechnic",
+    "name": "St. Mary Polytechnic",
+    "ownership_type": "private",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "stars-polytechnic",
+    "name": "Stars Polytechnic",
+    "ownership_type": "private",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "sure-foundation-polytechnic",
+    "name": "Sure Foundation Polytechnic",
+    "ownership_type": "private",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "taraba-state-polytechnic",
+    "name": "Taraba State Polytechnic",
+    "ownership_type": "state",
+    "state_id": "taraba",
+    "country_code": "NG"
+  },
+  {
+    "id": "teedek-polytechnic",
+    "name": "Teedek Polytechnic",
+    "ownership_type": "private",
+    "state_id": "ekiti",
+    "country_code": "NG"
+  },
+  {
+    "id": "temple-gate-polytechnic",
+    "name": "Temple Gate Polytechnic",
+    "ownership_type": "private",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "the-ekiti-city-polytechnic",
+    "name": "The Ekiti City Polytechnic",
+    "ownership_type": "state",
+    "state_id": "ekiti",
+    "country_code": "NG"
+  },
+  {
+    "id": "the-oke-ogun-polytechnic",
+    "name": "The Oke-Ogun Polytechnic",
+    "ownership_type": "state",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "the-polytechnic-adoka",
+    "name": "The Polytechnic Adoka",
+    "ownership_type": "private",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "the-polytechnic-ibadan",
+    "name": "The Polytechnic Ibadan",
+    "ownership_type": "state",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "the-polytechnic-igbo-owu",
+    "name": "The Polytechnic Igbo-Owu",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "the-polytechnic-ile-ife",
+    "name": "The Polytechnic Ile-Ife",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "the-polytechnic-ojoku",
+    "name": "The Polytechnic Ojoku",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "the-polytechnic-aran-orin",
+    "name": "The Polytechnic, Aran-Orin",
+    "ownership_type": "private",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "the-polytechnic-iresi",
+    "name": "The Polytechnic, Iresi",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "the-polytechnic-omou-ekiti",
+    "name": "The Polytechnic, Omou Ekiti",
+    "ownership_type": "private",
+    "state_id": "ekiti",
+    "country_code": "NG"
+  },
+  {
+    "id": "the-west-african-polytechnic",
+    "name": "The West African Polytechnic",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "thomas-mac-getric-polytechnic",
+    "name": "Thomas Mac Getric Polytechnic",
+    "ownership_type": "private",
+    "state_id": "cross-river",
+    "country_code": "NG"
+  },
+  {
+    "id": "tower-polytechnic",
+    "name": "Tower Polytechnic",
+    "ownership_type": "private",
+    "state_id": "oyo",
+    "country_code": "NG"
+  },
+  {
+    "id": "trinity-polytechnic",
+    "name": "Trinity Polytechnic",
+    "ownership_type": "private",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "ultra-excellence-polytechnic",
+    "name": "Ultra Excellence Polytechnic",
+    "ownership_type": "private",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "uma-ukpai-polytechnic",
+    "name": "Uma Ukpai Polytechnic",
+    "ownership_type": "private",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "umaru-ali-shinkafi-polytechnic",
+    "name": "Umaru Ali Shinkafi Polytechnic",
+    "ownership_type": "state",
+    "state_id": "sokoto",
+    "country_code": "NG"
+  },
+  {
+    "id": "united-polytechnic",
+    "name": "United Polytechnic",
+    "ownership_type": "private",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "uyo-city-polytechnic",
+    "name": "Uyo City Polytechnic",
+    "ownership_type": "private",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "valley-view-polytechnic",
+    "name": "Valley View Polytechnic",
+    "ownership_type": "private",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "villanova-polytechnic",
+    "name": "Villanova Polytechnic",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "vinyard-polytechnic",
+    "name": "Vinyard Polytechnic",
+    "ownership_type": "private",
+    "state_id": "nasarawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "waziri-umaru-federal-polytechnic",
+    "name": "Waziri Umaru Federal Polytechnic",
+    "ownership_type": "federal",
+    "state_id": "kebbi",
+    "country_code": "NG"
+  },
+  {
+    "id": "westland-polytechnic",
+    "name": "Westland Polytechnic",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "wolex-polytechnic",
+    "name": "Wolex Polytechnic",
+    "ownership_type": "private",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "yaba-college-of-technology",
+    "name": "Yaba College of Technology",
+    "ownership_type": "federal",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "yenagoa-polytechnic",
+    "name": "Yenagoa Polytechnic",
+    "ownership_type": "private",
+    "state_id": "bayelsa",
+    "country_code": "NG"
+  }
+]

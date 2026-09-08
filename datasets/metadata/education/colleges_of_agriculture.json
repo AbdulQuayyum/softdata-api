@@ -1,0 +1,101 @@
+{
+  "dataset_key": "ng-colleges-of-agriculture",
+  "official_category_name": "Colleges of Agriculture and Related Disciplines",
+  "title": "Nigeria Colleges of Agriculture",
+  "description": "Independently compiled factual reference data for current Nigerian Colleges of Agriculture and Related Disciplines in the NBTE 25th Edition 2025 directory.",
+  "country_code": "NG",
+  "dataset_group": "education",
+  "format": "json",
+  "relative_path": "education/colleges_of_agriculture.json",
+  "schema_path": "schemas/education/colleges_of_agriculture.schema.json",
+  "record_count": 31,
+  "ownership_counts": {
+    "state": 7,
+    "federal": 23,
+    "private": 1
+  },
+  "state_coverage": [
+    "bauchi",
+    "borno",
+    "ebonyi",
+    "edo",
+    "gombe",
+    "imo",
+    "kaduna",
+    "kano",
+    "kogi",
+    "lagos",
+    "niger",
+    "ondo",
+    "osun",
+    "oyo",
+    "plateau",
+    "zamfara"
+  ],
+  "version": "1.0.0",
+  "license_id": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "methodology": "SoftData reconciled the complete 32-entry NBTE Colleges of Agriculture and Related Disciplines section before generating the dataset. Names and locations were normalized to current canonical forms and mapped to ng-states. The source-marked Zuru conversion was excluded; no university, polytechnic, monotechnic, health, nursing, technical-college, IEI, VEI, research-only or closed institution was imported.",
+  "source_hierarchy": [
+    "National Board for Technical Education",
+    "Digital NBTE approved-institution directory",
+    "NBTE 25th Edition 2025 Directory",
+    "Federal Ministry of Agriculture and Food Security",
+    "Federal Ministry of Education",
+    "Joint Admissions and Matriculation Board",
+    "official state-government publications",
+    "official institution websites",
+    "secondary sources for discovery only"
+  ],
+  "sources": [
+    {
+      "organization": "National Board for Technical Education",
+      "title": "25th Edition 2025 Directory of Accredited Programmes",
+      "url": "https://web.nbte.gov.ng/sites/default/files/2025-11/25th%20Edition%202025%20Directory.pdf",
+      "purpose": "Primary roster boundary for Colleges of Agriculture and Related Disciplines.",
+      "accessed_at": "2026-09-07",
+      "publication_date": "2025-11",
+      "response_bytes": 13841731,
+      "sha256": "11c7e9b7e6f63136ae114c1bc8cc6884280c5555aad64a4b17cb705bbbbafcda",
+      "raw_record_count": 32,
+      "categories_included": [
+        "Colleges of Agriculture and Related Disciplines"
+      ],
+      "current_active_only": false,
+      "missing_or_incomplete_fields": [
+        "state_id is not a source field",
+        "some source names use source abbreviations or punctuation variants",
+        "the source marks College of Agriculture, Zuru as converted to a university"
+      ]
+    },
+    {
+      "organization": "National Board for Technical Education",
+      "title": "Approved Institutions",
+      "url": "https://web.nbte.gov.ng/tvet%20institutions",
+      "purpose": "Confirm the NBTE category separation from polytechnics, monotechnics, colleges and IEIs.",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "inclusion_boundary": "Only entries in the NBTE Colleges of Agriculture and Related Disciplines category that remain current regulated college identities.",
+  "exclusion_rules": [
+    "Universities and faculties within universities",
+    "polytechnics and monotechnics",
+    "health and nursing institutions",
+    "technical colleges, IEIs and VEIs",
+    "research institutes without a separately approved college",
+    "closed, withdrawn or converted institutions"
+  ],
+  "transitions_and_former_names": "Former names, conversions and category transitions are recorded in the reconciliation manifest. College of Agriculture, Zuru is excluded because the source marks it converted to a university.",
+  "update_frequency": "Review on each new NBTE directory or material regulatory roster update.",
+  "known_limitations": [
+    "The NBTE source is not active-only and does not normalize state_id.",
+    "Institution approval, ownership and naming can change between directory editions.",
+    "No specialisation field is exposed in the public contract; source category is preserved in metadata."
+  ],
+  "maintainers": [
+    "SoftData API contributors"
+  ],
+  "rights": "SoftData compilation, schema and metadata are CC BY 4.0. NBTE source publications retain their own rights. This pass adds only the static dataset foundation; websites, logos and API routes are deferred.",
+  "verified_at": "2026-09-07",
+  "reconciliation_path": "metadata/education/colleges_of_agriculture_reconciliation.json"
+}

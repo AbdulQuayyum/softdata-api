@@ -1,0 +1,294 @@
+{
+  "dataset_key": "ng-colleges-of-agriculture",
+  "official_category_name": "Colleges of Agriculture and Related Disciplines",
+  "source_snapshot": {
+    "organization": "National Board for Technical Education",
+    "title": "25th Edition 2025 Directory of Accredited Programmes",
+    "url": "https://web.nbte.gov.ng/sites/default/files/2025-11/25th%20Edition%202025%20Directory.pdf",
+    "purpose": "Primary roster boundary for Colleges of Agriculture and Related Disciplines.",
+    "accessed_at": "2026-09-07",
+    "publication_date": "2025-11",
+    "response_bytes": 13841731,
+    "sha256": "11c7e9b7e6f63136ae114c1bc8cc6884280c5555aad64a4b17cb705bbbbafcda",
+    "raw_record_count": 32,
+    "categories_included": [
+      "Colleges of Agriculture and Related Disciplines"
+    ],
+    "current_active_only": false,
+    "missing_or_incomplete_fields": [
+      "state_id is not a source field",
+      "some source names use source abbreviations or punctuation variants",
+      "the source marks College of Agriculture, Zuru as converted to a university"
+    ]
+  },
+  "raw_record_count": 32,
+  "final_record_count": 31,
+  "classification_counts": {
+    "retain_active": 31,
+    "exclude_converted": 1
+  },
+  "arithmetic": "32 source entries = 31 retained + 1 converted institution excluded.",
+  "records": [
+    {
+      "source_name": "Audu Bako College of Agriculture, Danbatta",
+      "canonical_name": "Audu Bako College of Agriculture, Danbatta",
+      "ownership_type": "state",
+      "state_id": "kano",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Bauchi State College of Agriculture, Bauchi",
+      "canonical_name": "Bauchi State College of Agriculture, Bauchi",
+      "ownership_type": "state",
+      "state_id": "bauchi",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "College of Agriculture and Animal Health, Bakura",
+      "canonical_name": "College of Agriculture and Animal Health, Bakura",
+      "ownership_type": "state",
+      "state_id": "zamfara",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "College of Agriculture and Animal Science, DAC-ABU, Mando",
+      "canonical_name": "College of Agriculture and Animal Science, DAC-ABU, Mando",
+      "ownership_type": "federal",
+      "state_id": "kaduna",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "College of Agriculture, DAC-ABU, Kabba",
+      "canonical_name": "College of Agriculture, DAC-ABU, Kabba",
+      "ownership_type": "federal",
+      "state_id": "kogi",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Edo State College of Agriculture and Natural Resources, Iguoriakhi",
+      "canonical_name": "Edo State College of Agriculture and Natural Resources, Iguoriakhi",
+      "ownership_type": "state",
+      "state_id": "edo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Federal College of Agricultural Produce, Kano",
+      "canonical_name": "Federal College of Agricultural Produce, Kano",
+      "ownership_type": "federal",
+      "state_id": "kano",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Federal College of Agriculture, Akure",
+      "canonical_name": "Federal College of Agriculture, Akure",
+      "ownership_type": "federal",
+      "state_id": "ondo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Federal College of Agriculture, Ishiagu",
+      "canonical_name": "Federal College of Agriculture, Ishiagu",
+      "ownership_type": "federal",
+      "state_id": "ebonyi",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Federal College of Agriculture, Moor Plantation, Ibadan",
+      "canonical_name": "Federal College of Agriculture, Moor Plantation, Ibadan",
+      "ownership_type": "federal",
+      "state_id": "oyo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Federal College of Animal Health and Production Technology, Ibadan",
+      "canonical_name": "Federal College of Animal Health and Production Technology, Ibadan",
+      "ownership_type": "federal",
+      "state_id": "oyo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Federal College of Animal Health and Production Technology, Vom",
+      "canonical_name": "Federal College of Animal Health and Production Technology, Vom",
+      "ownership_type": "federal",
+      "state_id": "plateau",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Federal College of Fisheries and Marine Technology, Victoria Island",
+      "canonical_name": "Federal College of Fisheries and Marine Technology, Victoria Island",
+      "ownership_type": "federal",
+      "state_id": "lagos",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Federal College of Forestry Mechanisation, Afaka",
+      "canonical_name": "Federal College of Forestry Mechanisation, Afaka",
+      "ownership_type": "federal",
+      "state_id": "kaduna",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Federal College of Forestry Resources Management, Fugar",
+      "canonical_name": "Federal College of Forestry Resources Management, Fugar",
+      "ownership_type": "federal",
+      "state_id": "edo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Federal College of Forestry Resources Management, Ishiagu",
+      "canonical_name": "Federal College of Forestry Resources Management, Ishiagu",
+      "ownership_type": "federal",
+      "state_id": "ebonyi",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Federal College of Forestry Resources Management, Maiduguri",
+      "canonical_name": "Federal College of Forestry Resources Management, Maiduguri",
+      "ownership_type": "federal",
+      "state_id": "borno",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Federal College of Forestry, Jericho Hill, Ibadan",
+      "canonical_name": "Federal College of Forestry, Jericho Hill, Ibadan",
+      "ownership_type": "federal",
+      "state_id": "oyo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Federal College of Forestry, Jos",
+      "canonical_name": "Federal College of Forestry, Jos",
+      "ownership_type": "federal",
+      "state_id": "plateau",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Federal College of Freshwater Fisheries Technology, Baga",
+      "canonical_name": "Federal College of Freshwater Fisheries Technology, Baga",
+      "ownership_type": "federal",
+      "state_id": "borno",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Federal College of Freshwater Fisheries Technology, New Bussa",
+      "canonical_name": "Federal College of Freshwater Fisheries Technology, New Bussa",
+      "ownership_type": "federal",
+      "state_id": "niger",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Federal College of Horticultural Technology, Dadin Kowa",
+      "canonical_name": "Federal College of Horticultural Technology, Dadin Kowa",
+      "ownership_type": "federal",
+      "state_id": "gombe",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Federal College of Land Resources Technology, Kuru",
+      "canonical_name": "Federal College of Land Resources Technology, Kuru",
+      "ownership_type": "federal",
+      "state_id": "plateau",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Federal College of Land Resources Technology, Owerri",
+      "canonical_name": "Federal College of Land Resources Technology, Owerri",
+      "ownership_type": "federal",
+      "state_id": "imo",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Federal College of Veterinary and Medical Laboratory Technology, Vom",
+      "canonical_name": "Federal College of Veterinary and Medical Laboratory Technology, Vom",
+      "ownership_type": "federal",
+      "state_id": "plateau",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Federal College of Wildlife Management, New Bussa",
+      "canonical_name": "Federal College of Wildlife Management, New Bussa",
+      "ownership_type": "federal",
+      "state_id": "niger",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Mohammet Lawan College of Agriculture, Maiduguri",
+      "canonical_name": "Mohammet Lawan College of Agriculture, Maiduguri",
+      "ownership_type": "state",
+      "state_id": "borno",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Niger State College of Agriculture, Mokwa",
+      "canonical_name": "Niger State College of Agriculture, Mokwa",
+      "ownership_type": "state",
+      "state_id": "niger",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Plateau State College of Agriculture, Garkawa",
+      "canonical_name": "Plateau State College of Agriculture, Garkawa",
+      "ownership_type": "state",
+      "state_id": "plateau",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Samaru College of Agriculture, DAC-ABU, Zaria",
+      "canonical_name": "Samaru College of Agriculture, DAC-ABU, Zaria",
+      "ownership_type": "federal",
+      "state_id": "kaduna",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "Usteem College of Agriculture, Osogbo",
+      "canonical_name": "Usteem College of Agriculture, Osogbo",
+      "ownership_type": "private",
+      "state_id": "osun",
+      "decision": "retain_active",
+      "reason": "Retained from the NBTE Colleges of Agriculture and Related Disciplines section."
+    },
+    {
+      "source_name": "College of Agriculture, Zuru",
+      "canonical_name": null,
+      "ownership_type": "state",
+      "state_id": "kebbi",
+      "decision": "exclude_converted",
+      "reason": "The NBTE source explicitly marks this institution as converted to a university; the current regulated identity belongs in the university roster, not this dataset."
+    }
+  ],
+  "notes": [
+    "The source category includes agricultural, fisheries, forestry, animal health, veterinary, land-resource and horticultural disciplines.",
+    "One record per current legal institution or independently approved campus; multiple campuses of a single college are represented only where the source lists them independently.",
+    "College of Agriculture, Zuru is explicitly marked converted to a university and is excluded."
+  ]
+}

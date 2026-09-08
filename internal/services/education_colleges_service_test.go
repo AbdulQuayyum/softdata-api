@@ -62,6 +62,70 @@ func (s *collegeServiceRepositoryStub) GetCollegeOfEducation(_ context.Context, 
 	return models.CollegeOfEducation{}, interfaces.ErrCollegeOfEducationNotFound
 }
 
+func (s *collegeServiceRepositoryStub) ListPolytechnics(context.Context) ([]models.Polytechnic, error) {
+	return nil, nil
+}
+
+func (s *collegeServiceRepositoryStub) GetPolytechnic(context.Context, string) (models.Polytechnic, error) {
+	return models.Polytechnic{}, interfaces.ErrPolytechnicNotFound
+}
+
+func (s *collegeServiceRepositoryStub) ListMonotechnics(context.Context) ([]models.Monotechnic, error) {
+	return nil, nil
+}
+
+func (s *collegeServiceRepositoryStub) GetMonotechnic(context.Context, string) (models.Monotechnic, error) {
+	return models.Monotechnic{}, interfaces.ErrMonotechnicNotFound
+}
+
+func (s *collegeServiceRepositoryStub) ListCollegesOfAgriculture(context.Context) ([]models.CollegeOfAgriculture, error) {
+	return nil, nil
+}
+
+func (s *collegeServiceRepositoryStub) GetCollegeOfAgriculture(context.Context, string) (models.CollegeOfAgriculture, error) {
+	return models.CollegeOfAgriculture{}, interfaces.ErrCollegeOfAgricultureNotFound
+}
+
+func (s *collegeServiceRepositoryStub) ListCollegesOfHealthSciencesAndTechnology(context.Context) ([]models.CollegeOfHealthSciencesAndTechnology, error) {
+	return nil, nil
+}
+
+func (s *collegeServiceRepositoryStub) GetCollegeOfHealthSciencesAndTechnology(context.Context, string) (models.CollegeOfHealthSciencesAndTechnology, error) {
+	return models.CollegeOfHealthSciencesAndTechnology{}, interfaces.ErrCollegeOfHealthSciencesAndTechnologyNotFound
+}
+
+func (s *collegeServiceRepositoryStub) ListCollegesOfNursingAndMidwifery(context.Context) ([]models.CollegeOfNursingAndMidwifery, error) {
+	return nil, nil
+}
+
+func (s *collegeServiceRepositoryStub) GetCollegeOfNursingAndMidwifery(context.Context, string) (models.CollegeOfNursingAndMidwifery, error) {
+	return models.CollegeOfNursingAndMidwifery{}, interfaces.ErrCollegeOfNursingAndMidwiferyNotFound
+}
+
+func (s *collegeServiceRepositoryStub) ListTechnicalColleges(context.Context) ([]models.TechnicalCollege, error) {
+	return nil, nil
+}
+
+func (s *collegeServiceRepositoryStub) GetTechnicalCollege(context.Context, string) (models.TechnicalCollege, error) {
+	return models.TechnicalCollege{}, interfaces.ErrTechnicalCollegeNotFound
+}
+
+func (s *collegeServiceRepositoryStub) ListVocationalEnterpriseInstitutions(context.Context) ([]models.VocationalEnterpriseInstitution, error) {
+	return nil, nil
+}
+
+func (s *collegeServiceRepositoryStub) GetVocationalEnterpriseInstitution(context.Context, string) (models.VocationalEnterpriseInstitution, error) {
+	return models.VocationalEnterpriseInstitution{}, interfaces.ErrVocationalEnterpriseInstitutionNotFound
+}
+
+func (s *collegeServiceRepositoryStub) ListPrimaryAndSecondarySchools(context.Context, interfaces.PrimaryAndSecondarySchoolQuery) (interfaces.PrimaryAndSecondarySchoolListResult, error) {
+	return interfaces.PrimaryAndSecondarySchoolListResult{}, interfaces.ErrInvalidPrimaryAndSecondarySchoolQuery
+}
+
+func (s *collegeServiceRepositoryStub) GetPrimaryAndSecondarySchool(context.Context, string) (models.PrimaryAndSecondarySchool, error) {
+	return models.PrimaryAndSecondarySchool{}, interfaces.ErrPrimaryAndSecondarySchoolNotFound
+}
+
 func TestEducationServiceListCollegesOfEducation(t *testing.T) {
 	t.Parallel()
 

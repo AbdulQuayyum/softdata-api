@@ -14,6 +14,10 @@ datasets/
 │   └── states.json
 ├── education/
 │   ├── colleges_of_education.json
+│   ├── colleges_of_agriculture.json
+│   ├── colleges_of_health_sciences_and_technology.json
+│   ├── monotechnics.json
+│   ├── polytechnics.json
 │   └── universities.json
 ├── finance/
 │   ├── development_finance_institutions.json
@@ -34,6 +38,14 @@ datasets/
 │   │   ├── time_zones.json
 │   │   └── states.json
 │   ├── education/
+│   │   ├── colleges_of_education.json
+│   │   ├── colleges_of_agriculture.json
+│   │   ├── colleges_of_agriculture_reconciliation.json
+│   │   ├── colleges_of_health_sciences_and_technology.json
+│   │   ├── colleges_of_health_sciences_and_technology_reconciliation.json
+│   │   ├── monotechnics.json
+│   │   ├── monotechnics_reconciliation.json
+│   │   ├── polytechnics.json
 │   │   └── universities.json
 │   └── finance/
 │       ├── development_finance_institutions.json
@@ -55,6 +67,11 @@ datasets/
 │   │   ├── time_zones.schema.json
 │   │   └── states.schema.json
 │   ├── education/
+│   │   ├── colleges_of_education.schema.json
+│   │   ├── colleges_of_agriculture.schema.json
+│   │   ├── colleges_of_health_sciences_and_technology.schema.json
+│   │   ├── monotechnics.schema.json
+│   │   ├── polytechnics.schema.json
 │   │   └── universities.schema.json
 │   └── finance/
 │       ├── development_finance_institutions.schema.json
@@ -79,7 +96,15 @@ Regulated-finance logo assets are embedded under `assets/financial-institutions/
 - `geography/states.json` is the data file.
 - `geography/time_zones.json` is the compiled catalogue of canonical IANA time zones from `zone1970.tab`.
 - `education/colleges_of_education.json` is the compiled catalogue of current NCCE-listed colleges of education.
+- `education/polytechnics.json` is the 168-record static catalogue of current NBTE-listed Nigerian polytechnics.
+- `education/monotechnics.json` is the 86-record static catalogue of NBTE Specialised Institutions (Monotechnics).
+- `education/vocational_enterprise_institutions.json` is the 25-record static catalogue of current Digital NBTE-listed Vocational Enterprise Institutions. It excludes Skill Training Centers, Master Craft Persons and abolished or upgraded IEIs.
+- `education/colleges_of_agriculture.json` is the 31-record static catalogue of NBTE Colleges of Agriculture and Related Disciplines.
+- `education/colleges_of_health_sciences_and_technology.json` is the 98-record static catalogue of NBTE Colleges of Health Sciences and Technology.
+- `education/colleges_of_nursing_and_midwifery.json` is a 152-record NMCN December 2025 approved-schools snapshot across 31 states. It is not a complete live register; 188 unresolved extracted rows are explicitly excluded in the reconciliation manifest.
+- `education/technical_colleges.json` is a 115-record NBTE Technical Colleges directory snapshot. The source page exposes 122 numbered entries while NBTE separately reports 153 institutions; the difference is documented and no institutions are inferred.
 - `education/universities.json` is the compiled catalogue of current NUC-listed Nigerian universities.
+- `education/primary_and_secondary_schools.json` is the 166,604-record UBEC 2022 source-observed school/campus snapshot. It is not a current licensing register; its reconciliation preserves every source row and explicitly quarantines 69 ambiguous Osun geography rows.
 - `finance/international_money_transfer_operators.json` is the compiled register snapshot of current CBN-listed IMTO entries, with optional verified website URLs.
 - `finance/currencies.json` is the compiled snapshot of current ISO 4217 monetary currencies.
 - `finance/payment_service_providers.json` is the compiled register snapshot of payment-service-provider memberships.
@@ -99,13 +124,27 @@ Regulated-finance logo assets are embedded under `assets/financial-institutions/
 - `schemas/geography/states.schema.json` describes the record contract.
 - `schemas/geography/time_zones.schema.json` describes the canonical IANA time-zone record contract.
 - `schemas/education/colleges_of_education.schema.json` describes the college-of-education record contract.
+- `schemas/education/polytechnics.schema.json` describes the five-field polytechnic record contract.
+- `schemas/education/monotechnics.schema.json` describes the five-field monotechnic record contract.
+- `schemas/education/colleges_of_agriculture.schema.json` describes the five-field college-of-agriculture record contract.
+- `schemas/education/colleges_of_health_sciences_and_technology.schema.json` describes the five-field health-college record contract.
+- `schemas/education/colleges_of_nursing_and_midwifery.schema.json` describes the five-field nursing and midwifery institution contract.
+- `schemas/education/technical_colleges.schema.json` describes the five-field technical-college snapshot contract.
 - `schemas/education/universities.schema.json` describes the university record contract.
+- `schemas/education/primary_and_secondary_schools.schema.json` describes the UBEC snapshot contract, including optional ownership, LGA and source-code fields and normalized education levels.
 - `schemas/finance/international_money_transfer_operators.schema.json` describes the IMTO record contract.
 - `schemas/finance/currencies.schema.json` describes the currency record contract.
 - `schemas/finance/payment_service_providers.schema.json` describes the payment-service-provider record contract.
 - The six related Nigerian regulated-finance schemas use Draft 2020-12 arrays with fixed snapshot counts, `NG` country codes, deterministic IDs and optional code, website and logo fields.
 - `metadata/education/universities.json` records provenance, versioning and licensing details for the university catalogue.
+- `metadata/education/primary_and_secondary_schools.json`, its checkpoint, reconciliation index and 37 state/FCT partitions record UBEC source hashes, row-level decisions, level mappings, geography aliases and the source-observed disclaimer.
 - `metadata/education/colleges_of_education.json` records provenance, versioning and licensing details for the colleges-of-education catalogue.
+- `metadata/education/polytechnics.json` and `metadata/education/polytechnics_reconciliation.json` record source provenance and roster decisions for polytechnics.
+- `metadata/education/monotechnics.json` and `metadata/education/monotechnics_reconciliation.json` record source provenance and roster decisions for specialised institutions.
+- `metadata/education/colleges_of_agriculture.json` and `metadata/education/colleges_of_agriculture_reconciliation.json` record source provenance and roster decisions for agricultural colleges.
+- `metadata/education/colleges_of_health_sciences_and_technology.json` and its reconciliation manifest record the NBTE health-college boundary and exclusions.
+- `metadata/education/colleges_of_nursing_and_midwifery.json` and its reconciliation manifest record NMCN approval, programme aggregation and institution-level exclusions.
+- `metadata/education/technical_colleges.json` and its reconciliation manifest record the NBTE directory snapshot, exclusions and the separate 153-institution aggregate.
 - `metadata/geography/geopolitical_zones.json` records provenance, versioning and licensing details for the zone catalogue.
 - `metadata/geography/lgas.json` records provenance, versioning and licensing details for the LGA catalogue.
 - `metadata/geography/states.json` records provenance, versioning and licensing details.
