@@ -1168,8 +1168,15 @@ paths:
     post:
       tags: [Authentication]
       summary: Log out
+      description: Revoke the session using its current refresh token. After refreshing, use the newly returned access and refresh tokens.
       security:
         - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RefreshRequest"
       responses:
         "204":
           description: Logged out

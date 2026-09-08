@@ -2613,7 +2613,7 @@
             "header": [
 
             ],
-            "description": "Log out\n\n\nMethod: POST\nPath: /v1/auth/logout\n\nAuthentication: Bearer access token.\n\nExpected responses: 204",
+            "description": "Log out\n\n\nMethod: POST\nPath: /v1/auth/logout\n\nAuthentication: Bearer access token. Send the current refresh token in the JSON body. After refreshing, update accessToken and refreshToken with the newly returned tokens.\n\nExpected responses: 204",
             "url": {
               "raw": "{{baseUrl}}/v1/auth/logout",
               "host": [
@@ -2627,6 +2627,15 @@
               "query": [
 
               ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refresh_token\": \"{{refreshToken}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
             },
             "auth": {
               "type": "bearer",
