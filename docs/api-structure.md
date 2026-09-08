@@ -247,6 +247,8 @@ softdata-api/
 │   │   ├── app.go
 │   │   ├── app_test.go
 │   │   ├── dependencies.go
+│   │   ├── healthcare.go
+│   │   ├── healthcare_test.go
 │   │   ├── education_test.go
 │   │   ├── finance_test.go
 │   │   ├── microfinance_bootstrap_test.go
@@ -361,6 +363,8 @@ softdata-api/
 │   │   ├── finance_test.go
 │   │   ├── geography.go
 │   │   ├── geography_test.go
+│   │   ├── healthcare.go
+│   │   ├── health_facilities_test.go
 │   │   ├── lgas_test.go
 │   │   ├── session.go
 │   │   ├── monotechnics_test.go
@@ -462,6 +466,8 @@ softdata-api/
 │   │   ├── http_router_test.go
 │   │   ├── public_routes.go
 │   │   ├── public_routes_test.go
+│   │   ├── healthcare_production_test.go
+│   │   ├── healthcare_routes_test.go
 │   │   ├── regulated_finance_assets.go
 │   │   ├── regulated_finance_routes.go
 │   │   ├── regulated_finance_routes_test.go
@@ -554,7 +560,7 @@ Environment-driven application configuration for the server, database, security,
 
 ### `datasets/`
 
-Versioned geography, education, healthcare and finance datasets, schemas, provenance metadata, reconciliation manifests, licensing notes, and embedded runtime assets. `embedded.go` embeds the JSON dataset directories used when a deployment cannot provide the configured filesystem dataset path. Education includes paginated primary and secondary schools plus institution snapshots for universities, colleges of education, polytechnics, monotechnics, colleges of agriculture, health sciences and technology, nursing and midwifery, technical colleges, and vocational enterprise institutions. The healthcare foundation contains the source-verified unified health-facility snapshot and deterministic state/FCT reconciliation partitions; it is not runtime-integrated in this pass. Regulated-finance logo provenance is recorded in `datasets/assets/financial-institutions/ng/ATTRIBUTION.md`; the FHA Homes asset is explicitly a Federal Housing Authority parent-brand representative mark.
+Versioned geography, education, healthcare and finance datasets, schemas, provenance metadata, reconciliation manifests, licensing notes, and embedded runtime assets. `embedded.go` embeds the JSON dataset directories used when a deployment cannot provide the configured filesystem dataset path. Education includes paginated primary and secondary schools plus institution snapshots for universities, colleges of education, polytechnics, monotechnics, colleges of agriculture, health sciences and technology, nursing and midwifery, technical colleges, and vocational enterprise institutions. The healthcare area contains the source-verified unified health-facility snapshot and deterministic state/FCT reconciliation partitions; runtime loading uses only the public dataset and geography references, not reconciliation files. Regulated-finance logo provenance is recorded in `datasets/assets/financial-institutions/ng/ATTRIBUTION.md`; the FHA Homes asset is explicitly a Federal Housing Authority parent-brand representative mark.
 
 ### `internal/database/`
 
@@ -562,7 +568,7 @@ PostgreSQL pool creation, readiness checks, and generated sqlc persistence code.
 
 ### `internal/handlers/`
 
-HTTP handlers that validate requests, call services, and produce shared response envelopes. Education handlers are split between the existing education handler and `education_extended_handler.go`, which serves the additional institution categories and paginated schools. `healthcare_handler.go` serves the paginated health-facility list and detail contract; production route registration remains deferred.
+HTTP handlers that validate requests, call services, and produce shared response envelopes. Education handlers are split between the existing education handler and `education_extended_handler.go`, which serves the additional institution categories and paginated schools. `healthcare_handler.go` serves the paginated health-facility list and detail contract; production routes apply the same public API-key, rate-limit, and usage-tracking middleware policy as other public dataset routes.
 
 ### `internal/middlewares/`
 
@@ -593,7 +599,7 @@ Request validation and normalization helpers for authentication, accounts, API k
 
 ### `internal/router/`
 
-HTTP router construction, route registration, public and authenticated route groups, route cataloging, and embedded flag, commercial-bank, and regulated-finance logo serving.
+HTTP router construction, route registration, public and authenticated route groups, route cataloging, stable usage templates, and embedded flag, commercial-bank, and regulated-finance logo serving. Healthcare production routes are registered as GET-only collection and facility-detail routes under `/v1/healthcare/health-facilities`.
 
 ### `internal/redis/`
 
