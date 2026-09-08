@@ -310,14 +310,23 @@ This source-observed snapshot contains 166,604 reconciled school/campus records 
 
 The static foundation contains 98 NBTE Colleges of Health Sciences and Technology: 4 federal, 31 state and 63 private across 33 states. It exposes only the five roster fields. Hospital-only schools and institutes are excluded, and nursing and midwifery institutions are reserved for a separate future dataset. Website/logo enrichment and API integration are intentionally deferred.
 
-### Colleges of Nursing and Midwifery
+### `ng-colleges-of-nursing-and-midwifery`
 
 - `datasets/education/colleges_of_nursing_and_midwifery.json`
 - `datasets/schemas/education/colleges_of_nursing_and_midwifery.schema.json`
 - `datasets/metadata/education/colleges_of_nursing_and_midwifery.json`
 - `datasets/metadata/education/colleges_of_nursing_and_midwifery_reconciliation.json`
 
-The draft, non-public reconstruction currently contains 176 provisional institution-level records: 13 federal, 57 state and 106 private across 32 states. NMCN's webpage reports 290 training institutions, while its December 2025 PDF contains 340 numbered table rows, 36 section headings, 494 programme markers and 329 unique printed row labels. Institution-level aggregation remains unresolved, and the preserved generated 290-entry reconciliation is not exact source evidence. Do not treat this dataset as production-ready. Website/logo enrichment and API integration are intentionally deferred.
+The active package contains 156 institution/campus records: 13 federal, 52 state and 91 private across 32 states. It is the NMCN December 2025 approved-schools snapshot, not a complete live register. The reconciliation preserves 376 extracted numbered-row candidates and explicitly excludes 220 unresolved rows; NMCN separately reports 290 training institutions. Websites, logos and API integration remain intentionally deferred.
+
+### `ng-technical-colleges`
+
+- `datasets/education/technical_colleges.json`
+- `datasets/schemas/education/technical_colleges.schema.json`
+- `datasets/metadata/education/technical_colleges.json`
+- `datasets/metadata/education/technical_colleges_reconciliation.json`
+
+The active package contains 115 institution records retained from 122 numbered entries in the official NBTE Technical Colleges directory. It is a dated row-level directory snapshot, not a complete live national register. NBTE separately reports 153 technical colleges; the 38-entry coverage difference is not filled with inferred institutions. Websites, logos and API integration remain intentionally deferred.
 
 ## Directory Structure
 

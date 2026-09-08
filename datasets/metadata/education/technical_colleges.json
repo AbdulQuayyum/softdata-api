@@ -1,0 +1,30 @@
+{
+  "dataset_key": "ng-technical-colleges",
+  "status": "active",
+  "snapshot": true,
+  "publicly_published": true,
+  "title": "Nigeria Technical Colleges (NBTE Directory Snapshot)",
+  "description": "Dated row-level snapshot of the official NBTE Technical Colleges directory; not a complete live national register.",
+  "country_code": "NG",
+  "record_count": 115,
+  "ownership_counts": {
+    "state": 103,
+    "private": 1,
+    "federal": 11
+  },
+  "official_aggregate_total": 153,
+  "row_level_directory_entries": 123,
+  "coverage_limitation": "NBTE separately reports 153 institutions while this directory exposes 123 numbered entries; unidentified institutions are not inferred.",
+  "relative_path": "education/technical_colleges.json",
+  "schema_path": "schemas/education/technical_colleges.schema.json",
+  "sources": [
+    {
+      "url": "https://web.nbte.gov.ng/technical%20colleges1",
+      "accessed_at": "2026-09-08",
+      "response_bytes": 250471,
+      "sha256": "34b21b6cfbca5da12d48d305c902cb8aaf01be09102ffd4f2b9b7f141de42dc8"
+    }
+  ],
+  "reconciliation_path": "metadata/education/technical_colleges_reconciliation.json",
+  "verified_at": "2026-09-08"
+}

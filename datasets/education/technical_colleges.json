@@ -1,0 +1,807 @@
+[
+  {
+    "id": "agbor-technical-college-agbor",
+    "name": "Agbor Technical College, Agbor",
+    "ownership_type": "state",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "ahiara-science-technical-college-ahiara",
+    "name": "Ahiara Science & Technical College, Ahiara",
+    "ownership_type": "state",
+    "state_id": "imo",
+    "country_code": "NG"
+  },
+  {
+    "id": "apj-science-and-technical-college-km-24-abuja-keffi-road-masaka-nasarawa-state",
+    "name": "APJ Science and Technical College, KM 24 Abuja – Keffi Road, Masaka, Nasarawa State",
+    "ownership_type": "private",
+    "state_id": "nasarawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "benue-state-university-technical-college-makurdi",
+    "name": "Benue State University Technical College, Makurdi",
+    "ownership_type": "state",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "community-technical-college-calabar",
+    "name": "Community Technical College, Calabar",
+    "ownership_type": "state",
+    "state_id": "cross-river",
+    "country_code": "NG"
+  },
+  {
+    "id": "community-technical-college-ikot-akata",
+    "name": "Community Technical College, Ikot-Akata",
+    "ownership_type": "state",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-science-and-technical-college-orozo-abuja",
+    "name": "Federal Science and Technical College, Orozo, Abuja",
+    "ownership_type": "federal",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-science-and-technical-college-shiroro",
+    "name": "Federal Science and Technical, College, Shiroro",
+    "ownership_type": "federal",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-science-technical-college-ikare-akoko",
+    "name": "Federal Science Technical College, Ikare Akoko",
+    "ownership_type": "federal",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-science-technical-college-ilesa",
+    "name": "Federal Science Technical College, Ilesa",
+    "ownership_type": "federal",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-science-technical-college-jalingo-p-m-b-1022-jalingo-taraba-state",
+    "name": "Federal Science Technical College, Jalingo, P.M.B. 1022, Jalingo, Taraba State",
+    "ownership_type": "federal",
+    "state_id": "taraba",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-science-technical-college-kafanchan-p-m-b-1017-kafanchan",
+    "name": "Federal Science Technical College, Kafanchan, P. M. B. 1017, Kafanchan",
+    "ownership_type": "federal",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-science-technical-college-tungbo-bayelsa-state",
+    "name": "Federal Science Technical College, Tungbo, Bayelsa State",
+    "ownership_type": "federal",
+    "state_id": "bayelsa",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-science-technical-college-uromi-p-m-b-4-uromi",
+    "name": "Federal Science Technical College, Uromi, P.M.B. 4, Uromi",
+    "ownership_type": "federal",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-science-technical-college-yaba",
+    "name": "Federal Science Technical College, Yaba",
+    "ownership_type": "federal",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-science-technical-college-zik-avenue-awka-p-m-b-5006-awka-anambra-state",
+    "name": "Federal Science Technical College, Zik Avenue, Awka, P.M.B. 5006, Awka, Anambra State",
+    "ownership_type": "federal",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "federal-science-technical-college-zuru-p-m-b-1022-zuru",
+    "name": "Federal Science Technical College, Zuru, P.M.B. 1022, Zuru",
+    "ownership_type": "federal",
+    "state_id": "kebbi",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-commercial-college-bagauda",
+    "name": "Government Commercial College, Bagauda",
+    "ownership_type": "state",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-day-technical-college-azare",
+    "name": "Government Day Technical College, Azare",
+    "ownership_type": "state",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-day-technical-college-bauchi",
+    "name": "Government Day Technical College, Bauchi",
+    "ownership_type": "state",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-day-technical-college-gamawa",
+    "name": "Government Day Technical College, Gamawa",
+    "ownership_type": "state",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-day-technical-college-gar",
+    "name": "Government Day Technical College, Gar",
+    "ownership_type": "state",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-day-technical-college-kafin-madaki",
+    "name": "Government Day Technical College, Kafin Madaki",
+    "ownership_type": "state",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-day-technical-college-tafawa-balewa",
+    "name": "Government Day Technical College, Tafawa Balewa",
+    "ownership_type": "state",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-day-technical-college-jamaare",
+    "name": "Government Day Technical College,Jama’are",
+    "ownership_type": "state",
+    "state_id": "bauchi",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-girls-commercial-college-mai-adua",
+    "name": "Government Girl’s Commercial College, Mai Adua",
+    "ownership_type": "state",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-girls-technical-commercial-college-charanchi",
+    "name": "Government Girl’s Technical Commercial College, Charanchi",
+    "ownership_type": "state",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-science-and-technical-college-afuze",
+    "name": "Government Science and Technical College, Afuze",
+    "ownership_type": "state",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-science-and-technical-college-agwada",
+    "name": "Government Science and Technical College, Agwada",
+    "ownership_type": "state",
+    "state_id": "nasarawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-science-and-technical-college-benin",
+    "name": "Government Science and Technical College, Benin",
+    "ownership_type": "state",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-science-and-technical-college-garki",
+    "name": "Government Science and Technical College, Garki",
+    "ownership_type": "state",
+    "state_id": "fct",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-science-and-technical-college-geidam",
+    "name": "Government Science and Technical College, Geidam",
+    "ownership_type": "state",
+    "state_id": "yobe",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-science-and-technical-college-gombe",
+    "name": "Government Science and Technical College, Gombe",
+    "ownership_type": "state",
+    "state_id": "gombe",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-science-and-technical-college-igarra",
+    "name": "Government Science and Technical College, Igarra",
+    "ownership_type": "state",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-science-and-technical-college-irrua",
+    "name": "Government Science and Technical College, Irrua",
+    "ownership_type": "state",
+    "state_id": "edo",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-science-and-technical-college-kumo",
+    "name": "Government Science and Technical College, Kumo",
+    "ownership_type": "state",
+    "state_id": "gombe",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-science-and-technical-college-mada-station",
+    "name": "Government Science and Technical College, Mada Station",
+    "ownership_type": "state",
+    "state_id": "nasarawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-science-technical-college-birnin-kudu",
+    "name": "Government Science Technical College Birnin Kudu",
+    "ownership_type": "state",
+    "state_id": "jigawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-science-technical-college-karkarna",
+    "name": "Government Science Technical College Karkarna",
+    "ownership_type": "state",
+    "state_id": "jigawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-science-technical-college-ringim",
+    "name": "Government Science Technical College Ringim",
+    "ownership_type": "state",
+    "state_id": "jigawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-ahoada",
+    "name": "Government Technical College Ahoada",
+    "ownership_type": "state",
+    "state_id": "rivers",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-nkpor-anambra-state",
+    "name": "Government Technical College Nkpor, Anambra State",
+    "ownership_type": "state",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-tombia",
+    "name": "Government Technical College Tombia",
+    "ownership_type": "state",
+    "state_id": "rivers",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-umuchu-anambra-state",
+    "name": "Government Technical College Umuchu, Anambra State",
+    "ownership_type": "state",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-umueri-anambra-state",
+    "name": "Government Technical College Umueri, Anambra State",
+    "ownership_type": "state",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-abak",
+    "name": "Government Technical College, Abak",
+    "ownership_type": "state",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-ado-ekiti",
+    "name": "Government Technical College, Ado Ekiti",
+    "ownership_type": "state",
+    "state_id": "ekiti",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-ado-soba",
+    "name": "Government Technical College, Ado-Soba",
+    "ownership_type": "state",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-agidingbi-ikeja",
+    "name": "Government Technical College, Agidingbi, Ikeja",
+    "ownership_type": "state",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-aiyetoro",
+    "name": "Government Technical College, Aiyetoro",
+    "ownership_type": "state",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-ajegunle",
+    "name": "Government Technical College, Ajegunle",
+    "ownership_type": "state",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-amadu-asungblu",
+    "name": "Government Technical College, Amadu-Asungblu",
+    "ownership_type": "state",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-asakio",
+    "name": "Government Technical College, Asakio",
+    "ownership_type": "state",
+    "state_id": "nasarawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-bafarawa",
+    "name": "Government Technical College, Bafarawa",
+    "ownership_type": "state",
+    "state_id": "sokoto",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-binji",
+    "name": "Government Technical College, Binji",
+    "ownership_type": "state",
+    "state_id": "sokoto",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-bukuru",
+    "name": "Government Technical College, Bukuru",
+    "ownership_type": "state",
+    "state_id": "plateau",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-bunza",
+    "name": "Government Technical College, Bunza",
+    "ownership_type": "state",
+    "state_id": "kebbi",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-ele-ogu",
+    "name": "Government Technical College, Ele-Ogu",
+    "ownership_type": "state",
+    "state_id": "rivers",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-enugu",
+    "name": "Government Technical College, Enugu",
+    "ownership_type": "state",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-erinle-ille",
+    "name": "Government Technical College, Erinle Ille",
+    "ownership_type": "state",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-esie-iludun",
+    "name": "Government Technical College, Esie Iludun",
+    "ownership_type": "state",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-ewet-uyo",
+    "name": "Government Technical College, Ewet-Uyo",
+    "ownership_type": "state",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-eyagi-bida",
+    "name": "Government Technical College, Eyagi Bida",
+    "ownership_type": "state",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-farfaru",
+    "name": "Government Technical College, Farfaru",
+    "ownership_type": "state",
+    "state_id": "sokoto",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-funtua",
+    "name": "Government Technical College, Funtua",
+    "ownership_type": "state",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-hadejia",
+    "name": "Government Technical College, Hadejia",
+    "ownership_type": "state",
+    "state_id": "jigawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-idanre",
+    "name": "Government Technical College, Idanre",
+    "ownership_type": "state",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-idi-aba-abeokuta",
+    "name": "Government Technical College, Idi-Aba (Abeokuta)",
+    "ownership_type": "state",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-igbara-odo",
+    "name": "Government Technical College, Igbara – Odo",
+    "ownership_type": "state",
+    "state_id": "ekiti",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-igbesa",
+    "name": "Government Technical College, Igbesa",
+    "ownership_type": "state",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-ijebu-ode",
+    "name": "Government Technical College, Ijebu-Ode",
+    "ownership_type": "state",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-ijegbu-igbo",
+    "name": "Government Technical College, Ijegbu Igbo",
+    "ownership_type": "state",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-ikole-ekiti",
+    "name": "Government Technical College, Ikole-Ekiti",
+    "ownership_type": "state",
+    "state_id": "ekiti",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-ikorodu",
+    "name": "Government Technical College, Ikorodu",
+    "ownership_type": "state",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-ikotun",
+    "name": "Government Technical College, Ikotun",
+    "ownership_type": "state",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-ilara-remo",
+    "name": "Government Technical College, Ilara Remo",
+    "ownership_type": "state",
+    "state_id": "ogun",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-ingawa",
+    "name": "Government Technical College, Ingawa",
+    "ownership_type": "state",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-kajuru",
+    "name": "Government Technical College, Kajuru",
+    "ownership_type": "state",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-kano",
+    "name": "Government Technical College, Kano",
+    "ownership_type": "state",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-kaura-namoda",
+    "name": "Government Technical College, Kaura Namoda",
+    "ownership_type": "state",
+    "state_id": "zamfara",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-kontagora",
+    "name": "Government Technical College, Kontagora",
+    "ownership_type": "state",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-malali",
+    "name": "Government Technical College, Malali",
+    "ownership_type": "state",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-mashi",
+    "name": "Government Technical College, Mashi",
+    "ownership_type": "state",
+    "state_id": "katsina",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-minna",
+    "name": "Government Technical College, Minna",
+    "ownership_type": "state",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-mubi",
+    "name": "Government Technical College, Mubi",
+    "ownership_type": "state",
+    "state_id": "adamawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-new-bussa",
+    "name": "Government Technical College, New Bussa",
+    "ownership_type": "state",
+    "state_id": "niger",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-nsukka",
+    "name": "Government Technical College, Nsukka",
+    "ownership_type": "state",
+    "state_id": "enugu",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-odomola-epe",
+    "name": "Government Technical College, Odomola, Epe",
+    "ownership_type": "state",
+    "state_id": "lagos",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-ogoja",
+    "name": "Government Technical College, Ogoja",
+    "ownership_type": "state",
+    "state_id": "cross-river",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-oka-akoko",
+    "name": "Government Technical College, Oka Akoko",
+    "ownership_type": "state",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-okohia-osu",
+    "name": "Government Technical College, Okohia, Osu",
+    "ownership_type": "state",
+    "state_id": "imo",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-okporo-orlu",
+    "name": "Government Technical College, Okporo, Orlu",
+    "ownership_type": "state",
+    "state_id": "imo",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-onitsha",
+    "name": "Government Technical College, Onitsha",
+    "ownership_type": "state",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-oron",
+    "name": "Government Technical College, Oron",
+    "ownership_type": "state",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-osogbo",
+    "name": "Government Technical College, Osogbo",
+    "ownership_type": "state",
+    "state_id": "osun",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-owerri",
+    "name": "Government Technical College, Owerri",
+    "ownership_type": "state",
+    "state_id": "imo",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-owo",
+    "name": "Government Technical College, Owo",
+    "ownership_type": "state",
+    "state_id": "ondo",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-pategi",
+    "name": "Government Technical College, Pategi",
+    "ownership_type": "state",
+    "state_id": "kwara",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-port-harcourt",
+    "name": "Government Technical College, Port Harcourt",
+    "ownership_type": "state",
+    "state_id": "rivers",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-umunze",
+    "name": "Government Technical College, Umunze",
+    "ownership_type": "state",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-ungogo",
+    "name": "Government Technical College, Ungogo",
+    "ownership_type": "state",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-wudil",
+    "name": "Government Technical College, Wudil",
+    "ownership_type": "state",
+    "state_id": "kano",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-yola",
+    "name": "Government Technical College, Yola",
+    "ownership_type": "state",
+    "state_id": "adamawa",
+    "country_code": "NG"
+  },
+  {
+    "id": "government-technical-college-zuru",
+    "name": "Government Technical College, Zuru",
+    "ownership_type": "state",
+    "state_id": "kebbi",
+    "country_code": "NG"
+  },
+  {
+    "id": "issele-uku-technical-college-issele-uku",
+    "name": "Issele-Uku Technical College, Issele-Uku",
+    "ownership_type": "state",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "nigeria-science-and-technical-college-nnewi-anambra-state",
+    "name": "Nigeria Science and Technical College Nnewi, Anambra State",
+    "ownership_type": "state",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "ofagbe-technical-college-ofagbe",
+    "name": "Ofagbe Technical College, Ofagbe",
+    "ownership_type": "state",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "ogor-technical-college-otogor-ughelli",
+    "name": "Ogor Technical College, Otogor Ughelli",
+    "ownership_type": "state",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "ohafia-technical-college-ania",
+    "name": "Ohafia Technical College, Ania",
+    "ownership_type": "state",
+    "state_id": "abia",
+    "country_code": "NG"
+  },
+  {
+    "id": "sapele-technical-college-sapele",
+    "name": "Sapele Technical College, Sapele",
+    "ownership_type": "state",
+    "state_id": "delta",
+    "country_code": "NG"
+  },
+  {
+    "id": "st-johns-science-and-technical-college-alor",
+    "name": "St. John’s Science and Technical College, Alor",
+    "ownership_type": "state",
+    "state_id": "anambra",
+    "country_code": "NG"
+  },
+  {
+    "id": "st-joseph-technical-college-makurdi",
+    "name": "St. Joseph Technical College, Makurdi",
+    "ownership_type": "state",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "st-judes-technical-college-tse-mker",
+    "name": "St. Jude’s Technical College, Tse-Mker",
+    "ownership_type": "state",
+    "state_id": "benue",
+    "country_code": "NG"
+  },
+  {
+    "id": "tafawa-balewa-memorial-commercial-college-samaru-kataf",
+    "name": "Tafawa Balewa Memorial Commercial College, Samaru Kataf",
+    "ownership_type": "state",
+    "state_id": "kaduna",
+    "country_code": "NG"
+  },
+  {
+    "id": "union-technical-college-ikpa-eket",
+    "name": "Union Technical College, Ikpa-Eket",
+    "ownership_type": "state",
+    "state_id": "akwa-ibom",
+    "country_code": "NG"
+  }
+]

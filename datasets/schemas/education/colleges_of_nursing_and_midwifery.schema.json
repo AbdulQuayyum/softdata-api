@@ -2,10 +2,10 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://softdata.com.ng/schemas/education/colleges_of_nursing_and_midwifery.schema.json",
   "title": "Nigeria Colleges of Nursing and Midwifery",
-  "description": "Current Nigerian nursing and midwifery training institutions approved by NMCN.",
+  "description": "NMCN December 2025 approved-schools institution and campus snapshot.",
   "type": "array",
-  "minItems": 176,
-  "maxItems": 176,
+  "minItems": 156,
+  "maxItems": 156,
   "uniqueItems": true,
   "items": {
     "type": "object",

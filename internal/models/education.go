@@ -63,6 +63,15 @@ type CollegeOfNursingAndMidwifery struct {
 	CountryCode   string `json:"country_code"`
 }
 
+// TechnicalCollege represents one institution retained from an NBTE directory snapshot.
+type TechnicalCollege struct {
+	ID            string `json:"id"`
+	Name          string `json:"name"`
+	OwnershipType string `json:"ownership_type"`
+	StateID       string `json:"state_id"`
+	CountryCode   string `json:"country_code"`
+}
+
 // VocationalEnterpriseInstitution represents one current Digital NBTE-listed VEI.
 type VocationalEnterpriseInstitution struct {
 	ID            string `json:"id"`

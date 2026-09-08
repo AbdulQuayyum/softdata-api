@@ -235,7 +235,16 @@ The package contains 98 records: 4 federal, 31 state and 63 private institutions
 - Metadata: `datasets/metadata/education/colleges_of_nursing_and_midwifery.json`
 - Reconciliation: `datasets/metadata/education/colleges_of_nursing_and_midwifery_reconciliation.json`
 
-The package currently contains 176 provisional institution-level records: 13 federal, 57 state and 106 private institutions across 32 states. This dataset is draft and non-public, not production-ready. NMCN's webpage reports 290 training institutions, while the December 2025 PDF contains 340 numbered table rows, 36 section headings, 494 programme markers and 329 unique printed row labels. Institution-level aggregation remains unresolved, and the preserved generated 290-entry reconciliation is not exact source evidence. Websites, logos, repository methods and HTTP routes are intentionally deferred.
+The package contains 156 institution/campus records: 13 federal, 52 state and 91 private institutions across 32 states. It is the NMCN December 2025 approved-schools snapshot, not a complete live register. Its reconciliation preserves 376 extracted numbered-row candidates and explicitly excludes 220 unresolved rows; NMCN separately reports 290 training institutions. Websites, logos, repository methods and HTTP routes are intentionally deferred.
+
+### `ng-technical-colleges`
+
+- Data: `datasets/education/technical_colleges.json`
+- Schema: `datasets/schemas/education/technical_colleges.schema.json`
+- Metadata: `datasets/metadata/education/technical_colleges.json`
+- Reconciliation: `datasets/metadata/education/technical_colleges_reconciliation.json`
+
+The package contains 115 records retained from 122 numbered entries in the official NBTE Technical Colleges directory. It is a dated row-level directory snapshot, not a complete live national register. NBTE separately reports 153 technical colleges; the difference is preserved as a coverage limitation and no unidentified records are inferred. Websites, logos, repository methods and HTTP routes are intentionally deferred.
 
 ### `ng-primary-and-secondary-schools`
 

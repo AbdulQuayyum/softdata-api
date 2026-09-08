@@ -101,7 +101,8 @@ Regulated-finance logo assets are embedded under `assets/financial-institutions/
 - `education/vocational_enterprise_institutions.json` is the 25-record static catalogue of current Digital NBTE-listed Vocational Enterprise Institutions. It excludes Skill Training Centers, Master Craft Persons and abolished or upgraded IEIs.
 - `education/colleges_of_agriculture.json` is the 31-record static catalogue of NBTE Colleges of Agriculture and Related Disciplines.
 - `education/colleges_of_health_sciences_and_technology.json` is the 98-record static catalogue of NBTE Colleges of Health Sciences and Technology.
-- `education/colleges_of_nursing_and_midwifery.json` is a 176-record provisional, non-public reconstruction of NMCN nursing and midwifery training institutions. Its institution-level aggregation is unresolved; the NMCN webpage reports 290 institutions while the PDF has 340 numbered rows, 36 section headings, 494 programme markers and 329 unique printed row labels.
+- `education/colleges_of_nursing_and_midwifery.json` is a 156-record NMCN December 2025 approved-schools snapshot across 32 states. It is not a complete live register; 220 unresolved extracted rows are explicitly excluded in the reconciliation manifest.
+- `education/technical_colleges.json` is a 115-record NBTE Technical Colleges directory snapshot. The source page exposes 122 numbered entries while NBTE separately reports 153 institutions; the difference is documented and no institutions are inferred.
 - `education/universities.json` is the compiled catalogue of current NUC-listed Nigerian universities.
 - `education/primary_and_secondary_schools.json` is the 166,604-record UBEC 2022 source-observed school/campus snapshot. It is not a current licensing register; its reconciliation preserves every source row and explicitly quarantines 69 ambiguous Osun geography rows.
 - `finance/international_money_transfer_operators.json` is the compiled register snapshot of current CBN-listed IMTO entries, with optional verified website URLs.
@@ -128,6 +129,7 @@ Regulated-finance logo assets are embedded under `assets/financial-institutions/
 - `schemas/education/colleges_of_agriculture.schema.json` describes the five-field college-of-agriculture record contract.
 - `schemas/education/colleges_of_health_sciences_and_technology.schema.json` describes the five-field health-college record contract.
 - `schemas/education/colleges_of_nursing_and_midwifery.schema.json` describes the five-field nursing and midwifery institution contract.
+- `schemas/education/technical_colleges.schema.json` describes the five-field technical-college snapshot contract.
 - `schemas/education/universities.schema.json` describes the university record contract.
 - `schemas/education/primary_and_secondary_schools.schema.json` describes the UBEC snapshot contract, including optional ownership, LGA and source-code fields and normalized education levels.
 - `schemas/finance/international_money_transfer_operators.schema.json` describes the IMTO record contract.
@@ -142,6 +144,7 @@ Regulated-finance logo assets are embedded under `assets/financial-institutions/
 - `metadata/education/colleges_of_agriculture.json` and `metadata/education/colleges_of_agriculture_reconciliation.json` record source provenance and roster decisions for agricultural colleges.
 - `metadata/education/colleges_of_health_sciences_and_technology.json` and its reconciliation manifest record the NBTE health-college boundary and exclusions.
 - `metadata/education/colleges_of_nursing_and_midwifery.json` and its reconciliation manifest record NMCN approval, programme aggregation and institution-level exclusions.
+- `metadata/education/technical_colleges.json` and its reconciliation manifest record the NBTE directory snapshot, exclusions and the separate 153-institution aggregate.
 - `metadata/geography/geopolitical_zones.json` records provenance, versioning and licensing details for the zone catalogue.
 - `metadata/geography/lgas.json` records provenance, versioning and licensing details for the LGA catalogue.
 - `metadata/geography/states.json` records provenance, versioning and licensing details.

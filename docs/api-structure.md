@@ -109,6 +109,7 @@ softdata-api/
 │   │   ├── colleges_of_agriculture.json
 │   │   ├── colleges_of_health_sciences_and_technology.json
 │   │   ├── colleges_of_nursing_and_midwifery.json
+│   │   ├── technical_colleges.json
 │   │   ├── monotechnics.json
 │   │   ├── polytechnics.json
 │   │   └── universities.json
@@ -184,6 +185,7 @@ softdata-api/
 │       │   ├── colleges_of_agriculture.schema.json
 │       │   ├── colleges_of_health_sciences_and_technology.schema.json
 │       │   ├── colleges_of_nursing_and_midwifery.schema.json
+│       │   ├── technical_colleges.schema.json
 │       │   ├── monotechnics.schema.json
 │       │   ├── vocational_enterprise_institutions.schema.json
 │       │   ├── polytechnics.schema.json
