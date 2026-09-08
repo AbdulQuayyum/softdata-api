@@ -1891,6 +1891,18 @@ func newEducationPolicyRouter(t *testing.T) educationPolicyHarness {
 					Timeout:             time.Second,
 					AnonymousIdentifier: anonymous,
 				})
+			case "/v1/education/polytechnics", "/v1/education/polytechnics/{institution_id}",
+				"/v1/education/monotechnics", "/v1/education/monotechnics/{institution_id}",
+				"/v1/education/colleges-of-agriculture", "/v1/education/colleges-of-agriculture/{institution_id}",
+				"/v1/education/colleges-of-health-sciences-and-technology", "/v1/education/colleges-of-health-sciences-and-technology/{institution_id}",
+				"/v1/education/colleges-of-nursing-and-midwifery", "/v1/education/colleges-of-nursing-and-midwifery/{institution_id}",
+				"/v1/education/vocational-enterprise-institutions", "/v1/education/vocational-enterprise-institutions/{institution_id}",
+				"/v1/education/technical-colleges", "/v1/education/technical-colleges/{institution_id}",
+				"/v1/education/primary-and-secondary-schools", "/v1/education/primary-and-secondary-schools/{school_id}":
+				return middlewares.UsageTracking(usage, endpoint, datasetGroup, middlewares.UsageTrackingOptions{
+					Timeout:             time.Second,
+					AnonymousIdentifier: anonymous,
+				})
 			default:
 				return func(next http.Handler) http.Handler { return next }, nil
 			}
@@ -2605,6 +2617,55 @@ func (s *routerEducationStub) GetCollegeOfEducation(ctx context.Context, college
 		s.lastAPIKeyIdentity = identity
 	}
 	return models.CollegeOfEducation{ID: collegeID, Name: "Example College of Education", OwnershipType: "state", StateID: "taraba", CountryCode: "NG"}, nil
+}
+
+func (s *routerEducationStub) ListPolytechnics(context.Context) ([]models.Polytechnic, error) {
+	return []models.Polytechnic{{ID: "sample-polytechnic", Name: "Sample Polytechnic", OwnershipType: "federal", StateID: "lagos", CountryCode: "NG"}}, nil
+}
+func (s *routerEducationStub) GetPolytechnic(_ context.Context, id string) (models.Polytechnic, error) {
+	return models.Polytechnic{ID: id, Name: "Sample Polytechnic", OwnershipType: "federal", StateID: "lagos", CountryCode: "NG"}, nil
+}
+func (s *routerEducationStub) ListMonotechnics(context.Context) ([]models.Monotechnic, error) {
+	return []models.Monotechnic{{ID: "sample-monotechnic", Name: "Sample Monotechnic", OwnershipType: "state", StateID: "lagos", CountryCode: "NG"}}, nil
+}
+func (s *routerEducationStub) GetMonotechnic(_ context.Context, id string) (models.Monotechnic, error) {
+	return models.Monotechnic{ID: id, Name: "Sample Monotechnic", OwnershipType: "state", StateID: "lagos", CountryCode: "NG"}, nil
+}
+func (s *routerEducationStub) ListCollegesOfAgriculture(context.Context) ([]models.CollegeOfAgriculture, error) {
+	return []models.CollegeOfAgriculture{{ID: "sample-agriculture", Name: "Sample Agriculture College", OwnershipType: "private", StateID: "lagos", CountryCode: "NG"}}, nil
+}
+func (s *routerEducationStub) GetCollegeOfAgriculture(_ context.Context, id string) (models.CollegeOfAgriculture, error) {
+	return models.CollegeOfAgriculture{ID: id, Name: "Sample Agriculture College", OwnershipType: "private", StateID: "lagos", CountryCode: "NG"}, nil
+}
+func (s *routerEducationStub) ListCollegesOfHealthSciencesAndTechnology(context.Context) ([]models.CollegeOfHealthSciencesAndTechnology, error) {
+	return []models.CollegeOfHealthSciencesAndTechnology{{ID: "sample-health-college", Name: "Sample Health College", OwnershipType: "federal", StateID: "lagos", CountryCode: "NG"}}, nil
+}
+func (s *routerEducationStub) GetCollegeOfHealthSciencesAndTechnology(_ context.Context, id string) (models.CollegeOfHealthSciencesAndTechnology, error) {
+	return models.CollegeOfHealthSciencesAndTechnology{ID: id, Name: "Sample Health College", OwnershipType: "federal", StateID: "lagos", CountryCode: "NG"}, nil
+}
+func (s *routerEducationStub) ListCollegesOfNursingAndMidwifery(context.Context) ([]models.CollegeOfNursingAndMidwifery, error) {
+	return []models.CollegeOfNursingAndMidwifery{{ID: "sample-nursing-college", Name: "Sample Nursing College", OwnershipType: "state", StateID: "lagos", CountryCode: "NG"}}, nil
+}
+func (s *routerEducationStub) GetCollegeOfNursingAndMidwifery(_ context.Context, id string) (models.CollegeOfNursingAndMidwifery, error) {
+	return models.CollegeOfNursingAndMidwifery{ID: id, Name: "Sample Nursing College", OwnershipType: "state", StateID: "lagos", CountryCode: "NG"}, nil
+}
+func (s *routerEducationStub) ListVocationalEnterpriseInstitutions(context.Context) ([]models.VocationalEnterpriseInstitution, error) {
+	return []models.VocationalEnterpriseInstitution{{ID: "sample-vei", Name: "Sample VEI", OwnershipType: "private", StateID: "lagos", CountryCode: "NG"}}, nil
+}
+func (s *routerEducationStub) GetVocationalEnterpriseInstitution(_ context.Context, id string) (models.VocationalEnterpriseInstitution, error) {
+	return models.VocationalEnterpriseInstitution{ID: id, Name: "Sample VEI", OwnershipType: "private", StateID: "lagos", CountryCode: "NG"}, nil
+}
+func (s *routerEducationStub) ListTechnicalColleges(context.Context) ([]models.TechnicalCollege, error) {
+	return []models.TechnicalCollege{{ID: "sample-technical-college", Name: "Sample Technical College", OwnershipType: "state", StateID: "lagos", CountryCode: "NG"}}, nil
+}
+func (s *routerEducationStub) GetTechnicalCollege(_ context.Context, id string) (models.TechnicalCollege, error) {
+	return models.TechnicalCollege{ID: id, Name: "Sample Technical College", OwnershipType: "state", StateID: "lagos", CountryCode: "NG"}, nil
+}
+func (s *routerEducationStub) ListPrimaryAndSecondarySchools(_ context.Context, query interfaces.PrimaryAndSecondarySchoolQuery) (interfaces.PrimaryAndSecondarySchoolListResult, error) {
+	return interfaces.PrimaryAndSecondarySchoolListResult{Schools: []models.PrimaryAndSecondarySchool{{ID: "sample-school", Name: "Sample School", StateID: "lagos", LGAID: "ikeja", CountryCode: "NG", OwnershipType: "public", EducationLevels: []string{"primary"}}}, Page: query.Page, PageSize: query.PageSize, Total: 166604, TotalPages: (166604 + query.PageSize - 1) / query.PageSize}, nil
+}
+func (s *routerEducationStub) GetPrimaryAndSecondarySchool(_ context.Context, id string) (models.PrimaryAndSecondarySchool, error) {
+	return models.PrimaryAndSecondarySchool{ID: id, Name: "Sample School", StateID: "lagos", LGAID: "ikeja", CountryCode: "NG", OwnershipType: "public", EducationLevels: []string{"primary"}}, nil
 }
 
 type routerAPIKeyAuthenticatorStub struct {

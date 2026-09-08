@@ -239,25 +239,28 @@ func TestBuildEducationHandlerValidFixturePassesStartupVerification(t *testing.T
 	if err := os.MkdirAll(filepath.Join(root, "education"), 0o755); err != nil {
 		t.Fatalf("MkdirAll() error = %v", err)
 	}
-	data, err := os.ReadFile(filepath.Clean("../../datasets/education/universities.json"))
+	educationFiles, err := filepath.Glob(filepath.Clean("../../datasets/education/*.json"))
 	if err != nil {
-		t.Fatalf("ReadFile() error = %v", err)
+		t.Fatalf("Glob() error = %v", err)
 	}
-	if err := os.WriteFile(filepath.Join(root, "education", "universities.json"), data, 0o600); err != nil {
-		t.Fatalf("WriteFile() error = %v", err)
-	}
-	collegeData, err := os.ReadFile(filepath.Clean("../../datasets/education/colleges_of_education.json"))
-	if err != nil {
-		t.Fatalf("ReadFile() error = %v", err)
-	}
-	if err := os.WriteFile(filepath.Join(root, "education", "colleges_of_education.json"), collegeData, 0o600); err != nil {
-		t.Fatalf("WriteFile() error = %v", err)
+	var maxDatasetBytes int64
+	for _, sourcePath := range educationFiles {
+		data, readErr := os.ReadFile(sourcePath)
+		if readErr != nil {
+			t.Fatalf("ReadFile(%q) error = %v", sourcePath, readErr)
+		}
+		if int64(len(data)) > maxDatasetBytes {
+			maxDatasetBytes = int64(len(data))
+		}
+		if writeErr := os.WriteFile(filepath.Join(root, "education", filepath.Base(sourcePath)), data, 0o600); writeErr != nil {
+			t.Fatalf("WriteFile(%q) error = %v", sourcePath, writeErr)
+		}
 	}
 
 	cfg := &config.Config{
 		Datasets: config.DatasetConfig{
 			Path:         root,
-			JSONMaxBytes: int64(len(data)) + 1024,
+			JSONMaxBytes: maxDatasetBytes + 1024,
 		},
 	}
 

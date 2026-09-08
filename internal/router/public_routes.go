@@ -288,6 +288,10 @@ func registerPublicRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers,
 		return err
 	}
 
+	if err := registerExtendedEducationRoutes(mux, catalog, h, mw); err != nil {
+		return err
+	}
+
 	financeList, err := buildRouteMiddlewares(mw, "/v1/finance/payment-service-providers", "finance", routeOptions{
 		useOptionalAPIKey: true,
 		useRateLimit:      true,
@@ -422,5 +426,53 @@ func registerPublicRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers,
 		return err
 	}
 
+	return nil
+}
+
+type educationRoute struct {
+	listPath   string
+	detailPath string
+	list       http.HandlerFunc
+	detail     http.HandlerFunc
+}
+
+func registerExtendedEducationRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers, mw Middleware) error {
+	routes := []educationRoute{
+		{"/v1/education/polytechnics", "/v1/education/polytechnics/{institution_id}", h.Education.ListPolytechnics, h.Education.GetPolytechnic},
+		{"/v1/education/monotechnics", "/v1/education/monotechnics/{institution_id}", h.Education.ListMonotechnics, h.Education.GetMonotechnic},
+		{"/v1/education/colleges-of-agriculture", "/v1/education/colleges-of-agriculture/{institution_id}", h.Education.ListCollegesOfAgriculture, h.Education.GetCollegeOfAgriculture},
+		{"/v1/education/colleges-of-health-sciences-and-technology", "/v1/education/colleges-of-health-sciences-and-technology/{institution_id}", h.Education.ListCollegesOfHealthSciencesAndTechnology, h.Education.GetCollegeOfHealthSciencesAndTechnology},
+		{"/v1/education/colleges-of-nursing-and-midwifery", "/v1/education/colleges-of-nursing-and-midwifery/{institution_id}", h.Education.ListCollegesOfNursingAndMidwifery, h.Education.GetCollegeOfNursingAndMidwifery},
+		{"/v1/education/vocational-enterprise-institutions", "/v1/education/vocational-enterprise-institutions/{institution_id}", h.Education.ListVocationalEnterpriseInstitutions, h.Education.GetVocationalEnterpriseInstitution},
+		{"/v1/education/technical-colleges", "/v1/education/technical-colleges/{institution_id}", h.Education.ListTechnicalColleges, h.Education.GetTechnicalCollege},
+		{"/v1/education/primary-and-secondary-schools", "/v1/education/primary-and-secondary-schools/{school_id}", h.Education.ListPrimaryAndSecondarySchools, h.Education.GetPrimaryAndSecondarySchool},
+	}
+	for _, route := range routes {
+		listMiddleware, err := buildRouteMiddlewares(mw, route.listPath, "education", routeOptions{
+			useOptionalAPIKey: true,
+			useRateLimit:      true,
+			useUsageTracking:  true,
+		})
+		if err != nil {
+			return fmt.Errorf("build education %s middleware: %w", route.listPath, err)
+		}
+		mux.Handle("GET "+route.listPath, compose(route.list, listMiddleware...))
+		if err := catalog.add("GET " + route.listPath); err != nil {
+			return err
+		}
+
+		detailMiddleware, err := buildRouteMiddlewares(mw, route.detailPath, "education", routeOptions{
+			useOptionalAPIKey: true,
+			useRateLimit:      true,
+			useUsageTracking:  true,
+		})
+		if err != nil {
+			return fmt.Errorf("build education %s middleware: %w", route.detailPath, err)
+		}
+		mux.Handle("GET "+route.detailPath, compose(route.detail, detailMiddleware...))
+		if err := catalog.add("GET " + route.detailPath); err != nil {
+			return err
+		}
+	}
 	return nil
 }

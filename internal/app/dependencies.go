@@ -374,6 +374,25 @@ type educationService interface {
 	GetCollegeOfEducation(context.Context, string) (models.CollegeOfEducation, error)
 }
 
+type extendedEducationService interface {
+	ListPolytechnics(context.Context) ([]models.Polytechnic, error)
+	GetPolytechnic(context.Context, string) (models.Polytechnic, error)
+	ListMonotechnics(context.Context) ([]models.Monotechnic, error)
+	GetMonotechnic(context.Context, string) (models.Monotechnic, error)
+	ListCollegesOfAgriculture(context.Context) ([]models.CollegeOfAgriculture, error)
+	GetCollegeOfAgriculture(context.Context, string) (models.CollegeOfAgriculture, error)
+	ListCollegesOfHealthSciencesAndTechnology(context.Context) ([]models.CollegeOfHealthSciencesAndTechnology, error)
+	GetCollegeOfHealthSciencesAndTechnology(context.Context, string) (models.CollegeOfHealthSciencesAndTechnology, error)
+	ListCollegesOfNursingAndMidwifery(context.Context) ([]models.CollegeOfNursingAndMidwifery, error)
+	GetCollegeOfNursingAndMidwifery(context.Context, string) (models.CollegeOfNursingAndMidwifery, error)
+	ListVocationalEnterpriseInstitutions(context.Context) ([]models.VocationalEnterpriseInstitution, error)
+	GetVocationalEnterpriseInstitution(context.Context, string) (models.VocationalEnterpriseInstitution, error)
+	ListTechnicalColleges(context.Context) ([]models.TechnicalCollege, error)
+	GetTechnicalCollege(context.Context, string) (models.TechnicalCollege, error)
+	ListPrimaryAndSecondarySchools(context.Context, interfaces.PrimaryAndSecondarySchoolQuery) (interfaces.PrimaryAndSecondarySchoolListResult, error)
+	GetPrimaryAndSecondarySchool(context.Context, string) (models.PrimaryAndSecondarySchool, error)
+}
+
 type financeService interface {
 	ListPaymentServiceProviders(context.Context) ([]models.PaymentServiceProvider, error)
 	ListPaymentServiceProvidersByType(context.Context, string) ([]models.PaymentServiceProvider, error)
@@ -577,6 +596,11 @@ func buildEducationHandlerFromJSONRepository(
 	}
 	if err := verifyCollegeOfEducationDataset(ctx, educationService); err != nil {
 		return nil, err
+	}
+	if extended, ok := educationService.(extendedEducationService); ok {
+		if err := verifyExtendedEducationDatasets(ctx, extended); err != nil {
+			return nil, err
+		}
 	}
 	educationHandler, err := newEducationHandler(educationService)
 	if err != nil {
@@ -1369,6 +1393,208 @@ func equalIntHistograms(got, want map[int]int) bool {
 		}
 	}
 	return true
+}
+
+type startupEducationRecord struct {
+	id            string
+	name          string
+	ownershipType string
+	stateID       string
+	countryCode   string
+}
+
+func verifyExtendedEducationDatasets(ctx context.Context, service extendedEducationService) error {
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if service == nil {
+		return fmt.Errorf("verify extended education datasets: education service is required")
+	}
+
+	verifySmall := func(name string, expected int, list func(context.Context) ([]startupEducationRecord, error), get func(context.Context, string) (startupEducationRecord, error)) error {
+		if err := ctx.Err(); err != nil {
+			return err
+		}
+		rows, err := list(ctx)
+		if err != nil {
+			if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+				return err
+			}
+			return fmt.Errorf("verify %s dataset: %w", name, err)
+		}
+		if len(rows) != expected {
+			return fmt.Errorf("verify %s dataset: %w", name, interfaces.ErrInvalidDatasetFile)
+		}
+		seen := make(map[string]struct{}, len(rows))
+		for i, row := range rows {
+			if row.id == "" || row.name == "" || row.countryCode != "NG" || row.stateID == "" {
+				return fmt.Errorf("verify %s dataset: %w", name, interfaces.ErrInvalidDatasetFile)
+			}
+			if _, ok := approvedUniversityStateIDs[row.stateID]; !ok {
+				return fmt.Errorf("verify %s dataset: %w", name, interfaces.ErrInvalidDatasetFile)
+			}
+			if row.ownershipType != "federal" && row.ownershipType != "state" && row.ownershipType != "private" {
+				return fmt.Errorf("verify %s dataset: %w", name, interfaces.ErrInvalidDatasetFile)
+			}
+			if _, ok := seen[row.id]; ok {
+				return fmt.Errorf("verify %s dataset: %w", name, interfaces.ErrInvalidDatasetFile)
+			}
+			if i > 0 && (strings.ToLower(rows[i-1].name) > strings.ToLower(row.name) || (strings.EqualFold(rows[i-1].name, row.name) && rows[i-1].id > row.id)) {
+				return fmt.Errorf("verify %s dataset: %w", name, interfaces.ErrInvalidDatasetFile)
+			}
+			seen[row.id] = struct{}{}
+		}
+		if len(rows) == 0 {
+			return fmt.Errorf("verify %s dataset: %w", name, interfaces.ErrInvalidDatasetFile)
+		}
+		for _, row := range []startupEducationRecord{rows[0], rows[len(rows)-1]} {
+			got, err := get(ctx, row.id)
+			if err != nil {
+				if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+					return err
+				}
+				return fmt.Errorf("verify %s dataset: %w", name, err)
+			}
+			if got.id != row.id {
+				return fmt.Errorf("verify %s dataset: %w", name, interfaces.ErrInvalidDatasetFile)
+			}
+		}
+		return nil
+	}
+
+	toRecord := func(id, name, ownership, state, country string) startupEducationRecord {
+		return startupEducationRecord{id: id, name: name, ownershipType: ownership, stateID: state, countryCode: country}
+	}
+	if err := verifySmall("polytechnics", 168, func(ctx context.Context) ([]startupEducationRecord, error) {
+		rows, err := service.ListPolytechnics(ctx)
+		out := make([]startupEducationRecord, len(rows))
+		for i, row := range rows {
+			out[i] = toRecord(row.ID, row.Name, row.OwnershipType, row.StateID, row.CountryCode)
+		}
+		return out, err
+	}, func(ctx context.Context, id string) (startupEducationRecord, error) {
+		row, err := service.GetPolytechnic(ctx, id)
+		return toRecord(row.ID, row.Name, row.OwnershipType, row.StateID, row.CountryCode), err
+	}); err != nil {
+		return err
+	}
+	if err := verifySmall("monotechnics", 86, func(ctx context.Context) ([]startupEducationRecord, error) {
+		rows, err := service.ListMonotechnics(ctx)
+		out := make([]startupEducationRecord, len(rows))
+		for i, row := range rows {
+			out[i] = toRecord(row.ID, row.Name, row.OwnershipType, row.StateID, row.CountryCode)
+		}
+		return out, err
+	}, func(ctx context.Context, id string) (startupEducationRecord, error) {
+		row, err := service.GetMonotechnic(ctx, id)
+		return toRecord(row.ID, row.Name, row.OwnershipType, row.StateID, row.CountryCode), err
+	}); err != nil {
+		return err
+	}
+	if err := verifySmall("colleges of agriculture", 31, func(ctx context.Context) ([]startupEducationRecord, error) {
+		rows, err := service.ListCollegesOfAgriculture(ctx)
+		out := make([]startupEducationRecord, len(rows))
+		for i, row := range rows {
+			out[i] = toRecord(row.ID, row.Name, row.OwnershipType, row.StateID, row.CountryCode)
+		}
+		return out, err
+	}, func(ctx context.Context, id string) (startupEducationRecord, error) {
+		row, err := service.GetCollegeOfAgriculture(ctx, id)
+		return toRecord(row.ID, row.Name, row.OwnershipType, row.StateID, row.CountryCode), err
+	}); err != nil {
+		return err
+	}
+	if err := verifySmall("colleges of health sciences and technology", 98, func(ctx context.Context) ([]startupEducationRecord, error) {
+		rows, err := service.ListCollegesOfHealthSciencesAndTechnology(ctx)
+		out := make([]startupEducationRecord, len(rows))
+		for i, row := range rows {
+			out[i] = toRecord(row.ID, row.Name, row.OwnershipType, row.StateID, row.CountryCode)
+		}
+		return out, err
+	}, func(ctx context.Context, id string) (startupEducationRecord, error) {
+		row, err := service.GetCollegeOfHealthSciencesAndTechnology(ctx, id)
+		return toRecord(row.ID, row.Name, row.OwnershipType, row.StateID, row.CountryCode), err
+	}); err != nil {
+		return err
+	}
+	if err := verifySmall("colleges of nursing and midwifery", 152, func(ctx context.Context) ([]startupEducationRecord, error) {
+		rows, err := service.ListCollegesOfNursingAndMidwifery(ctx)
+		out := make([]startupEducationRecord, len(rows))
+		for i, row := range rows {
+			out[i] = toRecord(row.ID, row.Name, row.OwnershipType, row.StateID, row.CountryCode)
+		}
+		return out, err
+	}, func(ctx context.Context, id string) (startupEducationRecord, error) {
+		row, err := service.GetCollegeOfNursingAndMidwifery(ctx, id)
+		return toRecord(row.ID, row.Name, row.OwnershipType, row.StateID, row.CountryCode), err
+	}); err != nil {
+		return err
+	}
+	if err := verifySmall("vocational enterprise institutions", 25, func(ctx context.Context) ([]startupEducationRecord, error) {
+		rows, err := service.ListVocationalEnterpriseInstitutions(ctx)
+		out := make([]startupEducationRecord, len(rows))
+		for i, row := range rows {
+			out[i] = toRecord(row.ID, row.Name, row.OwnershipType, row.StateID, row.CountryCode)
+		}
+		return out, err
+	}, func(ctx context.Context, id string) (startupEducationRecord, error) {
+		row, err := service.GetVocationalEnterpriseInstitution(ctx, id)
+		return toRecord(row.ID, row.Name, row.OwnershipType, row.StateID, row.CountryCode), err
+	}); err != nil {
+		return err
+	}
+	if err := verifySmall("technical colleges", 115, func(ctx context.Context) ([]startupEducationRecord, error) {
+		rows, err := service.ListTechnicalColleges(ctx)
+		out := make([]startupEducationRecord, len(rows))
+		for i, row := range rows {
+			out[i] = toRecord(row.ID, row.Name, row.OwnershipType, row.StateID, row.CountryCode)
+		}
+		return out, err
+	}, func(ctx context.Context, id string) (startupEducationRecord, error) {
+		row, err := service.GetTechnicalCollege(ctx, id)
+		return toRecord(row.ID, row.Name, row.OwnershipType, row.StateID, row.CountryCode), err
+	}); err != nil {
+		return err
+	}
+
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+	first, err := service.ListPrimaryAndSecondarySchools(ctx, interfaces.PrimaryAndSecondarySchoolQuery{Page: 1, PageSize: 1})
+	if err != nil {
+		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+			return err
+		}
+		return fmt.Errorf("verify primary and secondary schools dataset: %w", err)
+	}
+	if first.Total != 166604 || first.TotalPages != 166604 || len(first.Schools) != 1 {
+		return fmt.Errorf("verify primary and secondary schools dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+	school := first.Schools[0]
+	if school.ID == "" || school.Name == "" || school.StateID == "" || school.LGAID == "" || school.CountryCode != "NG" || len(school.EducationLevels) == 0 || (school.OwnershipType != "public" && school.OwnershipType != "private") {
+		return fmt.Errorf("verify primary and secondary schools dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+	gotSchool, err := service.GetPrimaryAndSecondarySchool(ctx, school.ID)
+	if err != nil {
+		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+			return err
+		}
+		return fmt.Errorf("verify primary and secondary schools dataset: %w", err)
+	}
+	if gotSchool.ID != school.ID {
+		return fmt.Errorf("verify primary and secondary schools dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+	pastEnd, err := service.ListPrimaryAndSecondarySchools(ctx, interfaces.PrimaryAndSecondarySchoolQuery{Page: 166605, PageSize: 1})
+	if err != nil {
+		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+			return err
+		}
+		return fmt.Errorf("verify primary and secondary schools dataset: %w", err)
+	}
+	if pastEnd.Total != 166604 || pastEnd.TotalPages != 166604 || len(pastEnd.Schools) != 0 {
+		return fmt.Errorf("verify primary and secondary schools dataset: %w", interfaces.ErrInvalidDatasetFile)
+	}
+	return nil
 }
 
 func verifyEducationDataset(ctx context.Context, service educationService) error {
