@@ -292,6 +292,15 @@ The static foundation contains 25 current Digital NBTE-listed VEIs: 4 state and 
 
 The static foundation contains 31 NBTE Colleges of Agriculture and Related Disciplines: 23 federal, 7 state and 1 private. It exposes only `id`, `name`, `ownership_type`, `state_id` and `country_code`. The source-marked conversion of College of Agriculture, Zuru is excluded; no universities, polytechnics or monotechnics are merged into this dataset. Website/logo enrichment and API integration are intentionally deferred.
 
+### `ng-primary-and-secondary-schools`
+
+- `datasets/education/primary_and_secondary_schools.json`
+- `datasets/schemas/education/primary_and_secondary_schools.schema.json`
+- `datasets/metadata/education/primary_and_secondary_schools.json`
+- `datasets/metadata/education/primary_and_secondary_schools_reconciliation/index.json` and its 37 state/FCT partitions
+
+This source-observed snapshot contains 166,604 reconciled school/campus records from the official UBEC 2022 Primary and Junior Secondary workbooks: 81,160 public and 85,444 private records across 37 state/FCT values and 772 resolved LGAs. It is not a current active-school, licensing or complete senior-secondary register; 69 ambiguous Osun `ILESHA` rows are explicitly quarantined. Repository, service and HTTP support are deferred.
+
 ### `ng-colleges-of-health-sciences-and-technology`
 
 - `datasets/education/colleges_of_health_sciences_and_technology.json`

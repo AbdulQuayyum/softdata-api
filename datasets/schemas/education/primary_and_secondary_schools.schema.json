@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://softdata.com.ng/schemas/education/primary_and_secondary_schools.schema.json",
+  "title": "Nigeria UBEC 2022 Primary and Secondary Schools Snapshot",
+  "description": "Schools observed in official UBEC 2022 primary and junior-secondary directory snapshots; inclusion does not independently establish current operational or licensing status.",
+  "type": "array",
+  "minItems": 166604,
+  "maxItems": 166604,
+  "uniqueItems": true,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["id", "name", "state_id", "country_code", "education_levels"],
+    "properties": {
+      "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+      "name": {"type": "string", "minLength": 1},
+      "ownership_type": {"type": "string", "enum": ["public", "private"]},
+      "government_owner": {"type": "string", "enum": ["federal", "state", "local"]},
+      "state_id": {"type": "string", "enum": ["abia", "adamawa", "akwa-ibom", "anambra", "bauchi", "bayelsa", "benue", "borno", "cross-river", "delta", "ebonyi", "edo", "ekiti", "enugu", "fct", "gombe", "imo", "jigawa", "kaduna", "kano", "katsina", "kebbi", "kogi", "kwara", "lagos", "nasarawa", "niger", "ogun", "ondo", "osun", "oyo", "plateau", "rivers", "sokoto", "taraba", "yobe", "zamfara"]},
+      "lga_id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)+$"},
+      "country_code": {"const": "NG"},
+      "education_levels": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "enum": ["pre-primary", "primary", "junior-secondary", "senior-secondary"]}},
+      "ubec_school_code": {"type": "string", "pattern": "^[0-9]+$", "minLength": 1}
+    }
+  }
+}

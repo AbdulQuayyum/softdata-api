@@ -103,6 +103,7 @@ Regulated-finance logo assets are embedded under `assets/financial-institutions/
 - `education/colleges_of_health_sciences_and_technology.json` is the 98-record static catalogue of NBTE Colleges of Health Sciences and Technology.
 - `education/colleges_of_nursing_and_midwifery.json` is a 176-record provisional, non-public reconstruction of NMCN nursing and midwifery training institutions. Its institution-level aggregation is unresolved; the NMCN webpage reports 290 institutions while the PDF has 340 numbered rows, 36 section headings, 494 programme markers and 329 unique printed row labels.
 - `education/universities.json` is the compiled catalogue of current NUC-listed Nigerian universities.
+- `education/primary_and_secondary_schools.json` is the 166,604-record UBEC 2022 source-observed school/campus snapshot. It is not a current licensing register; its reconciliation preserves every source row and explicitly quarantines 69 ambiguous Osun geography rows.
 - `finance/international_money_transfer_operators.json` is the compiled register snapshot of current CBN-listed IMTO entries, with optional verified website URLs.
 - `finance/currencies.json` is the compiled snapshot of current ISO 4217 monetary currencies.
 - `finance/payment_service_providers.json` is the compiled register snapshot of payment-service-provider memberships.
@@ -128,11 +129,13 @@ Regulated-finance logo assets are embedded under `assets/financial-institutions/
 - `schemas/education/colleges_of_health_sciences_and_technology.schema.json` describes the five-field health-college record contract.
 - `schemas/education/colleges_of_nursing_and_midwifery.schema.json` describes the five-field nursing and midwifery institution contract.
 - `schemas/education/universities.schema.json` describes the university record contract.
+- `schemas/education/primary_and_secondary_schools.schema.json` describes the UBEC snapshot contract, including optional ownership, LGA and source-code fields and normalized education levels.
 - `schemas/finance/international_money_transfer_operators.schema.json` describes the IMTO record contract.
 - `schemas/finance/currencies.schema.json` describes the currency record contract.
 - `schemas/finance/payment_service_providers.schema.json` describes the payment-service-provider record contract.
 - The six related Nigerian regulated-finance schemas use Draft 2020-12 arrays with fixed snapshot counts, `NG` country codes, deterministic IDs and optional code, website and logo fields.
 - `metadata/education/universities.json` records provenance, versioning and licensing details for the university catalogue.
+- `metadata/education/primary_and_secondary_schools.json`, its checkpoint, reconciliation index and 37 state/FCT partitions record UBEC source hashes, row-level decisions, level mappings, geography aliases and the source-observed disclaimer.
 - `metadata/education/colleges_of_education.json` records provenance, versioning and licensing details for the colleges-of-education catalogue.
 - `metadata/education/polytechnics.json` and `metadata/education/polytechnics_reconciliation.json` record source provenance and roster decisions for polytechnics.
 - `metadata/education/monotechnics.json` and `metadata/education/monotechnics_reconciliation.json` record source provenance and roster decisions for specialised institutions.

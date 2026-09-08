@@ -71,3 +71,16 @@ type VocationalEnterpriseInstitution struct {
 	StateID       string `json:"state_id"`
 	CountryCode   string `json:"country_code"`
 }
+
+// PrimaryAndSecondarySchool represents one school or campus observed in the UBEC 2022 snapshots.
+type PrimaryAndSecondarySchool struct {
+	ID              string   `json:"id"`
+	Name            string   `json:"name"`
+	OwnershipType   string   `json:"ownership_type,omitempty"`
+	GovernmentOwner string   `json:"government_owner,omitempty"`
+	StateID         string   `json:"state_id"`
+	LGAID           string   `json:"lga_id,omitempty"`
+	CountryCode     string   `json:"country_code"`
+	EducationLevels []string `json:"education_levels"`
+	UBECSchoolCode  string   `json:"ubec_school_code,omitempty"`
+}

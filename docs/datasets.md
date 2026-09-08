@@ -237,6 +237,10 @@ The package contains 98 records: 4 federal, 31 state and 63 private institutions
 
 The package currently contains 176 provisional institution-level records: 13 federal, 57 state and 106 private institutions across 32 states. This dataset is draft and non-public, not production-ready. NMCN's webpage reports 290 training institutions, while the December 2025 PDF contains 340 numbered table rows, 36 section headings, 494 programme markers and 329 unique printed row labels. Institution-level aggregation remains unresolved, and the preserved generated 290-entry reconciliation is not exact source evidence. Websites, logos, repository methods and HTTP routes are intentionally deferred.
 
+### `ng-primary-and-secondary-schools`
+
+The package contains 166,604 school/campus records observed in the official UBEC 2022 Primary and Junior Secondary workbooks: 81,160 public and 85,444 private records across 37 state/FCT values and 772 resolved LGAs. Combined source labels produce multiple normalized education levels on one record. This is not a current active-school, licensing or complete senior-secondary register; 69 ambiguous Osun `ILESHA` rows are quarantined. Runtime integration is intentionally deferred.
+
 ## Dataset Principles
 
 - Every dataset should have a stable identifier.

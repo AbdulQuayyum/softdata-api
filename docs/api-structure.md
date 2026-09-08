@@ -562,6 +562,10 @@ Local scratch outputs used during development and verification. This directory i
 
 ## Design Notes
 
+### UBEC School Snapshot
+
+The education data tree also contains `datasets/education/primary_and_secondary_schools.json`, its Draft 2020-12 schema, source metadata, checkpoint summary and row-level reconciliation under `datasets/metadata/education/`. The generator is `tools/generate_primary_and_secondary_schools.py`. This is a source-observed UBEC 2022 snapshot; repository, service and HTTP support are not implemented.
+
 - Public dataset access stays anonymous by default.
 - Optional API keys add higher limits and usage analytics.
 - Configuration and dependencies are constructed once at startup and passed down explicitly.

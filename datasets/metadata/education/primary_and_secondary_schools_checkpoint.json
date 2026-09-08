@@ -1,0 +1,53 @@
+{
+  "dataset_key": "ng-primary-and-secondary-schools",
+  "generated_at": "2026-09-08",
+  "raw_records_processed": 171027,
+  "candidates_retained": 166604,
+  "excluded_geography_rows": 69,
+  "duplicate_or_cross_workbook_rows": 4354,
+  "cross_workbook_matches": 4036,
+  "code_conflict_rows": 1306,
+  "geography_failures": 69,
+  "ownership_failures": 0,
+  "education_level_failures": 0,
+  "next_step": "repository/service design",
+  "checkpoint_progression": [
+    {
+      "group": "Abia-Bayelsa",
+      "status": "completed"
+    },
+    {
+      "group": "Benue-Ebonyi",
+      "status": "completed"
+    },
+    {
+      "group": "Edo-Jigawa",
+      "status": "completed"
+    },
+    {
+      "group": "Kaduna-Kwara",
+      "status": "completed"
+    },
+    {
+      "group": "Lagos-Niger",
+      "status": "completed"
+    },
+    {
+      "group": "Ogun-Rivers",
+      "status": "completed"
+    },
+    {
+      "group": "Sokoto-Zamfara",
+      "status": "completed"
+    },
+    {
+      "group": "Federal Capital Territory",
+      "status": "completed"
+    },
+    {
+      "group": "National cross-state deduplication",
+      "status": "completed"
+    }
+  ],
+  "temporary_source_files_not_required_for_reproduction": true
+}
