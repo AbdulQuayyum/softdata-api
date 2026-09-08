@@ -226,7 +226,7 @@ The package contains 98 records: 4 federal, 31 state and 63 private institutions
 - Metadata: `datasets/metadata/education/colleges_of_nursing_and_midwifery.json`
 - Reconciliation: `datasets/metadata/education/colleges_of_nursing_and_midwifery_reconciliation.json`
 
-The package contains 176 institution-level records: 13 federal, 57 state and 106 private institutions across 32 states. It uses NMCN's December 2025 approved-schools register as the primary source and aggregates multiple nursing, midwifery, community and post-basic programmes under one independently recognized training institution. University departments, programme-only rows and inactive entries are excluded. This is a roster-only foundation; websites, logos, repository methods and HTTP routes are intentionally deferred.
+The package currently contains 176 provisional institution-level records: 13 federal, 57 state and 106 private institutions across 32 states. This dataset is draft and non-public, not production-ready. NMCN's webpage reports 290 training institutions, while the December 2025 PDF contains 340 numbered table rows, 36 section headings, 494 programme markers and 329 unique printed row labels. Institution-level aggregation remains unresolved, and the preserved generated 290-entry reconciliation is not exact source evidence. Websites, logos, repository methods and HTTP routes are intentionally deferred.
 
 ## Dataset Principles
 

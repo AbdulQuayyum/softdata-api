@@ -14,6 +14,8 @@ import (
 
 type nursingCollegeMetadata struct {
 	DatasetKey      string         `json:"dataset_key"`
+	Status          string         `json:"status"`
+	PubliclyPublished bool         `json:"publicly_published"`
 	RecordCount     int            `json:"record_count"`
 	OwnershipCounts map[string]int `json:"ownership_counts"`
 	StateCoverage   int            `json:"state_coverage_count"`
@@ -91,17 +93,26 @@ func TestNigeriaNursingCollegeMetadataAndReconciliation(t *testing.T) {
 	if err := json.Unmarshal(readTextBytes(t, datasetPath("metadata/education/colleges_of_nursing_and_midwifery.json")), &metadata); err != nil {
 		t.Fatal(err)
 	}
-	if metadata.DatasetKey != "ng-colleges-of-nursing-and-midwifery" || metadata.RecordCount != 176 || metadata.StateCoverage != 32 {
+	if metadata.DatasetKey != "ng-colleges-of-nursing-and-midwifery" || metadata.Status != "draft" || metadata.PubliclyPublished || metadata.RecordCount != 176 || metadata.StateCoverage != 32 {
 		t.Fatalf("metadata mismatch: %#v", metadata)
 	}
 	if !reflect.DeepEqual(metadata.OwnershipCounts, map[string]int{"federal": 13, "state": 57, "private": 106}) {
 		t.Fatalf("metadata ownership mismatch: %#v", metadata.OwnershipCounts)
 	}
 	var reconciliation struct {
+		Status              string `json:"status"`
+		ReconciliationStatus string `json:"reconciliation_status"`
+		SourceLedgerIsExact bool   `json:"source_ledger_is_exact"`
+		PDFStructure struct {
+			NumberedRows int `json:"numbered_table_rows"`
+			Sections     int `json:"section_headings"`
+			Markers      int `json:"programme_markers"`
+			Labels       int `json:"unique_printed_row_labels"`
+		} `json:"pdf_structure"`
 		SourceArithmetic struct {
-			Raw    int `json:"final_active_institutions"`
-			NMCN   int `json:"nmcn_raw_entries"`
-			Merged int `json:"nmcn_programme_duplicates_or_subrows_merged"`
+			Raw    int `json:"current_provisional_public_records"`
+			NMCN   int `json:"nmcn_webpage_reported_training_institutions"`
+			Merged int `json:"programme_merges"`
 		} `json:"source_arithmetic"`
 		FinalClassifications map[string]int `json:"final_classification_counts"`
 		Records              []struct {
@@ -115,7 +126,7 @@ func TestNigeriaNursingCollegeMetadataAndReconciliation(t *testing.T) {
 	if err := json.Unmarshal(readTextBytes(t, datasetPath("metadata/education/colleges_of_nursing_and_midwifery_reconciliation.json")), &reconciliation); err != nil {
 		t.Fatal(err)
 	}
-	if reconciliation.SourceArithmetic.Raw != 176 || len(reconciliation.Records) != 290 || reconciliation.SourceArithmetic.NMCN != 290 || reconciliation.SourceArithmetic.Merged != 114 {
+	if reconciliation.Status != "draft" || reconciliation.ReconciliationStatus != "provisional" || reconciliation.SourceLedgerIsExact || reconciliation.PDFStructure.NumberedRows != 340 || reconciliation.PDFStructure.Sections != 36 || reconciliation.PDFStructure.Markers != 494 || reconciliation.PDFStructure.Labels != 329 || reconciliation.SourceArithmetic.Raw != 176 || len(reconciliation.Records) != 290 || reconciliation.SourceArithmetic.NMCN != 290 || reconciliation.SourceArithmetic.Merged != 114 {
 		t.Fatalf("reconciliation mismatch: raw=%d records=%d nmcn=%d merges=%d", reconciliation.SourceArithmetic.Raw, len(reconciliation.Records), reconciliation.SourceArithmetic.NMCN, reconciliation.SourceArithmetic.Merged)
 	}
 	if !reflect.DeepEqual(reconciliation.FinalClassifications, map[string]int{"retained_as_institution": 176, "merged_programme_under_institution": 114}) {

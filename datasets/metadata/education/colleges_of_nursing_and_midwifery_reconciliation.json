@@ -1,20 +1,34 @@
 {
   "dataset_key": "ng-colleges-of-nursing-and-midwifery",
+  "status": "draft",
+  "reconciliation_status": "provisional",
+  "source_ledger_is_exact": false,
+  "pdf_structure": {
+    "pages": 44,
+    "section_headings": 36,
+    "numbered_table_rows": 340,
+    "programme_markers": 494,
+    "unique_printed_row_labels": 329,
+    "extraction_method": "pdftotext -layout",
+    "row_semantics": "unresolved"
+  },
   "institution_aggregation_policy": "One record per independently recognized institution or separately approved training centre; multiple programmes at one centre are merged.",
   "source_arithmetic": {
-    "nmcn_raw_entries": 290,
-    "nmcn_programme_duplicates_or_subrows_merged": 114,
-    "nmcn_inactive_or_non_current_entries_excluded": 0,
-    "nmcn_reconciled_institutions": 176,
+    "nmcn_webpage_reported_training_institutions": 290,
+    "pdf_numbered_table_rows": 340,
+    "pdf_programme_markers": 494,
+    "pdf_unique_printed_row_labels": 329,
+    "current_provisional_public_records": 176,
+    "institution_level_aggregation_unresolved": true,
+    "exact_source_ledger_entries": 0,
     "nbte_relevant_nursing_entries": 0,
     "cross_source_duplicates_removed": 0,
     "wrong_category_or_university_entries_excluded": 0,
-    "final_active_institutions": 176,
     "retained_institution_entries": 176,
     "programme_merges": 114,
     "duplicate_merges": 0,
     "exclusions": 0,
-    "unresolved_entries": 0
+    "unresolved_entries": 340
   },
   "final_classification_counts": {
     "retained_as_institution": 176,
@@ -39,10 +53,12 @@
     }
   ],
   "notes": [
-    "The NMCN PDF is the primary roster and includes both institution headers and programme subrows; the source arithmetic is reported separately from the final institution count.",
+    "The NMCN PDF is the primary source, but its table structure has not yet been reconstructed into source-derived institution rows.",
     "University nursing departments are excluded from this institution directory; their parent universities remain in the university dataset.",
-    "No unresolved public institution record was imported.",
-    "The 290-entry ledger uses the NMCN register extraction order and distinguishes institution entries from programme-bearing subentries. Each programme merge points to its retained institution source position."
+    "No additional public institution record was imported while the source structure remains unresolved.",
+    "The NMCN webpage reports 290 training institutions, but the PDF contains 340 numbered table rows, 36 section headings, 494 programme markers and 329 unique printed row labels.",
+    "The current 290-entry ledger is preserved as a provisional working artifact only; its generated positions and programme labels are not exact PDF source evidence and must not be used for publication or readiness claims.",
+    "Institution-level aggregation remains unresolved. The 176 public records and the ledger classifications are provisional pending a source-structure reconstruction."
   ],
   "records": [
     {

@@ -299,7 +299,7 @@ The static foundation contains 98 NBTE Colleges of Health Sciences and Technolog
 - `datasets/metadata/education/colleges_of_nursing_and_midwifery.json`
 - `datasets/metadata/education/colleges_of_nursing_and_midwifery_reconciliation.json`
 
-The static foundation contains 176 institution-level records approved by NMCN: 13 federal, 57 state and 106 private across 32 states. Nursing, midwifery, community and post-basic programmes are aggregated under their independently recognized training institution. University departments, programme-only rows and inactive/withdrawn entries are not public records. Website/logo enrichment and API integration are intentionally deferred.
+The draft, non-public reconstruction currently contains 176 provisional institution-level records: 13 federal, 57 state and 106 private across 32 states. NMCN's webpage reports 290 training institutions, while its December 2025 PDF contains 340 numbered table rows, 36 section headings, 494 programme markers and 329 unique printed row labels. Institution-level aggregation remains unresolved, and the preserved generated 290-entry reconciliation is not exact source evidence. Do not treat this dataset as production-ready. Website/logo enrichment and API integration are intentionally deferred.
 
 ## Directory Structure
 
