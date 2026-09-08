@@ -292,6 +292,9 @@ softdata-api/
 │   │   ├── education_handler_test.go
 │   │   ├── education_extended_handler.go
 │   │   ├── education_extended_handler_test.go
+│   │   ├── healthcare_handler.go
+│   │   ├── healthcare_handler_test.go
+│   │   ├── healthcare_openapi_test.go
 │   │   ├── finance_handler.go
 │   │   ├── finance_handler_test.go
 │   │   ├── finance_commercial_banks_test.go
@@ -518,6 +521,8 @@ softdata-api/
 │       ├── education_extended_validator_test.go
 │       ├── education_validator.go
 │       ├── education_validator_test.go
+│       ├── healthcare_validator.go
+│       ├── healthcare_validator_test.go
 │       ├── finance_validator.go
 │       ├── finance_validator_test.go
 │       ├── finance_commercial_banks_test.go
@@ -557,7 +562,7 @@ PostgreSQL pool creation, readiness checks, and generated sqlc persistence code.
 
 ### `internal/handlers/`
 
-HTTP handlers that validate requests, call services, and produce shared response envelopes. Education handlers are split between the existing education handler and `education_extended_handler.go`, which serves the additional institution categories and paginated schools.
+HTTP handlers that validate requests, call services, and produce shared response envelopes. Education handlers are split between the existing education handler and `education_extended_handler.go`, which serves the additional institution categories and paginated schools. `healthcare_handler.go` serves the paginated health-facility list and detail contract; production route registration remains deferred.
 
 ### `internal/middlewares/`
 
@@ -584,7 +589,7 @@ Application use cases and business rules for accounts, authentication, datasets,
 
 ### `internal/validators/`
 
-Request validation and normalization helpers for authentication, accounts, API keys, datasets, geography, education institution IDs, school IDs, pagination, filters, and query inputs.
+Request validation and normalization helpers for authentication, accounts, API keys, datasets, geography, education institution IDs, school IDs, healthcare facility IDs, pagination, filters, and query inputs.
 
 ### `internal/router/`
 
