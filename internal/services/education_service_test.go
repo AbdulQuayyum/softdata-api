@@ -14,14 +14,51 @@ import (
 )
 
 type educationRepositoryStub struct {
-	listResult map[interfaces.UniversityFilter][]models.University
-	getResult  map[string]models.University
-	listErr    error
-	getErr     error
-	listCalls  int
-	getCalls   int
-	lastFilter interfaces.UniversityFilter
-	lastID     string
+	listResult                                    map[interfaces.UniversityFilter][]models.University
+	getResult                                     map[string]models.University
+	listErr                                       error
+	getErr                                        error
+	listCalls                                     int
+	getCalls                                      int
+	lastFilter                                    interfaces.UniversityFilter
+	lastID                                        string
+	polytechnics                                  []models.Polytechnic
+	polytechnicErr                                error
+	polytechnicGet                                map[string]models.Polytechnic
+	polytechnicGetErr                             error
+	polytechnicCalls                              int
+	polytechnicGetCalls                           int
+	monotechnics                                  []models.Monotechnic
+	monotechnicErr                                error
+	monotechnicGet                                map[string]models.Monotechnic
+	monotechnicGetErr                             error
+	monotechnicCalls                              int
+	monotechnicGetCalls                           int
+	collegesOfAgriculture                         []models.CollegeOfAgriculture
+	collegesOfAgricultureErr                      error
+	collegesOfAgricultureGet                      map[string]models.CollegeOfAgriculture
+	collegesOfAgricultureGetErr                   error
+	collegesOfAgricultureCalls                    int
+	collegesOfAgricultureGetCalls                 int
+	collegesOfHealthSciencesAndTechnology         []models.CollegeOfHealthSciencesAndTechnology
+	collegesOfHealthSciencesAndTechnologyErr      error
+	collegesOfHealthSciencesAndTechnologyGet      map[string]models.CollegeOfHealthSciencesAndTechnology
+	collegesOfHealthSciencesAndTechnologyGetErr   error
+	collegesOfHealthSciencesAndTechnologyCalls    int
+	collegesOfHealthSciencesAndTechnologyGetCalls int
+	vocationalEnterpriseInstitutions              []models.VocationalEnterpriseInstitution
+	vocationalEnterpriseInstitutionsErr           error
+	vocationalEnterpriseInstitutionsGet           map[string]models.VocationalEnterpriseInstitution
+	vocationalEnterpriseInstitutionsGetErr        error
+	vocationalEnterpriseInstitutionsCalls         int
+	vocationalEnterpriseInstitutionsGetCalls      int
+	primaryAndSecondarySchoolListResult           interfaces.PrimaryAndSecondarySchoolListResult
+	primaryAndSecondarySchoolListErr              error
+	primaryAndSecondarySchoolGetResult            map[string]models.PrimaryAndSecondarySchool
+	primaryAndSecondarySchoolGetErr               error
+	primaryAndSecondarySchoolListCalls            int
+	primaryAndSecondarySchoolGetCalls             int
+	lastSchoolQuery                               interfaces.PrimaryAndSecondarySchoolQuery
 }
 
 func (s *educationRepositoryStub) ListUniversities(_ context.Context, filter interfaces.UniversityFilter) ([]models.University, error) {
@@ -61,6 +98,141 @@ func (s *educationRepositoryStub) GetCollegeOfEducation(_ context.Context, colle
 	s.getCalls++
 	s.lastID = collegeID
 	return models.CollegeOfEducation{}, interfaces.ErrCollegeOfEducationNotFound
+}
+
+func (s *educationRepositoryStub) ListPolytechnics(context.Context) ([]models.Polytechnic, error) {
+	s.polytechnicCalls++
+	if s.polytechnicErr != nil {
+		return nil, s.polytechnicErr
+	}
+	return cloneServiceSlice(s.polytechnics), nil
+}
+
+func (s *educationRepositoryStub) GetPolytechnic(_ context.Context, id string) (models.Polytechnic, error) {
+	s.polytechnicGetCalls++
+	if s.polytechnicGetErr != nil {
+		return models.Polytechnic{}, s.polytechnicGetErr
+	}
+	if s.polytechnicGet != nil {
+		if row, ok := s.polytechnicGet[strings.TrimSpace(id)]; ok {
+			return row, nil
+		}
+	}
+	return models.Polytechnic{}, interfaces.ErrPolytechnicNotFound
+}
+
+func (s *educationRepositoryStub) ListMonotechnics(context.Context) ([]models.Monotechnic, error) {
+	s.monotechnicCalls++
+	if s.monotechnicErr != nil {
+		return nil, s.monotechnicErr
+	}
+	return cloneServiceSlice(s.monotechnics), nil
+}
+
+func (s *educationRepositoryStub) GetMonotechnic(_ context.Context, id string) (models.Monotechnic, error) {
+	s.monotechnicGetCalls++
+	if s.monotechnicGetErr != nil {
+		return models.Monotechnic{}, s.monotechnicGetErr
+	}
+	if s.monotechnicGet != nil {
+		if row, ok := s.monotechnicGet[strings.TrimSpace(id)]; ok {
+			return row, nil
+		}
+	}
+	return models.Monotechnic{}, interfaces.ErrMonotechnicNotFound
+}
+
+func (s *educationRepositoryStub) ListCollegesOfAgriculture(context.Context) ([]models.CollegeOfAgriculture, error) {
+	s.collegesOfAgricultureCalls++
+	if s.collegesOfAgricultureErr != nil {
+		return nil, s.collegesOfAgricultureErr
+	}
+	return cloneServiceSlice(s.collegesOfAgriculture), nil
+}
+
+func (s *educationRepositoryStub) GetCollegeOfAgriculture(_ context.Context, id string) (models.CollegeOfAgriculture, error) {
+	s.collegesOfAgricultureGetCalls++
+	if s.collegesOfAgricultureGetErr != nil {
+		return models.CollegeOfAgriculture{}, s.collegesOfAgricultureGetErr
+	}
+	if s.collegesOfAgricultureGet != nil {
+		if row, ok := s.collegesOfAgricultureGet[strings.TrimSpace(id)]; ok {
+			return row, nil
+		}
+	}
+	return models.CollegeOfAgriculture{}, interfaces.ErrCollegeOfAgricultureNotFound
+}
+
+func (s *educationRepositoryStub) ListCollegesOfHealthSciencesAndTechnology(context.Context) ([]models.CollegeOfHealthSciencesAndTechnology, error) {
+	s.collegesOfHealthSciencesAndTechnologyCalls++
+	if s.collegesOfHealthSciencesAndTechnologyErr != nil {
+		return nil, s.collegesOfHealthSciencesAndTechnologyErr
+	}
+	return cloneServiceSlice(s.collegesOfHealthSciencesAndTechnology), nil
+}
+
+func (s *educationRepositoryStub) GetCollegeOfHealthSciencesAndTechnology(_ context.Context, id string) (models.CollegeOfHealthSciencesAndTechnology, error) {
+	s.collegesOfHealthSciencesAndTechnologyGetCalls++
+	if s.collegesOfHealthSciencesAndTechnologyGetErr != nil {
+		return models.CollegeOfHealthSciencesAndTechnology{}, s.collegesOfHealthSciencesAndTechnologyGetErr
+	}
+	if s.collegesOfHealthSciencesAndTechnologyGet != nil {
+		if row, ok := s.collegesOfHealthSciencesAndTechnologyGet[strings.TrimSpace(id)]; ok {
+			return row, nil
+		}
+	}
+	return models.CollegeOfHealthSciencesAndTechnology{}, interfaces.ErrCollegeOfHealthSciencesAndTechnologyNotFound
+}
+
+func (s *educationRepositoryStub) ListVocationalEnterpriseInstitutions(context.Context) ([]models.VocationalEnterpriseInstitution, error) {
+	s.vocationalEnterpriseInstitutionsCalls++
+	if s.vocationalEnterpriseInstitutionsErr != nil {
+		return nil, s.vocationalEnterpriseInstitutionsErr
+	}
+	return cloneServiceSlice(s.vocationalEnterpriseInstitutions), nil
+}
+
+func (s *educationRepositoryStub) GetVocationalEnterpriseInstitution(_ context.Context, id string) (models.VocationalEnterpriseInstitution, error) {
+	s.vocationalEnterpriseInstitutionsGetCalls++
+	if s.vocationalEnterpriseInstitutionsGetErr != nil {
+		return models.VocationalEnterpriseInstitution{}, s.vocationalEnterpriseInstitutionsGetErr
+	}
+	if s.vocationalEnterpriseInstitutionsGet != nil {
+		if row, ok := s.vocationalEnterpriseInstitutionsGet[strings.TrimSpace(id)]; ok {
+			return row, nil
+		}
+	}
+	return models.VocationalEnterpriseInstitution{}, interfaces.ErrVocationalEnterpriseInstitutionNotFound
+}
+
+func (s *educationRepositoryStub) ListPrimaryAndSecondarySchools(context.Context, interfaces.PrimaryAndSecondarySchoolQuery) (interfaces.PrimaryAndSecondarySchoolListResult, error) {
+	s.primaryAndSecondarySchoolListCalls++
+	if s.primaryAndSecondarySchoolListErr != nil {
+		return interfaces.PrimaryAndSecondarySchoolListResult{}, s.primaryAndSecondarySchoolListErr
+	}
+	return s.primaryAndSecondarySchoolListResult, nil
+}
+
+func (s *educationRepositoryStub) GetPrimaryAndSecondarySchool(_ context.Context, id string) (models.PrimaryAndSecondarySchool, error) {
+	s.primaryAndSecondarySchoolGetCalls++
+	if s.primaryAndSecondarySchoolGetErr != nil {
+		return models.PrimaryAndSecondarySchool{}, s.primaryAndSecondarySchoolGetErr
+	}
+	if s.primaryAndSecondarySchoolGetResult != nil {
+		if row, ok := s.primaryAndSecondarySchoolGetResult[strings.TrimSpace(id)]; ok {
+			return row, nil
+		}
+	}
+	return models.PrimaryAndSecondarySchool{}, interfaces.ErrPrimaryAndSecondarySchoolNotFound
+}
+
+func cloneServiceSlice[T any](items []T) []T {
+	if len(items) == 0 {
+		return make([]T, 0)
+	}
+	cloned := make([]T, len(items))
+	copy(cloned, items)
+	return cloned
 }
 
 func TestNewEducationServiceRejectsNilRepository(t *testing.T) {

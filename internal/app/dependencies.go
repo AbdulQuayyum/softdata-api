@@ -33,26 +33,32 @@ import (
 )
 
 const (
-	defaultKeyPrefix                                       = "softdata"
-	geographyStatesRelativePath                            = "geography/states.json"
-	geographyGeopoliticalZonesRelativePath                 = "geography/geopolitical_zones.json"
-	geographyLocalGovernmentUnitsRelativePath              = "geography/lgas.json"
-	geographyTimeZonesRelativePath                         = "geography/time_zones.json"
-	geographyCountriesAndAreasRelativePath                 = "geography/countries_and_areas.json"
-	geographyLanguagesRelativePath                         = "geography/languages.json"
-	geographyCountryLanguagesRelativePath                  = "geography/country_languages.json"
-	educationUniversitiesRelativePath                      = "education/universities.json"
-	educationCollegesOfEducationRelativePath               = "education/colleges_of_education.json"
-	financePaymentServiceProvidersRelativePath             = "finance/payment_service_providers.json"
-	financeInternationalMoneyTransferOperatorsRelativePath = "finance/international_money_transfer_operators.json"
-	financeCommercialBanksRelativePath                     = "finance/commercial_banks.json"
-	financeNonInterestFinancialInstitutionsRelativePath    = "finance/non_interest_institutions.json"
-	financeMerchantBanksRelativePath                       = "finance/merchant_banks.json"
-	financePaymentServiceBanksRelativePath                 = "finance/payment_service_banks.json"
-	financeFinancialHoldingCompaniesRelativePath           = "finance/financial_holding_companies.json"
-	financeDevelopmentFinanceInstitutionsRelativePath      = "finance/development_finance_institutions.json"
-	financePrimaryMortgageInstitutionsRelativePath         = "finance/primary_mortgage_institutions.json"
-	financeMicrofinanceBanksRelativePath                   = "finance/microfinance_banks.json"
+	defaultKeyPrefix                                           = "softdata"
+	geographyStatesRelativePath                                = "geography/states.json"
+	geographyGeopoliticalZonesRelativePath                     = "geography/geopolitical_zones.json"
+	geographyLocalGovernmentUnitsRelativePath                  = "geography/lgas.json"
+	geographyTimeZonesRelativePath                             = "geography/time_zones.json"
+	geographyCountriesAndAreasRelativePath                     = "geography/countries_and_areas.json"
+	geographyLanguagesRelativePath                             = "geography/languages.json"
+	geographyCountryLanguagesRelativePath                      = "geography/country_languages.json"
+	educationUniversitiesRelativePath                          = "education/universities.json"
+	educationCollegesOfEducationRelativePath                   = "education/colleges_of_education.json"
+	educationPolytechnicsRelativePath                          = "education/polytechnics.json"
+	educationMonotechnicsRelativePath                          = "education/monotechnics.json"
+	educationCollegesOfAgricultureRelativePath                 = "education/colleges_of_agriculture.json"
+	educationCollegesOfHealthSciencesAndTechnologyRelativePath = "education/colleges_of_health_sciences_and_technology.json"
+	educationVocationalEnterpriseInstitutionsRelativePath      = "education/vocational_enterprise_institutions.json"
+	educationPrimaryAndSecondarySchoolsRelativePath            = "education/primary_and_secondary_schools.json"
+	financePaymentServiceProvidersRelativePath                 = "finance/payment_service_providers.json"
+	financeInternationalMoneyTransferOperatorsRelativePath     = "finance/international_money_transfer_operators.json"
+	financeCommercialBanksRelativePath                         = "finance/commercial_banks.json"
+	financeNonInterestFinancialInstitutionsRelativePath        = "finance/non_interest_institutions.json"
+	financeMerchantBanksRelativePath                           = "finance/merchant_banks.json"
+	financePaymentServiceBanksRelativePath                     = "finance/payment_service_banks.json"
+	financeFinancialHoldingCompaniesRelativePath               = "finance/financial_holding_companies.json"
+	financeDevelopmentFinanceInstitutionsRelativePath          = "finance/development_finance_institutions.json"
+	financePrimaryMortgageInstitutionsRelativePath             = "finance/primary_mortgage_institutions.json"
+	financeMicrofinanceBanksRelativePath                       = "finance/microfinance_banks.json"
 )
 
 var approvedUniversityStateIDs = map[string]struct{}{
@@ -183,8 +189,8 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 		return appDependencies{}, err
 	}
 	educationHandler, err := buildEducationHandlerFromJSONRepository(ctx, jsonRepository,
-		func(repository interfaces.JSONFileRepository, universitiesPath, collegesOfEducationPath string) (interfaces.EducationRepository, error) {
-			return fileRepo.NewEducationRepository(repository, universitiesPath, collegesOfEducationPath)
+		func(repository interfaces.JSONFileRepository, universitiesPath, collegesOfEducationPath string, datasetPaths ...string) (interfaces.EducationRepository, error) {
+			return fileRepo.NewEducationRepository(repository, universitiesPath, collegesOfEducationPath, datasetPaths...)
 		},
 		func(repository interfaces.EducationRepository) (educationService, error) {
 			return services.NewEducationService(repository)
@@ -494,7 +500,7 @@ func buildEducationHandler(
 	ctx context.Context,
 	cfg *config.Config,
 	newJSONRepository func(string, int64) (interfaces.JSONFileRepository, error),
-	newEducationRepository func(interfaces.JSONFileRepository, string, string) (interfaces.EducationRepository, error),
+	newEducationRepository func(interfaces.JSONFileRepository, string, string, ...string) (interfaces.EducationRepository, error),
 	newEducationService func(interfaces.EducationRepository) (educationService, error),
 	newEducationHandler func(educationService) (*handlers.EducationHandler, error),
 ) (*handlers.EducationHandler, error) {
@@ -524,7 +530,7 @@ func buildEducationHandler(
 func buildEducationHandlerFromJSONRepository(
 	ctx context.Context,
 	jsonRepository interfaces.JSONFileRepository,
-	newEducationRepository func(interfaces.JSONFileRepository, string, string) (interfaces.EducationRepository, error),
+	newEducationRepository func(interfaces.JSONFileRepository, string, string, ...string) (interfaces.EducationRepository, error),
 	newEducationService func(interfaces.EducationRepository) (educationService, error),
 	newEducationHandler func(educationService) (*handlers.EducationHandler, error),
 ) (*handlers.EducationHandler, error) {
@@ -544,7 +550,17 @@ func buildEducationHandlerFromJSONRepository(
 		return nil, fmt.Errorf("education handler factory is required")
 	}
 
-	educationRepository, err := newEducationRepository(jsonRepository, educationUniversitiesRelativePath, educationCollegesOfEducationRelativePath)
+	educationRepository, err := newEducationRepository(
+		jsonRepository,
+		educationUniversitiesRelativePath,
+		educationCollegesOfEducationRelativePath,
+		educationPolytechnicsRelativePath,
+		educationMonotechnicsRelativePath,
+		educationCollegesOfAgricultureRelativePath,
+		educationCollegesOfHealthSciencesAndTechnologyRelativePath,
+		educationVocationalEnterpriseInstitutionsRelativePath,
+		educationPrimaryAndSecondarySchoolsRelativePath,
+	)
 	if err != nil {
 		return nil, fmt.Errorf("initialize education repository: %w", err)
 	}

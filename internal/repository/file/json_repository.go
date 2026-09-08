@@ -63,6 +63,7 @@ func (r *JSONRepository) Decode(ctx context.Context, relativePath string, destin
 	}
 
 	dec := json.NewDecoder(bytes.NewReader(data))
+	dec.DisallowUnknownFields()
 	if err := dec.Decode(destination); err != nil {
 		return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
 	}

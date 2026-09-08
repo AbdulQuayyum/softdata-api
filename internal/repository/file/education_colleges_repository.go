@@ -88,33 +88,10 @@ func (r *EducationFileRepository) GetCollegeOfEducation(ctx context.Context, col
 }
 
 func (r *EducationFileRepository) loadCollegesOfEducation(ctx context.Context) ([]models.CollegeOfEducation, error) {
-	if r == nil || r.jsonRepository == nil {
-		return nil, fmt.Errorf("%w", interfaces.ErrDatasetFileUnavailable)
-	}
-	if ctx == nil {
-		ctx = context.Background()
-	}
-	if err := ctx.Err(); err != nil {
-		return nil, err
-	}
-
-	var colleges []models.CollegeOfEducation
-	if err := r.jsonRepository.Decode(ctx, r.collegesOfEducationPath, &colleges); err != nil {
-		return nil, translateEducationLoadError(err)
-	}
-	if err := ctx.Err(); err != nil {
-		return nil, err
-	}
-	if colleges == nil || len(colleges) == 0 {
-		return nil, fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
-	}
-	if err := validateCollegesOfEducation(colleges); err != nil {
-		return nil, err
-	}
-	return colleges, nil
+	return loadCachedEducationDataset(ctx, r, &r.collegesOfEducationCache, r.collegesOfEducationPath, validateCollegesOfEducation, cloneCollegeOfEducationList)
 }
 
-func validateCollegesOfEducation(colleges []models.CollegeOfEducation) error {
+func validateCollegesOfEducation(ctx context.Context, colleges []models.CollegeOfEducation) error {
 	if len(colleges) != 244 {
 		return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
 	}
@@ -132,7 +109,12 @@ func validateCollegesOfEducation(colleges []models.CollegeOfEducation) error {
 
 	lastName := ""
 	lastID := ""
-	for _, college := range colleges {
+	for i, college := range colleges {
+		if i%64 == 0 {
+			if err := ctx.Err(); err != nil {
+				return err
+			}
+		}
 		if college.ID == "" || college.Name == "" || college.OwnershipType == "" || college.StateID == "" || college.CountryCode == "" {
 			return fmt.Errorf("%w", interfaces.ErrInvalidDatasetFile)
 		}
