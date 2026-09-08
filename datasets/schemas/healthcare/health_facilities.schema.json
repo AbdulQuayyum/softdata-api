@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://softdata-api.local/schemas/healthcare/health_facilities.schema.json",
+  "title": "Nigeria Health Facilities",
+  "description": "Source-verified GRID3 HFR-derived 2024 health-facilities snapshot.",
+  "type": "array",
+  "minItems": 50654,
+  "maxItems": 50654,
+  "uniqueItems": true,
+  "items": {
+    "$ref": "#/$defs/healthFacility"
+  },
+  "$defs": {
+    "healthFacility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "facility_type",
+        "state_id",
+        "country_code"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "facility_type": {
+          "type": "string",
+          "enum": [
+            "health-post",
+            "primary-health-centre",
+            "clinic",
+            "general-hospital",
+            "specialist-hospital",
+            "teaching-hospital",
+            "other"
+          ]
+        },
+        "facility_level": {
+          "type": "string",
+          "enum": [
+            "primary",
+            "secondary",
+            "tertiary"
+          ]
+        },
+        "ownership_type": {
+          "type": "string",
+          "enum": [
+            "federal",
+            "state",
+            "local-government",
+            "private",
+            "military",
+            "other-public"
+          ]
+        },
+        "state_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "lga_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "country_code": {
+          "const": "NG"
+        },
+        "source_facility_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "operational_status": {
+          "type": "string",
+          "enum": [
+            "operational",
+            "temporarily-closed",
+            "closed",
+            "unknown"
+          ]
+        },
+        "latitude": {
+          "type": "number",
+          "minimum": 4.281710,
+          "maximum": 13.865239
+        },
+        "longitude": {
+          "type": "number",
+          "minimum": 2.707790,
+          "maximum": 14.636383
+        }
+      }
+    }
+  }
+}

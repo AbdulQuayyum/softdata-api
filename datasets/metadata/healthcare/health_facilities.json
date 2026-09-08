@@ -1,0 +1,68 @@
+{
+  "dataset_key": "ng-health-facilities",
+  "status": "active",
+  "snapshot": true,
+  "publicly_published": true,
+  "title": "Nigeria Health Facilities (GRID3 HFR-derived 2024 Snapshot)",
+  "description": "Source-verified row-level health facility snapshot derived from the public GRID3 NGA Health Facilities v2.0 layer, which documents NHFR 2024 inputs. It is not a continuously current live registry and should not be treated as a completeness claim for all active facilities.",
+  "country_code": "NG",
+  "record_count": 50654,
+  "source_rows": 51022,
+  "decision_counts": {
+    "exclude_invalid_geography": 363,
+    "merge_exact_duplicate": 5,
+    "retain": 50654
+  },
+  "facility_type_counts": {
+    "clinic": 13819,
+    "general-hospital": 1111,
+    "health-post": 8638,
+    "other": 4881,
+    "primary-health-centre": 22080,
+    "specialist-hospital": 38,
+    "teaching-hospital": 87
+  },
+  "facility_level_counts": {
+    "<omitted>": 334,
+    "primary": 44582,
+    "secondary": 5233,
+    "tertiary": 505
+  },
+  "ownership_counts": {
+    "<omitted>": 4601,
+    "federal": 200,
+    "local-government": 21547,
+    "military": 101,
+    "other-public": 10325,
+    "private": 11652,
+    "state": 2228
+  },
+  "state_coverage_count": 37,
+  "lga_coverage_count": 768,
+  "coordinate_coverage_count": 50654,
+  "relative_path": "healthcare/health_facilities.json",
+  "schema_path": "schemas/healthcare/health_facilities.schema.json",
+  "source": {
+    "publisher": "Center for International Earth Science Information Network (CIESIN), Columbia University / GRID3",
+    "title": "GRID3 NGA - Health Facilities v2.0",
+    "url": "https://services3.arcgis.com/BU6Aadhn6tbBEdyk/ArcGIS/rest/services/GRID3_NGA_health_facilities_v2_0/FeatureServer/0",
+    "query_endpoint": "https://services3.arcgis.com/BU6Aadhn6tbBEdyk/ArcGIS/rest/services/GRID3_NGA_health_facilities_v2_0/FeatureServer/0/query",
+    "retrieved_at": "2026-09-08",
+    "response_bytes": 42215000,
+    "sha256": "feab30bc3d6b515d85ac61b3a30a97f6119089f918ddd63ba3d4caf28bf7256a",
+    "format": "ArcGIS FeatureServer JSON",
+    "pagination": "OBJECTID ASC, resultOffset/resultRecordCount; retrieved in deterministic 500-record pages",
+    "raw_record_count": 51022,
+    "last_updated": "2024-11-11",
+    "terms": "The service provides citation and copyright information but no machine-readable licence field; preserve source attribution and consult GRID3/CIESIN terms before redistribution."
+  },
+  "reconciliation_path": "metadata/healthcare/health_facilities_reconciliation/index.json",
+  "source_limitations": [
+    "The NHFR external API is API-key protected; the public portal documents it as the canonical registry interface.",
+    "This published row-level snapshot uses the public GRID3 layer whose metadata says it incorporates NHFR 2024 inputs.",
+    "Rows with unresolved state/LGA geography and exact normalized duplicates are excluded and retained in reconciliation metadata.",
+    "NHFR facility codes are not globally unique in this layer; GRID3 globalid is retained as the source row identifier."
+  ],
+  "licensing": "Source ownership remains with GRID3/CIESIN and its credited contributors. SoftData claims only its independent normalization, schema, identifiers, reconciliation, and metadata; public availability does not transfer source ownership.",
+  "verified_at": "2026-09-08"
+}

@@ -116,6 +116,8 @@ softdata-api/
 │   │   ├── polytechnics.json
 │   │   ├── universities.json
 │   │   └── vocational_enterprise_institutions.json
+│   ├── healthcare/
+│   │   └── health_facilities.json
 │   ├── finance/
 │   │   ├── development_finance_institutions.json
 │   │   ├── financial_holding_companies.json
@@ -159,6 +161,11 @@ softdata-api/
 │   │   │   ├── technical_colleges_reconciliation.json
 │   │   │   ├── universities.json
 │   │   │   └── vocational_enterprise_institutions.json
+│   │   ├── healthcare/
+│   │   │   ├── health_facilities.json
+│   │   │   └── health_facilities_reconciliation/
+│   │   │       ├── index.json
+│   │   │       └── {state_id}.json
 │   │   ├── finance/
 │   │   │   ├── development_finance_institutions.json
 │   │   │   ├── financial_holding_companies.json
@@ -202,6 +209,8 @@ softdata-api/
 │       │   ├── vocational_enterprise_institutions.schema.json
 │       │   ├── polytechnics.schema.json
 │       │   └── universities.schema.json
+│       ├── healthcare/
+│       │   └── health_facilities.schema.json
 │       ├── finance/
 │       │   ├── development_finance_institutions.schema.json
 │       │   ├── financial_holding_companies.schema.json
@@ -514,6 +523,7 @@ softdata-api/
 │       └── query_validator_test.go
 ├── tools/
 │   ├── generate_education_snapshots.py
+│   ├── generate_health_facilities.py
 │   └── generate_primary_and_secondary_schools.py
 ```
 
@@ -533,7 +543,7 @@ Environment-driven application configuration for the server, database, security,
 
 ### `datasets/`
 
-Versioned geography, education, and finance datasets, schemas, provenance metadata, reconciliation manifests, licensing notes, and embedded runtime assets. `embedded.go` embeds the JSON dataset directories used when a deployment cannot provide the configured filesystem dataset path. Education includes paginated primary and secondary schools plus institution snapshots for universities, colleges of education, polytechnics, monotechnics, colleges of agriculture, health sciences and technology, nursing and midwifery, technical colleges, and vocational enterprise institutions. Regulated-finance logo provenance is recorded in `datasets/assets/financial-institutions/ng/ATTRIBUTION.md`; the FHA Homes asset is explicitly a Federal Housing Authority parent-brand representative mark.
+Versioned geography, education, healthcare and finance datasets, schemas, provenance metadata, reconciliation manifests, licensing notes, and embedded runtime assets. `embedded.go` embeds the JSON dataset directories used when a deployment cannot provide the configured filesystem dataset path. Education includes paginated primary and secondary schools plus institution snapshots for universities, colleges of education, polytechnics, monotechnics, colleges of agriculture, health sciences and technology, nursing and midwifery, technical colleges, and vocational enterprise institutions. The healthcare foundation contains the source-verified unified health-facility snapshot and deterministic state/FCT reconciliation partitions; it is not runtime-integrated in this pass. Regulated-finance logo provenance is recorded in `datasets/assets/financial-institutions/ng/ATTRIBUTION.md`; the FHA Homes asset is explicitly a Federal Housing Authority parent-brand representative mark.
 
 ### `internal/database/`
 
@@ -549,7 +559,7 @@ HTTP cross-cutting concerns such as request IDs, logging, recovery, timeouts, CO
 
 ### `internal/models/`
 
-Domain and API-facing models kept separate from sqlc-generated persistence structs.
+Domain and API-facing models kept separate from sqlc-generated persistence structs. `healthcare.go` defines the unified health-facility snapshot model, with `health_facilities_test.go` validating its dataset and reconciliation package.
 
 ### `internal/repository/`
 
@@ -596,7 +606,7 @@ User-facing and contributor-facing documentation, including the OpenAPI specific
 
 ### `tools/`
 
-Dataset generation and snapshot tooling. `generate_education_snapshots.py` builds verified institution snapshots, while `generate_primary_and_secondary_schools.py` builds the partitioned UBEC school dataset and reconciliation summaries. Generators are not run during API startup.
+Dataset generation and snapshot tooling. `generate_education_snapshots.py` builds verified institution snapshots, `generate_primary_and_secondary_schools.py` builds the partitioned UBEC school dataset and reconciliation summaries, and `generate_health_facilities.py` builds the deterministic GRID3/NHFR-derived health-facility snapshot and state/FCT manifests. Generators are not run during API startup.
 
 ### `tmp/`
 
