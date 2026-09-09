@@ -226,12 +226,17 @@ func (s *APIKeyService) ownedAPIKey(ctx context.Context, accountID, keyID string
 }
 
 func apiKeyMetadataFromModel(key models.APIKey) models.APIKeyMetadata {
+	status := key.Status
+	if key.RevokedAt != nil {
+		status = models.APIKeyStatusRevoked
+	}
+
 	return models.APIKeyMetadata{
 		ID:         key.ID,
 		Name:       key.Name,
 		KeyPrefix:  key.KeyPrefix,
 		KeyLast4:   key.KeyLast4,
-		Status:     key.Status,
+		Status:     status,
 		LastUsedAt: key.LastUsedAt,
 		ExpiresAt:  key.ExpiresAt,
 		RevokedAt:  key.RevokedAt,

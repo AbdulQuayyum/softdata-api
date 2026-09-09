@@ -10,8 +10,9 @@ import (
 )
 
 const (
-	apiKeyPrefix        = "sd_live_"
-	apiKeySuffixByteLen = 32
+	apiKeyPrefix           = "sd_live_"
+	apiKeySuffixByteLen    = 32
+	apiKeyDisplaySuffixLen = 12
 )
 
 func GenerateAPIKey() (string, string, string, string, error) {
@@ -32,7 +33,7 @@ func HashAPIKey(apiKey string) string {
 }
 
 func APIKeyDisplayParts(apiKey string) (string, string) {
-	if !strings.HasPrefix(apiKey, apiKeyPrefix) {
+	if !strings.HasPrefix(apiKey, apiKeyPrefix) || len(apiKey) < len(apiKeyPrefix)+apiKeyDisplaySuffixLen+4 {
 		return "", ""
 	}
 
@@ -41,7 +42,9 @@ func APIKeyDisplayParts(apiKey string) (string, string) {
 		last4 = apiKey[len(apiKey)-4:]
 	}
 
-	return apiKeyPrefix, last4
+	// The database requires unique key prefixes. Include 72 random bits from
+	// the suffix while keeping the rest of the key out of display metadata.
+	return apiKey[:len(apiKeyPrefix)+apiKeyDisplaySuffixLen], last4
 }
 
 func ValidateAPIKeyFormat(apiKey string) error {

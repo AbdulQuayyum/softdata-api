@@ -234,7 +234,7 @@ func TestAPIKeys(t *testing.T) {
 	if !strings.HasPrefix(plaintext, apiKeyPrefix) {
 		t.Fatalf("unexpected plaintext prefix: %s", plaintext)
 	}
-	if prefix != apiKeyPrefix {
+	if prefix != plaintext[:len(apiKeyPrefix)+12] {
 		t.Fatalf("unexpected key prefix: %s", prefix)
 	}
 	if len(last4) != 4 {
@@ -254,7 +254,7 @@ func TestAPIKeys(t *testing.T) {
 	if plaintext == secondPlaintext {
 		t.Fatal("expected unique api keys")
 	}
-	if secondPrefix != apiKeyPrefix {
+	if secondPrefix == prefix {
 		t.Fatalf("unexpected second key prefix: %s", secondPrefix)
 	}
 	if secondLast4 == "" {
@@ -321,11 +321,17 @@ func TestAnonymousIDs(t *testing.T) {
 
 func TestAPIKeyDisplayParts(t *testing.T) {
 	prefix, last4 := APIKeyDisplayParts("sd_live_abcdefghijklmnopqrstuvwxyz")
-	if prefix != apiKeyPrefix {
+	if prefix != "sd_live_abcdefghijkl" {
 		t.Fatalf("unexpected prefix: %s", prefix)
 	}
 	if last4 != "wxyz" {
 		t.Fatalf("unexpected last4: %s", last4)
+	}
+	for _, key := range []string{"", "sd_live_", "sd_live_short", "invalid-prefix"} {
+		prefix, last4 := APIKeyDisplayParts(key)
+		if prefix != "" || last4 != "" {
+			t.Fatal("invalid or short keys must not produce display metadata")
+		}
 	}
 }
 
