@@ -152,6 +152,10 @@ func mapError(err error) mappedError {
 		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}
 	case errors.Is(err, services.ErrInvalidEducationInstitutionID), errors.Is(err, services.ErrInvalidSchoolPagination), errors.Is(err, services.ErrInvalidSchoolStateFilter), errors.Is(err, services.ErrInvalidSchoolLGAFilter), errors.Is(err, services.ErrInvalidSchoolEducationLevel), errors.Is(err, services.ErrInvalidSchoolOwnershipType), errors.Is(err, services.ErrInvalidSchoolSearch):
 		return mappedError{status: http.StatusBadRequest, code: codeInvalidRequest, message: messageInvalidRequest}
+	case errors.Is(err, services.ErrMedicalLaboratoryAccreditationNotFound):
+		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}
+	case errors.Is(err, services.ErrInvalidMedicalLaboratoryAccreditationID), errors.Is(err, services.ErrInvalidMedicalLaboratoryAccreditationPagination), errors.Is(err, services.ErrInvalidMedicalLaboratoryAccreditationStateID), errors.Is(err, services.ErrInvalidMedicalLaboratoryAccreditationStatus), errors.Is(err, services.ErrInvalidMedicalLaboratoryAccreditationSearch):
+		return mappedError{status: http.StatusBadRequest, code: codeInvalidRequest, message: messageInvalidRequest}
 	case errors.Is(err, services.ErrHealthFacilityNotFound):
 		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}
 	case errors.Is(err, services.ErrInvalidHealthFacilityID), errors.Is(err, services.ErrInvalidHealthFacilityPagination), errors.Is(err, services.ErrInvalidHealthFacilityStateID), errors.Is(err, services.ErrInvalidHealthFacilityLGAID), errors.Is(err, services.ErrInvalidHealthFacilityStateLGA), errors.Is(err, services.ErrInvalidHealthFacilityType), errors.Is(err, services.ErrInvalidHealthFacilityLevel), errors.Is(err, services.ErrInvalidHealthFacilityOwnership), errors.Is(err, services.ErrInvalidHealthFacilitySearch):

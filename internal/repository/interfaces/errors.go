@@ -61,6 +61,16 @@ var (
 	ErrPrimaryAndSecondarySchoolNotFound = errors.New("repository: primary and secondary school not found")
 	// ErrHealthFacilityNotFound reports that a requested health facility is not present in the dataset.
 	ErrHealthFacilityNotFound = errors.New("repository: health facility not found")
+	// ErrMedicalLaboratoryAccreditationNotFound reports that a requested medical laboratory accreditation is not present in the dataset.
+	ErrMedicalLaboratoryAccreditationNotFound = errors.New("repository: medical laboratory accreditation not found")
+	// ErrInvalidMedicalLaboratoryAccreditationQuery reports an invalid medical-laboratory-accreditation query.
+	ErrInvalidMedicalLaboratoryAccreditationQuery = errors.New("repository: invalid medical laboratory accreditation query")
+	// ErrInvalidMedicalLaboratoryAccreditationStateFilter reports an unknown medical-laboratory-accreditation state filter.
+	ErrInvalidMedicalLaboratoryAccreditationStateFilter = errors.New("repository: invalid medical laboratory accreditation state filter")
+	// ErrInvalidMedicalLaboratoryAccreditationStatusFilter reports an unsupported medical-laboratory-accreditation status filter.
+	ErrInvalidMedicalLaboratoryAccreditationStatusFilter = errors.New("repository: invalid medical laboratory accreditation status filter")
+	// ErrInvalidMedicalLaboratoryAccreditationSearch reports an invalid medical-laboratory-accreditation search filter.
+	ErrInvalidMedicalLaboratoryAccreditationSearch = errors.New("repository: invalid medical laboratory accreditation search")
 	// ErrInvalidHealthFacilityQuery reports an invalid health-facility query.
 	ErrInvalidHealthFacilityQuery = errors.New("repository: invalid health facility query")
 	// ErrInvalidHealthFacilityStateFilter reports an unknown health-facility state filter.

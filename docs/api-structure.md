@@ -576,11 +576,11 @@ HTTP cross-cutting concerns such as request IDs, logging, recovery, timeouts, CO
 
 ### `internal/models/`
 
-Domain and API-facing models kept separate from sqlc-generated persistence structs. `healthcare.go` defines the unified health-facility snapshot model, with `health_facilities_test.go` validating its dataset and reconciliation package.
+Domain and API-facing models kept separate from sqlc-generated persistence structs. `healthcare.go` defines the unified health-facility snapshot model and the medical laboratory accreditation snapshot model, with model tests validating each dataset and reconciliation package.
 
 ### `internal/repository/`
 
-Repository interfaces plus PostgreSQL, Redis, and file-backed implementations. The file repository includes lazy, synchronized, validated loading for education snapshots, indexed paginated school access, and the source-verified health-facility repository with immutable filter indexes. Healthcare repository loading validates the committed snapshot and geography references but does not load reconciliation partitions.
+Repository interfaces plus PostgreSQL, Redis, and file-backed implementations. The file repository includes lazy, synchronized, validated loading for education snapshots, indexed paginated school access, and the source-verified health-facility repository with immutable filter indexes. Healthcare repository loading validates the committed health-facility snapshot and geography references but does not load reconciliation partitions. The medical laboratory accreditation package currently stops at the static dataset/model layer; repository, service, route, OpenAPI and startup integration are intentionally deferred.
 
 ### Runtime/Data Loading
 

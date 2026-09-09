@@ -1,0 +1,30 @@
+{
+  "dataset_key": "ng-medical-laboratory-accreditations",
+  "state_id": "oyo",
+  "source_rows": 1,
+  "records": [
+    {
+      "source_position": 7,
+      "source_name": "Total Healthcare Diagnostics, Bodija, Ibadan, Oyo State",
+      "source_accreditation_number": "ML0007",
+      "source_accreditation_status": "listed_accredited_facility",
+      "source_approval_date": "2020-12-23",
+      "source_expiry_date": "2024-12-22",
+      "raw_state": "Oyo",
+      "raw_address": "Oyo State, Nigeria",
+      "normalized_name": "total-healthcare-diagnostics-bodija-ibadan-oyo-state",
+      "normalized_state_id": "oyo",
+      "decision": "retain",
+      "final_record_id": "total-healthcare-diagnostics-bodija-ibadan-oyo-state-oyo-oyo-ml0007",
+      "merge_target_id": null,
+      "evidence": {
+        "source_url": "https://mlscn-as.org.ng/accredited.html",
+        "source_title": "MLSCN Accreditation Service Accredited Facilities",
+        "retrieved_at": "2026-09-09",
+        "source_sha256": "0e0ac1856ee89bea9371294b191baec601e25a79be4ae92815f3e5f0b584ba4a",
+        "certificate_url": "https://mlscn-as.org.ng/facilities/total care.pdf"
+      },
+      "notes": "Retained from the MLSCN Accreditation Service public Accredited Facilities table as an institutional accreditation observation. Current validity is determined only from the listed certificate expiry date for this dated snapshot."
+    }
+  ]
+}

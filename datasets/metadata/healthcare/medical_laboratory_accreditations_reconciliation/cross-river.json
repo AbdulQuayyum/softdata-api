@@ -1,0 +1,29 @@
+{
+  "dataset_key": "ng-medical-laboratory-accreditations",
+  "state_id": "cross-river",
+  "source_rows": 1,
+  "records": [
+    {
+      "source_position": 6,
+      "source_name": "Nigerian Navy Reference Hospital Laboratory Calabar",
+      "source_accreditation_number": "ML0006",
+      "source_accreditation_status": "listed_accredited_facility",
+      "source_approval_date": "2025-08-18",
+      "source_expiry_date": "2029-08-17",
+      "raw_state": "Cross River",
+      "raw_address": "Cross River State, Nigeria",
+      "normalized_name": "nigerian-navy-reference-hospital-laboratory-calabar",
+      "normalized_state_id": "cross-river",
+      "decision": "retain",
+      "final_record_id": "nigerian-navy-reference-hospital-laboratory-calabar-cross-river-cross-river-ml0006",
+      "merge_target_id": null,
+      "evidence": {
+        "source_url": "https://mlscn-as.org.ng/accredited.html",
+        "source_title": "MLSCN Accreditation Service Accredited Facilities",
+        "retrieved_at": "2026-09-09",
+        "source_sha256": "0e0ac1856ee89bea9371294b191baec601e25a79be4ae92815f3e5f0b584ba4a"
+      },
+      "notes": "Retained from the MLSCN Accreditation Service public Accredited Facilities table as an institutional accreditation observation. Current validity is determined only from the listed certificate expiry date for this dated snapshot."
+    }
+  ]
+}

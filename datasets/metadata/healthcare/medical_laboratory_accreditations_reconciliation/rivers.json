@@ -1,0 +1,29 @@
+{
+  "dataset_key": "ng-medical-laboratory-accreditations",
+  "state_id": "rivers",
+  "source_rows": 1,
+  "records": [
+    {
+      "source_position": 16,
+      "source_name": "Rivers State University Teaching Hospital Polymerase Chain Reaction Laboratory",
+      "source_accreditation_number": "ML0016",
+      "source_accreditation_status": "listed_accredited_facility",
+      "source_approval_date": "2024-03-11",
+      "source_expiry_date": "2028-03-10",
+      "raw_state": "Rivers",
+      "raw_address": "Port Harcourt, Rivers State, Nigeria",
+      "normalized_name": "rivers-state-university-teaching-hospital-polymerase-chain-reaction-laboratory",
+      "normalized_state_id": "rivers",
+      "decision": "retain",
+      "final_record_id": "rivers-state-university-teaching-hospital-polymerase-chain-reaction-laboratory-rivers-port-harcourt-ml0016",
+      "merge_target_id": null,
+      "evidence": {
+        "source_url": "https://mlscn-as.org.ng/accredited.html",
+        "source_title": "MLSCN Accreditation Service Accredited Facilities",
+        "retrieved_at": "2026-09-09",
+        "source_sha256": "0e0ac1856ee89bea9371294b191baec601e25a79be4ae92815f3e5f0b584ba4a"
+      },
+      "notes": "Retained from the MLSCN Accreditation Service public Accredited Facilities table as an institutional accreditation observation. Current validity is determined only from the listed certificate expiry date for this dated snapshot."
+    }
+  ]
+}
