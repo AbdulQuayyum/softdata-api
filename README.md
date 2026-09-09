@@ -41,6 +41,17 @@ curl https://softdata-api.vercel.app/v1/geography/states
 
 No API key is required.
 
+### Populate the Dataset Catalog
+
+Dataset records are imported from `datasets/metadata` into PostgreSQL:
+
+```bash
+set -a; source .env; set +a
+make seed-datasets
+```
+
+The importer is safe to rerun and also refreshes dataset sources and versions.
+
 ### Using an Optional API Key
 
 ```bash
