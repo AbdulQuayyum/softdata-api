@@ -221,6 +221,10 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	if err != nil {
 		return appDependencies{}, fmt.Errorf("initialize health facility handler: %w", err)
 	}
+	accreditationsHandler, err := buildMedicalLaboratoryAccreditationHandler(ctx, jsonRepository)
+	if err != nil {
+		return appDependencies{}, err
+	}
 	financeHandler, err := handlers.NewFinanceHandlerWithPublicAPIURL(financeService, cfg.PublicAPIURL)
 	if err != nil {
 		return appDependencies{}, err
@@ -302,17 +306,18 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	}
 
 	routerHandler, err := router.New(router.Handlers{
-		Health:     healthHandler,
-		Discovery:  discoveryHandler,
-		Geography:  geographyHandler,
-		Education:  educationHandler,
-		Healthcare: healthcareHandler,
-		Finance:    financeHandler,
-		Auth:       authHandler,
-		Account:    accountHandler,
-		APIKey:     apiKeyHandler,
-		Usage:      usageHandler,
-		Dataset:    datasetHandler,
+		Health:                          healthHandler,
+		Discovery:                       discoveryHandler,
+		Geography:                       geographyHandler,
+		Education:                       educationHandler,
+		Healthcare:                      healthcareHandler,
+		MedicalLaboratoryAccreditations: accreditationsHandler,
+		Finance:                         financeHandler,
+		Auth:                            authHandler,
+		Account:                         accountHandler,
+		APIKey:                          apiKeyHandler,
+		Usage:                           usageHandler,
+		Dataset:                         datasetHandler,
 	}, router.Middleware{
 		RequestID:       requestIDMiddleware,
 		Recovery:        recoveryMiddleware,

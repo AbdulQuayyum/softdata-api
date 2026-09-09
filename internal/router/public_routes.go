@@ -3,6 +3,9 @@ package router
 import (
 	"fmt"
 	"net/http"
+
+	"github.com/AbdulQuayyum/softdata-api/internal/repository/interfaces"
+	"github.com/AbdulQuayyum/softdata-api/internal/response"
 )
 
 func registerPublicRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers, mw Middleware) error {
@@ -433,12 +436,19 @@ func registerPublicRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers,
 }
 
 func registerHealthcareRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers, mw Middleware) error {
+	// Preserve trailing-slash rejection while keeping ServeMux's fallback in JSON.
+	// This is not a catalogued resource route; exact list and detail routes take precedence.
+	mux.HandleFunc("/v1/healthcare/medical-laboratory-accreditations/", func(w http.ResponseWriter, r *http.Request) {
+		_ = response.Error(w, interfaces.ErrNotFound, requestIDFromContext(r.Context()))
+	})
+
 	routes := []struct {
 		listPath   string
 		detailPath string
 		list       http.HandlerFunc
 		detail     http.HandlerFunc
 	}{
+		{"/v1/healthcare/medical-laboratory-accreditations", "/v1/healthcare/medical-laboratory-accreditations/{accreditation_id}", h.MedicalLaboratoryAccreditations.ListMedicalLaboratoryAccreditations, h.MedicalLaboratoryAccreditations.GetMedicalLaboratoryAccreditation},
 		{"/v1/healthcare/health-facilities", "/v1/healthcare/health-facilities/{facility_id}", h.Healthcare.ListHealthFacilities, h.Healthcare.GetHealthFacility},
 	}
 	for _, route := range routes {
