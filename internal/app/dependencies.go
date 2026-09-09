@@ -62,6 +62,7 @@ const (
 	financePrimaryMortgageInstitutionsRelativePath             = "finance/primary_mortgage_institutions.json"
 	financeMicrofinanceBanksRelativePath                       = "finance/microfinance_banks.json"
 	healthcareHealthFacilitiesRelativePath                     = "healthcare/health_facilities.json"
+	healthcareMedicalLaboratoryAccreditationsRelativePath      = "healthcare/medical_laboratory_accreditations.json"
 )
 
 var approvedUniversityStateIDs = map[string]struct{}{
