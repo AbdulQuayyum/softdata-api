@@ -253,7 +253,7 @@ func (h *FinanceHandler) ListPaymentServiceProviders(w http.ResponseWriter, r *h
 		return
 	}
 
-	_ = response.List(w, http.StatusOK, providers)
+	_ = response.List(w, http.StatusOK, qualifyLogoURLs(h, providers))
 }
 
 // GetPaymentServiceProvider handles GET /v1/finance/payment-service-providers/{provider_id}.
@@ -279,7 +279,7 @@ func (h *FinanceHandler) GetPaymentServiceProvider(w http.ResponseWriter, r *htt
 		return
 	}
 
-	_ = response.Success(w, http.StatusOK, provider)
+	_ = response.Success(w, http.StatusOK, qualifyLogoURL(h, provider))
 }
 
 // ListInternationalMoneyTransferOperators handles GET /v1/finance/international-money-transfer-operators.

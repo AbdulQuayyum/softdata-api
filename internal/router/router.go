@@ -16,16 +16,17 @@ type UsageMiddlewareFactory func(endpoint, datasetGroup string) (MiddlewareFunc,
 
 // Handlers bundles the completed handler instances the router wires together.
 type Handlers struct {
-	Health    *handlers.HealthHandler
-	Discovery *handlers.DiscoveryHandler
-	Geography *handlers.GeographyHandler
-	Education *handlers.EducationHandler
-	Finance   *handlers.FinanceHandler
-	Auth      *handlers.AuthHandler
-	Account   *handlers.AccountHandler
-	APIKey    *handlers.APIKeyHandler
-	Usage     *handlers.UsageHandler
-	Dataset   *handlers.DatasetHandler
+	Health     *handlers.HealthHandler
+	Discovery  *handlers.DiscoveryHandler
+	Geography  *handlers.GeographyHandler
+	Education  *handlers.EducationHandler
+	Healthcare *handlers.HealthFacilityHandler
+	Finance    *handlers.FinanceHandler
+	Auth       *handlers.AuthHandler
+	Account    *handlers.AccountHandler
+	APIKey     *handlers.APIKeyHandler
+	Usage      *handlers.UsageHandler
+	Dataset    *handlers.DatasetHandler
 }
 
 // Middleware bundles the completed middleware functions the router composes.
@@ -87,6 +88,8 @@ func validateDependencies(h Handlers, mw Middleware) error {
 		return fmt.Errorf("geography handler is required")
 	case h.Education == nil:
 		return fmt.Errorf("education handler is required")
+	case h.Healthcare == nil:
+		return fmt.Errorf("healthcare handler is required")
 	case h.Finance == nil:
 		return fmt.Errorf("finance handler is required")
 	case h.Auth == nil:

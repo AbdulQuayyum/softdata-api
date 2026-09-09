@@ -61,6 +61,7 @@ const (
 	financeDevelopmentFinanceInstitutionsRelativePath          = "finance/development_finance_institutions.json"
 	financePrimaryMortgageInstitutionsRelativePath             = "finance/primary_mortgage_institutions.json"
 	financeMicrofinanceBanksRelativePath                       = "finance/microfinance_banks.json"
+	healthcareHealthFacilitiesRelativePath                     = "healthcare/health_facilities.json"
 )
 
 var approvedUniversityStateIDs = map[string]struct{}{
@@ -114,6 +115,10 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	apiKeyRepo := postgresrepo.NewAPIKeyRepository(pool)
 	usageRepo := postgresrepo.NewUsageRepository(pool)
 	datasetRepo := postgresrepo.NewDatasetRepository(pool)
+	jsonRepository, err := newRuntimeJSONRepository(cfg)
+	if err != nil {
+		return appDependencies{}, fmt.Errorf("initialize json repository: %w", err)
+	}
 
 	passwordHasher := services.NewSecurityPasswordHasher()
 	refreshTokens := services.NewSecurityRefreshTokenGenerator()
@@ -148,18 +153,10 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	if err != nil {
 		return appDependencies{}, err
 	}
-	datasetService, err := services.NewDatasetService(datasetRepo)
+	datasetService, err := services.NewDatasetServiceWithFiles(datasetRepo, jsonRepository)
 	if err != nil {
 		return appDependencies{}, err
 	}
-	jsonRepository, err := fileRepo.NewJSONRepository(cfg.Datasets.Path, cfg.Datasets.JSONMaxBytes)
-	if err != nil && (os.Getenv("VERCEL") == "1" || strings.EqualFold(cfg.Environment, string(config.AppEnvironmentProduction))) {
-		jsonRepository, err = fileRepo.NewEmbeddedJSONRepository(datasets.Files(), cfg.Datasets.JSONMaxBytes)
-	}
-	if err != nil {
-		return appDependencies{}, fmt.Errorf("initialize json repository: %w", err)
-	}
-
 	geographyService, err := buildGeographyServiceFromJSONRepository(ctx, jsonRepository,
 		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath, languagesPath, countryLanguagesPath string) (interfaces.GeographyRepository, error) {
 			return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath, languagesPath, countryLanguagesPath)
@@ -203,6 +200,25 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	)
 	if err != nil {
 		return appDependencies{}, err
+	}
+	healthcareService, err := buildHealthFacilityServiceFromJSONRepository(ctx, jsonRepository,
+		func(repository interfaces.JSONFileRepository, healthPath, statesPath, lgasPath string) (interfaces.HealthFacilityRepository, error) {
+			return fileRepo.NewHealthFacilityRepository(repository, healthPath, statesPath, lgasPath)
+		},
+		func(repository interfaces.HealthFacilityRepository) (healthFacilityService, error) {
+			service, err := services.NewHealthFacilityService(repository)
+			if err != nil {
+				return nil, err
+			}
+			return service, nil
+		},
+	)
+	if err != nil {
+		return appDependencies{}, err
+	}
+	healthcareHandler, err := handlers.NewHealthFacilityHandler(healthcareService)
+	if err != nil {
+		return appDependencies{}, fmt.Errorf("initialize health facility handler: %w", err)
 	}
 	financeHandler, err := handlers.NewFinanceHandlerWithPublicAPIURL(financeService, cfg.PublicAPIURL)
 	if err != nil {
@@ -285,16 +301,17 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	}
 
 	routerHandler, err := router.New(router.Handlers{
-		Health:    healthHandler,
-		Discovery: discoveryHandler,
-		Geography: geographyHandler,
-		Education: educationHandler,
-		Finance:   financeHandler,
-		Auth:      authHandler,
-		Account:   accountHandler,
-		APIKey:    apiKeyHandler,
-		Usage:     usageHandler,
-		Dataset:   datasetHandler,
+		Health:     healthHandler,
+		Discovery:  discoveryHandler,
+		Geography:  geographyHandler,
+		Education:  educationHandler,
+		Healthcare: healthcareHandler,
+		Finance:    financeHandler,
+		Auth:       authHandler,
+		Account:    accountHandler,
+		APIKey:     apiKeyHandler,
+		Usage:      usageHandler,
+		Dataset:    datasetHandler,
 	}, router.Middleware{
 		RequestID:       requestIDMiddleware,
 		Recovery:        recoveryMiddleware,
@@ -333,8 +350,9 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 			}
 			return nil
 		},
-		closeRedis:    redisClose,
-		closePostgres: pool.Close,
+		closeRedis:        redisClose,
+		closePostgres:     pool.Close,
+		healthcareService: healthcareService,
 	}
 	return deps, nil
 }
@@ -391,6 +409,11 @@ type extendedEducationService interface {
 	GetTechnicalCollege(context.Context, string) (models.TechnicalCollege, error)
 	ListPrimaryAndSecondarySchools(context.Context, interfaces.PrimaryAndSecondarySchoolQuery) (interfaces.PrimaryAndSecondarySchoolListResult, error)
 	GetPrimaryAndSecondarySchool(context.Context, string) (models.PrimaryAndSecondarySchool, error)
+}
+
+type healthFacilityService interface {
+	ListHealthFacilities(context.Context, services.HealthFacilityQuery) (services.HealthFacilityListResult, error)
+	GetHealthFacility(context.Context, string) (models.HealthFacility, error)
 }
 
 type financeService interface {
@@ -546,6 +569,43 @@ func buildEducationHandler(
 		return nil, fmt.Errorf("initialize education json repository: %w", err)
 	}
 	return buildEducationHandlerFromJSONRepository(ctx, jsonRepository, newEducationRepository, newEducationService, newEducationHandler)
+}
+
+func buildHealthFacilityServiceFromJSONRepository(
+	ctx context.Context,
+	jsonRepository interfaces.JSONFileRepository,
+	newRepository func(interfaces.JSONFileRepository, string, string, string) (interfaces.HealthFacilityRepository, error),
+	newService func(interfaces.HealthFacilityRepository) (healthFacilityService, error),
+) (healthFacilityService, error) {
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if jsonRepository == nil {
+		return nil, fmt.Errorf("json repository is required")
+	}
+	if newRepository == nil {
+		return nil, fmt.Errorf("health facility repository factory is required")
+	}
+	if newService == nil {
+		return nil, fmt.Errorf("health facility service factory is required")
+	}
+	repository, err := newRepository(
+		jsonRepository,
+		healthcareHealthFacilitiesRelativePath,
+		geographyStatesRelativePath,
+		geographyLocalGovernmentUnitsRelativePath,
+	)
+	if err != nil {
+		return nil, fmt.Errorf("initialize health facility repository: %w", err)
+	}
+	service, err := newService(repository)
+	if err != nil {
+		return nil, fmt.Errorf("initialize health facility service: %w", err)
+	}
+	if err := verifyHealthFacilityDataset(ctx, service); err != nil {
+		return nil, err
+	}
+	return service, nil
 }
 
 func buildEducationHandlerFromJSONRepository(
@@ -2288,4 +2348,14 @@ type accessTokenVerifier struct {
 
 func (v accessTokenVerifier) ValidateAccessToken(token string) (*security.AccessTokenClaims, error) {
 	return security.ValidateAccessToken(token, v.secret)
+}
+
+// newRuntimeJSONRepository keeps the production embedded fallback testable
+// without requiring PostgreSQL or changing dataset loading semantics.
+func newRuntimeJSONRepository(cfg *config.Config) (*fileRepo.JSONRepository, error) {
+	repository, err := fileRepo.NewJSONRepository(cfg.Datasets.Path, cfg.Datasets.JSONMaxBytes)
+	if err != nil && (os.Getenv("VERCEL") == "1" || strings.EqualFold(cfg.Environment, string(config.AppEnvironmentProduction))) {
+		return fileRepo.NewEmbeddedJSONRepository(datasets.Files(), cfg.Datasets.JSONMaxBytes)
+	}
+	return repository, err
 }

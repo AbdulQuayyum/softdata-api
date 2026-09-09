@@ -9,7 +9,7 @@ import (
 // runtime does not automatically include sibling data directories beside a
 // compiled function, so the serverless bootstrap can use this filesystem.
 //
-//go:embed education/*.json finance/*.json geography/*.json
+//go:embed education/*.json finance/*.json geography/*.json healthcare/*.json
 var FS embed.FS
 
 // Files returns the embedded runtime dataset filesystem.

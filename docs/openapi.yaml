@@ -627,6 +627,37 @@ paths:
         "400": {$ref: "#/components/responses/BadRequest"}
         "404": {$ref: "#/components/responses/NotFound"}
         "500": {$ref: "#/components/responses/InternalError"}
+  /v1/healthcare/health-facilities:
+    get:
+      tags: [Healthcare]
+      operationId: listHealthFacilities
+      summary: List health facilities
+      description: Returns the paginated GRID3 Nigeria Health Facilities v2.0 observed snapshot containing 50,649 source-verified facilities. The source snapshot was last updated on 2024-11-11 and does not establish current operational status. It is not a live NHFR register, complete currently operational facility list, or FMoH licensing register.
+      parameters:
+        - {$ref: "#/components/parameters/HealthFacilityPage"}
+        - {$ref: "#/components/parameters/HealthFacilityPageSize"}
+        - {$ref: "#/components/parameters/HealthFacilityStateID"}
+        - {$ref: "#/components/parameters/HealthFacilityLGAID"}
+        - {$ref: "#/components/parameters/HealthFacilityType"}
+        - {$ref: "#/components/parameters/HealthFacilityLevel"}
+        - {$ref: "#/components/parameters/HealthFacilityOwnershipType"}
+        - {$ref: "#/components/parameters/HealthFacilitySearch"}
+      responses:
+        "200": {description: Paginated health-facility records, content: {application/json: {schema: {$ref: "#/components/schemas/HealthFacilityListResponse"}}}}
+        "400": {$ref: "#/components/responses/BadRequest"}
+        "500": {$ref: "#/components/responses/InternalError"}
+  /v1/healthcare/health-facilities/{facility_id}:
+    get:
+      tags: [Healthcare]
+      operationId: getHealthFacility
+      summary: Get a health facility
+      description: Returns one facility from the GRID3 Nigeria Health Facilities v2.0 observed snapshot. The source snapshot was last updated on 2024-11-11 and does not establish current operational status.
+      parameters: [{$ref: "#/components/parameters/HealthFacilityID"}]
+      responses:
+        "200": {description: Health-facility record, content: {application/json: {schema: {$ref: "#/components/schemas/HealthFacilityDetailResponse"}}}}
+        "400": {$ref: "#/components/responses/BadRequest"}
+        "404": {$ref: "#/components/responses/NotFound"}
+        "500": {$ref: "#/components/responses/InternalError"}
   /v1/finance/payment-service-providers:
     get:
       tags: [Finance]
@@ -1137,8 +1168,15 @@ paths:
     post:
       tags: [Authentication]
       summary: Log out
+      description: Revoke the session using its current refresh token. After refreshing, use the newly returned access and refresh tokens.
       security:
         - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RefreshRequest"
       responses:
         "204":
           description: Logged out
@@ -1600,6 +1638,68 @@ components:
       required: false
       description: Case-insensitive school-name search, trimmed and limited to 100 characters.
       example: community primary
+      schema: {type: string, maxLength: 100}
+    HealthFacilityID:
+      name: facility_id
+      in: path
+      required: true
+      description: Stable lowercase public identifier for the health facility.
+      schema: {type: string, maxLength: 255, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'}
+    HealthFacilityPage:
+      name: page
+      in: query
+      required: false
+      description: One-based page number. Pagination is always applied.
+      example: 1
+      schema: {type: integer, minimum: 1, default: 1}
+    HealthFacilityPageSize:
+      name: page_size
+      in: query
+      required: false
+      description: Number of facilities per page. Values are never silently clamped.
+      example: 50
+      schema: {type: integer, minimum: 1, maximum: 100, default: 50}
+    HealthFacilityStateID:
+      name: state_id
+      in: query
+      required: false
+      description: Optional lowercase Nigerian state or FCT ID used to filter facilities.
+      example: lagos
+      schema: {type: string, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'}
+    HealthFacilityLGAID:
+      name: lga_id
+      in: query
+      required: false
+      description: Optional lowercase LGA or FCT Area Council ID used to filter facilities.
+      example: lagos-ikeja
+      schema: {type: string, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'}
+    HealthFacilityType:
+      name: facility_type
+      in: query
+      required: false
+      description: Optional normalized facility-type filter.
+      example: primary-health-centre
+      schema: {type: string, enum: [primary-health-centre, clinic, health-post, general-hospital, other, teaching-hospital, specialist-hospital]}
+    HealthFacilityLevel:
+      name: facility_level
+      in: query
+      required: false
+      description: Optional normalized facility-level filter.
+      example: primary
+      schema: {type: string, enum: [primary, secondary, tertiary]}
+    HealthFacilityOwnershipType:
+      name: ownership_type
+      in: query
+      required: false
+      description: Optional normalized ownership filter.
+      example: private
+      schema: {type: string, enum: [federal, state, local-government, private, military, other-public]}
+    HealthFacilitySearch:
+      name: search
+      in: query
+      required: false
+      description: Case-insensitive trimmed facility-name substring search, limited to 100 characters. Fuzzy matching and ranking are not applied.
+      example: general hospital
       schema: {type: string, maxLength: 100}
     PaymentServiceProviderID:
       name: provider_id
@@ -2476,6 +2576,48 @@ components:
       properties:
         success: {type: boolean}
         data: {$ref: "#/components/schemas/PrimaryAndSecondarySchool"}
+      required: [success, data]
+    HealthFacility:
+      type: object
+      additionalProperties: false
+      properties:
+        id: {type: string, maxLength: 255, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'}
+        name: {type: string}
+        facility_type: {type: string, enum: [primary-health-centre, clinic, health-post, general-hospital, other, teaching-hospital, specialist-hospital]}
+        facility_level: {type: string, enum: [primary, secondary, tertiary]}
+        ownership_type: {type: string, enum: [federal, state, local-government, private, military, other-public]}
+        state_id: {type: string, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'}
+        lga_id: {type: string, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'}
+        country_code: {type: string, enum: [NG]}
+        source_facility_id: {type: string}
+        latitude: {type: number, minimum: 4.281710, maximum: 13.865239}
+        longitude: {type: number, minimum: 2.707790, maximum: 14.636383}
+      required: [id, name, facility_type, state_id, country_code]
+    HealthFacilityPagination:
+      type: object
+      additionalProperties: false
+      properties:
+        page: {type: integer, minimum: 1}
+        limit: {type: integer, minimum: 1, maximum: 100}
+        total: {type: integer, format: int64, minimum: 0}
+        total_pages: {type: integer, minimum: 0}
+      required: [page, limit, total, total_pages]
+    HealthFacilityListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success: {type: boolean}
+        data:
+          type: array
+          items: {$ref: "#/components/schemas/HealthFacility"}
+        meta: {$ref: "#/components/schemas/HealthFacilityPagination"}
+      required: [success, data, meta]
+    HealthFacilityDetailResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success: {type: boolean}
+        data: {$ref: "#/components/schemas/HealthFacility"}
       required: [success, data]
     PaymentServiceProviderType:
       type: string

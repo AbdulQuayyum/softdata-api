@@ -50,6 +50,51 @@
       "type": "string"
     },
     {
+      "key": "healthFacilityId",
+      "value": "222-cliford-medical-center-abia-abia-aba-north-cea7a6ea-db7e-4845-8057-5caf45dc26c1",
+      "type": "string"
+    },
+    {
+      "key": "healthFacilityPage",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "healthFacilityPageSize",
+      "value": "50",
+      "type": "string"
+    },
+    {
+      "key": "healthFacilityStateId",
+      "value": "lagos",
+      "type": "string"
+    },
+    {
+      "key": "healthFacilityLgaId",
+      "value": "lagos-ikeja",
+      "type": "string"
+    },
+    {
+      "key": "healthFacilityType",
+      "value": "clinic",
+      "type": "string"
+    },
+    {
+      "key": "healthFacilityLevel",
+      "value": "primary",
+      "type": "string"
+    },
+    {
+      "key": "healthFacilityOwnership",
+      "value": "private",
+      "type": "string"
+    },
+    {
+      "key": "healthFacilitySearch",
+      "value": "",
+      "type": "string"
+    },
+    {
       "key": "countryId",
       "value": "nigeria",
       "type": "string"
@@ -1601,6 +1646,79 @@
       ]
     },
     {
+      "name": "Healthcare",
+      "description": "Public Nigerian health-facility snapshot. The dataset contains 50,649 GRID3 Nigeria Health Facilities v2.0 observed records, last updated 2024-11-11. It is not a live NHFR register, a complete current operational facility list, or an FMoH licensing register. Results are always paginated with a default page size of 50 and a maximum of 100.",
+      "item": [
+        {
+          "name": "List health facilities",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}",
+                "description": "Optional. Enable this header when using an API key for higher limits and usage analytics.",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "description": "List source-verified health facilities with bounded pagination and optional filters. Search is a case-insensitive name substring match.\n\nMethod: GET\nPath: /v1/healthcare/health-facilities\n\nQuery parameters:\n- page: positive base-10 page number; default 1\n- page_size: 1-100; default 50\n- state_id: optional lowercase state ID\n- lga_id: optional lowercase LGA ID\n- facility_type: primary-health-centre, clinic, health-post, general-hospital, other, teaching-hospital, or specialist-hospital\n- facility_level: primary, secondary, or tertiary\n- ownership_type: federal, state, local-government, private, military, or other-public\n- search: optional trimmed search text, maximum 100 characters\n\nExpected responses: 200, 400, 500",
+            "url": {
+              "raw": "{{baseUrl}}/v1/healthcare/health-facilities?page={{healthFacilityPage}}&page_size={{healthFacilityPageSize}}&state_id={{healthFacilityStateId}}&lga_id={{healthFacilityLgaId}}&facility_type={{healthFacilityType}}&facility_level={{healthFacilityLevel}}&ownership_type={{healthFacilityOwnership}}&search={{healthFacilitySearch}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "healthcare",
+                "health-facilities"
+              ],
+              "query": [
+                {"key": "page", "value": "{{healthFacilityPage}}", "description": "Positive page number. Default: 1."},
+                {"key": "page_size", "value": "{{healthFacilityPageSize}}", "description": "Page size from 1 to 100. Default: 50."},
+                {"key": "state_id", "value": "{{healthFacilityStateId}}", "description": "Optional lowercase state ID.", "disabled": true},
+                {"key": "lga_id", "value": "{{healthFacilityLgaId}}", "description": "Optional lowercase LGA ID.", "disabled": true},
+                {"key": "facility_type", "value": "{{healthFacilityType}}", "description": "Optional facility type enum.", "disabled": true},
+                {"key": "facility_level", "value": "{{healthFacilityLevel}}", "description": "Optional facility level enum.", "disabled": true},
+                {"key": "ownership_type", "value": "{{healthFacilityOwnership}}", "description": "Optional ownership enum.", "disabled": true},
+                {"key": "search", "value": "{{healthFacilitySearch}}", "description": "Optional name search, maximum 100 characters.", "disabled": true}
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get a health facility",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}",
+                "description": "Optional. Enable this header when using an API key for higher limits and usage analytics.",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "description": "Retrieve one health facility by its stable lowercase public ID.\n\nMethod: GET\nPath: /v1/healthcare/health-facilities/{facility_id}\n\nPath variable: facility_id={{healthFacilityId}}\n\nExpected responses: 200, 400, 404, 500",
+            "url": {
+              "raw": "{{baseUrl}}/v1/healthcare/health-facilities/{{healthFacilityId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "healthcare",
+                "health-facilities",
+                "{{healthFacilityId}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
       "name": "Finance",
       "description": "Public Nigerian financial institution and currency endpoints. An optional X-API-Key may be supplied for higher limits and usage analytics.",
       "item": [
@@ -2495,7 +2613,7 @@
             "header": [
 
             ],
-            "description": "Log out\n\n\nMethod: POST\nPath: /v1/auth/logout\n\nAuthentication: Bearer access token.\n\nExpected responses: 204",
+            "description": "Log out\n\n\nMethod: POST\nPath: /v1/auth/logout\n\nAuthentication: Bearer access token. Send the current refresh token in the JSON body. After refreshing, update accessToken and refreshToken with the newly returned tokens.\n\nExpected responses: 204",
             "url": {
               "raw": "{{baseUrl}}/v1/auth/logout",
               "host": [
@@ -2509,6 +2627,15 @@
               "query": [
 
               ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refresh_token\": \"{{refreshToken}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
             },
             "auth": {
               "type": "bearer",

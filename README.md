@@ -41,6 +41,17 @@ curl https://softdata-api.vercel.app/v1/geography/states
 
 No API key is required.
 
+### Populate the Dataset Catalog
+
+Dataset records are imported from `datasets/metadata` into PostgreSQL:
+
+```bash
+set -a; source .env; set +a
+make seed-datasets
+```
+
+The importer is safe to rerun and also refreshes dataset sources and versions.
+
 ### Using an Optional API Key
 
 ```bash
@@ -220,7 +231,7 @@ cp .env.example .env
 
 Update the environment variables before running the application.
 
-Dataset JSON files are loaded through the JSON file repository and capped by `DATASETS_JSON_MAX_BYTES`, which defaults to `16777216` bytes (16 MiB). This limit is separate from `SERVER_BODY_LIMIT`, which applies only to incoming HTTP request bodies.
+Dataset JSON files are loaded through the JSON file repository and capped by `DATASETS_JSON_MAX_BYTES`, which defaults to `67108864` bytes (64 MiB). This limit is separate from `SERVER_BODY_LIMIT`, which applies only to incoming HTTP request bodies.
 
 ### Start directly
 

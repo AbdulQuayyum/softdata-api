@@ -348,6 +348,40 @@ func TestAPIKeyServiceListKeysFiltersOwnership(t *testing.T) {
 	}
 }
 
+func TestAPIKeyServiceListKeysReportsRevokedTimestampAsRevoked(t *testing.T) {
+	repo := newAPIKeyRepoStub()
+	revokedAt := time.Date(2026, 8, 26, 12, 0, 0, 0, time.UTC)
+	repo.listFn = func(context.Context, string, int32, int32) ([]models.APIKey, error) {
+		return []models.APIKey{
+			{
+				ID:        "key-1",
+				AccountID: "acct-1",
+				Name:      "Primary",
+				KeyPrefix: "sd_live_",
+				KeyLast4:  "1111",
+				Status:    models.APIKeyStatusActive,
+				RevokedAt: &revokedAt,
+			},
+		}, nil
+	}
+
+	svc, err := NewAPIKeyService(repo, &apiKeyGeneratorStub{})
+	if err != nil {
+		t.Fatalf("NewAPIKeyService() error = %v", err)
+	}
+
+	keys, err := svc.ListKeys(context.Background(), "acct-1")
+	if err != nil {
+		t.Fatalf("ListKeys() error = %v", err)
+	}
+	if len(keys) != 1 {
+		t.Fatalf("expected one key, got %d", len(keys))
+	}
+	if keys[0].Status != models.APIKeyStatusRevoked {
+		t.Fatalf("key status = %q, want %q", keys[0].Status, models.APIKeyStatusRevoked)
+	}
+}
+
 func TestAPIKeyServiceRevokeKeyEnforcesOwnership(t *testing.T) {
 	repo := newAPIKeyRepoStub()
 	now := time.Date(2026, 8, 26, 12, 0, 0, 0, time.UTC)

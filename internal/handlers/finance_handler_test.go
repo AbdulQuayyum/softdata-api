@@ -195,11 +195,12 @@ func TestFinanceHandlerListPaymentServiceProviders(t *testing.T) {
 					ID:              "mobile-money-operator-abeg-technologies-limited",
 					Name:            "Abeg Technologies Limited",
 					InstitutionType: "mobile_money_operator",
+					LogoURL:         "/v1/assets/financial-institutions/ng/payment-service-providers/mobile-money-operator-abeg-technologies-limited.png",
 					CountryCode:     "NG",
 				}}, nil
 			},
 		}
-		h, err := NewFinanceHandler(stub)
+		h, err := NewFinanceHandlerWithPublicAPIURL(stub, "http://localhost:8080")
 		if err != nil {
 			t.Fatalf("NewFinanceHandler() error = %v", err)
 		}
@@ -226,10 +227,10 @@ func TestFinanceHandlerListPaymentServiceProviders(t *testing.T) {
 			t.Fatalf("unexpected list payload: %#v", data)
 		}
 		item := data[0].(map[string]any)
-		if len(item) != 4 {
+		if len(item) != 5 {
 			t.Fatalf("unexpected provider field count: %#v", item)
 		}
-		if item["id"] != "mobile-money-operator-abeg-technologies-limited" || item["country_code"] != "NG" {
+		if item["id"] != "mobile-money-operator-abeg-technologies-limited" || item["country_code"] != "NG" || item["logo_url"] != "http://localhost:8080/v1/assets/financial-institutions/ng/payment-service-providers/mobile-money-operator-abeg-technologies-limited.png" {
 			t.Fatalf("unexpected provider payload: %#v", item)
 		}
 	})

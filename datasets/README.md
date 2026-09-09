@@ -19,6 +19,8 @@ datasets/
 │   ├── monotechnics.json
 │   ├── polytechnics.json
 │   └── universities.json
+├── healthcare/
+│   └── health_facilities.json
 ├── finance/
 │   ├── development_finance_institutions.json
 │   ├── financial_holding_companies.json
@@ -47,6 +49,11 @@ datasets/
 │   │   ├── monotechnics_reconciliation.json
 │   │   ├── polytechnics.json
 │   │   └── universities.json
+│   ├── healthcare/
+│   │   ├── health_facilities.json
+│   │   └── health_facilities_reconciliation/
+│   │       ├── index.json
+│   │       └── {state_id}.json
 │   └── finance/
 │       ├── development_finance_institutions.json
 │       ├── financial_holding_companies.json
@@ -73,6 +80,8 @@ datasets/
 │   │   ├── monotechnics.schema.json
 │   │   ├── polytechnics.schema.json
 │   │   └── universities.schema.json
+│   ├── healthcare/
+│   │   └── health_facilities.schema.json
 │   └── finance/
 │       ├── development_finance_institutions.schema.json
 │       ├── financial_holding_companies.schema.json
@@ -105,6 +114,7 @@ Regulated-finance logo assets are embedded under `assets/financial-institutions/
 - `education/technical_colleges.json` is a 115-record NBTE Technical Colleges directory snapshot. The source page exposes 122 numbered entries while NBTE separately reports 153 institutions; the difference is documented and no institutions are inferred.
 - `education/universities.json` is the compiled catalogue of current NUC-listed Nigerian universities.
 - `education/primary_and_secondary_schools.json` is the 166,604-record UBEC 2022 source-observed school/campus snapshot. It is not a current licensing register; its reconciliation preserves every source row and explicitly quarantines 69 ambiguous Osun geography rows.
+- `healthcare/health_facilities.json` is a 50,649-record dated health-facility snapshot retained from 51,022 public GRID3 rows documenting 2024 NHFR inputs. It covers all 37 state/FCT values and 768 canonical LGAs; it is not a live active-facility register. Its schema, source metadata and deterministic state/FCT reconciliation partitions are stored alongside it. Ten observations in five unresolved identity pairs and 363 unresolved geography rows are excluded rather than inferred. There are no duplicate merges.
 - `finance/international_money_transfer_operators.json` is the compiled register snapshot of current CBN-listed IMTO entries, with optional verified website URLs.
 - `finance/currencies.json` is the compiled snapshot of current ISO 4217 monetary currencies.
 - `finance/payment_service_providers.json` is the compiled register snapshot of payment-service-provider memberships.

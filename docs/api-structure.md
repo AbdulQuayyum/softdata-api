@@ -116,6 +116,8 @@ softdata-api/
 │   │   ├── polytechnics.json
 │   │   ├── universities.json
 │   │   └── vocational_enterprise_institutions.json
+│   ├── healthcare/
+│   │   └── health_facilities.json
 │   ├── finance/
 │   │   ├── development_finance_institutions.json
 │   │   ├── financial_holding_companies.json
@@ -159,6 +161,11 @@ softdata-api/
 │   │   │   ├── technical_colleges_reconciliation.json
 │   │   │   ├── universities.json
 │   │   │   └── vocational_enterprise_institutions.json
+│   │   ├── healthcare/
+│   │   │   ├── health_facilities.json
+│   │   │   └── health_facilities_reconciliation/
+│   │   │       ├── index.json
+│   │   │       └── {state_id}.json
 │   │   ├── finance/
 │   │   │   ├── development_finance_institutions.json
 │   │   │   ├── financial_holding_companies.json
@@ -202,6 +209,8 @@ softdata-api/
 │       │   ├── vocational_enterprise_institutions.schema.json
 │       │   ├── polytechnics.schema.json
 │       │   └── universities.schema.json
+│       ├── healthcare/
+│       │   └── health_facilities.schema.json
 │       ├── finance/
 │       │   ├── development_finance_institutions.schema.json
 │       │   ├── financial_holding_companies.schema.json
@@ -238,6 +247,8 @@ softdata-api/
 │   │   ├── app.go
 │   │   ├── app_test.go
 │   │   ├── dependencies.go
+│   │   ├── healthcare.go
+│   │   ├── healthcare_test.go
 │   │   ├── education_test.go
 │   │   ├── finance_test.go
 │   │   ├── microfinance_bootstrap_test.go
@@ -283,6 +294,9 @@ softdata-api/
 │   │   ├── education_handler_test.go
 │   │   ├── education_extended_handler.go
 │   │   ├── education_extended_handler_test.go
+│   │   ├── healthcare_handler.go
+│   │   ├── healthcare_handler_test.go
+│   │   ├── healthcare_openapi_test.go
 │   │   ├── finance_handler.go
 │   │   ├── finance_handler_test.go
 │   │   ├── finance_commercial_banks_test.go
@@ -349,6 +363,8 @@ softdata-api/
 │   │   ├── finance_test.go
 │   │   ├── geography.go
 │   │   ├── geography_test.go
+│   │   ├── healthcare.go
+│   │   ├── health_facilities_test.go
 │   │   ├── lgas_test.go
 │   │   ├── session.go
 │   │   ├── monotechnics_test.go
@@ -376,6 +392,9 @@ softdata-api/
 │   │   │   ├── education_extended_repository_test.go
 │   │   │   ├── education_repository.go
 │   │   │   ├── education_repository_test.go
+│   │   │   ├── healthcare_bench_test.go
+│   │   │   ├── healthcare_repository.go
+│   │   │   ├── healthcare_repository_test.go
 │   │   │   ├── education_schools.go
 │   │   │   ├── education_smalls.go
 │   │   │   ├── finance_commercial_banks_test.go
@@ -403,6 +422,7 @@ softdata-api/
 │   │   │   ├── api_key_repository.go
 │   │   │   ├── dataset_repository.go
 │   │   │   ├── education_repository.go
+│   │   │   ├── healthcare_repository.go
 │   │   │   ├── errors.go
 │   │   │   ├── file_repository.go
 │   │   │   ├── finance_repository.go
@@ -446,6 +466,8 @@ softdata-api/
 │   │   ├── http_router_test.go
 │   │   ├── public_routes.go
 │   │   ├── public_routes_test.go
+│   │   ├── healthcare_production_test.go
+│   │   ├── healthcare_routes_test.go
 │   │   ├── regulated_finance_assets.go
 │   │   ├── regulated_finance_routes.go
 │   │   ├── regulated_finance_routes_test.go
@@ -475,6 +497,8 @@ softdata-api/
 │   │   ├── education_extended_service_test.go
 │   │   ├── education_service.go
 │   │   ├── education_service_test.go
+│   │   ├── healthcare_service.go
+│   │   ├── healthcare_service_test.go
 │   │   ├── errors.go
 │   │   ├── finance_service.go
 │   │   ├── finance_service_test.go
@@ -503,6 +527,8 @@ softdata-api/
 │       ├── education_extended_validator_test.go
 │       ├── education_validator.go
 │       ├── education_validator_test.go
+│       ├── healthcare_validator.go
+│       ├── healthcare_validator_test.go
 │       ├── finance_validator.go
 │       ├── finance_validator_test.go
 │       ├── finance_commercial_banks_test.go
@@ -514,6 +540,7 @@ softdata-api/
 │       └── query_validator_test.go
 ├── tools/
 │   ├── generate_education_snapshots.py
+│   ├── generate_health_facilities.py
 │   └── generate_primary_and_secondary_schools.py
 ```
 
@@ -533,7 +560,7 @@ Environment-driven application configuration for the server, database, security,
 
 ### `datasets/`
 
-Versioned geography, education, and finance datasets, schemas, provenance metadata, reconciliation manifests, licensing notes, and embedded runtime assets. `embedded.go` embeds the JSON dataset directories used when a deployment cannot provide the configured filesystem dataset path. Education includes paginated primary and secondary schools plus institution snapshots for universities, colleges of education, polytechnics, monotechnics, colleges of agriculture, health sciences and technology, nursing and midwifery, technical colleges, and vocational enterprise institutions. Regulated-finance logo provenance is recorded in `datasets/assets/financial-institutions/ng/ATTRIBUTION.md`; the FHA Homes asset is explicitly a Federal Housing Authority parent-brand representative mark.
+Versioned geography, education, healthcare and finance datasets, schemas, provenance metadata, reconciliation manifests, licensing notes, and embedded runtime assets. `embedded.go` embeds the JSON dataset directories used when a deployment cannot provide the configured filesystem dataset path. Education includes paginated primary and secondary schools plus institution snapshots for universities, colleges of education, polytechnics, monotechnics, colleges of agriculture, health sciences and technology, nursing and midwifery, technical colleges, and vocational enterprise institutions. The healthcare area contains the source-verified unified health-facility snapshot and deterministic state/FCT reconciliation partitions; runtime loading uses only the public dataset and geography references, not reconciliation files. Regulated-finance logo provenance is recorded in `datasets/assets/financial-institutions/ng/ATTRIBUTION.md`; the FHA Homes asset is explicitly a Federal Housing Authority parent-brand representative mark.
 
 ### `internal/database/`
 
@@ -541,7 +568,7 @@ PostgreSQL pool creation, readiness checks, and generated sqlc persistence code.
 
 ### `internal/handlers/`
 
-HTTP handlers that validate requests, call services, and produce shared response envelopes. Education handlers are split between the existing education handler and `education_extended_handler.go`, which serves the additional institution categories and paginated schools.
+HTTP handlers that validate requests, call services, and produce shared response envelopes. Education handlers are split between the existing education handler and `education_extended_handler.go`, which serves the additional institution categories and paginated schools. `healthcare_handler.go` serves the paginated health-facility list and detail contract; production routes apply the same public API-key, rate-limit, and usage-tracking middleware policy as other public dataset routes.
 
 ### `internal/middlewares/`
 
@@ -549,11 +576,11 @@ HTTP cross-cutting concerns such as request IDs, logging, recovery, timeouts, CO
 
 ### `internal/models/`
 
-Domain and API-facing models kept separate from sqlc-generated persistence structs.
+Domain and API-facing models kept separate from sqlc-generated persistence structs. `healthcare.go` defines the unified health-facility snapshot model, with `health_facilities_test.go` validating its dataset and reconciliation package.
 
 ### `internal/repository/`
 
-Repository interfaces plus PostgreSQL, Redis, and file-backed implementations. The file repository includes lazy, synchronized, validated loading for education snapshots, paginated school indexing, and dedicated validation/loading for regulated-finance datasets.
+Repository interfaces plus PostgreSQL, Redis, and file-backed implementations. The file repository includes lazy, synchronized, validated loading for education snapshots, indexed paginated school access, and the source-verified health-facility repository with immutable filter indexes. Healthcare repository loading validates the committed snapshot and geography references but does not load reconciliation partitions.
 
 ### Runtime/Data Loading
 
@@ -564,15 +591,15 @@ Repository interfaces plus PostgreSQL, Redis, and file-backed implementations. T
 
 ### `internal/services/`
 
-Application use cases and business rules for accounts, authentication, datasets, education, finance, geography, and usage. Education services expose list/detail operations for institution snapshots and paginated filtering/detail lookup for primary and secondary schools.
+Application use cases and business rules for accounts, authentication, datasets, education, healthcare, finance, geography, and usage. Education services expose list/detail operations for institution snapshots and paginated filtering/detail lookup for primary and secondary schools. `healthcare_service.go` exposes validated paginated list and detail access for the unified health-facility snapshot.
 
 ### `internal/validators/`
 
-Request validation and normalization helpers for authentication, accounts, API keys, datasets, geography, education institution IDs, school IDs, pagination, filters, and query inputs.
+Request validation and normalization helpers for authentication, accounts, API keys, datasets, geography, education institution IDs, school IDs, healthcare facility IDs, pagination, filters, and query inputs.
 
 ### `internal/router/`
 
-HTTP router construction, route registration, public and authenticated route groups, route cataloging, and embedded flag, commercial-bank, and regulated-finance logo serving.
+HTTP router construction, route registration, public and authenticated route groups, route cataloging, stable usage templates, and embedded flag, commercial-bank, and regulated-finance logo serving. Healthcare production routes are registered as GET-only collection and facility-detail routes under `/v1/healthcare/health-facilities`.
 
 ### `internal/redis/`
 
@@ -596,7 +623,7 @@ User-facing and contributor-facing documentation, including the OpenAPI specific
 
 ### `tools/`
 
-Dataset generation and snapshot tooling. `generate_education_snapshots.py` builds verified institution snapshots, while `generate_primary_and_secondary_schools.py` builds the partitioned UBEC school dataset and reconciliation summaries. Generators are not run during API startup.
+Dataset generation and snapshot tooling. `generate_education_snapshots.py` builds verified institution snapshots, `generate_primary_and_secondary_schools.py` builds the partitioned UBEC school dataset and reconciliation summaries, and `generate_health_facilities.py` builds the deterministic GRID3/NHFR-derived health-facility snapshot and state/FCT manifests. Generators are not run during API startup.
 
 ### `tmp/`
 

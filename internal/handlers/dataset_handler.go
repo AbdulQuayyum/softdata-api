@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"net/http"
 
@@ -16,6 +17,10 @@ type datasetService interface {
 	GetDataset(context.Context, string) (models.DatasetResponse, error)
 	ListDatasetSources(context.Context, string) ([]models.DatasetSourceResponse, error)
 	ListDatasetVersions(context.Context, string) ([]models.DatasetVersionResponse, error)
+}
+
+type datasetDownloader interface {
+	DownloadDataset(context.Context, string) (json.RawMessage, error)
 }
 
 type DatasetHandler struct {
@@ -83,6 +88,39 @@ func (h *DatasetHandler) GetDataset(w http.ResponseWriter, r *http.Request) {
 	}
 
 	_ = response.Success(w, http.StatusOK, dataset)
+}
+
+func (h *DatasetHandler) DownloadDataset(w http.ResponseWriter, r *http.Request) {
+	if !allowMethod(w, r, http.MethodGet) {
+		return
+	}
+
+	requestID := requestIDFromContext(r.Context())
+	datasetID, err := validateDatasetPathValue(r)
+	if err != nil {
+		if validationErr, ok := validationErrorsFrom(err); ok {
+			_ = response.Validation(w, requestID, validationErrorsToResponse(validationErr))
+			return
+		}
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	downloader, ok := h.service.(datasetDownloader)
+	if !ok {
+		_ = response.Error(w, fmt.Errorf("dataset download service is unavailable"), requestID)
+		return
+	}
+	document, err := downloader.DownloadDataset(r.Context(), datasetID)
+	if err != nil {
+		_ = response.Error(w, err, requestID)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Disposition", fmt.Sprintf("attachment; filename=%q", datasetID+".json"))
+	w.WriteHeader(http.StatusOK)
+	_, _ = w.Write(document)
 }
 
 func (h *DatasetHandler) ListDatasetSources(w http.ResponseWriter, r *http.Request) {

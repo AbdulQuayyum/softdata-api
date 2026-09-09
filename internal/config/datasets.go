@@ -16,7 +16,7 @@ func loadDatasetsConfig(lookup LookupEnv) (DatasetConfig, error) {
 	if path == "" {
 		path = "datasets"
 	}
-	jsonMaxBytes, err := parsePositiveInt64("DATASETS_JSON_MAX_BYTES", lookupString(lookup, "DATASETS_JSON_MAX_BYTES"), 16777216)
+	jsonMaxBytes, err := parsePositiveInt64("DATASETS_JSON_MAX_BYTES", lookupString(lookup, "DATASETS_JSON_MAX_BYTES"), 67108864)
 	if err != nil {
 		return DatasetConfig{}, err
 	}

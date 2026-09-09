@@ -1,0 +1,271 @@
+{
+  "dataset_key": "ng-health-facilities",
+  "source_rows": 51022,
+  "final_record_count": 50649,
+  "decision_counts": {
+    "exclude_invalid_geography": 363,
+    "exclude_unresolved_identity": 10,
+    "retain": 50649
+  },
+  "partitions": [
+    {
+      "state_id": "abia",
+      "path": "metadata/healthcare/health_facilities_reconciliation/abia.json",
+      "source_rows": 1321,
+      "size_bytes": 1532689,
+      "sha256": "6b122c21189d7e174360bee60c2cd00cce4e062401b58873ab19eb27ac329eea"
+    },
+    {
+      "state_id": "adamawa",
+      "path": "metadata/healthcare/health_facilities_reconciliation/adamawa.json",
+      "source_rows": 1561,
+      "size_bytes": 1810964,
+      "sha256": "633c0a545dad7cae7c83a23c3c7588cc2e326d8f2361ff64a8e3c15b65dc6f76"
+    },
+    {
+      "state_id": "akwa-ibom",
+      "path": "metadata/healthcare/health_facilities_reconciliation/akwa-ibom.json",
+      "source_rows": 934,
+      "size_bytes": 1102568,
+      "sha256": "8d701c8c9ff0dfc1182da52ba8e098881aa5d2aba27e989398cbc09285989903"
+    },
+    {
+      "state_id": "anambra",
+      "path": "metadata/healthcare/health_facilities_reconciliation/anambra.json",
+      "source_rows": 1867,
+      "size_bytes": 2205625,
+      "sha256": "e983c43bd2e68175169610774edef3f93f20c443a3deb34a58447514e44b9cc6"
+    },
+    {
+      "state_id": "bauchi",
+      "path": "metadata/healthcare/health_facilities_reconciliation/bauchi.json",
+      "source_rows": 1468,
+      "size_bytes": 1697792,
+      "sha256": "c2b5d78eae4f1ee80a8811387603dac6e14f075e48279490a268ec77dcbe8f6f"
+    },
+    {
+      "state_id": "bayelsa",
+      "path": "metadata/healthcare/health_facilities_reconciliation/bayelsa.json",
+      "source_rows": 422,
+      "size_bytes": 505039,
+      "sha256": "85c11b582d494927e504ca290292ca4c76aa1c814db77b091c268904f9ed1e5b"
+    },
+    {
+      "state_id": "benue",
+      "path": "metadata/healthcare/health_facilities_reconciliation/benue.json",
+      "source_rows": 2284,
+      "size_bytes": 2637374,
+      "sha256": "48dcf0541c706365a7270be447a2f82acf1cd167ac15dc806db16b071a6cfe78"
+    },
+    {
+      "state_id": "borno",
+      "path": "metadata/healthcare/health_facilities_reconciliation/borno.json",
+      "source_rows": 804,
+      "size_bytes": 922592,
+      "sha256": "58994fa3560127b7b21be6a246a7b165a29daa09bbd922231627be799f7e3ec2"
+    },
+    {
+      "state_id": "cross-river",
+      "path": "metadata/healthcare/health_facilities_reconciliation/cross-river.json",
+      "source_rows": 1522,
+      "size_bytes": 1801337,
+      "sha256": "5de3ff49fc576c0d85f0153bfb551d98910f26d4d2426b23801168745a3a4a3b"
+    },
+    {
+      "state_id": "delta",
+      "path": "metadata/healthcare/health_facilities_reconciliation/delta.json",
+      "source_rows": 1059,
+      "size_bytes": 1238620,
+      "sha256": "95439153ebc7fd0ed09cf27e4b58a95c6c8bdf2a2b616a98787629712fc91ecd"
+    },
+    {
+      "state_id": "ebonyi",
+      "path": "metadata/healthcare/health_facilities_reconciliation/ebonyi.json",
+      "source_rows": 1243,
+      "size_bytes": 1445134,
+      "sha256": "3ced7008d467c7a3e18556f8dd6e64d0d0207a098312cffa8e6572de29e1d595"
+    },
+    {
+      "state_id": "edo",
+      "path": "metadata/healthcare/health_facilities_reconciliation/edo.json",
+      "source_rows": 1069,
+      "size_bytes": 1236809,
+      "sha256": "0fa2c59a058654d54d5176f202119a75e576becc24c9379c1dc0632fc03ab2e3"
+    },
+    {
+      "state_id": "ekiti",
+      "path": "metadata/healthcare/health_facilities_reconciliation/ekiti.json",
+      "source_rows": 772,
+      "size_bytes": 898783,
+      "sha256": "f67e02f95edc706c81eeebf23276cd0ca0535cfb16ff5e60b32fcd5f05eb6597"
+    },
+    {
+      "state_id": "enugu",
+      "path": "metadata/healthcare/health_facilities_reconciliation/enugu.json",
+      "source_rows": 1457,
+      "size_bytes": 1691739,
+      "sha256": "5a3d62d4ec672848d505de466c6c5d62c0135fffbcdc39aa9d8e926766bd30a6"
+    },
+    {
+      "state_id": "fct",
+      "path": "metadata/healthcare/health_facilities_reconciliation/fct.json",
+      "source_rows": 652,
+      "size_bytes": 760941,
+      "sha256": "1bf2dee890445cf323ae9638ad6204f9f5bba1dc8675b1bd9bfd60cd337cd8d8"
+    },
+    {
+      "state_id": "gombe",
+      "path": "metadata/healthcare/health_facilities_reconciliation/gombe.json",
+      "source_rows": 897,
+      "size_bytes": 1044362,
+      "sha256": "656d83a3e74c339865535b263e8011c1782fb8723664402bc71085a046bb7242"
+    },
+    {
+      "state_id": "imo",
+      "path": "metadata/healthcare/health_facilities_reconciliation/imo.json",
+      "source_rows": 1779,
+      "size_bytes": 2054268,
+      "sha256": "19bd335e0b4569b78a11ccab23dc178979f7cbb65c65f4dbab745246acd89a93"
+    },
+    {
+      "state_id": "jigawa",
+      "path": "metadata/healthcare/health_facilities_reconciliation/jigawa.json",
+      "source_rows": 904,
+      "size_bytes": 1057688,
+      "sha256": "ff574ef3224e738f5862c65456ee1c7edaa1bf1536622e3bbba064690f96fdc6"
+    },
+    {
+      "state_id": "kaduna",
+      "path": "metadata/healthcare/health_facilities_reconciliation/kaduna.json",
+      "source_rows": 1545,
+      "size_bytes": 1797813,
+      "sha256": "c7664d6f8b6798b1594f003e435d0a3e283b9f231c83c003fe79d953c4b634b4"
+    },
+    {
+      "state_id": "kano",
+      "path": "metadata/healthcare/health_facilities_reconciliation/kano.json",
+      "source_rows": 1723,
+      "size_bytes": 1978308,
+      "sha256": "2c4927165ad67008141e972f22a9ccf0be6ccdb32825efca679b0d99de8c6aab"
+    },
+    {
+      "state_id": "katsina",
+      "path": "metadata/healthcare/health_facilities_reconciliation/katsina.json",
+      "source_rows": 2296,
+      "size_bytes": 2678658,
+      "sha256": "0261953f7e169a82c749189a7e3e8ee8d7cf6bbf3aeecf77a2948c7ba9b53a6b"
+    },
+    {
+      "state_id": "kebbi",
+      "path": "metadata/healthcare/health_facilities_reconciliation/kebbi.json",
+      "source_rows": 1207,
+      "size_bytes": 1399808,
+      "sha256": "1a68bd662abdd44d33623c4d8fe132a03f12b5fe94fbf31e81df56a60f5346ed"
+    },
+    {
+      "state_id": "kogi",
+      "path": "metadata/healthcare/health_facilities_reconciliation/kogi.json",
+      "source_rows": 1644,
+      "size_bytes": 1901290,
+      "sha256": "f459acc4050cc8e7ecd2e01f1136e586a87aa34ddcf5facb68d5f47fc8dd7827"
+    },
+    {
+      "state_id": "kwara",
+      "path": "metadata/healthcare/health_facilities_reconciliation/kwara.json",
+      "source_rows": 1097,
+      "size_bytes": 1271388,
+      "sha256": "c209d49347a4388e3c39d9368fe71ea609fbb124189bac8bb03df874a3b0b974"
+    },
+    {
+      "state_id": "lagos",
+      "path": "metadata/healthcare/health_facilities_reconciliation/lagos.json",
+      "source_rows": 2798,
+      "size_bytes": 3219787,
+      "sha256": "c268f3fc181eaf1e6ffe42421a4a77e365158a4ac1ff242b170c86b0a9efb63f"
+    },
+    {
+      "state_id": "nasarawa",
+      "path": "metadata/healthcare/health_facilities_reconciliation/nasarawa.json",
+      "source_rows": 1207,
+      "size_bytes": 1415302,
+      "sha256": "4b720082bec30ee05581b8b7ede507d96cbf393b0b7d24793515d7344f74d765"
+    },
+    {
+      "state_id": "niger",
+      "path": "metadata/healthcare/health_facilities_reconciliation/niger.json",
+      "source_rows": 2201,
+      "size_bytes": 2547840,
+      "sha256": "d00da93b22947447053b1a4c584d6a32d131b34e46ed3ff54b835145f8408951"
+    },
+    {
+      "state_id": "ogun",
+      "path": "metadata/healthcare/health_facilities_reconciliation/ogun.json",
+      "source_rows": 1993,
+      "size_bytes": 2304393,
+      "sha256": "6a9c1cab9f664fe6d3aabbf6429864f52d81d7675cb188e35a8e08ca32bbe0d0"
+    },
+    {
+      "state_id": "ondo",
+      "path": "metadata/healthcare/health_facilities_reconciliation/ondo.json",
+      "source_rows": 1096,
+      "size_bytes": 1271579,
+      "sha256": "a9303ed0ddd0e430bd1acc828d76bc05f8a1a8fabac4947995bf1cb18169df44"
+    },
+    {
+      "state_id": "osun",
+      "path": "metadata/healthcare/health_facilities_reconciliation/osun.json",
+      "source_rows": 1729,
+      "size_bytes": 2004607,
+      "sha256": "9ae645430a0f6f4d01f51881ef4e2de095f90d6fde4e467c546e964a10f59877"
+    },
+    {
+      "state_id": "oyo",
+      "path": "metadata/healthcare/health_facilities_reconciliation/oyo.json",
+      "source_rows": 2045,
+      "size_bytes": 2364420,
+      "sha256": "1165a619da6f05292f96893d68357de27ba6c4f093c8905b53176ca7ac11fdf1"
+    },
+    {
+      "state_id": "plateau",
+      "path": "metadata/healthcare/health_facilities_reconciliation/plateau.json",
+      "source_rows": 1643,
+      "size_bytes": 1929132,
+      "sha256": "16bf1cd4cb7171eb7ea39391b7a150b1e453cf82fc35bcfc8a4f434cde306736"
+    },
+    {
+      "state_id": "rivers",
+      "path": "metadata/healthcare/health_facilities_reconciliation/rivers.json",
+      "source_rows": 791,
+      "size_bytes": 924957,
+      "sha256": "8cca1ee8882a938a43de7deab72d75888dea731ea19cb7bea832334c8ab86239"
+    },
+    {
+      "state_id": "sokoto",
+      "path": "metadata/healthcare/health_facilities_reconciliation/sokoto.json",
+      "source_rows": 937,
+      "size_bytes": 1084391,
+      "sha256": "5aa958de96f091b4b8affa16ab8ab81e781bbffecb622d6c9918b2c119c64f6c"
+    },
+    {
+      "state_id": "taraba",
+      "path": "metadata/healthcare/health_facilities_reconciliation/taraba.json",
+      "source_rows": 1464,
+      "size_bytes": 1689989,
+      "sha256": "0b9f6bf7ed4d83757234eb25a9ddb8084e011e8b001a0562105d63491b2940f3"
+    },
+    {
+      "state_id": "yobe",
+      "path": "metadata/healthcare/health_facilities_reconciliation/yobe.json",
+      "source_rows": 663,
+      "size_bytes": 765222,
+      "sha256": "6c3cd2d6f912151e0f3911329572452404823d04d69e6d4205c051949dcafcbc"
+    },
+    {
+      "state_id": "zamfara",
+      "path": "metadata/healthcare/health_facilities_reconciliation/zamfara.json",
+      "source_rows": 928,
+      "size_bytes": 1093128,
+      "sha256": "0517a89c0dc66fc1037520e7d30ce2bcf4c6693ff0d7f6c4924e94509f22a686"
+    }
+  ]
+}

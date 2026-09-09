@@ -291,6 +291,9 @@ func registerPublicRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers,
 	if err := registerExtendedEducationRoutes(mux, catalog, h, mw); err != nil {
 		return err
 	}
+	if err := registerHealthcareRoutes(mux, catalog, h, mw); err != nil {
+		return err
+	}
 
 	financeList, err := buildRouteMiddlewares(mw, "/v1/finance/payment-service-providers", "finance", routeOptions{
 		useOptionalAPIKey: true,
@@ -426,6 +429,45 @@ func registerPublicRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers,
 		return err
 	}
 
+	return nil
+}
+
+func registerHealthcareRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers, mw Middleware) error {
+	routes := []struct {
+		listPath   string
+		detailPath string
+		list       http.HandlerFunc
+		detail     http.HandlerFunc
+	}{
+		{"/v1/healthcare/health-facilities", "/v1/healthcare/health-facilities/{facility_id}", h.Healthcare.ListHealthFacilities, h.Healthcare.GetHealthFacility},
+	}
+	for _, route := range routes {
+		listMiddleware, err := buildRouteMiddlewares(mw, route.listPath, "healthcare", routeOptions{
+			useOptionalAPIKey: true,
+			useRateLimit:      true,
+			useUsageTracking:  true,
+		})
+		if err != nil {
+			return fmt.Errorf("build healthcare %s middleware: %w", route.listPath, err)
+		}
+		mux.Handle("GET "+route.listPath, compose(route.list, listMiddleware...))
+		if err := catalog.add("GET " + route.listPath); err != nil {
+			return err
+		}
+
+		detailMiddleware, err := buildRouteMiddlewares(mw, route.detailPath, "healthcare", routeOptions{
+			useOptionalAPIKey: true,
+			useRateLimit:      true,
+			useUsageTracking:  true,
+		})
+		if err != nil {
+			return fmt.Errorf("build healthcare %s middleware: %w", route.detailPath, err)
+		}
+		mux.Handle("GET "+route.detailPath, compose(route.detail, detailMiddleware...))
+		if err := catalog.add("GET " + route.detailPath); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 

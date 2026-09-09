@@ -3,6 +3,7 @@ bin/
 tmp/
 build/
 dist/
+/api
 
 # Coverage and test artifacts
 coverage.out

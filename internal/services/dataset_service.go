@@ -2,6 +2,7 @@ package services
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"math"
@@ -24,14 +25,19 @@ type DatasetListResult struct {
 }
 
 type DatasetService struct {
-	repo interfaces.DatasetRepository
+	repo           interfaces.DatasetRepository
+	fileRepository interfaces.JSONFileRepository
 }
 
 func NewDatasetService(repo interfaces.DatasetRepository) (*DatasetService, error) {
+	return NewDatasetServiceWithFiles(repo, nil)
+}
+
+func NewDatasetServiceWithFiles(repo interfaces.DatasetRepository, fileRepository interfaces.JSONFileRepository) (*DatasetService, error) {
 	if repo == nil {
 		return nil, fmt.Errorf("dataset repository is required")
 	}
-	return &DatasetService{repo: repo}, nil
+	return &DatasetService{repo: repo, fileRepository: fileRepository}, nil
 }
 
 func (s *DatasetService) ListDatasets(ctx context.Context, search string, page, limit int) (DatasetListResult, error) {
@@ -90,6 +96,35 @@ func (s *DatasetService) GetDataset(ctx context.Context, datasetKey string) (mod
 	}
 
 	return toDatasetResponse(dataset), nil
+}
+
+func (s *DatasetService) DownloadDataset(ctx context.Context, datasetKey string) (json.RawMessage, error) {
+	if s.fileRepository == nil {
+		return nil, fmt.Errorf("dataset file repository is required")
+	}
+
+	dataset, err := s.resolveVisibleDataset(ctx, datasetKey)
+	if err != nil {
+		return nil, err
+	}
+
+	versions, err := s.repo.ListVersions(ctx, dataset.ID)
+	if err != nil {
+		return nil, translateDatasetServiceError("list dataset versions", err)
+	}
+	for _, version := range versions {
+		if version.Status != models.DatasetVersionStatusPublished || version.StoragePath == nil {
+			continue
+		}
+
+		var document json.RawMessage
+		if err := s.fileRepository.Decode(ctx, *version.StoragePath, &document); err != nil {
+			return nil, fmt.Errorf("read dataset file: %w", err)
+		}
+		return document, nil
+	}
+
+	return nil, ErrDatasetNotFound
 }
 
 func (s *DatasetService) ListDatasetSources(ctx context.Context, datasetKey string) ([]models.DatasetSourceResponse, error) {

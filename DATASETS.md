@@ -58,6 +58,17 @@ Examples:
 - Facility services
 - Facility ownership
 
+### `ng-health-facilities`
+
+Unified Nigerian health-facility snapshot derived from the public GRID3 Nigeria health-facilities layer, which documents 2024 NHFR inputs and NPHCDA standards.
+
+- `datasets/healthcare/health_facilities.json`
+- `datasets/schemas/healthcare/health_facilities.schema.json`
+- `datasets/metadata/healthcare/health_facilities.json`
+- `datasets/metadata/healthcare/health_facilities_reconciliation/index.json` and its 37 state/FCT partitions
+
+The package contains 50,649 retained records from 51,022 source rows, covering all 36 states and the FCT and 768 canonical LGAs. It is a dated observed registry snapshot, not a continuously current active-facility register. Ten observations in five unresolved identity pairs and 363 unresolved geography rows are excluded and recorded in reconciliation metadata. There are no duplicate merges. See the [identity review](docs/healthcare-identity-resolution.md). No operational-status claim, website, logo or inferred coordinate is published. Source ownership remains with GRID3, CIESIN and the credited contributors; SoftData claims only its independent normalization, schema, identifiers, reconciliation and metadata work.
+
 ### Emergency
 
 Emergency and public-safety service data.

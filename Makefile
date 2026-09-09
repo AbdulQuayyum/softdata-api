@@ -1,4 +1,4 @@
-.PHONY: migrate-up migrate-down migrate-version migrate-force migrate-create sqlc-generate sqlc-compile database-check
+.PHONY: migrate-up migrate-down migrate-version migrate-force migrate-create seed-datasets sqlc-generate sqlc-compile database-check
 
 SQLC_VERSION ?= v1.31.1
 MIGRATE_VERSION ?= v4.17.1
@@ -30,6 +30,9 @@ migrate-force:
 migrate-create:
 	@if [ -z "$(NAME)" ]; then echo "NAME is required"; exit 1; fi
 	@$(MIGRATE) create -ext sql -dir database/migrations -seq "$(NAME)"
+
+seed-datasets:
+	@go run ./cmd/seed-datasets
 
 sqlc-generate:
 	@$(SQLC) generate

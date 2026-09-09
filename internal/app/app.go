@@ -27,11 +27,12 @@ type App struct {
 }
 
 type appDependencies struct {
-	server         *http.Server
-	runServer      func() error
-	shutdownServer func(context.Context) error
-	closeRedis     func() error
-	closePostgres  func()
+	server            *http.Server
+	runServer         func() error
+	shutdownServer    func(context.Context) error
+	closeRedis        func() error
+	closePostgres     func()
+	healthcareService healthFacilityService
 }
 
 // New builds the production app from configuration and a logger.

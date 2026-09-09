@@ -250,6 +250,17 @@ The package contains 115 records retained from 122 numbered entries in the offic
 
 The package contains 166,604 school/campus records observed in the official UBEC 2022 Primary and Junior Secondary workbooks: 81,160 public and 85,444 private records across 37 state/FCT values and 772 resolved LGAs. Combined source labels produce multiple normalized education levels on one record. This is not a current active-school, licensing or complete senior-secondary register; 69 ambiguous Osun `ILESHA` rows are quarantined. Runtime integration is intentionally deferred.
 
+### `ng-health-facilities`
+
+Unified Nigerian health-facility snapshot derived from the public GRID3 Nigeria health-facilities layer, which documents 2024 NHFR inputs and NPHCDA standards.
+
+- Data: `datasets/healthcare/health_facilities.json`
+- Schema: `datasets/schemas/healthcare/health_facilities.schema.json`
+- Metadata: `datasets/metadata/healthcare/health_facilities.json`
+- Reconciliation: `datasets/metadata/healthcare/health_facilities_reconciliation/index.json` and its 37 state/FCT partitions
+
+The package contains 50,649 retained records from 51,022 source rows across all 36 states and the FCT and 768 canonical LGAs. It is a dated observed registry snapshot, not a continuously current active-facility register. Ten observations in five unresolved identity pairs and 363 unresolved geography rows are excluded and recorded in reconciliation metadata. There are no duplicate merges. Operational status is omitted because the source snapshot does not establish current activity. Websites, logos and runtime API integration are intentionally deferred.
+
 ## Dataset Principles
 
 - Every dataset should have a stable identifier.
