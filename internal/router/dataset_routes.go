@@ -30,6 +30,9 @@ func registerDatasetRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers
 	if err := register("GET /v1/datasets/{dataset_id}", "/v1/datasets/{dataset_id}", http.HandlerFunc(h.Dataset.GetDataset), datasetOpts); err != nil {
 		return fmt.Errorf("register dataset detail route: %w", err)
 	}
+	if err := register("GET /v1/datasets/{dataset_id}/download", "/v1/datasets/{dataset_id}/download", http.HandlerFunc(h.Dataset.DownloadDataset), datasetOpts); err != nil {
+		return fmt.Errorf("register dataset download route: %w", err)
+	}
 	if err := register("GET /v1/datasets/{dataset_id}/sources", "/v1/datasets/{dataset_id}/sources", http.HandlerFunc(h.Dataset.ListDatasetSources), datasetOpts); err != nil {
 		return fmt.Errorf("register dataset sources route: %w", err)
 	}

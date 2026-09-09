@@ -115,6 +115,10 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	apiKeyRepo := postgresrepo.NewAPIKeyRepository(pool)
 	usageRepo := postgresrepo.NewUsageRepository(pool)
 	datasetRepo := postgresrepo.NewDatasetRepository(pool)
+	jsonRepository, err := newRuntimeJSONRepository(cfg)
+	if err != nil {
+		return appDependencies{}, fmt.Errorf("initialize json repository: %w", err)
+	}
 
 	passwordHasher := services.NewSecurityPasswordHasher()
 	refreshTokens := services.NewSecurityRefreshTokenGenerator()
@@ -149,15 +153,10 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	if err != nil {
 		return appDependencies{}, err
 	}
-	datasetService, err := services.NewDatasetService(datasetRepo)
+	datasetService, err := services.NewDatasetServiceWithFiles(datasetRepo, jsonRepository)
 	if err != nil {
 		return appDependencies{}, err
 	}
-	jsonRepository, err := newRuntimeJSONRepository(cfg)
-	if err != nil {
-		return appDependencies{}, fmt.Errorf("initialize json repository: %w", err)
-	}
-
 	geographyService, err := buildGeographyServiceFromJSONRepository(ctx, jsonRepository,
 		func(repository interfaces.JSONFileRepository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath, languagesPath, countryLanguagesPath string) (interfaces.GeographyRepository, error) {
 			return fileRepo.NewGeographyRepository(repository, statesPath, zonesPath, localGovernmentUnitsPath, timeZonesPath, countriesAndAreasPath, languagesPath, countryLanguagesPath)
