@@ -1,0 +1,230 @@
+{
+  "dataset_key": "ng-medical-laboratory-accreditations",
+  "state_id": "lagos",
+  "source_rows": 10,
+  "records": [
+    {
+      "source_position": 1,
+      "source_name": "Cerba Lancet Laboratories",
+      "source_accreditation_number": "ML0001",
+      "source_accreditation_status": "listed_accredited_facility",
+      "source_approval_date": "2025-07-29",
+      "source_expiry_date": "2029-06-28",
+      "raw_state": "Lagos",
+      "raw_address": "Itire Road, Lagos, Nigeria",
+      "normalized_name": "cerba-lancet-laboratories",
+      "normalized_state_id": "lagos",
+      "decision": "retain",
+      "final_record_id": "cerba-lancet-laboratories-lagos-itire-road-ml0001",
+      "merge_target_id": null,
+      "evidence": {
+        "source_url": "https://mlscn-as.org.ng/accredited.html",
+        "source_title": "MLSCN Accreditation Service Accredited Facilities",
+        "retrieved_at": "2026-09-09",
+        "source_sha256": "0e0ac1856ee89bea9371294b191baec601e25a79be4ae92815f3e5f0b584ba4a"
+      },
+      "notes": "Retained from the MLSCN Accreditation Service public Accredited Facilities table as an institutional accreditation observation. Current validity is determined only from the listed certificate expiry date for this dated snapshot."
+    },
+    {
+      "source_position": 2,
+      "source_name": "661 Nigerian Air Force Hospital Laboratory",
+      "source_accreditation_number": "ML0002",
+      "source_accreditation_status": "listed_accredited_facility",
+      "source_approval_date": "2021-02-26",
+      "source_expiry_date": "2025-02-25",
+      "raw_state": "Lagos",
+      "raw_address": "Ikeja, Lagos, Nigeria",
+      "normalized_name": "661-nigerian-air-force-hospital-laboratory",
+      "normalized_state_id": "lagos",
+      "decision": "retain",
+      "final_record_id": "661-nigerian-air-force-hospital-laboratory-lagos-ikeja-ml0002",
+      "merge_target_id": null,
+      "evidence": {
+        "source_url": "https://mlscn-as.org.ng/accredited.html",
+        "source_title": "MLSCN Accreditation Service Accredited Facilities",
+        "retrieved_at": "2026-09-09",
+        "source_sha256": "0e0ac1856ee89bea9371294b191baec601e25a79be4ae92815f3e5f0b584ba4a"
+      },
+      "notes": "Retained from the MLSCN Accreditation Service public Accredited Facilities table as an institutional accreditation observation. Current validity is determined only from the listed certificate expiry date for this dated snapshot."
+    },
+    {
+      "source_position": 3,
+      "source_name": "El-Lab Laboratories",
+      "source_accreditation_number": "ML0003",
+      "source_accreditation_status": "listed_accredited_facility",
+      "source_approval_date": "2026-06-17",
+      "source_expiry_date": "2030-06-16",
+      "raw_state": "Lagos",
+      "raw_address": "Festac Town, Lagos, Nigeria",
+      "normalized_name": "el-lab-laboratories",
+      "normalized_state_id": "lagos",
+      "decision": "retain",
+      "final_record_id": "el-lab-laboratories-lagos-festac-town-ml0003",
+      "merge_target_id": null,
+      "evidence": {
+        "source_url": "https://mlscn-as.org.ng/accredited.html",
+        "source_title": "MLSCN Accreditation Service Accredited Facilities",
+        "retrieved_at": "2026-09-09",
+        "source_sha256": "0e0ac1856ee89bea9371294b191baec601e25a79be4ae92815f3e5f0b584ba4a",
+        "certificate_url": "https://mlscn-as.org.ng/facilities/el_lab.pdf"
+      },
+      "notes": "Retained from the MLSCN Accreditation Service public Accredited Facilities table as an institutional accreditation observation. Current validity is determined only from the listed certificate expiry date for this dated snapshot."
+    },
+    {
+      "source_position": 5,
+      "source_name": "Nigerian Navy Reference Hospital Laboratory",
+      "source_accreditation_number": "ML0005",
+      "source_accreditation_status": "listed_accredited_facility",
+      "source_approval_date": "2025-08-18",
+      "source_expiry_date": "2029-08-17",
+      "raw_state": "Lagos",
+      "raw_address": "Ojo, Lagos State, Nigeria",
+      "normalized_name": "nigerian-navy-reference-hospital-laboratory",
+      "normalized_state_id": "lagos",
+      "decision": "retain",
+      "final_record_id": "nigerian-navy-reference-hospital-laboratory-lagos-ojo-ml0005",
+      "merge_target_id": null,
+      "evidence": {
+        "source_url": "https://mlscn-as.org.ng/accredited.html",
+        "source_title": "MLSCN Accreditation Service Accredited Facilities",
+        "retrieved_at": "2026-09-09",
+        "source_sha256": "0e0ac1856ee89bea9371294b191baec601e25a79be4ae92815f3e5f0b584ba4a",
+        "certificate_url": "https://mlscn-as.org.ng/facilities/nigerian navy reference hospital lagos.pdf"
+      },
+      "notes": "Retained from the MLSCN Accreditation Service public Accredited Facilities table as an institutional accreditation observation. Current validity is determined only from the listed certificate expiry date for this dated snapshot."
+    },
+    {
+      "source_position": 9,
+      "source_name": "Afriglobal Medicare Limited",
+      "source_accreditation_number": "ML0009",
+      "source_accreditation_status": "listed_accredited_facility",
+      "source_approval_date": "2025-07-29",
+      "source_expiry_date": "2029-07-28",
+      "raw_state": "Lagos",
+      "raw_address": "Lagos State, Nigeria",
+      "normalized_name": "afriglobal-medicare-limited",
+      "normalized_state_id": "lagos",
+      "decision": "retain",
+      "final_record_id": "afriglobal-medicare-limited-lagos-lagos-ml0009",
+      "merge_target_id": null,
+      "evidence": {
+        "source_url": "https://mlscn-as.org.ng/accredited.html",
+        "source_title": "MLSCN Accreditation Service Accredited Facilities",
+        "retrieved_at": "2026-09-09",
+        "source_sha256": "0e0ac1856ee89bea9371294b191baec601e25a79be4ae92815f3e5f0b584ba4a"
+      },
+      "notes": "Retained from the MLSCN Accreditation Service public Accredited Facilities table as an institutional accreditation observation. Current validity is determined only from the listed certificate expiry date for this dated snapshot."
+    },
+    {
+      "source_position": 13,
+      "source_name": "68 Nigerian Army Reference Hospital Laboratory Hospital Laboratory, Yaba",
+      "source_accreditation_number": "ML0013",
+      "source_accreditation_status": "listed_accredited_facility",
+      "source_approval_date": "2022-12-23",
+      "source_expiry_date": "2026-12-22",
+      "raw_state": "Lagos",
+      "raw_address": "Lagos State, Nigeria",
+      "normalized_name": "68-nigerian-army-reference-hospital-laboratory-hospital-laboratory-yaba",
+      "normalized_state_id": "lagos",
+      "decision": "retain",
+      "final_record_id": "68-nigerian-army-reference-hospital-laboratory-hospital-laboratory-yaba-lagos-lagos-ml0013",
+      "merge_target_id": null,
+      "evidence": {
+        "source_url": "https://mlscn-as.org.ng/accredited.html",
+        "source_title": "MLSCN Accreditation Service Accredited Facilities",
+        "retrieved_at": "2026-09-09",
+        "source_sha256": "0e0ac1856ee89bea9371294b191baec601e25a79be4ae92815f3e5f0b584ba4a",
+        "certificate_url": "https://mlscn-as.org.ng/facilities/68_army_ref_lab.pdf"
+      },
+      "notes": "Retained from the MLSCN Accreditation Service public Accredited Facilities table as an institutional accreditation observation. Current validity is determined only from the listed certificate expiry date for this dated snapshot."
+    },
+    {
+      "source_position": 21,
+      "source_name": "Central Public Health Laboratory",
+      "source_accreditation_number": "ML0021",
+      "source_accreditation_status": "listed_accredited_facility",
+      "source_approval_date": "2025-08-30",
+      "source_expiry_date": "2029-08-29",
+      "raw_state": "Lagos",
+      "raw_address": "Yaba, Lagos State, Nigeria",
+      "normalized_name": "central-public-health-laboratory",
+      "normalized_state_id": "lagos",
+      "decision": "retain",
+      "final_record_id": "central-public-health-laboratory-lagos-yaba-ml0021",
+      "merge_target_id": null,
+      "evidence": {
+        "source_url": "https://mlscn-as.org.ng/accredited.html",
+        "source_title": "MLSCN Accreditation Service Accredited Facilities",
+        "retrieved_at": "2026-09-09",
+        "source_sha256": "0e0ac1856ee89bea9371294b191baec601e25a79be4ae92815f3e5f0b584ba4a"
+      },
+      "notes": "Retained from the MLSCN Accreditation Service public Accredited Facilities table as an institutional accreditation observation. Current validity is determined only from the listed certificate expiry date for this dated snapshot."
+    },
+    {
+      "source_position": 25,
+      "source_name": "Onchocerciasis and Soil Transmitted Helminth (ONCHO-STH) Laboratory Public Health and Epidemiology Department, Nigeria Institute of Medical Research",
+      "source_accreditation_number": "ML0025",
+      "source_accreditation_status": "listed_accredited_facility",
+      "source_approval_date": "2026-01-16",
+      "source_expiry_date": "2030-01-15",
+      "raw_state": "Lagos",
+      "raw_address": "Yaba, Lagos State, Nigeria",
+      "normalized_name": "onchocerciasis-and-soil-transmitted-helminth-oncho-sth-laboratory-public-health-and-epidemiology-department-nigeria-institute-of-medical-research",
+      "normalized_state_id": "lagos",
+      "decision": "retain",
+      "final_record_id": "onchocerciasis-and-soil-transmitted-helminth-oncho-sth-laboratory-public-health-and-epidemiology-department-nigeria-institute-of-medical-research-lagos-yaba-ml0025",
+      "merge_target_id": null,
+      "evidence": {
+        "source_url": "https://mlscn-as.org.ng/accredited.html",
+        "source_title": "MLSCN Accreditation Service Accredited Facilities",
+        "retrieved_at": "2026-09-09",
+        "source_sha256": "0e0ac1856ee89bea9371294b191baec601e25a79be4ae92815f3e5f0b584ba4a"
+      },
+      "notes": "Retained from the MLSCN Accreditation Service public Accredited Facilities table as an institutional accreditation observation. Current validity is determined only from the listed certificate expiry date for this dated snapshot."
+    },
+    {
+      "source_position": 27,
+      "source_name": "Onco-Genomics Laboratory",
+      "source_accreditation_number": "ML0027",
+      "source_accreditation_status": "listed_accredited_facility",
+      "source_approval_date": "2026-06-17",
+      "source_expiry_date": "2030-06-16",
+      "raw_state": "Lagos",
+      "raw_address": "Plot 8 Unity Street, Cokor Estate, Shasha Akowonjo, Egbeda, Lagos State, Nigeria",
+      "normalized_name": "onco-genomics-laboratory",
+      "normalized_state_id": "lagos",
+      "decision": "retain",
+      "final_record_id": "onco-genomics-laboratory-lagos-plot-8-unity-street-ml0027",
+      "merge_target_id": null,
+      "evidence": {
+        "source_url": "https://mlscn-as.org.ng/accredited.html",
+        "source_title": "MLSCN Accreditation Service Accredited Facilities",
+        "retrieved_at": "2026-09-09",
+        "source_sha256": "0e0ac1856ee89bea9371294b191baec601e25a79be4ae92815f3e5f0b584ba4a"
+      },
+      "notes": "Retained from the MLSCN Accreditation Service public Accredited Facilities table as an institutional accreditation observation. Current validity is determined only from the listed certificate expiry date for this dated snapshot."
+    },
+    {
+      "source_position": 29,
+      "source_name": "International Organization for Migration Lagos Laboratory",
+      "source_accreditation_number": "ML0029",
+      "source_accreditation_status": "listed_accredited_facility",
+      "source_approval_date": "2026-06-17",
+      "source_expiry_date": "2030-06-16",
+      "raw_state": "Lagos",
+      "raw_address": "1 Isaac John Street, GRA, Ikeja, Lagos State, Nigeria",
+      "normalized_name": "international-organization-for-migration-lagos-laboratory",
+      "normalized_state_id": "lagos",
+      "decision": "retain",
+      "final_record_id": "international-organization-for-migration-lagos-laboratory-lagos-1-isaac-john-street-ml0029",
+      "merge_target_id": null,
+      "evidence": {
+        "source_url": "https://mlscn-as.org.ng/accredited.html",
+        "source_title": "MLSCN Accreditation Service Accredited Facilities",
+        "retrieved_at": "2026-09-09",
+        "source_sha256": "0e0ac1856ee89bea9371294b191baec601e25a79be4ae92815f3e5f0b584ba4a"
+      },
+      "notes": "Retained from the MLSCN Accreditation Service public Accredited Facilities table as an institutional accreditation observation. Current validity is determined only from the listed certificate expiry date for this dated snapshot."
+    }
+  ]
+}

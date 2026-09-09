@@ -1,0 +1,83 @@
+{
+  "dataset_key": "ng-medical-laboratory-accreditations",
+  "status": "active",
+  "snapshot": true,
+  "publicly_published": true,
+  "title": "Nigeria Medical Laboratory Accreditation Register Snapshot",
+  "description": "A dated snapshot of medical laboratory facility accreditation records published by the MLSCN Accreditation Service. It is not a complete register of all licensed medical laboratory premises in Nigeria.",
+  "country_code": "NG",
+  "record_count": 30,
+  "source_rows": 30,
+  "decision_counts": {
+    "retain": 30
+  },
+  "accreditation_status_counts": {
+    "accredited": 26,
+    "expired": 4
+  },
+  "state_coverage_count": 11,
+  "relative_path": "healthcare/medical_laboratory_accreditations.json",
+  "schema_path": "schemas/healthcare/medical_laboratory_accreditations.schema.json",
+  "source": {
+    "publisher": "Medical Laboratory Science Council of Nigeria Accreditation Service",
+    "title": "MLSCN Accreditation Service Accredited Facilities",
+    "url": "https://mlscn-as.org.ng/accredited.html",
+    "retrieved_at": "2026-09-09",
+    "retrievals": [
+      {
+        "retrieved_at": "2026-09-09T08:19:52+01:00",
+        "response_bytes": 30802,
+        "sha256": "0e0ac1856ee89bea9371294b191baec601e25a79be4ae92815f3e5f0b584ba4a"
+      },
+      {
+        "retrieved_at": "2026-09-09T08:19:52+01:00",
+        "response_bytes": 30802,
+        "sha256": "0e0ac1856ee89bea9371294b191baec601e25a79be4ae92815f3e5f0b584ba4a"
+      }
+    ],
+    "response_bytes": 30802,
+    "sha256": "0e0ac1856ee89bea9371294b191baec601e25a79be4ae92815f3e5f0b584ba4a",
+    "format": "HTML table",
+    "worksheet_or_table": "Accredited Facilities table",
+    "pagination": "Single public HTML page; all 30 source rows were present in table order in both retrieves.",
+    "raw_record_count": 30,
+    "available_institutional_fields": [
+      "facility name",
+      "public location/address",
+      "accreditation number",
+      "certificate link when published",
+      "certificate effective date",
+      "certificate expiry date"
+    ],
+    "personal_fields_present": false,
+    "status_semantics": "The table title identifies rows as accredited facilities; certificate expiry dates are used to derive dated accredited versus expired status for the 2026-09-09 snapshot.",
+    "last_modified": "2026-06-19T11:05:19Z",
+    "etag": "\"7852-6549944b0a1e1\"",
+    "terms": "No machine-readable copyright or reuse terms were found on the public source page; preserve MLSCN attribution and review source terms before downstream redistribution."
+  },
+  "supporting_sources": [
+    {
+      "publisher": "Medical Laboratory Science Council of Nigeria",
+      "title": "MLSCN Hub laboratory API route",
+      "url": "https://hub.mlscn.gov.ng/api/v1/laboratories",
+      "retrieved_at": "2026-09-09",
+      "format": "JSON API endpoint",
+      "access": "HTTP HEAD returned 401 Unauthorized, so it was documented but not used as row-level source."
+    }
+  ],
+  "reconciliation_path": "metadata/healthcare/medical_laboratory_accreditations_reconciliation/index.json",
+  "source_limitations": [
+    "The public source is the MLSCN Accreditation Service accredited-facilities table; it is narrower than a complete national medical laboratory premises register.",
+    "The MLSCN Hub laboratory API endpoint returned 401 Unauthorized and was not used as a row-level source.",
+    "The source does not publish LGA, ownership, laboratory-type taxonomy, annual renewal year or premises-registration numbers with reliable coverage, so those fields are omitted from public records.",
+    "Expired certificates remain included as dated accreditation observations and are marked expired from the listed certificate expiry date; inclusion is not a claim of current accreditation or premises authorization.",
+    "No individual laboratory scientists, personal registration numbers, personal phone numbers or personal email addresses are present in the committed artifacts."
+  ],
+  "licensing": "MLSCN source material retains its own rights. SoftData claims only its independent normalization, schema, identifiers, reconciliation and metadata.",
+  "generation": {
+    "input": "MLSCN-AS HTML table projection or committed reconciliation replay",
+    "source_sha256": "0e0ac1856ee89bea9371294b191baec601e25a79be4ae92815f3e5f0b584ba4a",
+    "partition_count": 11
+  },
+  "verified_at": "2026-09-09"
+}

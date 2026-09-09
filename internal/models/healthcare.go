@@ -18,3 +18,20 @@ type HealthFacility struct {
 	Latitude         *float64 `json:"latitude,omitempty"`
 	Longitude        *float64 `json:"longitude,omitempty"`
 }
+
+// MedicalLaboratoryAccreditationIDMaxLength bounds public ASCII slug IDs for medical laboratory accreditation records.
+const MedicalLaboratoryAccreditationIDMaxLength = 255
+
+// MedicalLaboratoryAccreditation represents one source-verified Nigerian facility accreditation record.
+// It is published as a dated MLSCN accreditation snapshot, not a complete live premises licensing register.
+type MedicalLaboratoryAccreditation struct {
+	ID                  string `json:"id"`
+	Name                string `json:"name"`
+	StateID             string `json:"state_id"`
+	CountryCode         string `json:"country_code"`
+	AccreditationStatus string `json:"accreditation_status"`
+	AccreditationNumber string `json:"accreditation_number,omitempty"`
+	ApprovalDate        string `json:"approval_date,omitempty"`
+	ExpiryDate          string `json:"expiry_date,omitempty"`
+	Address             string `json:"address,omitempty"`
+}

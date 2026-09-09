@@ -1,0 +1,87 @@
+{
+  "dataset_key": "ng-medical-laboratory-accreditations",
+  "source_rows": 30,
+  "final_record_count": 30,
+  "decision_counts": {
+    "retain": 30
+  },
+  "partitions": [
+    {
+      "state_id": "akwa-ibom",
+      "path": "metadata/healthcare/medical_laboratory_accreditations_reconciliation/akwa-ibom.json",
+      "source_rows": 1,
+      "size_bytes": 1553,
+      "sha256": "c3ce8896643e96b0bee7a9a6f35687a2e5fa1460c64c7795c5e12dda5cdf5ce4"
+    },
+    {
+      "state_id": "anambra",
+      "path": "metadata/healthcare/medical_laboratory_accreditations_reconciliation/anambra.json",
+      "source_rows": 1,
+      "size_bytes": 1640,
+      "sha256": "8d8858d57b4891abe60d33976a78ddaff929a2a60ea3bf60f35148ba986c2017"
+    },
+    {
+      "state_id": "cross-river",
+      "path": "metadata/healthcare/medical_laboratory_accreditations_reconciliation/cross-river.json",
+      "source_rows": 1,
+      "size_bytes": 1371,
+      "sha256": "eb69c63fcb0224ff56506992e11ab024f7641fa77ecce550796fa6699a041197"
+    },
+    {
+      "state_id": "fct",
+      "path": "metadata/healthcare/medical_laboratory_accreditations_reconciliation/fct.json",
+      "source_rows": 9,
+      "size_bytes": 11292,
+      "sha256": "29cf9cd46113629989f665f0f1534784ae77c10069323e6daa3571cf35cecec2"
+    },
+    {
+      "state_id": "gombe",
+      "path": "metadata/healthcare/medical_laboratory_accreditations_reconciliation/gombe.json",
+      "source_rows": 1,
+      "size_bytes": 1462,
+      "sha256": "4c2ef8598f076ac7325038b359d59e858238b828f3b1895ebba508ddd7cfe270"
+    },
+    {
+      "state_id": "imo",
+      "path": "metadata/healthcare/medical_laboratory_accreditations_reconciliation/imo.json",
+      "source_rows": 2,
+      "size_bytes": 2579,
+      "sha256": "8622ffc710a60aaa5a75c87755baec25502d712fc8e18782d372fb363a8f0a37"
+    },
+    {
+      "state_id": "kaduna",
+      "path": "metadata/healthcare/medical_laboratory_accreditations_reconciliation/kaduna.json",
+      "source_rows": 2,
+      "size_bytes": 2851,
+      "sha256": "59c8d7746c68ddd40c4616299e6c7d2adc7b12f1c76f72c2ec10c4cf6a9c1251"
+    },
+    {
+      "state_id": "lagos",
+      "path": "metadata/healthcare/medical_laboratory_accreditations_reconciliation/lagos.json",
+      "source_rows": 10,
+      "size_bytes": 12615,
+      "sha256": "e24ee837fdb14820b3d2e6a4bca8fbabc4f59d35c33fbac9ce8afeab64b63e52"
+    },
+    {
+      "state_id": "osun",
+      "path": "metadata/healthcare/medical_laboratory_accreditations_reconciliation/osun.json",
+      "source_rows": 1,
+      "size_bytes": 1404,
+      "sha256": "98aaa0adb4c2a9416b8d9cc6cb1fcdea89a81d0340fb6ba0fcabff9a8ee918b3"
+    },
+    {
+      "state_id": "oyo",
+      "path": "metadata/healthcare/medical_laboratory_accreditations_reconciliation/oyo.json",
+      "source_rows": 1,
+      "size_bytes": 1409,
+      "sha256": "394c36ea9f5d3844e3fb27355707ff5e2c2622c10790ae284382b88b22575778"
+    },
+    {
+      "state_id": "rivers",
+      "path": "metadata/healthcare/medical_laboratory_accreditations_reconciliation/rivers.json",
+      "source_rows": 1,
+      "size_bytes": 1445,
+      "sha256": "4ab95b074241c0f13753ae0e73bcef458a5b501c7b77789f40a5047a590a95e1"
+    }
+  ]
+}

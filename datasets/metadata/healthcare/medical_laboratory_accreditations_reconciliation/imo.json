@@ -1,0 +1,51 @@
+{
+  "dataset_key": "ng-medical-laboratory-accreditations",
+  "state_id": "imo",
+  "source_rows": 2,
+  "records": [
+    {
+      "source_position": 11,
+      "source_name": "Link Medical Diagnostic & Research Laboratories",
+      "source_accreditation_number": "ML0011",
+      "source_accreditation_status": "listed_accredited_facility",
+      "source_approval_date": "2025-08-30",
+      "source_expiry_date": "2029-08-29",
+      "raw_state": "Imo",
+      "raw_address": "Imo State, Nigeria",
+      "normalized_name": "link-medical-diagnostic-and-research-laboratories",
+      "normalized_state_id": "imo",
+      "decision": "retain",
+      "final_record_id": "link-medical-diagnostic-and-research-laboratories-imo-imo-ml0011",
+      "merge_target_id": null,
+      "evidence": {
+        "source_url": "https://mlscn-as.org.ng/accredited.html",
+        "source_title": "MLSCN Accreditation Service Accredited Facilities",
+        "retrieved_at": "2026-09-09",
+        "source_sha256": "0e0ac1856ee89bea9371294b191baec601e25a79be4ae92815f3e5f0b584ba4a"
+      },
+      "notes": "Retained from the MLSCN Accreditation Service public Accredited Facilities table as an institutional accreditation observation. Current validity is determined only from the listed certificate expiry date for this dated snapshot."
+    },
+    {
+      "source_position": 30,
+      "source_name": "Everight Diagnostic and Laboratory Services Limited",
+      "source_accreditation_number": "ML0030",
+      "source_accreditation_status": "listed_accredited_facility",
+      "source_approval_date": "2026-06-17",
+      "source_expiry_date": "2030-06-16",
+      "raw_state": "Imo",
+      "raw_address": "20 Asumpta/World Bank Road, Owerri, Imo State, Nigeria",
+      "normalized_name": "everight-diagnostic-and-laboratory-services-limited",
+      "normalized_state_id": "imo",
+      "decision": "retain",
+      "final_record_id": "everight-diagnostic-and-laboratory-services-limited-imo-20-asumpta-world-bank-road-ml0030",
+      "merge_target_id": null,
+      "evidence": {
+        "source_url": "https://mlscn-as.org.ng/accredited.html",
+        "source_title": "MLSCN Accreditation Service Accredited Facilities",
+        "retrieved_at": "2026-09-09",
+        "source_sha256": "0e0ac1856ee89bea9371294b191baec601e25a79be4ae92815f3e5f0b584ba4a"
+      },
+      "notes": "Retained from the MLSCN Accreditation Service public Accredited Facilities table as an institutional accreditation observation. Current validity is determined only from the listed certificate expiry date for this dated snapshot."
+    }
+  ]
+}

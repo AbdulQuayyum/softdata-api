@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://softdata-api.local/schemas/healthcare/medical_laboratory_accreditations.schema.json",
+  "title": "Nigeria Medical Laboratory Accreditation Register Snapshot",
+  "description": "A dated snapshot of medical laboratory facility accreditation records published by the MLSCN Accreditation Service. It is not a complete register of all licensed medical laboratory premises in Nigeria.",
+  "type": "array",
+  "minItems": 30,
+  "maxItems": 30,
+  "uniqueItems": true,
+  "items": {
+    "$ref": "#/$defs/medicalLaboratoryAccreditation"
+  },
+  "$defs": {
+    "medicalLaboratoryAccreditation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "state_id",
+        "country_code",
+        "accreditation_status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "maxLength": 255
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "country_code": {
+          "const": "NG"
+        },
+        "accreditation_status": {
+          "type": "string",
+          "enum": [
+            "accredited",
+            "expired"
+          ]
+        },
+        "accreditation_number": {
+          "type": "string",
+          "pattern": "^ML[0-9]{4}$"
+        },
+        "approval_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "expiry_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "address": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

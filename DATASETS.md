@@ -69,6 +69,21 @@ Unified Nigerian health-facility snapshot derived from the public GRID3 Nigeria 
 
 The package contains 50,649 retained records from 51,022 source rows, covering all 36 states and the FCT and 768 canonical LGAs. It is a dated observed registry snapshot, not a continuously current active-facility register. Ten observations in five unresolved identity pairs and 363 unresolved geography rows are excluded and recorded in reconciliation metadata. There are no duplicate merges. See the [identity review](docs/healthcare-identity-resolution.md). No operational-status claim, website, logo or inferred coordinate is published. Source ownership remains with GRID3, CIESIN and the credited contributors; SoftData claims only its independent normalization, schema, identifiers, reconciliation and metadata work.
 
+### `ng-medical-laboratory-accreditations`
+
+Nigeria Medical Laboratory Accreditation Register Snapshot.
+
+- `datasets/healthcare/medical_laboratory_accreditations.json`
+- `datasets/schemas/healthcare/medical_laboratory_accreditations.schema.json`
+- `datasets/metadata/healthcare/medical_laboratory_accreditations.json`
+- `datasets/metadata/healthcare/medical_laboratory_accreditations_reconciliation/index.json` and its 11 state/FCT partitions
+
+A dated snapshot of medical laboratory facility accreditation records published by the MLSCN Accreditation Service. It is not a complete register of all licensed medical laboratory premises in Nigeria. The package contains 30 facility accreditation records from 30 source observations across 10 states and the FCT. Four entries had certificate expiry dates before the 2026-09-09 retrieval date and remain distinguishable as `expired`; the other 26 are marked `accredited`. The source does not publish reliable LGA, ownership, premises-registration number, renewal-year or laboratory-type fields, so those fields are absent from the active contract. No individual medical laboratory scientists, personal registration numbers, personal phone numbers or personal email addresses are published. Runtime repository, service, route, OpenAPI and startup integration are intentionally deferred.
+
+### `ng-licensed-pharmacies` — deferred pending sanitized PCN premises data
+
+This future pharmacy-premises dataset remains deferred because the available PCN premises source requires a privacy-safe, authoritative row-level publication before it can be added. It is separate from MLSCN medical laboratory accreditation regulation.
+
 ### Emergency
 
 Emergency and public-safety service data.
