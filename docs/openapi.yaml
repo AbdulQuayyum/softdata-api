@@ -627,6 +627,37 @@ paths:
         "400": {$ref: "#/components/responses/BadRequest"}
         "404": {$ref: "#/components/responses/NotFound"}
         "500": {$ref: "#/components/responses/InternalError"}
+  /v1/healthcare/medical-laboratory-accreditations:
+    get:
+      tags: [Healthcare]
+      operationId: listMedicalLaboratoryAccreditations
+      summary: List medical laboratory accreditations
+      description: A dated snapshot of medical laboratory facility accreditation records published by the MLSCN Accreditation Service. It contains 30 records; 26 were marked accredited and 4 were marked expired. It is not a complete register of licensed medical-laboratory premises. An expired entry is not currently accredited. It contains no personal practitioner data. Filters apply before pagination. Pages beyond the last return 200 with an empty array. Search is a case-insensitive substring match without fuzzy matching or ranking.
+      parameters:
+        - {$ref: "#/components/parameters/MedicalLaboratoryAccreditationPage"}
+        - {$ref: "#/components/parameters/MedicalLaboratoryAccreditationPageSize"}
+        - {$ref: "#/components/parameters/MedicalLaboratoryAccreditationStateID"}
+        - {$ref: "#/components/parameters/MedicalLaboratoryAccreditationStatus"}
+        - {$ref: "#/components/parameters/MedicalLaboratoryAccreditationSearch"}
+      responses:
+        "200": {description: Accreditation records, content: {application/json: {schema: {$ref: "#/components/schemas/MedicalLaboratoryAccreditationListResponse"}}}}
+        "400": {$ref: "#/components/responses/BadRequest"}
+        "500": {$ref: "#/components/responses/InternalError"}
+        "503": {$ref: "#/components/responses/ServiceUnavailable"}
+  /v1/healthcare/medical-laboratory-accreditations/{accreditation_id}:
+    get:
+      tags: [Healthcare]
+      operationId: getMedicalLaboratoryAccreditation
+      summary: Get a medical laboratory accreditation
+      description: A dated snapshot of medical laboratory facility accreditation records published by the MLSCN Accreditation Service. It contains 30 records; 26 were marked accredited and 4 were marked expired. It is not a complete register of licensed medical-laboratory premises. An expired entry is not currently accredited. It contains no personal practitioner data. A syntactically valid unknown ID returns 404.
+      parameters:
+        - {$ref: "#/components/parameters/MedicalLaboratoryAccreditationID"}
+      responses:
+        "200": {description: Accreditation record, content: {application/json: {schema: {$ref: "#/components/schemas/MedicalLaboratoryAccreditationDetailResponse"}}}}
+        "400": {$ref: "#/components/responses/BadRequest"}
+        "404": {$ref: "#/components/responses/NotFound"}
+        "500": {$ref: "#/components/responses/InternalError"}
+        "503": {$ref: "#/components/responses/ServiceUnavailable"}
   /v1/healthcare/health-facilities:
     get:
       tags: [Healthcare]
@@ -1639,6 +1670,48 @@ components:
       description: Case-insensitive school-name search, trimmed and limited to 100 characters.
       example: community primary
       schema: {type: string, maxLength: 100}
+    MedicalLaboratoryAccreditationID:
+      name: accreditation_id
+      in: path
+      required: true
+      description: Stable lowercase accreditation record slug. Unknown valid IDs return 404. Each parameter may be supplied at most once.
+      example: example-medical-laboratory-accreditation
+      schema: {type: string, maxLength: 255, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'}
+    MedicalLaboratoryAccreditationPage:
+      name: page
+      in: query
+      required: false
+      description: One-based page number. Omitted defaults to 1. Supplied values must be unsigned decimal integers; empty, signed, nonpositive, fractional, and overflowing values are rejected. Each parameter may be supplied at most once.
+      example: 1
+      schema: {type: integer, minimum: 1, default: 1}
+    MedicalLaboratoryAccreditationPageSize:
+      name: page_size
+      in: query
+      required: false
+      description: Records per page. Omitted defaults to 50. Supplied values must be unsigned decimal integers from 1 to 100; invalid values are rejected, never clamped. Each parameter may be supplied at most once.
+      example: 50
+      schema: {type: integer, minimum: 1, maximum: 100, default: 50}
+    MedicalLaboratoryAccreditationStateID:
+      name: state_id
+      in: query
+      required: false
+      description: Optional state or FCT slug. Whitespace is trimmed; blank is omitted. Unknown states return 400. Each parameter may be supplied at most once.
+      example: lagos
+      schema: {type: string, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'}
+    MedicalLaboratoryAccreditationStatus:
+      name: accreditation_status
+      in: query
+      required: false
+      description: Optional snapshot accreditation status. Whitespace is trimmed; blank is omitted. An expired entry is not currently accredited. Each parameter may be supplied at most once.
+      example: expired
+      schema: {type: string, enum: [accredited, expired]}
+    MedicalLaboratoryAccreditationSearch:
+      name: search
+      in: query
+      required: false
+      description: Optional case-insensitive substring search across laboratory name. Whitespace is trimmed; blank is omitted. Maximum 100 characters after trimming. Embedded carriage return, newline, and NUL are rejected. No fuzzy search or ranking. Each parameter may be supplied at most once.
+      example: laboratory
+      schema: {type: string, maxLength: 100}
     HealthFacilityID:
       name: facility_id
       in: path
@@ -1799,6 +1872,11 @@ components:
         type: string
       description: Optional owned API key ID filter within the authenticated account. Missing or foreign-owned keys return 404.
   responses:
+    ServiceUnavailable:
+      description: The operation was canceled or its deadline exceeded.
+      content:
+        application/json:
+          schema: {$ref: "#/components/schemas/ErrorResponse"}
     BadRequest:
       description: Malformed request
       content:
@@ -2576,6 +2654,47 @@ components:
       properties:
         success: {type: boolean}
         data: {$ref: "#/components/schemas/PrimaryAndSecondarySchool"}
+      required: [success, data]
+    MedicalLaboratoryAccreditation:
+      type: object
+      additionalProperties: false
+      description: A dated snapshot of medical laboratory facility accreditation records published by the MLSCN Accreditation Service. It contains 30 records; 26 were marked accredited and 4 were marked expired. It is not a complete register of licensed medical-laboratory premises. An expired entry is not currently accredited. It contains no personal practitioner data.
+      properties:
+        id: {type: string, maxLength: 255, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'}
+        name: {type: string, example: Example Medical Laboratory}
+        state_id: {type: string, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$', example: lagos}
+        country_code: {type: string, enum: [NG]}
+        accreditation_status: {type: string, enum: [accredited, expired]}
+        accreditation_number: {type: string, example: ML0001, description: Omitted when unavailable.}
+        approval_date: {type: string, format: date, example: '2025-01-01', description: Omitted when unavailable.}
+        expiry_date: {type: string, format: date, example: '2026-01-01', description: Omitted when unavailable.}
+        address: {type: string, example: Public institutional address, description: Omitted when unavailable.}
+      required: [id, name, state_id, country_code, accreditation_status]
+    MedicalLaboratoryAccreditationPagination:
+      type: object
+      additionalProperties: false
+      properties:
+        page: {type: integer, minimum: 1}
+        page_size: {type: integer, minimum: 1, maximum: 100}
+        total: {type: integer, format: int64, minimum: 0}
+        total_pages: {type: integer, minimum: 0}
+      required: [page, page_size, total, total_pages]
+    MedicalLaboratoryAccreditationListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success: {type: boolean}
+        data:
+          type: array
+          items: {$ref: "#/components/schemas/MedicalLaboratoryAccreditation"}
+        meta: {$ref: "#/components/schemas/MedicalLaboratoryAccreditationPagination"}
+      required: [success, data, meta]
+    MedicalLaboratoryAccreditationDetailResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success: {type: boolean}
+        data: {$ref: "#/components/schemas/MedicalLaboratoryAccreditation"}
       required: [success, data]
     HealthFacility:
       type: object
