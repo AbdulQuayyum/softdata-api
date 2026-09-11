@@ -272,6 +272,17 @@ Nigeria Medical Laboratory Accreditation Register Snapshot.
 
 A dated snapshot of medical laboratory facility accreditation records published by the MLSCN Accreditation Service. It is not a complete live medical-laboratory licensing or premises register, and it does not establish that every Nigerian laboratory is licensed. The package contains 30 retained facility accreditation records from 30 source observations across 10 states and the FCT. It records MLSCN accreditation numbers, certificate effective dates and certificate expiry dates. Status is dated: 4 records with certificate expiry before 2026-09-09 are marked `expired`, and 26 records with later expiry dates are marked `accredited`. The public API provides paginated repository and service access, list and detail endpoints, filtering by `state_id`, `accreditation_status` and `search`, production route registration, standard public middleware, and bounded startup verification. Deterministic reconciliation and generation preserve the committed snapshot. The login-protected MLSCN Hub laboratory API was documented but not used as row-level evidence. LGA, ownership, premises-registration number, renewal-year and laboratory-type fields are omitted because the public source does not publish reliable coverage. No individual medical laboratory scientists, personal registration numbers, personal phone numbers or personal email addresses are published. No websites or logos are implemented for this dataset.
 
+### `ng-nhia-accredited-health-maintenance-organisations`
+
+Nigeria NHIA Accredited Health Maintenance Organisations Snapshot.
+
+- Data: `datasets/healthcare/nhia_accredited_health_maintenance_organisations.json`
+- Schema: `datasets/schemas/healthcare/nhia_accredited_health_maintenance_organisations.schema.json`
+- Metadata: `datasets/metadata/healthcare/nhia_accredited_health_maintenance_organisations.json`
+- Reconciliation: `datasets/metadata/healthcare/nhia_accredited_health_maintenance_organisations_reconciliation/index.json`
+
+A dated organisation-level snapshot of Health Maintenance Organisations listed by the National Health Insurance Authority as accredited. The package contains 94 retained HMO rows from the NHIA Accredited Health Maintenance Organizations table retrieved on 2026-09-11. The public contract is intentionally narrow: `id`, `name`, `country_code`, `organisation_type`, `accreditation_status` and `hmo_id`. The source table includes website, address, email and call-centre columns, but those contact fields are omitted from public records in this foundation phase. The dataset is not a complete live health-insurance licensing or registration register and does not establish that every Nigerian health-insurance organisation is licensed, registered or currently operational. State Social Health Insurance Agencies are a separate NHIA-listed category and are not included. No enrollee, patient, practitioner, staff, claims, policy, payment, banking or identity-document information is published. No websites or logos are implemented.
+
 ### `ng-licensed-pharmacies` — deferred pending sanitized PCN premises data
 
 This future pharmacy-premises dataset remains deferred pending a privacy-safe authoritative PCN row-level premises publication. PCN pharmacy premises regulation is separate from MLSCN medical laboratory accreditation regulation.

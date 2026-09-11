@@ -56,9 +56,13 @@ datasets/
 │   │   │   ├── index.json
 │   │   │   └── {state_id}.json
 │   │   ├── medical_laboratory_accreditations.json
-│   │   └── medical_laboratory_accreditations_reconciliation/
+│   │   ├── medical_laboratory_accreditations_reconciliation/
+│   │   │   ├── index.json
+│   │   │   └── {state_id}.json
+│   │   ├── nhia_accredited_health_maintenance_organisations.json
+│   │   └── nhia_accredited_health_maintenance_organisations_reconciliation/
 │   │       ├── index.json
-│   │       └── {state_id}.json
+│   │       └── health_maintenance_organisations.json
 │   └── finance/
 │       ├── development_finance_institutions.json
 │       ├── financial_holding_companies.json
@@ -87,7 +91,8 @@ datasets/
 │   │   └── universities.schema.json
 │   ├── healthcare/
 │   │   ├── health_facilities.schema.json
-│   │   └── medical_laboratory_accreditations.schema.json
+│   │   ├── medical_laboratory_accreditations.schema.json
+│   │   └── nhia_accredited_health_maintenance_organisations.schema.json
 │   └── finance/
 │       ├── development_finance_institutions.schema.json
 │       ├── financial_holding_companies.schema.json
@@ -122,6 +127,7 @@ Regulated-finance logo assets are embedded under `assets/financial-institutions/
 - `education/primary_and_secondary_schools.json` is the 166,604-record UBEC 2022 source-observed school/campus snapshot. It is not a current licensing register; its reconciliation preserves every source row and explicitly quarantines 69 ambiguous Osun geography rows.
 - `healthcare/health_facilities.json` is a 50,649-record dated health-facility snapshot retained from 51,022 public GRID3 rows documenting 2024 NHFR inputs. It covers all 37 state/FCT values and 768 canonical LGAs; it is not a live active-facility register. Its schema, source metadata and deterministic state/FCT reconciliation partitions are stored alongside it. Ten observations in five unresolved identity pairs and 363 unresolved geography rows are excluded rather than inferred. There are no duplicate merges.
 - `healthcare/medical_laboratory_accreditations.json` is a 30-record Nigeria Medical Laboratory Accreditation Register Snapshot from the MLSCN Accreditation Service Accredited Facilities table. It preserves accreditation numbers and certificate effective/expiry dates, marks 4 expired certificates separately from 26 accredited entries, and omits LGA, ownership, premises-registration number, renewal-year and laboratory-type fields because the source does not publish reliable coverage. It is not a complete register of all licensed medical laboratory premises in Nigeria and contains no individual practitioner data.
+- `healthcare/nhia_accredited_health_maintenance_organisations.json` is a 94-record dated organisation-level snapshot of Health Maintenance Organisations listed by NHIA as accredited. It preserves source HMO IDs as strings and omits websites, addresses, emails, telephone numbers and logos. State Social Health Insurance Agencies are a separate NHIA-listed category and are not included.
 - `finance/international_money_transfer_operators.json` is the compiled register snapshot of current CBN-listed IMTO entries, with optional verified website URLs.
 - `finance/currencies.json` is the compiled snapshot of current ISO 4217 monetary currencies.
 - `finance/payment_service_providers.json` is the compiled register snapshot of payment-service-provider memberships.

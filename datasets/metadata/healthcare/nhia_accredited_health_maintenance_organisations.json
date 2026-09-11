@@ -1,0 +1,145 @@
+{
+  "dataset_key": "ng-nhia-accredited-health-maintenance-organisations",
+  "status": "active",
+  "snapshot": true,
+  "publicly_published": true,
+  "title": "Nigeria NHIA Accredited Health Maintenance Organisations Snapshot",
+  "description": "A dated organisation-level snapshot of Health Maintenance Organisations listed by the National Health Insurance Authority as accredited. It is not a complete live health-insurance licensing or registration register.",
+  "country_code": "NG",
+  "record_count": 94,
+  "source_rows": 94,
+  "decision_counts": {
+    "retain": 94
+  },
+  "organisation_type_counts": {
+    "health_maintenance_organisation": 94
+  },
+  "accreditation_status_counts": {
+    "accredited": 94
+  },
+  "relative_path": "healthcare/nhia_accredited_health_maintenance_organisations.json",
+  "schema_path": "schemas/healthcare/nhia_accredited_health_maintenance_organisations.schema.json",
+  "source": {
+    "publisher": "National Health Insurance Authority",
+    "title": "Health Maintenance Organisations (HMOs)",
+    "table_title": "NHIA Accredited Health Maintenance Organizations",
+    "url": "https://www.nhia.gov.ng/hmo/",
+    "api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/910",
+    "retrieved_at": "2026-09-11",
+    "publication_date": "2024-03-17T00:32:49Z",
+    "last_modified": "2025-04-16T15:26:30Z",
+    "content_type": "text/html; charset=UTF-8",
+    "api_content_type": "application/json; charset=UTF-8",
+    "retrievals": [
+      {
+        "retrieved_at": "2026-09-11T10:39:25+01:00",
+        "url": "https://www.nhia.gov.ng/hmo/",
+        "response_bytes": 227880,
+        "sha256": "cdb3f58bd62c0910f8a1987d43f147680ce045b2e5400e170c255bbe11f09b60"
+      },
+      {
+        "retrieved_at": "2026-09-11T10:39:29+01:00",
+        "url": "https://www.nhia.gov.ng/hmo/",
+        "response_bytes": 227880,
+        "sha256": "c45f3c774b0d3b230c3700535af14afb822703551374faece549edda689995c2"
+      },
+      {
+        "retrieved_at": "2026-09-11T10:39:43+01:00",
+        "url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/910",
+        "response_bytes": 50093,
+        "sha256": "794e9719e10dfb3deb6e54c1947a4c96bd0709777216bfd6890f2308dd7c0fe5"
+      },
+      {
+        "retrieved_at": "2026-09-11T10:39:47+01:00",
+        "url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/910",
+        "response_bytes": 50093,
+        "sha256": "02b1bd99b8ef0583793b1aba10e0df641e7076e5a311b4f78cba07cb45ecc5ab"
+      }
+    ],
+    "extracted_table_sha256": "f3d33b441200aac2035f7c654d8486697b4ff21fb867cfbaab6c58a2cc6051a3",
+    "last_modified_header": null,
+    "etag": null,
+    "format": "HTML table embedded in NHIA WordPress page",
+    "worksheet_or_table": "NHIA Accredited Health Maintenance Organizations",
+    "extraction_method": "HTML table cell extraction from the NHIA HMO page or its WordPress page JSON; dynamic page wrappers are ignored and the extracted table hash is verified.",
+    "raw_record_count": 94,
+    "available_organisation_fields": [
+      "HMO name",
+      "HMO ID",
+      "website",
+      "address",
+      "email",
+      "call center numbers"
+    ],
+    "published_public_fields": [
+      "id",
+      "name",
+      "country_code",
+      "organisation_type",
+      "accreditation_status",
+      "hmo_id"
+    ],
+    "omitted_fields": [
+      "website",
+      "address",
+      "email",
+      "call center numbers"
+    ],
+    "personal_fields_present": "The HMO table includes email and telephone columns; those contact fields are omitted from public records and reconciliation artifacts.",
+    "category_semantics": "Rows are listed under the NHIA page heading for accredited Health Maintenance Organizations.",
+    "status_semantics": "The source page heading identifies all listed rows as accredited; no row-level expiry or revocation status is published in the table.",
+    "terms": "No machine-readable copyright or reuse terms were found on the public source page; preserve NHIA attribution and review source terms before downstream redistribution."
+  },
+  "supporting_sources": [
+    {
+      "publisher": "National Health Insurance Authority",
+      "title": "Private Health Plan",
+      "url": "https://www.nhia.gov.ng/service/health-insurance/",
+      "retrieved_at": "2026-09-11",
+      "format": "HTML page",
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 164295,
+      "sha256": "0b3a7ce60c46583ed9806028cb2144595c9d97ceebc9bfa01f695443d9a0ea39",
+      "last_modified_header": null,
+      "etag": null,
+      "use": "Confirms NHIA describes private health plans as provided by Health Maintenance Organisations and links users to accredited HMOs."
+    },
+    {
+      "publisher": "National Health Insurance Authority",
+      "title": "State Social Health Insurance Agencies (SSHIAs)",
+      "url": "https://www.nhia.gov.ng/sshias/",
+      "retrieved_at": "2026-09-11",
+      "format": "HTML table",
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 203703,
+      "sha256": "7498f7478a124511d0ffe3dd6e3f6cec4904e4bec2b1c9926fcf16e4d4b5e195",
+      "last_modified_header": null,
+      "etag": null,
+      "row_count_including_header": 40,
+      "raw_record_count": 39,
+      "use": "Identified as a separate category from HMOs; not combined into this dataset because it lists state schemes and includes named directors and personal contact fields."
+    }
+  ],
+  "rejected_dataset_names": {
+    "ng-health-insurance-organisations": "Rejected because the verified row-level source covers accredited HMOs only and does not cover all NHIA-recognised health-insurance organisation categories.",
+    "ng-nhia-accredited-organisations": "Rejected because it is broader than the HMO-only source table.",
+    "ng-accredited-health-maintenance-organisations": "Rejected because it omits the NHIA authority prefix that distinguishes the source and regulatory context."
+  },
+  "reconciliation_path": "metadata/healthcare/nhia_accredited_health_maintenance_organisations_reconciliation/index.json",
+  "source_limitations": [
+    "The source is an NHIA HMO page snapshot, not a complete live health-insurance licensing or registration register.",
+    "The source table lists accredited Health Maintenance Organizations but does not publish row-level expiry dates, revocation status or historical accreditation periods.",
+    "The source table includes contact fields; websites, addresses, emails and telephone numbers are omitted from the public contract in this foundation phase.",
+    "No websites or logos are included in the public dataset.",
+    "State Social Health Insurance Agencies are a separate NHIA-listed category and are not included in this HMO roster.",
+    "The dataset does not establish that every Nigerian health-insurance organisation is licensed, registered or currently operational.",
+    "No enrollee, patient, practitioner, staff, claims, policy, payment, banking or identity-document information is published."
+  ],
+  "licensing": "NHIA source material retains its own rights. SoftData claims only its independent normalization, schema, identifiers, reconciliation and metadata.",
+  "generation": {
+    "input": "NHIA HMO HTML table projection or committed reconciliation replay",
+    "extracted_table_sha256": "f3d33b441200aac2035f7c654d8486697b4ff21fb867cfbaab6c58a2cc6051a3",
+    "partition_count": 1
+  },
+  "verified_at": "2026-09-11"
+}

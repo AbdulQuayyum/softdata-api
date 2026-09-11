@@ -1,0 +1,17 @@
+{
+  "dataset_key": "ng-nhia-accredited-health-maintenance-organisations",
+  "source_rows": 94,
+  "final_record_count": 94,
+  "decision_counts": {
+    "retain": 94
+  },
+  "partitions": [
+    {
+      "path": "metadata/healthcare/nhia_accredited_health_maintenance_organisations_reconciliation/health_maintenance_organisations.json",
+      "organisation_type": "health_maintenance_organisation",
+      "source_rows": 94,
+      "size_bytes": 126108,
+      "sha256": "8caf101e089ec90fe58ee30b20af8b211dd7bece369de94faf3009717918b9f7"
+    }
+  ]
+}
