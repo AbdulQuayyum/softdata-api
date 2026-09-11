@@ -642,6 +642,7 @@ paths:
       responses:
         "200": {description: Accreditation records, content: {application/json: {schema: {$ref: "#/components/schemas/MedicalLaboratoryAccreditationListResponse"}}}}
         "400": {$ref: "#/components/responses/BadRequest"}
+        "405": {$ref: "#/components/responses/MethodNotAllowedGet"}
         "500": {$ref: "#/components/responses/InternalError"}
         "503": {$ref: "#/components/responses/ServiceUnavailable"}
   /v1/healthcare/medical-laboratory-accreditations/{accreditation_id}:
@@ -656,6 +657,7 @@ paths:
         "200": {description: Accreditation record, content: {application/json: {schema: {$ref: "#/components/schemas/MedicalLaboratoryAccreditationDetailResponse"}}}}
         "400": {$ref: "#/components/responses/BadRequest"}
         "404": {$ref: "#/components/responses/NotFound"}
+        "405": {$ref: "#/components/responses/MethodNotAllowedGet"}
         "500": {$ref: "#/components/responses/InternalError"}
         "503": {$ref: "#/components/responses/ServiceUnavailable"}
   /v1/healthcare/health-facilities:
@@ -1891,6 +1893,19 @@ components:
             $ref: "#/components/schemas/ErrorResponse"
     NotFound:
       description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+    MethodNotAllowedGet:
+      description: Method not allowed
+      headers:
+        Allow:
+          description: Permitted HTTP method for this endpoint.
+          schema:
+            type: string
+            enum: [GET]
+          example: GET
       content:
         application/json:
           schema:

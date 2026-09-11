@@ -47,6 +47,7 @@ func TestAccreditationOpenAPIContract(t *testing.T) {
 		for _, status := range []string{`"400":`, `"500":`, `"503":`} {
 			requireContains(t, tc.block, status)
 		}
+		requireContains(t, tc.block, `"405": {$ref: "#/components/responses/MethodNotAllowedGet"}`)
 		for _, phrase := range []string{"A dated snapshot of medical laboratory facility accreditation records published by the MLSCN Accreditation Service.", "30 records", "26 were marked accredited", "4 were marked expired", "not a complete register of licensed medical-laboratory premises", "An expired entry is not currently accredited", "no personal practitioner data"} {
 			requireContains(t, tc.block, phrase)
 		}
@@ -97,4 +98,15 @@ func TestAccreditationOpenAPIContract(t *testing.T) {
 		requireNotContains(t, list+detail+schema, bad)
 	}
 	requireNotContains(t, doc, "/v1/healthcare/licensed-medical-laboratories")
+	methodNotAllowed := accreditationDocBlock(t, doc, "MethodNotAllowedGet")
+	for _, phrase := range []string{
+		"description: Method not allowed",
+		"Allow:",
+		"Permitted HTTP method for this endpoint.",
+		"enum: [GET]",
+		"example: GET",
+		"#/components/schemas/ErrorResponse",
+	} {
+		requireContains(t, methodNotAllowed, phrase)
+	}
 }
