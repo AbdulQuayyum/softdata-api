@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the Nigerian licensed/accredited medical laboratory dataset.
+"""Generate the dated MLSCN medical laboratory accreditation snapshot and reconciliation artifacts.
 
 The authoritative public row-level source used in this pass is the MLSCN
 Accreditation Service "Accredited Facilities" HTML table. Raw downloads are not
