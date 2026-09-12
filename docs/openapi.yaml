@@ -660,6 +660,39 @@ paths:
         "405": {$ref: "#/components/responses/MethodNotAllowedGet"}
         "500": {$ref: "#/components/responses/InternalError"}
         "503": {$ref: "#/components/responses/ServiceUnavailable"}
+  /v1/healthcare/nhia-accredited-health-maintenance-organisations:
+    get:
+      tags: [Healthcare]
+      operationId: listNHIAAccreditedHealthMaintenanceOrganisations
+      summary: List NHIA accredited Health Maintenance Organisations
+      description: A dated NHIA accreditation snapshot of Health Maintenance Organisations. It contains 94 organisation records, all marked accredited in the snapshot. This is not a complete live licensing, registration, or operational register and does not prove that every Nigerian health-insurance organisation is licensed, registered, or operational. The source does not publish reliable state or location fields for this contract. Filters apply before pagination. Pages beyond the last return 200 with an empty array. Search is a case-insensitive substring match against organisation names only.
+      parameters:
+        - {$ref: "#/components/parameters/NHIAAccreditedHealthMaintenanceOrganisationPage"}
+        - {$ref: "#/components/parameters/NHIAAccreditedHealthMaintenanceOrganisationPageSize"}
+        - {$ref: "#/components/parameters/NHIAAccreditedHealthMaintenanceOrganisationStatus"}
+        - {$ref: "#/components/parameters/NHIAAccreditedHealthMaintenanceOrganisationHMOID"}
+        - {$ref: "#/components/parameters/NHIAAccreditedHealthMaintenanceOrganisationSearch"}
+      responses:
+        "200": {description: NHIA accredited Health Maintenance Organisation records, content: {application/json: {schema: {$ref: "#/components/schemas/NHIAAccreditedHealthMaintenanceOrganisationListResponse"}}}}
+        "400": {$ref: "#/components/responses/BadRequest"}
+        "405": {$ref: "#/components/responses/MethodNotAllowedGet"}
+        "500": {$ref: "#/components/responses/InternalError"}
+        "503": {$ref: "#/components/responses/ServiceUnavailable"}
+  /v1/healthcare/nhia-accredited-health-maintenance-organisations/{organisation_id}:
+    get:
+      tags: [Healthcare]
+      operationId: getNHIAAccreditedHealthMaintenanceOrganisation
+      summary: Get an NHIA accredited Health Maintenance Organisation
+      description: A dated NHIA accreditation snapshot of Health Maintenance Organisations. It contains 94 organisation records, all marked accredited in the snapshot. This is not a complete live licensing, registration, or operational register and does not prove that every Nigerian health-insurance organisation is licensed, registered, or operational. The public record has no state, location, address, contact, website, or logo fields. A malformed organisation_id returns 400; a syntactically valid unknown organisation_id returns 404.
+      parameters:
+        - {$ref: "#/components/parameters/NHIAAccreditedHealthMaintenanceOrganisationID"}
+      responses:
+        "200": {description: NHIA accredited Health Maintenance Organisation record, content: {application/json: {schema: {$ref: "#/components/schemas/NHIAAccreditedHealthMaintenanceOrganisationDetailResponse"}}}}
+        "400": {$ref: "#/components/responses/BadRequest"}
+        "404": {$ref: "#/components/responses/NotFound"}
+        "405": {$ref: "#/components/responses/MethodNotAllowedGet"}
+        "500": {$ref: "#/components/responses/InternalError"}
+        "503": {$ref: "#/components/responses/ServiceUnavailable"}
   /v1/healthcare/health-facilities:
     get:
       tags: [Healthcare]
@@ -1714,6 +1747,48 @@ components:
       description: Optional case-insensitive substring search across laboratory name. Whitespace is trimmed; blank is omitted. Maximum 100 characters after trimming. Embedded carriage return, newline, and NUL are rejected. No fuzzy search or ranking. Each parameter may be supplied at most once.
       example: laboratory
       schema: {type: string, maxLength: 100}
+    NHIAAccreditedHealthMaintenanceOrganisationID:
+      name: organisation_id
+      in: path
+      required: true
+      description: Stable lowercase public slug for an NHIA accredited Health Maintenance Organisation snapshot record. Encoded slashes and path-confusion values are rejected. Unknown valid IDs return 404.
+      example: a-and-m-healthcare-trust-limited-102
+      schema: {type: string, maxLength: 255, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'}
+    NHIAAccreditedHealthMaintenanceOrganisationPage:
+      name: page
+      in: query
+      required: false
+      description: One-based page number. Omitted defaults to 1. Supplied values must be unsigned decimal integers; empty, signed, nonpositive, fractional, and overflowing values are rejected. Each parameter may be supplied at most once.
+      example: 1
+      schema: {type: integer, minimum: 1, default: 1}
+    NHIAAccreditedHealthMaintenanceOrganisationPageSize:
+      name: page_size
+      in: query
+      required: false
+      description: Records per page. Omitted defaults to 50. Supplied values must be unsigned decimal integers from 1 to 100; invalid values are rejected, never clamped. Each parameter may be supplied at most once.
+      example: 50
+      schema: {type: integer, minimum: 1, maximum: 100, default: 50}
+    NHIAAccreditedHealthMaintenanceOrganisationStatus:
+      name: accreditation_status
+      in: query
+      required: false
+      description: Optional exact snapshot accreditation status. Whitespace is trimmed. Empty supplied values are rejected. The only currently supported value is accredited; active, licensed, registered, expired, suspended, and revoked are not part of this source-backed contract.
+      example: accredited
+      schema: {type: string, enum: [accredited]}
+    NHIAAccreditedHealthMaintenanceOrganisationHMOID:
+      name: hmo_id
+      in: query
+      required: false
+      description: Optional exact NHIA-published HMO ID string. Whitespace is trimmed; empty supplied values are rejected; leading zeros are preserved and the value is not parsed as an integer. Each parameter may be supplied at most once.
+      example: "102"
+      schema: {type: string, maxLength: 64}
+    NHIAAccreditedHealthMaintenanceOrganisationSearch:
+      name: search
+      in: query
+      required: false
+      description: Optional case-insensitive substring search across organisation name only. Whitespace is trimmed; empty supplied values are rejected. Maximum 100 characters after trimming. Embedded carriage return, newline, and NUL are rejected. No fuzzy search or ranking. Each parameter may be supplied at most once.
+      example: healthcare
+      schema: {type: string, maxLength: 100}
     HealthFacilityID:
       name: facility_id
       in: path
@@ -2710,6 +2785,44 @@ components:
       properties:
         success: {type: boolean}
         data: {$ref: "#/components/schemas/MedicalLaboratoryAccreditation"}
+      required: [success, data]
+    NHIAAccreditedHealthMaintenanceOrganisation:
+      type: object
+      additionalProperties: false
+      description: A dated NHIA accreditation snapshot of Health Maintenance Organisations. It contains 94 records, all marked accredited. It is not a complete live licensing, registration, or operational register and does not prove that every Nigerian health-insurance organisation is licensed, registered, or operational. State, location, address, contact, website, and logo fields are absent because they are not part of this source-backed public contract.
+      properties:
+        id: {type: string, maxLength: 255, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'}
+        name: {type: string, example: A&M HEALTHCARE TRUST LIMITED}
+        country_code: {type: string, enum: [NG]}
+        organisation_type: {type: string, enum: [health_maintenance_organisation]}
+        accreditation_status: {type: string, enum: [accredited]}
+        hmo_id: {type: string, example: "102", description: NHIA-published HMO ID preserved as a string.}
+      required: [id, name, country_code, organisation_type, accreditation_status, hmo_id]
+    NHIAAccreditedHealthMaintenanceOrganisationPagination:
+      type: object
+      additionalProperties: false
+      properties:
+        page: {type: integer, minimum: 1}
+        page_size: {type: integer, minimum: 1, maximum: 100}
+        total: {type: integer, format: int64, minimum: 0}
+        total_pages: {type: integer, minimum: 0}
+      required: [page, page_size, total, total_pages]
+    NHIAAccreditedHealthMaintenanceOrganisationListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success: {type: boolean}
+        data:
+          type: array
+          items: {$ref: "#/components/schemas/NHIAAccreditedHealthMaintenanceOrganisation"}
+        meta: {$ref: "#/components/schemas/NHIAAccreditedHealthMaintenanceOrganisationPagination"}
+      required: [success, data, meta]
+    NHIAAccreditedHealthMaintenanceOrganisationDetailResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success: {type: boolean}
+        data: {$ref: "#/components/schemas/NHIAAccreditedHealthMaintenanceOrganisation"}
       required: [success, data]
     HealthFacility:
       type: object
