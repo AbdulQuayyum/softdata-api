@@ -87,6 +87,9 @@ func (s *startupNHIAHMOStub) ListNHIAAccreditedHealthMaintenanceOrganisations(_ 
 		return interfaces.NHIAAccreditedHealthMaintenanceOrganisationListResult{}, s.err
 	}
 	key := q.AccreditationStatus
+	if q.HMOID != "" {
+		key = "hmo_id"
+	}
 	if q.Page == nhiaAccreditedHMOExpectedCount+1 {
 		key = "beyond"
 	}
@@ -106,7 +109,7 @@ func (s *startupNHIAHMOStub) GetNHIAAccreditedHealthMaintenanceOrganisation(_ co
 }
 
 func validStartupNHIAHMO() *startupNHIAHMOStub {
-	first := models.NHIAAccreditedHealthMaintenanceOrganisation{ID: nhiaAccreditedHMOFirstAnchor, Name: "A&M HEALTHCARE TRUST LIMITED", CountryCode: "NG", OrganisationType: "health_maintenance_organisation", AccreditationStatus: "accredited", HMOID: "102"}
+	first := models.NHIAAccreditedHealthMaintenanceOrganisation{ID: nhiaAccreditedHMOFirstAnchor, Name: nhiaAccreditedHMOAnchorName, CountryCode: "NG", OrganisationType: "health_maintenance_organisation", AccreditationStatus: "accredited", HMOID: nhiaAccreditedHMOAnchorHMOID}
 	last := first
 	last.ID = nhiaAccreditedHMOLastAnchor
 	last.Name = "ZUMA HEALTH TRUST"
@@ -118,6 +121,7 @@ func validStartupNHIAHMO() *startupNHIAHMOStub {
 	for _, key := range []string{"", "accredited"} {
 		s.pages[key] = interfaces.NHIAAccreditedHealthMaintenanceOrganisationListResult{Records: []models.NHIAAccreditedHealthMaintenanceOrganisation{first}, Page: 1, PageSize: 1, Total: 94, TotalPages: 94}
 	}
+	s.pages["hmo_id"] = interfaces.NHIAAccreditedHealthMaintenanceOrganisationListResult{Records: []models.NHIAAccreditedHealthMaintenanceOrganisation{first}, Page: 1, PageSize: 1, Total: 1, TotalPages: 1}
 	s.pages["beyond"] = interfaces.NHIAAccreditedHealthMaintenanceOrganisationListResult{Records: []models.NHIAAccreditedHealthMaintenanceOrganisation{}, Page: 95, PageSize: 1, Total: 94, TotalPages: 94}
 	return s
 }
@@ -127,7 +131,12 @@ func TestNHIAAccreditedHMOStartupBoundedQueries(t *testing.T) {
 	if err := verifyNHIAAccreditedHMOs(nil, s); err != nil {
 		t.Fatal(err)
 	}
-	want := []interfaces.NHIAAccreditedHealthMaintenanceOrganisationQuery{{Page: 1, PageSize: 1}, {Page: 1, PageSize: 1, AccreditationStatus: "accredited"}, {Page: 95, PageSize: 1}}
+	want := []interfaces.NHIAAccreditedHealthMaintenanceOrganisationQuery{
+		{Page: 1, PageSize: 1},
+		{Page: 1, PageSize: 1, AccreditationStatus: "accredited"},
+		{Page: 1, PageSize: 1, HMOID: nhiaAccreditedHMOAnchorHMOID},
+		{Page: 95, PageSize: 1},
+	}
 	if !reflect.DeepEqual(s.calls, want) || !reflect.DeepEqual(s.ids, []string{nhiaAccreditedHMOFirstAnchor, nhiaAccreditedHMOLastAnchor}) {
 		t.Fatalf("calls %v ids %v", s.calls, s.ids)
 	}
@@ -161,6 +170,29 @@ func TestNHIAAccreditedHMOStartupRejectsBadPagesAndRecords(t *testing.T) {
 			p.Records = []models.NHIAAccreditedHealthMaintenanceOrganisation{{ID: "unexpected"}}
 		}},
 		{"beyond nil", "beyond", func(p *interfaces.NHIAAccreditedHealthMaintenanceOrganisationListResult) { p.Records = nil }},
+		{"hmo id zero matches", "hmo_id", func(p *interfaces.NHIAAccreditedHealthMaintenanceOrganisationListResult) {
+			p.Records = []models.NHIAAccreditedHealthMaintenanceOrganisation{}
+		}},
+		{"hmo id too many matches", "hmo_id", func(p *interfaces.NHIAAccreditedHealthMaintenanceOrganisationListResult) {
+			p.Records = append(p.Records, p.Records[0])
+			p.Total = 2
+		}},
+		{"hmo id wrong total", "hmo_id", func(p *interfaces.NHIAAccreditedHealthMaintenanceOrganisationListResult) { p.Total = 2 }},
+		{"hmo id wrong public id", "hmo_id", func(p *interfaces.NHIAAccreditedHealthMaintenanceOrganisationListResult) {
+			p.Records[0].ID = nhiaAccreditedHMOLastAnchor
+		}},
+		{"hmo id wrong hmo id", "hmo_id", func(p *interfaces.NHIAAccreditedHealthMaintenanceOrganisationListResult) {
+			p.Records[0].HMOID = "103"
+		}},
+		{"hmo id wrong country", "hmo_id", func(p *interfaces.NHIAAccreditedHealthMaintenanceOrganisationListResult) {
+			p.Records[0].CountryCode = "GH"
+		}},
+		{"hmo id wrong type", "hmo_id", func(p *interfaces.NHIAAccreditedHealthMaintenanceOrganisationListResult) {
+			p.Records[0].OrganisationType = "insurer"
+		}},
+		{"hmo id wrong status", "hmo_id", func(p *interfaces.NHIAAccreditedHealthMaintenanceOrganisationListResult) {
+			p.Records[0].AccreditationStatus = "registered"
+		}},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			s := validStartupNHIAHMO()
@@ -210,7 +242,7 @@ func TestNHIAAccreditedHMOStartupErrors(t *testing.T) {
 		}
 		cancel()
 	}
-	for step := 1; step <= 5; step++ {
+	for step := 1; step <= 6; step++ {
 		for _, cause := range []error{context.Canceled, context.DeadlineExceeded, errors.New("secret decoder path")} {
 			s := validStartupNHIAHMO()
 			s.failAt = step

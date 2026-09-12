@@ -15,6 +15,8 @@ const (
 	nhiaAccreditedHMOExpectedCount = 94
 	nhiaAccreditedHMOFirstAnchor   = "a-and-m-healthcare-trust-limited-102"
 	nhiaAccreditedHMOLastAnchor    = "zuma-health-trust-28"
+	nhiaAccreditedHMOAnchorName    = "A&M HEALTHCARE TRUST LIMITED"
+	nhiaAccreditedHMOAnchorHMOID   = "102"
 )
 
 func buildNHIAAccreditedHMOHandler(
@@ -66,6 +68,23 @@ func verifyNHIAAccreditedHMOs(ctx context.Context, service nhiaAccreditedHMOServ
 		if status != "" && page.Records[0].AccreditationStatus != status {
 			return invalidNHIAAccreditedHMOVerification("status filter mismatch")
 		}
+	}
+	hmoIDPage, err := service.ListNHIAAccreditedHealthMaintenanceOrganisations(ctx, interfaces.NHIAAccreditedHealthMaintenanceOrganisationQuery{Page: 1, PageSize: 1, HMOID: nhiaAccreditedHMOAnchorHMOID})
+	if err != nil {
+		return wrapNHIAAccreditedHMOVerificationError("load hmo id verification page", err)
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+	if hmoIDPage.Records == nil || len(hmoIDPage.Records) != 1 || hmoIDPage.Page != 1 || hmoIDPage.PageSize != 1 || hmoIDPage.Total != 1 || hmoIDPage.TotalPages != 1 {
+		return invalidNHIAAccreditedHMOVerification("invalid hmo id verification page")
+	}
+	hmoIDRecord := hmoIDPage.Records[0]
+	if hmoIDRecord.ID != nhiaAccreditedHMOFirstAnchor || hmoIDRecord.HMOID != nhiaAccreditedHMOAnchorHMOID || hmoIDRecord.Name != nhiaAccreditedHMOAnchorName {
+		return invalidNHIAAccreditedHMOVerification("hmo id verification mismatch")
+	}
+	if err := validateStartupNHIAAccreditedHMO(hmoIDRecord); err != nil {
+		return err
 	}
 	for _, id := range []string{nhiaAccreditedHMOFirstAnchor, nhiaAccreditedHMOLastAnchor} {
 		record, err := service.GetNHIAAccreditedHealthMaintenanceOrganisation(ctx, id)
