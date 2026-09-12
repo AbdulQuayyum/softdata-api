@@ -63,6 +63,7 @@ const (
 	financeMicrofinanceBanksRelativePath                       = "finance/microfinance_banks.json"
 	healthcareHealthFacilitiesRelativePath                     = "healthcare/health_facilities.json"
 	healthcareMedicalLaboratoryAccreditationsRelativePath      = "healthcare/medical_laboratory_accreditations.json"
+	healthcareNHIAAccreditedHealthMaintenanceOrganisationsPath = "healthcare/nhia_accredited_health_maintenance_organisations.json"
 )
 
 var approvedUniversityStateIDs = map[string]struct{}{
@@ -225,6 +226,21 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	if err != nil {
 		return appDependencies{}, err
 	}
+	nhiaHMOService, err := buildNHIAAccreditedHMOServiceFromJSONRepository(ctx, jsonRepository,
+		func(repository interfaces.JSONFileRepository, recordsPath string) (interfaces.NHIAAccreditedHealthMaintenanceOrganisationRepository, error) {
+			return fileRepo.NewNHIAAccreditedHealthMaintenanceOrganisationRepository(repository, recordsPath)
+		},
+		func(repository interfaces.NHIAAccreditedHealthMaintenanceOrganisationRepository) (nhiaAccreditedHMOService, error) {
+			service, err := services.NewNHIAAccreditedHealthMaintenanceOrganisationService(repository)
+			if err != nil {
+				return nil, err
+			}
+			return service, nil
+		},
+	)
+	if err != nil {
+		return appDependencies{}, err
+	}
 	financeHandler, err := handlers.NewFinanceHandlerWithPublicAPIURL(financeService, cfg.PublicAPIURL)
 	if err != nil {
 		return appDependencies{}, err
@@ -359,6 +375,7 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 		closeRedis:        redisClose,
 		closePostgres:     pool.Close,
 		healthcareService: healthcareService,
+		nhiaHMOService:    nhiaHMOService,
 	}
 	return deps, nil
 }
@@ -420,6 +437,11 @@ type extendedEducationService interface {
 type healthFacilityService interface {
 	ListHealthFacilities(context.Context, services.HealthFacilityQuery) (services.HealthFacilityListResult, error)
 	GetHealthFacility(context.Context, string) (models.HealthFacility, error)
+}
+
+type nhiaAccreditedHMOService interface {
+	ListNHIAAccreditedHealthMaintenanceOrganisations(context.Context, services.NHIAAccreditedHealthMaintenanceOrganisationQuery) (services.NHIAAccreditedHealthMaintenanceOrganisationListResult, error)
+	GetNHIAAccreditedHealthMaintenanceOrganisation(context.Context, string) (models.NHIAAccreditedHealthMaintenanceOrganisation, error)
 }
 
 type financeService interface {
@@ -610,6 +632,38 @@ func buildHealthFacilityServiceFromJSONRepository(
 	}
 	if err := verifyHealthFacilityDataset(ctx, service); err != nil {
 		return nil, err
+	}
+	return service, nil
+}
+
+func buildNHIAAccreditedHMOServiceFromJSONRepository(
+	ctx context.Context,
+	jsonRepository interfaces.JSONFileRepository,
+	newRepository func(interfaces.JSONFileRepository, string) (interfaces.NHIAAccreditedHealthMaintenanceOrganisationRepository, error),
+	newService func(interfaces.NHIAAccreditedHealthMaintenanceOrganisationRepository) (nhiaAccreditedHMOService, error),
+) (nhiaAccreditedHMOService, error) {
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	if jsonRepository == nil {
+		return nil, fmt.Errorf("json repository is required")
+	}
+	if newRepository == nil {
+		return nil, fmt.Errorf("nhia accredited health maintenance organisation repository factory is required")
+	}
+	if newService == nil {
+		return nil, fmt.Errorf("nhia accredited health maintenance organisation service factory is required")
+	}
+	repository, err := newRepository(jsonRepository, healthcareNHIAAccreditedHealthMaintenanceOrganisationsPath)
+	if err != nil {
+		return nil, fmt.Errorf("initialize nhia accredited health maintenance organisation repository: %w", err)
+	}
+	service, err := newService(repository)
+	if err != nil {
+		return nil, fmt.Errorf("initialize nhia accredited health maintenance organisation service: %w", err)
 	}
 	return service, nil
 }

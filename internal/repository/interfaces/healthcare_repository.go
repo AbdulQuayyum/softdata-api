@@ -56,3 +56,27 @@ type MedicalLaboratoryAccreditationRepository interface {
 	ListMedicalLaboratoryAccreditations(context.Context, MedicalLaboratoryAccreditationQuery) (MedicalLaboratoryAccreditationListResult, error)
 	GetMedicalLaboratoryAccreditation(context.Context, string) (models.MedicalLaboratoryAccreditation, error)
 }
+
+// NHIAAccreditedHealthMaintenanceOrganisationQuery captures supported NHIA accredited HMO filters.
+type NHIAAccreditedHealthMaintenanceOrganisationQuery struct {
+	Page                int
+	PageSize            int
+	AccreditationStatus string
+	HMOID               string
+	Search              string
+}
+
+// NHIAAccreditedHealthMaintenanceOrganisationListResult contains a page of NHIA accredited HMO records and metadata.
+type NHIAAccreditedHealthMaintenanceOrganisationListResult struct {
+	Records    []models.NHIAAccreditedHealthMaintenanceOrganisation
+	Page       int
+	PageSize   int
+	Total      int
+	TotalPages int
+}
+
+// NHIAAccreditedHealthMaintenanceOrganisationRepository defines paginated NHIA accredited HMO snapshot access.
+type NHIAAccreditedHealthMaintenanceOrganisationRepository interface {
+	ListNHIAAccreditedHealthMaintenanceOrganisations(context.Context, NHIAAccreditedHealthMaintenanceOrganisationQuery) (NHIAAccreditedHealthMaintenanceOrganisationListResult, error)
+	GetNHIAAccreditedHealthMaintenanceOrganisation(context.Context, string) (models.NHIAAccreditedHealthMaintenanceOrganisation, error)
+}
