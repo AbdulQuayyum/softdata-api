@@ -226,7 +226,7 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	if err != nil {
 		return appDependencies{}, err
 	}
-	nhiaHMOService, err := buildNHIAAccreditedHMOServiceFromJSONRepository(ctx, jsonRepository,
+	nhiaHMOService, nhiaHMOHandler, err := buildNHIAAccreditedHMOHandler(ctx, jsonRepository,
 		func(repository interfaces.JSONFileRepository, recordsPath string) (interfaces.NHIAAccreditedHealthMaintenanceOrganisationRepository, error) {
 			return fileRepo.NewNHIAAccreditedHealthMaintenanceOrganisationRepository(repository, recordsPath)
 		},
@@ -236,6 +236,9 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 				return nil, err
 			}
 			return service, nil
+		},
+		func(service nhiaAccreditedHMOService) (*handlers.NHIAAccreditedHealthMaintenanceOrganisationHandler, error) {
+			return handlers.NewNHIAAccreditedHealthMaintenanceOrganisationHandler(service)
 		},
 	)
 	if err != nil {
@@ -328,6 +331,7 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 		Education:                       educationHandler,
 		Healthcare:                      healthcareHandler,
 		MedicalLaboratoryAccreditations: accreditationsHandler,
+		NHIAAccreditedHMOs:              nhiaHMOHandler,
 		Finance:                         financeHandler,
 		Auth:                            authHandler,
 		Account:                         accountHandler,
