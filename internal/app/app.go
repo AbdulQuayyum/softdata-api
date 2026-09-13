@@ -35,6 +35,7 @@ type appDependencies struct {
 
 	healthcareService healthFacilityService
 	nhiaHMOService    nhiaAccreditedHMOService
+	nhiaSSHIAService  nhiaSSHIAService
 }
 
 // New builds the production app from configuration and a logger.

@@ -80,3 +80,26 @@ type NHIAAccreditedHealthMaintenanceOrganisationRepository interface {
 	ListNHIAAccreditedHealthMaintenanceOrganisations(context.Context, NHIAAccreditedHealthMaintenanceOrganisationQuery) (NHIAAccreditedHealthMaintenanceOrganisationListResult, error)
 	GetNHIAAccreditedHealthMaintenanceOrganisation(context.Context, string) (models.NHIAAccreditedHealthMaintenanceOrganisation, error)
 }
+
+// NHIAStateSocialHealthInsuranceAgencyQuery captures supported NHIA-listed SSHIA filters.
+type NHIAStateSocialHealthInsuranceAgencyQuery struct {
+	Page     int
+	PageSize int
+	StateID  string
+	Search   string
+}
+
+// NHIAStateSocialHealthInsuranceAgencyListResult contains a page of NHIA-listed SSHIA records and metadata.
+type NHIAStateSocialHealthInsuranceAgencyListResult struct {
+	Records    []models.NHIAStateSocialHealthInsuranceAgency
+	Page       int
+	PageSize   int
+	Total      int
+	TotalPages int
+}
+
+// NHIAStateSocialHealthInsuranceAgencyRepository defines paginated NHIA-listed SSHIA snapshot access.
+type NHIAStateSocialHealthInsuranceAgencyRepository interface {
+	ListNHIAStateSocialHealthInsuranceAgencies(context.Context, NHIAStateSocialHealthInsuranceAgencyQuery) (NHIAStateSocialHealthInsuranceAgencyListResult, error)
+	GetNHIAStateSocialHealthInsuranceAgency(context.Context, string) (models.NHIAStateSocialHealthInsuranceAgency, error)
+}
