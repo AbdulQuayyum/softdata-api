@@ -245,7 +245,7 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	if err != nil {
 		return appDependencies{}, err
 	}
-	nhiaSSHIAService, err := buildNHIASSHIAServiceFromJSONRepository(ctx, jsonRepository,
+	nhiaSSHIAService, nhiaSSHIAHandler, err := buildNHIASSHIAHandler(ctx, jsonRepository,
 		func(repository interfaces.JSONFileRepository, recordsPath string) (interfaces.NHIAStateSocialHealthInsuranceAgencyRepository, error) {
 			return fileRepo.NewNHIAStateSocialHealthInsuranceAgencyRepository(repository, recordsPath)
 		},
@@ -255,6 +255,9 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 				return nil, err
 			}
 			return service, nil
+		},
+		func(service nhiaSSHIAService) (*handlers.NHIAStateSocialHealthInsuranceAgencyHandler, error) {
+			return handlers.NewNHIAStateSocialHealthInsuranceAgencyHandler(service)
 		},
 	)
 	if err != nil {
@@ -341,19 +344,20 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	}
 
 	routerHandler, err := router.New(router.Handlers{
-		Health:                          healthHandler,
-		Discovery:                       discoveryHandler,
-		Geography:                       geographyHandler,
-		Education:                       educationHandler,
-		Healthcare:                      healthcareHandler,
-		MedicalLaboratoryAccreditations: accreditationsHandler,
-		NHIAAccreditedHMOs:              nhiaHMOHandler,
-		Finance:                         financeHandler,
-		Auth:                            authHandler,
-		Account:                         accountHandler,
-		APIKey:                          apiKeyHandler,
-		Usage:                           usageHandler,
-		Dataset:                         datasetHandler,
+		Health:                                 healthHandler,
+		Discovery:                              discoveryHandler,
+		Geography:                              geographyHandler,
+		Education:                              educationHandler,
+		Healthcare:                             healthcareHandler,
+		MedicalLaboratoryAccreditations:        accreditationsHandler,
+		NHIAAccreditedHMOs:                     nhiaHMOHandler,
+		NHIAStateSocialHealthInsuranceAgencies: nhiaSSHIAHandler,
+		Finance:                                financeHandler,
+		Auth:                                   authHandler,
+		Account:                                accountHandler,
+		APIKey:                                 apiKeyHandler,
+		Usage:                                  usageHandler,
+		Dataset:                                datasetHandler,
 	}, router.Middleware{
 		RequestID:       requestIDMiddleware,
 		Recovery:        recoveryMiddleware,
