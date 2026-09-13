@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://softdata-api.local/schemas/healthcare/nhia_state_social_health_insurance_agencies.schema.json",
+  "title": "Nigeria NHIA-Listed State Social Health Insurance Agencies Snapshot",
+  "description": "A dated organisation/state snapshot of NHIA-listed State Social Health Insurance Agencies. Inclusion means listed by NHIA, not necessarily accredited, licensed, registered or operational.",
+  "type": "array",
+  "minItems": 37,
+  "maxItems": 37,
+  "uniqueItems": true,
+  "items": {
+    "$ref": "#/$defs/nhiaStateSocialHealthInsuranceAgency"
+  },
+  "$defs": {
+    "nhiaStateSocialHealthInsuranceAgency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "state_id",
+        "country_code",
+        "organisation_type"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "maxLength": 255
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state_id": {
+          "type": "string",
+          "enum": [
+            "abia",
+            "adamawa",
+            "akwa-ibom",
+            "anambra",
+            "bauchi",
+            "bayelsa",
+            "benue",
+            "borno",
+            "cross-river",
+            "delta",
+            "ebonyi",
+            "edo",
+            "ekiti",
+            "enugu",
+            "fct",
+            "gombe",
+            "imo",
+            "jigawa",
+            "kaduna",
+            "kano",
+            "katsina",
+            "kebbi",
+            "kogi",
+            "kwara",
+            "lagos",
+            "nasarawa",
+            "niger",
+            "ogun",
+            "ondo",
+            "osun",
+            "oyo",
+            "plateau",
+            "rivers",
+            "sokoto",
+            "taraba",
+            "yobe",
+            "zamfara"
+          ]
+        },
+        "country_code": {
+          "const": "NG"
+        },
+        "organisation_type": {
+          "type": "string",
+          "enum": [
+            "state_social_health_insurance_agency"
+          ]
+        }
+      }
+    }
+  }
+}

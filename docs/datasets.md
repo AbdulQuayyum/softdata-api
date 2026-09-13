@@ -283,6 +283,17 @@ Nigeria NHIA Accredited Health Maintenance Organisations Snapshot.
 
 A dated organisation-level snapshot of Health Maintenance Organisations listed by the National Health Insurance Authority as accredited. The package contains 94 retained HMO rows from the NHIA Accredited Health Maintenance Organizations table retrieved on 2026-09-11. The public contract is intentionally narrow: `id`, `name`, `country_code`, `organisation_type`, `accreditation_status` and `hmo_id`. The implemented API includes the file-backed repository and service, list and detail handlers, validators, OpenAPI contract, production routes, standard public healthcare middleware, stable usage templates and bounded startup verification sharing the same repository cache used by HTTP requests. The source table includes website, address, email and call-centre columns, but those contact fields are omitted from public records. The dataset is not a complete live health-insurance licensing, registration or operational-status register and does not establish that every Nigerian health-insurance organisation is licensed, registered or currently operational. State Social Health Insurance Agencies are a separate NHIA-listed category and are not included. Runtime code does not call NHIA or load reconciliation metadata. No enrollee, patient, practitioner, staff, claims, policy, payment, banking or identity-document information is published. No websites or logos are implemented.
 
+### `ng-nhia-state-social-health-insurance-agencies`
+
+Nigeria NHIA-Listed State Social Health Insurance Agencies Snapshot.
+
+- Data: `datasets/healthcare/nhia_state_social_health_insurance_agencies.json`
+- Schema: `datasets/schemas/healthcare/nhia_state_social_health_insurance_agencies.schema.json`
+- Metadata: `datasets/metadata/healthcare/nhia_state_social_health_insurance_agencies.json`
+- Reconciliation: `datasets/metadata/healthcare/nhia_state_social_health_insurance_agencies_reconciliation/index.json`
+
+A dated organisation/state snapshot of State Social Health Insurance Agencies listed by the National Health Insurance Authority under `STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)`. The package contains 37 retained rows from the NHIA SSHIA table retrieved on 2026-09-13, covering all 36 states and the Federal Capital Territory exactly once. The public contract is intentionally narrow: `id`, `name`, `state_id`, `country_code` and `organisation_type`. Inclusion means listed by NHIA, not necessarily currently accredited, licensed, registered or operational. The source table publishes directors, phone numbers, email addresses, website links and addresses, but those fields are deliberately discarded and absent from public and reconciliation artifacts. Websites and addresses are deferred pending separate verification, including observed Cross River and Ebonyi website-link mismatches. Health Maintenance Organisations are a separate NHIA category and are not included. This foundation does not add repository methods, services, handlers, routes, OpenAPI paths or startup verification.
+
 ### `ng-licensed-pharmacies` — deferred pending sanitized PCN premises data
 
 This future pharmacy-premises dataset remains deferred pending a privacy-safe authoritative PCN row-level premises publication. PCN pharmacy premises regulation is separate from MLSCN medical laboratory accreditation regulation.

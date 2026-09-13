@@ -1,0 +1,261 @@
+[
+  {
+    "id": "abia-state-health-insurance-agency-abshia",
+    "name": "Abia State Health Insurance Agency (ABSHIA)",
+    "state_id": "abia",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "adamawa-state-contributory-health-management-agency-aschma",
+    "name": "Adamawa State Contributory Health Management Agency (ASCHMA)",
+    "state_id": "adamawa",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "akwa-ibom-state-health-insurance-agency",
+    "name": "Akwa Ibom State Health Insurance Agency",
+    "state_id": "akwa-ibom",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "anambra-state-health-insurance-agency-ashia",
+    "name": "Anambra State Health Insurance Agency (ASHIA)",
+    "state_id": "anambra",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "bauchi-state-health-contributory-management-agency-bashcma",
+    "name": "Bauchi State Health Contributory Management Agency (BASHCMA)",
+    "state_id": "bauchi",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "bayelsa-health-insurance-scheme-bhis",
+    "name": "Bayelsa Health Insurance Scheme (BHIS)",
+    "state_id": "bayelsa",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "benue-state-health-insurance-agency-bnshia",
+    "name": "Benue State Health Insurance Agency (BNSHIA)",
+    "state_id": "benue",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "borno-state-contributory-health-care-management-agency-boschma",
+    "name": "BORNO STATE CONTRIBUTORY HEALTH CARE MANAGEMENT AGENCY (BOSCHMA)",
+    "state_id": "borno",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "cross-river-state-health-insurance-agency-crshia",
+    "name": "Cross River State Health Insurance Agency (CRSHIA)",
+    "state_id": "cross-river",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "delta-state-contributory-health-commission-dschc",
+    "name": "Delta State Contributory Health Commission (DSCHC)",
+    "state_id": "delta",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "ebonyi-state-health-insurance-agency-ebshia",
+    "name": "Ebonyi State Health Insurance Agency (EBSHIA)",
+    "state_id": "ebonyi",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "edo-state-health-insurance-scheme-edhic",
+    "name": "Edo State Health Insurance Scheme (EDHIC)",
+    "state_id": "edo",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "ekiti-state-health-insurance-scheme-ekhis",
+    "name": "Ekiti State Health Insurance Scheme (EKHIS)",
+    "state_id": "ekiti",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "enugu-state-universal-health-coverage-scheme-esuhcs",
+    "name": "Enugu State Universal Health Coverage Scheme (ESUHCS)",
+    "state_id": "enugu",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "fct-health-insurance-scheme-fhis",
+    "name": "FCT Health Insurance Scheme (FHIS)",
+    "state_id": "fct",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "gombe-state-contributory-healthcare-management-agency",
+    "name": "Gombe State Contributory Healthcare Management Agency",
+    "state_id": "gombe",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "imo-state-health-insurance-agency-imshia",
+    "name": "Imo State Health Insurance Agency (IMSHIA)",
+    "state_id": "imo",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "jigawa-state-contributory-healthcare-management-agency",
+    "name": "Jigawa state contributory Healthcare Management Agency",
+    "state_id": "jigawa",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "kaduna-state-contributory-health-management-agency-kadchma",
+    "name": "Kaduna State Contributory Health Management Agency. (KADCHMA)",
+    "state_id": "kaduna",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "kano-state-contributory-healthcare-management-agency-kschma",
+    "name": "Kano State Contributory Healthcare Management Agency (KSCHMA)",
+    "state_id": "kano",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "ktschma",
+    "name": "KTSCHMA",
+    "state_id": "katsina",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "kebbi-state-contributory-healthcare-management-agency-kechema",
+    "name": "Kebbi State Contributory Healthcare Management Agency (KECHEMA)",
+    "state_id": "kebbi",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "kogi-state-health-insurance-agency-kgshia",
+    "name": "Kogi State Health Insurance Agency (KGSHIA)",
+    "state_id": "kogi",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "kwara-state-health-insurance-agency-kwarahia",
+    "name": "Kwara State Health Insurance Agency (KWARAHIA)",
+    "state_id": "kwara",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "lashma",
+    "name": "LASHMA",
+    "state_id": "lagos",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "nashia",
+    "name": "NASHIA",
+    "state_id": "nasarawa",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "ngscha",
+    "name": "NGSCHA",
+    "state_id": "niger",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "ogshia",
+    "name": "OGSHIA",
+    "state_id": "ogun",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "odchc",
+    "name": "ODCHC",
+    "state_id": "ondo",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "ohis",
+    "name": "OHIS",
+    "state_id": "osun",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "oyshia",
+    "name": "OYSHIA",
+    "state_id": "oyo",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "plaschema",
+    "name": "PLASCHEMA",
+    "state_id": "plateau",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "rivchpp-rsmoh",
+    "name": "RIVCHPP/RSMOH",
+    "state_id": "rivers",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "skhis",
+    "name": "SKHIS",
+    "state_id": "sokoto",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "tsshia",
+    "name": "TSSHIA",
+    "state_id": "taraba",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "yoschima",
+    "name": "YOSCHIMA",
+    "state_id": "yobe",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  },
+  {
+    "id": "zamchema",
+    "name": "ZAMCHEMA",
+    "state_id": "zamfara",
+    "country_code": "NG",
+    "organisation_type": "state_social_health_insurance_agency"
+  }
+]

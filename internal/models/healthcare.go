@@ -49,3 +49,16 @@ type NHIAAccreditedHealthMaintenanceOrganisation struct {
 	AccreditationStatus string `json:"accreditation_status"`
 	HMOID               string `json:"hmo_id"`
 }
+
+// NHIAStateSocialHealthInsuranceAgencyIDMaxLength bounds public ASCII slug IDs for NHIA SSHIA records.
+const NHIAStateSocialHealthInsuranceAgencyIDMaxLength = 255
+
+// NHIAStateSocialHealthInsuranceAgency represents one NHIA-listed state social health insurance agency observation.
+// It is published as a dated organisation/state snapshot, not a live licensing, accreditation or operational-status register.
+type NHIAStateSocialHealthInsuranceAgency struct {
+	ID               string `json:"id"`
+	Name             string `json:"name"`
+	StateID          string `json:"state_id"`
+	CountryCode      string `json:"country_code"`
+	OrganisationType string `json:"organisation_type"`
+}
