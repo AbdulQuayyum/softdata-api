@@ -130,6 +130,35 @@ func TestErrorMapsKnownServiceErrors(t *testing.T) {
 	}
 }
 
+func TestErrorMapsNHIAStateSocialHealthInsuranceAgencyErrors(t *testing.T) {
+	for _, tc := range []struct {
+		err    error
+		status int
+		code   string
+	}{
+		{services.ErrNHIAStateSocialHealthInsuranceAgencyNotFound, http.StatusNotFound, codeResourceNotFound},
+		{services.ErrInvalidNHIAStateSocialHealthInsuranceAgencyID, http.StatusBadRequest, codeInvalidRequest},
+		{services.ErrInvalidNHIAStateSocialHealthInsuranceAgencyPagination, http.StatusBadRequest, codeInvalidRequest},
+		{services.ErrInvalidNHIAStateSocialHealthInsuranceAgencyStateID, http.StatusBadRequest, codeInvalidRequest},
+		{services.ErrInvalidNHIAStateSocialHealthInsuranceAgencySearch, http.StatusBadRequest, codeInvalidRequest},
+	} {
+		rr := httptest.NewRecorder()
+		if err := Error(rr, tc.err, "req-sshia"); err != nil {
+			t.Fatal(err)
+		}
+		if rr.Code != tc.status {
+			t.Fatalf("status=%d want %d", rr.Code, tc.status)
+		}
+		var body ErrorResponse
+		if err := json.Unmarshal(rr.Body.Bytes(), &body); err != nil {
+			t.Fatal(err)
+		}
+		if body.Error.Code != tc.code || body.Error.RequestID != "req-sshia" {
+			t.Fatalf("body=%#v", body)
+		}
+	}
+}
+
 func TestErrorValidationAndSafety(t *testing.T) {
 	rr := httptest.NewRecorder()
 	details := []ValidationError{{Field: "limit", Message: "Limit must not exceed 100."}}
