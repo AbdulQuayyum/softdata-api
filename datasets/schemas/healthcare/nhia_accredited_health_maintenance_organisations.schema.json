@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://softdata-api.local/schemas/healthcare/nhia_accredited_health_maintenance_organisations.schema.json",
+  "title": "Nigeria NHIA Accredited Health Maintenance Organisations Snapshot",
+  "description": "A dated organisation-level snapshot of NHIA-listed accredited Health Maintenance Organisations. It is not a complete live health-insurance licensing or registration register.",
+  "type": "array",
+  "minItems": 94,
+  "maxItems": 94,
+  "uniqueItems": true,
+  "items": {
+    "$ref": "#/$defs/nhiaAccreditedHealthMaintenanceOrganisation"
+  },
+  "$defs": {
+    "nhiaAccreditedHealthMaintenanceOrganisation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "country_code",
+        "organisation_type",
+        "accreditation_status",
+        "hmo_id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "maxLength": 255
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "country_code": {
+          "const": "NG"
+        },
+        "organisation_type": {
+          "type": "string",
+          "enum": [
+            "health_maintenance_organisation"
+          ]
+        },
+        "accreditation_status": {
+          "type": "string",
+          "enum": [
+            "accredited"
+          ]
+        },
+        "hmo_id": {
+          "type": "string",
+          "pattern": "^[0-9]+$"
+        }
+      }
+    }
+  }
+}

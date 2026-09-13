@@ -441,6 +441,9 @@ func registerHealthcareRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handl
 	mux.HandleFunc("/v1/healthcare/medical-laboratory-accreditations/", func(w http.ResponseWriter, r *http.Request) {
 		_ = response.Error(w, interfaces.ErrNotFound, requestIDFromContext(r.Context()))
 	})
+	mux.HandleFunc("/v1/healthcare/nhia-accredited-health-maintenance-organisations/", func(w http.ResponseWriter, r *http.Request) {
+		_ = response.Error(w, interfaces.ErrNotFound, requestIDFromContext(r.Context()))
+	})
 
 	routes := []struct {
 		listPath   string
@@ -449,6 +452,7 @@ func registerHealthcareRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handl
 		detail     http.HandlerFunc
 	}{
 		{"/v1/healthcare/medical-laboratory-accreditations", "/v1/healthcare/medical-laboratory-accreditations/{accreditation_id}", h.MedicalLaboratoryAccreditations.ListMedicalLaboratoryAccreditations, h.MedicalLaboratoryAccreditations.GetMedicalLaboratoryAccreditation},
+		{"/v1/healthcare/nhia-accredited-health-maintenance-organisations", "/v1/healthcare/nhia-accredited-health-maintenance-organisations/{organisation_id}", h.NHIAAccreditedHMOs.ListNHIAAccreditedHealthMaintenanceOrganisations, h.NHIAAccreditedHMOs.GetNHIAAccreditedHealthMaintenanceOrganisation},
 		{"/v1/healthcare/health-facilities", "/v1/healthcare/health-facilities/{facility_id}", h.Healthcare.ListHealthFacilities, h.Healthcare.GetHealthFacility},
 	}
 	for _, route := range routes {

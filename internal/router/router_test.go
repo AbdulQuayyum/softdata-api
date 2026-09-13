@@ -102,6 +102,7 @@ func testHandlers(t *testing.T, rec *routerRecorder) Handlers {
 	education := &routerEducationStub{rec: rec}
 	finance := &routerFinanceStub{rec: rec}
 	healthcare := &routerHealthFacilityStub{rec: rec}
+	nhiaHMO := &routerNHIAHMOStub{rec: rec}
 
 	authHandler, err := handlers.NewAuthHandler(auth, auth)
 	if err != nil {
@@ -139,6 +140,10 @@ func testHandlers(t *testing.T, rec *routerRecorder) Handlers {
 	if err != nil {
 		t.Fatalf("NewHealthFacilityHandler() error = %v", err)
 	}
+	nhiaHMOHandler, err := handlers.NewNHIAAccreditedHealthMaintenanceOrganisationHandler(nhiaHMO)
+	if err != nil {
+		t.Fatalf("NewNHIAAccreditedHealthMaintenanceOrganisationHandler() error = %v", err)
+	}
 
 	return Handlers{
 		Health:                          handlers.NewHealthHandler(),
@@ -147,6 +152,7 @@ func testHandlers(t *testing.T, rec *routerRecorder) Handlers {
 		Education:                       educationHandler,
 		Healthcare:                      healthcareHandler,
 		MedicalLaboratoryAccreditations: testAccreditationHandler(t, &routerAccreditationStub{rec: rec}),
+		NHIAAccreditedHMOs:              nhiaHMOHandler,
 		Finance:                         financeHandler,
 		Auth:                            authHandler,
 		Account:                         accountHandler,
@@ -167,6 +173,7 @@ func testHandlersWithGeography(t *testing.T, rec *routerRecorder, geography *rou
 	education := &routerEducationStub{rec: rec}
 	finance := &routerFinanceStub{rec: rec}
 	healthcare := &routerHealthFacilityStub{rec: rec}
+	nhiaHMO := &routerNHIAHMOStub{rec: rec}
 
 	authHandler, err := handlers.NewAuthHandler(auth, auth)
 	if err != nil {
@@ -204,6 +211,10 @@ func testHandlersWithGeography(t *testing.T, rec *routerRecorder, geography *rou
 	if err != nil {
 		t.Fatalf("NewHealthFacilityHandler() error = %v", err)
 	}
+	nhiaHMOHandler, err := handlers.NewNHIAAccreditedHealthMaintenanceOrganisationHandler(nhiaHMO)
+	if err != nil {
+		t.Fatalf("NewNHIAAccreditedHealthMaintenanceOrganisationHandler() error = %v", err)
+	}
 
 	return Handlers{
 		Health:                          handlers.NewHealthHandler(),
@@ -212,6 +223,7 @@ func testHandlersWithGeography(t *testing.T, rec *routerRecorder, geography *rou
 		Education:                       educationHandler,
 		Healthcare:                      healthcareHandler,
 		MedicalLaboratoryAccreditations: testAccreditationHandler(t, &routerAccreditationStub{rec: rec}),
+		NHIAAccreditedHMOs:              nhiaHMOHandler,
 		Finance:                         financeHandler,
 		Auth:                            authHandler,
 		Account:                         accountHandler,
@@ -1662,6 +1674,7 @@ func newGeographyPolicyRouter(t *testing.T) geographyPolicyHarness {
 		Education:                       baseHandlers.Education,
 		Healthcare:                      baseHandlers.Healthcare,
 		MedicalLaboratoryAccreditations: baseHandlers.MedicalLaboratoryAccreditations,
+		NHIAAccreditedHMOs:              baseHandlers.NHIAAccreditedHMOs,
 		Finance:                         baseHandlers.Finance,
 		Auth:                            baseHandlers.Auth,
 		Account:                         baseHandlers.Account,
@@ -1767,6 +1780,7 @@ func newFinancePolicyRouter(t *testing.T) financePolicyHarness {
 		Education:                       baseHandlers.Education,
 		Healthcare:                      baseHandlers.Healthcare,
 		MedicalLaboratoryAccreditations: baseHandlers.MedicalLaboratoryAccreditations,
+		NHIAAccreditedHMOs:              baseHandlers.NHIAAccreditedHMOs,
 		Finance:                         financeHandler,
 		Auth:                            baseHandlers.Auth,
 		Account:                         baseHandlers.Account,
@@ -1872,6 +1886,7 @@ func newEducationPolicyRouter(t *testing.T) educationPolicyHarness {
 		Education:                       educationHandler,
 		Healthcare:                      baseHandlers.Healthcare,
 		MedicalLaboratoryAccreditations: baseHandlers.MedicalLaboratoryAccreditations,
+		NHIAAccreditedHMOs:              baseHandlers.NHIAAccreditedHMOs,
 		Finance:                         baseHandlers.Finance,
 		Auth:                            baseHandlers.Auth,
 		Account:                         baseHandlers.Account,

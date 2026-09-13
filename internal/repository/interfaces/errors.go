@@ -63,6 +63,16 @@ var (
 	ErrHealthFacilityNotFound = errors.New("repository: health facility not found")
 	// ErrMedicalLaboratoryAccreditationNotFound reports that a requested medical laboratory accreditation is not present in the dataset.
 	ErrMedicalLaboratoryAccreditationNotFound = errors.New("repository: medical laboratory accreditation not found")
+	// ErrNHIAAccreditedHealthMaintenanceOrganisationNotFound reports that a requested NHIA accredited HMO is not present in the dataset.
+	ErrNHIAAccreditedHealthMaintenanceOrganisationNotFound = errors.New("repository: nhia accredited health maintenance organisation not found")
+	// ErrInvalidNHIAAccreditedHealthMaintenanceOrganisationQuery reports an invalid NHIA accredited HMO query.
+	ErrInvalidNHIAAccreditedHealthMaintenanceOrganisationQuery = errors.New("repository: invalid nhia accredited health maintenance organisation query")
+	// ErrInvalidNHIAAccreditedHealthMaintenanceOrganisationStatusFilter reports an unsupported NHIA accredited HMO status filter.
+	ErrInvalidNHIAAccreditedHealthMaintenanceOrganisationStatusFilter = errors.New("repository: invalid nhia accredited health maintenance organisation status filter")
+	// ErrInvalidNHIAAccreditedHealthMaintenanceOrganisationHMOIDFilter reports an invalid NHIA accredited HMO ID filter.
+	ErrInvalidNHIAAccreditedHealthMaintenanceOrganisationHMOIDFilter = errors.New("repository: invalid nhia accredited health maintenance organisation hmo id filter")
+	// ErrInvalidNHIAAccreditedHealthMaintenanceOrganisationSearch reports an invalid NHIA accredited HMO search filter.
+	ErrInvalidNHIAAccreditedHealthMaintenanceOrganisationSearch = errors.New("repository: invalid nhia accredited health maintenance organisation search")
 	// ErrInvalidMedicalLaboratoryAccreditationQuery reports an invalid medical-laboratory-accreditation query.
 	ErrInvalidMedicalLaboratoryAccreditationQuery = errors.New("repository: invalid medical laboratory accreditation query")
 	// ErrInvalidMedicalLaboratoryAccreditationStateFilter reports an unknown medical-laboratory-accreditation state filter.

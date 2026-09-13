@@ -1,0 +1,754 @@
+[
+  {
+    "id": "a-and-m-healthcare-trust-limited-102",
+    "name": "A&M HEALTHCARE TRUST LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "102"
+  },
+  {
+    "id": "aiico-multishield-nigeria-limited-6",
+    "name": "AIICO MULTISHIELD NIGERIA LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "6"
+  },
+  {
+    "id": "alleanza-health-management-limited-111",
+    "name": "ALLEANZA HEALTH MANAGEMENT LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "111"
+  },
+  {
+    "id": "ally-healthcare-limited-119",
+    "name": "ALLY HEALTHCARE LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "119"
+  },
+  {
+    "id": "aman-health-maintenance-organizations-121",
+    "name": "AMAN HEALTH MAINTENANCE ORGANIZATIONS",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "121"
+  },
+  {
+    "id": "anchor-hmo-international-company-limited-76",
+    "name": "ANCHOR HMO INTERNATIONAL COMPANY LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "76"
+  },
+  {
+    "id": "ashmed-integrated-health-services-ltd-89",
+    "name": "ASHMED INTEGRATED HEALTH SERVICES LTD.",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "89"
+  },
+  {
+    "id": "aspire-hmo-limited-132",
+    "name": "Aspire HMO Limited",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "132"
+  },
+  {
+    "id": "avon-healthcare-limited-63",
+    "name": "AVON HEALTHCARE LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "63"
+  },
+  {
+    "id": "axa-mansard-health-limited-59",
+    "name": "AXA MANSARD HEALTH LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "59"
+  },
+  {
+    "id": "bastion-health-limited-97",
+    "name": "BASTION HEALTH LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "97"
+  },
+  {
+    "id": "bonitas-health-maintenance-limited-120",
+    "name": "BONITAS HEALTH MAINTENANCE LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "120"
+  },
+  {
+    "id": "century-medicaid-services-limited-99",
+    "name": "CENTURY MEDICAID SERVICES LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "99"
+  },
+  {
+    "id": "clearline-international-limited-3",
+    "name": "CLEARLINE INTERNATIONAL LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "3"
+  },
+  {
+    "id": "crown-jewel-hmo-ltd-126",
+    "name": "Crown Jewel HMO Ltd.",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "126"
+  },
+  {
+    "id": "defence-health-maintenance-limited-22",
+    "name": "DEFENCE HEALTH MAINTENANCE LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "22"
+  },
+  {
+    "id": "delog-medical-services-ltd-hmo-117",
+    "name": "Delog Medical Services Ltd. (HMO)",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "117"
+  },
+  {
+    "id": "doheec-international-healthcare-limited-hmo-115",
+    "name": "DOHEEC INTERNATIONAL HEALTHCARE LIMITED HMO",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "115"
+  },
+  {
+    "id": "dot-hmo-ltd-100",
+    "name": "DOT HMO Ltd.",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "100"
+  },
+  {
+    "id": "fountain-healthcare-limited-94",
+    "name": "FOUNTAIN HEALTHCARE LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "94"
+  },
+  {
+    "id": "gni-healthcare-ltd-60",
+    "name": "GNI HEALTHCARE LTD",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "60"
+  },
+  {
+    "id": "gorah-healthcare-ltd-112",
+    "name": "GORAH HEALTHCARE LTD.",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "112"
+  },
+  {
+    "id": "greenbay-healthcare-services-limited-43",
+    "name": "GREENBAY HEALTHCARE SERVICES LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "43"
+  },
+  {
+    "id": "greenfield-health-management-ltd-78",
+    "name": "GREENFIELD HEALTH MANAGEMENT LTD",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "78"
+  },
+  {
+    "id": "grooming-health-management-limited-108",
+    "name": "GROOMING HEALTH MANAGEMENT LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "108"
+  },
+  {
+    "id": "hallmark-health-services-limited-96",
+    "name": "HALLMARK HEALTH SERVICES LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "96"
+  },
+  {
+    "id": "health-assur-limited-87",
+    "name": "HEALTH ASSUR LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "87"
+  },
+  {
+    "id": "health-assur-limited-128",
+    "name": "Health Assur Limited",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "128"
+  },
+  {
+    "id": "health-partners-limited-35",
+    "name": "Health Partners Limited",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "35"
+  },
+  {
+    "id": "healthcare-international-limited-4",
+    "name": "HEALTHCARE INTERNATIONAL LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "4"
+  },
+  {
+    "id": "healthnomics-hmo-plc-123",
+    "name": "Healthnomics HMO PLC",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "123"
+  },
+  {
+    "id": "healthspring-hmo-122",
+    "name": "HEALTHSPRING HMO",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "122"
+  },
+  {
+    "id": "hopewell-healthcare-management-ltd-125",
+    "name": "Hopewell Healthcare Management Ltd",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "125"
+  },
+  {
+    "id": "hygeia-hmo-limited-1",
+    "name": "HYGEIA HMO LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "1"
+  },
+  {
+    "id": "hyssop-health-international-limited-hmo-124",
+    "name": "HYSSOP Health International Limited (HMO)",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "124"
+  },
+  {
+    "id": "infinite-x2-health-maintenance-services-113",
+    "name": "Infinite X2 Health Maintenance Services",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "113"
+  },
+  {
+    "id": "integrated-healthcare-14",
+    "name": "INTEGRATED HEALTHCARE",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "14"
+  },
+  {
+    "id": "international-health-mgt-services-11",
+    "name": "INTERNATIONAL HEALTH MGT. SERVICES",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "11"
+  },
+  {
+    "id": "ives-medicare-69",
+    "name": "IVES MEDICARE",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "69"
+  },
+  {
+    "id": "kennedia-hmo-limited-109",
+    "name": "KENNEDIA HMO LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "109"
+  },
+  {
+    "id": "leadway-health-limited-90",
+    "name": "LEADWAY HEALTH LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "90"
+  },
+  {
+    "id": "life-action-plus-ltd-130",
+    "name": "Life Action Plus Ltd.",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "130"
+  },
+  {
+    "id": "life-worth-medicare-ltd-79",
+    "name": "LIFE WORTH MEDICARE LTD",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "79"
+  },
+  {
+    "id": "lifesaver-healthcare-limited-118",
+    "name": "LIFESAVER HEALTHCARE LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "118"
+  },
+  {
+    "id": "maayoit-health-care-limited-98",
+    "name": "MAAYOIT HEALTH CARE LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "98"
+  },
+  {
+    "id": "marina-medical-services-hmo-limited-48",
+    "name": "MARINA MEDICAL SERVICES HMO LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "48"
+  },
+  {
+    "id": "markfema-nigeria-ltd-29",
+    "name": "MARKFEMA NIGERIA LTD.",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "29"
+  },
+  {
+    "id": "masslife-healthcare-limited-103",
+    "name": "MASSLIFE HEALTHCARE LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "103"
+  },
+  {
+    "id": "mb-and-o-healthcare-services-limited-110",
+    "name": "MB & O HEALTHCARE SERVICES LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "110"
+  },
+  {
+    "id": "medexia-limited-44",
+    "name": "MEDEXIA LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "44"
+  },
+  {
+    "id": "medicare-alliance-limited-71",
+    "name": "MEDICARE ALLIANCE LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "71"
+  },
+  {
+    "id": "mediplan-healthcare-limited-5",
+    "name": "MEDIPLAN HEALTHCARE LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "5"
+  },
+  {
+    "id": "metrohealth-hmo-limited-77",
+    "name": "METROHEALTH HMO LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "77"
+  },
+  {
+    "id": "mitera-health-limited-133",
+    "name": "Mitera Health Limited",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "133"
+  },
+  {
+    "id": "nem-health-limited-116",
+    "name": "NEM HEALTH LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "116"
+  },
+  {
+    "id": "nnpc-hmo-limited-86",
+    "name": "NNPC-HMO LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "86"
+  },
+  {
+    "id": "nonsuch-medicare-limited-51",
+    "name": "NONSUCH MEDICARE LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "51"
+  },
+  {
+    "id": "noor-health-ltd-114",
+    "name": "NOOR HEALTH LTD.",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "114"
+  },
+  {
+    "id": "novo-health-africa-limited-74",
+    "name": "NOVO HEALTH AFRICA LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "74"
+  },
+  {
+    "id": "oceanic-health-management-limited-39",
+    "name": "OCEANIC HEALTH MANAGEMENT LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "39"
+  },
+  {
+    "id": "peramare-health-management-company-limited-105",
+    "name": "PERAMARE HEALTH MANAGEMENT COMPANY LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "105"
+  },
+  {
+    "id": "phillips-health-management-services-limited-88",
+    "name": "PHILLIPS HEALTH MANAGEMENT SERVICES LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "88"
+  },
+  {
+    "id": "police-health-maintenance-limited-73",
+    "name": "POLICE HEALTH MAINTENANCE LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "73"
+  },
+  {
+    "id": "precious-healthcare-limited-36",
+    "name": "PRECIOUS HEALTHCARE LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "36"
+  },
+  {
+    "id": "prepaid-medicare-services-ltd-30",
+    "name": "PREPAID MEDICARE SERVICES LTD.",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "30"
+  },
+  {
+    "id": "princeton-health-17",
+    "name": "PRINCETON HEALTH",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "17"
+  },
+  {
+    "id": "prohealth-hmo-ltd-57",
+    "name": "PROHEALTH HMO LTD",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "57"
+  },
+  {
+    "id": "quest-medicare-limited-129",
+    "name": "Quest Medicare Limited",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "129"
+  },
+  {
+    "id": "redcare-health-services-limited-65",
+    "name": "REDCARE HEALTH SERVICES LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "65"
+  },
+  {
+    "id": "regenix-health-care-service-limited-64",
+    "name": "REGENIX HEALTH CARE SERVICE LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "64"
+  },
+  {
+    "id": "reliance-hmo-limited-92",
+    "name": "RELIANCE HMO LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "92"
+  },
+  {
+    "id": "roding-healthcare-ltd-93",
+    "name": "RODING HEALTHCARE LTD.",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "93"
+  },
+  {
+    "id": "ronsberger-nigeria-ltd-10",
+    "name": "RONSBERGER NIGERIA LTD.",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "10"
+  },
+  {
+    "id": "rothauge-healthcare-limited-101",
+    "name": "ROTHAUGE HEALTHCARE LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "101"
+  },
+  {
+    "id": "royal-health-maintenance-services-ltd-26",
+    "name": "ROYAL HEALTH MAINTENANCE SERVICES LTD.",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "26"
+  },
+  {
+    "id": "salus-trust-gte-54",
+    "name": "SALUS TRUST GTE",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "54"
+  },
+  {
+    "id": "seraph-hmo-limited-107",
+    "name": "SERAPH HMO LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "107"
+  },
+  {
+    "id": "skyda-health-limited-104",
+    "name": "SKYDA HEALTH LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "104"
+  },
+  {
+    "id": "smathealth-medicare-limited-127",
+    "name": "Smathealth Medicare Limited",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "127"
+  },
+  {
+    "id": "songhai-health-trust-13",
+    "name": "SONGHAI HEALTH TRUST",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "13"
+  },
+  {
+    "id": "springtide-healthcare-services-ltd-106",
+    "name": "SPRINGTIDE HEALTHCARE SERVICES LTD.",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "106"
+  },
+  {
+    "id": "sterling-health-managed-care-services-limited-34",
+    "name": "STERLING HEALTH MANAGED CARE SERVICES LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "34"
+  },
+  {
+    "id": "sunu-health-nigeria-limited-16",
+    "name": "SUNU HEALTH NIGERIA LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "16"
+  },
+  {
+    "id": "synergy-wellcare-medicaid-limited-91",
+    "name": "SYNERGY WELLCARE MEDICAID LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "91"
+  },
+  {
+    "id": "total-health-trust-limited-2",
+    "name": "TOTAL HEALTH TRUST LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "2"
+  },
+  {
+    "id": "ultimate-health-management-services-ltd-61",
+    "name": "ULTIMATE HEALTH MANAGEMENT SERVICES LTD",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "61"
+  },
+  {
+    "id": "united-comprehensive-health-managers-ltd-23",
+    "name": "UNITED COMPREHENSIVE HEALTH MANAGERS LTD.",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "23"
+  },
+  {
+    "id": "united-healthcare-international-limited-7",
+    "name": "UNITED HEALTHCARE INTERNATIONAL LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "7"
+  },
+  {
+    "id": "venus-medicare-ltd-21",
+    "name": "VENUS MEDICARE LTD",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "21"
+  },
+  {
+    "id": "veritas-healthcare-limited-24",
+    "name": "VERITAS HEALTHCARE LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "24"
+  },
+  {
+    "id": "well-health-network-limited-67",
+    "name": "WELL HEALTH NETWORK LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "67"
+  },
+  {
+    "id": "wellness-health-management-services-limited-41",
+    "name": "WELLNESS HEALTH MANAGEMENT SERVICES LIMITED",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "41"
+  },
+  {
+    "id": "zenor-healthcare-ltd-131",
+    "name": "Zenor Healthcare Ltd.",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "131"
+  },
+  {
+    "id": "zuma-health-trust-28",
+    "name": "ZUMA HEALTH TRUST",
+    "country_code": "NG",
+    "organisation_type": "health_maintenance_organisation",
+    "accreditation_status": "accredited",
+    "hmo_id": "28"
+  }
+]
