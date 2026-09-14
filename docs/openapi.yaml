@@ -698,7 +698,7 @@ paths:
       tags: [Healthcare]
       operationId: listNHIAStateSocialHealthInsuranceAgencies
       summary: List NHIA-listed State Social Health Insurance Agencies
-      description: A dated NHIA-listed snapshot of State Social Health Insurance Agencies. It contains 37 organisation records covering all 36 states and the Federal Capital Territory. Inclusion does not prove accreditation, licensing, registration, or operational status. No personal director or contact information is published, and addresses, websites, and logos are deferred. Filters apply before pagination. Pages beyond the last return 200 with an empty array. Search is a case-insensitive substring match against organisation names only. This path is documented for the public HTTP contract and is not described here as production-wired.
+      description: Production-wired public GET route for a dated NHIA-listed snapshot of State Social Health Insurance Agencies using the standard healthcare public middleware. It contains 37 organisation records covering all 36 states and the Federal Capital Territory exactly once. Inclusion does not prove accreditation, licensing, registration, or operational status. No addresses, contact information, websites, logos, directors, personal data, licensing status, or operational status are published. List access is paginated, supports only state_id and search filters, applies filters before pagination, and returns 200 with an empty array for pages beyond the last. Search is a case-insensitive substring match against organisation names only.
       parameters:
         - {$ref: "#/components/parameters/NHIAStateSocialHealthInsuranceAgencyPage"}
         - {$ref: "#/components/parameters/NHIAStateSocialHealthInsuranceAgencyPageSize"}
@@ -715,7 +715,7 @@ paths:
       tags: [Healthcare]
       operationId: getNHIAStateSocialHealthInsuranceAgency
       summary: Get an NHIA-listed State Social Health Insurance Agency
-      description: A dated NHIA-listed snapshot of State Social Health Insurance Agencies. It contains 37 organisation records covering all 36 states and the Federal Capital Territory. Inclusion does not prove accreditation, licensing, registration, or operational status. The public record has no personal director, contact, address, website, or logo fields. A malformed agency_id returns 400; a syntactically valid unknown agency_id returns 404. This path is documented for the public HTTP contract and is not described here as production-wired.
+      description: Production-wired public GET route for a dated NHIA-listed snapshot of State Social Health Insurance Agencies using the standard healthcare public middleware. It contains 37 organisation records covering all 36 states and the Federal Capital Territory exactly once. Inclusion does not prove accreditation, licensing, registration, or operational status. The public record has no addresses, contact information, websites, logos, directors, personal data, licensing status, or operational status fields. A malformed agency_id returns 400; a syntactically valid unknown agency_id returns 404.
       parameters:
         - {$ref: "#/components/parameters/NHIAStateSocialHealthInsuranceAgencyID"}
       responses:

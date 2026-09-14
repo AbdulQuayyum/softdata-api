@@ -34,14 +34,18 @@ func TestNHIAStateSocialHealthInsuranceAgencyOpenAPIContract(t *testing.T) {
 		for _, status := range []string{`"400":`, `"405": {$ref: "#/components/responses/MethodNotAllowedGet"}`, `"500":`, `"503":`} {
 			requireContains(t, tc.block, status)
 		}
-		for _, phrase := range []string{"dated NHIA-listed snapshot", "37 organisation records", "all 36 states and the Federal Capital Territory", "does not prove accreditation, licensing, registration, or operational status"} {
+		for _, phrase := range []string{"Production-wired public GET route", "standard healthcare public middleware", "dated NHIA-listed snapshot", "37 organisation records", "all 36 states and the Federal Capital Territory exactly once", "does not prove accreditation, licensing, registration, or operational status"} {
 			requireContains(t, tc.block, phrase)
 		}
-		requireContains(t, tc.block, "not described here as production-wired")
+		requireNotContains(t, tc.block, "documented for the public HTTP contract")
+		requireNotContains(t, tc.block, "not described here as production-wired")
+		requireNotContains(t, tc.block, "production route registration and startup verification are not yet added")
 	}
-	for _, phrase := range []string{"No personal director or contact information", "addresses, websites, and logos are deferred", "no personal director, contact, address, website, or logo fields"} {
+	for _, phrase := range []string{"No addresses, contact information, websites, logos, directors, personal data, licensing status, or operational status are published", "no addresses, contact information, websites, logos, directors, personal data, licensing status, or operational status fields"} {
 		requireContains(t, list+detail, phrase)
 	}
+	requireContains(t, list, "supports only state_id and search filters")
+	requireContains(t, list, "List access is paginated")
 	requireContains(t, detail, `"404":`)
 	requireContains(t, detail, "malformed agency_id returns 400")
 	requireContains(t, detail, "unknown agency_id returns 404")
