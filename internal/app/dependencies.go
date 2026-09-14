@@ -64,6 +64,7 @@ const (
 	healthcareHealthFacilitiesRelativePath                     = "healthcare/health_facilities.json"
 	healthcareMedicalLaboratoryAccreditationsRelativePath      = "healthcare/medical_laboratory_accreditations.json"
 	healthcareNHIAAccreditedHealthMaintenanceOrganisationsPath = "healthcare/nhia_accredited_health_maintenance_organisations.json"
+	healthcareNHIAStateSocialHealthInsuranceAgenciesPath       = "healthcare/nhia_state_social_health_insurance_agencies.json"
 )
 
 var approvedUniversityStateIDs = map[string]struct{}{
@@ -244,6 +245,24 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	if err != nil {
 		return appDependencies{}, err
 	}
+	nhiaSSHIAService, nhiaSSHIAHandler, err := buildNHIASSHIAHandler(ctx, jsonRepository,
+		func(repository interfaces.JSONFileRepository, recordsPath string) (interfaces.NHIAStateSocialHealthInsuranceAgencyRepository, error) {
+			return fileRepo.NewNHIAStateSocialHealthInsuranceAgencyRepository(repository, recordsPath)
+		},
+		func(repository interfaces.NHIAStateSocialHealthInsuranceAgencyRepository) (nhiaSSHIAService, error) {
+			service, err := services.NewNHIAStateSocialHealthInsuranceAgencyService(repository)
+			if err != nil {
+				return nil, err
+			}
+			return service, nil
+		},
+		func(service nhiaSSHIAService) (*handlers.NHIAStateSocialHealthInsuranceAgencyHandler, error) {
+			return handlers.NewNHIAStateSocialHealthInsuranceAgencyHandler(service)
+		},
+	)
+	if err != nil {
+		return appDependencies{}, err
+	}
 	financeHandler, err := handlers.NewFinanceHandlerWithPublicAPIURL(financeService, cfg.PublicAPIURL)
 	if err != nil {
 		return appDependencies{}, err
@@ -325,19 +344,20 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	}
 
 	routerHandler, err := router.New(router.Handlers{
-		Health:                          healthHandler,
-		Discovery:                       discoveryHandler,
-		Geography:                       geographyHandler,
-		Education:                       educationHandler,
-		Healthcare:                      healthcareHandler,
-		MedicalLaboratoryAccreditations: accreditationsHandler,
-		NHIAAccreditedHMOs:              nhiaHMOHandler,
-		Finance:                         financeHandler,
-		Auth:                            authHandler,
-		Account:                         accountHandler,
-		APIKey:                          apiKeyHandler,
-		Usage:                           usageHandler,
-		Dataset:                         datasetHandler,
+		Health:                                 healthHandler,
+		Discovery:                              discoveryHandler,
+		Geography:                              geographyHandler,
+		Education:                              educationHandler,
+		Healthcare:                             healthcareHandler,
+		MedicalLaboratoryAccreditations:        accreditationsHandler,
+		NHIAAccreditedHMOs:                     nhiaHMOHandler,
+		NHIAStateSocialHealthInsuranceAgencies: nhiaSSHIAHandler,
+		Finance:                                financeHandler,
+		Auth:                                   authHandler,
+		Account:                                accountHandler,
+		APIKey:                                 apiKeyHandler,
+		Usage:                                  usageHandler,
+		Dataset:                                datasetHandler,
 	}, router.Middleware{
 		RequestID:       requestIDMiddleware,
 		Recovery:        recoveryMiddleware,
@@ -380,6 +400,7 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 		closePostgres:     pool.Close,
 		healthcareService: healthcareService,
 		nhiaHMOService:    nhiaHMOService,
+		nhiaSSHIAService:  nhiaSSHIAService,
 	}
 	return deps, nil
 }
@@ -446,6 +467,11 @@ type healthFacilityService interface {
 type nhiaAccreditedHMOService interface {
 	ListNHIAAccreditedHealthMaintenanceOrganisations(context.Context, services.NHIAAccreditedHealthMaintenanceOrganisationQuery) (services.NHIAAccreditedHealthMaintenanceOrganisationListResult, error)
 	GetNHIAAccreditedHealthMaintenanceOrganisation(context.Context, string) (models.NHIAAccreditedHealthMaintenanceOrganisation, error)
+}
+
+type nhiaSSHIAService interface {
+	ListNHIAStateSocialHealthInsuranceAgencies(context.Context, services.NHIAStateSocialHealthInsuranceAgencyQuery) (services.NHIAStateSocialHealthInsuranceAgencyListResult, error)
+	GetNHIAStateSocialHealthInsuranceAgency(context.Context, string) (models.NHIAStateSocialHealthInsuranceAgency, error)
 }
 
 type financeService interface {
@@ -668,6 +694,38 @@ func buildNHIAAccreditedHMOServiceFromJSONRepository(
 	service, err := newService(repository)
 	if err != nil {
 		return nil, fmt.Errorf("initialize nhia accredited health maintenance organisation service: %w", err)
+	}
+	return service, nil
+}
+
+func buildNHIASSHIAServiceFromJSONRepository(
+	ctx context.Context,
+	jsonRepository interfaces.JSONFileRepository,
+	newRepository func(interfaces.JSONFileRepository, string) (interfaces.NHIAStateSocialHealthInsuranceAgencyRepository, error),
+	newService func(interfaces.NHIAStateSocialHealthInsuranceAgencyRepository) (nhiaSSHIAService, error),
+) (nhiaSSHIAService, error) {
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	if jsonRepository == nil {
+		return nil, fmt.Errorf("json repository is required")
+	}
+	if newRepository == nil {
+		return nil, fmt.Errorf("nhia state social health insurance agency repository factory is required")
+	}
+	if newService == nil {
+		return nil, fmt.Errorf("nhia state social health insurance agency service factory is required")
+	}
+	repository, err := newRepository(jsonRepository, healthcareNHIAStateSocialHealthInsuranceAgenciesPath)
+	if err != nil {
+		return nil, fmt.Errorf("initialize nhia state social health insurance agency repository: %w", err)
+	}
+	service, err := newService(repository)
+	if err != nil {
+		return nil, fmt.Errorf("initialize nhia state social health insurance agency service: %w", err)
 	}
 	return service, nil
 }

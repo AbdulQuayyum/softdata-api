@@ -693,6 +693,38 @@ paths:
         "405": {$ref: "#/components/responses/MethodNotAllowedGet"}
         "500": {$ref: "#/components/responses/InternalError"}
         "503": {$ref: "#/components/responses/ServiceUnavailable"}
+  /v1/healthcare/nhia-state-social-health-insurance-agencies:
+    get:
+      tags: [Healthcare]
+      operationId: listNHIAStateSocialHealthInsuranceAgencies
+      summary: List NHIA-listed State Social Health Insurance Agencies
+      description: Production-wired public GET route for a dated NHIA-listed snapshot of State Social Health Insurance Agencies using the standard healthcare public middleware. It contains 37 organisation records covering all 36 states and the Federal Capital Territory exactly once. Inclusion does not prove accreditation, licensing, registration, or operational status. No addresses, contact information, websites, logos, directors, personal data, licensing status, or operational status are published. List access is paginated, supports only state_id and search filters, applies filters before pagination, and returns 200 with an empty array for pages beyond the last. Search is a case-insensitive substring match against organisation names only.
+      parameters:
+        - {$ref: "#/components/parameters/NHIAStateSocialHealthInsuranceAgencyPage"}
+        - {$ref: "#/components/parameters/NHIAStateSocialHealthInsuranceAgencyPageSize"}
+        - {$ref: "#/components/parameters/NHIAStateSocialHealthInsuranceAgencyStateID"}
+        - {$ref: "#/components/parameters/NHIAStateSocialHealthInsuranceAgencySearch"}
+      responses:
+        "200": {description: NHIA-listed State Social Health Insurance Agency records, content: {application/json: {schema: {$ref: "#/components/schemas/NHIAStateSocialHealthInsuranceAgencyListResponse"}}}}
+        "400": {$ref: "#/components/responses/BadRequest"}
+        "405": {$ref: "#/components/responses/MethodNotAllowedGet"}
+        "500": {$ref: "#/components/responses/InternalError"}
+        "503": {$ref: "#/components/responses/ServiceUnavailable"}
+  /v1/healthcare/nhia-state-social-health-insurance-agencies/{agency_id}:
+    get:
+      tags: [Healthcare]
+      operationId: getNHIAStateSocialHealthInsuranceAgency
+      summary: Get an NHIA-listed State Social Health Insurance Agency
+      description: Production-wired public GET route for a dated NHIA-listed snapshot of State Social Health Insurance Agencies using the standard healthcare public middleware. It contains 37 organisation records covering all 36 states and the Federal Capital Territory exactly once. Inclusion does not prove accreditation, licensing, registration, or operational status. The public record has no addresses, contact information, websites, logos, directors, personal data, licensing status, or operational status fields. A malformed agency_id returns 400; a syntactically valid unknown agency_id returns 404.
+      parameters:
+        - {$ref: "#/components/parameters/NHIAStateSocialHealthInsuranceAgencyID"}
+      responses:
+        "200": {description: NHIA-listed State Social Health Insurance Agency record, content: {application/json: {schema: {$ref: "#/components/schemas/NHIAStateSocialHealthInsuranceAgencyDetailResponse"}}}}
+        "400": {$ref: "#/components/responses/BadRequest"}
+        "404": {$ref: "#/components/responses/NotFound"}
+        "405": {$ref: "#/components/responses/MethodNotAllowedGet"}
+        "500": {$ref: "#/components/responses/InternalError"}
+        "503": {$ref: "#/components/responses/ServiceUnavailable"}
   /v1/healthcare/health-facilities:
     get:
       tags: [Healthcare]
@@ -1789,6 +1821,41 @@ components:
       description: Optional case-insensitive substring search across organisation name only. Whitespace is trimmed; empty supplied values are rejected. Maximum 100 characters after trimming. Embedded carriage return, newline, and NUL are rejected. No fuzzy search or ranking. Each parameter may be supplied at most once.
       example: healthcare
       schema: {type: string, maxLength: 100}
+    NHIAStateSocialHealthInsuranceAgencyID:
+      name: agency_id
+      in: path
+      required: true
+      description: Stable lowercase public slug for an NHIA-listed State Social Health Insurance Agency snapshot record. Encoded slashes and path-confusion values are rejected. Unknown valid IDs return 404.
+      example: borno-state-contributory-health-care-management-agency-boschma
+      schema: {type: string, maxLength: 255, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'}
+    NHIAStateSocialHealthInsuranceAgencyPage:
+      name: page
+      in: query
+      required: false
+      description: One-based page number. Omitted defaults to 1. Supplied values must be unsigned decimal integers; empty, signed, nonpositive, fractional, and overflowing values are rejected. Each parameter may be supplied at most once.
+      example: 1
+      schema: {type: integer, minimum: 1, default: 1}
+    NHIAStateSocialHealthInsuranceAgencyPageSize:
+      name: page_size
+      in: query
+      required: false
+      description: Records per page. Omitted defaults to 50. Supplied values must be unsigned decimal integers from 1 to 100; invalid values are rejected, never clamped. Each parameter may be supplied at most once.
+      example: 50
+      schema: {type: integer, minimum: 1, maximum: 100, default: 50}
+    NHIAStateSocialHealthInsuranceAgencyStateID:
+      name: state_id
+      in: query
+      required: false
+      description: Optional canonical Nigerian state/FCT slug. Whitespace is trimmed; empty supplied values are rejected. Raw source aliases such as AKS, CRS, and River State are not accepted; use canonical values such as akwa-ibom, cross-river, fct, and rivers.
+      example: fct
+      schema: {type: string, enum: [abia, adamawa, akwa-ibom, anambra, bauchi, bayelsa, benue, borno, cross-river, delta, ebonyi, edo, ekiti, enugu, fct, gombe, imo, jigawa, kaduna, kano, katsina, kebbi, kogi, kwara, lagos, nasarawa, niger, ogun, ondo, osun, oyo, plateau, rivers, sokoto, taraba, yobe, zamfara]}
+    NHIAStateSocialHealthInsuranceAgencySearch:
+      name: search
+      in: query
+      required: false
+      description: Optional case-insensitive substring search across organisation name only. Whitespace is trimmed; empty supplied values are rejected. Maximum 100 characters after trimming. Embedded carriage return, newline, and NUL are rejected. No fuzzy search or ranking. Each parameter may be supplied at most once.
+      example: scheme
+      schema: {type: string, maxLength: 100}
     HealthFacilityID:
       name: facility_id
       in: path
@@ -2823,6 +2890,43 @@ components:
       properties:
         success: {type: boolean}
         data: {$ref: "#/components/schemas/NHIAAccreditedHealthMaintenanceOrganisation"}
+      required: [success, data]
+    NHIAStateSocialHealthInsuranceAgency:
+      type: object
+      additionalProperties: false
+      description: A dated NHIA-listed snapshot of State Social Health Insurance Agencies. It contains 37 records covering all 36 states and the Federal Capital Territory. Inclusion does not prove accreditation, licensing, registration, or operational status. Personal director and contact fields, addresses, websites, and logos are absent because they are not part of this privacy-safe public contract.
+      properties:
+        id: {type: string, maxLength: 255, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'}
+        name: {type: string, example: Abia State Health Insurance Agency (ABSHIA)}
+        state_id: {type: string, example: abia, description: Canonical Nigerian state/FCT slug.}
+        country_code: {type: string, enum: [NG]}
+        organisation_type: {type: string, enum: [state_social_health_insurance_agency]}
+      required: [id, name, state_id, country_code, organisation_type]
+    NHIAStateSocialHealthInsuranceAgencyPagination:
+      type: object
+      additionalProperties: false
+      properties:
+        page: {type: integer, minimum: 1}
+        page_size: {type: integer, minimum: 1, maximum: 100}
+        total: {type: integer, format: int64, minimum: 0}
+        total_pages: {type: integer, minimum: 0}
+      required: [page, page_size, total, total_pages]
+    NHIAStateSocialHealthInsuranceAgencyListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success: {type: boolean}
+        data:
+          type: array
+          items: {$ref: "#/components/schemas/NHIAStateSocialHealthInsuranceAgency"}
+        meta: {$ref: "#/components/schemas/NHIAStateSocialHealthInsuranceAgencyPagination"}
+      required: [success, data, meta]
+    NHIAStateSocialHealthInsuranceAgencyDetailResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success: {type: boolean}
+        data: {$ref: "#/components/schemas/NHIAStateSocialHealthInsuranceAgency"}
       required: [success, data]
     HealthFacility:
       type: object

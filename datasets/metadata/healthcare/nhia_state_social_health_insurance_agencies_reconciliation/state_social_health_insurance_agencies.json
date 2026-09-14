@@ -1,0 +1,673 @@
+{
+  "dataset_key": "ng-nhia-state-social-health-insurance-agencies",
+  "organisation_type": "state_social_health_insurance_agency",
+  "source_rows": 37,
+  "records": [
+    {
+      "source_position": 1,
+      "raw_organisation_name": "Abia State Health Insurance Agency (ABSHIA)",
+      "raw_state": "ABIA",
+      "normalized_name": "Abia State Health Insurance Agency (ABSHIA)",
+      "state_id": "abia",
+      "final_record_id": "abia-state-health-insurance-agency-abshia",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 2,
+      "raw_organisation_name": "Adamawa State Contributory Health Management Agency (ASCHMA)",
+      "raw_state": "ADAMAWA",
+      "normalized_name": "Adamawa State Contributory Health Management Agency (ASCHMA)",
+      "state_id": "adamawa",
+      "final_record_id": "adamawa-state-contributory-health-management-agency-aschma",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 3,
+      "raw_organisation_name": "Akwa Ibom State Health Insurance Agency",
+      "raw_state": "AKS",
+      "normalized_name": "Akwa Ibom State Health Insurance Agency",
+      "state_id": "akwa-ibom",
+      "final_record_id": "akwa-ibom-state-health-insurance-agency",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 4,
+      "raw_organisation_name": "Anambra State Health Insurance Agency (ASHIA)",
+      "raw_state": "ANAMBRA",
+      "normalized_name": "Anambra State Health Insurance Agency (ASHIA)",
+      "state_id": "anambra",
+      "final_record_id": "anambra-state-health-insurance-agency-ashia",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 5,
+      "raw_organisation_name": "Bauchi State Health Contributory Management Agency (BASHCMA)",
+      "raw_state": "BAUCHI",
+      "normalized_name": "Bauchi State Health Contributory Management Agency (BASHCMA)",
+      "state_id": "bauchi",
+      "final_record_id": "bauchi-state-health-contributory-management-agency-bashcma",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 6,
+      "raw_organisation_name": "Benue State Health Insurance Agency (BNSHIA)",
+      "raw_state": "BENUE",
+      "normalized_name": "Benue State Health Insurance Agency (BNSHIA)",
+      "state_id": "benue",
+      "final_record_id": "benue-state-health-insurance-agency-bnshia",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 7,
+      "raw_organisation_name": "BORNO STATE CONTRIBUTORY HEALTH CARE MANAGEMENT AGENCY (BOSCHMA)",
+      "raw_state": "BORNO",
+      "normalized_name": "BORNO STATE CONTRIBUTORY HEALTH CARE MANAGEMENT AGENCY (BOSCHMA)",
+      "state_id": "borno",
+      "final_record_id": "borno-state-contributory-health-care-management-agency-boschma",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 8,
+      "raw_organisation_name": "Bayelsa Health Insurance Scheme (BHIS)",
+      "raw_state": "Bayelsa",
+      "normalized_name": "Bayelsa Health Insurance Scheme (BHIS)",
+      "state_id": "bayelsa",
+      "final_record_id": "bayelsa-health-insurance-scheme-bhis",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 9,
+      "raw_organisation_name": "Cross River State Health Insurance Agency (CRSHIA)",
+      "raw_state": "CRS",
+      "normalized_name": "Cross River State Health Insurance Agency (CRSHIA)",
+      "state_id": "cross-river",
+      "final_record_id": "cross-river-state-health-insurance-agency-crshia",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 10,
+      "raw_organisation_name": "Delta State Contributory Health Commission (DSCHC)",
+      "raw_state": "DELTA",
+      "normalized_name": "Delta State Contributory Health Commission (DSCHC)",
+      "state_id": "delta",
+      "final_record_id": "delta-state-contributory-health-commission-dschc",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 11,
+      "raw_organisation_name": "Ebonyi State Health Insurance Agency (EBSHIA)",
+      "raw_state": "EBONYI",
+      "normalized_name": "Ebonyi State Health Insurance Agency (EBSHIA)",
+      "state_id": "ebonyi",
+      "final_record_id": "ebonyi-state-health-insurance-agency-ebshia",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 12,
+      "raw_organisation_name": "Edo State Health Insurance Scheme (EDHIC)",
+      "raw_state": "EDO",
+      "normalized_name": "Edo State Health Insurance Scheme (EDHIC)",
+      "state_id": "edo",
+      "final_record_id": "edo-state-health-insurance-scheme-edhic",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 13,
+      "raw_organisation_name": "Ekiti State Health Insurance Scheme (EKHIS)",
+      "raw_state": "EKITI",
+      "normalized_name": "Ekiti State Health Insurance Scheme (EKHIS)",
+      "state_id": "ekiti",
+      "final_record_id": "ekiti-state-health-insurance-scheme-ekhis",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 14,
+      "raw_organisation_name": "Enugu State Universal Health Coverage Scheme (ESUHCS)",
+      "raw_state": "ENUGU",
+      "normalized_name": "Enugu State Universal Health Coverage Scheme (ESUHCS)",
+      "state_id": "enugu",
+      "final_record_id": "enugu-state-universal-health-coverage-scheme-esuhcs",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 15,
+      "raw_organisation_name": "FCT Health Insurance Scheme (FHIS)",
+      "raw_state": "FCT",
+      "normalized_name": "FCT Health Insurance Scheme (FHIS)",
+      "state_id": "fct",
+      "final_record_id": "fct-health-insurance-scheme-fhis",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 16,
+      "raw_organisation_name": "Gombe State Contributory Healthcare Management Agency",
+      "raw_state": "GOMBE",
+      "normalized_name": "Gombe State Contributory Healthcare Management Agency",
+      "state_id": "gombe",
+      "final_record_id": "gombe-state-contributory-healthcare-management-agency",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 17,
+      "raw_organisation_name": "Imo State Health Insurance Agency (IMSHIA)",
+      "raw_state": "IMO",
+      "normalized_name": "Imo State Health Insurance Agency (IMSHIA)",
+      "state_id": "imo",
+      "final_record_id": "imo-state-health-insurance-agency-imshia",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 18,
+      "raw_organisation_name": "Jigawa state contributory Healthcare Management Agency",
+      "raw_state": "JIGAWA",
+      "normalized_name": "Jigawa state contributory Healthcare Management Agency",
+      "state_id": "jigawa",
+      "final_record_id": "jigawa-state-contributory-healthcare-management-agency",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 19,
+      "raw_organisation_name": "Kaduna State Contributory Health Management Agency. (KADCHMA)",
+      "raw_state": "KADUNA",
+      "normalized_name": "Kaduna State Contributory Health Management Agency. (KADCHMA)",
+      "state_id": "kaduna",
+      "final_record_id": "kaduna-state-contributory-health-management-agency-kadchma",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 20,
+      "raw_organisation_name": "KTSCHMA",
+      "raw_state": "KATSINA",
+      "normalized_name": "KTSCHMA",
+      "state_id": "katsina",
+      "final_record_id": "ktschma",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 21,
+      "raw_organisation_name": "Kano State Contributory Healthcare Management Agency (KSCHMA)",
+      "raw_state": "KANO",
+      "normalized_name": "Kano State Contributory Healthcare Management Agency (KSCHMA)",
+      "state_id": "kano",
+      "final_record_id": "kano-state-contributory-healthcare-management-agency-kschma",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 22,
+      "raw_organisation_name": "Kebbi State Contributory Healthcare Management Agency (KECHEMA)",
+      "raw_state": "KEBBI",
+      "normalized_name": "Kebbi State Contributory Healthcare Management Agency (KECHEMA)",
+      "state_id": "kebbi",
+      "final_record_id": "kebbi-state-contributory-healthcare-management-agency-kechema",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 23,
+      "raw_organisation_name": "Kwara State Health Insurance Agency (KWARAHIA)",
+      "raw_state": "KWARA",
+      "normalized_name": "Kwara State Health Insurance Agency (KWARAHIA)",
+      "state_id": "kwara",
+      "final_record_id": "kwara-state-health-insurance-agency-kwarahia",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 24,
+      "raw_organisation_name": "Kogi State Health Insurance Agency (KGSHIA)",
+      "raw_state": "KOGI",
+      "normalized_name": "Kogi State Health Insurance Agency (KGSHIA)",
+      "state_id": "kogi",
+      "final_record_id": "kogi-state-health-insurance-agency-kgshia",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 25,
+      "raw_organisation_name": "LASHMA",
+      "raw_state": "LAGOS",
+      "normalized_name": "LASHMA",
+      "state_id": "lagos",
+      "final_record_id": "lashma",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 26,
+      "raw_organisation_name": "NASHIA",
+      "raw_state": "NASARAWA",
+      "normalized_name": "NASHIA",
+      "state_id": "nasarawa",
+      "final_record_id": "nashia",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 27,
+      "raw_organisation_name": "NGSCHA",
+      "raw_state": "NIGER",
+      "normalized_name": "NGSCHA",
+      "state_id": "niger",
+      "final_record_id": "ngscha",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 28,
+      "raw_organisation_name": "OGSHIA",
+      "raw_state": "OGUN",
+      "normalized_name": "OGSHIA",
+      "state_id": "ogun",
+      "final_record_id": "ogshia",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 29,
+      "raw_organisation_name": "ODCHC",
+      "raw_state": "ONDO",
+      "normalized_name": "ODCHC",
+      "state_id": "ondo",
+      "final_record_id": "odchc",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 30,
+      "raw_organisation_name": "OHIS",
+      "raw_state": "OSUN",
+      "normalized_name": "OHIS",
+      "state_id": "osun",
+      "final_record_id": "ohis",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 31,
+      "raw_organisation_name": "OYSHIA",
+      "raw_state": "OYO",
+      "normalized_name": "OYSHIA",
+      "state_id": "oyo",
+      "final_record_id": "oyshia",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 32,
+      "raw_organisation_name": "PLASCHEMA",
+      "raw_state": "PLATEAU",
+      "normalized_name": "PLASCHEMA",
+      "state_id": "plateau",
+      "final_record_id": "plaschema",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 33,
+      "raw_organisation_name": "RIVCHPP/RSMOH",
+      "raw_state": "RIVERS",
+      "normalized_name": "RIVCHPP/RSMOH",
+      "state_id": "rivers",
+      "final_record_id": "rivchpp-rsmoh",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 34,
+      "raw_organisation_name": "TSSHIA",
+      "raw_state": "TARABA",
+      "normalized_name": "TSSHIA",
+      "state_id": "taraba",
+      "final_record_id": "tsshia",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 35,
+      "raw_organisation_name": "YOSCHIMA",
+      "raw_state": "YOBE",
+      "normalized_name": "YOSCHIMA",
+      "state_id": "yobe",
+      "final_record_id": "yoschima",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 36,
+      "raw_organisation_name": "SKHIS",
+      "raw_state": "SOKOTO",
+      "normalized_name": "SKHIS",
+      "state_id": "sokoto",
+      "final_record_id": "skhis",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    },
+    {
+      "source_position": 37,
+      "raw_organisation_name": "ZAMCHEMA",
+      "raw_state": "ZAMFARA",
+      "normalized_name": "ZAMCHEMA",
+      "state_id": "zamfara",
+      "final_record_id": "zamchema",
+      "decision": "retain",
+      "reason": "Retained as an organisation row listed in the NHIA SSHIA table.",
+      "safe_evidence": {
+        "source_url": "https://www.nhia.gov.ng/sshias/",
+        "source_api_url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/921",
+        "source_table_title": "STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)",
+        "publisher": "National Health Insurance Authority",
+        "retrieved_at": "2026-09-13",
+        "normalized_safe_table_sha256": "95f01387bd327d7a3280ed5f68ecfb5f00b16a017a93697525a73d3cf6303aa2"
+      }
+    }
+  ]
+}

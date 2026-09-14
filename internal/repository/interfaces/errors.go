@@ -73,6 +73,14 @@ var (
 	ErrInvalidNHIAAccreditedHealthMaintenanceOrganisationHMOIDFilter = errors.New("repository: invalid nhia accredited health maintenance organisation hmo id filter")
 	// ErrInvalidNHIAAccreditedHealthMaintenanceOrganisationSearch reports an invalid NHIA accredited HMO search filter.
 	ErrInvalidNHIAAccreditedHealthMaintenanceOrganisationSearch = errors.New("repository: invalid nhia accredited health maintenance organisation search")
+	// ErrNHIAStateSocialHealthInsuranceAgencyNotFound reports that a requested NHIA-listed SSHIA is not present in the dataset.
+	ErrNHIAStateSocialHealthInsuranceAgencyNotFound = errors.New("repository: nhia state social health insurance agency not found")
+	// ErrInvalidNHIAStateSocialHealthInsuranceAgencyQuery reports an invalid NHIA-listed SSHIA query.
+	ErrInvalidNHIAStateSocialHealthInsuranceAgencyQuery = errors.New("repository: invalid nhia state social health insurance agency query")
+	// ErrInvalidNHIAStateSocialHealthInsuranceAgencyStateFilter reports an invalid NHIA-listed SSHIA state filter.
+	ErrInvalidNHIAStateSocialHealthInsuranceAgencyStateFilter = errors.New("repository: invalid nhia state social health insurance agency state filter")
+	// ErrInvalidNHIAStateSocialHealthInsuranceAgencySearch reports an invalid NHIA-listed SSHIA search filter.
+	ErrInvalidNHIAStateSocialHealthInsuranceAgencySearch = errors.New("repository: invalid nhia state social health insurance agency search")
 	// ErrInvalidMedicalLaboratoryAccreditationQuery reports an invalid medical-laboratory-accreditation query.
 	ErrInvalidMedicalLaboratoryAccreditationQuery = errors.New("repository: invalid medical laboratory accreditation query")
 	// ErrInvalidMedicalLaboratoryAccreditationStateFilter reports an unknown medical-laboratory-accreditation state filter.

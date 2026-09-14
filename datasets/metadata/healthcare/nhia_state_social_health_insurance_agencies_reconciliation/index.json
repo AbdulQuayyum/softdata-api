@@ -1,0 +1,17 @@
+{
+  "dataset_key": "ng-nhia-state-social-health-insurance-agencies",
+  "source_rows": 37,
+  "final_record_count": 37,
+  "decision_counts": {
+    "retain": 37
+  },
+  "partitions": [
+    {
+      "path": "metadata/healthcare/nhia_state_social_health_insurance_agencies_reconciliation/state_social_health_insurance_agencies.json",
+      "organisation_type": "state_social_health_insurance_agency",
+      "source_rows": 37,
+      "size_bytes": 31722,
+      "sha256": "0e1bc8bc3d2ff957a929a903cf83ed0968ee72f49f2379c17de1f651f78e5c60"
+    }
+  ]
+}
