@@ -104,6 +104,7 @@ func testHandlers(t *testing.T, rec *routerRecorder) Handlers {
 	healthcare := &routerHealthFacilityStub{rec: rec}
 	nhiaHMO := &routerNHIAHMOStub{rec: rec}
 	nhiaSSHIA := &routerNHIASSHIAStub{rec: rec}
+	nhiaHCP := &routerNHIAHCPStub{rec: rec}
 
 	authHandler, err := handlers.NewAuthHandler(auth, auth)
 	if err != nil {
@@ -149,22 +150,27 @@ func testHandlers(t *testing.T, rec *routerRecorder) Handlers {
 	if err != nil {
 		t.Fatalf("NewNHIAStateSocialHealthInsuranceAgencyHandler() error = %v", err)
 	}
+	nhiaHCPHandler, err := handlers.NewNHIAActiveAccreditedHealthcareProviderHandler(nhiaHCP)
+	if err != nil {
+		t.Fatalf("NewNHIAActiveAccreditedHealthcareProviderHandler() error = %v", err)
+	}
 
 	return Handlers{
-		Health:                                 handlers.NewHealthHandler(),
-		Discovery:                              handlers.NewDiscoveryHandler(),
-		Geography:                              geographyHandler,
-		Education:                              educationHandler,
-		Healthcare:                             healthcareHandler,
-		MedicalLaboratoryAccreditations:        testAccreditationHandler(t, &routerAccreditationStub{rec: rec}),
-		NHIAAccreditedHMOs:                     nhiaHMOHandler,
-		NHIAStateSocialHealthInsuranceAgencies: nhiaSSHIAHandler,
-		Finance:                                financeHandler,
-		Auth:                                   authHandler,
-		Account:                                accountHandler,
-		APIKey:                                 apiKeyHandler,
-		Usage:                                  usageHandler,
-		Dataset:                                datasetHandler,
+		Health:                                  handlers.NewHealthHandler(),
+		Discovery:                               handlers.NewDiscoveryHandler(),
+		Geography:                               geographyHandler,
+		Education:                               educationHandler,
+		Healthcare:                              healthcareHandler,
+		MedicalLaboratoryAccreditations:         testAccreditationHandler(t, &routerAccreditationStub{rec: rec}),
+		NHIAAccreditedHMOs:                      nhiaHMOHandler,
+		NHIAStateSocialHealthInsuranceAgencies:  nhiaSSHIAHandler,
+		NHIAActiveAccreditedHealthcareProviders: nhiaHCPHandler,
+		Finance:                                 financeHandler,
+		Auth:                                    authHandler,
+		Account:                                 accountHandler,
+		APIKey:                                  apiKeyHandler,
+		Usage:                                   usageHandler,
+		Dataset:                                 datasetHandler,
 	}
 }
 
@@ -181,6 +187,7 @@ func testHandlersWithGeography(t *testing.T, rec *routerRecorder, geography *rou
 	healthcare := &routerHealthFacilityStub{rec: rec}
 	nhiaHMO := &routerNHIAHMOStub{rec: rec}
 	nhiaSSHIA := &routerNHIASSHIAStub{rec: rec}
+	nhiaHCP := &routerNHIAHCPStub{rec: rec}
 
 	authHandler, err := handlers.NewAuthHandler(auth, auth)
 	if err != nil {
@@ -226,22 +233,27 @@ func testHandlersWithGeography(t *testing.T, rec *routerRecorder, geography *rou
 	if err != nil {
 		t.Fatalf("NewNHIAStateSocialHealthInsuranceAgencyHandler() error = %v", err)
 	}
+	nhiaHCPHandler, err := handlers.NewNHIAActiveAccreditedHealthcareProviderHandler(nhiaHCP)
+	if err != nil {
+		t.Fatalf("NewNHIAActiveAccreditedHealthcareProviderHandler() error = %v", err)
+	}
 
 	return Handlers{
-		Health:                                 handlers.NewHealthHandler(),
-		Discovery:                              handlers.NewDiscoveryHandler(),
-		Geography:                              geographyHandler,
-		Education:                              educationHandler,
-		Healthcare:                             healthcareHandler,
-		MedicalLaboratoryAccreditations:        testAccreditationHandler(t, &routerAccreditationStub{rec: rec}),
-		NHIAAccreditedHMOs:                     nhiaHMOHandler,
-		NHIAStateSocialHealthInsuranceAgencies: nhiaSSHIAHandler,
-		Finance:                                financeHandler,
-		Auth:                                   authHandler,
-		Account:                                accountHandler,
-		APIKey:                                 apiKeyHandler,
-		Usage:                                  usageHandler,
-		Dataset:                                datasetHandler,
+		Health:                                  handlers.NewHealthHandler(),
+		Discovery:                               handlers.NewDiscoveryHandler(),
+		Geography:                               geographyHandler,
+		Education:                               educationHandler,
+		Healthcare:                              healthcareHandler,
+		MedicalLaboratoryAccreditations:         testAccreditationHandler(t, &routerAccreditationStub{rec: rec}),
+		NHIAAccreditedHMOs:                      nhiaHMOHandler,
+		NHIAStateSocialHealthInsuranceAgencies:  nhiaSSHIAHandler,
+		NHIAActiveAccreditedHealthcareProviders: nhiaHCPHandler,
+		Finance:                                 financeHandler,
+		Auth:                                    authHandler,
+		Account:                                 accountHandler,
+		APIKey:                                  apiKeyHandler,
+		Usage:                                   usageHandler,
+		Dataset:                                 datasetHandler,
 	}
 }
 
@@ -1680,20 +1692,21 @@ func newGeographyPolicyRouter(t *testing.T) geographyPolicyHarness {
 	}
 
 	routerHandler, err := New(Handlers{
-		Health:                                 handlers.NewHealthHandler(),
-		Discovery:                              handlers.NewDiscoveryHandler(),
-		Geography:                              geographyHandler,
-		Education:                              baseHandlers.Education,
-		Healthcare:                             baseHandlers.Healthcare,
-		MedicalLaboratoryAccreditations:        baseHandlers.MedicalLaboratoryAccreditations,
-		NHIAAccreditedHMOs:                     baseHandlers.NHIAAccreditedHMOs,
-		NHIAStateSocialHealthInsuranceAgencies: baseHandlers.NHIAStateSocialHealthInsuranceAgencies,
-		Finance:                                baseHandlers.Finance,
-		Auth:                                   baseHandlers.Auth,
-		Account:                                baseHandlers.Account,
-		APIKey:                                 baseHandlers.APIKey,
-		Usage:                                  baseHandlers.Usage,
-		Dataset:                                baseHandlers.Dataset,
+		Health:                                  handlers.NewHealthHandler(),
+		Discovery:                               handlers.NewDiscoveryHandler(),
+		Geography:                               geographyHandler,
+		Education:                               baseHandlers.Education,
+		Healthcare:                              baseHandlers.Healthcare,
+		MedicalLaboratoryAccreditations:         baseHandlers.MedicalLaboratoryAccreditations,
+		NHIAAccreditedHMOs:                      baseHandlers.NHIAAccreditedHMOs,
+		NHIAStateSocialHealthInsuranceAgencies:  baseHandlers.NHIAStateSocialHealthInsuranceAgencies,
+		NHIAActiveAccreditedHealthcareProviders: baseHandlers.NHIAActiveAccreditedHealthcareProviders,
+		Finance:                                 baseHandlers.Finance,
+		Auth:                                    baseHandlers.Auth,
+		Account:                                 baseHandlers.Account,
+		APIKey:                                  baseHandlers.APIKey,
+		Usage:                                   baseHandlers.Usage,
+		Dataset:                                 baseHandlers.Dataset,
 	}, Middleware{
 		RequestID:       middlewares.RequestID,
 		Recovery:        func(next http.Handler) http.Handler { return next },
@@ -1787,20 +1800,21 @@ func newFinancePolicyRouter(t *testing.T) financePolicyHarness {
 	}
 
 	routerHandler, err := New(Handlers{
-		Health:                                 handlers.NewHealthHandler(),
-		Discovery:                              handlers.NewDiscoveryHandler(),
-		Geography:                              baseHandlers.Geography,
-		Education:                              baseHandlers.Education,
-		Healthcare:                             baseHandlers.Healthcare,
-		MedicalLaboratoryAccreditations:        baseHandlers.MedicalLaboratoryAccreditations,
-		NHIAAccreditedHMOs:                     baseHandlers.NHIAAccreditedHMOs,
-		NHIAStateSocialHealthInsuranceAgencies: baseHandlers.NHIAStateSocialHealthInsuranceAgencies,
-		Finance:                                financeHandler,
-		Auth:                                   baseHandlers.Auth,
-		Account:                                baseHandlers.Account,
-		APIKey:                                 baseHandlers.APIKey,
-		Usage:                                  baseHandlers.Usage,
-		Dataset:                                baseHandlers.Dataset,
+		Health:                                  handlers.NewHealthHandler(),
+		Discovery:                               handlers.NewDiscoveryHandler(),
+		Geography:                               baseHandlers.Geography,
+		Education:                               baseHandlers.Education,
+		Healthcare:                              baseHandlers.Healthcare,
+		MedicalLaboratoryAccreditations:         baseHandlers.MedicalLaboratoryAccreditations,
+		NHIAAccreditedHMOs:                      baseHandlers.NHIAAccreditedHMOs,
+		NHIAStateSocialHealthInsuranceAgencies:  baseHandlers.NHIAStateSocialHealthInsuranceAgencies,
+		NHIAActiveAccreditedHealthcareProviders: baseHandlers.NHIAActiveAccreditedHealthcareProviders,
+		Finance:                                 financeHandler,
+		Auth:                                    baseHandlers.Auth,
+		Account:                                 baseHandlers.Account,
+		APIKey:                                  baseHandlers.APIKey,
+		Usage:                                   baseHandlers.Usage,
+		Dataset:                                 baseHandlers.Dataset,
 	}, Middleware{
 		RequestID:       middlewares.RequestID,
 		Recovery:        func(next http.Handler) http.Handler { return next },
@@ -1894,20 +1908,21 @@ func newEducationPolicyRouter(t *testing.T) educationPolicyHarness {
 	}
 
 	routerHandler, err := New(Handlers{
-		Health:                                 handlers.NewHealthHandler(),
-		Discovery:                              handlers.NewDiscoveryHandler(),
-		Geography:                              baseHandlers.Geography,
-		Education:                              educationHandler,
-		Healthcare:                             baseHandlers.Healthcare,
-		MedicalLaboratoryAccreditations:        baseHandlers.MedicalLaboratoryAccreditations,
-		NHIAAccreditedHMOs:                     baseHandlers.NHIAAccreditedHMOs,
-		NHIAStateSocialHealthInsuranceAgencies: baseHandlers.NHIAStateSocialHealthInsuranceAgencies,
-		Finance:                                baseHandlers.Finance,
-		Auth:                                   baseHandlers.Auth,
-		Account:                                baseHandlers.Account,
-		APIKey:                                 baseHandlers.APIKey,
-		Usage:                                  baseHandlers.Usage,
-		Dataset:                                baseHandlers.Dataset,
+		Health:                                  handlers.NewHealthHandler(),
+		Discovery:                               handlers.NewDiscoveryHandler(),
+		Geography:                               baseHandlers.Geography,
+		Education:                               educationHandler,
+		Healthcare:                              baseHandlers.Healthcare,
+		MedicalLaboratoryAccreditations:         baseHandlers.MedicalLaboratoryAccreditations,
+		NHIAAccreditedHMOs:                      baseHandlers.NHIAAccreditedHMOs,
+		NHIAStateSocialHealthInsuranceAgencies:  baseHandlers.NHIAStateSocialHealthInsuranceAgencies,
+		NHIAActiveAccreditedHealthcareProviders: baseHandlers.NHIAActiveAccreditedHealthcareProviders,
+		Finance:                                 baseHandlers.Finance,
+		Auth:                                    baseHandlers.Auth,
+		Account:                                 baseHandlers.Account,
+		APIKey:                                  baseHandlers.APIKey,
+		Usage:                                   baseHandlers.Usage,
+		Dataset:                                 baseHandlers.Dataset,
 	}, Middleware{
 		RequestID:       middlewares.RequestID,
 		Recovery:        func(next http.Handler) http.Handler { return next },

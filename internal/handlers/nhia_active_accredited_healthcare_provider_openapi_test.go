@@ -39,8 +39,11 @@ func TestNHIAActiveAccreditedHealthcareProviderOpenAPIContract(t *testing.T) {
 		}
 	}
 	requireContains(t, detail, `"404":`)
-	for _, phrase := range []string{"Documented HTTP contract", "future public GET route", "ACTIVEACCREDITED NHIA HEALTHCARE PROVIDER.csv", "6,536 retained public provider records", "four unresolved source observations were excluded", "not a complete live licensing, registration, or operational-status register", "separate from the GRID3 ng-health-facilities snapshot", "Production route registration and startup verification are intentionally deferred"} {
+	for _, phrase := range []string{"Production-wired public GET route", "standard healthcare public middleware", "ACTIVEACCREDITED NHIA HEALTHCARE PROVIDER.csv", "6,536 retained public provider records", "four unresolved source observations were excluded", "not a complete live licensing, registration, or operational-status register", "separate from the GRID3 ng-health-facilities snapshot"} {
 		requireContains(t, list+detail, phrase)
+	}
+	for _, stale := range []string{"future public GET route", "Production route registration and startup verification are intentionally deferred"} {
+		requireNotContains(t, list+detail, stale)
 	}
 
 	for _, tc := range []struct{ suffix, name, location, schema string }{
