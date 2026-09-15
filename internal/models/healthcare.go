@@ -62,3 +62,17 @@ type NHIAStateSocialHealthInsuranceAgency struct {
 	CountryCode      string `json:"country_code"`
 	OrganisationType string `json:"organisation_type"`
 }
+
+// NHIAActiveAccreditedHealthcareProviderIDMaxLength bounds public ASCII slug IDs for NHIA HCP records.
+const NHIAActiveAccreditedHealthcareProviderIDMaxLength = 255
+
+// NHIAActiveAccreditedHealthcareProvider represents one NHIA active-accredited healthcare provider observation.
+// It is published as a dated provider-listing snapshot, not a live licensing, registration or operational-status register.
+type NHIAActiveAccreditedHealthcareProvider struct {
+	ID            string `json:"id"`
+	Name          string `json:"name"`
+	CountryCode   string `json:"country_code"`
+	ProviderCode  string `json:"provider_code"`
+	FacilityType  string `json:"facility_type"`
+	ListingStatus string `json:"listing_status"`
+}

@@ -103,3 +103,28 @@ type NHIAStateSocialHealthInsuranceAgencyRepository interface {
 	ListNHIAStateSocialHealthInsuranceAgencies(context.Context, NHIAStateSocialHealthInsuranceAgencyQuery) (NHIAStateSocialHealthInsuranceAgencyListResult, error)
 	GetNHIAStateSocialHealthInsuranceAgency(context.Context, string) (models.NHIAStateSocialHealthInsuranceAgency, error)
 }
+
+// NHIAActiveAccreditedHealthcareProviderQuery captures supported NHIA active-accredited HCP filters.
+type NHIAActiveAccreditedHealthcareProviderQuery struct {
+	Page          int
+	PageSize      int
+	ProviderCode  string
+	FacilityType  string
+	ListingStatus string
+	Search        string
+}
+
+// NHIAActiveAccreditedHealthcareProviderListResult contains a page of NHIA active-accredited HCP records and metadata.
+type NHIAActiveAccreditedHealthcareProviderListResult struct {
+	Records    []models.NHIAActiveAccreditedHealthcareProvider
+	Page       int
+	PageSize   int
+	Total      int
+	TotalPages int
+}
+
+// NHIAActiveAccreditedHealthcareProviderRepository defines paginated NHIA active-accredited HCP snapshot access.
+type NHIAActiveAccreditedHealthcareProviderRepository interface {
+	ListNHIAActiveAccreditedHealthcareProviders(context.Context, NHIAActiveAccreditedHealthcareProviderQuery) (NHIAActiveAccreditedHealthcareProviderListResult, error)
+	GetNHIAActiveAccreditedHealthcareProvider(context.Context, string) (models.NHIAActiveAccreditedHealthcareProvider, error)
+}

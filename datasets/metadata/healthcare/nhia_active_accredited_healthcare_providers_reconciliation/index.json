@@ -1,0 +1,18 @@
+{
+  "dataset_key": "ng-nhia-active-accredited-healthcare-providers",
+  "source_rows": 6540,
+  "final_record_count": 6536,
+  "decision_counts": {
+    "exclude_unresolved_code_conflict": 2,
+    "exclude_unresolved_safe_field_conflict": 2,
+    "retain": 6536
+  },
+  "partitions": [
+    {
+      "path": "metadata/healthcare/nhia_active_accredited_healthcare_providers_reconciliation/active_accredited_healthcare_providers.json",
+      "source_rows": 6540,
+      "size_bytes": 3632231,
+      "sha256": "35deb698277b34b46d04849b929faf709cb95bd3d93b83d91945c814fc8464fc"
+    }
+  ]
+}

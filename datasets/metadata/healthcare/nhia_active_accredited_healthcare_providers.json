@@ -1,0 +1,174 @@
+{
+  "dataset_key": "ng-nhia-active-accredited-healthcare-providers",
+  "title": "Nigeria NHIA Active Accredited Healthcare Providers Snapshot",
+  "description": "Dated privacy-safe snapshot of healthcare providers listed on the NHIA Health Care Providers page and embedded active-accredited provider table.",
+  "group": "healthcare",
+  "country_code": "NG",
+  "version": "2026.09.14",
+  "record_count": 6536,
+  "schema_path": "datasets/schemas/healthcare/nhia_active_accredited_healthcare_providers.schema.json",
+  "source_url": "https://www.nhia.gov.ng/hcps/",
+  "source_retrieval": {
+    "page": {
+      "url": "https://www.nhia.gov.ng/hcps/",
+      "retrieved_at": "2026-09-14T21:15:43Z",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "size_bytes": 185831,
+      "sha256": "d97ab99c17f051fad5e1c6b30a70204d75d80ed828b957104c4bc6bf454a97a0",
+      "last_modified": null,
+      "etag": null,
+      "row_count": null,
+      "chunk_number": null
+    },
+    "wordpress_json": {
+      "url": "https://www.nhia.gov.ng/wp-json/wp/v2/pages/1059",
+      "retrieved_at": "2026-09-14T21:15:46Z",
+      "status": 200,
+      "content_type": "application/json; charset=UTF-8",
+      "size_bytes": 6869,
+      "sha256": "ad1d7eb1084cf13c4d5599a5022802a29bce8ac7d00f412fbdac4f22cc1dab8e",
+      "last_modified": null,
+      "etag": null,
+      "row_count": null,
+      "chunk_number": null,
+      "modified_gmt": "2024-06-06T00:34:11"
+    },
+    "chunks": [
+      {
+        "url": "https://www.nhia.gov.ng/wp-admin/admin-ajax.php?action=wp_ajax_ninja_tables_public_action&table_id=1722&target_action=get-all-data&default_sorting=old_first&skip_rows=0&limit_rows=0&ninja_table_public_nonce=22feb634f2&chunk_number=0",
+        "retrieved_at": "2026-09-14T21:15:47Z",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "size_bytes": 862970,
+        "sha256": "cd1d33fce09a30a72020a2b7f9c01ac38a7bb2b72d6eb395ac7f1935e3a42ee9",
+        "last_modified": null,
+        "etag": null,
+        "row_count": 3000,
+        "chunk_number": 0
+      },
+      {
+        "url": "https://www.nhia.gov.ng/wp-admin/admin-ajax.php?action=wp_ajax_ninja_tables_public_action&table_id=1722&target_action=get-all-data&default_sorting=old_first&skip_rows=0&limit_rows=0&ninja_table_public_nonce=22feb634f2&chunk_number=1",
+        "retrieved_at": "2026-09-14T21:15:52Z",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "size_bytes": 874414,
+        "sha256": "e3c28cb568aad7a5778196d78ae49898090b0e35dcfaea694a156d7a5e5fba67",
+        "last_modified": null,
+        "etag": null,
+        "row_count": 3000,
+        "chunk_number": 1
+      },
+      {
+        "url": "https://www.nhia.gov.ng/wp-admin/admin-ajax.php?action=wp_ajax_ninja_tables_public_action&table_id=1722&target_action=get-all-data&default_sorting=old_first&skip_rows=0&limit_rows=0&ninja_table_public_nonce=22feb634f2&chunk_number=2",
+        "retrieved_at": "2026-09-14T21:15:56Z",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "size_bytes": 155437,
+        "sha256": "461b75c65149db5a5df3f3f260e9343ce1cd2849bd103d0abd865407750f3089",
+        "last_modified": null,
+        "etag": null,
+        "row_count": 540,
+        "chunk_number": 2
+      },
+      {
+        "url": "https://www.nhia.gov.ng/wp-admin/admin-ajax.php?action=wp_ajax_ninja_tables_public_action&table_id=1722&target_action=get-all-data&default_sorting=old_first&skip_rows=0&limit_rows=0&ninja_table_public_nonce=22feb634f2&chunk_number=3",
+        "retrieved_at": "2026-09-14T21:15:59Z",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "size_bytes": 2,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "last_modified": null,
+        "etag": null,
+        "row_count": 0,
+        "chunk_number": 3
+      }
+    ]
+  },
+  "source_rows": 6540,
+  "normalized_safe_table_sha256": "778669005c3d02e28c312c0d2a1766495e827a6986305d7c7b5e0bf33d398e4e",
+  "decision_counts": {
+    "exclude_unresolved_code_conflict": 2,
+    "exclude_unresolved_safe_field_conflict": 2,
+    "retain": 6536
+  },
+  "facility_type_counts": {
+    "primary": 4004,
+    "primary_and_secondary": 2536
+  },
+  "listing_status_counts": {
+    "active_accredited": 6536
+  },
+  "source_quality": {
+    "table_title": "ACTIVEACCREDITED NHIA HEALTHCARE PROVIDER.csv",
+    "duplicate_provider_code_groups": {
+      "DT/0601/P": [
+        1159,
+        1160
+      ],
+      "EB/0265/P": [
+        1285,
+        1286
+      ]
+    },
+    "malformed_provider_code_source_positions": [],
+    "code_normalization_rule_counts": {
+      "collapse_separator_whitespace": 12,
+      "extract_unambiguous_code": 1,
+      "none": 6527
+    },
+    "code_normalization_rule_source_positions": {
+      "collapse_separator_whitespace": [
+        4395,
+        4453,
+        4547,
+        4556,
+        4559,
+        5020,
+        5752,
+        5945,
+        6107,
+        6136,
+        6137,
+        6164
+      ],
+      "extract_unambiguous_code": [
+        2152
+      ]
+    },
+    "state_or_lga_not_published": true
+  },
+  "privacy_policy": {
+    "safe_source_fields_retained": [
+      "healthcare provider code",
+      "healthcare provider name",
+      "facility type",
+      "source position"
+    ],
+    "discarded_source_columns": [
+      "ADDRESS"
+    ],
+    "public_dataset_excludes": [
+      "addresses",
+      "websites",
+      "logos",
+      "phone numbers",
+      "emails",
+      "directors",
+      "contacts",
+      "practitioner data",
+      "patient or enrollee data",
+      "claims or policy data",
+      "banking or payment data",
+      "credentials or tokens"
+    ]
+  },
+  "limitations": [
+    "This is a dated NHIA active-accredited provider table snapshot, not a complete live licensing, registration or operational-status register.",
+    "Provider inclusion reflects the source table title and page context; it should not be used as independent proof of current facility operation.",
+    "States, LGAs, addresses, coordinates, ownership, websites, logos and contact details are not published in this dataset.",
+    "Duplicate provider-code conflicts are excluded rather than merged without definitive safe identity evidence."
+  ],
+  "generator": "tools/generate_nhia_active_accredited_healthcare_providers.py",
+  "reconciliation_index_path": "datasets/metadata/healthcare/nhia_active_accredited_healthcare_providers_reconciliation/index.json"
+}

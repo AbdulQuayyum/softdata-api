@@ -159,6 +159,37 @@ func TestErrorMapsNHIAStateSocialHealthInsuranceAgencyErrors(t *testing.T) {
 	}
 }
 
+func TestErrorMapsNHIAActiveAccreditedHealthcareProviderErrors(t *testing.T) {
+	for _, tc := range []struct {
+		err    error
+		status int
+		code   string
+	}{
+		{services.ErrNHIAActiveAccreditedHealthcareProviderNotFound, http.StatusNotFound, codeResourceNotFound},
+		{services.ErrInvalidNHIAActiveAccreditedHealthcareProviderID, http.StatusBadRequest, codeInvalidRequest},
+		{services.ErrInvalidNHIAActiveAccreditedHealthcareProviderPagination, http.StatusBadRequest, codeInvalidRequest},
+		{services.ErrInvalidNHIAActiveAccreditedHealthcareProviderCode, http.StatusBadRequest, codeInvalidRequest},
+		{services.ErrInvalidNHIAActiveAccreditedHealthcareProviderFacilityType, http.StatusBadRequest, codeInvalidRequest},
+		{services.ErrInvalidNHIAActiveAccreditedHealthcareProviderListingStatus, http.StatusBadRequest, codeInvalidRequest},
+		{services.ErrInvalidNHIAActiveAccreditedHealthcareProviderSearch, http.StatusBadRequest, codeInvalidRequest},
+	} {
+		rr := httptest.NewRecorder()
+		if err := Error(rr, tc.err, "req-hcp"); err != nil {
+			t.Fatal(err)
+		}
+		if rr.Code != tc.status {
+			t.Fatalf("status=%d want %d", rr.Code, tc.status)
+		}
+		var body ErrorResponse
+		if err := json.Unmarshal(rr.Body.Bytes(), &body); err != nil {
+			t.Fatal(err)
+		}
+		if body.Error.Code != tc.code || body.Error.RequestID != "req-hcp" {
+			t.Fatalf("body=%#v", body)
+		}
+	}
+}
+
 func TestErrorValidationAndSafety(t *testing.T) {
 	rr := httptest.NewRecorder()
 	details := []ValidationError{{Field: "limit", Message: "Limit must not exceed 100."}}
