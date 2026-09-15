@@ -102,6 +102,17 @@ Nigeria NHIA-Listed State Social Health Insurance Agencies Snapshot.
 
 A dated organisation/state snapshot of State Social Health Insurance Agencies listed by the National Health Insurance Authority under `STATE SOCIAL HEALTH INSURANCE AGENCIES (SSHIAs)`. The package contains 37 retained rows from the NHIA SSHIA table retrieved on 2026-09-13, covering all 36 states and the Federal Capital Territory exactly once. The public contract is intentionally narrow: `id`, `name`, `state_id`, `country_code` and `organisation_type`. The implemented API includes the file-backed repository and service, list and detail handlers, validators, OpenAPI contract, production routes, standard public healthcare middleware, stable usage templates and bounded startup verification sharing the same repository cache used by HTTP requests. Inclusion means listed by NHIA, not necessarily currently accredited, licensed, registered or operational. The source table publishes directors, phone numbers, email addresses, website links and addresses, but those fields are deliberately discarded and absent from public and reconciliation artifacts. Websites and addresses are deferred pending separate verification, including observed Cross River and Ebonyi website-link mismatches. Health Maintenance Organisations are a separate NHIA category and are not included. Runtime code does not call NHIA or load reconciliation metadata.
 
+### `ng-nhia-active-accredited-healthcare-providers`
+
+Nigeria NHIA Active Accredited Healthcare Providers Snapshot.
+
+- `datasets/healthcare/nhia_active_accredited_healthcare_providers.json`
+- `datasets/schemas/healthcare/nhia_active_accredited_healthcare_providers.schema.json`
+- `datasets/metadata/healthcare/nhia_active_accredited_healthcare_providers.json`
+- `datasets/metadata/healthcare/nhia_active_accredited_healthcare_providers_reconciliation/index.json`
+
+A dated privacy-safe snapshot of healthcare providers listed on NHIA's `Health Care Providers (HCPs)` page and embedded `ACTIVEACCREDITED NHIA HEALTHCARE PROVIDER.csv` table. The source provided 6,540 rows; 6,536 rows are retained as unique provider-code records, while four rows in two duplicate-code conflict groups are excluded without inferred merging. The public contract is intentionally narrow: `id`, `name`, `country_code`, `provider_code`, `facility_type` and `listing_status`. The only listing status is `active_accredited`, reflecting the source table title rather than an independently verified live licensing, registration or operational status. Source addresses are discarded immediately during extraction because some contain contact details or possible personal names. The dataset does not publish addresses, state/LGA values, coordinates, ownership, websites, logos, phone numbers, emails, directors, contacts, practitioner data, patient or enrollee data, claims, policy data, banking data, payment data, credentials or tokens. It remains separate from the GRID3 health-facilities snapshot and no cross-dataset identity matching is attempted.
+
 ### `ng-licensed-pharmacies` — deferred pending sanitized PCN premises data
 
 This future pharmacy-premises dataset remains deferred because the available PCN premises source requires a privacy-safe, authoritative row-level publication before it can be added. It is separate from MLSCN medical laboratory accreditation regulation.

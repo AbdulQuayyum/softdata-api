@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://softdata.example/datasets/schemas/healthcare/nhia_active_accredited_healthcare_providers.schema.json",
+  "title": "Nigeria NHIA Active Accredited Healthcare Providers Snapshot",
+  "type": "array",
+  "minItems": 6536,
+  "maxItems": 6536,
+  "uniqueItems": true,
+  "items": {
+    "$ref": "#/$defs/nhiaActiveAccreditedHealthcareProvider"
+  },
+  "$defs": {
+    "nhiaActiveAccreditedHealthcareProvider": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "country_code",
+        "provider_code",
+        "facility_type",
+        "listing_status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "maxLength": 255
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "country_code": {
+          "type": "string",
+          "const": "NG"
+        },
+        "provider_code": {
+          "type": "string",
+          "pattern": "^(?:[A-Z]{2,3})/[0-9]{4}/P$"
+        },
+        "facility_type": {
+          "type": "string",
+          "enum": [
+            "primary",
+            "primary_and_secondary"
+          ]
+        },
+        "listing_status": {
+          "type": "string",
+          "enum": [
+            "active_accredited"
+          ]
+        }
+      }
+    }
+  }
+}
