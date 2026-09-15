@@ -65,6 +65,7 @@ const (
 	healthcareMedicalLaboratoryAccreditationsRelativePath      = "healthcare/medical_laboratory_accreditations.json"
 	healthcareNHIAAccreditedHealthMaintenanceOrganisationsPath = "healthcare/nhia_accredited_health_maintenance_organisations.json"
 	healthcareNHIAStateSocialHealthInsuranceAgenciesPath       = "healthcare/nhia_state_social_health_insurance_agencies.json"
+	healthcareNHIAActiveAccreditedHealthcareProvidersPath      = "healthcare/nhia_active_accredited_healthcare_providers.json"
 )
 
 var approvedUniversityStateIDs = map[string]struct{}{
@@ -263,6 +264,21 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	if err != nil {
 		return appDependencies{}, err
 	}
+	nhiaHCPService, err := buildNHIAActiveAccreditedHealthcareProviderServiceFromJSONRepository(ctx, jsonRepository,
+		func(repository interfaces.JSONFileRepository, recordsPath string) (interfaces.NHIAActiveAccreditedHealthcareProviderRepository, error) {
+			return fileRepo.NewNHIAActiveAccreditedHealthcareProviderRepository(repository, recordsPath)
+		},
+		func(repository interfaces.NHIAActiveAccreditedHealthcareProviderRepository) (nhiaActiveAccreditedHealthcareProviderService, error) {
+			service, err := services.NewNHIAActiveAccreditedHealthcareProviderService(repository)
+			if err != nil {
+				return nil, err
+			}
+			return service, nil
+		},
+	)
+	if err != nil {
+		return appDependencies{}, err
+	}
 	financeHandler, err := handlers.NewFinanceHandlerWithPublicAPIURL(financeService, cfg.PublicAPIURL)
 	if err != nil {
 		return appDependencies{}, err
@@ -401,6 +417,7 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 		healthcareService: healthcareService,
 		nhiaHMOService:    nhiaHMOService,
 		nhiaSSHIAService:  nhiaSSHIAService,
+		nhiaHCPService:    nhiaHCPService,
 	}
 	return deps, nil
 }
@@ -472,6 +489,11 @@ type nhiaAccreditedHMOService interface {
 type nhiaSSHIAService interface {
 	ListNHIAStateSocialHealthInsuranceAgencies(context.Context, services.NHIAStateSocialHealthInsuranceAgencyQuery) (services.NHIAStateSocialHealthInsuranceAgencyListResult, error)
 	GetNHIAStateSocialHealthInsuranceAgency(context.Context, string) (models.NHIAStateSocialHealthInsuranceAgency, error)
+}
+
+type nhiaActiveAccreditedHealthcareProviderService interface {
+	ListNHIAActiveAccreditedHealthcareProviders(context.Context, services.NHIAActiveAccreditedHealthcareProviderQuery) (services.NHIAActiveAccreditedHealthcareProviderListResult, error)
+	GetNHIAActiveAccreditedHealthcareProvider(context.Context, string) (models.NHIAActiveAccreditedHealthcareProvider, error)
 }
 
 type financeService interface {
@@ -726,6 +748,38 @@ func buildNHIASSHIAServiceFromJSONRepository(
 	service, err := newService(repository)
 	if err != nil {
 		return nil, fmt.Errorf("initialize nhia state social health insurance agency service: %w", err)
+	}
+	return service, nil
+}
+
+func buildNHIAActiveAccreditedHealthcareProviderServiceFromJSONRepository(
+	ctx context.Context,
+	jsonRepository interfaces.JSONFileRepository,
+	newRepository func(interfaces.JSONFileRepository, string) (interfaces.NHIAActiveAccreditedHealthcareProviderRepository, error),
+	newService func(interfaces.NHIAActiveAccreditedHealthcareProviderRepository) (nhiaActiveAccreditedHealthcareProviderService, error),
+) (nhiaActiveAccreditedHealthcareProviderService, error) {
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	if jsonRepository == nil {
+		return nil, fmt.Errorf("json repository is required")
+	}
+	if newRepository == nil {
+		return nil, fmt.Errorf("nhia active accredited healthcare provider repository factory is required")
+	}
+	if newService == nil {
+		return nil, fmt.Errorf("nhia active accredited healthcare provider service factory is required")
+	}
+	repository, err := newRepository(jsonRepository, healthcareNHIAActiveAccreditedHealthcareProvidersPath)
+	if err != nil {
+		return nil, fmt.Errorf("initialize nhia active accredited healthcare provider repository: %w", err)
+	}
+	service, err := newService(repository)
+	if err != nil {
+		return nil, fmt.Errorf("initialize nhia active accredited healthcare provider service: %w", err)
 	}
 	return service, nil
 }

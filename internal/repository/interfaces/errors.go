@@ -81,6 +81,18 @@ var (
 	ErrInvalidNHIAStateSocialHealthInsuranceAgencyStateFilter = errors.New("repository: invalid nhia state social health insurance agency state filter")
 	// ErrInvalidNHIAStateSocialHealthInsuranceAgencySearch reports an invalid NHIA-listed SSHIA search filter.
 	ErrInvalidNHIAStateSocialHealthInsuranceAgencySearch = errors.New("repository: invalid nhia state social health insurance agency search")
+	// ErrNHIAActiveAccreditedHealthcareProviderNotFound reports that a requested NHIA active-accredited HCP is not present in the dataset.
+	ErrNHIAActiveAccreditedHealthcareProviderNotFound = errors.New("repository: nhia active accredited healthcare provider not found")
+	// ErrInvalidNHIAActiveAccreditedHealthcareProviderQuery reports an invalid NHIA active-accredited HCP query.
+	ErrInvalidNHIAActiveAccreditedHealthcareProviderQuery = errors.New("repository: invalid nhia active accredited healthcare provider query")
+	// ErrInvalidNHIAActiveAccreditedHealthcareProviderCodeFilter reports an invalid NHIA active-accredited HCP provider-code filter.
+	ErrInvalidNHIAActiveAccreditedHealthcareProviderCodeFilter = errors.New("repository: invalid nhia active accredited healthcare provider code filter")
+	// ErrInvalidNHIAActiveAccreditedHealthcareProviderFacilityTypeFilter reports an invalid NHIA active-accredited HCP facility-type filter.
+	ErrInvalidNHIAActiveAccreditedHealthcareProviderFacilityTypeFilter = errors.New("repository: invalid nhia active accredited healthcare provider facility type filter")
+	// ErrInvalidNHIAActiveAccreditedHealthcareProviderListingStatusFilter reports an invalid NHIA active-accredited HCP listing-status filter.
+	ErrInvalidNHIAActiveAccreditedHealthcareProviderListingStatusFilter = errors.New("repository: invalid nhia active accredited healthcare provider listing status filter")
+	// ErrInvalidNHIAActiveAccreditedHealthcareProviderSearch reports an invalid NHIA active-accredited HCP search filter.
+	ErrInvalidNHIAActiveAccreditedHealthcareProviderSearch = errors.New("repository: invalid nhia active accredited healthcare provider search")
 	// ErrInvalidMedicalLaboratoryAccreditationQuery reports an invalid medical-laboratory-accreditation query.
 	ErrInvalidMedicalLaboratoryAccreditationQuery = errors.New("repository: invalid medical laboratory accreditation query")
 	// ErrInvalidMedicalLaboratoryAccreditationStateFilter reports an unknown medical-laboratory-accreditation state filter.
