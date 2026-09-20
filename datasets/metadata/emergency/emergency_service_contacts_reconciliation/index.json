@@ -1,0 +1,17 @@
+{
+  "dataset_key": "ng-emergency-service-contacts",
+  "source_rows": 5,
+  "final_record_count": 5,
+  "decision_counts": {
+    "retain": 5
+  },
+  "partitions": [
+    {
+      "coverage_type": "national",
+      "path": "metadata/emergency/emergency_service_contacts_reconciliation/national.json",
+      "source_rows": 5,
+      "size_bytes": 6882,
+      "sha256": "42facb196193c526fa8a8fa57362ef15ccca3ea73739997ff7677784de8b2917"
+    }
+  ]
+}

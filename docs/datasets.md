@@ -155,6 +155,17 @@ Verified PNG logos are embedded under `datasets/assets/financial-institutions/ng
 
 Across the six datasets, the current decoded coverage is 63/63 websites and 63/63 logos. This comprises 62 independently sourced institution marks and one disclosed Federal Housing Authority parent-brand representative mark for the wholly owned FHA Homes subsidiary. Akwa Savings was reconciled to current Ibom Mortgage Bank while retaining the stable dataset ID; TrustBond Mortgage Bank was removed after the FirstTrust merger was confirmed.
 
+### `ng-emergency-service-contacts`
+
+Nigeria Official Emergency Service Contacts Snapshot.
+
+- Data: `datasets/emergency/emergency_service_contacts.json`
+- Schema: `datasets/schemas/emergency/emergency_service_contacts.schema.json`
+- Metadata: `datasets/metadata/emergency/emergency_service_contacts.json`
+- Reconciliation: `datasets/metadata/emergency/emergency_service_contacts_reconciliation/index.json`
+
+The package contains five national institutional emergency-service contact records retained from five official source observations retrieved on 2026-09-20. Sources are the Nigerian Communications Commission, Federal Road Safety Corps, National Emergency Management Agency and Federal Fire Service. Public fields are limited to service identity, agency identity, contact type/value, coverage type, `country_code: NG`, and evidence-backed optional availability, call-cost and notes. The dataset is a dated source-verified snapshot, not a complete nationwide emergency directory and not a guarantee that every contact is continuously operational. Personal contacts, caller data, incident data, raw HTML pages, cookies and credentials are excluded. No API route is introduced by this dataset foundation.
+
 ### `ng-universities`
 
 Nigeria's current National Universities Commission register of federal, state and private universities.

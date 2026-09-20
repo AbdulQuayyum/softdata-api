@@ -1,0 +1,165 @@
+{
+  "dataset_key": "ng-emergency-service-contacts",
+  "title": "Nigeria Official Emergency Service Contacts Snapshot",
+  "group": "emergency",
+  "country_code": "NG",
+  "status": "active",
+  "description": "A dated, privacy-safe snapshot of official Nigerian institutional emergency service contacts directly supported by primary public sources.",
+  "relative_path": "emergency/emergency_service_contacts.json",
+  "schema_path": "schemas/emergency/emergency_service_contacts.schema.json",
+  "reconciliation_path": "metadata/emergency/emergency_service_contacts_reconciliation/index.json",
+  "record_count": 5,
+  "source_rows": 5,
+  "decision_counts": {
+    "retain": 5
+  },
+  "service_type_counts": {
+    "disaster_management": 1,
+    "fire": 2,
+    "general_emergency": 1,
+    "road_emergency": 1
+  },
+  "coverage_type_counts": {
+    "national": 5
+  },
+  "contact_type_counts": {
+    "short_code": 3,
+    "telephone": 2
+  },
+  "snapshot": {
+    "retrieved_at": "2026-09-20",
+    "complete_nationwide_register": false
+  },
+  "sources": {
+    "ncc-special-duties-service-charter": {
+      "canonical_url": "https://www.ncc.gov.ng/about/servicom-charter/departmental-charters/special-duties-department-service-charter",
+      "publisher": "Nigerian Communications Commission",
+      "title": "Nigerian Communications Commission Special Duties Department SERVICOM Charter",
+      "retrieval_date": "2026-09-20",
+      "retrievals": [
+        {
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "byte_size": 112391,
+          "sha256": "0ae11916eb79e90e94178f0c554107a9bddd0accec52835c96516b8df01c9764",
+          "last_modified": null,
+          "etag": null
+        },
+        {
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "byte_size": 112391,
+          "sha256": "11fd016df9b291275eaa2faf4ccb066726c895e59e712d6296eea4da6e8c31e3",
+          "last_modified": null,
+          "etag": null
+        }
+      ],
+      "extraction_method": "Manual safe extraction from the Emergency Communication Centre and Accessibility sections; full dynamic HTML was not committed.",
+      "geographic_coverage": "Across the country",
+      "stability": "Byte size stable across two retrievals; full-page hash varied because the Drupal page is dynamic."
+    },
+    "frsc-services": {
+      "canonical_url": "https://www.frsc.gov.ng/services/",
+      "publisher": "Federal Road Safety Corps",
+      "title": "FRSC Services",
+      "retrieval_date": "2026-09-20",
+      "retrievals": [
+        {
+          "http_status": 200,
+          "content_type": "text/html",
+          "byte_size": 54747,
+          "sha256": "c12790988ad02a2563a0d337eb12d6f6dd8c0b9adc1480cbd5ab11ebf811d13d",
+          "last_modified": "Fri, 17 Jul 2026 17:20:37 GMT",
+          "etag": null
+        },
+        {
+          "http_status": 200,
+          "content_type": "text/html",
+          "byte_size": 54747,
+          "sha256": "c12790988ad02a2563a0d337eb12d6f6dd8c0b9adc1480cbd5ab11ebf811d13d",
+          "last_modified": "Fri, 17 Jul 2026 17:20:37 GMT",
+          "etag": null
+        }
+      ],
+      "extraction_method": "Manual safe extraction from the Emergency Ambulance Service Scheme section; full HTML was not committed.",
+      "geographic_coverage": "Across Nigeria",
+      "stability": "Repeated retrieval was byte-identical."
+    },
+    "nema-flood-operations-press-release": {
+      "canonical_url": "https://nema.gov.ng/flood-incidents-nema-activates-operational-offices-nationwide-to-support-states-conduct-assessments/",
+      "publisher": "National Emergency Management Agency",
+      "title": "FLOOD INCIDENTS: NEMA ACTIVATES OPERATIONAL OFFICES NATIONWIDE TO SUPPORT STATES, CONDUCT ASSESSMENTS",
+      "publication_date": "2024-07-07",
+      "modification_date": "2024-07-07",
+      "retrieval_date": "2026-09-20",
+      "retrievals": [
+        {
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "byte_size": 111374,
+          "sha256": "652058f496404f6ddd9a448020dabc767de68381558edb39e3eda55adea5807f",
+          "last_modified": null,
+          "etag": null
+        },
+        {
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "byte_size": 111775,
+          "sha256": "02e9a995142516a26d3dc7c4ccbc342a7044a5b5d6ce9be6df659d40dcd9f461",
+          "last_modified": null,
+          "etag": null
+        }
+      ],
+      "extraction_method": "Manual safe extraction from the press-release paragraph mentioning NEMA headquarters emergency contact line; full WordPress HTML was not committed.",
+      "geographic_coverage": "Nationwide",
+      "stability": "Safe extracted paragraph was stable; full-page hash and byte size varied because the WordPress page includes dynamic content."
+    },
+    "federal-fire-service-contact-us": {
+      "canonical_url": "https://fedfire.gov.ng/contact-us/",
+      "publisher": "Federal Fire Service",
+      "title": "Contact Us - Federal Fire Service Nigeria",
+      "retrieval_date": "2026-09-20",
+      "retrievals": [
+        {
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "byte_size": 76719,
+          "sha256": "afd4efca340503ac28c13785e6788482240e5320494ce348294c34aca335a9c1",
+          "last_modified": null,
+          "etag": null
+        },
+        {
+          "http_status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "byte_size": 76744,
+          "sha256": "9c8143124493482086416b9fccc65ee7e004f6d7198b60701c9e32bdd109215f",
+          "last_modified": null,
+          "etag": null
+        }
+      ],
+      "extraction_method": "Manual safe extraction from Contact & Emergency and opening-hours text; full WordPress HTML was not committed.",
+      "geographic_coverage": "Federal Fire Service national contact page",
+      "stability": "Safe extracted contact text was stable; full-page hash and byte size varied because the WordPress page includes dynamic content."
+    }
+  },
+  "public_fields": [
+    "id",
+    "service_name",
+    "agency_name",
+    "service_type",
+    "contact_type",
+    "contact_value",
+    "coverage_type",
+    "country_code",
+    "availability",
+    "call_cost",
+    "notes"
+  ],
+  "limitations": [
+    "This is a dated source-verified snapshot, not a promise that every retained contact is continuously operational.",
+    "The dataset is not a complete nationwide register of all federal, state, local, ambulance, police, fire or disaster-response emergency contacts.",
+    "State-level contacts are not included because this foundation phase retained only contacts with explicit national or nationwide evidence.",
+    "Nigeria Police Force festive press-release emergency lines were not retained because their official context appeared event-specific rather than a stable general emergency-contact register."
+  ],
+  "privacy": "Only institutional public emergency contacts are retained. Personal names, personal phone numbers, personal emails, caller data, incident data, cookies and raw HTML pages are not committed."
+}

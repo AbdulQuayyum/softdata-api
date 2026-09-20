@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://softdata-api.local/schemas/emergency/emergency_service_contacts.schema.json",
+  "title": "Nigeria Official Emergency Service Contacts Snapshot",
+  "description": "Dated snapshot of official Nigerian institutional emergency service contacts supported by primary public sources.",
+  "type": "array",
+  "minItems": 5,
+  "maxItems": 5,
+  "uniqueItems": true,
+  "items": {
+    "$ref": "#/$defs/emergencyServiceContact"
+  },
+  "$defs": {
+    "emergencyServiceContact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "service_name",
+        "agency_name",
+        "service_type",
+        "contact_type",
+        "contact_value",
+        "coverage_type",
+        "country_code"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "maxLength": 255
+        },
+        "service_name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "agency_name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "service_type": {
+          "type": "string",
+          "enum": [
+            "ambulance",
+            "disaster_management",
+            "fire",
+            "general_emergency",
+            "other",
+            "police",
+            "road_emergency"
+          ]
+        },
+        "contact_type": {
+          "type": "string",
+          "enum": [
+            "short_code",
+            "telephone"
+          ]
+        },
+        "contact_value": {
+          "type": "string",
+          "pattern": "^(?:[0-9]{3}|0[0-9]{10}|0800[0-9]{8}|\\\\+234[0-9]{10})$"
+        },
+        "coverage_type": {
+          "type": "string",
+          "enum": [
+            "national",
+            "state"
+          ]
+        },
+        "country_code": {
+          "type": "string",
+          "const": "NG"
+        },
+        "state_id": {
+          "type": "string"
+        },
+        "availability": {
+          "type": "string",
+          "enum": [
+            "24_hours"
+          ]
+        },
+        "call_cost": {
+          "type": "string",
+          "enum": [
+            "toll_free"
+          ]
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        }
+      }
+    }
+  }
+}

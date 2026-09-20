@@ -128,6 +128,17 @@ Examples:
 - Fire stations
 - Road-safety commands
 
+### `ng-emergency-service-contacts`
+
+Nigeria Official Emergency Service Contacts Snapshot.
+
+- `datasets/emergency/emergency_service_contacts.json`
+- `datasets/schemas/emergency/emergency_service_contacts.schema.json`
+- `datasets/metadata/emergency/emergency_service_contacts.json`
+- `datasets/metadata/emergency/emergency_service_contacts_reconciliation/index.json` and its national partition
+
+A dated, privacy-safe snapshot of five official Nigerian institutional emergency-service contacts directly supported by primary public sources retrieved on 2026-09-20. The retained sources are the Nigerian Communications Commission, Federal Road Safety Corps, National Emergency Management Agency and Federal Fire Service. The public contract is intentionally narrow: `id`, `service_name`, `agency_name`, `service_type`, `contact_type`, `contact_value`, `coverage_type`, `country_code`, and only evidence-backed optional `availability`, `call_cost` and `notes`. The package is not a complete nationwide register of every police, fire, ambulance, disaster-response, federal, state or local emergency contact, and it is not a live operational-status guarantee. No personal contacts, caller records, incident data, credentials, raw HTML pages, cookies or tracking content are committed. No API routes, repositories, services or startup checks are introduced in this foundation phase.
+
 ### Infrastructure
 
 Physical and public-service infrastructure.

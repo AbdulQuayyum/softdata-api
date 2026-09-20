@@ -118,6 +118,8 @@ softdata-api/
 │   │   └── vocational_enterprise_institutions.json
 │   ├── healthcare/
 │   │   └── health_facilities.json
+│   ├── emergency/
+│   │   └── emergency_service_contacts.json
 │   ├── finance/
 │   │   ├── development_finance_institutions.json
 │   │   ├── financial_holding_companies.json
@@ -166,6 +168,11 @@ softdata-api/
 │   │   │   └── health_facilities_reconciliation/
 │   │   │       ├── index.json
 │   │   │       └── {state_id}.json
+│   │   ├── emergency/
+│   │   │   ├── emergency_service_contacts.json
+│   │   │   └── emergency_service_contacts_reconciliation/
+│   │   │       ├── index.json
+│   │   │       └── national.json
 │   │   ├── finance/
 │   │   │   ├── development_finance_institutions.json
 │   │   │   ├── financial_holding_companies.json
@@ -211,6 +218,8 @@ softdata-api/
 │       │   └── universities.schema.json
 │       ├── healthcare/
 │       │   └── health_facilities.schema.json
+│       ├── emergency/
+│       │   └── emergency_service_contacts.schema.json
 │       ├── finance/
 │       │   ├── development_finance_institutions.schema.json
 │       │   ├── financial_holding_companies.schema.json
