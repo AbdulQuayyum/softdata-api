@@ -15,6 +15,7 @@ import (
 
 	"github.com/AbdulQuayyum/softdata-api/datasets"
 	"github.com/AbdulQuayyum/softdata-api/datasets/assets"
+	apideocs "github.com/AbdulQuayyum/softdata-api/docs"
 	"github.com/AbdulQuayyum/softdata-api/internal/config"
 	"github.com/AbdulQuayyum/softdata-api/internal/database"
 	"github.com/AbdulQuayyum/softdata-api/internal/handlers"
@@ -309,6 +310,10 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	if err != nil {
 		return appDependencies{}, err
 	}
+	documentationHandler, err := handlers.NewDocumentationHandler(apideocs.FS)
+	if err != nil {
+		return appDependencies{}, fmt.Errorf("initialize documentation handler: %w", err)
+	}
 
 	requestIDMiddleware := middlewares.RequestID
 	recoveryMiddleware := middlewares.Recovery()
@@ -363,6 +368,7 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	}
 
 	routerHandler, err := router.New(router.Handlers{
+		Documentation:                           documentationHandler,
 		Health:                                  healthHandler,
 		Discovery:                               discoveryHandler,
 		Geography:                               geographyHandler,

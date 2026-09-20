@@ -16,6 +16,7 @@ type UsageMiddlewareFactory func(endpoint, datasetGroup string) (MiddlewareFunc,
 
 // Handlers bundles the completed handler instances the router wires together.
 type Handlers struct {
+	Documentation                           *handlers.DocumentationHandler
 	MedicalLaboratoryAccreditations         *handlers.MedicalLaboratoryAccreditationHandler
 	NHIAAccreditedHMOs                      *handlers.NHIAAccreditedHealthMaintenanceOrganisationHandler
 	NHIAStateSocialHealthInsuranceAgencies  *handlers.NHIAStateSocialHealthInsuranceAgencyHandler
@@ -84,6 +85,8 @@ func New(handlers Handlers, middleware Middleware) (http.Handler, error) {
 
 func validateDependencies(h Handlers, mw Middleware) error {
 	switch {
+	case h.Documentation == nil:
+		return fmt.Errorf("documentation handler is required")
 	case h.Health == nil:
 		return fmt.Errorf("health handler is required")
 	case h.Discovery == nil:

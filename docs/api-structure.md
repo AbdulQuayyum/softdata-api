@@ -237,6 +237,7 @@ softdata-api/
 │   ├── authentication.md
 │   ├── datasets.md
 │   ├── errors.md
+│   ├── embed.go
 │   ├── openapi.yaml
 │   ├── quick-start.md
 │   ├── rate-limits.md
@@ -560,7 +561,7 @@ Environment-driven application configuration for the server, database, security,
 
 ### `datasets/`
 
-Versioned geography, education, healthcare and finance datasets, schemas, provenance metadata, reconciliation manifests, licensing notes, and embedded runtime assets. `embedded.go` embeds the JSON dataset directories used when a deployment cannot provide the configured filesystem dataset path. Education includes paginated primary and secondary schools plus institution snapshots for universities, colleges of education, polytechnics, monotechnics, colleges of agriculture, health sciences and technology, nursing and midwifery, technical colleges, and vocational enterprise institutions. The healthcare area contains the source-verified unified health-facility snapshot and deterministic state/FCT reconciliation partitions; runtime loading uses only the public dataset and geography references, not reconciliation files. Regulated-finance logo provenance is recorded in `datasets/assets/financial-institutions/ng/ATTRIBUTION.md`; the FHA Homes asset is explicitly a Federal Housing Authority parent-brand representative mark.
+Versioned geography, education, healthcare and finance datasets, schemas, provenance metadata, reconciliation manifests, licensing notes, and embedded runtime assets. `embedded.go` embeds the JSON dataset directories used when a deployment cannot provide the configured filesystem dataset path. `docs/openapi.yaml` is the canonical API contract; the Go documentation handler serves it at `/openapi.yaml`, serves the synchronized Postman collection at `/postman.json`, and renders browser documentation at `/docs`. Education includes paginated primary and secondary schools plus institution snapshots for universities, colleges of education, polytechnics, monotechnics, colleges of agriculture, health sciences and technology, nursing and midwifery, technical colleges, and vocational enterprise institutions. The healthcare area contains the source-verified unified health-facility snapshot and deterministic state/FCT reconciliation partitions; runtime loading uses only the public dataset and geography references, not reconciliation files. Regulated-finance logo provenance is recorded in `datasets/assets/financial-institutions/ng/ATTRIBUTION.md`; the FHA Homes asset is explicitly a Federal Housing Authority parent-brand representative mark.
 
 ### `internal/database/`
 
