@@ -93,6 +93,20 @@ var (
 	ErrInvalidNHIAActiveAccreditedHealthcareProviderListingStatusFilter = errors.New("repository: invalid nhia active accredited healthcare provider listing status filter")
 	// ErrInvalidNHIAActiveAccreditedHealthcareProviderSearch reports an invalid NHIA active-accredited HCP search filter.
 	ErrInvalidNHIAActiveAccreditedHealthcareProviderSearch = errors.New("repository: invalid nhia active accredited healthcare provider search")
+	// ErrEmergencyServiceContactNotFound reports that a requested emergency service contact is not present in the dataset.
+	ErrEmergencyServiceContactNotFound = errors.New("repository: emergency service contact not found")
+	// ErrInvalidEmergencyServiceContactQuery reports an invalid emergency service contact query.
+	ErrInvalidEmergencyServiceContactQuery = errors.New("repository: invalid emergency service contact query")
+	// ErrInvalidEmergencyServiceContactServiceTypeFilter reports an invalid emergency service contact service-type filter.
+	ErrInvalidEmergencyServiceContactServiceTypeFilter = errors.New("repository: invalid emergency service contact service type filter")
+	// ErrInvalidEmergencyServiceContactContactTypeFilter reports an invalid emergency service contact contact-type filter.
+	ErrInvalidEmergencyServiceContactContactTypeFilter = errors.New("repository: invalid emergency service contact contact type filter")
+	// ErrInvalidEmergencyServiceContactCoverageTypeFilter reports an invalid emergency service contact coverage-type filter.
+	ErrInvalidEmergencyServiceContactCoverageTypeFilter = errors.New("repository: invalid emergency service contact coverage type filter")
+	// ErrInvalidEmergencyServiceContactContactValueFilter reports an invalid emergency service contact contact-value filter.
+	ErrInvalidEmergencyServiceContactContactValueFilter = errors.New("repository: invalid emergency service contact contact value filter")
+	// ErrInvalidEmergencyServiceContactSearch reports an invalid emergency service contact search filter.
+	ErrInvalidEmergencyServiceContactSearch = errors.New("repository: invalid emergency service contact search")
 	// ErrInvalidMedicalLaboratoryAccreditationQuery reports an invalid medical-laboratory-accreditation query.
 	ErrInvalidMedicalLaboratoryAccreditationQuery = errors.New("repository: invalid medical laboratory accreditation query")
 	// ErrInvalidMedicalLaboratoryAccreditationStateFilter reports an unknown medical-laboratory-accreditation state filter.

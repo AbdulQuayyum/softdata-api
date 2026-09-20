@@ -67,6 +67,7 @@ const (
 	healthcareNHIAAccreditedHealthMaintenanceOrganisationsPath = "healthcare/nhia_accredited_health_maintenance_organisations.json"
 	healthcareNHIAStateSocialHealthInsuranceAgenciesPath       = "healthcare/nhia_state_social_health_insurance_agencies.json"
 	healthcareNHIAActiveAccreditedHealthcareProvidersPath      = "healthcare/nhia_active_accredited_healthcare_providers.json"
+	emergencyServiceContactsRelativePath                       = "emergency/emergency_service_contacts.json"
 )
 
 var approvedUniversityStateIDs = map[string]struct{}{
@@ -283,6 +284,21 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	if err != nil {
 		return appDependencies{}, err
 	}
+	emergencyContactService, err := buildEmergencyServiceContactServiceFromJSONRepository(ctx, jsonRepository,
+		func(repository interfaces.JSONFileRepository, recordsPath string) (interfaces.EmergencyServiceContactRepository, error) {
+			return fileRepo.NewEmergencyServiceContactRepository(repository, recordsPath)
+		},
+		func(repository interfaces.EmergencyServiceContactRepository) (emergencyServiceContactService, error) {
+			service, err := services.NewEmergencyServiceContactService(repository)
+			if err != nil {
+				return nil, err
+			}
+			return service, nil
+		},
+	)
+	if err != nil {
+		return appDependencies{}, err
+	}
 	financeHandler, err := handlers.NewFinanceHandlerWithPublicAPIURL(financeService, cfg.PublicAPIURL)
 	if err != nil {
 		return appDependencies{}, err
@@ -428,6 +444,7 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 		nhiaHMOService:    nhiaHMOService,
 		nhiaSSHIAService:  nhiaSSHIAService,
 		nhiaHCPService:    nhiaHCPService,
+		emergencyService:  emergencyContactService,
 	}
 	return deps, nil
 }
@@ -504,6 +521,11 @@ type nhiaSSHIAService interface {
 type nhiaActiveAccreditedHealthcareProviderService interface {
 	ListNHIAActiveAccreditedHealthcareProviders(context.Context, services.NHIAActiveAccreditedHealthcareProviderQuery) (services.NHIAActiveAccreditedHealthcareProviderListResult, error)
 	GetNHIAActiveAccreditedHealthcareProvider(context.Context, string) (models.NHIAActiveAccreditedHealthcareProvider, error)
+}
+
+type emergencyServiceContactService interface {
+	ListEmergencyServiceContacts(context.Context, services.EmergencyServiceContactQuery) (services.EmergencyServiceContactListResult, error)
+	GetEmergencyServiceContact(context.Context, string) (models.EmergencyServiceContact, error)
 }
 
 type financeService interface {
