@@ -2,16 +2,14 @@
   "info": {
     "_postman_id": "softdata-api-current-routes",
     "name": "SoftData API - Current Routes",
-    "description": "Complete Postman collection generated from docs/openapi.yaml and the registered public commercial-bank asset route.\n\nSetup:\n1. Set baseUrl to the local server or hosted API URL.\n2. Send the authentication requests first if you need protected account routes.\n3. Copy the returned access token into accessToken.\n4. API keys are optional for public routes; set apiKey only when you want to add X-API-Key manually.\n\nAll requests are GET unless the endpoint explicitly requires POST, PATCH, or DELETE. Never store production credentials in this collection.",
+    "description": "Postman collection synchronized from docs/openapi.yaml. docs/openapi.yaml is the canonical API contract; the browser documentation at /docs and machine-readable artifacts at /openapi.yaml and /postman.json derive from it.\n\nSetup:\n1. Set baseUrl to the hosted API URL or a local server.\n2. Send the authentication requests first only if you need protected account routes.\n3. Copy the returned access token into accessToken for authenticated account routes.\n4. API keys are optional for public routes; set apiKey only when you want to add X-API-Key manually.\n\nAll requests are GET unless the endpoint explicitly requires POST, PATCH, or DELETE. Never store production credentials, API keys, tokens or cookies in this collection.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
-  "event": [
-
-  ],
+  "event": [],
   "variable": [
     {
       "key": "baseUrl",
-      "value": "http://localhost:8080",
+      "value": "https://softdata-api.vercel.app",
       "type": "string"
     },
     {
@@ -138,9 +136,266 @@
       "key": "bankAsset",
       "value": "access-bank.png",
       "type": "string"
+    },
+    {
+      "key": "dataset_id",
+      "value": "world-states",
+      "type": "string"
+    },
+    {
+      "key": "state_id",
+      "value": "lagos",
+      "type": "string"
+    },
+    {
+      "key": "lga_id",
+      "value": "lagos-ikeja",
+      "type": "string"
+    },
+    {
+      "key": "zone_id",
+      "value": "south-west",
+      "type": "string"
+    },
+    {
+      "key": "country_id",
+      "value": "ng",
+      "type": "string"
+    },
+    {
+      "key": "language_id",
+      "value": "en",
+      "type": "string"
+    },
+    {
+      "key": "time_zone_id",
+      "value": "Africa/Lagos",
+      "type": "string"
+    },
+    {
+      "key": "university_id",
+      "value": "university-of-lagos",
+      "type": "string"
+    },
+    {
+      "key": "college_id",
+      "value": "adeniran-ogunsanya-college-of-education",
+      "type": "string"
+    },
+    {
+      "key": "institution_id",
+      "value": "example-institution",
+      "type": "string"
+    },
+    {
+      "key": "school_id",
+      "value": "example-school",
+      "type": "string"
+    },
+    {
+      "key": "provider_id",
+      "value": "example-provider",
+      "type": "string"
+    },
+    {
+      "key": "operator_id",
+      "value": "example-operator",
+      "type": "string"
+    },
+    {
+      "key": "bank_id",
+      "value": "access-bank",
+      "type": "string"
+    },
+    {
+      "key": "company_id",
+      "value": "example-company",
+      "type": "string"
+    },
+    {
+      "key": "key_id",
+      "value": "example-key",
+      "type": "string"
+    },
+    {
+      "key": "institution_asset",
+      "value": "access-bank.png",
+      "type": "string"
+    },
+    {
+      "key": "bank_asset",
+      "value": "access-bank.png",
+      "type": "string"
+    },
+    {
+      "key": "facility_id",
+      "value": "222-cliford-medical-center-abia-abia-aba-north-cea7a6ea-db7e-4845-8057-5caf45dc26c1",
+      "type": "string"
+    },
+    {
+      "key": "accreditation_id",
+      "value": "university-of-uyo-teaching-hospital-polymerase-chain-reaction-mega-laboratory-akwa-ibom-olusugun-obasanjo-way-ml0018",
+      "type": "string"
+    },
+    {
+      "key": "organisation_id",
+      "value": "a-and-m-healthcare-trust-limited-102",
+      "type": "string"
+    },
+    {
+      "key": "agency_id",
+      "value": "abia-state-health-insurance-agency-abshia",
+      "type": "string"
+    },
+    {
+      "key": "nhia_provider_id",
+      "value": "ab-0001-p",
+      "type": "string"
+    },
+    {
+      "key": "nhiaProviderCode",
+      "value": "AB/0001/P",
+      "type": "string"
+    },
+    {
+      "key": "medicalLabAccreditationStatus",
+      "value": "accredited",
+      "type": "string"
+    },
+    {
+      "key": "medicalLabStateId",
+      "value": "lagos",
+      "type": "string"
+    },
+    {
+      "key": "medicalLabSearch",
+      "value": "laboratory",
+      "type": "string"
+    },
+    {
+      "key": "hmoStatus",
+      "value": "accredited",
+      "type": "string"
+    },
+    {
+      "key": "hmoId",
+      "value": "102",
+      "type": "string"
+    },
+    {
+      "key": "hmoSearch",
+      "value": "health",
+      "type": "string"
+    },
+    {
+      "key": "sshiaStateId",
+      "value": "lagos",
+      "type": "string"
+    },
+    {
+      "key": "sshiaSearch",
+      "value": "health",
+      "type": "string"
+    },
+    {
+      "key": "nhiaProviderFacilityType",
+      "value": "primary",
+      "type": "string"
+    },
+    {
+      "key": "nhiaProviderListingStatus",
+      "value": "active_accredited",
+      "type": "string"
+    },
+    {
+      "key": "nhiaProviderSearch",
+      "value": "clinic",
+      "type": "string"
+    },
+    {
+      "key": "page",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "page_size",
+      "value": "50",
+      "type": "string"
     }
   ],
   "item": [
+    {
+      "name": "Documentation",
+      "description": "Browser and machine-readable API documentation. docs/openapi.yaml is canonical.",
+      "item": [
+        {
+          "name": "API landing page",
+          "request": {
+            "method": "GET",
+            "description": "Browser landing page with links to API documentation, OpenAPI, Postman and GitHub.",
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": []
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Interactive API documentation",
+          "request": {
+            "method": "GET",
+            "description": "Browser-accessible Scalar documentation loaded from /openapi.yaml. No API key is required to browse.",
+            "url": {
+              "raw": "{{baseUrl}}/docs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "docs"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Download OpenAPI specification",
+          "request": {
+            "method": "GET",
+            "description": "Download the canonical docs/openapi.yaml contract.",
+            "url": {
+              "raw": "{{baseUrl}}/openapi.yaml",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "openapi.yaml"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Download Postman collection",
+          "request": {
+            "method": "GET",
+            "description": "Download the Postman collection synchronized from docs/openapi.yaml.",
+            "url": {
+              "raw": "{{baseUrl}}/postman.json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "postman.json"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
     {
       "name": "Health & Discovery",
       "description": "Health and API discovery endpoints. These are public and do not require authentication.",
@@ -167,14 +422,10 @@
               "path": [
                 "health"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "API discovery",
@@ -198,14 +449,10 @@
               "path": [
                 "v1"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         }
       ]
     },
@@ -236,14 +483,10 @@
                 "v1",
                 "datasets"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get dataset details",
@@ -260,23 +503,19 @@
             ],
             "description": "Get dataset details\n\n\nMethod: GET\nPath: /v1/datasets/{dataset_id}\n\nPath variables: dataset_id={{datasetId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 404",
             "url": {
-              "raw": "{{baseUrl}}/v1/datasets/{{datasetId}}",
+              "raw": "{{baseUrl}}/v1/datasets/{{dataset_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "v1",
                 "datasets",
-                "{{datasetId}}"
+                "{{dataset_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List dataset versions",
@@ -293,24 +532,20 @@
             ],
             "description": "List dataset versions\n\n\nMethod: GET\nPath: /v1/datasets/{dataset_id}/versions\n\nPath variables: dataset_id={{datasetId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200",
             "url": {
-              "raw": "{{baseUrl}}/v1/datasets/{{datasetId}}/versions",
+              "raw": "{{baseUrl}}/v1/datasets/{{dataset_id}}/versions",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "v1",
                 "datasets",
-                "{{datasetId}}",
+                "{{dataset_id}}",
                 "versions"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List dataset sources",
@@ -327,24 +562,20 @@
             ],
             "description": "List dataset sources\n\n\nMethod: GET\nPath: /v1/datasets/{dataset_id}/sources\n\nPath variables: dataset_id={{datasetId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200",
             "url": {
-              "raw": "{{baseUrl}}/v1/datasets/{{datasetId}}/sources",
+              "raw": "{{baseUrl}}/v1/datasets/{{dataset_id}}/sources",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "v1",
                 "datasets",
-                "{{datasetId}}",
+                "{{dataset_id}}",
                 "sources"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Download a dataset",
@@ -361,24 +592,20 @@
             ],
             "description": "Download a dataset\n\n\nMethod: GET\nPath: /v1/datasets/{dataset_id}/download\n\nPath variables: dataset_id={{datasetId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200",
             "url": {
-              "raw": "{{baseUrl}}/v1/datasets/{{datasetId}}/download",
+              "raw": "{{baseUrl}}/v1/datasets/{{dataset_id}}/download",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "v1",
                 "datasets",
-                "{{datasetId}}",
+                "{{dataset_id}}",
                 "download"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         }
       ]
     },
@@ -410,14 +637,10 @@
                 "geography",
                 "states"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a state",
@@ -434,7 +657,7 @@
             ],
             "description": "Get a state\n\n\nMethod: GET\nPath: /v1/geography/states/{state_id}\n\nPath variables: state_id={{stateId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 404, 422, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/geography/states/{{stateId}}",
+              "raw": "{{baseUrl}}/v1/geography/states/{{state_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -442,16 +665,12 @@
                 "v1",
                 "geography",
                 "states",
-                "{{stateId}}"
+                "{{state_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List geopolitical zones",
@@ -477,14 +696,10 @@
                 "geography",
                 "geopolitical-zones"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a geopolitical zone",
@@ -501,7 +716,7 @@
             ],
             "description": "Get a geopolitical zone\n\n\nMethod: GET\nPath: /v1/geography/geopolitical-zones/{zone_id}\n\nPath variables: zone_id=south-west\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 404, 422, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/geography/geopolitical-zones/{{zoneId}}",
+              "raw": "{{baseUrl}}/v1/geography/geopolitical-zones/{{zone_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -509,16 +724,12 @@
                 "v1",
                 "geography",
                 "geopolitical-zones",
-                "{{zoneId}}"
+                "{{zone_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List local government units and FCT Area Councils",
@@ -544,14 +755,10 @@
                 "geography",
                 "lgas"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a local government unit or FCT Area Council",
@@ -568,7 +775,7 @@
             ],
             "description": "Get a local government unit or FCT Area Council\n\n\nMethod: GET\nPath: /v1/geography/lgas/{lga_id}\n\nPath variables: lga_id={{lgaId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 404, 422, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/geography/lgas/{{lgaId}}",
+              "raw": "{{baseUrl}}/v1/geography/lgas/{{lga_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -576,16 +783,12 @@
                 "v1",
                 "geography",
                 "lgas",
-                "{{lgaId}}"
+                "{{lga_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List CLDR-derived world languages",
@@ -611,14 +814,10 @@
                 "geography",
                 "languages"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a CLDR-derived world language",
@@ -635,7 +834,7 @@
             ],
             "description": "Get a CLDR-derived world language\n\n\nMethod: GET\nPath: /v1/geography/languages/{language_id}\n\nPath variables: language_id=english\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 404, 422, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/geography/languages/{{languageId}}",
+              "raw": "{{baseUrl}}/v1/geography/languages/{{language_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -643,16 +842,12 @@
                 "v1",
                 "geography",
                 "languages",
-                "{{languageId}}"
+                "{{language_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List CLDR-derived country-language relationships",
@@ -678,14 +873,10 @@
                 "geography",
                 "country-languages"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List time zones",
@@ -711,14 +902,10 @@
                 "geography",
                 "time-zones"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a time zone",
@@ -735,7 +922,7 @@
             ],
             "description": "Returns a canonical IANA time-zone identifier using an exact decoded path value. The detail route accepts percent-encoded slashes at the HTTP layer, but the public identifier remains the canonical IANA name. Aliases are excluded from v1.\n\n\nMethod: GET\nPath: /v1/geography/time-zones/{time_zone_id}\n\nPath variables: time_zone_id=africa-lagos\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 404, 422, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/geography/time-zones/{{timeZoneId}}",
+              "raw": "{{baseUrl}}/v1/geography/time-zones/{{time_zone_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -743,16 +930,12 @@
                 "v1",
                 "geography",
                 "time-zones",
-                "{{timeZoneId}}"
+                "{{time_zone_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List countries and areas",
@@ -778,14 +961,10 @@
                 "geography",
                 "countries"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a country or area",
@@ -802,7 +981,7 @@
             ],
             "description": "Returns a verified country-or-area record from the current UN M49 snapshot. Statistical designations are used for reference only and do not imply political recognition or legal status.\n\n\nMethod: GET\nPath: /v1/geography/countries/{country_id}\n\nPath variables: country_id={{countryId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 404, 422, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/geography/countries/{{countryId}}",
+              "raw": "{{baseUrl}}/v1/geography/countries/{{country_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -810,16 +989,12 @@
                 "v1",
                 "geography",
                 "countries",
-                "{{countryId}}"
+                "{{country_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a country profile",
@@ -836,7 +1011,7 @@
             ],
             "description": "Returns a derived profile for a current UN M49 country or area, combining the country-or-area record with approved currency, time-zone, and CLDR-derived country-language relationships. The language_ids array references world-languages.id and includes every relationship status; presence does not mean every listed language is nationally official. Use /v1/geography/country-languages for status details. Statistical designations are used for reference only and do not imply political recognition or legal status.\n\n\nMethod: GET\nPath: /v1/geography/countries/{country_id}/profile\n\nPath variables: country_id={{countryId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 404, 422, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/geography/countries/{{countryId}}/profile",
+              "raw": "{{baseUrl}}/v1/geography/countries/{{country_id}}/profile",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -844,17 +1019,13 @@
                 "v1",
                 "geography",
                 "countries",
-                "{{countryId}}",
+                "{{country_id}}",
                 "profile"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         }
       ]
     },
@@ -877,7 +1048,7 @@
             ],
             "description": "Get a country or area flag SVG\n\n\nMethod: GET\nPath: /v1/assets/flags/{country_id}.svg\n\nPath variables: country_id={{countryId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 404, 422, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/assets/flags/{{countryId}}",
+              "raw": "{{baseUrl}}/v1/assets/flags/{{country_id}}.svg",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -885,13 +1056,11 @@
                 "v1",
                 "assets",
                 "flags",
-                "{{countryId}}"
+                "{{country_id}}.svg"
               ]
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get an embedded regulated-finance institution logo",
@@ -908,7 +1077,7 @@
             ],
             "description": "Returns an approved embedded PNG logo for a regulated Nigerian financial institution. Permission-pending records do not expose an asset.\n\n\nMethod: GET\nPath: /v1/assets/financial-institutions/ng/{category}/{institution_asset}\n\nPath variables: category=commercial-banks, institution_asset=example.png\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 404, 405, 422, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/assets/financial-institutions/ng/{{category}}/{{institutionAsset}}",
+              "raw": "{{baseUrl}}/v1/assets/financial-institutions/ng/{{category}}/{{institution_asset}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -917,17 +1086,13 @@
                 "assets",
                 "financial-institutions",
                 "ng",
-                "commercial-banks",
-                "example.png"
+                "{{category}}",
+                "{{institution_asset}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get commercial bank asset",
@@ -963,9 +1128,7 @@
               ]
             }
           },
-          "response": [
-
-          ]
+          "response": []
         }
       ]
     },
@@ -997,14 +1160,10 @@
                 "education",
                 "universities"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a university",
@@ -1021,7 +1180,7 @@
             ],
             "description": "Returns a verified university record from the current NUC register snapshot.\n\n\nMethod: GET\nPath: /v1/education/universities/{university_id}\n\nPath variables: university_id={{institutionId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 404, 422, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/education/universities/{{institutionId}}",
+              "raw": "{{baseUrl}}/v1/education/universities/{{university_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -1029,16 +1188,12 @@
                 "v1",
                 "education",
                 "universities",
-                "{{institutionId}}"
+                "{{university_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List colleges of education",
@@ -1064,14 +1219,10 @@
                 "education",
                 "colleges-of-education"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a college of education",
@@ -1088,7 +1239,7 @@
             ],
             "description": "Returns a verified college of education record from the current NCCE register snapshot.\n\n\nMethod: GET\nPath: /v1/education/colleges-of-education/{college_id}\n\nPath variables: college_id={{institutionId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 404, 422, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/education/colleges-of-education/{{institutionId}}",
+              "raw": "{{baseUrl}}/v1/education/colleges-of-education/{{college_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -1096,16 +1247,12 @@
                 "v1",
                 "education",
                 "colleges-of-education",
-                "{{institutionId}}"
+                "{{college_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List polytechnics",
@@ -1131,14 +1278,10 @@
                 "education",
                 "polytechnics"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a polytechnic",
@@ -1155,7 +1298,7 @@
             ],
             "description": "Get a polytechnic\n\n\nMethod: GET\nPath: /v1/education/polytechnics/{institution_id}\n\nPath variables: institution_id={{institutionId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 400, 404, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/education/polytechnics/{{institutionId}}",
+              "raw": "{{baseUrl}}/v1/education/polytechnics/{{institution_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -1163,16 +1306,12 @@
                 "v1",
                 "education",
                 "polytechnics",
-                "{{institutionId}}"
+                "{{institution_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List monotechnics",
@@ -1198,14 +1337,10 @@
                 "education",
                 "monotechnics"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a monotechnic",
@@ -1222,7 +1357,7 @@
             ],
             "description": "Get a monotechnic\n\n\nMethod: GET\nPath: /v1/education/monotechnics/{institution_id}\n\nPath variables: institution_id={{institutionId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 400, 404, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/education/monotechnics/{{institutionId}}",
+              "raw": "{{baseUrl}}/v1/education/monotechnics/{{institution_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -1230,16 +1365,12 @@
                 "v1",
                 "education",
                 "monotechnics",
-                "{{institutionId}}"
+                "{{institution_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List colleges of agriculture",
@@ -1265,14 +1396,10 @@
                 "education",
                 "colleges-of-agriculture"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a college of agriculture",
@@ -1289,7 +1416,7 @@
             ],
             "description": "Get a college of agriculture\n\n\nMethod: GET\nPath: /v1/education/colleges-of-agriculture/{institution_id}\n\nPath variables: institution_id={{institutionId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 400, 404, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/education/colleges-of-agriculture/{{institutionId}}",
+              "raw": "{{baseUrl}}/v1/education/colleges-of-agriculture/{{institution_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -1297,16 +1424,12 @@
                 "v1",
                 "education",
                 "colleges-of-agriculture",
-                "{{institutionId}}"
+                "{{institution_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List colleges of health sciences and technology",
@@ -1332,14 +1455,10 @@
                 "education",
                 "colleges-of-health-sciences-and-technology"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a college of health sciences and technology",
@@ -1356,7 +1475,7 @@
             ],
             "description": "Get a college of health sciences and technology\n\n\nMethod: GET\nPath: /v1/education/colleges-of-health-sciences-and-technology/{institution_id}\n\nPath variables: institution_id={{institutionId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 400, 404, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/education/colleges-of-health-sciences-and-technology/{{institutionId}}",
+              "raw": "{{baseUrl}}/v1/education/colleges-of-health-sciences-and-technology/{{institution_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -1364,16 +1483,12 @@
                 "v1",
                 "education",
                 "colleges-of-health-sciences-and-technology",
-                "{{institutionId}}"
+                "{{institution_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List colleges of nursing and midwifery",
@@ -1399,14 +1514,10 @@
                 "education",
                 "colleges-of-nursing-and-midwifery"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a college of nursing and midwifery",
@@ -1423,7 +1534,7 @@
             ],
             "description": "Get a college of nursing and midwifery\n\n\nMethod: GET\nPath: /v1/education/colleges-of-nursing-and-midwifery/{institution_id}\n\nPath variables: institution_id={{institutionId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 400, 404, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/education/colleges-of-nursing-and-midwifery/{{institutionId}}",
+              "raw": "{{baseUrl}}/v1/education/colleges-of-nursing-and-midwifery/{{institution_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -1431,16 +1542,12 @@
                 "v1",
                 "education",
                 "colleges-of-nursing-and-midwifery",
-                "{{institutionId}}"
+                "{{institution_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List vocational enterprise institutions",
@@ -1466,14 +1573,10 @@
                 "education",
                 "vocational-enterprise-institutions"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a vocational enterprise institution",
@@ -1490,7 +1593,7 @@
             ],
             "description": "Get a vocational enterprise institution\n\n\nMethod: GET\nPath: /v1/education/vocational-enterprise-institutions/{institution_id}\n\nPath variables: institution_id={{institutionId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 400, 404, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/education/vocational-enterprise-institutions/{{institutionId}}",
+              "raw": "{{baseUrl}}/v1/education/vocational-enterprise-institutions/{{institution_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -1498,16 +1601,12 @@
                 "v1",
                 "education",
                 "vocational-enterprise-institutions",
-                "{{institutionId}}"
+                "{{institution_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List technical colleges",
@@ -1533,14 +1632,10 @@
                 "education",
                 "technical-colleges"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a technical college",
@@ -1557,7 +1652,7 @@
             ],
             "description": "Get a technical college\n\n\nMethod: GET\nPath: /v1/education/technical-colleges/{institution_id}\n\nPath variables: institution_id={{institutionId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 400, 404, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/education/technical-colleges/{{institutionId}}",
+              "raw": "{{baseUrl}}/v1/education/technical-colleges/{{institution_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -1565,16 +1660,12 @@
                 "v1",
                 "education",
                 "technical-colleges",
-                "{{institutionId}}"
+                "{{institution_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List primary and secondary schools",
@@ -1600,14 +1691,10 @@
                 "education",
                 "primary-and-secondary-schools"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a primary or secondary school",
@@ -1624,7 +1711,7 @@
             ],
             "description": "Get a primary or secondary school\n\n\nMethod: GET\nPath: /v1/education/primary-and-secondary-schools/{school_id}\n\nPath variables: school_id={{schoolId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 400, 404, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/education/primary-and-secondary-schools/{{schoolId}}",
+              "raw": "{{baseUrl}}/v1/education/primary-and-secondary-schools/{{school_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -1632,22 +1719,18 @@
                 "v1",
                 "education",
                 "primary-and-secondary-schools",
-                "{{schoolId}}"
+                "{{school_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         }
       ]
     },
     {
       "name": "Healthcare",
-      "description": "Public Nigerian health-facility snapshot. The dataset contains 50,649 GRID3 Nigeria Health Facilities v2.0 observed records, last updated 2024-11-11. It is not a live NHFR register, a complete current operational facility list, or an FMoH licensing register. Results are always paginated with a default page size of 50 and a maximum of 100.",
+      "description": "Public Nigerian healthcare datasets synchronized from docs/openapi.yaml. Results are paginated where documented; optional filters are disabled by default in this collection.",
       "item": [
         {
           "name": "List health facilities",
@@ -1662,7 +1745,7 @@
                 "disabled": true
               }
             ],
-            "description": "List source-verified health facilities with bounded pagination and optional filters. Search is a case-insensitive name substring match.\n\nMethod: GET\nPath: /v1/healthcare/health-facilities\n\nQuery parameters:\n- page: positive base-10 page number; default 1\n- page_size: 1-100; default 50\n- state_id: optional lowercase state ID\n- lga_id: optional lowercase LGA ID\n- facility_type: primary-health-centre, clinic, health-post, general-hospital, other, teaching-hospital, or specialist-hospital\n- facility_level: primary, secondary, or tertiary\n- ownership_type: federal, state, local-government, private, military, or other-public\n- search: optional trimmed search text, maximum 100 characters\n\nExpected responses: 200, 400, 500",
+            "description": "List source-verified health facilities with bounded pagination and optional filters.",
             "url": {
               "raw": "{{baseUrl}}/v1/healthcare/health-facilities?page={{healthFacilityPage}}&page_size={{healthFacilityPageSize}}&state_id={{healthFacilityStateId}}&lga_id={{healthFacilityLgaId}}&facility_type={{healthFacilityType}}&facility_level={{healthFacilityLevel}}&ownership_type={{healthFacilityOwnership}}&search={{healthFacilitySearch}}",
               "host": [
@@ -1674,14 +1757,52 @@
                 "health-facilities"
               ],
               "query": [
-                {"key": "page", "value": "{{healthFacilityPage}}", "description": "Positive page number. Default: 1."},
-                {"key": "page_size", "value": "{{healthFacilityPageSize}}", "description": "Page size from 1 to 100. Default: 50."},
-                {"key": "state_id", "value": "{{healthFacilityStateId}}", "description": "Optional lowercase state ID.", "disabled": true},
-                {"key": "lga_id", "value": "{{healthFacilityLgaId}}", "description": "Optional lowercase LGA ID.", "disabled": true},
-                {"key": "facility_type", "value": "{{healthFacilityType}}", "description": "Optional facility type enum.", "disabled": true},
-                {"key": "facility_level", "value": "{{healthFacilityLevel}}", "description": "Optional facility level enum.", "disabled": true},
-                {"key": "ownership_type", "value": "{{healthFacilityOwnership}}", "description": "Optional ownership enum.", "disabled": true},
-                {"key": "search", "value": "{{healthFacilitySearch}}", "description": "Optional name search, maximum 100 characters.", "disabled": true}
+                {
+                  "key": "page",
+                  "value": "{{healthFacilityPage}}",
+                  "description": "Positive page number. Default: 1."
+                },
+                {
+                  "key": "page_size",
+                  "value": "{{healthFacilityPageSize}}",
+                  "description": "Page size from 1 to 100. Default: 50."
+                },
+                {
+                  "key": "state_id",
+                  "value": "{{healthFacilityStateId}}",
+                  "description": "Optional lowercase state ID.",
+                  "disabled": true
+                },
+                {
+                  "key": "lga_id",
+                  "value": "{{healthFacilityLgaId}}",
+                  "description": "Optional lowercase LGA ID.",
+                  "disabled": true
+                },
+                {
+                  "key": "facility_type",
+                  "value": "{{healthFacilityType}}",
+                  "description": "Optional facility type enum.",
+                  "disabled": true
+                },
+                {
+                  "key": "facility_level",
+                  "value": "{{healthFacilityLevel}}",
+                  "description": "Optional facility level enum.",
+                  "disabled": true
+                },
+                {
+                  "key": "ownership_type",
+                  "value": "{{healthFacilityOwnership}}",
+                  "description": "Optional ownership enum.",
+                  "disabled": true
+                },
+                {
+                  "key": "search",
+                  "value": "{{healthFacilitySearch}}",
+                  "description": "Optional name search, maximum 100 characters.",
+                  "disabled": true
+                }
               ]
             }
           },
@@ -1700,9 +1821,9 @@
                 "disabled": true
               }
             ],
-            "description": "Retrieve one health facility by its stable lowercase public ID.\n\nMethod: GET\nPath: /v1/healthcare/health-facilities/{facility_id}\n\nPath variable: facility_id={{healthFacilityId}}\n\nExpected responses: 200, 400, 404, 500",
+            "description": "Retrieve one health facility by facility_id.",
             "url": {
-              "raw": "{{baseUrl}}/v1/healthcare/health-facilities/{{healthFacilityId}}",
+              "raw": "{{baseUrl}}/v1/healthcare/health-facilities/{{facility_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -1710,7 +1831,355 @@
                 "v1",
                 "healthcare",
                 "health-facilities",
-                "{{healthFacilityId}}"
+                "{{facility_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List medical laboratory accreditations",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}",
+                "description": "Optional. Enable this header when using an API key for higher limits and usage analytics.",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "description": "List MLSCN medical laboratory accreditation records with pagination and optional filters.",
+            "url": {
+              "raw": "{{baseUrl}}/v1/healthcare/medical-laboratory-accreditations?page={{page}}&page_size={{page_size}}&state_id={{medicalLabStateId}}&accreditation_status={{medicalLabAccreditationStatus}}&search={{medicalLabSearch}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "healthcare",
+                "medical-laboratory-accreditations"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "{{page}}",
+                  "description": "Positive page number. Default: 1."
+                },
+                {
+                  "key": "page_size",
+                  "value": "{{page_size}}",
+                  "description": "Page size from 1 to 100. Default: 50."
+                },
+                {
+                  "key": "state_id",
+                  "value": "{{medicalLabStateId}}",
+                  "description": "Optional lowercase state ID.",
+                  "disabled": true
+                },
+                {
+                  "key": "accreditation_status",
+                  "value": "{{medicalLabAccreditationStatus}}",
+                  "description": "Optional accreditation status enum.",
+                  "disabled": true
+                },
+                {
+                  "key": "search",
+                  "value": "{{medicalLabSearch}}",
+                  "description": "Optional name search.",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get a medical laboratory accreditation",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}",
+                "description": "Optional. Enable this header when using an API key for higher limits and usage analytics.",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "description": "Retrieve one medical laboratory accreditation by accreditation_id.",
+            "url": {
+              "raw": "{{baseUrl}}/v1/healthcare/medical-laboratory-accreditations/{{accreditation_id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "healthcare",
+                "medical-laboratory-accreditations",
+                "{{accreditation_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List NHIA accredited Health Maintenance Organisations",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}",
+                "description": "Optional. Enable this header when using an API key for higher limits and usage analytics.",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "description": "List NHIA accredited Health Maintenance Organisations with pagination and optional filters.",
+            "url": {
+              "raw": "{{baseUrl}}/v1/healthcare/nhia-accredited-health-maintenance-organisations?page={{page}}&page_size={{page_size}}&accreditation_status={{hmoStatus}}&hmo_id={{hmoId}}&search={{hmoSearch}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "healthcare",
+                "nhia-accredited-health-maintenance-organisations"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "{{page}}",
+                  "description": "Positive page number. Default: 1."
+                },
+                {
+                  "key": "page_size",
+                  "value": "{{page_size}}",
+                  "description": "Page size from 1 to 100. Default: 50."
+                },
+                {
+                  "key": "accreditation_status",
+                  "value": "{{hmoStatus}}",
+                  "description": "Optional accreditation status filter.",
+                  "disabled": true
+                },
+                {
+                  "key": "hmo_id",
+                  "value": "{{hmoId}}",
+                  "description": "Optional NHIA HMO ID filter.",
+                  "disabled": true
+                },
+                {
+                  "key": "search",
+                  "value": "{{hmoSearch}}",
+                  "description": "Optional organisation-name search.",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get an NHIA accredited Health Maintenance Organisation",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}",
+                "description": "Optional. Enable this header when using an API key for higher limits and usage analytics.",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "description": "Retrieve one NHIA accredited HMO by organisation_id.",
+            "url": {
+              "raw": "{{baseUrl}}/v1/healthcare/nhia-accredited-health-maintenance-organisations/{{organisation_id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "healthcare",
+                "nhia-accredited-health-maintenance-organisations",
+                "{{organisation_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List NHIA-listed State Social Health Insurance Agencies",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}",
+                "description": "Optional. Enable this header when using an API key for higher limits and usage analytics.",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "description": "List NHIA-listed SSHIAs with pagination and optional filters.",
+            "url": {
+              "raw": "{{baseUrl}}/v1/healthcare/nhia-state-social-health-insurance-agencies?page={{page}}&page_size={{page_size}}&state_id={{sshiaStateId}}&search={{sshiaSearch}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "healthcare",
+                "nhia-state-social-health-insurance-agencies"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "{{page}}",
+                  "description": "Positive page number. Default: 1."
+                },
+                {
+                  "key": "page_size",
+                  "value": "{{page_size}}",
+                  "description": "Page size from 1 to 100. Default: 50."
+                },
+                {
+                  "key": "state_id",
+                  "value": "{{sshiaStateId}}",
+                  "description": "Optional lowercase state ID.",
+                  "disabled": true
+                },
+                {
+                  "key": "search",
+                  "value": "{{sshiaSearch}}",
+                  "description": "Optional organisation-name search.",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get an NHIA-listed State Social Health Insurance Agency",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}",
+                "description": "Optional. Enable this header when using an API key for higher limits and usage analytics.",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "description": "Retrieve one NHIA-listed SSHIA by agency_id.",
+            "url": {
+              "raw": "{{baseUrl}}/v1/healthcare/nhia-state-social-health-insurance-agencies/{{agency_id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "healthcare",
+                "nhia-state-social-health-insurance-agencies",
+                "{{agency_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List NHIA active-accredited healthcare providers",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}",
+                "description": "Optional. Enable this header when using an API key for higher limits and usage analytics.",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "description": "List NHIA active-accredited healthcare providers with pagination and optional filters.",
+            "url": {
+              "raw": "{{baseUrl}}/v1/healthcare/nhia-active-accredited-healthcare-providers?page={{page}}&page_size={{page_size}}&provider_code={{nhiaProviderCode}}&facility_type={{nhiaProviderFacilityType}}&listing_status={{nhiaProviderListingStatus}}&search={{nhiaProviderSearch}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "healthcare",
+                "nhia-active-accredited-healthcare-providers"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "{{page}}",
+                  "description": "Positive page number. Default: 1."
+                },
+                {
+                  "key": "page_size",
+                  "value": "{{page_size}}",
+                  "description": "Page size from 1 to 100. Default: 50."
+                },
+                {
+                  "key": "provider_code",
+                  "value": "{{nhiaProviderCode}}",
+                  "description": "Optional exact provider-code filter.",
+                  "disabled": true
+                },
+                {
+                  "key": "facility_type",
+                  "value": "{{nhiaProviderFacilityType}}",
+                  "description": "Optional facility type filter.",
+                  "disabled": true
+                },
+                {
+                  "key": "listing_status",
+                  "value": "{{nhiaProviderListingStatus}}",
+                  "description": "Optional listing status filter.",
+                  "disabled": true
+                },
+                {
+                  "key": "search",
+                  "value": "{{nhiaProviderSearch}}",
+                  "description": "Optional provider-name search.",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get an NHIA active-accredited healthcare provider",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}",
+                "description": "Optional. Enable this header when using an API key for higher limits and usage analytics.",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "description": "Retrieve one NHIA active-accredited healthcare provider by provider_id.",
+            "url": {
+              "raw": "{{baseUrl}}/v1/healthcare/nhia-active-accredited-healthcare-providers/{{provider_id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "healthcare",
+                "nhia-active-accredited-healthcare-providers",
+                "{{provider_id}}"
               ]
             }
           },
@@ -1746,14 +2215,10 @@
                 "finance",
                 "payment-service-providers"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a payment service provider membership",
@@ -1770,7 +2235,7 @@
             ],
             "description": "Returns a verified provider-category membership from the CBN snapshot. API-key identification remains optional once routed.\n\n\nMethod: GET\nPath: /v1/finance/payment-service-providers/{provider_id}\n\nPath variables: provider_id={{institutionId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 404, 422, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/finance/payment-service-providers/{{institutionId}}",
+              "raw": "{{baseUrl}}/v1/finance/payment-service-providers/{{provider_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -1778,16 +2243,12 @@
                 "v1",
                 "finance",
                 "payment-service-providers",
-                "{{institutionId}}"
+                "{{provider_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List international money transfer operators",
@@ -1813,14 +2274,10 @@
                 "finance",
                 "international-money-transfer-operators"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get an international money transfer operator",
@@ -1837,7 +2294,7 @@
             ],
             "description": "Returns a verified IMTO record from the CBN snapshot. API-key identification remains optional once routed.\n\n\nMethod: GET\nPath: /v1/finance/international-money-transfer-operators/{operator_id}\n\nPath variables: operator_id={{institutionId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 404, 422, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/finance/international-money-transfer-operators/{{institutionId}}",
+              "raw": "{{baseUrl}}/v1/finance/international-money-transfer-operators/{{operator_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -1845,16 +2302,12 @@
                 "v1",
                 "finance",
                 "international-money-transfer-operators",
-                "{{institutionId}}"
+                "{{operator_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List currencies",
@@ -1880,14 +2333,10 @@
                 "finance",
                 "currencies"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a currency",
@@ -1914,14 +2363,10 @@
                 "currencies",
                 "{{currency_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List Nigerian commercial banks",
@@ -1947,14 +2392,10 @@
                 "finance",
                 "commercial-banks"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a Nigerian commercial bank",
@@ -1971,7 +2412,7 @@
             ],
             "description": "Returns one CBN commercial-bank record. Optional code fields are omitted when unresolved in the current snapshot.\n\n\nMethod: GET\nPath: /v1/finance/commercial-banks/{bank_id}\n\nPath variables: bank_id={{institutionId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 404, 422, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/finance/commercial-banks/{{institutionId}}",
+              "raw": "{{baseUrl}}/v1/finance/commercial-banks/{{bank_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -1979,16 +2420,12 @@
                 "v1",
                 "finance",
                 "commercial-banks",
-                "{{institutionId}}"
+                "{{bank_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List Nigerian microfinance banks",
@@ -2014,14 +2451,10 @@
                 "finance",
                 "microfinance-banks"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a Nigerian microfinance bank",
@@ -2038,7 +2471,7 @@
             ],
             "description": "Returns one roster-only Nigerian microfinance-bank record identified by its stable lowercase public ID.\n\n\nMethod: GET\nPath: /v1/finance/microfinance-banks/{bank_id}\n\nPath variables: bank_id={{institutionId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 404, 405, 422, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/finance/microfinance-banks/{{institutionId}}",
+              "raw": "{{baseUrl}}/v1/finance/microfinance-banks/{{bank_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -2046,16 +2479,12 @@
                 "v1",
                 "finance",
                 "microfinance-banks",
-                "{{institutionId}}"
+                "{{bank_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List Nigerian non-interest financial institutions",
@@ -2081,14 +2510,10 @@
                 "finance",
                 "non-interest-financial-institutions"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a Nigerian non-interest financial institution",
@@ -2105,7 +2530,7 @@
             ],
             "description": "Get a Nigerian non-interest financial institution\n\n\nMethod: GET\nPath: /v1/finance/non-interest-financial-institutions/{institution_id}\n\nPath variables: institution_id={{institutionId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 404, 405, 422, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/finance/non-interest-financial-institutions/{{institutionId}}",
+              "raw": "{{baseUrl}}/v1/finance/non-interest-financial-institutions/{{institution_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -2113,16 +2538,12 @@
                 "v1",
                 "finance",
                 "non-interest-financial-institutions",
-                "{{institutionId}}"
+                "{{institution_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List Nigerian merchant banks",
@@ -2148,14 +2569,10 @@
                 "finance",
                 "merchant-banks"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a Nigerian merchant bank",
@@ -2172,7 +2589,7 @@
             ],
             "description": "Get a Nigerian merchant bank\n\n\nMethod: GET\nPath: /v1/finance/merchant-banks/{bank_id}\n\nPath variables: bank_id={{institutionId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 404, 405, 422, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/finance/merchant-banks/{{institutionId}}",
+              "raw": "{{baseUrl}}/v1/finance/merchant-banks/{{bank_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -2180,16 +2597,12 @@
                 "v1",
                 "finance",
                 "merchant-banks",
-                "{{institutionId}}"
+                "{{bank_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List Nigerian payment service banks",
@@ -2215,14 +2628,10 @@
                 "finance",
                 "payment-service-banks"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a Nigerian payment service bank",
@@ -2239,7 +2648,7 @@
             ],
             "description": "Get a Nigerian payment service bank\n\n\nMethod: GET\nPath: /v1/finance/payment-service-banks/{bank_id}\n\nPath variables: bank_id={{institutionId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 404, 405, 422, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/finance/payment-service-banks/{{institutionId}}",
+              "raw": "{{baseUrl}}/v1/finance/payment-service-banks/{{bank_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -2247,16 +2656,12 @@
                 "v1",
                 "finance",
                 "payment-service-banks",
-                "{{institutionId}}"
+                "{{bank_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List Nigerian financial holding companies",
@@ -2282,14 +2687,10 @@
                 "finance",
                 "financial-holding-companies"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a Nigerian financial holding company",
@@ -2306,7 +2707,7 @@
             ],
             "description": "Get a Nigerian financial holding company\n\n\nMethod: GET\nPath: /v1/finance/financial-holding-companies/{company_id}\n\nPath variables: company_id={{institutionId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 404, 405, 422, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/finance/financial-holding-companies/{{institutionId}}",
+              "raw": "{{baseUrl}}/v1/finance/financial-holding-companies/{{company_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -2314,16 +2715,12 @@
                 "v1",
                 "finance",
                 "financial-holding-companies",
-                "{{institutionId}}"
+                "{{company_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List Nigerian development finance institutions",
@@ -2349,14 +2746,10 @@
                 "finance",
                 "development-finance-institutions"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a Nigerian development finance institution",
@@ -2373,7 +2766,7 @@
             ],
             "description": "Get a Nigerian development finance institution\n\n\nMethod: GET\nPath: /v1/finance/development-finance-institutions/{institution_id}\n\nPath variables: institution_id={{institutionId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 404, 405, 422, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/finance/development-finance-institutions/{{institutionId}}",
+              "raw": "{{baseUrl}}/v1/finance/development-finance-institutions/{{institution_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -2381,16 +2774,12 @@
                 "v1",
                 "finance",
                 "development-finance-institutions",
-                "{{institutionId}}"
+                "{{institution_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List Nigerian primary mortgage institutions",
@@ -2416,14 +2805,10 @@
                 "finance",
                 "primary-mortgage-institutions"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Get a Nigerian primary mortgage institution",
@@ -2440,7 +2825,7 @@
             ],
             "description": "Get a Nigerian primary mortgage institution\n\n\nMethod: GET\nPath: /v1/finance/primary-mortgage-institutions/{institution_id}\n\nPath variables: institution_id={{institutionId}}\n\nQuery parameters: \n\nAuthentication: public endpoint; API key is optional where supported.\n\nExpected responses: 200, 404, 405, 422, 500",
             "url": {
-              "raw": "{{baseUrl}}/v1/finance/primary-mortgage-institutions/{{institutionId}}",
+              "raw": "{{baseUrl}}/v1/finance/primary-mortgage-institutions/{{institution_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -2448,16 +2833,12 @@
                 "v1",
                 "finance",
                 "primary-mortgage-institutions",
-                "{{institutionId}}"
+                "{{institution_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             }
           },
-          "response": [
-
-          ]
+          "response": []
         }
       ]
     },
@@ -2494,9 +2875,7 @@
                 "auth",
                 "register"
               ],
-              "query": [
-
-              ]
+              "query": []
             },
             "body": {
               "mode": "raw",
@@ -2508,9 +2887,7 @@
               }
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Log in",
@@ -2541,9 +2918,7 @@
                 "auth",
                 "login"
               ],
-              "query": [
-
-              ]
+              "query": []
             },
             "body": {
               "mode": "raw",
@@ -2555,9 +2930,7 @@
               }
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Refresh a session",
@@ -2588,9 +2961,7 @@
                 "auth",
                 "refresh"
               ],
-              "query": [
-
-              ]
+              "query": []
             },
             "body": {
               "mode": "raw",
@@ -2602,17 +2973,13 @@
               }
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Log out",
           "request": {
             "method": "POST",
-            "header": [
-
-            ],
+            "header": [],
             "description": "Log out\n\n\nMethod: POST\nPath: /v1/auth/logout\n\nAuthentication: Bearer access token. Send the current refresh token in the JSON body. After refreshing, update accessToken and refreshToken with the newly returned tokens.\n\nExpected responses: 204",
             "url": {
               "raw": "{{baseUrl}}/v1/auth/logout",
@@ -2624,9 +2991,7 @@
                 "auth",
                 "logout"
               ],
-              "query": [
-
-              ]
+              "query": []
             },
             "body": {
               "mode": "raw",
@@ -2648,9 +3013,7 @@
               ]
             }
           },
-          "response": [
-
-          ]
+          "response": []
         }
       ]
     },
@@ -2662,9 +3025,7 @@
           "name": "Get current account",
           "request": {
             "method": "GET",
-            "header": [
-
-            ],
+            "header": [],
             "description": "Get current account\n\n\nMethod: GET\nPath: /v1/account\n\nAuthentication: Bearer access token.\n\nExpected responses: 200",
             "url": {
               "raw": "{{baseUrl}}/v1/account",
@@ -2675,9 +3036,7 @@
                 "v1",
                 "account"
               ],
-              "query": [
-
-              ]
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2690,9 +3049,7 @@
               ]
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Update current account",
@@ -2715,9 +3072,7 @@
                 "v1",
                 "account"
               ],
-              "query": [
-
-              ]
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2739,17 +3094,13 @@
               }
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Delete current account",
           "request": {
             "method": "DELETE",
-            "header": [
-
-            ],
+            "header": [],
             "description": "Delete current account\n\n\nMethod: DELETE\nPath: /v1/account\n\nAuthentication: Bearer access token.\n\nExpected responses: 204",
             "url": {
               "raw": "{{baseUrl}}/v1/account",
@@ -2760,9 +3111,7 @@
                 "v1",
                 "account"
               ],
-              "query": [
-
-              ]
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2775,17 +3124,13 @@
               ]
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "List API keys",
           "request": {
             "method": "GET",
-            "header": [
-
-            ],
+            "header": [],
             "description": "List API keys\n\n\nMethod: GET\nPath: /v1/account/api-keys\n\nAuthentication: Bearer access token.\n\nExpected responses: 200",
             "url": {
               "raw": "{{baseUrl}}/v1/account/api-keys",
@@ -2797,9 +3142,7 @@
                 "account",
                 "api-keys"
               ],
-              "query": [
-
-              ]
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2812,9 +3155,7 @@
               ]
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Create an API key",
@@ -2838,9 +3179,7 @@
                 "account",
                 "api-keys"
               ],
-              "query": [
-
-              ]
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2862,20 +3201,16 @@
               }
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Revoke an API key",
           "request": {
             "method": "DELETE",
-            "header": [
-
-            ],
+            "header": [],
             "description": "Revoke an API key\n\n\nMethod: DELETE\nPath: /v1/account/api-keys/{key_id}\n\nPath variables: key_id={{keyId}}\n\nQuery parameters: \n\nAuthentication: Bearer access token.\n\nExpected responses: 204",
             "url": {
-              "raw": "{{baseUrl}}/v1/account/api-keys/{{keyId}}",
+              "raw": "{{baseUrl}}/v1/account/api-keys/{{key_id}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -2883,11 +3218,9 @@
                 "v1",
                 "account",
                 "api-keys",
-                "{{keyId}}"
+                "{{key_id}}"
               ],
-              "query": [
-
-              ]
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2900,20 +3233,16 @@
               ]
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "Rotate an API key",
           "request": {
             "method": "POST",
-            "header": [
-
-            ],
+            "header": [],
             "description": "Rotate an API key\n\n\nMethod: POST\nPath: /v1/account/api-keys/{key_id}/rotate\n\nPath variables: key_id={{keyId}}\n\nQuery parameters: \n\nAuthentication: Bearer access token.\n\nExpected responses: 200",
             "url": {
-              "raw": "{{baseUrl}}/v1/account/api-keys/{{keyId}}/rotate",
+              "raw": "{{baseUrl}}/v1/account/api-keys/{{key_id}}/rotate",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -2921,12 +3250,10 @@
                 "v1",
                 "account",
                 "api-keys",
-                "{{keyId}}",
+                "{{key_id}}",
                 "rotate"
               ],
-              "query": [
-
-              ]
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2939,17 +3266,13 @@
               ]
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "View usage summary",
           "request": {
             "method": "GET",
-            "header": [
-
-            ],
+            "header": [],
             "description": "View usage summary\n\n\nMethod: GET\nPath: /v1/account/usage\n\nQuery parameters: \n\nAuthentication: Bearer access token.\n\nExpected responses: 200, 400, 401, 404, 422, 500",
             "url": {
               "raw": "{{baseUrl}}/v1/account/usage",
@@ -2961,9 +3284,7 @@
                 "account",
                 "usage"
               ],
-              "query": [
-
-              ]
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2976,17 +3297,13 @@
               ]
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "View aggregated daily usage history",
           "request": {
             "method": "GET",
-            "header": [
-
-            ],
+            "header": [],
             "description": "Returns daily aggregate usage for the authenticated account. Raw api_requests rows are never exposed.\n\n\nMethod: GET\nPath: /v1/account/usage/history\n\nQuery parameters: \n\nAuthentication: Bearer access token.\n\nExpected responses: 200, 400, 401, 404, 422, 500",
             "url": {
               "raw": "{{baseUrl}}/v1/account/usage/history",
@@ -2999,9 +3316,7 @@
                 "usage",
                 "history"
               ],
-              "query": [
-
-              ]
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -3014,17 +3329,13 @@
               ]
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "View endpoint usage breakdown",
           "request": {
             "method": "GET",
-            "header": [
-
-            ],
+            "header": [],
             "description": "Returns usage grouped by stable endpoint template for the authenticated account. Raw URLs and request parameters are never exposed.\n\n\nMethod: GET\nPath: /v1/account/usage/endpoints\n\nQuery parameters: \n\nAuthentication: Bearer access token.\n\nExpected responses: 200, 400, 401, 404, 422, 500",
             "url": {
               "raw": "{{baseUrl}}/v1/account/usage/endpoints",
@@ -3037,9 +3348,7 @@
                 "usage",
                 "endpoints"
               ],
-              "query": [
-
-              ]
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -3052,17 +3361,13 @@
               ]
             }
           },
-          "response": [
-
-          ]
+          "response": []
         },
         {
           "name": "View dataset-group usage breakdown",
           "request": {
             "method": "GET",
-            "header": [
-
-            ],
+            "header": [],
             "description": "Returns usage grouped by documented dataset group for the authenticated account. Null groups and raw request rows are never exposed.\n\n\nMethod: GET\nPath: /v1/account/usage/dataset-groups\n\nQuery parameters: \n\nAuthentication: Bearer access token.\n\nExpected responses: 200, 400, 401, 404, 422, 500",
             "url": {
               "raw": "{{baseUrl}}/v1/account/usage/dataset-groups",
@@ -3075,9 +3380,7 @@
                 "usage",
                 "dataset-groups"
               ],
-              "query": [
-
-              ]
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -3090,9 +3393,7 @@
               ]
             }
           },
-          "response": [
-
-          ]
+          "response": []
         }
       ]
     }

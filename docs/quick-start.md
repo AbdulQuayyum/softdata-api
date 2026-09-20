@@ -16,6 +16,12 @@ You can also open the URL directly in a browser:
 https://softdata-api.vercel.app/v1/geography/states
 ```
 
+## Browse The API
+
+Open `https://softdata-api.vercel.app/docs` in a browser for interactive documentation. The page loads the canonical OpenAPI contract from `https://softdata-api.vercel.app/openapi.yaml`.
+
+Postman can import `https://softdata-api.vercel.app/postman.json` or the OpenAPI URL. Hoppscotch can import the public OpenAPI URL. These tools are optional; browsing `/docs` does not require an account, a download or an API key.
+
 ## JavaScript
 
 ```javascript

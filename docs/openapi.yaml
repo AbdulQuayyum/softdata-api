@@ -7,6 +7,7 @@ servers:
   - url: https://softdata-api.vercel.app
     description: Production
 tags:
+  - name: Documentation
   - name: Health
   - name: Discovery
   - name: Datasets
@@ -18,6 +19,66 @@ tags:
   - name: API Keys
   - name: Usage
 paths:
+  /:
+    get:
+      tags: [Documentation]
+      operationId: getLandingPage
+      summary: API landing page
+      description: Browser landing page linking to the interactive documentation, canonical OpenAPI document, Postman collection and GitHub repository. No API key is required.
+      responses:
+        "200":
+          description: HTML landing page
+          content:
+            text/html:
+              schema:
+                type: string
+        "405":
+          $ref: "#/components/responses/MethodNotAllowedGet"
+  /docs:
+    get:
+      tags: [Documentation]
+      operationId: getInteractiveDocumentation
+      summary: Interactive API documentation
+      description: Browser-accessible OpenAPI explorer that loads the canonical /openapi.yaml document and supports optional X-API-Key authentication where browser security permits. No API key or external account is required to browse the documentation.
+      responses:
+        "200":
+          description: HTML API documentation page
+          content:
+            text/html:
+              schema:
+                type: string
+        "405":
+          $ref: "#/components/responses/MethodNotAllowedGet"
+  /openapi.yaml:
+    get:
+      tags: [Documentation]
+      operationId: getOpenAPISpecification
+      summary: Download the canonical OpenAPI specification
+      description: Serves the committed docs/openapi.yaml contract for browser documentation, tooling, code generation and imports into API clients.
+      responses:
+        "200":
+          description: Canonical OpenAPI YAML document
+          content:
+            application/yaml:
+              schema:
+                type: string
+        "405":
+          $ref: "#/components/responses/MethodNotAllowedGet"
+  /postman.json:
+    get:
+      tags: [Documentation]
+      operationId: getPostmanCollection
+      summary: Download the Postman collection
+      description: Serves the committed Postman collection synchronized from docs/openapi.yaml. The collection contains placeholders only and must not be shared with real API keys or credentials populated.
+      responses:
+        "200":
+          description: Postman collection JSON
+          content:
+            application/json:
+              schema:
+                type: object
+        "405":
+          $ref: "#/components/responses/MethodNotAllowedGet"
   /health:
     get:
       tags: [Health]
@@ -363,6 +424,7 @@ paths:
   /v1/assets/flags/{country_id}.svg:
     get:
       tags: [Geography]
+      operationId: getCountryOrAreaFlag
       summary: Get a country or area flag SVG
       parameters:
         - $ref: "#/components/parameters/CountryOrAreaFlagID"
@@ -375,6 +437,36 @@ paths:
                 type: string
         "404":
           $ref: "#/components/responses/NotFound"
+        "422":
+          $ref: "#/components/responses/ValidationFailed"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/assets/banks/ng/{bank_asset}:
+    get:
+      tags: [Finance]
+      operationId: getCommercialBankAsset
+      summary: Get a commercial bank asset
+      description: Returns a public commercial-bank PNG asset from the embedded asset catalogue.
+      parameters:
+        - name: bank_asset
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*\.png$'
+          example: access-bank.png
+      responses:
+        "200":
+          description: Embedded PNG logo
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "405":
+          $ref: "#/components/responses/MethodNotAllowedGet"
         "422":
           $ref: "#/components/responses/ValidationFailed"
         "500":

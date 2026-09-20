@@ -9,6 +9,50 @@ import (
 )
 
 func registerPublicRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers, mw Middleware) error {
+	documentation, err := buildRouteMiddlewares(mw, "/", "", routeOptions{
+		useRateLimit: true,
+	})
+	if err != nil {
+		return fmt.Errorf("build documentation middleware: %w", err)
+	}
+	mux.Handle("GET /{$}", compose(http.HandlerFunc(h.Documentation.ServeLanding), documentation...))
+	if err := catalog.add("GET /"); err != nil {
+		return err
+	}
+
+	docs, err := buildRouteMiddlewares(mw, "/docs", "", routeOptions{
+		useRateLimit: true,
+	})
+	if err != nil {
+		return fmt.Errorf("build api documentation middleware: %w", err)
+	}
+	mux.Handle("GET /docs", compose(http.HandlerFunc(h.Documentation.ServeDocs), docs...))
+	if err := catalog.add("GET /docs"); err != nil {
+		return err
+	}
+
+	openAPI, err := buildRouteMiddlewares(mw, "/openapi.yaml", "", routeOptions{
+		useRateLimit: true,
+	})
+	if err != nil {
+		return fmt.Errorf("build openapi middleware: %w", err)
+	}
+	mux.Handle("GET /openapi.yaml", compose(http.HandlerFunc(h.Documentation.ServeOpenAPI), openAPI...))
+	if err := catalog.add("GET /openapi.yaml"); err != nil {
+		return err
+	}
+
+	postman, err := buildRouteMiddlewares(mw, "/postman.json", "", routeOptions{
+		useRateLimit: true,
+	})
+	if err != nil {
+		return fmt.Errorf("build postman middleware: %w", err)
+	}
+	mux.Handle("GET /postman.json", compose(http.HandlerFunc(h.Documentation.ServePostman), postman...))
+	if err := catalog.add("GET /postman.json"); err != nil {
+		return err
+	}
+
 	health, err := buildRouteMiddlewares(mw, "/health", "", routeOptions{
 		useRateLimit: true,
 	})

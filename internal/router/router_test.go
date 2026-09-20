@@ -12,6 +12,7 @@ import (
 	"testing"
 	"time"
 
+	apideocs "github.com/AbdulQuayyum/softdata-api/docs"
 	"github.com/AbdulQuayyum/softdata-api/internal/handlers"
 	"github.com/AbdulQuayyum/softdata-api/internal/middlewares"
 	"github.com/AbdulQuayyum/softdata-api/internal/models"
@@ -126,6 +127,10 @@ func testHandlers(t *testing.T, rec *routerRecorder) Handlers {
 	if err != nil {
 		t.Fatalf("NewDatasetHandler() error = %v", err)
 	}
+	documentationHandler, err := handlers.NewDocumentationHandler(apideocs.FS)
+	if err != nil {
+		t.Fatalf("NewDocumentationHandler() error = %v", err)
+	}
 	geographyHandler, err := handlers.NewGeographyHandler(geography, geography)
 	if err != nil {
 		t.Fatalf("NewGeographyHandler() error = %v", err)
@@ -156,6 +161,7 @@ func testHandlers(t *testing.T, rec *routerRecorder) Handlers {
 	}
 
 	return Handlers{
+		Documentation:                           documentationHandler,
 		Health:                                  handlers.NewHealthHandler(),
 		Discovery:                               handlers.NewDiscoveryHandler(),
 		Geography:                               geographyHandler,
@@ -209,6 +215,10 @@ func testHandlersWithGeography(t *testing.T, rec *routerRecorder, geography *rou
 	if err != nil {
 		t.Fatalf("NewDatasetHandler() error = %v", err)
 	}
+	documentationHandler, err := handlers.NewDocumentationHandler(apideocs.FS)
+	if err != nil {
+		t.Fatalf("NewDocumentationHandler() error = %v", err)
+	}
 	geographyHandler, err := handlers.NewGeographyHandler(geography, geography)
 	if err != nil {
 		t.Fatalf("NewGeographyHandler() error = %v", err)
@@ -239,6 +249,7 @@ func testHandlersWithGeography(t *testing.T, rec *routerRecorder, geography *rou
 	}
 
 	return Handlers{
+		Documentation:                           documentationHandler,
 		Health:                                  handlers.NewHealthHandler(),
 		Discovery:                               handlers.NewDiscoveryHandler(),
 		Geography:                               geographyHandler,
@@ -1692,6 +1703,7 @@ func newGeographyPolicyRouter(t *testing.T) geographyPolicyHarness {
 	}
 
 	routerHandler, err := New(Handlers{
+		Documentation:                           baseHandlers.Documentation,
 		Health:                                  handlers.NewHealthHandler(),
 		Discovery:                               handlers.NewDiscoveryHandler(),
 		Geography:                               geographyHandler,
@@ -1800,6 +1812,7 @@ func newFinancePolicyRouter(t *testing.T) financePolicyHarness {
 	}
 
 	routerHandler, err := New(Handlers{
+		Documentation:                           baseHandlers.Documentation,
 		Health:                                  handlers.NewHealthHandler(),
 		Discovery:                               handlers.NewDiscoveryHandler(),
 		Geography:                               baseHandlers.Geography,
@@ -1908,6 +1921,7 @@ func newEducationPolicyRouter(t *testing.T) educationPolicyHarness {
 	}
 
 	routerHandler, err := New(Handlers{
+		Documentation:                           baseHandlers.Documentation,
 		Health:                                  handlers.NewHealthHandler(),
 		Discovery:                               handlers.NewDiscoveryHandler(),
 		Geography:                               baseHandlers.Geography,

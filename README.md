@@ -74,6 +74,18 @@ Current API version:
 v1
 ```
 
+## API Documentation
+
+The canonical API contract is [`docs/openapi.yaml`](docs/openapi.yaml).
+
+When this repository's Go handler is deployed at `https://softdata-api.vercel.app`, the API also exposes:
+
+- Browser documentation: `https://softdata-api.vercel.app/docs`
+- Raw OpenAPI YAML: `https://softdata-api.vercel.app/openapi.yaml`
+- Postman collection: `https://softdata-api.vercel.app/postman.json`
+
+The browser documentation does not require a Postman account or a download. Postman and Hoppscotch can import the public OpenAPI URL as an optional convenience. API keys are optional for public endpoints unless a specific endpoint states otherwise; never publish real API keys, tokens or cookies in shared collections.
+
 ## Example Response
 
 ```json
