@@ -1,0 +1,121 @@
+[
+  {
+    "country_code": "NG",
+    "id": "nema-abuja-zonal-territorial-operation-office",
+    "name": "NEMA Abuja Office",
+    "office_type": "zonal_territorial_operation_office",
+    "state_id": "fct"
+  },
+  {
+    "country_code": "NG",
+    "id": "nema-edo-zonal-territorial-operation-office",
+    "name": "NEMA Edo Office",
+    "office_type": "zonal_territorial_operation_office",
+    "state_id": "edo"
+  },
+  {
+    "country_code": "NG",
+    "id": "nema-ekiti-zonal-territorial-operation-office",
+    "name": "NEMA Ekiti Office",
+    "office_type": "zonal_territorial_operation_office",
+    "state_id": "ekiti"
+  },
+  {
+    "country_code": "NG",
+    "id": "nema-enugu-zonal-territorial-operation-office",
+    "name": "NEMA Enugu Office",
+    "office_type": "zonal_territorial_operation_office",
+    "state_id": "enugu"
+  },
+  {
+    "country_code": "NG",
+    "id": "nema-gombe-zonal-territorial-operation-office",
+    "name": "NEMA Gombe Office",
+    "office_type": "zonal_territorial_operation_office",
+    "state_id": "gombe"
+  },
+  {
+    "country_code": "NG",
+    "id": "nema-ibadan-zonal-territorial-operation-office",
+    "name": "NEMA Ibadan Office",
+    "office_type": "zonal_territorial_operation_office",
+    "state_id": "oyo"
+  },
+  {
+    "country_code": "NG",
+    "id": "nema-jos-zonal-territorial-operation-office",
+    "name": "NEMA Jos Office",
+    "office_type": "zonal_territorial_operation_office",
+    "state_id": "plateau"
+  },
+  {
+    "country_code": "NG",
+    "id": "nema-kaduna-zonal-territorial-operation-office",
+    "name": "NEMA Kaduna Office",
+    "office_type": "zonal_territorial_operation_office",
+    "state_id": "kaduna"
+  },
+  {
+    "country_code": "NG",
+    "id": "nema-kano-zonal-territorial-operation-office",
+    "name": "NEMA Kano Office",
+    "office_type": "zonal_territorial_operation_office",
+    "state_id": "kano"
+  },
+  {
+    "country_code": "NG",
+    "id": "nema-lagos-zonal-territorial-operation-office",
+    "name": "NEMA Lagos Office",
+    "office_type": "zonal_territorial_operation_office",
+    "state_id": "lagos"
+  },
+  {
+    "country_code": "NG",
+    "id": "nema-maiduguri-zonal-territorial-operation-office",
+    "name": "NEMA Maiduguri Office",
+    "office_type": "zonal_territorial_operation_office",
+    "state_id": "borno"
+  },
+  {
+    "country_code": "NG",
+    "id": "nema-minna-zonal-territorial-operation-office",
+    "name": "NEMA Minna Office",
+    "office_type": "zonal_territorial_operation_office",
+    "state_id": "niger"
+  },
+  {
+    "country_code": "NG",
+    "id": "nema-owerri-zonal-territorial-operation-office",
+    "name": "NEMA Owerri Office",
+    "office_type": "zonal_territorial_operation_office",
+    "state_id": "imo"
+  },
+  {
+    "country_code": "NG",
+    "id": "nema-port-harcourt-zonal-territorial-operation-office",
+    "name": "NEMA Port Harcourt Office",
+    "office_type": "zonal_territorial_operation_office",
+    "state_id": "rivers"
+  },
+  {
+    "country_code": "NG",
+    "id": "nema-sokoto-zonal-territorial-operation-office",
+    "name": "NEMA Sokoto Office",
+    "office_type": "zonal_territorial_operation_office",
+    "state_id": "sokoto"
+  },
+  {
+    "country_code": "NG",
+    "id": "nema-uyo-zonal-territorial-operation-office",
+    "name": "NEMA Uyo Office",
+    "office_type": "zonal_territorial_operation_office",
+    "state_id": "akwa-ibom"
+  },
+  {
+    "country_code": "NG",
+    "id": "nema-yola-zonal-territorial-operation-office",
+    "name": "NEMA Yola Office",
+    "office_type": "zonal_territorial_operation_office",
+    "state_id": "adamawa"
+  }
+]

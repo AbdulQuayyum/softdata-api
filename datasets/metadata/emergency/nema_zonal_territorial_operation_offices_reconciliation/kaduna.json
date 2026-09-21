@@ -1,0 +1,25 @@
+{
+  "dataset_key": "ng-nema-zonal-territorial-operation-offices",
+  "partition_key": "kaduna",
+  "records": [
+    {
+      "decision": "retain",
+      "evidence": "The NEMA Zonal, Territorial and Operation offices are located in Lagos, Ibadan, Ekiti, Abuja, Minna, Jos, Enugu, Owerri, Port Harcourt, Edo, Uyo, Kano, Sokoto, Kaduna, Maiduguri, Yola and Gombe.",
+      "normalized": {
+        "country_code": "NG",
+        "id": "nema-kaduna-zonal-territorial-operation-office",
+        "name": "NEMA Kaduna Office",
+        "office_type": "zonal_territorial_operation_office",
+        "state_id": "kaduna"
+      },
+      "published_location": "Kaduna",
+      "published_office_category": "Zonal, Territorial and Operation offices",
+      "published_state_or_location": "Kaduna",
+      "reason": "Official NEMA press release directly lists this location as one of the Agency's Zonal, Territorial and Operation office locations.",
+      "source_key": "nema-flood-operations-press-release",
+      "source_position": 14,
+      "source_section": "Press release body",
+      "target_id": "nema-kaduna-zonal-territorial-operation-office"
+    }
+  ]
+}

@@ -170,9 +170,13 @@ softdata-api/
 │   │   │       └── {state_id}.json
 │   │   ├── emergency/
 │   │   │   ├── emergency_service_contacts.json
-│   │   │   └── emergency_service_contacts_reconciliation/
+│   │   │   ├── emergency_service_contacts_reconciliation/
+│   │   │   │   ├── index.json
+│   │   │   │   └── national.json
+│   │   │   ├── nema_zonal_territorial_operation_offices.json
+│   │   │   └── nema_zonal_territorial_operation_offices_reconciliation/
 │   │   │       ├── index.json
-│   │   │       └── national.json
+│   │   │       └── {state_id}.json
 │   │   ├── finance/
 │   │   │   ├── development_finance_institutions.json
 │   │   │   ├── financial_holding_companies.json
@@ -219,7 +223,8 @@ softdata-api/
 │       ├── healthcare/
 │       │   └── health_facilities.schema.json
 │       ├── emergency/
-│       │   └── emergency_service_contacts.schema.json
+│       │   ├── emergency_service_contacts.schema.json
+│       │   └── nema_zonal_territorial_operation_offices.schema.json
 │       ├── finance/
 │       │   ├── development_finance_institutions.schema.json
 │       │   ├── financial_holding_companies.schema.json

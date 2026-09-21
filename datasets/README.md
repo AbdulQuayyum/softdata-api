@@ -23,7 +23,8 @@ datasets/
 │   ├── health_facilities.json
 │   └── medical_laboratory_accreditations.json
 ├── emergency/
-│   └── emergency_service_contacts.json
+│   ├── emergency_service_contacts.json
+│   └── nema_zonal_territorial_operation_offices.json
 ├── finance/
 │   ├── development_finance_institutions.json
 │   ├── financial_holding_companies.json
@@ -71,9 +72,13 @@ datasets/
 │   │       └── state_social_health_insurance_agencies.json
 │   ├── emergency/
 │   │   ├── emergency_service_contacts.json
-│   │   └── emergency_service_contacts_reconciliation/
+│   │   ├── emergency_service_contacts_reconciliation/
+│   │   │   ├── index.json
+│   │   │   └── national.json
+│   │   ├── nema_zonal_territorial_operation_offices.json
+│   │   └── nema_zonal_territorial_operation_offices_reconciliation/
 │   │       ├── index.json
-│   │       └── national.json
+│   │       └── {state_id}.json
 │   └── finance/
 │       ├── development_finance_institutions.json
 │       ├── financial_holding_companies.json
@@ -106,7 +111,8 @@ datasets/
 │   │   ├── nhia_accredited_health_maintenance_organisations.schema.json
 │   │   └── nhia_state_social_health_insurance_agencies.schema.json
 │   ├── emergency/
-│   │   └── emergency_service_contacts.schema.json
+│   │   ├── emergency_service_contacts.schema.json
+│   │   └── nema_zonal_territorial_operation_offices.schema.json
 │   └── finance/
 │       ├── development_finance_institutions.schema.json
 │       ├── financial_holding_companies.schema.json
@@ -145,6 +151,7 @@ Regulated-finance logo assets are embedded under `assets/financial-institutions/
 - `healthcare/nhia_state_social_health_insurance_agencies.json` is a 37-record dated organisation/state snapshot of State Social Health Insurance Agencies listed by NHIA. It covers all 36 states and the FCT exactly once, preserves source organisation identities with only mechanical normalization, and omits directors, phone numbers, emails, websites, addresses and logos. Inclusion means listed by NHIA, not necessarily currently accredited, licensed, registered or operational.
 - `healthcare/nhia_active_accredited_healthcare_providers.json` is a 6,536-record dated privacy-safe snapshot from NHIA's Health Care Providers page and embedded active-accredited provider table. It retains only provider code, provider name, facility type, country code and listing status; four rows in two duplicate-code conflict groups are excluded in reconciliation. Source addresses are discarded during extraction and the dataset omits state/LGA values, addresses, coordinates, ownership, websites, logos, phone numbers, emails, directors, contacts and other personal or sensitive information. It is not a live licensing, registration or operational-status register and is not merged with the GRID3 health-facilities snapshot.
 - `emergency/emergency_service_contacts.json` is a 5-record dated snapshot of official Nigerian institutional emergency-service contacts from NCC, FRSC, NEMA and Federal Fire Service sources retrieved on 2026-09-20. It retains only source-supported service identity, agency identity, contact type/value, coverage type, country code and evidence-backed availability/call-cost notes. It is not a complete nationwide emergency directory and does not assert live operational status.
+- `emergency/nema_zonal_territorial_operation_offices.json` is a 17-record dated snapshot of NEMA “Zonal, Territorial and Operation offices” from an official NEMA press release retrieved on 2026-09-21. It retains only office identity, the collective source office category, canonical state/FCT ID and `country_code: NG`. Addresses, LGA IDs, telephone numbers, emails, coverage areas and operational status are omitted; staff-contact details from the inspected NEMA contact page are excluded. It is not a live operational-status guarantee, and repository/API integration is deferred.
 - `finance/international_money_transfer_operators.json` is the compiled register snapshot of current CBN-listed IMTO entries, with optional verified website URLs.
 - `finance/currencies.json` is the compiled snapshot of current ISO 4217 monetary currencies.
 - `finance/payment_service_providers.json` is the compiled register snapshot of payment-service-provider memberships.

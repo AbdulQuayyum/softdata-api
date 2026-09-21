@@ -139,6 +139,17 @@ Nigeria Official Emergency Service Contacts Snapshot.
 
 A dated, privacy-safe snapshot of five official Nigerian institutional emergency-service contacts directly supported by primary public sources retrieved on 2026-09-20. The retained sources are the Nigerian Communications Commission, Federal Road Safety Corps, National Emergency Management Agency and Federal Fire Service. The public contract is intentionally narrow: `id`, `service_name`, `agency_name`, `service_type`, `contact_type`, `contact_value`, `coverage_type`, `country_code`, and only evidence-backed optional `availability`, `call_cost` and `notes`. The package is not a complete nationwide register of every police, fire, ambulance, disaster-response, federal, state or local emergency contact, and it is not a live operational-status guarantee. Numbers were source-verified but not operationally tested by calling or messaging them; repeated values such as `112` may represent distinct official service contexts. No personal contacts, caller records, incident data, credentials, raw HTML pages, cookies or tracking content are committed. The completed feature includes the static dataset foundation, schema, metadata, deterministic reconciliation, repository and service access, list/detail handlers, request validators, OpenAPI contract, synchronized Postman requests, production GET routes at `GET /v1/emergency/emergency-service-contacts` and `GET /v1/emergency/emergency-service-contacts/{contact_id}`, standard public Emergency middleware, optional API-key identification, public rate limiting, usage tracking with `dataset_group=emergency`, stable usage templates, bounded startup verification, and a shared repository cache between startup verification and HTTP requests.
 
+### `ng-nema-zonal-territorial-operation-offices`
+
+Nigeria NEMA Zonal, Territorial and Operation Offices Snapshot.
+
+- `datasets/emergency/nema_zonal_territorial_operation_offices.json`
+- `datasets/schemas/emergency/nema_zonal_territorial_operation_offices.schema.json`
+- `datasets/metadata/emergency/nema_zonal_territorial_operation_offices.json`
+- `datasets/metadata/emergency/nema_zonal_territorial_operation_offices_reconciliation/index.json` and its state/FCT partitions
+
+A dated, privacy-safe 17-record institutional-office snapshot from the official NEMA press release that says the Agency's “Zonal, Territorial and Operation offices” are located in Lagos, Ibadan, Ekiti, Abuja, Minna, Jos, Enugu, Owerri, Port Harcourt, Edo, Uyo, Kano, Sokoto, Kaduna, Maiduguri, Yola and Gombe. The narrow public contract is `id`, `name`, `office_type`, `state_id` and `country_code`; addresses, LGA IDs, telephone numbers, emails, coverage areas and operational status are omitted because the official row-level source does not consistently publish them as privacy-safe institutional fields. The dataset does not classify each row into a narrower zonal, territorial or operation subtype, does not guarantee current availability or operational status, and no emergency number or office contact was called or messaged. Staff names and personal phone numbers from the inspected NEMA staff-contact page are excluded. Repository, service, HTTP API, OpenAPI, Postman and startup verification integration are deferred to later phases.
+
 ### Infrastructure
 
 Physical and public-service infrastructure.
