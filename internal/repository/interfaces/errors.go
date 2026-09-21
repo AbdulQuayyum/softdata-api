@@ -107,6 +107,16 @@ var (
 	ErrInvalidEmergencyServiceContactContactValueFilter = errors.New("repository: invalid emergency service contact contact value filter")
 	// ErrInvalidEmergencyServiceContactSearch reports an invalid emergency service contact search filter.
 	ErrInvalidEmergencyServiceContactSearch = errors.New("repository: invalid emergency service contact search")
+	// ErrNEMAZonalTerritorialOperationOfficeNotFound reports that a requested NEMA office is not present in the dataset.
+	ErrNEMAZonalTerritorialOperationOfficeNotFound = errors.New("repository: nema zonal territorial operation office not found")
+	// ErrInvalidNEMAZonalTerritorialOperationOfficeQuery reports an invalid NEMA office query.
+	ErrInvalidNEMAZonalTerritorialOperationOfficeQuery = errors.New("repository: invalid nema zonal territorial operation office query")
+	// ErrInvalidNEMAZonalTerritorialOperationOfficeStateFilter reports an invalid NEMA office state filter.
+	ErrInvalidNEMAZonalTerritorialOperationOfficeStateFilter = errors.New("repository: invalid nema zonal territorial operation office state filter")
+	// ErrInvalidNEMAZonalTerritorialOperationOfficeTypeFilter reports an invalid NEMA office type filter.
+	ErrInvalidNEMAZonalTerritorialOperationOfficeTypeFilter = errors.New("repository: invalid nema zonal territorial operation office type filter")
+	// ErrInvalidNEMAZonalTerritorialOperationOfficeSearch reports an invalid NEMA office search filter.
+	ErrInvalidNEMAZonalTerritorialOperationOfficeSearch = errors.New("repository: invalid nema zonal territorial operation office search")
 	// ErrInvalidMedicalLaboratoryAccreditationQuery reports an invalid medical-laboratory-accreditation query.
 	ErrInvalidMedicalLaboratoryAccreditationQuery = errors.New("repository: invalid medical laboratory accreditation query")
 	// ErrInvalidMedicalLaboratoryAccreditationStateFilter reports an unknown medical-laboratory-accreditation state filter.
