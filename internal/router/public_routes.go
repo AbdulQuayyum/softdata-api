@@ -487,6 +487,9 @@ func registerEmergencyRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handle
 	mux.HandleFunc("/v1/emergency/emergency-service-contacts/", func(w http.ResponseWriter, r *http.Request) {
 		_ = response.Error(w, interfaces.ErrNotFound, requestIDFromContext(r.Context()))
 	})
+	mux.HandleFunc("/v1/emergency/nema-zonal-territorial-operation-offices/", func(w http.ResponseWriter, r *http.Request) {
+		_ = response.Error(w, interfaces.ErrNotFound, requestIDFromContext(r.Context()))
+	})
 
 	listPath := "/v1/emergency/emergency-service-contacts"
 	listMiddleware, err := buildRouteMiddlewares(mw, listPath, "emergency", routeOptions{
@@ -513,6 +516,34 @@ func registerEmergencyRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handle
 	}
 	mux.Handle("GET "+detailPath, compose(http.HandlerFunc(h.EmergencyServiceContacts.GetEmergencyServiceContact), detailMiddleware...))
 	if err := catalog.add("GET " + detailPath); err != nil {
+		return err
+	}
+
+	nemaListPath := "/v1/emergency/nema-zonal-territorial-operation-offices"
+	nemaListMiddleware, err := buildRouteMiddlewares(mw, nemaListPath, "emergency", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build nema zonal territorial operation office list middleware: %w", err)
+	}
+	mux.Handle("GET "+nemaListPath, compose(http.HandlerFunc(h.NEMAZonalTerritorialOperationOffices.ListNEMAZonalTerritorialOperationOffices), nemaListMiddleware...))
+	if err := catalog.add("GET " + nemaListPath); err != nil {
+		return err
+	}
+
+	nemaDetailPath := "/v1/emergency/nema-zonal-territorial-operation-offices/{office_id}"
+	nemaDetailMiddleware, err := buildRouteMiddlewares(mw, nemaDetailPath, "emergency", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build nema zonal territorial operation office detail middleware: %w", err)
+	}
+	mux.Handle("GET "+nemaDetailPath, compose(http.HandlerFunc(h.NEMAZonalTerritorialOperationOffices.GetNEMAZonalTerritorialOperationOffice), nemaDetailMiddleware...))
+	if err := catalog.add("GET " + nemaDetailPath); err != nil {
 		return err
 	}
 	return nil

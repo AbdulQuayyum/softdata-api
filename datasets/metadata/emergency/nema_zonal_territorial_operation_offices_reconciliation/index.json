@@ -1,0 +1,129 @@
+{
+  "dataset_key": "ng-nema-zonal-territorial-operation-offices",
+  "decision_counts": {
+    "retain": 17
+  },
+  "final_record_count": 17,
+  "partitions": [
+    {
+      "partition_key": "adamawa",
+      "path": "metadata/emergency/nema_zonal_territorial_operation_offices_reconciliation/adamawa.json",
+      "sha256": "4a933db5a3f7a3d8619af9a03b1ee8b33a061b081986348c22a9c5ed3c3de7a1",
+      "size_bytes": 1133,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "akwa-ibom",
+      "path": "metadata/emergency/nema_zonal_territorial_operation_offices_reconciliation/akwa-ibom.json",
+      "sha256": "e823a984450f2840604be6a23a0c170a52b1f1c92e01986b91dde068be32225e",
+      "size_bytes": 1132,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "borno",
+      "path": "metadata/emergency/nema_zonal_territorial_operation_offices_reconciliation/borno.json",
+      "sha256": "c472756bc7276ccca6ac435ee22f8e62035abd4a9863512441760d8f817c0c86",
+      "size_bytes": 1154,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "edo",
+      "path": "metadata/emergency/nema_zonal_territorial_operation_offices_reconciliation/edo.json",
+      "sha256": "946f86de4bc6f93b6035ded17d938f5ede484990d1e41e01760073f929677154",
+      "size_bytes": 1120,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "ekiti",
+      "path": "metadata/emergency/nema_zonal_territorial_operation_offices_reconciliation/ekiti.json",
+      "sha256": "af6453192a0daf335d50ed677c92b40f6120b85060bed1986ed8d107b9cae493",
+      "size_bytes": 1133,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "enugu",
+      "path": "metadata/emergency/nema_zonal_territorial_operation_offices_reconciliation/enugu.json",
+      "sha256": "66caf38044ff1f73e5b876fd8186181aa89aee9c749323c12b32f2e5339f57e0",
+      "size_bytes": 1133,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "fct",
+      "path": "metadata/emergency/nema_zonal_territorial_operation_offices_reconciliation/fct.json",
+      "sha256": "ac8790117654a3ab3c78b37462e15a67aa8a3448807c1f5b2858d6d2087d9e4a",
+      "size_bytes": 1129,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "gombe",
+      "path": "metadata/emergency/nema_zonal_territorial_operation_offices_reconciliation/gombe.json",
+      "sha256": "c3fbdc12bdbd73f745ded07a3b39c9003a213f1677f6714354b37156bf6a04a7",
+      "size_bytes": 1134,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "imo",
+      "path": "metadata/emergency/nema_zonal_territorial_operation_offices_reconciliation/imo.json",
+      "sha256": "7ff347b45b008e7671e2f236bd0a4446e3e751e3af7a93b1c815e4079f415790",
+      "size_bytes": 1134,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "kaduna",
+      "path": "metadata/emergency/nema_zonal_territorial_operation_offices_reconciliation/kaduna.json",
+      "sha256": "d474f6786760b4e24455c69b6074fcfa3f60f25ae87e2af868accb22874b66aa",
+      "size_bytes": 1141,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "kano",
+      "path": "metadata/emergency/nema_zonal_territorial_operation_offices_reconciliation/kano.json",
+      "sha256": "3a9ab36c9996c77507e269bba065907b4db16c29f9e908e1db10d675204aeacc",
+      "size_bytes": 1127,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "lagos",
+      "path": "metadata/emergency/nema_zonal_territorial_operation_offices_reconciliation/lagos.json",
+      "sha256": "78dfe15677e9b9dde1deb1b301d721ca657298422b213054cf97d42f9f445c0e",
+      "size_bytes": 1133,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "niger",
+      "path": "metadata/emergency/nema_zonal_territorial_operation_offices_reconciliation/niger.json",
+      "sha256": "3ba15e092ac55d06f176587ee679cce692cdedf9d64d768b4b4dedf927937960",
+      "size_bytes": 1133,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "oyo",
+      "path": "metadata/emergency/nema_zonal_territorial_operation_offices_reconciliation/oyo.json",
+      "sha256": "9f690245b02f8011587726319cae19564e2ef096cfd1816e1738f778d79c961c",
+      "size_bytes": 1134,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "plateau",
+      "path": "metadata/emergency/nema_zonal_territorial_operation_offices_reconciliation/plateau.json",
+      "sha256": "70cfb1cf708f6e2bb5ea8232d6f25bc9596c7bc04aa395f1e3300942ec6d20b9",
+      "size_bytes": 1127,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "rivers",
+      "path": "metadata/emergency/nema_zonal_territorial_operation_offices_reconciliation/rivers.json",
+      "sha256": "3f3f34f3959a0d3004c133c33d30414403189f9a3969b16ca2a0f26e111ebcf8",
+      "size_bytes": 1175,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "sokoto",
+      "path": "metadata/emergency/nema_zonal_territorial_operation_offices_reconciliation/sokoto.json",
+      "sha256": "f1a578649d99a93c9ce8f9907bd384af63b81b96464e14c60b43d7a53ceab1a6",
+      "size_bytes": 1141,
+      "source_rows": 1
+    }
+  ],
+  "source_rows": 17
+}

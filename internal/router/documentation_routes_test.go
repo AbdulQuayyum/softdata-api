@@ -204,6 +204,42 @@ func TestEmergencyServiceContactActiveDocumentationIsProductionWired(t *testing.
 	}
 }
 
+func TestNEMAZonalTerritorialOperationOfficeDatasetReadmeIsProductionWired(t *testing.T) {
+	doc := string(readTestFile(t, "../../datasets/README.md"))
+	section := extractDatasetReadmeBullet(t, doc, "`emergency/nema_zonal_territorial_operation_offices.json`")
+	for _, want := range []string{
+		"GET /v1/emergency/nema-zonal-territorial-operation-offices",
+		"GET /v1/emergency/nema-zonal-territorial-operation-offices/{office_id}",
+		"repository and service access",
+		"OpenAPI contract",
+		"Postman requests",
+		"production GET routes",
+		"bounded startup verification",
+		"one repository cache shared by startup verification and HTTP",
+		"dataset_group=emergency",
+		"17-record dated snapshot",
+		"not a complete register of all NEMA offices",
+		"not a live operational-status or current-availability guarantee",
+	} {
+		if !strings.Contains(section, want) {
+			t.Fatalf("NEMA datasets README section missing %q", want)
+		}
+	}
+	lower := strings.ToLower(section)
+	for _, stale := range []string{
+		"api routing, openapi, postman and startup verification are deferred",
+		"production registration is deferred",
+		"startup verification is deferred",
+		"not production-wired",
+		"http contract only",
+		"no production route",
+	} {
+		if strings.Contains(lower, stale) {
+			t.Fatalf("NEMA datasets README section contains stale wording %q", stale)
+		}
+	}
+}
+
 func extractEmergencyServiceContactSection(t *testing.T, doc string) string {
 	t.Helper()
 	const heading = "### `ng-emergency-service-contacts`"
@@ -217,6 +253,20 @@ func extractEmergencyServiceContactSection(t *testing.T, doc string) string {
 		return rest
 	}
 	return rest[:end]
+}
+
+func extractDatasetReadmeBullet(t *testing.T, doc, bulletPrefix string) string {
+	t.Helper()
+	start := strings.Index(doc, "- "+bulletPrefix)
+	if start < 0 {
+		t.Fatalf("datasets README bullet missing: %s", bulletPrefix)
+	}
+	rest := doc[start:]
+	next := strings.Index(rest[len("- "+bulletPrefix):], "\n- `")
+	if next < 0 {
+		return rest
+	}
+	return rest[:len("- "+bulletPrefix)+next]
 }
 
 func readTestFile(t *testing.T, path string) []byte {
@@ -329,6 +379,8 @@ func expectedEmergencyOperations() []operation {
 	return []operation{
 		{http.MethodGet, "/v1/emergency/emergency-service-contacts"},
 		{http.MethodGet, "/v1/emergency/emergency-service-contacts/{contact_id}"},
+		{http.MethodGet, "/v1/emergency/nema-zonal-territorial-operation-offices"},
+		{http.MethodGet, "/v1/emergency/nema-zonal-territorial-operation-offices/{office_id}"},
 	}
 }
 

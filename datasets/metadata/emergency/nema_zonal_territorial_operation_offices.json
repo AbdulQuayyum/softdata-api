@@ -1,0 +1,170 @@
+{
+  "country_code": "NG",
+  "dataset_key": "ng-nema-zonal-territorial-operation-offices",
+  "decision_counts": {
+    "retain": 17
+  },
+  "field_contract": {
+    "omitted": [
+      "lga_id",
+      "address",
+      "telephone",
+      "email",
+      "coverage_area",
+      "operational_status",
+      "website",
+      "logo_url"
+    ],
+    "optional": [],
+    "required": [
+      "id",
+      "name",
+      "office_type",
+      "state_id",
+      "country_code"
+    ]
+  },
+  "group": "emergency",
+  "limitations": [
+    "This is a dated institutional-office snapshot, not a live operational-status guarantee.",
+    "The primary source lists NEMA Zonal, Territorial and Operation office locations collectively; it does not classify each retained row into a narrower per-office subtype.",
+    "The public dataset retains only office identity, collective office type, state_id and country_code; addresses, telephone numbers, emails, LGA IDs, coverage areas and operational status are omitted because they are not consistently published as privacy-safe institutional row fields.",
+    "No NEMA office contact or emergency number was called, messaged or operationally tested.",
+    "Repository, service, HTTP API, OpenAPI, Postman and startup verification integration are deferred to later phases."
+  ],
+  "office_type_counts": {
+    "zonal_territorial_operation_office": 17
+  },
+  "official_terminology": "Zonal, Territorial and Operation offices",
+  "privacy": "Staff names and personal phone numbers found on the inspected Zonal & Territorial Offices page were not retained in generated artifacts. No personal contacts, incident data, caller data, credentials, cookies, raw HTML pages or temporary extraction files are committed.",
+  "reconciliation_path": "metadata/emergency/nema_zonal_territorial_operation_offices_reconciliation/index.json",
+  "record_count": 17,
+  "relative_path": "emergency/nema_zonal_territorial_operation_offices.json",
+  "retrieval_date": "2026-09-21",
+  "schema_path": "schemas/emergency/nema_zonal_territorial_operation_offices.schema.json",
+  "snapshot_date": "2026-09-21",
+  "source_row_count": 17,
+  "source_rows": 17,
+  "sources": {
+    "nema-about-nema": {
+      "canonical_url": "https://nema.gov.ng/about-nema/",
+      "extraction_method": "Supporting terminology extraction only: the page states NEMA has six zonal offices and lists their geopolitical-zone locations.",
+      "geographic_coverage": "Six geopolitical-zone zonal offices.",
+      "pagination": "Single WordPress page JSON object; no pagination or export endpoint.",
+      "publisher": "National Emergency Management Agency",
+      "retrieval_date": "2026-09-21",
+      "retrieval_url": "https://nema.gov.ng/wp-json/wp/v2/pages/2131",
+      "retrievals": [
+        {
+          "byte_size": 12690,
+          "content_type": "application/json; charset=UTF-8",
+          "etag": null,
+          "http_status": 200,
+          "last_modified": null,
+          "sha256": "f46e4106cb53897d2b49cda5b3dc838faeff29f0fbc96c57ec9460e5861b10c9"
+        }
+      ],
+      "reuse_terms": "No explicit reuse terms found on the source page.",
+      "row_count": 6,
+      "stability": "Retrieved public WordPress JSON representation once for supporting terminology and source metadata.",
+      "title": "About NEMA"
+    },
+    "nema-flood-operations-press-release": {
+      "canonical_url": "https://nema.gov.ng/flood-incidents-nema-activates-operational-offices-nationwide-to-support-states-conduct-assessments/",
+      "extraction_method": "Manual safe extraction of the paragraph listing NEMA Zonal, Territorial and Operation office locations; raw WordPress HTML/JSON was not committed.",
+      "geographic_coverage": "Nationwide list of office locations published in a NEMA press release.",
+      "modification_date": "2024-07-07",
+      "pagination": "Single WordPress post JSON object; no pagination or export endpoint.",
+      "publication_date": "2024-07-07",
+      "publisher": "National Emergency Management Agency",
+      "retrieval_date": "2026-09-21",
+      "retrieval_url": "https://nema.gov.ng/wp-json/wp/v2/posts/15629",
+      "retrievals": [
+        {
+          "byte_size": 5860,
+          "content_type": "application/json; charset=UTF-8",
+          "etag": null,
+          "http_status": 200,
+          "last_modified": null,
+          "sha256": "a3e1df80fd1f32ff8d0cbb658229e25b018dd08f7c3f6a5f1bc509697dd4598c"
+        },
+        {
+          "byte_size": 5860,
+          "content_type": "application/json; charset=UTF-8",
+          "etag": null,
+          "http_status": 200,
+          "last_modified": null,
+          "sha256": "a3e1df80fd1f32ff8d0cbb658229e25b018dd08f7c3f6a5f1bc509697dd4598c"
+        }
+      ],
+      "reuse_terms": "No explicit reuse terms found on the source page.",
+      "row_count": 17,
+      "stability": "Repeated retrieval of the public WordPress JSON representation was byte-identical; the HTML page varied because it includes dynamic WordPress content.",
+      "title": "FLOOD INCIDENTS: NEMA ACTIVATES OPERATIONAL OFFICES NATIONWIDE TO SUPPORT STATES, CONDUCT ASSESSMENTS"
+    },
+    "nema-zonal-territorial-offices": {
+      "canonical_url": "https://nema.gov.ng/zonal-territorial-offices/",
+      "extraction_method": "Inspected only as supporting context for NEMA office terminology and locations; staff names and personal phone numbers were not retained.",
+      "geographic_coverage": "NEMA staff-contact table covering zonal, territorial and operation-office labels.",
+      "pagination": "Single WordPress page JSON object; no pagination or export endpoint.",
+      "privacy_note": "The page contains staff names and phone numbers. They are excluded from all generated artifacts.",
+      "publisher": "National Emergency Management Agency",
+      "retrieval_date": "2026-09-21",
+      "retrieval_url": "https://nema.gov.ng/wp-json/wp/v2/pages/17130",
+      "retrievals": [
+        {
+          "byte_size": 38950,
+          "content_type": "application/json; charset=UTF-8",
+          "etag": null,
+          "http_status": 200,
+          "last_modified": null,
+          "sha256": "ab1615a1a976600cbb5e28890b89f69dc14a248beabd3cc1ba8a37c40c77bd0a"
+        }
+      ],
+      "reuse_terms": "No explicit reuse terms found on the source page.",
+      "row_count": 20,
+      "stability": "Retrieved public WordPress JSON representation once; page combines office labels with staff contacts and is not used as public row-level evidence.",
+      "title": "Zonal & Territorial Offices"
+    }
+  },
+  "state_aliases": {
+    "Abuja": "fct",
+    "Edo": "edo",
+    "Ekiti": "ekiti",
+    "Enugu": "enugu",
+    "Gombe": "gombe",
+    "Ibadan": "oyo",
+    "Jos": "plateau",
+    "Kaduna": "kaduna",
+    "Kano": "kano",
+    "Lagos": "lagos",
+    "Maiduguri": "borno",
+    "Minna": "niger",
+    "Owerri": "imo",
+    "Port Harcourt": "rivers",
+    "Sokoto": "sokoto",
+    "Uyo": "akwa-ibom",
+    "Yola": "adamawa"
+  },
+  "state_counts": {
+    "adamawa": 1,
+    "akwa-ibom": 1,
+    "borno": 1,
+    "edo": 1,
+    "ekiti": 1,
+    "enugu": 1,
+    "fct": 1,
+    "gombe": 1,
+    "imo": 1,
+    "kaduna": 1,
+    "kano": 1,
+    "lagos": 1,
+    "niger": 1,
+    "oyo": 1,
+    "plateau": 1,
+    "rivers": 1,
+    "sokoto": 1
+  },
+  "status": "dataset_foundation_only",
+  "title": "Nigeria NEMA Zonal, Territorial and Operation Offices Snapshot"
+}

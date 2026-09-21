@@ -172,6 +172,10 @@ func mapError(err error) mappedError {
 		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}
 	case errors.Is(err, services.ErrInvalidEmergencyServiceContactID), errors.Is(err, services.ErrInvalidEmergencyServiceContactPagination), errors.Is(err, services.ErrInvalidEmergencyServiceContactServiceType), errors.Is(err, services.ErrInvalidEmergencyServiceContactContactType), errors.Is(err, services.ErrInvalidEmergencyServiceContactCoverageType), errors.Is(err, services.ErrInvalidEmergencyServiceContactContactValue), errors.Is(err, services.ErrInvalidEmergencyServiceContactSearch):
 		return mappedError{status: http.StatusBadRequest, code: codeInvalidRequest, message: messageInvalidRequest}
+	case errors.Is(err, services.ErrNEMAZonalTerritorialOperationOfficeNotFound):
+		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}
+	case errors.Is(err, services.ErrInvalidNEMAZonalTerritorialOperationOfficeID), errors.Is(err, services.ErrInvalidNEMAZonalTerritorialOperationOfficePagination), errors.Is(err, services.ErrInvalidNEMAZonalTerritorialOperationOfficeStateID), errors.Is(err, services.ErrInvalidNEMAZonalTerritorialOperationOfficeType), errors.Is(err, services.ErrInvalidNEMAZonalTerritorialOperationOfficeSearch):
+		return mappedError{status: http.StatusBadRequest, code: codeInvalidRequest, message: messageInvalidRequest}
 	case errors.Is(err, services.ErrHealthFacilityNotFound):
 		return mappedError{status: http.StatusNotFound, code: codeResourceNotFound, message: messageResourceNotFound}
 	case errors.Is(err, services.ErrInvalidHealthFacilityID), errors.Is(err, services.ErrInvalidHealthFacilityPagination), errors.Is(err, services.ErrInvalidHealthFacilityStateID), errors.Is(err, services.ErrInvalidHealthFacilityLGAID), errors.Is(err, services.ErrInvalidHealthFacilityStateLGA), errors.Is(err, services.ErrInvalidHealthFacilityType), errors.Is(err, services.ErrInvalidHealthFacilityLevel), errors.Is(err, services.ErrInvalidHealthFacilityOwnership), errors.Is(err, services.ErrInvalidHealthFacilitySearch):

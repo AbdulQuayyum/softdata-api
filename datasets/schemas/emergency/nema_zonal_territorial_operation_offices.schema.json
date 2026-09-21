@@ -1,0 +1,68 @@
+{
+  "$defs": {
+    "nemaOffice": {
+      "additionalProperties": false,
+      "properties": {
+        "country_code": {
+          "const": "NG",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 255,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "office_type": {
+          "enum": [
+            "zonal_territorial_operation_office"
+          ],
+          "type": "string"
+        },
+        "state_id": {
+          "enum": [
+            "adamawa",
+            "akwa-ibom",
+            "borno",
+            "edo",
+            "ekiti",
+            "enugu",
+            "fct",
+            "gombe",
+            "imo",
+            "kaduna",
+            "kano",
+            "lagos",
+            "niger",
+            "oyo",
+            "plateau",
+            "rivers",
+            "sokoto"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "office_type",
+        "state_id",
+        "country_code"
+      ],
+      "type": "object"
+    }
+  },
+  "$id": "https://softdata-api.local/schemas/emergency/nema_zonal_territorial_operation_offices.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "items": {
+    "$ref": "#/$defs/nemaOffice"
+  },
+  "maxItems": 17,
+  "minItems": 17,
+  "title": "Nigeria NEMA Zonal, Territorial and Operation Offices Snapshot",
+  "type": "array",
+  "uniqueItems": true
+}

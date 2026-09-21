@@ -887,6 +887,39 @@ paths:
         "405": {$ref: "#/components/responses/MethodNotAllowedGet"}
         "500": {$ref: "#/components/responses/InternalError"}
         "503": {$ref: "#/components/responses/ServiceUnavailable"}
+  /v1/emergency/nema-zonal-territorial-operation-offices:
+    get:
+      tags: [Emergency]
+      operationId: listNEMAZonalTerritorialOperationOffices
+      summary: List NEMA Zonal, Territorial and Operation offices
+      description: Production-wired public GET route listing the dated 17-record NEMA Zonal, Territorial and Operation Offices Snapshot through the standard Emergency public middleware. The dataset represents only the narrower source-described Zonal, Territorial and Operation offices named by NEMA; it is not a complete register of all NEMA offices and inclusion does not guarantee current operational availability. No contact details are published, and no NEMA contact was called or messaged.
+      parameters:
+        - {$ref: "#/components/parameters/NEMAZonalTerritorialOperationOfficePage"}
+        - {$ref: "#/components/parameters/NEMAZonalTerritorialOperationOfficePageSize"}
+        - {$ref: "#/components/parameters/NEMAZonalTerritorialOperationOfficeStateID"}
+        - {$ref: "#/components/parameters/NEMAZonalTerritorialOperationOfficeType"}
+        - {$ref: "#/components/parameters/NEMAZonalTerritorialOperationOfficeSearch"}
+      responses:
+        "200": {description: NEMA office records, content: {application/json: {schema: {$ref: "#/components/schemas/NEMAZonalTerritorialOperationOfficeListResponse"}}}}
+        "400": {$ref: "#/components/responses/BadRequest"}
+        "405": {$ref: "#/components/responses/MethodNotAllowedGet"}
+        "500": {$ref: "#/components/responses/InternalError"}
+        "503": {$ref: "#/components/responses/ServiceUnavailable"}
+  /v1/emergency/nema-zonal-territorial-operation-offices/{office_id}:
+    get:
+      tags: [Emergency]
+      operationId: getNEMAZonalTerritorialOperationOffice
+      summary: Get a NEMA Zonal, Territorial and Operation office
+      description: Production-wired public GET route returning one record from the dated 17-record NEMA Zonal, Territorial and Operation Offices Snapshot through the standard Emergency public middleware. The dataset represents only the narrower source-described office category named by NEMA, is not a complete register of all NEMA offices, and does not guarantee current operational availability. No contact details are published, and no NEMA contact was called or messaged. A malformed office_id returns 400; a syntactically valid unknown office_id returns 404.
+      parameters:
+        - {$ref: "#/components/parameters/NEMAZonalTerritorialOperationOfficeID"}
+      responses:
+        "200": {description: NEMA office record, content: {application/json: {schema: {$ref: "#/components/schemas/NEMAZonalTerritorialOperationOfficeDetailResponse"}}}}
+        "400": {$ref: "#/components/responses/BadRequest"}
+        "404": {$ref: "#/components/responses/NotFound"}
+        "405": {$ref: "#/components/responses/MethodNotAllowedGet"}
+        "500": {$ref: "#/components/responses/InternalError"}
+        "503": {$ref: "#/components/responses/ServiceUnavailable"}
   /v1/healthcare/health-facilities:
     get:
       tags: [Healthcare]
@@ -2113,6 +2146,45 @@ components:
       description: Optional case-insensitive substring search across service and agency names only. Whitespace is trimmed; an empty trimmed value behaves as omitted. Maximum 100 characters after trimming. Metadata, source evidence, reconciliation reasons, notes and personal-contact fields are not searched.
       example: fire
       schema: {type: string, maxLength: 100}
+    NEMAZonalTerritorialOperationOfficeID:
+      name: office_id
+      in: path
+      required: true
+      description: Stable lowercase public identifier for the NEMA office record.
+      schema: {type: string, maxLength: 255, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'}
+      example: nema-lagos-zonal-territorial-operation-office
+    NEMAZonalTerritorialOperationOfficePage:
+      name: page
+      in: query
+      required: false
+      description: Page number. Defaults to 1. Values below 1, malformed values, signed values, decimals and integer overflows are rejected.
+      schema: {type: integer, minimum: 1, default: 1}
+    NEMAZonalTerritorialOperationOfficePageSize:
+      name: page_size
+      in: query
+      required: false
+      description: Number of records per page. Defaults to 50 and may not exceed 100. Invalid values are rejected rather than clamped.
+      schema: {type: integer, minimum: 1, maximum: 100, default: 50}
+    NEMAZonalTerritorialOperationOfficeStateID:
+      name: state_id
+      in: query
+      required: false
+      description: Optional exact canonical Nigerian state or FCT slug. No fuzzy geography aliases are applied.
+      example: lagos
+      schema: {$ref: "#/components/schemas/NEMAZonalTerritorialOperationOfficeStateID"}
+    NEMAZonalTerritorialOperationOfficeType:
+      name: office_type
+      in: query
+      required: false
+      description: Optional exact office type. The source publishes the retained entries collectively as Zonal, Territorial and Operation offices and does not classify rows into narrower subtypes.
+      schema: {type: string, enum: [zonal_territorial_operation_office]}
+    NEMAZonalTerritorialOperationOfficeSearch:
+      name: search
+      in: query
+      required: false
+      description: Optional case-insensitive substring search across office names only. Whitespace is trimmed; an empty trimmed value behaves as omitted. Maximum 100 characters after trimming. Source evidence, contacts, addresses and operational-status fields are not searched.
+      example: Lagos
+      schema: {type: string, maxLength: 100}
     HealthFacilityID:
       name: facility_id
       in: path
@@ -3265,6 +3337,46 @@ components:
       properties:
         success: {type: boolean}
         data: {$ref: "#/components/schemas/EmergencyServiceContact"}
+      required: [success, data]
+    NEMAZonalTerritorialOperationOfficeStateID:
+      type: string
+      enum: [adamawa, akwa-ibom, borno, edo, ekiti, enugu, fct, gombe, imo, kaduna, kano, lagos, niger, oyo, plateau, rivers, sokoto]
+    NEMAZonalTerritorialOperationOffice:
+      type: object
+      additionalProperties: false
+      description: A dated source-verified NEMA Zonal, Territorial and Operation office snapshot record served by production-wired public GET routes. The 17-record dataset represents only the narrower source-described office category named by NEMA, not a complete register of all NEMA offices. Inclusion does not guarantee current operational availability. No contact details are published and no NEMA contact was called or messaged.
+      properties:
+        id: {type: string, maxLength: 255, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$', example: nema-lagos-zonal-territorial-operation-office}
+        name: {type: string, example: NEMA Lagos Office}
+        office_type: {type: string, enum: [zonal_territorial_operation_office]}
+        state_id: {$ref: "#/components/schemas/NEMAZonalTerritorialOperationOfficeStateID"}
+        country_code: {type: string, enum: [NG]}
+      required: [id, name, office_type, state_id, country_code]
+    NEMAZonalTerritorialOperationOfficePagination:
+      type: object
+      additionalProperties: false
+      properties:
+        page: {type: integer, minimum: 1}
+        page_size: {type: integer, minimum: 1, maximum: 100}
+        total: {type: integer, format: int64, minimum: 0}
+        total_pages: {type: integer, minimum: 0}
+      required: [page, page_size, total, total_pages]
+    NEMAZonalTerritorialOperationOfficeListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success: {type: boolean}
+        data:
+          type: array
+          items: {$ref: "#/components/schemas/NEMAZonalTerritorialOperationOffice"}
+        meta: {$ref: "#/components/schemas/NEMAZonalTerritorialOperationOfficePagination"}
+      required: [success, data, meta]
+    NEMAZonalTerritorialOperationOfficeDetailResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success: {type: boolean}
+        data: {$ref: "#/components/schemas/NEMAZonalTerritorialOperationOffice"}
       required: [success, data]
     HealthFacility:
       type: object

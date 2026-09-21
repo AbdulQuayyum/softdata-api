@@ -19,3 +19,16 @@ type EmergencyServiceContact struct {
 	CallCost     string `json:"call_cost,omitempty"`
 	Notes        string `json:"notes,omitempty"`
 }
+
+// NEMAZonalTerritorialOperationOfficeIDMaxLength bounds public ASCII slug IDs for NEMA office records.
+const NEMAZonalTerritorialOperationOfficeIDMaxLength = 255
+
+// NEMAZonalTerritorialOperationOffice represents one source-verified NEMA office location.
+// It is published as a dated snapshot, not a live operational-status guarantee.
+type NEMAZonalTerritorialOperationOffice struct {
+	ID          string `json:"id"`
+	Name        string `json:"name"`
+	OfficeType  string `json:"office_type"`
+	StateID     string `json:"state_id"`
+	CountryCode string `json:"country_code"`
+}

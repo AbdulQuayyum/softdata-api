@@ -68,6 +68,7 @@ const (
 	healthcareNHIAStateSocialHealthInsuranceAgenciesPath       = "healthcare/nhia_state_social_health_insurance_agencies.json"
 	healthcareNHIAActiveAccreditedHealthcareProvidersPath      = "healthcare/nhia_active_accredited_healthcare_providers.json"
 	emergencyServiceContactsRelativePath                       = "emergency/emergency_service_contacts.json"
+	emergencyNEMAZonalTerritorialOperationOfficesRelativePath  = "emergency/nema_zonal_territorial_operation_offices.json"
 )
 
 var approvedUniversityStateIDs = map[string]struct{}{
@@ -302,6 +303,24 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	if err != nil {
 		return appDependencies{}, err
 	}
+	nemaOfficeService, nemaOfficeHandler, err := buildNEMAZonalTerritorialOperationOfficeHandler(ctx, jsonRepository,
+		func(repository interfaces.JSONFileRepository, recordsPath string) (interfaces.NEMAZonalTerritorialOperationOfficeRepository, error) {
+			return fileRepo.NewNEMAZonalTerritorialOperationOfficeRepository(repository, recordsPath)
+		},
+		func(repository interfaces.NEMAZonalTerritorialOperationOfficeRepository) (nemaZonalTerritorialOperationOfficeService, error) {
+			service, err := services.NewNEMAZonalTerritorialOperationOfficeService(repository)
+			if err != nil {
+				return nil, err
+			}
+			return service, nil
+		},
+		func(service nemaZonalTerritorialOperationOfficeService) (*handlers.NEMAZonalTerritorialOperationOfficeHandler, error) {
+			return handlers.NewNEMAZonalTerritorialOperationOfficeHandler(service)
+		},
+	)
+	if err != nil {
+		return appDependencies{}, err
+	}
 	financeHandler, err := handlers.NewFinanceHandlerWithPublicAPIURL(financeService, cfg.PublicAPIURL)
 	if err != nil {
 		return appDependencies{}, err
@@ -398,6 +417,7 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 		NHIAStateSocialHealthInsuranceAgencies:  nhiaSSHIAHandler,
 		NHIAActiveAccreditedHealthcareProviders: nhiaHCPHandler,
 		EmergencyServiceContacts:                emergencyContactHandler,
+		NEMAZonalTerritorialOperationOffices:    nemaOfficeHandler,
 		Finance:                                 financeHandler,
 		Auth:                                    authHandler,
 		Account:                                 accountHandler,
@@ -450,6 +470,8 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 		nhiaHCPService:    nhiaHCPService,
 		emergencyService:  emergencyContactService,
 		emergencyHandler:  emergencyContactHandler,
+		nemaOfficeService: nemaOfficeService,
+		nemaOfficeHandler: nemaOfficeHandler,
 	}
 	return deps, nil
 }

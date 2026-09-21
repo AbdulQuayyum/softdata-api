@@ -40,6 +40,8 @@ type appDependencies struct {
 	nhiaHCPService    nhiaActiveAccreditedHealthcareProviderService
 	emergencyService  emergencyServiceContactService
 	emergencyHandler  *handlers.EmergencyServiceContactHandler
+	nemaOfficeService nemaZonalTerritorialOperationOfficeService
+	nemaOfficeHandler *handlers.NEMAZonalTerritorialOperationOfficeHandler
 }
 
 // New builds the production app from configuration and a logger.

@@ -351,6 +351,26 @@
       "key": "emergencySearch",
       "value": "fire",
       "type": "string"
+    },
+    {
+      "key": "office_id",
+      "value": "nema-lagos-zonal-territorial-operation-office",
+      "type": "string"
+    },
+    {
+      "key": "nemaOfficeStateId",
+      "value": "lagos",
+      "type": "string"
+    },
+    {
+      "key": "nemaOfficeType",
+      "value": "zonal_territorial_operation_office",
+      "type": "string"
+    },
+    {
+      "key": "nemaOfficeSearch",
+      "value": "Lagos",
+      "type": "string"
     }
   ],
   "item": [
@@ -2219,7 +2239,7 @@
     },
     {
       "name": "Emergency",
-      "description": "Production-wired public Nigerian emergency-contact snapshot requests synchronized from docs/openapi.yaml. This is a dated source-verified institutional contact snapshot, not a live operational-status guarantee or complete emergency directory.",
+      "description": "Emergency API requests synchronized from docs/openapi.yaml. Emergency service contacts and NEMA Zonal, Territorial and Operation offices are production-wired public GET routes. Both snapshots are dated source-verified datasets, not live operational-status guarantees.",
       "item": [
         {
           "name": "List emergency service contacts",
@@ -2315,6 +2335,93 @@
                 "emergency",
                 "emergency-service-contacts",
                 "{{contact_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List NEMA Zonal, Territorial and Operation offices",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}",
+                "description": "Optional. Enable this header when using an API key for higher limits and usage analytics.",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "description": "Production-wired public GET route for listing the 17-record NEMA Zonal, Territorial and Operation offices snapshot. This request is synchronized from docs/openapi.yaml.",
+            "url": {
+              "raw": "{{baseUrl}}/v1/emergency/nema-zonal-territorial-operation-offices?page={{page}}&page_size={{page_size}}&state_id={{nemaOfficeStateId}}&office_type={{nemaOfficeType}}&search={{nemaOfficeSearch}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "emergency",
+                "nema-zonal-territorial-operation-offices"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "{{page}}",
+                  "description": "Positive page number. Default: 1."
+                },
+                {
+                  "key": "page_size",
+                  "value": "{{page_size}}",
+                  "description": "Page size from 1 to 100. Default: 50."
+                },
+                {
+                  "key": "state_id",
+                  "value": "{{nemaOfficeStateId}}",
+                  "description": "Optional exact canonical state/FCT ID.",
+                  "disabled": true
+                },
+                {
+                  "key": "office_type",
+                  "value": "{{nemaOfficeType}}",
+                  "description": "Optional office type enum.",
+                  "disabled": true
+                },
+                {
+                  "key": "search",
+                  "value": "{{nemaOfficeSearch}}",
+                  "description": "Optional office-name search.",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get a NEMA Zonal, Territorial and Operation office",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}",
+                "description": "Optional. Enable this header when using an API key for higher limits and usage analytics.",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "description": "Production-wired public GET route for retrieving one NEMA office snapshot record by office_id. This request is synchronized from docs/openapi.yaml.",
+            "url": {
+              "raw": "{{baseUrl}}/v1/emergency/nema-zonal-territorial-operation-offices/{{office_id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "emergency",
+                "nema-zonal-territorial-operation-offices",
+                "{{office_id}}"
               ]
             }
           },

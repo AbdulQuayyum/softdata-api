@@ -172,9 +172,6 @@ func TestEmergencyServiceContactPostmanContract(t *testing.T) {
 			emergency = folder.Item
 		}
 	}
-	if len(emergency) != 2 {
-		t.Fatalf("expected 2 emergency requests, got %d", len(emergency))
-	}
 	got := map[string]string{}
 	for _, item := range emergency {
 		if item.Request.Method != http.MethodGet {
@@ -189,6 +186,9 @@ func TestEmergencyServiceContactPostmanContract(t *testing.T) {
 		if strings.Contains(strings.ToLower(item.Request.URL.Raw), "secret") {
 			t.Fatal("secret marker in Postman emergency URL")
 		}
+	}
+	if got["List emergency service contacts"] == "" || got["Get an emergency service contact"] == "" {
+		t.Fatalf("expected emergency-contact requests in Emergency folder, got %#v", got)
 	}
 	if got["List emergency service contacts"] != "{{baseUrl}}/v1/emergency/emergency-service-contacts?page={{page}}&page_size={{page_size}}&service_type={{emergencyServiceType}}&contact_type={{emergencyContactType}}&coverage_type={{emergencyCoverageType}}&contact_value={{emergencyContactValue}}&search={{emergencySearch}}" {
 		t.Fatalf("bad list URL: %q", got["List emergency service contacts"])

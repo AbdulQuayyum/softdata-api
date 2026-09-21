@@ -22,6 +22,7 @@ type Handlers struct {
 	NHIAStateSocialHealthInsuranceAgencies  *handlers.NHIAStateSocialHealthInsuranceAgencyHandler
 	NHIAActiveAccreditedHealthcareProviders *handlers.NHIAActiveAccreditedHealthcareProviderHandler
 	EmergencyServiceContacts                *handlers.EmergencyServiceContactHandler
+	NEMAZonalTerritorialOperationOffices    *handlers.NEMAZonalTerritorialOperationOfficeHandler
 	Health                                  *handlers.HealthHandler
 	Discovery                               *handlers.DiscoveryHandler
 	Geography                               *handlers.GeographyHandler
@@ -108,6 +109,8 @@ func validateDependencies(h Handlers, mw Middleware) error {
 		return fmt.Errorf("nhia active accredited healthcare provider handler is required")
 	case h.EmergencyServiceContacts == nil:
 		return fmt.Errorf("emergency service contact handler is required")
+	case h.NEMAZonalTerritorialOperationOffices == nil:
+		return fmt.Errorf("nema zonal territorial operation office handler is required")
 	case h.Finance == nil:
 		return fmt.Errorf("finance handler is required")
 	case h.Auth == nil:
