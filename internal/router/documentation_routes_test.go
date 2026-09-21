@@ -329,6 +329,8 @@ func expectedEmergencyOperations() []operation {
 	return []operation{
 		{http.MethodGet, "/v1/emergency/emergency-service-contacts"},
 		{http.MethodGet, "/v1/emergency/emergency-service-contacts/{contact_id}"},
+		{http.MethodGet, "/v1/emergency/nema-zonal-territorial-operation-offices"},
+		{http.MethodGet, "/v1/emergency/nema-zonal-territorial-operation-offices/{office_id}"},
 	}
 }
 
