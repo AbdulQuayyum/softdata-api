@@ -177,6 +177,17 @@ Nigeria NEMA Zonal, Territorial and Operation Offices Snapshot.
 
 The package contains 17 institutional NEMA office-location records retained from the official NEMA press release stating that the Agency's “Zonal, Territorial and Operation offices” are located in Lagos, Ibadan, Ekiti, Abuja, Minna, Jos, Enugu, Owerri, Port Harcourt, Edo, Uyo, Kano, Sokoto, Kaduna, Maiduguri, Yola and Gombe. Public fields are limited to `id`, `name`, `office_type`, `state_id` and `country_code: NG`. The dataset is a dated source-verified snapshot of that collective office category, not a complete NEMA office directory and not a live operational-status guarantee. It does not infer narrower per-row zonal, territorial or operation subtypes. No emergency number or office contact was called or messaged. Addresses, LGA IDs, telephone numbers, emails, coverage areas and operational status are omitted, and staff names or personal phone numbers from the inspected NEMA staff-contact page are not retained. The completed feature includes repository and service access, list/detail handlers, request validators, OpenAPI and synchronized Postman contracts, production GET routes at `GET /v1/emergency/nema-zonal-territorial-operation-offices` and `GET /v1/emergency/nema-zonal-territorial-operation-offices/{office_id}`, standard public Emergency middleware, optional API-key identification, public rate limiting, usage tracking with `dataset_group=emergency`, stable usage templates, bounded startup verification, and a shared repository cache between startup verification and HTTP requests.
 
+### `ng-frsc-zonal-commands`
+
+Nigeria FRSC Zonal Commands Snapshot.
+
+- Data: `datasets/emergency/frsc_zonal_commands.json`
+- Schema: `datasets/schemas/emergency/frsc_zonal_commands.schema.json`
+- Metadata: `datasets/metadata/emergency/frsc_zonal_commands.json`
+- Reconciliation: `datasets/metadata/emergency/frsc_zonal_commands_reconciliation/index.json`
+
+The package contains 12 Federal Road Safety Corps zonal command records retained from the official FRSC Zonal Commands page and public API retrieved on 2026-09-21. The official terminology is “Zonal Commands”, so this dataset uses the narrower `ng-frsc-zonal-commands` identity rather than the broad provisional FRSC commands identity. Public fields are limited to `id`, `name`, `command_type`, `command_code`, `state_id` and `country_code: NG`; the only command type is `zonal_command`. Sector commands, unit commands, outposts, driver-licence centres and other FRSC offices are excluded. State IDs identify the published zonal command headquarters state/FCT, not full zone coverage. Addresses, telephone numbers, emails, images, commanders, staff names, coordinates, websites and operational status are omitted. This is a dated source-verified snapshot, not a complete FRSC command directory and not a live operational-status guarantee. Absence does not prove that a command does not exist. No FRSC office, command contact or emergency line was called, messaged or operationally tested. Repository, service, HTTP API, OpenAPI, Postman and startup verification integration are deferred to later phases.
+
 ### `ng-universities`
 
 Nigeria's current National Universities Commission register of federal, state and private universities.

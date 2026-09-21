@@ -1,0 +1,94 @@
+{
+  "dataset_key": "ng-frsc-zonal-commands",
+  "decision_counts": {
+    "retain": 12
+  },
+  "final_record_count": 12,
+  "partitions": [
+    {
+      "partition_key": "adamawa",
+      "path": "metadata/emergency/frsc_zonal_commands_reconciliation/adamawa.json",
+      "sha256": "2813837f3707cbb65b7d8922586630712da5f38cf28ee0cc92bfd34c413d71a4",
+      "size_bytes": 1036,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "bauchi",
+      "path": "metadata/emergency/frsc_zonal_commands_reconciliation/bauchi.json",
+      "sha256": "5a68aadfd4a8ba2668634fcea0d97e1e0d60fbc26c2502bd254945c047b5f9ab",
+      "size_bytes": 1038,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "edo",
+      "path": "metadata/emergency/frsc_zonal_commands_reconciliation/edo.json",
+      "sha256": "e2701d2385a2e7a18b09aae90e7c4298989e063cabe86cd3e295a5b05ee4e2db",
+      "size_bytes": 1004,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "enugu",
+      "path": "metadata/emergency/frsc_zonal_commands_reconciliation/enugu.json",
+      "sha256": "e7781f573671494a53ed0c8737d19839b891855742ab1bdadf9cf57233daaa98",
+      "size_bytes": 1020,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "fct",
+      "path": "metadata/emergency/frsc_zonal_commands_reconciliation/fct.json",
+      "sha256": "2f477fca515f9fc4b65ff1bab9322458887c4f8bfe0696ff1896ed2467983a5b",
+      "size_bytes": 1004,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "kaduna",
+      "path": "metadata/emergency/frsc_zonal_commands_reconciliation/kaduna.json",
+      "sha256": "3aa02a6290cffba352644327b4650a33bc1a929565fe53690dcd6a418d4e9944",
+      "size_bytes": 1028,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "kwara",
+      "path": "metadata/emergency/frsc_zonal_commands_reconciliation/kwara.json",
+      "sha256": "265b8ec63019435f108534654356b9b42e14f414a2f5b75325b44d4c0133df3a",
+      "size_bytes": 1020,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "lagos",
+      "path": "metadata/emergency/frsc_zonal_commands_reconciliation/lagos.json",
+      "sha256": "9f8f8cbb074a6424fe9fbf8e0baa579c07c50cb6b68f62f79910256fd405f1f8",
+      "size_bytes": 1020,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "osun",
+      "path": "metadata/emergency/frsc_zonal_commands_reconciliation/osun.json",
+      "sha256": "593918ca67e4b0e7db08901a23fd8f85b128686b5502abc3c19e0baab43be6ea",
+      "size_bytes": 1022,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "plateau",
+      "path": "metadata/emergency/frsc_zonal_commands_reconciliation/plateau.json",
+      "sha256": "7e54c446dbde8b0c17360f1a752899f3674ea156363389fefd4b478386bc1ad4",
+      "size_bytes": 1036,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "rivers",
+      "path": "metadata/emergency/frsc_zonal_commands_reconciliation/rivers.json",
+      "sha256": "79715ca594ef4a623ba4abb808274690a23364a7d5f043f585f6eed813bd3104",
+      "size_bytes": 1028,
+      "source_rows": 1
+    },
+    {
+      "partition_key": "sokoto",
+      "path": "metadata/emergency/frsc_zonal_commands_reconciliation/sokoto.json",
+      "sha256": "c1df85787031807927362d061a87a53e43b3f0408689d2b45c20dddc12a3b23a",
+      "size_bytes": 1038,
+      "source_rows": 1
+    }
+  ],
+  "source_rows": 12
+}

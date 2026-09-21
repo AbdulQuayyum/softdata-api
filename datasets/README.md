@@ -24,6 +24,7 @@ datasets/
 │   └── medical_laboratory_accreditations.json
 ├── emergency/
 │   ├── emergency_service_contacts.json
+│   ├── frsc_zonal_commands.json
 │   └── nema_zonal_territorial_operation_offices.json
 ├── finance/
 │   ├── development_finance_institutions.json
@@ -75,6 +76,10 @@ datasets/
 │   │   ├── emergency_service_contacts_reconciliation/
 │   │   │   ├── index.json
 │   │   │   └── national.json
+│   │   ├── frsc_zonal_commands.json
+│   │   ├── frsc_zonal_commands_reconciliation/
+│   │   │   ├── index.json
+│   │   │   └── {state_id}.json
 │   │   ├── nema_zonal_territorial_operation_offices.json
 │   │   └── nema_zonal_territorial_operation_offices_reconciliation/
 │   │       ├── index.json
@@ -112,6 +117,7 @@ datasets/
 │   │   └── nhia_state_social_health_insurance_agencies.schema.json
 │   ├── emergency/
 │   │   ├── emergency_service_contacts.schema.json
+│   │   ├── frsc_zonal_commands.schema.json
 │   │   └── nema_zonal_territorial_operation_offices.schema.json
 │   └── finance/
 │       ├── development_finance_institutions.schema.json
@@ -152,6 +158,7 @@ Regulated-finance logo assets are embedded under `assets/financial-institutions/
 - `healthcare/nhia_active_accredited_healthcare_providers.json` is a 6,536-record dated privacy-safe snapshot from NHIA's Health Care Providers page and embedded active-accredited provider table. It retains only provider code, provider name, facility type, country code and listing status; four rows in two duplicate-code conflict groups are excluded in reconciliation. Source addresses are discarded during extraction and the dataset omits state/LGA values, addresses, coordinates, ownership, websites, logos, phone numbers, emails, directors, contacts and other personal or sensitive information. It is not a live licensing, registration or operational-status register and is not merged with the GRID3 health-facilities snapshot.
 - `emergency/emergency_service_contacts.json` is a 5-record dated snapshot of official Nigerian institutional emergency-service contacts from NCC, FRSC, NEMA and Federal Fire Service sources retrieved on 2026-09-20. It retains only source-supported service identity, agency identity, contact type/value, coverage type, country code and evidence-backed availability/call-cost notes. It is not a complete nationwide emergency directory and does not assert live operational status.
 - `emergency/nema_zonal_territorial_operation_offices.json` is a 17-record dated snapshot of NEMA “Zonal, Territorial and Operation offices” from an official NEMA press release retrieved on 2026-09-21. It retains only office identity, the collective source office category, canonical state/FCT ID and `country_code: NG`. Addresses, LGA IDs, telephone numbers, emails, coverage areas and operational status are omitted; staff-contact details from the inspected NEMA contact page are excluded. It is not a complete register of all NEMA offices and is not a live operational-status or current-availability guarantee; no NEMA contact was called or messaged. The completed feature includes the static dataset foundation, schema, metadata, reconciliation, repository and service access, list/detail handlers, validators, OpenAPI contract, Postman requests, production GET routes at `GET /v1/emergency/nema-zonal-territorial-operation-offices` and `GET /v1/emergency/nema-zonal-territorial-operation-offices/{office_id}`, standard public Emergency middleware, optional API-key identification, public rate limiting, usage tracking with `dataset_group=emergency`, stable usage templates, bounded startup verification, and one repository cache shared by startup verification and HTTP.
+- `emergency/frsc_zonal_commands.json` is a 12-record dated snapshot of Federal Road Safety Corps “Zonal Commands” from the official FRSC Zonal Commands page and public API retrieved on 2026-09-21. It uses the narrower `ng-frsc-zonal-commands` identity because the retained source publishes zonal commands, not a complete mixed FRSC command directory. Public fields are limited to `id`, `name`, `command_type`, `command_code`, `state_id` and `country_code: NG`; the only command type is `zonal_command`. Sector commands, unit commands, outposts, driver-licence centres and other offices are excluded. Addresses, telephone numbers, emails, images, commanders, staff names, coordinates, websites and operational status are omitted. State IDs identify the published zonal command headquarters state/FCT, not full zone coverage. The dataset is not a live operational-status guarantee, absence does not prove that a command does not exist, and no FRSC office, command contact or emergency line was called or messaged. Repository/API integration is deferred.
 - `finance/international_money_transfer_operators.json` is the compiled register snapshot of current CBN-listed IMTO entries, with optional verified website URLs.
 - `finance/currencies.json` is the compiled snapshot of current ISO 4217 monetary currencies.
 - `finance/payment_service_providers.json` is the compiled register snapshot of payment-service-provider memberships.

@@ -1,0 +1,30 @@
+{
+  "dataset_key": "ng-frsc-zonal-commands",
+  "partition_key": "edo",
+  "records": [
+    {
+      "decision": "retain",
+      "normalized": {
+        "command_code": "RS5HQ",
+        "command_type": "zonal_command",
+        "country_code": "NG",
+        "id": "frsc-rs5hq-edo-zonal-command",
+        "name": "FRSC RS5HQ Edo Zonal Command",
+        "state_id": "edo"
+      },
+      "normalized_command_type": "zonal_command",
+      "normalized_name": "FRSC RS5HQ Edo Zonal Command",
+      "reason": "Official FRSC Zonal Commands public API row publishes this command code and state in the Zonal Commands directory.",
+      "source_command_code": "RS5HQ",
+      "source_command_type": "Zonal Commands",
+      "source_evidence_id": "frsc-zonal-commands-api:5",
+      "source_key": "frsc-zonal-commands-api",
+      "source_name": "RS5HQ",
+      "source_order": 5,
+      "source_position": 5,
+      "source_state": "Edo",
+      "state_id": "edo",
+      "target_id": "frsc-rs5hq-edo-zonal-command"
+    }
+  ]
+}

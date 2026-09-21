@@ -32,3 +32,17 @@ type NEMAZonalTerritorialOperationOffice struct {
 	StateID     string `json:"state_id"`
 	CountryCode string `json:"country_code"`
 }
+
+// FRSCZonalCommandIDMaxLength bounds public ASCII slug IDs for FRSC zonal command records.
+const FRSCZonalCommandIDMaxLength = 255
+
+// FRSCZonalCommand represents one source-verified Federal Road Safety Corps zonal command.
+// It is published as a dated snapshot, not a live operational-status guarantee.
+type FRSCZonalCommand struct {
+	ID          string `json:"id"`
+	Name        string `json:"name"`
+	CommandType string `json:"command_type"`
+	CommandCode string `json:"command_code"`
+	StateID     string `json:"state_id"`
+	CountryCode string `json:"country_code"`
+}

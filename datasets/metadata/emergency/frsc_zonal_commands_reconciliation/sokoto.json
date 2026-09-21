@@ -1,0 +1,30 @@
+{
+  "dataset_key": "ng-frsc-zonal-commands",
+  "partition_key": "sokoto",
+  "records": [
+    {
+      "decision": "retain",
+      "normalized": {
+        "command_code": "RS10HQ",
+        "command_type": "zonal_command",
+        "country_code": "NG",
+        "id": "frsc-rs10hq-sokoto-zonal-command",
+        "name": "FRSC RS10HQ Sokoto Zonal Command",
+        "state_id": "sokoto"
+      },
+      "normalized_command_type": "zonal_command",
+      "normalized_name": "FRSC RS10HQ Sokoto Zonal Command",
+      "reason": "Official FRSC Zonal Commands public API row publishes this command code and state in the Zonal Commands directory.",
+      "source_command_code": "RS10HQ",
+      "source_command_type": "Zonal Commands",
+      "source_evidence_id": "frsc-zonal-commands-api:10",
+      "source_key": "frsc-zonal-commands-api",
+      "source_name": "RS10HQ",
+      "source_order": 10,
+      "source_position": 10,
+      "source_state": "Sokoto",
+      "state_id": "sokoto",
+      "target_id": "frsc-rs10hq-sokoto-zonal-command"
+    }
+  ]
+}

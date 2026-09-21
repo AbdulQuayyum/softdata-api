@@ -1,0 +1,68 @@
+{
+  "$defs": {
+    "frscZonalCommand": {
+      "additionalProperties": false,
+      "properties": {
+        "command_code": {
+          "pattern": "^RS(?:[1-9]|1[0-2])HQ$",
+          "type": "string"
+        },
+        "command_type": {
+          "enum": [
+            "zonal_command"
+          ],
+          "type": "string"
+        },
+        "country_code": {
+          "const": "NG",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 255,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "state_id": {
+          "enum": [
+            "adamawa",
+            "bauchi",
+            "edo",
+            "enugu",
+            "fct",
+            "kaduna",
+            "kwara",
+            "lagos",
+            "osun",
+            "plateau",
+            "rivers",
+            "sokoto"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "command_type",
+        "command_code",
+        "state_id",
+        "country_code"
+      ],
+      "type": "object"
+    }
+  },
+  "$id": "https://softdata-api.local/schemas/emergency/frsc_zonal_commands.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "items": {
+    "$ref": "#/$defs/frscZonalCommand"
+  },
+  "maxItems": 12,
+  "minItems": 12,
+  "title": "Nigeria FRSC Zonal Commands Snapshot",
+  "type": "array",
+  "uniqueItems": true
+}

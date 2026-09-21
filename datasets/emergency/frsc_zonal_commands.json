@@ -1,0 +1,98 @@
+[
+  {
+    "command_code": "RS10HQ",
+    "command_type": "zonal_command",
+    "country_code": "NG",
+    "id": "frsc-rs10hq-sokoto-zonal-command",
+    "name": "FRSC RS10HQ Sokoto Zonal Command",
+    "state_id": "sokoto"
+  },
+  {
+    "command_code": "RS11HQ",
+    "command_type": "zonal_command",
+    "country_code": "NG",
+    "id": "frsc-rs11hq-osun-zonal-command",
+    "name": "FRSC RS11HQ Osun Zonal Command",
+    "state_id": "osun"
+  },
+  {
+    "command_code": "RS12HQ",
+    "command_type": "zonal_command",
+    "country_code": "NG",
+    "id": "frsc-rs12hq-bauchi-zonal-command",
+    "name": "FRSC RS12HQ Bauchi Zonal Command",
+    "state_id": "bauchi"
+  },
+  {
+    "command_code": "RS1HQ",
+    "command_type": "zonal_command",
+    "country_code": "NG",
+    "id": "frsc-rs1hq-kaduna-zonal-command",
+    "name": "FRSC RS1HQ Kaduna Zonal Command",
+    "state_id": "kaduna"
+  },
+  {
+    "command_code": "RS2HQ",
+    "command_type": "zonal_command",
+    "country_code": "NG",
+    "id": "frsc-rs2hq-lagos-zonal-command",
+    "name": "FRSC RS2HQ Lagos Zonal Command",
+    "state_id": "lagos"
+  },
+  {
+    "command_code": "RS3HQ",
+    "command_type": "zonal_command",
+    "country_code": "NG",
+    "id": "frsc-rs3hq-adamawa-zonal-command",
+    "name": "FRSC RS3HQ Adamawa Zonal Command",
+    "state_id": "adamawa"
+  },
+  {
+    "command_code": "RS4HQ",
+    "command_type": "zonal_command",
+    "country_code": "NG",
+    "id": "frsc-rs4hq-plateau-zonal-command",
+    "name": "FRSC RS4HQ Plateau Zonal Command",
+    "state_id": "plateau"
+  },
+  {
+    "command_code": "RS5HQ",
+    "command_type": "zonal_command",
+    "country_code": "NG",
+    "id": "frsc-rs5hq-edo-zonal-command",
+    "name": "FRSC RS5HQ Edo Zonal Command",
+    "state_id": "edo"
+  },
+  {
+    "command_code": "RS6HQ",
+    "command_type": "zonal_command",
+    "country_code": "NG",
+    "id": "frsc-rs6hq-rivers-zonal-command",
+    "name": "FRSC RS6HQ Rivers Zonal Command",
+    "state_id": "rivers"
+  },
+  {
+    "command_code": "RS7HQ",
+    "command_type": "zonal_command",
+    "country_code": "NG",
+    "id": "frsc-rs7hq-fct-zonal-command",
+    "name": "FRSC RS7HQ FCT Zonal Command",
+    "state_id": "fct"
+  },
+  {
+    "command_code": "RS8HQ",
+    "command_type": "zonal_command",
+    "country_code": "NG",
+    "id": "frsc-rs8hq-kwara-zonal-command",
+    "name": "FRSC RS8HQ Kwara Zonal Command",
+    "state_id": "kwara"
+  },
+  {
+    "command_code": "RS9HQ",
+    "command_type": "zonal_command",
+    "country_code": "NG",
+    "id": "frsc-rs9hq-enugu-zonal-command",
+    "name": "FRSC RS9HQ Enugu Zonal Command",
+    "state_id": "enugu"
+  }
+]

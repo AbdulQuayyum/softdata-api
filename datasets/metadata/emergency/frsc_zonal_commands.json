@@ -1,0 +1,114 @@
+{
+  "command_type_counts": {
+    "zonal_command": 12
+  },
+  "country_code": "NG",
+  "dataset_key": "ng-frsc-zonal-commands",
+  "decision_counts": {
+    "retain": 12
+  },
+  "excluded_command_types": [
+    "sector_command",
+    "unit_command",
+    "outpost",
+    "headquarters",
+    "driver_licence_centre",
+    "road_safety_office"
+  ],
+  "field_contract": {
+    "omitted": [
+      "lga_id",
+      "address",
+      "telephone",
+      "email",
+      "website",
+      "logo_url",
+      "coordinates",
+      "commander",
+      "staff",
+      "operational_status",
+      "parent_command_id"
+    ],
+    "optional": [],
+    "required": [
+      "id",
+      "name",
+      "command_type",
+      "command_code",
+      "state_id",
+      "country_code"
+    ]
+  },
+  "group": "emergency",
+  "hierarchy": "No parent-child hierarchy is published by the retained safe fields; parent_command_id is omitted.",
+  "limitations": [
+    "This is a dated institutional-command snapshot, not a live operational-status guarantee.",
+    "The dataset is limited to FRSC Zonal Commands published by the official FRSC Zonal Commands directory; sector commands, unit commands, outposts, driver-licence centres and other offices are excluded.",
+    "State IDs identify the published zonal command headquarters state/FCT, not a full service-coverage area.",
+    "The public dataset omits addresses, phone numbers, emails, images, commanders, staff names, coordinates, websites and operational status.",
+    "No FRSC office, command contact or emergency line was called, messaged or operationally tested.",
+    "Repository, service, HTTP API, OpenAPI, Postman and startup verification integration are deferred to later phases."
+  ],
+  "official_terminology": "Zonal Commands",
+  "privacy": "The source contains contact and personnel-adjacent fields, including commander, phone, email, address and image fields. These values are discarded and are not present in generated artifacts.",
+  "reconciliation_path": "metadata/emergency/frsc_zonal_commands_reconciliation/index.json",
+  "record_count": 12,
+  "relative_path": "emergency/frsc_zonal_commands.json",
+  "retrieval_date": "2026-09-21",
+  "schema_path": "schemas/emergency/frsc_zonal_commands.schema.json",
+  "snapshot_date": "2026-09-21",
+  "source_row_count": 12,
+  "source_rows": 12,
+  "sources": {
+    "frsc-zonal-commands-api": {
+      "canonical_url": "https://www.frsc.gov.ng/commands/zonal-commands/",
+      "command_types": [
+        "zonal_command"
+      ],
+      "extraction_method": "Manual safe extraction of order, code and state fields from the public API used by the official page; names, phones, emails, addresses and images were not committed.",
+      "geographic_coverage": "Twelve FRSC zonal command headquarters states/FCT published by the official FRSC Zonal Commands directory.",
+      "pagination": "Single Strapi collection response consumed by the official FRSC Zonal Commands page; no export endpoint found.",
+      "publisher": "Federal Road Safety Corps",
+      "retrieval_date": "2026-09-21",
+      "retrieval_url": "https://staging.frsc.gov.ng/frsc-admin/api/zonal-commands?populate=image&sort=order:asc",
+      "retrievals": [
+        {
+          "byte_size": 26169,
+          "content_type": "application/json; charset=utf-8",
+          "etag": null,
+          "http_status": 200,
+          "last_modified": null,
+          "sha256": "2474a790bf576fb8b63366b5a60bb4e63ca179728a05013b347f9fbd7adc7a1c"
+        },
+        {
+          "byte_size": 26169,
+          "content_type": "application/json; charset=utf-8",
+          "etag": null,
+          "http_status": 200,
+          "last_modified": null,
+          "sha256": "2474a790bf576fb8b63366b5a60bb4e63ca179728a05013b347f9fbd7adc7a1c"
+        }
+      ],
+      "reuse_terms": "No explicit reuse or attribution terms found on the inspected public page.",
+      "row_count": 12,
+      "stability": "Two retrievals of the public JSON response were byte-identical.",
+      "title": "Zonal Commands"
+    }
+  },
+  "state_counts": {
+    "adamawa": 1,
+    "bauchi": 1,
+    "edo": 1,
+    "enugu": 1,
+    "fct": 1,
+    "kaduna": 1,
+    "kwara": 1,
+    "lagos": 1,
+    "osun": 1,
+    "plateau": 1,
+    "rivers": 1,
+    "sokoto": 1
+  },
+  "status": "dataset_foundation_only",
+  "title": "Nigeria FRSC Zonal Commands Snapshot"
+}
