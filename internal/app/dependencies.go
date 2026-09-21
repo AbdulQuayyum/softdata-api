@@ -303,7 +303,7 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	if err != nil {
 		return appDependencies{}, err
 	}
-	nemaOfficeService, err := buildNEMAZonalTerritorialOperationOfficeServiceFromJSONRepository(ctx, jsonRepository,
+	nemaOfficeService, nemaOfficeHandler, err := buildNEMAZonalTerritorialOperationOfficeHandler(ctx, jsonRepository,
 		func(repository interfaces.JSONFileRepository, recordsPath string) (interfaces.NEMAZonalTerritorialOperationOfficeRepository, error) {
 			return fileRepo.NewNEMAZonalTerritorialOperationOfficeRepository(repository, recordsPath)
 		},
@@ -313,6 +313,9 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 				return nil, err
 			}
 			return service, nil
+		},
+		func(service nemaZonalTerritorialOperationOfficeService) (*handlers.NEMAZonalTerritorialOperationOfficeHandler, error) {
+			return handlers.NewNEMAZonalTerritorialOperationOfficeHandler(service)
 		},
 	)
 	if err != nil {
@@ -414,6 +417,7 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 		NHIAStateSocialHealthInsuranceAgencies:  nhiaSSHIAHandler,
 		NHIAActiveAccreditedHealthcareProviders: nhiaHCPHandler,
 		EmergencyServiceContacts:                emergencyContactHandler,
+		NEMAZonalTerritorialOperationOffices:    nemaOfficeHandler,
 		Finance:                                 financeHandler,
 		Auth:                                    authHandler,
 		Account:                                 accountHandler,
@@ -467,6 +471,7 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 		emergencyService:  emergencyContactService,
 		emergencyHandler:  emergencyContactHandler,
 		nemaOfficeService: nemaOfficeService,
+		nemaOfficeHandler: nemaOfficeHandler,
 	}
 	return deps, nil
 }

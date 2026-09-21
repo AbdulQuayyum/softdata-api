@@ -49,11 +49,14 @@ func TestNEMAZonalTerritorialOperationOfficeOpenAPIContract(t *testing.T) {
 		"does not guarantee current operational availability",
 		"No contact details are published",
 		"no NEMA contact was called or messaged",
-		"Production route registration and startup verification are not part of this phase",
+		"Production-wired public GET route",
+		"standard Emergency public middleware",
 	} {
 		requireContains(t, list+detail, phrase)
 	}
-	requireNotContains(t, strings.ToLower(list+detail), "production-wired")
+	for _, stale := range []string{"production route registration and startup verification are not part of this phase", "production registration is deferred", "not production-wired", "http contract only"} {
+		requireNotContains(t, strings.ToLower(list+detail), stale)
+	}
 
 	for _, tc := range []struct{ suffix, name, location, schema string }{
 		{"ID", "office_id", "path", "maxLength: 255"},

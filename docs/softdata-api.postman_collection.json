@@ -2239,7 +2239,7 @@
     },
     {
       "name": "Emergency",
-      "description": "Emergency API requests synchronized from docs/openapi.yaml. Emergency service contacts are production-wired; NEMA office requests document the public HTTP contract before production route registration. Both snapshots are dated source-verified datasets, not live operational-status guarantees.",
+      "description": "Emergency API requests synchronized from docs/openapi.yaml. Emergency service contacts and NEMA Zonal, Territorial and Operation offices are production-wired public GET routes. Both snapshots are dated source-verified datasets, not live operational-status guarantees.",
       "item": [
         {
           "name": "List emergency service contacts",
@@ -2353,7 +2353,7 @@
                 "disabled": true
               }
             ],
-            "description": "Documented HTTP contract for listing the 17-record NEMA Zonal, Territorial and Operation offices snapshot. Production route registration is deferred; this request is synchronized from docs/openapi.yaml.",
+            "description": "Production-wired public GET route for listing the 17-record NEMA Zonal, Territorial and Operation offices snapshot. This request is synchronized from docs/openapi.yaml.",
             "url": {
               "raw": "{{baseUrl}}/v1/emergency/nema-zonal-territorial-operation-offices?page={{page}}&page_size={{page_size}}&state_id={{nemaOfficeStateId}}&office_type={{nemaOfficeType}}&search={{nemaOfficeSearch}}",
               "host": [
@@ -2411,7 +2411,7 @@
                 "disabled": true
               }
             ],
-            "description": "Documented HTTP contract for retrieving one NEMA office snapshot record by office_id. Production route registration is deferred; this request is synchronized from docs/openapi.yaml.",
+            "description": "Production-wired public GET route for retrieving one NEMA office snapshot record by office_id. This request is synchronized from docs/openapi.yaml.",
             "url": {
               "raw": "{{baseUrl}}/v1/emergency/nema-zonal-territorial-operation-offices/{{office_id}}",
               "host": [

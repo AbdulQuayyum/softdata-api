@@ -892,7 +892,7 @@ paths:
       tags: [Emergency]
       operationId: listNEMAZonalTerritorialOperationOffices
       summary: List NEMA Zonal, Territorial and Operation offices
-      description: Documented HTTP contract for the dated 17-record NEMA Zonal, Territorial and Operation Offices Snapshot. The dataset represents only the narrower source-described Zonal, Territorial and Operation offices named by NEMA; it is not a complete register of all NEMA offices and inclusion does not guarantee current operational availability. No contact details are published, and no NEMA contact was called or messaged. Production route registration and startup verification are not part of this phase.
+      description: Production-wired public GET route listing the dated 17-record NEMA Zonal, Territorial and Operation Offices Snapshot through the standard Emergency public middleware. The dataset represents only the narrower source-described Zonal, Territorial and Operation offices named by NEMA; it is not a complete register of all NEMA offices and inclusion does not guarantee current operational availability. No contact details are published, and no NEMA contact was called or messaged.
       parameters:
         - {$ref: "#/components/parameters/NEMAZonalTerritorialOperationOfficePage"}
         - {$ref: "#/components/parameters/NEMAZonalTerritorialOperationOfficePageSize"}
@@ -910,7 +910,7 @@ paths:
       tags: [Emergency]
       operationId: getNEMAZonalTerritorialOperationOffice
       summary: Get a NEMA Zonal, Territorial and Operation office
-      description: Documented HTTP contract returning one record from the dated 17-record NEMA Zonal, Territorial and Operation Offices Snapshot. The dataset represents only the narrower source-described office category named by NEMA, is not a complete register of all NEMA offices, and does not guarantee current operational availability. No contact details are published, and no NEMA contact was called or messaged. A malformed office_id returns 400; a syntactically valid unknown office_id returns 404. Production route registration and startup verification are not part of this phase.
+      description: Production-wired public GET route returning one record from the dated 17-record NEMA Zonal, Territorial and Operation Offices Snapshot through the standard Emergency public middleware. The dataset represents only the narrower source-described office category named by NEMA, is not a complete register of all NEMA offices, and does not guarantee current operational availability. No contact details are published, and no NEMA contact was called or messaged. A malformed office_id returns 400; a syntactically valid unknown office_id returns 404.
       parameters:
         - {$ref: "#/components/parameters/NEMAZonalTerritorialOperationOfficeID"}
       responses:
@@ -3344,7 +3344,7 @@ components:
     NEMAZonalTerritorialOperationOffice:
       type: object
       additionalProperties: false
-      description: A dated source-verified NEMA Zonal, Territorial and Operation office snapshot record. The 17-record dataset represents only the narrower source-described office category named by NEMA, not a complete register of all NEMA offices. Inclusion does not guarantee current operational availability. No contact details are published and no NEMA contact was called or messaged. Production route registration and startup verification are not part of this phase.
+      description: A dated source-verified NEMA Zonal, Territorial and Operation office snapshot record served by production-wired public GET routes. The 17-record dataset represents only the narrower source-described office category named by NEMA, not a complete register of all NEMA offices. Inclusion does not guarantee current operational availability. No contact details are published and no NEMA contact was called or messaged.
       properties:
         id: {type: string, maxLength: 255, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$', example: nema-lagos-zonal-territorial-operation-office}
         name: {type: string, example: NEMA Lagos Office}
