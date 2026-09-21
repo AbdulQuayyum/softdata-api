@@ -144,6 +144,14 @@ func TestOpenAPIPostmanParity(t *testing.T) {
 			t.Fatalf("bad healthcare operation expectation: %s", op)
 		}
 	}
+	for _, op := range expectedEmergencyOperations() {
+		if _, ok := postmanOps[op]; !ok {
+			t.Fatalf("emergency operation missing from Postman: %s", op)
+		}
+		if !strings.HasPrefix(op.path, "/v1/emergency/") || op.method != http.MethodGet {
+			t.Fatalf("bad emergency operation expectation: %s", op)
+		}
+	}
 
 	for op, count := range postmanOps {
 		if count != 1 {
@@ -265,6 +273,13 @@ func expectedHealthcareOperations() []operation {
 		{http.MethodGet, "/v1/healthcare/nhia-state-social-health-insurance-agencies/{agency_id}"},
 		{http.MethodGet, "/v1/healthcare/nhia-active-accredited-healthcare-providers"},
 		{http.MethodGet, "/v1/healthcare/nhia-active-accredited-healthcare-providers/{provider_id}"},
+	}
+}
+
+func expectedEmergencyOperations() []operation {
+	return []operation{
+		{http.MethodGet, "/v1/emergency/emergency-service-contacts"},
+		{http.MethodGet, "/v1/emergency/emergency-service-contacts/{contact_id}"},
 	}
 }
 

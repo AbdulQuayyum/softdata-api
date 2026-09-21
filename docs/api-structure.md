@@ -578,7 +578,7 @@ PostgreSQL pool creation, readiness checks, and generated sqlc persistence code.
 
 ### `internal/handlers/`
 
-HTTP handlers that validate requests, call services, and produce shared response envelopes. Education handlers are split between the existing education handler and `education_extended_handler.go`, which serves the additional institution categories and paginated schools. `healthcare_handler.go` serves the paginated health-facility list and detail contract; production routes apply the same public API-key, rate-limit, and usage-tracking middleware policy as other public dataset routes.
+HTTP handlers that validate requests, call services, and produce shared response envelopes. Education handlers are split between the existing education handler and `education_extended_handler.go`, which serves the additional institution categories and paginated schools. `healthcare_handler.go` serves the paginated health-facility list and detail contract; production routes apply the same public API-key, rate-limit, and usage-tracking middleware policy as other public dataset routes. `emergency_service_contact_handler.go` defines the emergency-contact list and detail HTTP contract for the five-record official-contact snapshot; production route registration and startup verification are intentionally deferred to the next phase.
 
 ### `internal/middlewares/`
 
@@ -605,7 +605,7 @@ Application use cases and business rules for accounts, authentication, datasets,
 
 ### `internal/validators/`
 
-Request validation and normalization helpers for authentication, accounts, API keys, datasets, geography, education institution IDs, school IDs, healthcare facility IDs, pagination, filters, and query inputs.
+Request validation and normalization helpers for authentication, accounts, API keys, datasets, geography, education institution IDs, school IDs, healthcare facility IDs, emergency contact IDs, pagination, filters, and query inputs.
 
 ### `internal/router/`
 

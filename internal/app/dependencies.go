@@ -299,6 +299,10 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	if err != nil {
 		return appDependencies{}, err
 	}
+	emergencyContactHandler, err := handlers.NewEmergencyServiceContactHandler(emergencyContactService)
+	if err != nil {
+		return appDependencies{}, fmt.Errorf("initialize emergency service contact handler: %w", err)
+	}
 	financeHandler, err := handlers.NewFinanceHandlerWithPublicAPIURL(financeService, cfg.PublicAPIURL)
 	if err != nil {
 		return appDependencies{}, err
@@ -445,6 +449,7 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 		nhiaSSHIAService:  nhiaSSHIAService,
 		nhiaHCPService:    nhiaHCPService,
 		emergencyService:  emergencyContactService,
+		emergencyHandler:  emergencyContactHandler,
 	}
 	return deps, nil
 }
