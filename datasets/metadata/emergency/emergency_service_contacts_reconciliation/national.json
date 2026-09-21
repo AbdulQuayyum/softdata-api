@@ -1,0 +1,132 @@
+{
+  "dataset_key": "ng-emergency-service-contacts",
+  "source_rows": 5,
+  "records": [
+    {
+      "source_key": "federal-fire-service-contact-us",
+      "source_position": 1,
+      "source_section": "Contact & Emergency",
+      "agency_label": "Federal Fire Service",
+      "service_label": "Federal Fire Service distress calls",
+      "published_contact": "+2348032003557",
+      "published_coverage": "Federal Fire Service contact page",
+      "evidence": "Federal Fire Service as first responder is available 24hrs 7days in a week to respond to distress calls from citizens. Phone: +2348032003557 | 112.",
+      "normalized": {
+        "id": "federal-fire-service-fire-2348032003557-national",
+        "service_name": "Federal Fire Service Emergency Response",
+        "agency_name": "Federal Fire Service",
+        "service_type": "fire",
+        "contact_type": "telephone",
+        "contact_value": "+2348032003557",
+        "coverage_type": "national",
+        "country_code": "NG",
+        "availability": "24_hours",
+        "notes": "Source also publishes 08032003557 elsewhere on the same page; +2348032003557 is retained as the Contact & Emergency phone form."
+      },
+      "decision": "retain",
+      "reason": "Official FFS contact page directly publishes this emergency/distress phone and states 24-hour availability.",
+      "target_id": "federal-fire-service-fire-2348032003557-national"
+    },
+    {
+      "source_key": "federal-fire-service-contact-us",
+      "source_position": 2,
+      "source_section": "Contact & Emergency",
+      "agency_label": "Federal Fire Service",
+      "service_label": "Federal Fire Service distress calls",
+      "published_contact": "112",
+      "published_coverage": "Federal Fire Service contact page",
+      "evidence": "Federal Fire Service as first responder is available 24hrs 7days in a week to respond to distress calls from citizens. Phone: +2348032003557 | 112.",
+      "normalized": {
+        "id": "federal-fire-service-fire-112-national",
+        "service_name": "Federal Fire Service Emergency Response",
+        "agency_name": "Federal Fire Service",
+        "service_type": "fire",
+        "contact_type": "short_code",
+        "contact_value": "112",
+        "coverage_type": "national",
+        "country_code": "NG",
+        "availability": "24_hours",
+        "notes": "The same short code is also documented by NCC as the national emergency number; this record preserves the distinct Federal Fire Service source observation."
+      },
+      "decision": "retain",
+      "reason": "Official FFS contact page directly publishes 112 as part of its distress-call contact text and states 24-hour availability.",
+      "target_id": "federal-fire-service-fire-112-national"
+    },
+    {
+      "source_key": "frsc-services",
+      "source_position": 1,
+      "source_section": "Emergency Ambulance Service Scheme (EASS) Zebra",
+      "agency_label": "Federal Road Safety Corps",
+      "service_label": "Emergency Ambulance Service Scheme (EASS) Zebra",
+      "published_contact": "122",
+      "published_coverage": "across Nigeria",
+      "evidence": "Members of the public can call the emergency toll-free number 122 to seek for help or report crashes promptly and emergencies.",
+      "normalized": {
+        "id": "federal-road-safety-corps-road-emergency-122-national",
+        "service_name": "Emergency Ambulance Service Scheme (EASS) Zebra",
+        "agency_name": "Federal Road Safety Corps",
+        "service_type": "road_emergency",
+        "contact_type": "short_code",
+        "contact_value": "122",
+        "coverage_type": "national",
+        "country_code": "NG",
+        "call_cost": "toll_free",
+        "notes": "FRSC describes 122 as an emergency toll-free number for help, crash reports and emergencies."
+      },
+      "decision": "retain",
+      "reason": "Official FRSC services page directly publishes 122 as an emergency toll-free number for road-crash/emergency help across Nigeria.",
+      "target_id": "federal-road-safety-corps-road-emergency-122-national"
+    },
+    {
+      "source_key": "ncc-special-duties-service-charter",
+      "source_position": 1,
+      "source_section": "Accessibility",
+      "agency_label": "Nigerian Communications Commission",
+      "service_label": "112 Toll free Emergency Number",
+      "published_contact": "112",
+      "published_coverage": "across the country",
+      "evidence": "112 Toll free Emergency Number is available to receive Emergency Calls from the public 24hrs daily 7 days weekly (24/7) across the country.",
+      "normalized": {
+        "id": "nigerian-communications-commission-general-emergency-112-national",
+        "service_name": "112 Emergency Number",
+        "agency_name": "Nigerian Communications Commission",
+        "service_type": "general_emergency",
+        "contact_type": "short_code",
+        "contact_value": "112",
+        "coverage_type": "national",
+        "country_code": "NG",
+        "availability": "24_hours",
+        "call_cost": "toll_free",
+        "notes": "NCC describes 112 as an emergency number for emergency calls across the country."
+      },
+      "decision": "retain",
+      "reason": "Official NCC charter directly identifies 112 as a toll-free emergency number across the country and states 24/7 availability.",
+      "target_id": "nigerian-communications-commission-general-emergency-112-national"
+    },
+    {
+      "source_key": "nema-flood-operations-press-release",
+      "source_position": 1,
+      "source_section": "Press release body",
+      "agency_label": "National Emergency Management Agency",
+      "service_label": "NEMA headquarters toll-free emergency contact line",
+      "published_contact": "0800CALLNEMA (080022556362)",
+      "published_coverage": "nationwide",
+      "evidence": "At the headquarters NEMA also operates a toll-free emergency contact line: 0800CALLNEMA (080022556362) ... feedback from members of the public can be received nationwide.",
+      "normalized": {
+        "id": "national-emergency-management-agency-disaster-management-080022556362-national",
+        "service_name": "NEMA Emergency Contact Line",
+        "agency_name": "National Emergency Management Agency",
+        "service_type": "disaster_management",
+        "contact_type": "telephone",
+        "contact_value": "080022556362",
+        "coverage_type": "national",
+        "country_code": "NG",
+        "call_cost": "toll_free",
+        "notes": "Source publishes the vanity form 0800CALLNEMA with the numeric form 080022556362; the numeric form is used as the public contact value."
+      },
+      "decision": "retain",
+      "reason": "Official NEMA press release directly publishes the toll-free emergency contact line and states nationwide public feedback coverage.",
+      "target_id": "national-emergency-management-agency-disaster-management-080022556362-national"
+    }
+  ]
+}

@@ -321,6 +321,36 @@
       "key": "page_size",
       "value": "50",
       "type": "string"
+    },
+    {
+      "key": "contact_id",
+      "value": "federal-fire-service-fire-112-national",
+      "type": "string"
+    },
+    {
+      "key": "emergencyServiceType",
+      "value": "fire",
+      "type": "string"
+    },
+    {
+      "key": "emergencyContactType",
+      "value": "short_code",
+      "type": "string"
+    },
+    {
+      "key": "emergencyCoverageType",
+      "value": "national",
+      "type": "string"
+    },
+    {
+      "key": "emergencyContactValue",
+      "value": "112",
+      "type": "string"
+    },
+    {
+      "key": "emergencySearch",
+      "value": "fire",
+      "type": "string"
     }
   ],
   "item": [
@@ -2180,6 +2210,111 @@
                 "healthcare",
                 "nhia-active-accredited-healthcare-providers",
                 "{{provider_id}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Emergency",
+      "description": "Production-wired public Nigerian emergency-contact snapshot requests synchronized from docs/openapi.yaml. This is a dated source-verified institutional contact snapshot, not a live operational-status guarantee or complete emergency directory.",
+      "item": [
+        {
+          "name": "List emergency service contacts",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}",
+                "description": "Optional. Enable this header when using an API key for higher limits and usage analytics.",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "description": "Production-wired public GET route listing official emergency service contacts with pagination and optional source-supported filters. Duplicate contact values may return multiple service contexts.",
+            "url": {
+              "raw": "{{baseUrl}}/v1/emergency/emergency-service-contacts?page={{page}}&page_size={{page_size}}&service_type={{emergencyServiceType}}&contact_type={{emergencyContactType}}&coverage_type={{emergencyCoverageType}}&contact_value={{emergencyContactValue}}&search={{emergencySearch}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "emergency",
+                "emergency-service-contacts"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "{{page}}",
+                  "description": "Positive page number. Default: 1."
+                },
+                {
+                  "key": "page_size",
+                  "value": "{{page_size}}",
+                  "description": "Page size from 1 to 100. Default: 50."
+                },
+                {
+                  "key": "service_type",
+                  "value": "{{emergencyServiceType}}",
+                  "description": "Optional service type enum.",
+                  "disabled": true
+                },
+                {
+                  "key": "contact_type",
+                  "value": "{{emergencyContactType}}",
+                  "description": "Optional contact type enum.",
+                  "disabled": true
+                },
+                {
+                  "key": "coverage_type",
+                  "value": "{{emergencyCoverageType}}",
+                  "description": "Optional coverage type enum.",
+                  "disabled": true
+                },
+                {
+                  "key": "contact_value",
+                  "value": "{{emergencyContactValue}}",
+                  "description": "Optional exact contact string; leading zeroes and +234 forms are preserved.",
+                  "disabled": true
+                },
+                {
+                  "key": "search",
+                  "value": "{{emergencySearch}}",
+                  "description": "Optional service/agency-name search.",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get an emergency service contact",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}",
+                "description": "Optional. Enable this header when using an API key for higher limits and usage analytics.",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "description": "Production-wired public GET route retrieving one emergency service contact by contact_id.",
+            "url": {
+              "raw": "{{baseUrl}}/v1/emergency/emergency-service-contacts/{{contact_id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "emergency",
+                "emergency-service-contacts",
+                "{{contact_id}}"
               ]
             }
           },

@@ -10,6 +10,7 @@ import (
 	"sync/atomic"
 
 	"github.com/AbdulQuayyum/softdata-api/internal/config"
+	"github.com/AbdulQuayyum/softdata-api/internal/handlers"
 )
 
 // App owns the production HTTP server and the resources it depends on.
@@ -37,6 +38,8 @@ type appDependencies struct {
 	nhiaHMOService    nhiaAccreditedHMOService
 	nhiaSSHIAService  nhiaSSHIAService
 	nhiaHCPService    nhiaActiveAccreditedHealthcareProviderService
+	emergencyService  emergencyServiceContactService
+	emergencyHandler  *handlers.EmergencyServiceContactHandler
 }
 
 // New builds the production app from configuration and a logger.

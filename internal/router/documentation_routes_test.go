@@ -144,6 +144,14 @@ func TestOpenAPIPostmanParity(t *testing.T) {
 			t.Fatalf("bad healthcare operation expectation: %s", op)
 		}
 	}
+	for _, op := range expectedEmergencyOperations() {
+		if _, ok := postmanOps[op]; !ok {
+			t.Fatalf("emergency operation missing from Postman: %s", op)
+		}
+		if !strings.HasPrefix(op.path, "/v1/emergency/") || op.method != http.MethodGet {
+			t.Fatalf("bad emergency operation expectation: %s", op)
+		}
+	}
 
 	for op, count := range postmanOps {
 		if count != 1 {
@@ -160,6 +168,55 @@ func TestOpenAPIPostmanParity(t *testing.T) {
 
 	assertNoPopulatedCollectionSecrets(t, collection)
 	assertOperationIDsUnique(t, string(openAPIRaw))
+}
+
+func TestEmergencyServiceContactActiveDocumentationIsProductionWired(t *testing.T) {
+	for _, file := range []string{"../../DATASETS.md", "../../docs/datasets.md"} {
+		doc := string(readTestFile(t, file))
+		section := extractEmergencyServiceContactSection(t, doc)
+		for _, want := range []string{
+			"GET /v1/emergency/emergency-service-contacts",
+			"GET /v1/emergency/emergency-service-contacts/{contact_id}",
+			"repository and service access",
+			"bounded startup verification",
+			"shared repository cache",
+			"dated",
+			"not a complete",
+			"not a live operational-status guarantee",
+		} {
+			if !strings.Contains(section, want) {
+				t.Fatalf("%s emergency section missing %q", file, want)
+			}
+		}
+		lower := strings.ToLower(section)
+		for _, stale := range []string{
+			"no api route",
+			"no api routes",
+			"no api routes, repositories, services or startup checks",
+			"not production wired",
+			"integration deferred",
+			"runtime deferred",
+		} {
+			if strings.Contains(lower, stale) {
+				t.Fatalf("%s emergency section contains stale wording %q", file, stale)
+			}
+		}
+	}
+}
+
+func extractEmergencyServiceContactSection(t *testing.T, doc string) string {
+	t.Helper()
+	const heading = "### `ng-emergency-service-contacts`"
+	start := strings.Index(doc, heading)
+	if start < 0 {
+		t.Fatal("emergency service contacts heading missing")
+	}
+	rest := doc[start+len(heading):]
+	end := strings.Index(rest, "\n### ")
+	if end < 0 {
+		return rest
+	}
+	return rest[:end]
 }
 
 func readTestFile(t *testing.T, path string) []byte {
@@ -265,6 +322,13 @@ func expectedHealthcareOperations() []operation {
 		{http.MethodGet, "/v1/healthcare/nhia-state-social-health-insurance-agencies/{agency_id}"},
 		{http.MethodGet, "/v1/healthcare/nhia-active-accredited-healthcare-providers"},
 		{http.MethodGet, "/v1/healthcare/nhia-active-accredited-healthcare-providers/{provider_id}"},
+	}
+}
+
+func expectedEmergencyOperations() []operation {
+	return []operation{
+		{http.MethodGet, "/v1/emergency/emergency-service-contacts"},
+		{http.MethodGet, "/v1/emergency/emergency-service-contacts/{contact_id}"},
 	}
 }
 

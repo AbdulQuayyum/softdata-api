@@ -1,0 +1,63 @@
+[
+  {
+    "id": "federal-fire-service-fire-112-national",
+    "service_name": "Federal Fire Service Emergency Response",
+    "agency_name": "Federal Fire Service",
+    "service_type": "fire",
+    "contact_type": "short_code",
+    "contact_value": "112",
+    "coverage_type": "national",
+    "country_code": "NG",
+    "availability": "24_hours",
+    "notes": "The same short code is also documented by NCC as the national emergency number; this record preserves the distinct Federal Fire Service source observation."
+  },
+  {
+    "id": "federal-fire-service-fire-2348032003557-national",
+    "service_name": "Federal Fire Service Emergency Response",
+    "agency_name": "Federal Fire Service",
+    "service_type": "fire",
+    "contact_type": "telephone",
+    "contact_value": "+2348032003557",
+    "coverage_type": "national",
+    "country_code": "NG",
+    "availability": "24_hours",
+    "notes": "Source also publishes 08032003557 elsewhere on the same page; +2348032003557 is retained as the Contact & Emergency phone form."
+  },
+  {
+    "id": "federal-road-safety-corps-road-emergency-122-national",
+    "service_name": "Emergency Ambulance Service Scheme (EASS) Zebra",
+    "agency_name": "Federal Road Safety Corps",
+    "service_type": "road_emergency",
+    "contact_type": "short_code",
+    "contact_value": "122",
+    "coverage_type": "national",
+    "country_code": "NG",
+    "call_cost": "toll_free",
+    "notes": "FRSC describes 122 as an emergency toll-free number for help, crash reports and emergencies."
+  },
+  {
+    "id": "national-emergency-management-agency-disaster-management-080022556362-national",
+    "service_name": "NEMA Emergency Contact Line",
+    "agency_name": "National Emergency Management Agency",
+    "service_type": "disaster_management",
+    "contact_type": "telephone",
+    "contact_value": "080022556362",
+    "coverage_type": "national",
+    "country_code": "NG",
+    "call_cost": "toll_free",
+    "notes": "Source publishes the vanity form 0800CALLNEMA with the numeric form 080022556362; the numeric form is used as the public contact value."
+  },
+  {
+    "id": "nigerian-communications-commission-general-emergency-112-national",
+    "service_name": "112 Emergency Number",
+    "agency_name": "Nigerian Communications Commission",
+    "service_type": "general_emergency",
+    "contact_type": "short_code",
+    "contact_value": "112",
+    "coverage_type": "national",
+    "country_code": "NG",
+    "availability": "24_hours",
+    "call_cost": "toll_free",
+    "notes": "NCC describes 112 as an emergency number for emergency calls across the country."
+  }
+]
