@@ -341,6 +341,9 @@ func registerPublicRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers,
 	if err := registerHealthcareRoutes(mux, catalog, h, mw); err != nil {
 		return err
 	}
+	if err := registerEmergencyRoutes(mux, catalog, h, mw); err != nil {
+		return err
+	}
 
 	financeList, err := buildRouteMiddlewares(mw, "/v1/finance/payment-service-providers", "finance", routeOptions{
 		useOptionalAPIKey: true,
@@ -476,6 +479,42 @@ func registerPublicRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers,
 		return err
 	}
 
+	return nil
+}
+
+func registerEmergencyRoutes(mux *http.ServeMux, catalog *routeCatalog, h Handlers, mw Middleware) error {
+	// Preserve trailing-slash rejection while keeping ServeMux's fallback in JSON.
+	mux.HandleFunc("/v1/emergency/emergency-service-contacts/", func(w http.ResponseWriter, r *http.Request) {
+		_ = response.Error(w, interfaces.ErrNotFound, requestIDFromContext(r.Context()))
+	})
+
+	listPath := "/v1/emergency/emergency-service-contacts"
+	listMiddleware, err := buildRouteMiddlewares(mw, listPath, "emergency", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build emergency service contact list middleware: %w", err)
+	}
+	mux.Handle("GET "+listPath, compose(http.HandlerFunc(h.EmergencyServiceContacts.ListEmergencyServiceContacts), listMiddleware...))
+	if err := catalog.add("GET " + listPath); err != nil {
+		return err
+	}
+
+	detailPath := "/v1/emergency/emergency-service-contacts/{contact_id}"
+	detailMiddleware, err := buildRouteMiddlewares(mw, detailPath, "emergency", routeOptions{
+		useOptionalAPIKey: true,
+		useRateLimit:      true,
+		useUsageTracking:  true,
+	})
+	if err != nil {
+		return fmt.Errorf("build emergency service contact detail middleware: %w", err)
+	}
+	mux.Handle("GET "+detailPath, compose(http.HandlerFunc(h.EmergencyServiceContacts.GetEmergencyServiceContact), detailMiddleware...))
+	if err := catalog.add("GET " + detailPath); err != nil {
+		return err
+	}
 	return nil
 }
 

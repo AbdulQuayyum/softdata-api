@@ -106,6 +106,7 @@ func testHandlers(t *testing.T, rec *routerRecorder) Handlers {
 	nhiaHMO := &routerNHIAHMOStub{rec: rec}
 	nhiaSSHIA := &routerNHIASSHIAStub{rec: rec}
 	nhiaHCP := &routerNHIAHCPStub{rec: rec}
+	emergency := &routerEmergencyServiceContactStub{rec: rec}
 
 	authHandler, err := handlers.NewAuthHandler(auth, auth)
 	if err != nil {
@@ -159,6 +160,10 @@ func testHandlers(t *testing.T, rec *routerRecorder) Handlers {
 	if err != nil {
 		t.Fatalf("NewNHIAActiveAccreditedHealthcareProviderHandler() error = %v", err)
 	}
+	emergencyHandler, err := handlers.NewEmergencyServiceContactHandler(emergency)
+	if err != nil {
+		t.Fatalf("NewEmergencyServiceContactHandler() error = %v", err)
+	}
 
 	return Handlers{
 		Documentation:                           documentationHandler,
@@ -171,6 +176,7 @@ func testHandlers(t *testing.T, rec *routerRecorder) Handlers {
 		NHIAAccreditedHMOs:                      nhiaHMOHandler,
 		NHIAStateSocialHealthInsuranceAgencies:  nhiaSSHIAHandler,
 		NHIAActiveAccreditedHealthcareProviders: nhiaHCPHandler,
+		EmergencyServiceContacts:                emergencyHandler,
 		Finance:                                 financeHandler,
 		Auth:                                    authHandler,
 		Account:                                 accountHandler,
@@ -194,6 +200,7 @@ func testHandlersWithGeography(t *testing.T, rec *routerRecorder, geography *rou
 	nhiaHMO := &routerNHIAHMOStub{rec: rec}
 	nhiaSSHIA := &routerNHIASSHIAStub{rec: rec}
 	nhiaHCP := &routerNHIAHCPStub{rec: rec}
+	emergency := &routerEmergencyServiceContactStub{rec: rec}
 
 	authHandler, err := handlers.NewAuthHandler(auth, auth)
 	if err != nil {
@@ -247,6 +254,10 @@ func testHandlersWithGeography(t *testing.T, rec *routerRecorder, geography *rou
 	if err != nil {
 		t.Fatalf("NewNHIAActiveAccreditedHealthcareProviderHandler() error = %v", err)
 	}
+	emergencyHandler, err := handlers.NewEmergencyServiceContactHandler(emergency)
+	if err != nil {
+		t.Fatalf("NewEmergencyServiceContactHandler() error = %v", err)
+	}
 
 	return Handlers{
 		Documentation:                           documentationHandler,
@@ -259,6 +270,7 @@ func testHandlersWithGeography(t *testing.T, rec *routerRecorder, geography *rou
 		NHIAAccreditedHMOs:                      nhiaHMOHandler,
 		NHIAStateSocialHealthInsuranceAgencies:  nhiaSSHIAHandler,
 		NHIAActiveAccreditedHealthcareProviders: nhiaHCPHandler,
+		EmergencyServiceContacts:                emergencyHandler,
 		Finance:                                 financeHandler,
 		Auth:                                    authHandler,
 		Account:                                 accountHandler,
@@ -1713,6 +1725,7 @@ func newGeographyPolicyRouter(t *testing.T) geographyPolicyHarness {
 		NHIAAccreditedHMOs:                      baseHandlers.NHIAAccreditedHMOs,
 		NHIAStateSocialHealthInsuranceAgencies:  baseHandlers.NHIAStateSocialHealthInsuranceAgencies,
 		NHIAActiveAccreditedHealthcareProviders: baseHandlers.NHIAActiveAccreditedHealthcareProviders,
+		EmergencyServiceContacts:                baseHandlers.EmergencyServiceContacts,
 		Finance:                                 baseHandlers.Finance,
 		Auth:                                    baseHandlers.Auth,
 		Account:                                 baseHandlers.Account,
@@ -1822,6 +1835,7 @@ func newFinancePolicyRouter(t *testing.T) financePolicyHarness {
 		NHIAAccreditedHMOs:                      baseHandlers.NHIAAccreditedHMOs,
 		NHIAStateSocialHealthInsuranceAgencies:  baseHandlers.NHIAStateSocialHealthInsuranceAgencies,
 		NHIAActiveAccreditedHealthcareProviders: baseHandlers.NHIAActiveAccreditedHealthcareProviders,
+		EmergencyServiceContacts:                baseHandlers.EmergencyServiceContacts,
 		Finance:                                 financeHandler,
 		Auth:                                    baseHandlers.Auth,
 		Account:                                 baseHandlers.Account,
@@ -1931,6 +1945,7 @@ func newEducationPolicyRouter(t *testing.T) educationPolicyHarness {
 		NHIAAccreditedHMOs:                      baseHandlers.NHIAAccreditedHMOs,
 		NHIAStateSocialHealthInsuranceAgencies:  baseHandlers.NHIAStateSocialHealthInsuranceAgencies,
 		NHIAActiveAccreditedHealthcareProviders: baseHandlers.NHIAActiveAccreditedHealthcareProviders,
+		EmergencyServiceContacts:                baseHandlers.EmergencyServiceContacts,
 		Finance:                                 baseHandlers.Finance,
 		Auth:                                    baseHandlers.Auth,
 		Account:                                 baseHandlers.Account,

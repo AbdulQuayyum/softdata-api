@@ -284,7 +284,7 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 	if err != nil {
 		return appDependencies{}, err
 	}
-	emergencyContactService, err := buildEmergencyServiceContactServiceFromJSONRepository(ctx, jsonRepository,
+	emergencyContactService, emergencyContactHandler, err := buildEmergencyServiceContactHandler(ctx, jsonRepository,
 		func(repository interfaces.JSONFileRepository, recordsPath string) (interfaces.EmergencyServiceContactRepository, error) {
 			return fileRepo.NewEmergencyServiceContactRepository(repository, recordsPath)
 		},
@@ -295,13 +295,12 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 			}
 			return service, nil
 		},
+		func(service emergencyServiceContactService) (*handlers.EmergencyServiceContactHandler, error) {
+			return handlers.NewEmergencyServiceContactHandler(service)
+		},
 	)
 	if err != nil {
 		return appDependencies{}, err
-	}
-	emergencyContactHandler, err := handlers.NewEmergencyServiceContactHandler(emergencyContactService)
-	if err != nil {
-		return appDependencies{}, fmt.Errorf("initialize emergency service contact handler: %w", err)
 	}
 	financeHandler, err := handlers.NewFinanceHandlerWithPublicAPIURL(financeService, cfg.PublicAPIURL)
 	if err != nil {
@@ -398,6 +397,7 @@ func buildDependencies(ctx context.Context, cfg *config.Config, logger *slog.Log
 		NHIAAccreditedHMOs:                      nhiaHMOHandler,
 		NHIAStateSocialHealthInsuranceAgencies:  nhiaSSHIAHandler,
 		NHIAActiveAccreditedHealthcareProviders: nhiaHCPHandler,
+		EmergencyServiceContacts:                emergencyContactHandler,
 		Finance:                                 financeHandler,
 		Auth:                                    authHandler,
 		Account:                                 accountHandler,

@@ -857,7 +857,7 @@ paths:
       tags: [Emergency]
       operationId: listEmergencyServiceContacts
       summary: List official emergency service contacts
-      description: Dated source-verified institutional contact snapshot for Nigeria. It contains five records and is not a live operational-status guarantee or a complete national, state, or local emergency directory. Numbers were source-verified from official publications but were not called or operationally tested. Availability and call-cost fields appear only where explicitly published. Duplicate contact values, such as 112, may represent different official service contexts and are not collapsed.
+      description: Production-wired public GET route serving the Dated source-verified institutional contact snapshot for Nigeria through the standard emergency public middleware. It contains five records and is not a live operational-status guarantee or a complete national, state, or local emergency directory. Numbers were source-verified from official publications but were not called or operationally tested. Availability and call-cost fields appear only where explicitly published. Duplicate contact values, such as 112, may represent different official service contexts and are not collapsed.
       parameters:
         - {$ref: "#/components/parameters/EmergencyServiceContactPage"}
         - {$ref: "#/components/parameters/EmergencyServiceContactPageSize"}
@@ -877,7 +877,7 @@ paths:
       tags: [Emergency]
       operationId: getEmergencyServiceContact
       summary: Get an official emergency service contact
-      description: Returns one record from the dated source-verified Nigerian institutional emergency-contact snapshot. This is not a live operational-status guarantee or a complete emergency directory. Numbers were source-verified from official publications but were not called or operationally tested. A malformed contact_id returns 400; a syntactically valid unknown contact_id returns 404.
+      description: Production-wired public GET route returning one record from the dated source-verified Nigerian institutional emergency-contact snapshot through the standard emergency public middleware. This is not a live operational-status guarantee or a complete emergency directory. Numbers were source-verified from official publications but were not called or operationally tested. A malformed contact_id returns 400; a syntactically valid unknown contact_id returns 404.
       parameters:
         - {$ref: "#/components/parameters/EmergencyServiceContactID"}
       responses:

@@ -2219,7 +2219,7 @@
     },
     {
       "name": "Emergency",
-      "description": "Public Nigerian emergency-contact snapshot requests synchronized from docs/openapi.yaml. This is a dated source-verified institutional contact snapshot, not a live operational-status guarantee or complete emergency directory.",
+      "description": "Production-wired public Nigerian emergency-contact snapshot requests synchronized from docs/openapi.yaml. This is a dated source-verified institutional contact snapshot, not a live operational-status guarantee or complete emergency directory.",
       "item": [
         {
           "name": "List emergency service contacts",
@@ -2234,7 +2234,7 @@
                 "disabled": true
               }
             ],
-            "description": "List official emergency service contacts with pagination and optional source-supported filters. Duplicate contact values may return multiple service contexts.",
+            "description": "Production-wired public GET route listing official emergency service contacts with pagination and optional source-supported filters. Duplicate contact values may return multiple service contexts.",
             "url": {
               "raw": "{{baseUrl}}/v1/emergency/emergency-service-contacts?page={{page}}&page_size={{page_size}}&service_type={{emergencyServiceType}}&contact_type={{emergencyContactType}}&coverage_type={{emergencyCoverageType}}&contact_value={{emergencyContactValue}}&search={{emergencySearch}}",
               "host": [
@@ -2304,7 +2304,7 @@
                 "disabled": true
               }
             ],
-            "description": "Retrieve one emergency service contact by contact_id.",
+            "description": "Production-wired public GET route retrieving one emergency service contact by contact_id.",
             "url": {
               "raw": "{{baseUrl}}/v1/emergency/emergency-service-contacts/{{contact_id}}",
               "host": [
