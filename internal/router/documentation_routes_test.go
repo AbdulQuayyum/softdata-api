@@ -170,6 +170,55 @@ func TestOpenAPIPostmanParity(t *testing.T) {
 	assertOperationIDsUnique(t, string(openAPIRaw))
 }
 
+func TestEmergencyServiceContactActiveDocumentationIsProductionWired(t *testing.T) {
+	for _, file := range []string{"../../DATASETS.md", "../../docs/datasets.md"} {
+		doc := string(readTestFile(t, file))
+		section := extractEmergencyServiceContactSection(t, doc)
+		for _, want := range []string{
+			"GET /v1/emergency/emergency-service-contacts",
+			"GET /v1/emergency/emergency-service-contacts/{contact_id}",
+			"repository and service access",
+			"bounded startup verification",
+			"shared repository cache",
+			"dated",
+			"not a complete",
+			"not a live operational-status guarantee",
+		} {
+			if !strings.Contains(section, want) {
+				t.Fatalf("%s emergency section missing %q", file, want)
+			}
+		}
+		lower := strings.ToLower(section)
+		for _, stale := range []string{
+			"no api route",
+			"no api routes",
+			"no api routes, repositories, services or startup checks",
+			"not production wired",
+			"integration deferred",
+			"runtime deferred",
+		} {
+			if strings.Contains(lower, stale) {
+				t.Fatalf("%s emergency section contains stale wording %q", file, stale)
+			}
+		}
+	}
+}
+
+func extractEmergencyServiceContactSection(t *testing.T, doc string) string {
+	t.Helper()
+	const heading = "### `ng-emergency-service-contacts`"
+	start := strings.Index(doc, heading)
+	if start < 0 {
+		t.Fatal("emergency service contacts heading missing")
+	}
+	rest := doc[start+len(heading):]
+	end := strings.Index(rest, "\n### ")
+	if end < 0 {
+		return rest
+	}
+	return rest[:end]
+}
+
 func readTestFile(t *testing.T, path string) []byte {
 	t.Helper()
 	data, err := os.ReadFile(path)
